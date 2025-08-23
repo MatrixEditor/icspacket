@@ -3,3 +3,4 @@ shibuya
 sphinx-copybutton
 sphinx-design
 sphinx-tabs
+setuptools_scm
