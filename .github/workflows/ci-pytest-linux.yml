@@ -1,0 +1,29 @@
+name: "CI: Run Tests on Linux"
+
+on: [push, pull_request, workflow_dispatch]
+
+jobs:
+  test:
+    name: Python ${{ matrix.python-version }} on Linux
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.12, 3.13]
+      fail-fast: true # all versions must be supported
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install Package
+        run: |
+          pip install -v .
+          pip install -r requirements-test.txt
+
+      - name: Run Tests
+        run: |
+          pytest -v
