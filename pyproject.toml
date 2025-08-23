@@ -1,0 +1,66 @@
+[build-system]
+# We use scikit-build-core to build our project, which heavily relies on certain
+# dependencies to be installed:
+# - CMake
+# - Ninja
+# - A compatible compiler (GCC recommended)
+requires = ["scikit-build-core", "setuptools-scm>=8"]
+build-backend = "scikit_build_core.build"
+
+[project]
+name = "icspacket"
+dynamic = ["version"]
+description = "Python classes to interact with industrial control systems (ICS) using various protocols."
+readme = "README.md"
+# Currently, Python 3.11 is NOT supported due to breaking changes within the
+# typing module. Additionally, caterpillar-py requires at least Python 3.12 to
+# prevent unintentional side-effects.
+requires-python = ">3.11"
+keywords = [
+  "ics",
+  "ics-security",
+  "libiec61850",
+  "iec61850",
+  "iso8823",
+  "iso8237",
+  "cotp",
+  "tpkt",
+  "goose",
+]
+authors = [{ name = "MatrixEditor" }]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  # Python 3.14 installation works but CI is not configured yet, so installation
+  # must be performed manually.
+  "Programming Language :: Python :: 3.14",
+  "Programming Language :: Python :: Implementation :: CPython",
+  "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
+]
+dependencies = [
+  "caterpillar-py", # binary protocols
+  "bitarray",       # asn1c-python extensions
+  # ---  dependencies for examples
+  "rich",           # colored terminal output and logging
+  "cmd2",           # advanced command shells (cmd 2.0)
+]
+
+[project.urls]
+Documentation = "https://github.com/MatrixEditor/icspacket#readme"
+Issues = "https://github.com/MatrixEditor/icspacket/issues"
+GitHub = "https://github.com/MatrixEditor/icspacket"
+
+[tool.scikit-build.cmake]
+# NOTE: To enable extra debugging output at runtime you might also add
+# -DASN_EMIT_DEBUG=1 as a compile-time define.
+# build-type = "Debug"
+
+# --- Dynamic Version scheme
+[tool.scikit-build]
+metadata.version.provider = "scikit_build_core.metadata.setuptools_scm"
+sdist.include = ["src/icspacket/_version.py"]
+
+[tool.setuptools_scm]
+write_to = "src/icspacket/_version.py"
