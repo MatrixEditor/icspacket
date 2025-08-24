@@ -20,7 +20,7 @@
 
 import enum
 from caterpillar.byteorder import BigEndian
-from caterpillar.fields import uint16, uint32
+from caterpillar.fields import uint32
 from caterpillar.model import EnumFactory
 from caterpillar.shortcuts import bitfield
 

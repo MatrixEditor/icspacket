@@ -16,8 +16,9 @@
 import logging
 import socket
 
-from typing import override
+from typing_extensions import override
 from collections.abc import Iterable
+
 
 from icspacket.core.connection import ConnectionClosedError, ConnectionError, connection
 from icspacket.core.logger import TRACE

@@ -16,9 +16,7 @@
 # pyright: reportInvalidTypeForm=false
 import socket
 import logging
-
-# TODO: this breaks with Python 3.11
-from typing import override
+from typing_extensions import override
 
 from caterpillar.shortcuts import pack, struct, BigEndian, this, unpack
 from caterpillar.fields import Bytes, uint8, uint16

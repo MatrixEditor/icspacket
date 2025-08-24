@@ -13,9 +13,9 @@ dynamic = ["version"]
 description = "Python classes to interact with industrial control systems (ICS) using various protocols."
 readme = "README.md"
 # Currently, Python 3.11 is NOT supported due to breaking changes within the
-# typing module. Additionally, caterpillar-py requires at least Python 3.12 to
-# prevent unintentional side-effects.
-requires-python = ">3.11"
+# typing module. Caterpillar-py requires at least Python 3.12 because of these
+# changes.
+requires-python = ">=3.10"
 keywords = [
   "ics",
   "ics-security",
@@ -31,6 +31,8 @@ authors = [{ name = "MatrixEditor" }]
 classifiers = [
   "Development Status :: 4 - Beta",
   "Programming Language :: Python",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
   "Programming Language :: Python :: 3.12",
   "Programming Language :: Python :: 3.13",
   # Python 3.14 installation works but CI is not configured yet, so installation
@@ -43,8 +45,9 @@ dependencies = [
   "caterpillar-py", # binary protocols
   "bitarray",       # asn1c-python extensions
   # ---  dependencies for examples
-  "rich",           # colored terminal output and logging
-  "cmd2",           # advanced command shells (cmd 2.0)
+  "rich",              # colored terminal output and logging
+  "cmd2",              # advanced command shells (cmd 2.0)
+  "typing-extensions", # compatibility with 3.10
 ]
 
 [project.urls]

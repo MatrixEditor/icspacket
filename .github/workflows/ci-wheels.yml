@@ -26,7 +26,7 @@ jobs:
         name: Build wheels
         env:
           # cibuildwheel will build wheel once and test it for each CPython version
-          CIBW_BUILD: "cp312-* cp313-*"
+          CIBW_BUILD: "cp312-* cp313-* cp311-* cp310-*"
           CIBW_BUILD_VERBOSITY: 1
 
       - uses: actions/upload-artifact@v4

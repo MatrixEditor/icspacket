@@ -15,6 +15,9 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 from ._iso8823 import *  # noqa
 
+# Some handly aliases
+PresentaionContextItem = Context_list.Member_TYPE # noqa
+
 __all__ = [  # noqa
     "Abort_reason",
     "Abort_type",
@@ -37,6 +40,7 @@ __all__ = [  # noqa
     "Fully_encoded_data",
     "Mode_selector",
     "PDV_list",
+    "PresentaionContextItem",
     "Presentation_context_addition_list",
     "Presentation_context_addition_result_list",
     "Presentation_context_definition_list",

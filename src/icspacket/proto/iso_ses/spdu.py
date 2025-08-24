@@ -17,7 +17,8 @@
 import enum
 
 from collections.abc import Generator, Iterator
-from typing import Any, Self
+from typing import Any
+from typing_extensions import Self
 
 from caterpillar.context import CTX_STREAM
 from caterpillar.exception import DynamicSizeError
