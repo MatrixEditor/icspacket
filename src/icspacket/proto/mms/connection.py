@@ -18,11 +18,6 @@ import logging
 from typing_extensions import override
 
 from icspacket.core.connection import connection
-from icspacket.proto.mms._mms import (
-    DomainName,
-    GetDomainAttributes_Request,
-    GetDomainAttributes_Response,
-)
 from icspacket.proto.tpkt import tpktsock
 from icspacket.proto.cotp.connection import COTP_Connection
 from icspacket.proto.iso_ses.session import ISO_Session, ISO_SessionSettings
@@ -45,6 +40,7 @@ from icspacket.proto.mms.asn1types import (
     Data,
     DataAccessError,
     DirectoryEntry,
+    DomainName,
     FileClose_Request,
     FileDelete_Request,
     FileDirectory_Request,
@@ -53,6 +49,8 @@ from icspacket.proto.mms.asn1types import (
     FileRead_Request,
     FileRename_Request,
     GetCapabilityList_Request,
+    GetDomainAttributes_Request,
+    GetDomainAttributes_Response,
     GetNameList_Request,
     GetVariableAccessAttributes_Request,
     GetVariableAccessAttributes_Response,
