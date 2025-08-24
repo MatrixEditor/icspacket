@@ -108,13 +108,14 @@ static const asn_TYPE_tag2member_t asn_MAP_GetNamedTypeAttributes_Response_tag2e
     { (ASN_TAG_CLASS_CONTEXT | (12 << 2)), 1, 0, 0 }, /* binary-time */
     { (ASN_TAG_CLASS_CONTEXT | (13 << 2)), 1, 0, 0 }, /* bcd */
     { (ASN_TAG_CLASS_CONTEXT | (15 << 2)), 1, 0, 0 }, /* objId */
-    { (ASN_TAG_CLASS_CONTEXT | (16 << 2)), 1, 0, 0 } /* mMSString */
+    { (ASN_TAG_CLASS_CONTEXT | (16 << 2)), 1, 0, 0 }, /* mMSString */
+    { (ASN_TAG_CLASS_CONTEXT | (17 << 2)), 1, 0, 0 } /* utc-time */
 };
 asn_SEQUENCE_specifics_t asn_SPC_GetNamedTypeAttributes_Response_specs_1 = {
 	sizeof(struct GetNamedTypeAttributes_Response),
 	offsetof(struct GetNamedTypeAttributes_Response, _asn_ctx),
 	asn_MAP_GetNamedTypeAttributes_Response_tag2el_1,
-	18,	/* Count of tags in the map */
+	19,	/* Count of tags in the map */
 	asn_MAP_GetNamedTypeAttributes_Response_oms_1,	/* Optional members */
 	2, 0,	/* Root/Additions */
 	-1,	/* First extension addition */

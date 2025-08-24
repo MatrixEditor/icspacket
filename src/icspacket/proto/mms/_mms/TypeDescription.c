@@ -742,7 +742,7 @@ asn_TYPE_member_t asn_MBR_TypeDescription_1[] = {
 		},
 	{ ATF_NOFLAGS, 0, offsetof(struct TypeDescription, choice.mMSString),
 		(ASN_TAG_CLASS_CONTEXT | (16 << 2)),
-		+1,	/* EXPLICIT tag at current level */
+		-1,	/* IMPLICIT tag at current level */
 		&asn_DEF_Integer32,
 		0,
 		{
@@ -760,6 +760,26 @@ asn_TYPE_member_t asn_MBR_TypeDescription_1[] = {
 		0, 0, /* No default value */
 		"mMSString"
 		},
+	{ ATF_NOFLAGS, 0, offsetof(struct TypeDescription, choice.utc_time),
+		(ASN_TAG_CLASS_CONTEXT | (17 << 2)),
+		-1,	/* IMPLICIT tag at current level */
+		&asn_DEF_UtcTime,
+		0,
+		{
+#if !defined(ASN_DISABLE_OER_SUPPORT)
+			0,
+#endif  /* !defined(ASN_DISABLE_OER_SUPPORT) */
+#if !defined(ASN_DISABLE_UPER_SUPPORT) || !defined(ASN_DISABLE_APER_SUPPORT)
+			0,
+#endif  /* !defined(ASN_DISABLE_UPER_SUPPORT) || !defined(ASN_DISABLE_APER_SUPPORT) */
+#if !defined(ASN_DISABLE_JER_SUPPORT)
+			0,
+#endif  /* !defined(ASN_DISABLE_JER_SUPPORT) */
+			0
+		},
+		0, 0, /* No default value */
+		"utc-time"
+		},
 };
 static const asn_TYPE_tag2member_t asn_MAP_TypeDescription_tag2el_1[] = {
     { (ASN_TAG_CLASS_CONTEXT | (1 << 2)), 0, 0, 0 }, /* array */
@@ -775,7 +795,8 @@ static const asn_TYPE_tag2member_t asn_MAP_TypeDescription_tag2el_1[] = {
     { (ASN_TAG_CLASS_CONTEXT | (12 << 2)), 10, 0, 0 }, /* binary-time */
     { (ASN_TAG_CLASS_CONTEXT | (13 << 2)), 11, 0, 0 }, /* bcd */
     { (ASN_TAG_CLASS_CONTEXT | (15 << 2)), 12, 0, 0 }, /* objId */
-    { (ASN_TAG_CLASS_CONTEXT | (16 << 2)), 13, 0, 0 } /* mMSString */
+    { (ASN_TAG_CLASS_CONTEXT | (16 << 2)), 13, 0, 0 }, /* mMSString */
+    { (ASN_TAG_CLASS_CONTEXT | (17 << 2)), 14, 0, 0 } /* utc-time */
 };
 asn_CHOICE_specifics_t asn_SPC_TypeDescription_specs_1 = {
 	sizeof(struct TypeDescription),
@@ -783,7 +804,7 @@ asn_CHOICE_specifics_t asn_SPC_TypeDescription_specs_1 = {
 	offsetof(struct TypeDescription, present),
 	sizeof(((struct TypeDescription *)0)->present),
 	asn_MAP_TypeDescription_tag2el_1,
-	14,	/* Count of tags in the map */
+	15,	/* Count of tags in the map */
 	0, 0,
 	-1	/* Extensions start */
 };
@@ -808,7 +829,7 @@ asn_TYPE_descriptor_t asn_DEF_TypeDescription = {
 		CHOICE_constraint
 	},
 	asn_MBR_TypeDescription_1,
-	14,	/* Elements count */
+	15,	/* Elements count */
 	&asn_SPC_TypeDescription_specs_1	/* Additional specs */
 };
 

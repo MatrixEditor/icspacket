@@ -2542,7 +2542,8 @@ TypeDescription ::= CHOICE {
     binary-time	 [12] IMPLICIT BOOLEAN,
     bcd	 [13] IMPLICIT Unsigned8,
     objId	 [15] IMPLICIT NULL,
-    mMSString	 [16] Integer32
+    mMSString	 [16] IMPLICIT Integer32,
+    utc-time    [17] IMPLICIT UtcTime
 }
 
 Address ::= CHOICE {

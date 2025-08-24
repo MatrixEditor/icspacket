@@ -61,7 +61,8 @@ static const asn_TYPE_tag2member_t asn_MAP_TypeSpecification_tag2el_1[] = {
     { (ASN_TAG_CLASS_CONTEXT | (12 << 2)), 1, 0, 0 }, /* binary-time */
     { (ASN_TAG_CLASS_CONTEXT | (13 << 2)), 1, 0, 0 }, /* bcd */
     { (ASN_TAG_CLASS_CONTEXT | (15 << 2)), 1, 0, 0 }, /* objId */
-    { (ASN_TAG_CLASS_CONTEXT | (16 << 2)), 1, 0, 0 } /* mMSString */
+    { (ASN_TAG_CLASS_CONTEXT | (16 << 2)), 1, 0, 0 }, /* mMSString */
+    { (ASN_TAG_CLASS_CONTEXT | (17 << 2)), 1, 0, 0 } /* utc-time */
 };
 asn_CHOICE_specifics_t asn_SPC_TypeSpecification_specs_1 = {
 	sizeof(struct TypeSpecification),
@@ -69,7 +70,7 @@ asn_CHOICE_specifics_t asn_SPC_TypeSpecification_specs_1 = {
 	offsetof(struct TypeSpecification, present),
 	sizeof(((struct TypeSpecification *)0)->present),
 	asn_MAP_TypeSpecification_tag2el_1,
-	15,	/* Count of tags in the map */
+	16,	/* Count of tags in the map */
 	0, 0,
 	-1	/* Extensions start */
 };

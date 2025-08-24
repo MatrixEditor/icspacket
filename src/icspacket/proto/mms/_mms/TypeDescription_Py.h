@@ -17,6 +17,7 @@
 #include <Identifier_Py.h>
 #include <Unsigned8_Py.h>
 #include <Integer32_Py.h>
+#include <UtcTime_Py.h>
 
 #ifdef __cplusplus
 extern "C" {

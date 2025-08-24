@@ -68,13 +68,14 @@ static const asn_TYPE_tag2member_t asn_MAP_variableDescription_tag2el_4[] = {
     { (ASN_TAG_CLASS_CONTEXT | (12 << 2)), 1, 0, 0 }, /* binary-time */
     { (ASN_TAG_CLASS_CONTEXT | (13 << 2)), 1, 0, 0 }, /* bcd */
     { (ASN_TAG_CLASS_CONTEXT | (15 << 2)), 1, 0, 0 }, /* objId */
-    { (ASN_TAG_CLASS_CONTEXT | (16 << 2)), 1, 0, 0 } /* mMSString */
+    { (ASN_TAG_CLASS_CONTEXT | (16 << 2)), 1, 0, 0 }, /* mMSString */
+    { (ASN_TAG_CLASS_CONTEXT | (17 << 2)), 1, 0, 0 } /* utc-time */
 };
 static asn_SEQUENCE_specifics_t asn_SPC_variableDescription_specs_4 = {
 	sizeof(struct VariableSpecification__variableDescription),
 	offsetof(struct VariableSpecification__variableDescription, _asn_ctx),
 	asn_MAP_variableDescription_tag2el_4,
-	18,	/* Count of tags in the map */
+	19,	/* Count of tags in the map */
 	0, 0, 0,	/* Optional elements (not needed) */
 	-1,	/* First extension addition */
 };

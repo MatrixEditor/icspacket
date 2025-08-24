@@ -7106,6 +7106,7 @@ class TypeDescription(_Asn1Type): # CHOICE
 		PR_bcd = 12
 		PR_objId = 13
 		PR_mMSString = 14
+		PR_utc_time = 15
 
 	@property
 	def present(self) -> PRESENT: ...
@@ -7209,6 +7210,10 @@ class TypeDescription(_Asn1Type): # CHOICE
 	def mMSString(self) -> Integer32 | None: ...
 	@mMSString.setter
 	def mMSString(self, value: Integer32 | int | None) -> None: ...
+	@property
+	def utc_time(self) -> UtcTime | None: ...
+	@utc_time.setter
+	def utc_time(self, value: UtcTime | bytes | None) -> None: ...
 	def __init__(
 		self, /, *,
 		array: array_TYPE = ...,

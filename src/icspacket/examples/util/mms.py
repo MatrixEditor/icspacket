@@ -220,5 +220,5 @@ def init_mms_connection(
     except KeyboardInterrupt:
         logging.error("Operation cancelled by user")
     else:
-        logging.debug(f"Etered MMS environment with peer at {host}:{port}")
+        logging.debug(f"Entered MMS environment with peer at {host}:{port}")
         return conn

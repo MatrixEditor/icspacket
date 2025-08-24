@@ -67,13 +67,14 @@ static const asn_TYPE_tag2member_t asn_MAP_DefineNamedType_Request_tag2el_1[] = 
     { (ASN_TAG_CLASS_CONTEXT | (12 << 2)), 1, 0, 0 }, /* binary-time */
     { (ASN_TAG_CLASS_CONTEXT | (13 << 2)), 1, 0, 0 }, /* bcd */
     { (ASN_TAG_CLASS_CONTEXT | (15 << 2)), 1, 0, 0 }, /* objId */
-    { (ASN_TAG_CLASS_CONTEXT | (16 << 2)), 1, 0, 0 } /* mMSString */
+    { (ASN_TAG_CLASS_CONTEXT | (16 << 2)), 1, 0, 0 }, /* mMSString */
+    { (ASN_TAG_CLASS_CONTEXT | (17 << 2)), 1, 0, 0 } /* utc-time */
 };
 asn_SEQUENCE_specifics_t asn_SPC_DefineNamedType_Request_specs_1 = {
 	sizeof(struct DefineNamedType_Request),
 	offsetof(struct DefineNamedType_Request, _asn_ctx),
 	asn_MAP_DefineNamedType_Request_tag2el_1,
-	18,	/* Count of tags in the map */
+	19,	/* Count of tags in the map */
 	0, 0, 0,	/* Optional elements (not needed) */
 	-1,	/* First extension addition */
 };

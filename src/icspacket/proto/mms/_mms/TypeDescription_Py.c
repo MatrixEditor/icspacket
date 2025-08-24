@@ -230,6 +230,10 @@ PY_IMPL_CHOICE_ATTR_FROMPY(TypeDescription, TypeDescription, mMSString, mMSStrin
 PY_IMPL_CHOICE_ATTR_TOPY(TypeDescription, mMSString, PyCompatAsnType_FromParent(&PyAsnInteger32_Type, parent,  (void *)&src->choice.mMSString));
 PY_IMPL_CHOICE_GETATTR(TypeDescription, TypeDescription, mMSString, mMSString);
 PY_IMPL_CHOICE_SETATTR(TypeDescription, TypeDescription, mMSString, mMSString);
+PY_IMPL_CHOICE_ATTR_FROMPY(TypeDescription, TypeDescription, utc_time, utc_time,PyAsnUtcTime_FromPython(value, &dst->choice.utc_time));
+PY_IMPL_CHOICE_ATTR_TOPY(TypeDescription, utc_time, PyCompatAsnType_FromParent(&PyAsnUtcTime_Type, parent,  (void *)&src->choice.utc_time));
+PY_IMPL_CHOICE_GETATTR(TypeDescription, TypeDescription, utc_time, utc_time);
+PY_IMPL_CHOICE_SETATTR(TypeDescription, TypeDescription, utc_time, utc_time);
 PY_IMPL_GENERIC_DEALLOC(TypeDescription);
 PY_IMPL_GENERIC_CHECK_CONSTRAINTS(TypeDescription);
 PY_IMPL_GENERIC_ENCODE(TypeDescription);
@@ -266,6 +270,7 @@ PY_IMPL_CHOICE_FROMPY(TypeDescription, &asn_DEF_TypeDescription,
 	PY_IMPL_CHOICE_INIT_ATTR(TypeDescription, TypeDescription, bcd, bcd, bcd);
 	PY_IMPL_CHOICE_INIT_ATTR(TypeDescription, TypeDescription, objId, objId, objId);
 	PY_IMPL_CHOICE_INIT_ATTR(TypeDescription, TypeDescription, mMSString, mMSString, mMSString);
+	PY_IMPL_CHOICE_INIT_ATTR(TypeDescription, TypeDescription, utc_time, utc_time, utc_time);
 );
 PY_IMPL_CHOICE_INIT(TypeDescription);
 
@@ -315,6 +320,7 @@ static PyGetSetDef PyAsnTypeDescription_getset[] = {
 	PY_IMPL_GETSET_ITEM_INTERNAL(TypeDescription, bcd, bcd),
 	PY_IMPL_GETSET_ITEM_INTERNAL(TypeDescription, objId, objId),
 	PY_IMPL_GETSET_ITEM_INTERNAL(TypeDescription, mMSString, mMSString),
+	PY_IMPL_GETSET_ITEM_INTERNAL(TypeDescription, utc_time, utc_time),
 	{NULL, NULL, NULL, NULL, NULL} /* sentinel */
 };
 
@@ -537,6 +543,7 @@ int PyAsnTypeDescription_ModInit(PyObject *mod) {
 		PY_IMPL_ENUM_VALUE(PR_bcd, TypeDescription_PR_bcd, 12);
 		PY_IMPL_ENUM_VALUE(PR_objId, TypeDescription_PR_objId, 13);
 		PY_IMPL_ENUM_VALUE(PR_mMSString, TypeDescription_PR_mMSString, 14);
+		PY_IMPL_ENUM_VALUE(PR_utc_time, TypeDescription_PR_utc_time, 15);
 	);
 	PY_IMPL_ASSIGN_ENUM_DIRECT(TypeDescription, TypeDescription_PRESENT, PRESENT);
 	PY_IMPL_MOD_ADD_OBJECT(mod, TypeDescription);

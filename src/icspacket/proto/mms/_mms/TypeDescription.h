@@ -14,6 +14,7 @@
 #include <Integer32.h>
 #include <Unsigned8.h>
 #include <BOOLEAN.h>
+#include <UtcTime.h>
 #include <Unsigned32.h>
 #include <constr_SEQUENCE.h>
 #include <asn_SEQUENCE_OF.h>
@@ -41,7 +42,8 @@ typedef enum TypeDescription_PR {
 	TypeDescription_PR_binary_time,
 	TypeDescription_PR_bcd,
 	TypeDescription_PR_objId,
-	TypeDescription_PR_mMSString
+	TypeDescription_PR_mMSString,
+	TypeDescription_PR_utc_time
 } TypeDescription_PR;
 
 /* Forward declarations */
@@ -98,6 +100,7 @@ typedef struct TypeDescription {
 		Unsigned8_t bcd;
 		NULL_t objId;
 		Integer32_t mMSString;
+		UtcTime_t utc_time;
 	} choice;
 	
 	/* Context for parsing across buffer boundaries */
@@ -107,7 +110,7 @@ typedef struct TypeDescription {
 /* Implementation */
 extern asn_TYPE_descriptor_t asn_DEF_TypeDescription;
 extern asn_CHOICE_specifics_t asn_SPC_TypeDescription_specs_1;
-extern asn_TYPE_member_t asn_MBR_TypeDescription_1[14];
+extern asn_TYPE_member_t asn_MBR_TypeDescription_1[15];
 
 #ifdef __cplusplus
 }
