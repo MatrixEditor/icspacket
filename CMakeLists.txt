@@ -36,3 +36,8 @@ add_asn1_extension(
   DIR "${ICS_SOURCE_DIR}/proto/iso_pres/_iso8823"
   INSTALL "proto/iso_pres"
 )
+add_asn1_extension(
+  NAME _mms
+  DIR "${ICS_SOURCE_DIR}/proto/mms/_mms"
+  INSTALL "proto/mms"
+)

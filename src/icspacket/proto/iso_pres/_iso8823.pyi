@@ -1,12 +1,11 @@
 from enum import IntEnum as EXT_IntEnum
 from typing import (
     Generic as EXT_Generic,
-    override as EXT_override,
     TypeVar as EXT_TypeVar,
     Iterable as EXT_Iterable,
     type_check_only as EXT_type_check_only,
 )
-
+from typing_extensions import override as EXT_override
 from bitarray import bitarray as EXT_bitarray
 
 _PY_T = EXT_TypeVar("_PY_T")

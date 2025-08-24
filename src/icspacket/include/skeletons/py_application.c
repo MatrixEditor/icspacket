@@ -98,7 +98,11 @@ int PyCompat_Init(void) {
     }
     _IMPORT_ATTR(nTmpModule, "IntEnum", PyCompatTable->PyIntEnum_Type);
     _IMPORT_ATTR(nTmpModule, "IntFlag", PyCompatTable->PyIntFlag_Type);
-    _IMPORT_ATTR(nTmpModule, "EnumType", PyCompatTable->PyEnumMeta_Type);
+    /*
+     * New in version 3.11: Before 3.11 enum used EnumMeta type, which is kept
+     * as an alias.
+     */
+    _IMPORT_ATTR(nTmpModule, "EnumMeta", PyCompatTable->PyEnumMeta_Type);
     Py_CLEAR(nTmpModule);
 
     return PyCompatTable->PyBytesIO_Type ? 0 : -1;
