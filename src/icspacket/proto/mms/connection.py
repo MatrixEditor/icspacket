@@ -1050,7 +1050,7 @@ class MMS_Connection(connection):
             match reason.confirmed_requestPDU:
                 case RejectPDU.rejectReason_TYPE.confirmed_requestPDU_VALUES.V_unrecognized_service:
                     return MMSUnknownServiceError(
-                        f"Peer rejected unrecognized service request of type: {request.present!r}"
+                        f"Peer rejected unrecognized service request of type: {request.present.name[3:]!r}"
                     )
                 case _:
                     return MMSServiceError(

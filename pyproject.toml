@@ -71,3 +71,4 @@ write_to = "src/icspacket/_version.py"
 # --- example scripts
 [project.scripts]
 "mms_utility.py" = "icspacket.examples.mms_utility:cli_main"
+"mmsclient.py" = "icspacket.examples.mmsclient:cli_main"
