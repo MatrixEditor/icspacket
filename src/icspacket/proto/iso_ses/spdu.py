@@ -53,10 +53,7 @@ class LI(FieldMixin):
     """Indicates an extended length indicator."""
 
     def __init__(self, extended: bool = True) -> None:
-        # NOTE: The `extended` argument is accepted but the current implementation
-        # unconditionally enables extended length handling. If you need strict
-        # one-octet behavior, adjust this attribute or the implementation.
-        self.extended = True
+        self.extended = extended
         # Backing field to read the extended 2-byte big-endian length (after 0xFF).
         self.__field = BigEndian + uint16
 
