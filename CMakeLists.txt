@@ -31,3 +31,8 @@ include(cmake/icspacket-defs.cmake)
 # -----------------------------------------------------------------------------
 #                     icspacket ASN.1 extensions
 # -----------------------------------------------------------------------------
+add_asn1_extension(
+  NAME _iso8823
+  DIR "${ICS_SOURCE_DIR}/proto/iso_pres/_iso8823"
+  INSTALL "proto/iso_pres"
+)
