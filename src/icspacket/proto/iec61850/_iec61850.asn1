@@ -1,0 +1,126 @@
+-- IEC61850-8-1 Annex A
+-- Application protocol specification for GOOSE and GSE management
+IEC61850 DEFINITIONS ::=
+BEGIN
+
+-- INLINED
+-- IMPORTS
+--  Data
+--    FROM ISO-IEC-9506-2
+--          { iso standard 9506 part(2) mms-abstract-syntax-version1(1) };
+-- ISO-9506-2
+-- DEFINITIONS ::=
+-- BEGIN
+Data ::= CHOICE {
+    array	 [1] IMPLICIT SEQUENCE OF Data,
+    structure	 [2] IMPLICIT SEQUENCE OF Data,
+    boolean	 [3] IMPLICIT BOOLEAN,
+    bit-string	 [4] IMPLICIT BIT STRING,
+    integer	 [5] IMPLICIT INTEGER,
+    unsigned	 [6] IMPLICIT INTEGER,
+    floating-point	 [7] IMPLICIT FloatingPoint,
+    octet-string	 [9] IMPLICIT OCTET STRING,
+    visible-string	 [10] IMPLICIT VisibleString,
+    generalized-time	 [11] IMPLICIT GeneralizedTime,
+    binary-time	 [12] IMPLICIT TimeOfDay,
+    bcd	 [13] IMPLICIT INTEGER,
+    booleanArray	 [14] IMPLICIT BIT STRING,
+    objId	 [15] IMPLICIT OBJECT IDENTIFIER,
+    mMSString	 [16] IMPLICIT MMSString,
+    utc-time    [17] UtcTime
+}
+
+MMSString ::= UTF8String
+FloatingPoint ::= OCTET STRING
+TimeOfDay ::= OCTET STRING
+-- END
+
+IEC61850-Specific-Protocol ::= CHOICE {
+    gseMngtPdu	 [APPLICATION 0] IMPLICIT GSEMngtPdu,
+    goosePdu	 [APPLICATION 1] IMPLICIT IECGoosePdu
+}
+
+GSEMngtPdu ::= SEQUENCE {
+    stateID	 [0] IMPLICIT INTEGER,
+    -- security	 [3] ANY OPTIONAL,
+    requestResp GSERequestResponse
+}
+
+GSERequestResponse ::= CHOICE {
+    requests	 [1] GSEMngtRequests,
+    responses	 [2] GSEMngtResponses
+}
+
+GSEMngtRequests ::= CHOICE {
+    getGoReference	 [1] IMPLICIT GetReferenceRequestPdu,
+    getGOOSEElementNumber	 [2] IMPLICIT GetElementRequestPdu,
+    getGsReference	 [3] IMPLICIT GetReferenceRequestPdu,
+    getGSSEDataOffset	 [4] IMPLICIT GetElementRequestPdu
+}
+
+GSEMngtResponses ::= CHOICE {
+    gseMngtNotSupported	 [0] IMPLICIT NULL,
+    getGoReference	 [1] IMPLICIT GSEMngtResponsePdu,
+    getGOOSEElementNumber	 [2] IMPLICIT GSEMngtResponsePdu,
+    getGsReference	 [3] IMPLICIT GSEMngtResponsePdu,
+    getGSSEDataOffset	 [4] IMPLICIT GSEMngtResponsePdu
+}
+
+GetReferenceRequestPdu ::= SEQUENCE {
+    ident	 [0] IMPLICIT VisibleString,
+    offset	 [1] IMPLICIT SEQUENCE OF INTEGER
+}
+
+GetElementRequestPdu ::= SEQUENCE {
+    ident	 [0] IMPLICIT VisibleString,
+    references	 [1] IMPLICIT SEQUENCE OF VisibleString
+}
+
+GSEMngtResponsePdu ::= SEQUENCE {
+    ident	 [0] IMPLICIT VisibleString,
+    confRev	 [1] IMPLICIT INTEGER OPTIONAL,
+    positiveNegative	 CHOICE { -- missing identifier, added 'positiveNegative'
+        responsePositive	 [2] IMPLICIT SEQUENCE {
+            datSet	 [0] IMPLICIT VisibleString OPTIONAL,
+            result	 [1] IMPLICIT SEQUENCE OF RequestResults
+        },
+        responseNegative	 [3] IMPLICIT GlbErrors
+    }
+}
+
+RequestResults ::= CHOICE {
+    offset	 [0] IMPLICIT INTEGER,
+    reference	 [1] IMPLICIT IA5String,
+    error	 [2] IMPLICIT ErrorReason
+}
+
+GlbErrors ::= INTEGER {
+    other(0),
+    unknownControlBlock(1),
+    responseTooLarge(2),
+    controlBlockConfigurationError(3)
+}
+
+ErrorReason ::= INTEGER {
+    other(0),
+    notFound(1)
+}
+
+IECGoosePdu ::= SEQUENCE {
+    gocbRef	 [0] IMPLICIT VisibleString,
+    timeAllowedtoLive	 [1] IMPLICIT INTEGER,
+    datSet	 [2] IMPLICIT VisibleString,
+    goID	 [3] IMPLICIT VisibleString OPTIONAL,
+    time	 [4] IMPLICIT OCTET STRING, -- renamed from T
+    stNum	 [5] IMPLICIT INTEGER,
+    sqNum	 [6] IMPLICIT INTEGER,
+    simulation	 [7] IMPLICIT BOOLEAN DEFAULT FALSE,
+    confRev	 [8] IMPLICIT INTEGER,
+    ndsCom	 [9] IMPLICIT BOOLEAN DEFAULT FALSE,
+    numDatSetEntries	 [10] IMPLICIT INTEGER,
+    allData	 [11] IMPLICIT SEQUENCE OF Data
+}
+
+UtcTime ::= OCTET STRING
+
+END
