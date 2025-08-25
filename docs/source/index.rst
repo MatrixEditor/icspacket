@@ -1,1 +1,82 @@
+.. :layout: compact
+
 .. _icspacket_index:
+
+icspacket
+=========
+
+.. rst-class:: lead
+
+    *Contents of this side are WIP*
+
+.. container:: buttons
+
+    `Getting Started <getting-started/installation.html>`_
+    `Examples <examples/index.html>`_
+    `GitHub <https://github.com/MatrixEditor/icspacket>`_
+
+
+
+
+
+Getting Started
+---------------
+
+Installation requires Python development headers, CMake, Ninja and a C compiler
+(preferrably GCC).
+
+.. code-block:: bash
+
+    pip install git+https://github.com/MatrixEditor/icspacket
+
+
+.. toctree::
+    :caption: Getting Started
+    :hidden:
+
+    getting-started/installation
+    getting-started/protocols
+    getting-started/coreapi
+
+.. toctree::
+    :caption: MMS / ISO 9506
+    :hidden:
+
+    protocols/mms/demo_vars
+    protocols/mms/demo_files
+    protocols/mms/api
+
+
+.. toctree::
+    :caption: ACSE / X.227
+    :hidden:
+
+    protocols/acse/api
+
+.. toctree::
+    :caption: COPP / X.226 / ISO 8823
+    :hidden:
+
+    protocols/copp/api
+
+
+.. toctree::
+    :caption: COSP / X.225 / ISO 8237-1
+    :hidden:
+
+    protocols/cosp/api
+
+
+.. toctree::
+    :caption: COTP / X.224
+    :hidden:
+
+    protocols/cotp/api
+
+
+.. toctree::
+    :caption: TPKT Protocol (RFC1006)
+    :hidden:
+
+    protocols/tpkt/usage
+    protocols/tpkt/api

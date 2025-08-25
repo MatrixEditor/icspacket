@@ -22,8 +22,10 @@ import shlex
 from icspacket.core.logger import SAFE
 from icspacket.proto.cotp.connection import COTP_Connection
 from icspacket.proto.cotp.structs import TPDU_Size
+from icspacket.proto.mms.asn1types import ObjectName
 from icspacket.proto.mms.acse import ACSEConnectionError, PasswordAuth
 from icspacket.proto.mms.connection import MMS_Connection
+from icspacket.proto.mms.util import domain_object_name
 from icspacket.proto.tpkt import tpktsock
 
 
@@ -81,43 +83,75 @@ def parse_auth(auth_spec: str | None, from_stdin: bool) -> PasswordAuth | None:
 
 def parse_variable_target(
     target_spec: list[str], global_domain: str | None
-) -> list[tuple[str, str]] | None:
+) -> list[ObjectName] | None:
     """
-    Normalize variable target specifications for MMS services.
+    Normalize and resolve variable target specifications for MMS services.
 
-    A target specification may be one of the following forms:
+    A target specification may take one of the following forms:
 
-    - ``<domain>/<variable>`` — explicit domain and variable.
-    - ``<variable>`` — variable only; requires ``global_domain`` to be provided.
-    - ``<file>`` — path to a text file containing one target per line.
+    - ``<domain>/<variable>``
+      Fully-qualified domain and variable name.
+      Example: ``PROCESS/Valve.State`` → ``PROCESS/Valve$State``
 
-    Within variables, ``.`` characters are automatically replaced
-    with ``$`` to conform to MMS naming rules.
+    - ``<variable>`` (with global domain)
+      Shorthand form where the domain is supplied via ``--domain`` or
+      the ``global_domain`` argument.
+      Example: ``Temperature`` with ``--domain PLANT`` → ``PLANT/Temperature``
 
-    If a file is specified, all non-empty lines are read and treated
-    as additional targets.
+    - ``vmd:<variable>``
+      Variable defined at the **Virtual Manufacturing Device** scope.
+      Example: ``vmd:Uptime``
 
-    :param target_spec: List of raw target strings (domain/variable, variable, or filename).
+    - ``aa:<variable>``
+      Variable tied to the **Application Association** scope.
+      Example: ``aa:SessionCounter``
+
+    - ``<file>``
+      Path to a text file containing one target specification per line.
+      File contents may mix any of the above formats. Empty lines are ignored.
+      Example file ``targets.txt``:
+
+      .. code-block::
+
+         PROCESS/Valve.State
+         aa:SessionCounter
+         vmd:Uptime
+
+    .. note::
+       MMS identifiers cannot contain dots (``.``).
+       To ensure compatibility, dots in variable names are automatically
+       replaced with ``$`` during normalization.
+
+    :param target_spec: List of raw target strings (domain/variable, shorthand variable,
+                        vmd:/aa: form, or filename).
     :type target_spec: list[str]
     :param global_domain: Default domain to apply if only a variable name is given.
     :type global_domain: str | None
 
-    :returns: A list of normalized ``(domain, variable)`` tuples,
-        or ``None`` if parsing fails.
-    :rtype: list[tuple[str, str]] | None
+    :returns: A list of normalized ``ObjectName`` instances ready for MMS service requests,
+              or ``None`` if parsing fails.
+    :rtype: list[ObjectName] | None
 
     :raises ValueError: If a variable without domain is given and no ``global_domain`` is set.
 
-    Example:
+    Example usage:
 
-    >>> parse_variable_target(["MYDOMAIN/Pressure.Value"], None)
-    [('MYDOMAIN', 'Pressure$Value')]
+    >>> parse_variable_target(["PLANT/Temp.Sensor"], None)
+    [ObjectName(domain_specific=('PLANT', 'Temp$Sensor'))]
 
-    >>> parse_variable_target(["Temp.Sensor1"], global_domain="PLANT")
-    [('PLANT', 'Temp$Sensor1')]
+    >>> parse_variable_target(["Temp1"], global_domain="SYS")
+    [ObjectName(domain_specific=('SYS', 'Temp1'))]
 
-    >>> parse_variable_target(["targets.txt"], global_domain="SYS")
-    [('MYDOMAIN', 'Var1'), ('MYDOMAIN', 'Var2'), ('SYS', 'GlobalCounter')]
+    >>> parse_variable_target(["vmd:Uptime"], None)
+    [ObjectName(vmd_specific='Uptime')]
+
+    >>> parse_variable_target(["aa:Counter"], None)
+    [ObjectName(aa_specific='Counter')]
+
+    >>> parse_variable_target(["targets.txt"], global_domain="PLANT")
+    [ObjectName(domain_specific=('PLANT', 'Var1')),
+     ObjectName(aa_specific='SessionCounter'),
+     ObjectName(vmd_specific='Uptime')]
     """
     collected_targets = []
     for target in target_spec:
@@ -133,14 +167,23 @@ def parse_variable_target(
     for target in collected_targets:
         if "/" in target:
             domain, name = target.split("/", 1)
-            cleaned_targets.append((domain, name.replace(".", "$")))
+            cleaned_targets.append(domain_object_name(domain, name.replace(".", "$")))
+        elif target.startswith("vmd:"):
+            name = target[4:]
+            cleaned_targets.append(ObjectName(vmd_specific=name))
+
+        elif target.startswith("aa:"):
+            name = target[3:]
+            cleaned_targets.append(ObjectName(aa_specific=name))
         else:
             # domain MUST be set
             if not global_domain:
                 logging.error("No domain specified and no global domain set")
                 return None
 
-            cleaned_targets.append((global_domain, target.replace(".", "$")))
+            cleaned_targets.append(
+                domain_object_name(global_domain, target.replace(".", "$"))
+            )
     return cleaned_targets
 
 

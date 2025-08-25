@@ -424,11 +424,13 @@ class MMS_Connection(connection):
         general condition or health of a VMD (Virtual Manufacturing Device).
 
         :param ex_derivation: If ``True``, requests an *extended derivation*
-            of the status response. This influences how the server derives
-            the logical and physical VMD status (see ISO 9506-1, 10.3.1.1.1).
+                              of the status response. This influences how the
+                              server derives the logical and physical VMD status
+                              (see ISO 9506-1, 10.3.1.1.1).
         :type ex_derivation: bool
 
         :returns: A tuple ``(logical_status, physical_status)``, where:
+
             * ``logical_status`` is of type
               :class:`StatusResponse.vmdLogicalStatus_VALUES`.
             * ``physical_status`` is of type

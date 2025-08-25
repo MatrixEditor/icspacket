@@ -28,11 +28,11 @@ import sys
 import logging
 import textwrap
 
-from rich.console import Console
 from rich.markup import escape
 from rich.table import Table
 from rich import box, pretty
 
+from icspacket.core.connection import ConnectionClosedError
 from icspacket.proto.cotp.structs import TPDU_Size
 from icspacket.proto.mms._mms import DataAccessError, TypeDescription
 from icspacket.proto.mms.asn1types import (
@@ -48,9 +48,9 @@ from icspacket.proto.mms.data import (
 )
 from icspacket.proto.mms.util import (
     ObjectScope,
+    VariableAccessItem,
     basic_object_class,
-    domain_object_name,
-    domain_variable_access,
+    object_name_to_string,
 )
 
 from icspacket.examples.util.mms import init_mms_connection, parse_variable_target
@@ -177,17 +177,21 @@ def do_variable(args, conn: MMS_Connection):
 
         logging.debug("Preparing to read  %d variable(s)...", len(targets))
         # 1. build access specification
-        access_spec = list(map(lambda t: domain_variable_access(*t), targets))
+        access_spec = []
+        for object_name in targets:
+            access = VariableAccessItem()
+            access.variableSpecification.name = object_name
+            access_spec.append(access)
+
         logging.info("Reading %d variable(s) from peer...", len(targets))
         with args.console.status("Awaiting access results..."):
             results = conn.read_variables(*access_spec)
 
-        table = Table(safe_box=True, expand=True, box=box.ASCII_DOUBLE_HEAD)
-        table.add_column("Domain", justify="left", style="bold")
+        table = Table(safe_box=True, expand=False, box=box.ASCII_DOUBLE_HEAD)
         table.add_column("Variable", justify="left")
         table.add_column("Value", justify="left")
-        for (domain, item), result in zip(targets, results):
-            item = item.replace("$", ".")
+        for object_name, result in zip(targets, results):
+            item = object_name_to_string(object_name).replace("$", ".")
             if result.failure:
                 error_code = result.failure.value
                 error_msg = f"[red]({error_code})[/]"
@@ -195,13 +199,13 @@ def do_variable(args, conn: MMS_Connection):
                     error_msg = f"[red bold]{error_code.name[2:]}[/] {error_msg}"
                 else:
                     error_msg = f"[red]Error during read op[/] {error_msg}"
-                table.add_row(domain, item, error_msg)
+                table.add_row(item, error_msg)
             else:
                 value = data_to_str(result.success)
                 if not isinstance(value, str):
                     value = pretty.pretty_repr(value)
 
-                table.add_row(domain, item, value, end_section=True)
+                table.add_row(item, value, end_section=True)
 
         args.console.print(table)
 
@@ -219,9 +223,10 @@ def do_variable(args, conn: MMS_Connection):
         if len(targets) > 1:
             logging.warning("Only one variable can be written at a time")
 
-        domain, item = targets[0]
-        logging.debug("Preparing to write %s...", item)
-        access = domain_variable_access(domain, item)
+        item_name_safe = object_name_to_string(targets[0])
+        logging.debug("Preparing to write %s...", item_name_safe)
+        access = VariableAccessItem()
+        access.variableSpecification.name = targets[0]
         data = str_to_data(args.var_value)
         if data is None:
             sys.exit(1)
@@ -231,9 +236,8 @@ def do_variable(args, conn: MMS_Connection):
             logging.info("Write operation succeeded")
         else:
             logging.error(
-                "Failed to write variable %s/%s: [bold red]%s[/] [red](%d)[/]",
-                domain,
-                item.replace("$", "."),
+                "Failed to write variable %s: [bold red]%s[/] [red](%d)[/]",
+                item_name_safe.replace("$", "."),
                 DataAccessError.VALUES(write_result.value).name[2:],
                 write_result.value,
             )
@@ -249,18 +253,19 @@ def do_variable(args, conn: MMS_Connection):
         if len(targets) > 1:
             logging.warning("Only one variable can be queried at a time")
 
-        domain, item = targets[0]
-        logging.debug("Querying %s...", item)
-        result = conn.variable_attributes(name=domain_object_name(*targets[0]))
+        item_name_safe = object_name_to_string(targets[0]).replace("$", ".")
+        logging.debug("Querying %s...", item_name_safe)
+        result = conn.variable_attributes(name=targets[0])
         logging.info("Query result:")
 
-        item_name_safe = item.replace("$", ".")
-        args.console.print(f"- [bold]Name:[/] {domain}/{item_name_safe}")
+        args.console.print(f"- [bold]Name:[/] {item_name_safe}")
         args.console.print(f"- [bold]Deletable:[/] {result.mmsDeletable}")
         if result.address:
             args.console.print(
                 f"- [bold]Address:[/] {result.address.to_text().decode()}"
             )
+        if result.accessControlList:
+            args.console.print(f"- [bold]ACL:[/] {result.accessControlList.value!r}")
         if result.meaning:
             args.console.print(f"- [bold]Meaning:[/] {result.meaning}")
 
@@ -320,7 +325,8 @@ def cli_main():
 
     value_group = variable.add_argument_group("Variable Value Options", "Specify values to write using the '<type>:<value>' format")
     value_group.add_argument("--value", type=str, metavar="<type>:<value>", dest="var_value", help="Value to write to variable(s). See epilog for type specifications")
-    variable.add_argument("var_target", nargs="*", type=str, help="Target variable(s), either '<domain>/<variable>' or '<variable>' if using --domain")
+    variable.add_argument("var_target", nargs="*", type=str, help="Target variable(s), either '<domain>/<variable>' or '<variable>' if using --domain for domain variables, "
+        + "vmd:<variable for VMD specific and aa:<variable> for AA-specific variables; or just a path to a file")
     variable.formatter_class = argparse.RawDescriptionHelpFormatter
     variable.epilog = textwrap.dedent("""\
     Variable Value Format:
@@ -422,8 +428,11 @@ def cli_main():
         logging.exception("An unexpected error occurred: %s", e)
         sys.exit(1)
     finally:
-        logging.debug("Closing MMS connection...")
-        conn.close()
+        try:
+            logging.debug("Closing MMS connection...")
+            conn.close()
+        except ConnectionClosedError:
+            logging.debug("Connection was already closed by remote peer")
 
 
 if __name__ == "__main__":

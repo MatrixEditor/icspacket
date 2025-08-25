@@ -257,7 +257,7 @@ class COTP_Connection(connection):
             "Sending (%s) TPDU in %d bytes (eot=%s)",
             tpdu.tpdu_code.name,
             len(tpdu_data),
-            tpdu.nr.eot if isinstance(tpdu, TPDU_Data) else False,
+            tpdu.nr.eot if isinstance(tpdu, TPDU_Data) else True,
         )
         self.sock.sendall(tpdu_data)
 

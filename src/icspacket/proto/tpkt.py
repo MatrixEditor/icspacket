@@ -97,10 +97,10 @@ class tpktsock(socket.socket):
     [RFC 1006].
 
     - All ``send*`` methods encapsulate user data into a TPKT before writing
-    to the underlying TCP stream.
+      to the underlying TCP stream.
     - All ``recv*`` methods strip the TPKT header and return only the TPDU.
     - If multiple TPKTs arrive in a single TCP segment, only the first one is
-    returned; subsequent packets are discarded with a warning.
+      returned; subsequent packets are discarded with a warning.
 
     **Limitations:**
 

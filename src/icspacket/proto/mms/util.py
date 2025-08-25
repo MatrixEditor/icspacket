@@ -235,3 +235,28 @@ def vmd_variable_access(name: str) -> VariableAccessItem:
     variable = VariableAccessItem()
     variable.variableSpecification.name = ObjectName(vmd_specific=name)
     return variable
+
+
+def object_name_to_string(name: ObjectName) -> str:
+    """
+    Convert an MMS ``ObjectName`` to a string representation.
+
+    :param name: The ``ObjectName`` to convert.
+    :type name: ObjectName
+    :return: A string representation of the object name.
+    :rtype: str
+    """
+    domain = item = None
+    match name.present:
+        case ObjectName.PRESENT.PR_aa_specific:
+            item = name.aa_specific
+        case ObjectName.PRESENT.PR_domain_specific:
+            domain = name.domain_specific.domainID
+            item = name.domain_specific.itemID
+        case ObjectName.PRESENT.PR_vmd_specific:
+            item = name.vmd_specific
+
+    if domain:
+        return f"{domain.value}/{item.value}"
+    else:
+        return item.value

@@ -20,12 +20,14 @@ import pathlib
 import cmd2
 
 from typing import Any
+from rich.columns import Columns
 from rich.console import Console
 from typing_extensions import override
 
 from rich import box
 from rich.table import Table
 
+from icspacket.core.connection import ConnectionClosedError
 from icspacket.proto.cotp.structs import TPDU_Size
 from icspacket.proto.mms._mms import FileName, ServiceError
 from icspacket.proto.mms.connection import MMS_Connection
@@ -137,11 +139,23 @@ class MMSClient(cmd2.Cmd):
             logging.error(
                 "%s: [bold red]%s[/] [red](%s)[/]",
                 msg,
-                code.name,
-                code,
+                code.name[2:],
+                code.value,
             )
 
     ls_parser = cmd2.Cmd2ArgumentParser()
+    ls_parser.add_argument(
+        "-l",
+        action="store_true",
+        dest="print_list",
+        help="Print output as a list (table) instead of filenames only",
+    )
+    ls_parser.add_argument(
+        "-a",
+        "--all",
+        action="store_true",
+        help="List all files, including ones in subdirectories",
+    )
     ls_parser.add_argument(
         "directory",
         type=str,
@@ -172,20 +186,40 @@ class MMSClient(cmd2.Cmd):
             )
         else:
             console = Console()
-            table = Table(
-                title=f"Information of {remote_dir}",
-                safe_box=True,
-                expand=True,
-                box=box.ASCII_DOUBLE_HEAD,
-            )
-            table.add_column("Name", justify="left", style="bold")
-            table.add_column("Size", justify="left")
-            table.add_column("Last Modified", justify="right")
-            for entry in entries:
-                raw_path = "".join(list(entry.fileName))
-                path = pathlib.Path(raw_path.removeprefix(str(remote_dir) + "/"))
-                table.add_row(str(path), str(entry.fileAttributes.sizeOfFile), "N/A")
-            console.print(table)
+            if args.print_list:
+                table = Table(
+                    title=f"Information of {remote_dir}",
+                    safe_box=True,
+                    expand=False,
+                    box=box.ASCII_DOUBLE_HEAD,
+                )
+                table.add_column("Name", justify="left", style="bold")
+                table.add_column("Size", justify="left")
+                table.add_column("Last Modified", justify="right")
+                for entry in entries:
+                    raw_path = "".join(list(entry.fileName))
+                    path = pathlib.Path(raw_path.removeprefix(str(remote_dir) + "/"))
+                    # TODO: parse time
+                    table.add_row(
+                        str(path), str(entry.fileAttributes.sizeOfFile), "N/A"
+                    )
+                console.print(table)
+            else:
+                files = []
+                for entry in entries:
+                    raw_path = "".join(list(entry.fileName))
+                    path = pathlib.Path(raw_path.removeprefix(str(remote_dir) + "/"))
+                    if len(path.parts) == 1:
+                        # simple file
+                        files.append(str(path))
+                    else:
+                        # make sure we should display the file
+                        if args.all:
+                            files.append(f"[bold]{path.parent}[/]/{path.name}")
+                        else:
+                            files.append(f"[bold]{path.parts[0]}[/]")
+                columns = Columns(files, column_first=True, equal=True, padding=(0, 4))
+                console.print(columns)
 
     # fmt: off
     get_parser = cmd2.Cmd2ArgumentParser(add_help=True)
@@ -292,8 +326,8 @@ def cli_main():
     parser = argparse.ArgumentParser(
         usage="%(prog)s [options] host [command [args...]]",
     )
-
     # fmt: off
+    parser.add_argument("-i", "--interactive", action="store_true", help="Continue in interactive mode acter executing the first command (only if given)", default=False)
     # ------------------------------------------------------------------------
     # Authentication options
     # ------------------------------------------------------------------------
@@ -324,7 +358,7 @@ def cli_main():
 
     logger.init_from_args(args.verbosity, args.quiet, args.ts)
     if args.verbosity > 0:
-        args.console.print(f"icspacket v{__version__}\n")
+        print(f"icspacket v{__version__}\n")
 
     conn = init_mms_connection(
         args.host,
@@ -341,7 +375,8 @@ def cli_main():
     try:
         if remaining:
             client.onecmd_plus_hooks(" ".join(remaining))
-        else:
+
+        if not remaining or args.interactive:
             client.cmdloop()
     except KeyboardInterrupt:
         logging.error("Operation cancelled by user...")
@@ -349,8 +384,11 @@ def cli_main():
         logging.exception("An unexpected error occurred: %s", e)
         sys.exit(1)
     finally:
-        logging.debug("Closing MMS connection...")
-        conn.close()
+        try:
+            logging.debug("Closing MMS connection...")
+            conn.close()
+        except ConnectionClosedError:
+            logging.debug("Connection was already closed by remote peer")
 
 
 if __name__ == "__main__":

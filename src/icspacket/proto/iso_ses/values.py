@@ -103,10 +103,11 @@ class PV_TokenSettingPairType(enum.IntEnum):
     """Enumerated meaning of a **token-setting bit pair**
 
     Each token position is indicated using a 2-bit value:
-        0 — Token initially with the initiator
-        1 — Token initially with the responder
-        2 — Token location decided by the SS-user ("user's choice")
-        3 — Reserved
+
+    - 0 — Token initially with the initiator
+    - 1 — Token initially with the responder
+    - 2 — Token location decided by the SS-user ("user's choice")
+    - 3 — Reserved
 
     """
 

@@ -46,8 +46,9 @@ class LI(FieldMixin):
     - **Short form (1 octet)**: values in range 0..254 are encoded in one octet.
       A value of **0** indicates that the associated parameter field is absent.
     - **Extended form (3 octets)**: values in range 255..65535 are encoded as:
-         0xFF | <length: uint16 big-endian>
-      i.e., first octet 1111 1111 (255), followed by two octets carrying the length.
+      0xFF | <length: uint16 big-endian> i.e., first octet 1111 1111 (255),
+      followed by two octets carrying the length.
+
     """
 
     EXTENDED_INDICATOR = b"\xff"

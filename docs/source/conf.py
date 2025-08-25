@@ -16,7 +16,10 @@ options.set_struct_flags(options.S_REPLACE_TYPES)
 
 # Next, we can import out module and all rypes on the struct classes will be
 # replaced by their runtime types
-sys.path.insert(0, str(PROJECT_ROOT / "src"))
+try:
+    import icspacket
+except ImportError:
+    sys.path.insert(0, str(PROJECT_ROOT / "src"))
 
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
@@ -40,7 +43,7 @@ extensions = [
 
 templates_path = ["_templates"]
 exclude_patterns = []
-
+autodoc_member_order = "bysource"
 
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
@@ -49,3 +52,51 @@ html_static_path = ["_static"]
 
 html_copy_source = False
 html_show_sourcelink = False
+html_baseurl = "https://matrixeditor.github.io/icspacket/"
+
+html_sidebars = {
+    "**": [
+        "sidebars/localtoc.html",
+        "repo-stats-custom.html",
+        "sidebars/edit-this-page.html",
+    ]
+}
+
+html_context = {
+    "source_type": "github",
+    "source_user": "MatrixEditor",
+    "source_repo": "icspacket",
+}
+
+html_theme_options = {
+    "accent_color": "lime",
+    "color_mode": "dark",
+    "github_url": "https://github.com/MatrixEditor/icspacket",
+    "discussion_url": "https://github.com/MatrixEditor/icspacket/discussions",
+    "globaltoc_expand_depth": 2,
+    "nav_links": [
+        {
+            "title": "Examples",
+            "url": "examples/index",
+            "children": [
+                {
+                    "title": "MMS Utilities",
+                    "url": "examples/mms/index",
+                    "summary": "Manufacturing Message Specification tools",
+                    "children": [
+                        {
+                            "title": "MMS Client",
+                            "url": "examples/mms/client",
+                            "summary": "Interactive MMS client shell",
+                        },
+                        {
+                            "title": "MMS Utility",
+                            "url": "examples/mms/utility",
+                            "summary": "Utility commands for MMS peers",
+                        },
+                    ],
+                },
+            ],
+        },
+    ],
+}

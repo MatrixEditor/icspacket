@@ -365,7 +365,7 @@ class ISO_Presentation(connection):
         raises a type error.
 
         :param context: Optional decoding context mapping PCI IDs to classes. If
-            omitted, the instance's default :pyattr:`presentation_context.asn1_types` is used.
+            omitted, the instance's default :attr:`presentation_context.asn1_types` is used.
         :type context: dict[int, type] | None
         :raises ConnectionClosedError: If no data is received (connection closed).
         :raises TypeError: If decoding fails due to invalid BER.
