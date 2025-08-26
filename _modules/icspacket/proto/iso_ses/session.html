@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en" data-accent-color="lime" data-content_root="../../../../">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>icspacket.proto.iso_ses.session - icspacket 0.1.dev1+g814ee7fee documentation</title><link rel="index" title="Index" href="../../../../genindex.html" /><link rel="search" title="Search" href="../../../../search.html" />
+      <link rel="canonical" href="https://matrixeditor.github.io/icspacket/_modules/icspacket/proto/iso_ses/session.html" /><script>
+    function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
+    setColorMode(localStorage._theme||"dark");
+  </script><link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=397bb51e" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/shibuya.css?v=d48c410d" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link media="print" rel="stylesheet" type="text/css" href="../../../../_static/print.css?v=20ff2c19" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --sy-f-text: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+  --sy-f-heading: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+}
+</style>
+    <meta property="og:type" content="website"/>
+<meta property="og:url" content="https://matrixeditor.github.io/icspacket/_modules/icspacket/proto/iso_ses/session.html"/>
+<meta property="og:title" content="icspacket.proto.iso_ses.session"/>
+<meta name="twitter:card" content="summary"/>
+  </head>
+<body><div class="sy-head">
+  <div class="sy-head-blur"></div>
+  <div class="sy-head-inner sy-container mx-auto">
+    <a class="sy-head-brand" href="../../../../index.html">
+      
+      
+      <strong>icspacket</strong>
+    </a>
+    <div class="sy-head-nav" id="head-nav">
+      <nav class="sy-head-links"><ul>
+      <li class="link"><a class="js-menu" href="../../../../examples/index.html" id="nav-trigger-1" aria-controls="nav-children-1">
+            <span>Examples</span>
+            <i class="i-lucide chevron-down"></i>
+          </a>
+        <ul id="nav-children-1" aria-labelledby="nav-trigger-1"><li><a href="../../../../examples/mms/index.html">
+                <span>MMS Utilities</span>
+                <small>Manufacturing Message Specification tools</small>
+              </a></li></ul>
+      </li></ul></nav>
+      <div class="sy-head-extra flex items-center print:hidden"><form class="searchbox flex items-center" action="../../../../search.html" method="get">
+  <input type="text" name="q" placeholder="Search" />
+  <kbd>/</kbd>
+</form><div class="sy-head-socials">
+  <a href="https://github.com/MatrixEditor/icspacket" aria-label="GitHub">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </a></div></div>
+    </div>
+    <div class="sy-head-actions flex items-center shrink-0 print:hidden"><button class="js-theme theme-switch flex items-center"
+data-aria-auto="Switch to light color mode"
+data-aria-light="Switch to dark color mode"
+data-aria-dark="Switch to auto color mode">
+<i class="i-lucide theme-icon"></i>
+</button><button class="md:hidden flex items-center js-menu" aria-label="Menu" type="button" aria-controls="head-nav" aria-expanded="false">
+        <div class="hamburger">
+          <span class="hamburger_1"></span>
+          <span class="hamburger_2 -translate-x-2"></span>
+          <span class="hamburger_3 -translate-x-1"></span>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>
+<div class="sy-page sy-container flex mx-auto">
+  <aside id="lside" class="sy-lside md:w-72 md:shrink-0 print:hidden">
+    <div class="sy-lside-inner md:sticky">
+      <div class="sy-scrollbar p-6"><div class="sidebar-links">
+  <ul>
+    <li><a class="icon-link" href="https://github.com/MatrixEditor/icspacket/discussions">
+  <span class="icon">
+    <svg viewBox="0 0 24 24" fill="none">
+      <path fill="var(--accent-9)" fill-rule="evenodd" clip-rule="evenodd" d="M11 5a6 6 0 0 0-4.687 9.746c.215.27.315.62.231.954l-.514 2.058a1 1 0 0 0 1.485 1.1l2.848-1.71c.174-.104.374-.15.576-.148H13a6 6 0 0 0 0-12h-2Z"/>
+      <circle fill="white" cx="12" cy="11" r="1"/>
+      <circle fill="white" cx="9" cy="11" r="1"/>
+      <circle fill="white" cx="15" cy="11" r="1"/>
+    </svg>
+  </span>
+  <span class="text">Discussion</span>
+</a></li>
+  </ul>
+</div>
+        <div class="globaltoc" data-expand-depth="2"><p class="caption" role="heading" aria-level="3"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../getting-started/installation.html">Installation</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../getting-started/protocols.html">Protocols Overview</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../getting-started/coreapi.html">Core API Reference</a></li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">MMS / ISO 9506</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../protocols/mms/demo_vars.html">Variable Target Format</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../protocols/mms/demo_vars.html#variableaccess-service-rwq">VariableAccess Service (rwq)</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../protocols/mms/demo_files.html">FileManagement Service</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../protocols/mms/api.html">API Reference</a><ul>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../../../../protocols/mms/api_conn.html">MMS Connection</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../../../../protocols/mms/api_data.html">Data Conversion</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../../../../protocols/mms/api_utils.html">Protocol Utilities</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">ACSE / X.227</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../protocols/acse/api.html">API Reference</a></li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">COPP / X.226 / ISO 8823</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../protocols/copp/api.html">API Reference</a><ul>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../../../../protocols/copp/presentation.html">ISO Presentation</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../../../../protocols/copp/utils.html">Protocol Utilities</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">COSP / X.225 / ISO 8237-1</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../protocols/cosp/api.html">API Reference</a><ul>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../../../../protocols/cosp/tsdu.html">TSDU</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../../../../protocols/cosp/spdu.html">SPDU Types</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../../../../protocols/cosp/values.html">Parameter Values (PV)</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../../../../protocols/cosp/session.html">ISO Session</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../../../../protocols/cosp/utils.html">Protocol Utilities</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">COTP / X.224</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../protocols/cotp/api.html">API Reference</a><ul>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../../../../protocols/cotp/structs.html">TPDU Types</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../../../../protocols/cotp/connection.html">Connection</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">TPKT Protocol (RFC1006)</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../protocols/tpkt/usage.html">Using a TPKT Wrapper</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../protocols/tpkt/api.html">API Reference</a></li>
+</ul>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="lside-overlay js-menu" role="button" aria-label="Close left sidebar" aria-controls="lside" aria-expanded="false"></div>
+  <aside id="rside" class="sy-rside pb-3 w-64 shrink-0 order-last">
+    <button class="rside-close js-menu xl:hidden" aria-label="Close Table of Contents" type="button" aria-controls="rside" aria-expanded="false">
+      <i class="i-lucide close"></i>
+    </button>
+    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><a class="js-repo-stats repo-stats flex items-center" href="https://github.com/MatrixEditor/icspacket"
+  data-type="github" data-user="MatrixEditor" data-repo="icspacket">
+  <span class="w-8 flex items-center justify-around shrink-0 text-3xl">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </span>
+  <span class="flex-grow px-2 break-all">
+    <span style="font-size: small;">MatrixEditor/icspacket</span>
+    <span class="flex text-sm repo-stats-count">
+      <span class="flex items-center pr-3">
+        <iconify-icon icon="lucide:star"></iconify-icon>
+        <strong class="js-repo-stars ml-1">0</strong>
+      </span>
+      <span class="flex items-center">
+        <iconify-icon icon="lucide:git-fork"></iconify-icon>
+        <strong class="js-repo-forks ml-1">0</strong>
+      </span>
+    </span>
+  </span>
+</a></div>
+  </aside>
+  <div class="rside-overlay js-menu" role="button" aria-label="Close Table of Contents" aria-controls="rside" aria-expanded="false"></div>
+  <main class="sy-main w-full max-sm:max-w-full print:pt-6">
+<div class="sy-breadcrumbs" role="navigation">
+  <div class="sy-breadcrumbs-inner flex items-center">
+    <div class="md:hidden mr-3">
+      <button class="js-menu" aria-label="Menu" type="button" aria-controls="lside" aria-expanded="false">
+        <i class="i-lucide menu"></i>
+      </button>
+    </div>
+    <ol class="flex-1" itemscope itemtype="https://schema.org/BreadcrumbList"><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="../../../../index.html"><span itemprop="name">icspacket</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="1" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="../../../index.html"><span itemprop="name">Module code</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="2" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <strong itemprop="name">icspacket.proto.iso_ses.session</strong>
+        <meta itemprop="position" content="3" />
+      </li></ol>
+    <div class="xl:hidden ml-1">
+      <button class="js-menu" aria-label="Show table of contents" type="button" aria-controls="rside"
+        aria-expanded="false">
+        <i class="i-lucide outdent"></i>
+      </button>
+    </div>
+  </div>
+</div><div class="flex flex-col break-words justify-between">
+      <div class="min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
+        <article class="yue" role="main">
+          <h1>Source code for icspacket.proto.iso_ses.session</h1><div class="highlight"><pre>
+<span></span><span data-line="1"><span class="c1"># This file is part of icspacket.</span>
+</span><span data-line="2"><span class="c1"># Copyright (C) 2025-present  MatrixEditor @ github</span>
+</span><span data-line="3"><span class="c1">#</span>
+</span><span data-line="4"><span class="c1"># This program is free software: you can redistribute it and/or modify</span>
+</span><span data-line="5"><span class="c1"># it under the terms of the GNU General Public License as published by</span>
+</span><span data-line="6"><span class="c1"># the Free Software Foundation, either version 3 of the License, or</span>
+</span><span data-line="7"><span class="c1"># (at your option) any later version.</span>
+</span><span data-line="8"><span class="c1">#</span>
+</span><span data-line="9"><span class="c1"># This program is distributed in the hope that it will be useful,</span>
+</span><span data-line="10"><span class="c1"># but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+</span><span data-line="11"><span class="c1"># MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+</span><span data-line="12"><span class="c1"># GNU General Public License for more details.</span>
+</span><span data-line="13"><span class="c1">#</span>
+</span><span data-line="14"><span class="c1"># You should have received a copy of the GNU General Public License</span>
+</span><span data-line="15"><span class="c1"># along with this program.  If not, see &lt;https://www.gnu.org/licenses/&gt;.</span>
+</span><span data-line="16"><span class="kn">from</span><span class="w"> </span><span class="nn">dataclasses</span><span class="w"> </span><span class="kn">import</span> <span class="n">dataclass</span><span class="p">,</span> <span class="n">field</span>
+</span><span data-line="17"><span class="kn">from</span><span class="w"> </span><span class="nn">typing_extensions</span><span class="w"> </span><span class="kn">import</span> <span class="n">override</span>
+</span><span data-line="18">
+</span><span data-line="19"><span class="kn">from</span><span class="w"> </span><span class="nn">caterpillar.exception</span><span class="w"> </span><span class="kn">import</span> <span class="n">StructException</span>
+</span><span data-line="20"><span class="kn">from</span><span class="w"> </span><span class="nn">icspacket.core.connection</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+</span><span data-line="21">    <span class="n">connection</span><span class="p">,</span>
+</span><span data-line="22">    <span class="ne">ConnectionError</span><span class="p">,</span>
+</span><span data-line="23">    <span class="n">ConnectionStateError</span><span class="p">,</span>
+</span><span data-line="24"><span class="p">)</span>
+</span><span data-line="25"><span class="kn">from</span><span class="w"> </span><span class="nn">icspacket.proto.iso_ses.tsdu</span><span class="w"> </span><span class="kn">import</span> <span class="n">TSDU</span>
+</span><span data-line="26"><span class="kn">from</span><span class="w"> </span><span class="nn">icspacket.proto.iso_ses.spdu</span><span class="w"> </span><span class="kn">import</span> <span class="n">PGI_Code</span><span class="p">,</span> <span class="n">SPDU_Codes</span>
+</span><span data-line="27"><span class="kn">from</span><span class="w"> </span><span class="nn">icspacket.proto.iso_ses.values</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+</span><span data-line="28">    <span class="n">PV_SessionRequirements</span><span class="p">,</span>
+</span><span data-line="29"><span class="p">)</span>
+</span><span data-line="30"><span class="kn">from</span><span class="w"> </span><span class="nn">icspacket.proto.iso_ses.util</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+</span><span data-line="31">    <span class="n">build_connect_spdu</span><span class="p">,</span>
+</span><span data-line="32">    <span class="n">build_data_tsdu</span><span class="p">,</span>
+</span><span data-line="33">    <span class="n">build_finish_spdu</span><span class="p">,</span>
+</span><span data-line="34"><span class="p">)</span>
+</span><span data-line="35"><span class="kn">from</span><span class="w"> </span><span class="nn">icspacket.proto.cotp.connection</span><span class="w"> </span><span class="kn">import</span> <span class="n">COTP_Connection</span>
+</span><span data-line="36">
+</span><span data-line="37">
+<div class="viewcode-block" id="SessionDataError">
+<a class="viewcode-back" href="../../../../protocols/cosp/session.html#icspacket.proto.iso_ses.session.SessionDataError">[docs]</a>
+</span><span data-line="38"><span class="k">class</span><span class="w"> </span><span class="nc">SessionDataError</span><span class="p">(</span><span class="ne">ConnectionError</span><span class="p">):</span>
+</span><span data-line="39"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="40"><span class="sd">    Raised when session data exchange fails or unexpected SPDU content is</span>
+</span><span data-line="41"><span class="sd">    received.</span>
+</span><span data-line="42"><span class="sd">    &quot;&quot;&quot;</span></div>
+
+</span><span data-line="43">
+</span><span data-line="44">
+<div class="viewcode-block" id="SessionRejectedError">
+<a class="viewcode-back" href="../../../../protocols/cosp/session.html#icspacket.proto.iso_ses.session.SessionRejectedError">[docs]</a>
+</span><span data-line="45"><span class="k">class</span><span class="w"> </span><span class="nc">SessionRejectedError</span><span class="p">(</span><span class="ne">ConnectionError</span><span class="p">):</span>
+</span><span data-line="46"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="47"><span class="sd">    Raised when a session connection request is explicitly rejected by the peer.</span>
+</span><span data-line="48"><span class="sd">    &quot;&quot;&quot;</span></div>
+
+</span><span data-line="49">
+</span><span data-line="50">
+<div class="viewcode-block" id="ISO_SessionSettings">
+<a class="viewcode-back" href="../../../../protocols/cosp/session.html#icspacket.proto.iso_ses.session.ISO_SessionSettings">[docs]</a>
+</span><span data-line="51"><span class="nd">@dataclass</span>
+</span><span data-line="52"><span class="k">class</span><span class="w"> </span><span class="nc">ISO_SessionSettings</span><span class="p">:</span>
+</span><span data-line="53"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Encapsulates (X.225 / ISO 8327-1) negotiation settings.</span>
+</span><span data-line="54">
+</span><span data-line="55"><span class="sd">    :param calling_ses_sel: Calling session selector.</span>
+</span><span data-line="56"><span class="sd">    :type calling_ses_sel: bytes</span>
+</span><span data-line="57"><span class="sd">    :param called_ses_sel: Called session selector.</span>
+</span><span data-line="58"><span class="sd">    :type called_ses_sel: bytes</span>
+</span><span data-line="59"><span class="sd">    :param session_req: Session requirements parameter vector.</span>
+</span><span data-line="60"><span class="sd">    :type session_req: PV_SessionRequirements</span>
+</span><span data-line="61"><span class="sd">    :param version: Session protocol version (default 2).</span>
+</span><span data-line="62"><span class="sd">    :type version: int</span>
+</span><span data-line="63"><span class="sd">    :param extended: Whether extended SPDU formats are enabled.</span>
+</span><span data-line="64"><span class="sd">    :type extended: bool</span>
+</span><span data-line="65"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span data-line="66">
+</span><span data-line="67">    <span class="n">calling_ses_sel</span><span class="p">:</span> <span class="nb">bytes</span> <span class="o">=</span> <span class="nb">bytes</span><span class="o">.</span><span class="n">fromhex</span><span class="p">(</span><span class="s2">&quot;0000&quot;</span><span class="p">)</span>
+</span><span data-line="68">    <span class="n">called_ses_sel</span><span class="p">:</span> <span class="nb">bytes</span> <span class="o">=</span> <span class="nb">bytes</span><span class="o">.</span><span class="n">fromhex</span><span class="p">(</span><span class="s2">&quot;0000&quot;</span><span class="p">)</span>
+</span><span data-line="69">    <span class="n">session_req</span><span class="p">:</span> <span class="n">PV_SessionRequirements</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="n">PV_SessionRequirements</span><span class="p">)</span>
+</span><span data-line="70">    <span class="n">version</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2</span>
+</span><span data-line="71">    <span class="n">extended</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></div>
+
+</span><span data-line="72">
+</span><span data-line="73">
+<div class="viewcode-block" id="ISO_Session">
+<a class="viewcode-back" href="../../../../protocols/cosp/session.html#icspacket.proto.iso_ses.session.ISO_Session">[docs]</a>
+</span><span data-line="74"><span class="k">class</span><span class="w"> </span><span class="nc">ISO_Session</span><span class="p">(</span><span class="n">connection</span><span class="p">):</span>
+</span><span data-line="75"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="76"><span class="sd">    Implements the Connection-oriented Session Protocol (COSP) (ITU X.225 / ISO</span>
+</span><span data-line="77"><span class="sd">    8327-1) endpoint on top of COTP.</span>
+</span><span data-line="78">
+</span><span data-line="79"><span class="sd">    Provides session connection establishment, data transfer, and orderly</span>
+</span><span data-line="80"><span class="sd">    release services using SPDUs (Session Protocol Data Units). This class</span>
+</span><span data-line="81"><span class="sd">    ensures proper sequencing and validation of SPDUs as per ISO Session</span>
+</span><span data-line="82"><span class="sd">    protocol semantics.</span>
+</span><span data-line="83">
+</span><span data-line="84"><span class="sd">    :param transport: Underlying COTP transport connection.</span>
+</span><span data-line="85"><span class="sd">    :type transport: COTP_Connection</span>
+</span><span data-line="86"><span class="sd">    :param settings: Session negotiation settings.</span>
+</span><span data-line="87"><span class="sd">    :type settings: ISO_SessionSettings | None</span>
+</span><span data-line="88"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span data-line="89">
+</span><span data-line="90">    <span class="n">settings</span><span class="p">:</span> <span class="n">ISO_SessionSettings</span>
+</span><span data-line="91"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Currently applied session settings&quot;&quot;&quot;</span>
+</span><span data-line="92">
+</span><span data-line="93">    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+</span><span data-line="94">        <span class="bp">self</span><span class="p">,</span>
+</span><span data-line="95">        <span class="n">transport</span><span class="p">:</span> <span class="n">COTP_Connection</span><span class="p">,</span>
+</span><span data-line="96">        <span class="n">settings</span><span class="p">:</span> <span class="n">ISO_SessionSettings</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span data-line="97">    <span class="p">):</span>
+</span><span data-line="98">        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+</span><span data-line="99">        <span class="bp">self</span><span class="o">.</span><span class="n">__transport</span> <span class="o">=</span> <span class="n">transport</span>
+</span><span data-line="100">        <span class="bp">self</span><span class="o">.</span><span class="n">_connected</span> <span class="o">=</span> <span class="n">transport</span><span class="o">.</span><span class="n">is_connected</span><span class="p">()</span>
+</span><span data-line="101">        <span class="bp">self</span><span class="o">.</span><span class="n">_valid</span> <span class="o">=</span> <span class="kc">False</span>
+</span><span data-line="102">
+</span><span data-line="103">        <span class="c1"># publicly available settings</span>
+</span><span data-line="104">        <span class="bp">self</span><span class="o">.</span><span class="n">settings</span> <span class="o">=</span> <span class="n">settings</span> <span class="ow">or</span> <span class="n">ISO_SessionSettings</span><span class="p">()</span>
+</span><span data-line="105">
+</span><span data-line="106">    <span class="nd">@property</span>
+</span><span data-line="107">    <span class="k">def</span><span class="w"> </span><span class="nf">transport</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">COTP_Connection</span><span class="p">:</span>
+</span><span data-line="108"><span class="w">        </span><span class="sd">&quot;&quot;&quot;Associated transport connection.&quot;&quot;&quot;</span>
+</span><span data-line="109">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__transport</span>
+</span><span data-line="110">
+<div class="viewcode-block" id="ISO_Session.send_data">
+<a class="viewcode-back" href="../../../../protocols/cosp/session.html#icspacket.proto.iso_ses.session.ISO_Session.send_data">[docs]</a>
+</span><span data-line="111">    <span class="nd">@override</span>
+</span><span data-line="112">    <span class="k">def</span><span class="w"> </span><span class="nf">send_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">octets</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">,</span> <span class="o">/</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="113"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="114"><span class="sd">        Send user data wrapped in a session TSDU.</span>
+</span><span data-line="115">
+</span><span data-line="116"><span class="sd">        .. note::</span>
+</span><span data-line="117"><span class="sd">            The session must already be initialized with an ACCEPT SPDU.</span>
+</span><span data-line="118">
+</span><span data-line="119"><span class="sd">        :param octets: User data payload.</span>
+</span><span data-line="120"><span class="sd">        :type octets: bytes</span>
+</span><span data-line="121"><span class="sd">        :raises ConnectionStateError: If the session is not initialized.</span>
+</span><span data-line="122"><span class="sd">        &quot;&quot;&quot;</span>
+</span><span data-line="123">        <span class="bp">self</span><span class="o">.</span><span class="n">_assert_connected</span><span class="p">()</span>
+</span><span data-line="124">        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_valid</span><span class="p">():</span>
+</span><span data-line="125">            <span class="k">raise</span> <span class="n">ConnectionStateError</span><span class="p">(</span>
+</span><span data-line="126">                <span class="s2">&quot;Session must be initialized before sending data&quot;</span>
+</span><span data-line="127">            <span class="p">)</span>
+</span><span data-line="128">
+</span><span data-line="129">        <span class="n">tsdu</span> <span class="o">=</span> <span class="n">build_data_tsdu</span><span class="p">(</span><span class="n">octets</span><span class="p">)</span>
+</span><span data-line="130">        <span class="bp">self</span><span class="o">.</span><span class="n">send_tsdu</span><span class="p">(</span><span class="n">tsdu</span><span class="p">)</span></div>
+
+</span><span data-line="131">
+<div class="viewcode-block" id="ISO_Session.send_tsdu">
+<a class="viewcode-back" href="../../../../protocols/cosp/session.html#icspacket.proto.iso_ses.session.ISO_Session.send_tsdu">[docs]</a>
+</span><span data-line="132">    <span class="k">def</span><span class="w"> </span><span class="nf">send_tsdu</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tsdu</span><span class="p">:</span> <span class="n">TSDU</span><span class="p">,</span> <span class="o">/</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="133"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="134"><span class="sd">        Send a fully constructed TSDU over the transport connection.</span>
+</span><span data-line="135">
+</span><span data-line="136"><span class="sd">        :param tsdu: Transport Service Data Unit.</span>
+</span><span data-line="137"><span class="sd">        :type tsdu: TSDU</span>
+</span><span data-line="138"><span class="sd">        &quot;&quot;&quot;</span>
+</span><span data-line="139">        <span class="bp">self</span><span class="o">.</span><span class="n">_assert_connected</span><span class="p">()</span>
+</span><span data-line="140">        <span class="bp">self</span><span class="o">.</span><span class="n">transport</span><span class="o">.</span><span class="n">send_data</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_build_tsdu</span><span class="p">(</span><span class="n">tsdu</span><span class="p">))</span></div>
+
+</span><span data-line="141">
+<div class="viewcode-block" id="ISO_Session.recv_data">
+<a class="viewcode-back" href="../../../../protocols/cosp/session.html#icspacket.proto.iso_ses.session.ISO_Session.recv_data">[docs]</a>
+</span><span data-line="142">    <span class="nd">@override</span>
+</span><span data-line="143">    <span class="k">def</span><span class="w"> </span><span class="nf">recv_data</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bytes</span><span class="p">:</span>
+</span><span data-line="144"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="145"><span class="sd">        Receive user data from the session.</span>
+</span><span data-line="146">
+</span><span data-line="147"><span class="sd">        :return: Extracted user data payload.</span>
+</span><span data-line="148"><span class="sd">        :rtype: bytes</span>
+</span><span data-line="149"><span class="sd">        :raises SessionDataError: If the expected SPDU sequence is not found.</span>
+</span><span data-line="150"><span class="sd">        &quot;&quot;&quot;</span>
+</span><span data-line="151">        <span class="n">tsdu</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">recv_tsdu</span><span class="p">()</span>
+</span><span data-line="152">        <span class="c1"># data transfer response should only store GIVE_TOKENS and DATA_TRANSFER</span>
+</span><span data-line="153">        <span class="k">if</span> <span class="n">tsdu</span><span class="o">.</span><span class="n">spdus</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">code</span> <span class="o">!=</span> <span class="n">SPDU_Codes</span><span class="o">.</span><span class="n">GIVE_TOKENS_SPDU</span><span class="p">:</span>
+</span><span data-line="154">            <span class="k">raise</span> <span class="n">SessionDataError</span><span class="p">(</span>
+</span><span data-line="155">                <span class="sa">f</span><span class="s2">&quot;Expected a TSDU with GIVE_TOKENS as first SPDU, got </span><span class="si">{</span><span class="n">tsdu</span><span class="o">.</span><span class="n">spdus</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span data-line="156">            <span class="p">)</span>
+</span><span data-line="157">
+</span><span data-line="158">        <span class="c1"># NOTE - we just use the user information even if the received TSDU does</span>
+</span><span data-line="159">        <span class="c1"># not specify them</span>
+</span><span data-line="160">        <span class="k">return</span> <span class="n">tsdu</span><span class="o">.</span><span class="n">spdus</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">user_information</span></div>
+
+</span><span data-line="161">
+<div class="viewcode-block" id="ISO_Session.recv_tsdu">
+<a class="viewcode-back" href="../../../../protocols/cosp/session.html#icspacket.proto.iso_ses.session.ISO_Session.recv_tsdu">[docs]</a>
+</span><span data-line="162">    <span class="k">def</span><span class="w"> </span><span class="nf">recv_tsdu</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TSDU</span><span class="p">:</span>
+</span><span data-line="163"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="164"><span class="sd">        Receive and parse a TSDU from the transport connection.</span>
+</span><span data-line="165">
+</span><span data-line="166"><span class="sd">        :return: Parsed TSDU object.</span>
+</span><span data-line="167"><span class="sd">        :rtype: TSDU</span>
+</span><span data-line="168"><span class="sd">        &quot;&quot;&quot;</span>
+</span><span data-line="169">        <span class="bp">self</span><span class="o">.</span><span class="n">_assert_connected</span><span class="p">()</span>
+</span><span data-line="170">        <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">transport</span><span class="o">.</span><span class="n">recv_data</span><span class="p">()</span>
+</span><span data-line="171">        <span class="k">return</span> <span class="n">TSDU</span><span class="o">.</span><span class="n">from_octets</span><span class="p">(</span><span class="n">data</span><span class="p">)</span></div>
+
+</span><span data-line="172">
+<div class="viewcode-block" id="ISO_Session.close">
+<a class="viewcode-back" href="../../../../protocols/cosp/session.html#icspacket.proto.iso_ses.session.ISO_Session.close">[docs]</a>
+</span><span data-line="173">    <span class="nd">@override</span>
+</span><span data-line="174">    <span class="k">def</span><span class="w"> </span><span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="175"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="176"><span class="sd">        Close the session and underlying transport connection immediately.</span>
+</span><span data-line="177"><span class="sd">        &quot;&quot;&quot;</span>
+</span><span data-line="178">        <span class="bp">self</span><span class="o">.</span><span class="n">_connected</span> <span class="o">=</span> <span class="kc">False</span>
+</span><span data-line="179">        <span class="bp">self</span><span class="o">.</span><span class="n">_valid</span> <span class="o">=</span> <span class="kc">False</span>
+</span><span data-line="180">        <span class="bp">self</span><span class="o">.</span><span class="n">transport</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></div>
+
+</span><span data-line="181">
+<div class="viewcode-block" id="ISO_Session.close_session">
+<a class="viewcode-back" href="../../../../protocols/cosp/session.html#icspacket.proto.iso_ses.session.ISO_Session.close_session">[docs]</a>
+</span><span data-line="182">    <span class="k">def</span><span class="w"> </span><span class="nf">close_session</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pres_octets</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">,</span> <span class="n">graceful</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bytes</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="183"><span class="w">        </span><span class="sd">&quot;&quot;&quot;Attempt an orderly session release.</span>
+</span><span data-line="184">
+</span><span data-line="185"><span class="sd">        This method does not close the connection if graceful is set **and**</span>
+</span><span data-line="186"><span class="sd">        user data is returned by the peer.</span>
+</span><span data-line="187">
+</span><span data-line="188"><span class="sd">        :param pres_octets: User data to include in FINISH SPDU.</span>
+</span><span data-line="189"><span class="sd">        :type pres_octets: bytes</span>
+</span><span data-line="190"><span class="sd">        :param graceful: Whether to expect and validate a DISCONNECT_SPDU.</span>
+</span><span data-line="191"><span class="sd">        :type graceful: bool</span>
+</span><span data-line="192"><span class="sd">        :return: Optional user data returned by peer during graceful release.</span>
+</span><span data-line="193"><span class="sd">        :rtype: bytes | None</span>
+</span><span data-line="194"><span class="sd">        :raises SessionDataError: If graceful close fails due to unexpected SPDU.</span>
+</span><span data-line="195"><span class="sd">        &quot;&quot;&quot;</span>
+</span><span data-line="196">        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_connected</span><span class="p">()</span> <span class="ow">or</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_valid</span><span class="p">():</span>
+</span><span data-line="197">            <span class="k">return</span>
+</span><span data-line="198">
+</span><span data-line="199">        <span class="n">tsdu</span> <span class="o">=</span> <span class="n">TSDU</span><span class="p">()</span>
+</span><span data-line="200">        <span class="n">spdu</span> <span class="o">=</span> <span class="n">build_finish_spdu</span><span class="p">(</span><span class="n">user_data</span><span class="o">=</span><span class="n">pres_octets</span><span class="p">)</span>
+</span><span data-line="201">        <span class="n">tsdu</span><span class="o">.</span><span class="n">spdus</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">spdu</span><span class="p">)</span>
+</span><span data-line="202">
+</span><span data-line="203">        <span class="bp">self</span><span class="o">.</span><span class="n">send_tsdu</span><span class="p">(</span><span class="n">tsdu</span><span class="p">)</span>
+</span><span data-line="204">        <span class="k">if</span> <span class="n">graceful</span><span class="p">:</span>
+</span><span data-line="205">            <span class="n">tsdu</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">recv_tsdu</span><span class="p">()</span>
+</span><span data-line="206">            <span class="k">if</span> <span class="p">(</span>
+</span><span data-line="207">                <span class="nb">len</span><span class="p">(</span><span class="n">tsdu</span><span class="o">.</span><span class="n">spdus</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span>
+</span><span data-line="208">                <span class="ow">and</span> <span class="n">tsdu</span><span class="o">.</span><span class="n">spdus</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">code</span> <span class="o">!=</span> <span class="n">SPDU_Codes</span><span class="o">.</span><span class="n">DISCONNECT_SPDU</span>
+</span><span data-line="209">            <span class="p">):</span>
+</span><span data-line="210">                <span class="k">raise</span> <span class="n">SessionDataError</span><span class="p">(</span>
+</span><span data-line="211">                    <span class="s2">&quot;Could not close session gracefully, expected DISCONNECT_SPDU&quot;</span>
+</span><span data-line="212">                    <span class="o">+</span> <span class="sa">f</span><span class="s2">&quot; but got </span><span class="si">{</span><span class="n">tsdu</span><span class="o">.</span><span class="n">spdus</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2"> instead&quot;</span>
+</span><span data-line="213">                <span class="p">)</span>
+</span><span data-line="214">
+</span><span data-line="215">            <span class="n">user_data</span> <span class="o">=</span> <span class="n">tsdu</span><span class="o">.</span><span class="n">spdus</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">parameter_by_id</span><span class="p">(</span><span class="n">PGI_Code</span><span class="o">.</span><span class="n">USER_DATA</span><span class="p">)</span>
+</span><span data-line="216">            <span class="k">if</span> <span class="n">user_data</span><span class="p">:</span>
+</span><span data-line="217">                <span class="k">return</span> <span class="n">user_data</span><span class="o">.</span><span class="n">value</span>
+</span><span data-line="218">
+</span><span data-line="219">        <span class="bp">self</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></div>
+
+</span><span data-line="220">
+<div class="viewcode-block" id="ISO_Session.connect">
+<a class="viewcode-back" href="../../../../protocols/cosp/session.html#icspacket.proto.iso_ses.session.ISO_Session.connect">[docs]</a>
+</span><span data-line="221">    <span class="nd">@override</span>
+</span><span data-line="222">    <span class="k">def</span><span class="w"> </span><span class="nf">connect</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">address</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="223"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="224"><span class="sd">        Connect the underlying transport if not already connected.</span>
+</span><span data-line="225">
+</span><span data-line="226"><span class="sd">        :param address: Target address (host, port).</span>
+</span><span data-line="227"><span class="sd">        :type address: tuple[str, int]</span>
+</span><span data-line="228"><span class="sd">        &quot;&quot;&quot;</span>
+</span><span data-line="229">        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">transport</span><span class="o">.</span><span class="n">is_connected</span><span class="p">():</span>
+</span><span data-line="230">            <span class="bp">self</span><span class="o">.</span><span class="n">transport</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">address</span><span class="p">)</span>
+</span><span data-line="231">            <span class="bp">self</span><span class="o">.</span><span class="n">_connected</span> <span class="o">=</span> <span class="kc">True</span></div>
+
+</span><span data-line="232">
+<div class="viewcode-block" id="ISO_Session.init_session">
+<a class="viewcode-back" href="../../../../protocols/cosp/session.html#icspacket.proto.iso_ses.session.ISO_Session.init_session">[docs]</a>
+</span><span data-line="233">    <span class="k">def</span><span class="w"> </span><span class="nf">init_session</span><span class="p">(</span>
+</span><span data-line="234">        <span class="bp">self</span><span class="p">,</span> <span class="n">pres_octets</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">,</span> <span class="n">address</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+</span><span data-line="235">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bytes</span><span class="p">:</span>
+</span><span data-line="236"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="237"><span class="sd">        Initialize a session by sending CONNECT SPDU and awaiting ACCEPT SPDU.</span>
+</span><span data-line="238">
+</span><span data-line="239"><span class="sd">        :param pres_octets: Presentation-layer user data to include.</span>
+</span><span data-line="240"><span class="sd">        :type pres_octets: bytes</span>
+</span><span data-line="241"><span class="sd">        :param address: Optional (host, port) if transport not yet connected.</span>
+</span><span data-line="242"><span class="sd">        :type address: tuple[str, int] | None</span>
+</span><span data-line="243"><span class="sd">        :return: User data returned by peer in ACCEPT SPDU.</span>
+</span><span data-line="244"><span class="sd">        :rtype: bytes</span>
+</span><span data-line="245"><span class="sd">        :raises ValueError: If address is required but not provided.</span>
+</span><span data-line="246"><span class="sd">        :raises SessionDataError: If unexpected SPDU is received in response.</span>
+</span><span data-line="247"><span class="sd">        :raises SessionRejectedError: If peer rejects the session.</span>
+</span><span data-line="248"><span class="sd">        &quot;&quot;&quot;</span>
+</span><span data-line="249">        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_connected</span><span class="p">():</span>
+</span><span data-line="250">            <span class="k">if</span> <span class="n">address</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="251">                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Must specify address if not connected&quot;</span><span class="p">)</span>
+</span><span data-line="252">            <span class="bp">self</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">address</span><span class="p">)</span>
+</span><span data-line="253">
+</span><span data-line="254">        <span class="bp">self</span><span class="o">.</span><span class="n">_assert_connected</span><span class="p">()</span>
+</span><span data-line="255">        <span class="n">tsdu</span> <span class="o">=</span> <span class="n">TSDU</span><span class="p">()</span>
+</span><span data-line="256">        <span class="n">spdu</span> <span class="o">=</span> <span class="n">build_connect_spdu</span><span class="p">(</span>
+</span><span data-line="257">            <span class="n">extended</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">extended</span><span class="p">,</span>
+</span><span data-line="258">            <span class="n">version2</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">version</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">,</span>
+</span><span data-line="259">            <span class="n">requirements</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">session_req</span><span class="p">,</span>
+</span><span data-line="260">            <span class="n">called_ses_sel</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">called_ses_sel</span><span class="p">,</span>
+</span><span data-line="261">            <span class="n">calling_ses_sel</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">calling_ses_sel</span><span class="p">,</span>
+</span><span data-line="262">            <span class="n">user_data</span><span class="o">=</span><span class="n">pres_octets</span><span class="p">,</span>
+</span><span data-line="263">        <span class="p">)</span>
+</span><span data-line="264">        <span class="n">tsdu</span><span class="o">.</span><span class="n">spdus</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">spdu</span><span class="p">)</span>
+</span><span data-line="265">        <span class="bp">self</span><span class="o">.</span><span class="n">send_tsdu</span><span class="p">(</span><span class="n">tsdu</span><span class="p">)</span>
+</span><span data-line="266">
+</span><span data-line="267">        <span class="n">tsdu</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">recv_tsdu</span><span class="p">()</span>
+</span><span data-line="268">        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">tsdu</span><span class="o">.</span><span class="n">spdus</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
+</span><span data-line="269">            <span class="k">raise</span> <span class="n">SessionDataError</span><span class="p">(</span>
+</span><span data-line="270">                <span class="sa">f</span><span class="s2">&quot;Expected a single SPDU in TSDU, got </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">tsdu</span><span class="o">.</span><span class="n">spdus</span><span class="p">)</span><span class="si">}</span><span class="s2"> instead&quot;</span>
+</span><span data-line="271">            <span class="p">)</span>
+</span><span data-line="272">
+</span><span data-line="273">        <span class="n">spdu</span> <span class="o">=</span> <span class="n">tsdu</span><span class="o">.</span><span class="n">spdus</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</span><span data-line="274">        <span class="k">if</span> <span class="n">spdu</span><span class="o">.</span><span class="n">code</span> <span class="o">!=</span> <span class="n">SPDU_Codes</span><span class="o">.</span><span class="n">ACCEPT_SPDU</span><span class="p">:</span>
+</span><span data-line="275">            <span class="k">raise</span> <span class="n">SessionRejectedError</span><span class="p">(</span>
+</span><span data-line="276">                <span class="sa">f</span><span class="s2">&quot;Target did not accept session request (SPDU </span><span class="si">{</span><span class="n">spdu</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">)&quot;</span>
+</span><span data-line="277">            <span class="p">)</span>
+</span><span data-line="278">
+</span><span data-line="279">        <span class="bp">self</span><span class="o">.</span><span class="n">_valid</span> <span class="o">=</span> <span class="kc">True</span>
+</span><span data-line="280">        <span class="n">parameter</span> <span class="o">=</span> <span class="n">spdu</span><span class="o">.</span><span class="n">parameter_by_id</span><span class="p">(</span><span class="n">PGI_Code</span><span class="o">.</span><span class="n">USER_DATA</span><span class="p">)</span>
+</span><span data-line="281">        <span class="k">return</span> <span class="sa">b</span><span class="s2">&quot;&quot;</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">parameter</span> <span class="k">else</span> <span class="n">parameter</span><span class="o">.</span><span class="n">value</span></div>
+
+</span><span data-line="282">
+</span><span data-line="283">    <span class="k">def</span><span class="w"> </span><span class="nf">_build_tsdu</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tsdu</span><span class="p">:</span> <span class="n">TSDU</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bytes</span><span class="p">:</span>
+</span><span data-line="284"><span class="w">        </span><span class="sd">&quot;&quot;&quot;Encode a TSDU into raw octets for transmission.</span>
+</span><span data-line="285">
+</span><span data-line="286"><span class="sd">        :param tsdu: TSDU to encode.</span>
+</span><span data-line="287"><span class="sd">        :type tsdu: TSDU</span>
+</span><span data-line="288"><span class="sd">        :return: Encoded TSDU octet stream.</span>
+</span><span data-line="289"><span class="sd">        :rtype: bytes</span>
+</span><span data-line="290"><span class="sd">        :raises ValueError: If encoding fails due to invalid parameter values.</span>
+</span><span data-line="291"><span class="sd">        &quot;&quot;&quot;</span>
+</span><span data-line="292">        <span class="k">try</span><span class="p">:</span>
+</span><span data-line="293">            <span class="k">return</span> <span class="n">tsdu</span><span class="o">.</span><span class="n">build</span><span class="p">()</span>
+</span><span data-line="294">        <span class="k">except</span> <span class="n">StructException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+</span><span data-line="295">            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+</span><span data-line="296">                <span class="s2">&quot;Could not build TSDU: maybe wrong parameter value?&quot;</span>
+</span><span data-line="297">            <span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">e</span></div>
+
+</span></pre></div>
+        </article><button class="back-to-top" type="button">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+  </svg>
+  <span>Back to top</span>
+</button><div class="navigation flex print:hidden"></div></div>
+    </div>
+  </main>
+</div>
+<footer class="sy-foot">
+  <div class="sy-foot-inner sy-container mx-auto">
+    <div class="sy-foot-reserved md:flex justify-between items-center">
+      <div class="sy-foot-copyright"><p>2025, MatrixEditor</p>
+  
+  <p>
+    Made with
+    
+    <a href="https://www.sphinx-doc.org/">Sphinx</a> and
+    
+    <a href="https://shibuya.lepture.com">Shibuya theme</a>.
+  </p>
+</div>
+      <div class="sy-foot-socials">
+<a href="https://github.com/MatrixEditor/icspacket" aria-label="GitHub">
+  <iconify-icon icon="simple-icons:github"></iconify-icon>
+</a></div>
+    </div>
+  </div>
+</footer>
+      <script src="../../../../_static/documentation_options.js?v=e3b32040"></script>
+      <script src="../../../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../../../_static/design-tabs.js?v=f930bc37"></script>
+      <script src="../../../../_static/shibuya.js?v=e730760c"></script></body>
+</html>

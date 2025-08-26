@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en" data-accent-color="lime" data-content_root="../../../../">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>icspacket.proto.iso_pres.presentation - icspacket 0.1.dev1+g814ee7fee documentation</title><link rel="index" title="Index" href="../../../../genindex.html" /><link rel="search" title="Search" href="../../../../search.html" />
+      <link rel="canonical" href="https://matrixeditor.github.io/icspacket/_modules/icspacket/proto/iso_pres/presentation.html" /><script>
+    function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
+    setColorMode(localStorage._theme||"dark");
+  </script><link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=397bb51e" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/shibuya.css?v=d48c410d" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link media="print" rel="stylesheet" type="text/css" href="../../../../_static/print.css?v=20ff2c19" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --sy-f-text: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+  --sy-f-heading: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+}
+</style>
+    <meta property="og:type" content="website"/>
+<meta property="og:url" content="https://matrixeditor.github.io/icspacket/_modules/icspacket/proto/iso_pres/presentation.html"/>
+<meta property="og:title" content="icspacket.proto.iso_pres.presentation"/>
+<meta name="twitter:card" content="summary"/>
+  </head>
+<body><div class="sy-head">
+  <div class="sy-head-blur"></div>
+  <div class="sy-head-inner sy-container mx-auto">
+    <a class="sy-head-brand" href="../../../../index.html">
+      
+      
+      <strong>icspacket</strong>
+    </a>
+    <div class="sy-head-nav" id="head-nav">
+      <nav class="sy-head-links"><ul>
+      <li class="link"><a class="js-menu" href="../../../../examples/index.html" id="nav-trigger-1" aria-controls="nav-children-1">
+            <span>Examples</span>
+            <i class="i-lucide chevron-down"></i>
+          </a>
+        <ul id="nav-children-1" aria-labelledby="nav-trigger-1"><li><a href="../../../../examples/mms/index.html">
+                <span>MMS Utilities</span>
+                <small>Manufacturing Message Specification tools</small>
+              </a></li></ul>
+      </li></ul></nav>
+      <div class="sy-head-extra flex items-center print:hidden"><form class="searchbox flex items-center" action="../../../../search.html" method="get">
+  <input type="text" name="q" placeholder="Search" />
+  <kbd>/</kbd>
+</form><div class="sy-head-socials">
+  <a href="https://github.com/MatrixEditor/icspacket" aria-label="GitHub">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </a></div></div>
+    </div>
+    <div class="sy-head-actions flex items-center shrink-0 print:hidden"><button class="js-theme theme-switch flex items-center"
+data-aria-auto="Switch to light color mode"
+data-aria-light="Switch to dark color mode"
+data-aria-dark="Switch to auto color mode">
+<i class="i-lucide theme-icon"></i>
+</button><button class="md:hidden flex items-center js-menu" aria-label="Menu" type="button" aria-controls="head-nav" aria-expanded="false">
+        <div class="hamburger">
+          <span class="hamburger_1"></span>
+          <span class="hamburger_2 -translate-x-2"></span>
+          <span class="hamburger_3 -translate-x-1"></span>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>
+<div class="sy-page sy-container flex mx-auto">
+  <aside id="lside" class="sy-lside md:w-72 md:shrink-0 print:hidden">
+    <div class="sy-lside-inner md:sticky">
+      <div class="sy-scrollbar p-6"><div class="sidebar-links">
+  <ul>
+    <li><a class="icon-link" href="https://github.com/MatrixEditor/icspacket/discussions">
+  <span class="icon">
+    <svg viewBox="0 0 24 24" fill="none">
+      <path fill="var(--accent-9)" fill-rule="evenodd" clip-rule="evenodd" d="M11 5a6 6 0 0 0-4.687 9.746c.215.27.315.62.231.954l-.514 2.058a1 1 0 0 0 1.485 1.1l2.848-1.71c.174-.104.374-.15.576-.148H13a6 6 0 0 0 0-12h-2Z"/>
+      <circle fill="white" cx="12" cy="11" r="1"/>
+      <circle fill="white" cx="9" cy="11" r="1"/>
+      <circle fill="white" cx="15" cy="11" r="1"/>
+    </svg>
+  </span>
+  <span class="text">Discussion</span>
+</a></li>
+  </ul>
+</div>
+        <div class="globaltoc" data-expand-depth="2"><p class="caption" role="heading" aria-level="3"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../getting-started/installation.html">Installation</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../getting-started/protocols.html">Protocols Overview</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../getting-started/coreapi.html">Core API Reference</a></li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">MMS / ISO 9506</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../protocols/mms/demo_vars.html">Variable Target Format</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../protocols/mms/demo_vars.html#variableaccess-service-rwq">VariableAccess Service (rwq)</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../protocols/mms/demo_files.html">FileManagement Service</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../protocols/mms/api.html">API Reference</a><ul>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../../../../protocols/mms/api_conn.html">MMS Connection</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../../../../protocols/mms/api_data.html">Data Conversion</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../../../../protocols/mms/api_utils.html">Protocol Utilities</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">ACSE / X.227</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../protocols/acse/api.html">API Reference</a></li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">COPP / X.226 / ISO 8823</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../protocols/copp/api.html">API Reference</a><ul>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../../../../protocols/copp/presentation.html">ISO Presentation</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../../../../protocols/copp/utils.html">Protocol Utilities</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">COSP / X.225 / ISO 8237-1</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../protocols/cosp/api.html">API Reference</a><ul>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../../../../protocols/cosp/tsdu.html">TSDU</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../../../../protocols/cosp/spdu.html">SPDU Types</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../../../../protocols/cosp/values.html">Parameter Values (PV)</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../../../../protocols/cosp/session.html">ISO Session</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../../../../protocols/cosp/utils.html">Protocol Utilities</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">COTP / X.224</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../protocols/cotp/api.html">API Reference</a><ul>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../../../../protocols/cotp/structs.html">TPDU Types</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../../../../protocols/cotp/connection.html">Connection</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">TPKT Protocol (RFC1006)</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../protocols/tpkt/usage.html">Using a TPKT Wrapper</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../protocols/tpkt/api.html">API Reference</a></li>
+</ul>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="lside-overlay js-menu" role="button" aria-label="Close left sidebar" aria-controls="lside" aria-expanded="false"></div>
+  <aside id="rside" class="sy-rside pb-3 w-64 shrink-0 order-last">
+    <button class="rside-close js-menu xl:hidden" aria-label="Close Table of Contents" type="button" aria-controls="rside" aria-expanded="false">
+      <i class="i-lucide close"></i>
+    </button>
+    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><a class="js-repo-stats repo-stats flex items-center" href="https://github.com/MatrixEditor/icspacket"
+  data-type="github" data-user="MatrixEditor" data-repo="icspacket">
+  <span class="w-8 flex items-center justify-around shrink-0 text-3xl">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </span>
+  <span class="flex-grow px-2 break-all">
+    <span style="font-size: small;">MatrixEditor/icspacket</span>
+    <span class="flex text-sm repo-stats-count">
+      <span class="flex items-center pr-3">
+        <iconify-icon icon="lucide:star"></iconify-icon>
+        <strong class="js-repo-stars ml-1">0</strong>
+      </span>
+      <span class="flex items-center">
+        <iconify-icon icon="lucide:git-fork"></iconify-icon>
+        <strong class="js-repo-forks ml-1">0</strong>
+      </span>
+    </span>
+  </span>
+</a></div>
+  </aside>
+  <div class="rside-overlay js-menu" role="button" aria-label="Close Table of Contents" aria-controls="rside" aria-expanded="false"></div>
+  <main class="sy-main w-full max-sm:max-w-full print:pt-6">
+<div class="sy-breadcrumbs" role="navigation">
+  <div class="sy-breadcrumbs-inner flex items-center">
+    <div class="md:hidden mr-3">
+      <button class="js-menu" aria-label="Menu" type="button" aria-controls="lside" aria-expanded="false">
+        <i class="i-lucide menu"></i>
+      </button>
+    </div>
+    <ol class="flex-1" itemscope itemtype="https://schema.org/BreadcrumbList"><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="../../../../index.html"><span itemprop="name">icspacket</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="1" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="../../../index.html"><span itemprop="name">Module code</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="2" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <strong itemprop="name">icspacket.proto.iso_pres.presentation</strong>
+        <meta itemprop="position" content="3" />
+      </li></ol>
+    <div class="xl:hidden ml-1">
+      <button class="js-menu" aria-label="Show table of contents" type="button" aria-controls="rside"
+        aria-expanded="false">
+        <i class="i-lucide outdent"></i>
+      </button>
+    </div>
+  </div>
+</div><div class="flex flex-col break-words justify-between">
+      <div class="min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
+        <article class="yue" role="main">
+          <h1>Source code for icspacket.proto.iso_pres.presentation</h1><div class="highlight"><pre>
+<span></span><span data-line="1"><span class="c1"># This file is part of icspacket.</span>
+</span><span data-line="2"><span class="c1"># Copyright (C) 2025-present  MatrixEditor @ github</span>
+</span><span data-line="3"><span class="c1">#</span>
+</span><span data-line="4"><span class="c1"># This program is free software: you can redistribute it and/or modify</span>
+</span><span data-line="5"><span class="c1"># it under the terms of the GNU General Public License as published by</span>
+</span><span data-line="6"><span class="c1"># the Free Software Foundation, either version 3 of the License, or</span>
+</span><span data-line="7"><span class="c1"># (at your option) any later version.</span>
+</span><span data-line="8"><span class="c1">#</span>
+</span><span data-line="9"><span class="c1"># This program is distributed in the hope that it will be useful,</span>
+</span><span data-line="10"><span class="c1"># but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+</span><span data-line="11"><span class="c1"># MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+</span><span data-line="12"><span class="c1"># GNU General Public License for more details.</span>
+</span><span data-line="13"><span class="c1">#</span>
+</span><span data-line="14"><span class="c1"># You should have received a copy of the GNU General Public License</span>
+</span><span data-line="15"><span class="c1"># along with this program.  If not, see &lt;https://www.gnu.org/licenses/&gt;.</span>
+</span><span data-line="16"><span class="kn">from</span><span class="w"> </span><span class="nn">dataclasses</span><span class="w"> </span><span class="kn">import</span> <span class="n">dataclass</span>
+</span><span data-line="17"><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span>
+</span><span data-line="18"><span class="kn">from</span><span class="w"> </span><span class="nn">typing_extensions</span><span class="w"> </span><span class="kn">import</span> <span class="n">override</span>
+</span><span data-line="19">
+</span><span data-line="20"><span class="kn">from</span><span class="w"> </span><span class="nn">icspacket.core.connection</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+</span><span data-line="21">    <span class="n">ConnectionClosedError</span><span class="p">,</span>
+</span><span data-line="22">    <span class="n">ConnectionStateError</span><span class="p">,</span>
+</span><span data-line="23">    <span class="n">connection</span><span class="p">,</span>
+</span><span data-line="24"><span class="p">)</span>
+</span><span data-line="25"><span class="kn">from</span><span class="w"> </span><span class="nn">icspacket.proto.cotp.connection</span><span class="w"> </span><span class="kn">import</span> <span class="n">COTP_Connection</span>
+</span><span data-line="26"><span class="kn">from</span><span class="w"> </span><span class="nn">icspacket.proto.iso_pres.iso8823</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+</span><span data-line="27">    <span class="n">CPA_PPDU</span><span class="p">,</span>
+</span><span data-line="28">    <span class="n">Mode_selector</span><span class="p">,</span>
+</span><span data-line="29">    <span class="n">Presentation_requirements</span><span class="p">,</span>
+</span><span data-line="30">    <span class="n">User_data</span><span class="p">,</span>
+</span><span data-line="31">    <span class="n">PresentaionContextItem</span><span class="p">,</span>
+</span><span data-line="32"><span class="p">)</span>
+</span><span data-line="33"><span class="kn">from</span><span class="w"> </span><span class="nn">icspacket.proto.iso_ses.session</span><span class="w"> </span><span class="kn">import</span> <span class="n">ISO_Session</span>
+</span><span data-line="34"><span class="kn">from</span><span class="w"> </span><span class="nn">icspacket.proto.iso_pres.util</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+</span><span data-line="35">    <span class="n">build_connect_ppdu</span><span class="p">,</span>
+</span><span data-line="36">    <span class="n">build_user_data</span><span class="p">,</span>
+</span><span data-line="37">    <span class="n">user_data_get_single_asn1</span><span class="p">,</span>
+</span><span data-line="38"><span class="p">)</span>
+</span><span data-line="39">
+</span><span data-line="40"><span class="n">TRANSFER_SYNTAX_BASIC</span> <span class="o">=</span> <span class="s2">&quot;2.1.1&quot;</span>
+</span><span data-line="41">
+</span><span data-line="42">
+<div class="viewcode-block" id="ISO_PresentationContext">
+<a class="viewcode-back" href="../../../../protocols/copp/presentation.html#icspacket.proto.iso_pres.presentation.ISO_PresentationContext">[docs]</a>
+</span><span data-line="43"><span class="k">class</span><span class="w"> </span><span class="nc">ISO_PresentationContext</span><span class="p">:</span>
+</span><span data-line="44"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Manages Presentation Context Items.</span>
+</span><span data-line="45">
+</span><span data-line="46"><span class="sd">    Each Presentation Context defines how user data is interpreted by</span>
+</span><span data-line="47"><span class="sd">    binding an *abstract syntax* (ASN.1 type) to one or more *transfer syntaxes*.</span>
+</span><span data-line="48">
+</span><span data-line="49"><span class="sd">    This class is used to create, register, and remove contexts, and is</span>
+</span><span data-line="50"><span class="sd">    passed to :class:`ISO_Presentation` to negotiate which contexts are valid</span>
+</span><span data-line="51"><span class="sd">    during association.</span>
+</span><span data-line="52"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span data-line="53">
+</span><span data-line="54">    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="55">        <span class="bp">self</span><span class="o">.</span><span class="n">__items</span> <span class="o">=</span> <span class="p">{}</span>
+</span><span data-line="56">        <span class="bp">self</span><span class="o">.</span><span class="n">__types</span> <span class="o">=</span> <span class="p">{}</span>
+</span><span data-line="57">
+</span><span data-line="58">    <span class="nd">@property</span>
+</span><span data-line="59">    <span class="k">def</span><span class="w"> </span><span class="nf">items</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="n">PresentaionContextItem</span><span class="p">]:</span>
+</span><span data-line="60"><span class="w">        </span><span class="sd">&quot;&quot;&quot;Dictionary of Presentation Context Items keyed by their ID.&quot;&quot;&quot;</span>
+</span><span data-line="61">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__items</span>
+</span><span data-line="62">
+</span><span data-line="63">    <span class="nd">@property</span>
+</span><span data-line="64">    <span class="k">def</span><span class="w"> </span><span class="nf">asn1_types</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">type</span><span class="p">]:</span>
+</span><span data-line="65"><span class="w">        </span><span class="sd">&quot;&quot;&quot;Dictionary mapping context IDs to ASN.1 decoding classes.&quot;&quot;&quot;</span>
+</span><span data-line="66">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__types</span>
+</span><span data-line="67">
+<div class="viewcode-block" id="ISO_PresentationContext.add">
+<a class="viewcode-back" href="../../../../protocols/copp/presentation.html#icspacket.proto.iso_pres.presentation.ISO_PresentationContext.add">[docs]</a>
+</span><span data-line="68">    <span class="k">def</span><span class="w"> </span><span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">:</span> <span class="n">PresentaionContextItem</span><span class="p">,</span> <span class="n">asn1_cls</span><span class="p">:</span> <span class="nb">type</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="69"><span class="w">        </span><span class="sd">&quot;&quot;&quot;Register an existing Presentation Context Item and bind its ASN.1 class.&quot;&quot;&quot;</span>
+</span><span data-line="70">        <span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">[</span><span class="n">item</span><span class="o">.</span><span class="n">presentation_context_identifier</span><span class="o">.</span><span class="n">value</span><span class="p">]</span> <span class="o">=</span> <span class="n">item</span>
+</span><span data-line="71">        <span class="bp">self</span><span class="o">.</span><span class="n">asn1_types</span><span class="p">[</span><span class="n">item</span><span class="o">.</span><span class="n">presentation_context_identifier</span><span class="o">.</span><span class="n">value</span><span class="p">]</span> <span class="o">=</span> <span class="n">asn1_cls</span></div>
+
+</span><span data-line="72">
+<div class="viewcode-block" id="ISO_PresentationContext.new">
+<a class="viewcode-back" href="../../../../protocols/copp/presentation.html#icspacket.proto.iso_pres.presentation.ISO_PresentationContext.new">[docs]</a>
+</span><span data-line="73">    <span class="k">def</span><span class="w"> </span><span class="nf">new</span><span class="p">(</span>
+</span><span data-line="74">        <span class="bp">self</span><span class="p">,</span>
+</span><span data-line="75">        <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span data-line="76">        <span class="n">ctx_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+</span><span data-line="77">        <span class="n">asn1_cls</span><span class="p">:</span> <span class="nb">type</span><span class="p">,</span>
+</span><span data-line="78">        <span class="n">transfer_syntax</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span data-line="79">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">PresentaionContextItem</span><span class="p">:</span>
+</span><span data-line="80"><span class="w">        </span><span class="sd">&quot;&quot;&quot;Create and register a new Presentation Context Item.</span>
+</span><span data-line="81">
+</span><span data-line="82"><span class="sd">        :param name: Abstract syntax name (object identifier or string).</span>
+</span><span data-line="83"><span class="sd">        :param ctx_id: Unique Presentation Context Identifier.</span>
+</span><span data-line="84"><span class="sd">        :param asn1_cls: ASN.1 decoding class for user data.</span>
+</span><span data-line="85"><span class="sd">        :param transfer_syntax: Transfer syntax to bind. Defaults to Basic (2.1.1).</span>
+</span><span data-line="86"><span class="sd">        :return: The created context item.</span>
+</span><span data-line="87"><span class="sd">        :rtype: PresentaionContextItem</span>
+</span><span data-line="88"><span class="sd">        &quot;&quot;&quot;</span>
+</span><span data-line="89">        <span class="n">item</span> <span class="o">=</span> <span class="n">PresentaionContextItem</span><span class="p">()</span>
+</span><span data-line="90">        <span class="n">item</span><span class="o">.</span><span class="n">presentation_context_identifier</span> <span class="o">=</span> <span class="n">ctx_id</span>
+</span><span data-line="91">        <span class="n">item</span><span class="o">.</span><span class="n">abstract_syntax_name</span> <span class="o">=</span> <span class="n">name</span>
+</span><span data-line="92">        <span class="n">item</span><span class="o">.</span><span class="n">transfer_syntax_name_list</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">transfer_syntax</span> <span class="ow">or</span> <span class="n">TRANSFER_SYNTAX_BASIC</span><span class="p">)</span>
+</span><span data-line="93">        <span class="bp">self</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">asn1_cls</span><span class="p">)</span>
+</span><span data-line="94">        <span class="k">return</span> <span class="n">item</span></div>
+
+</span><span data-line="95">
+<div class="viewcode-block" id="ISO_PresentationContext.remove">
+<a class="viewcode-back" href="../../../../protocols/copp/presentation.html#icspacket.proto.iso_pres.presentation.ISO_PresentationContext.remove">[docs]</a>
+</span><span data-line="96">    <span class="k">def</span><span class="w"> </span><span class="nf">remove</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">:</span> <span class="n">PresentaionContextItem</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="97"><span class="w">        </span><span class="sd">&quot;&quot;&quot;Remove a Presentation Context Item and its ASN.1 binding.&quot;&quot;&quot;</span>
+</span><span data-line="98">        <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">[</span><span class="n">item</span><span class="o">.</span><span class="n">presentation_context_identifier</span><span class="o">.</span><span class="n">value</span><span class="p">]</span>
+</span><span data-line="99">        <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">asn1_types</span><span class="p">[</span><span class="n">item</span><span class="o">.</span><span class="n">presentation_context_identifier</span><span class="o">.</span><span class="n">value</span><span class="p">]</span></div>
+</div>
+
+</span><span data-line="100">
+</span><span data-line="101">
+<div class="viewcode-block" id="ISO_PresentationSettings">
+<a class="viewcode-back" href="../../../../protocols/copp/presentation.html#icspacket.proto.iso_pres.presentation.ISO_PresentationSettings">[docs]</a>
+</span><span data-line="102"><span class="nd">@dataclass</span>
+</span><span data-line="103"><span class="k">class</span><span class="w"> </span><span class="nc">ISO_PresentationSettings</span><span class="p">:</span>
+</span><span data-line="104"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Configuration settings for the Presentation layer.</span>
+</span><span data-line="105">
+</span><span data-line="106"><span class="sd">    These settings influence how the Presentation connection (COPP) is</span>
+</span><span data-line="107"><span class="sd">    established, specifically how selectors and protocol versions are</span>
+</span><span data-line="108"><span class="sd">    negotiated.</span>
+</span><span data-line="109">
+</span><span data-line="110"><span class="sd">    :param calling_selector: Local presentation selector, used to identify</span>
+</span><span data-line="111"><span class="sd">        the calling application entity. If ``None``, no selector is included.</span>
+</span><span data-line="112"><span class="sd">    :type calling_selector: bytes | None</span>
+</span><span data-line="113"><span class="sd">    :param called_selector: Remote presentation selector, used to identify</span>
+</span><span data-line="114"><span class="sd">        the destination application entity. If ``None``, no selector is included.</span>
+</span><span data-line="115"><span class="sd">    :type called_selector: bytes | None</span>
+</span><span data-line="116"><span class="sd">    :param use_version1: If ``True``, forces usage of COPP Version 1 semantics.</span>
+</span><span data-line="117"><span class="sd">        If ``False``, negotiates a higher version (default).</span>
+</span><span data-line="118"><span class="sd">    :type use_version1: bool</span>
+</span><span data-line="119"><span class="sd">    :param custom_requirements: Optional presentation requirements to override</span>
+</span><span data-line="120"><span class="sd">        defaults. If ``None``, a default requirements set is used.</span>
+</span><span data-line="121"><span class="sd">    :type custom_requirements: Presentation_requirements | None</span>
+</span><span data-line="122"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span data-line="123">
+</span><span data-line="124">    <span class="n">calling_selector</span><span class="p">:</span> <span class="nb">bytes</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+</span><span data-line="125">    <span class="n">called_selector</span><span class="p">:</span> <span class="nb">bytes</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+</span><span data-line="126">    <span class="n">use_version1</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+</span><span data-line="127">    <span class="n">custom_requirements</span><span class="p">:</span> <span class="n">Presentation_requirements</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></div>
+
+</span><span data-line="128">
+</span><span data-line="129">
+<div class="viewcode-block" id="ISO_Presentation">
+<a class="viewcode-back" href="../../../../protocols/copp/presentation.html#icspacket.proto.iso_pres.presentation.ISO_Presentation">[docs]</a>
+</span><span data-line="130"><span class="k">class</span><span class="w"> </span><span class="nc">ISO_Presentation</span><span class="p">(</span><span class="n">connection</span><span class="p">):</span>
+</span><span data-line="131"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Implements the ISO Presentation protocol (X.226 / ISO 8823).</span>
+</span><span data-line="132">
+</span><span data-line="133"><span class="sd">    The Presentation layer sits above the Session layer and provides</span>
+</span><span data-line="134"><span class="sd">    context negotiation and user data encapsulation. It uses *PPDUs*</span>
+</span><span data-line="135"><span class="sd">    (Presentation Protocol Data Units) for connection establishment and</span>
+</span><span data-line="136"><span class="sd">    termination.</span>
+</span><span data-line="137">
+</span><span data-line="138"><span class="sd">    &gt;&gt;&gt; session = ISO_Session(...) # may require COTP_Connection</span>
+</span><span data-line="139"><span class="sd">    &gt;&gt;&gt; presentation = ISO_Presentation(session)</span>
+</span><span data-line="140">
+</span><span data-line="141"><span class="sd">    To make sure your application layer user data is decoded and encoded</span>
+</span><span data-line="142"><span class="sd">    correctly, register a new context id:</span>
+</span><span data-line="143">
+</span><span data-line="144"><span class="sd">    &gt;&gt;&gt; presentation.presentation_context.new(&quot;1.2.3&quot;, 1, MyASN1Class)</span>
+</span><span data-line="145"><span class="sd">    &lt;Context_list.Member_TYPE&gt;</span>
+</span><span data-line="146"><span class="sd">    &gt;&gt;&gt; presentation.init_session((&quot;127.0.0.1&quot;, 1234))</span>
+</span><span data-line="147"><span class="sd">    &lt;MyASN1Class&gt; # depending on server result and ctx_id</span>
+</span><span data-line="148">
+</span><span data-line="149"><span class="sd">    :param session: Underlying ISO Session instance to use for transport.</span>
+</span><span data-line="150"><span class="sd">    :type session: ISO_Session</span>
+</span><span data-line="151"><span class="sd">    :param settings: Optional Presentation settings (selectors, version, requirements).</span>
+</span><span data-line="152"><span class="sd">    :type settings: ISO_PresentationSettings | None</span>
+</span><span data-line="153"><span class="sd">    :param context: Presentation context registry, managing context IDs and</span>
+</span><span data-line="154"><span class="sd">        ASN.1 decoding classes.</span>
+</span><span data-line="155"><span class="sd">    :type context: ISO_PresentationContext | None</span>
+</span><span data-line="156"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span data-line="157">
+</span><span data-line="158">    <span class="n">settings</span><span class="p">:</span> <span class="n">ISO_PresentationSettings</span>
+</span><span data-line="159"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Configuration settings for the Presentation layer.&quot;&quot;&quot;</span>
+</span><span data-line="160">
+</span><span data-line="161">    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+</span><span data-line="162">        <span class="bp">self</span><span class="p">,</span>
+</span><span data-line="163">        <span class="n">session</span><span class="p">:</span> <span class="n">ISO_Session</span><span class="p">,</span>
+</span><span data-line="164">        <span class="n">settings</span><span class="p">:</span> <span class="n">ISO_PresentationSettings</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span data-line="165">        <span class="n">context</span><span class="p">:</span> <span class="n">ISO_PresentationContext</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span data-line="166">    <span class="p">):</span>
+</span><span data-line="167">        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+</span><span data-line="168">        <span class="bp">self</span><span class="o">.</span><span class="n">__session</span> <span class="o">=</span> <span class="n">session</span>
+</span><span data-line="169">        <span class="bp">self</span><span class="o">.</span><span class="n">__context</span> <span class="o">=</span> <span class="n">context</span> <span class="ow">or</span> <span class="n">ISO_PresentationContext</span><span class="p">()</span>
+</span><span data-line="170">        <span class="bp">self</span><span class="o">.</span><span class="n">_connected</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">is_connected</span><span class="p">()</span>
+</span><span data-line="171">        <span class="bp">self</span><span class="o">.</span><span class="n">_valid</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">is_valid</span><span class="p">()</span>
+</span><span data-line="172">
+</span><span data-line="173">        <span class="c1"># public members</span>
+</span><span data-line="174">        <span class="bp">self</span><span class="o">.</span><span class="n">settings</span> <span class="o">=</span> <span class="n">settings</span> <span class="ow">or</span> <span class="n">ISO_PresentationSettings</span><span class="p">()</span>
+</span><span data-line="175">
+</span><span data-line="176">    <span class="nd">@property</span>
+</span><span data-line="177">    <span class="k">def</span><span class="w"> </span><span class="nf">presentation_context</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ISO_PresentationContext</span><span class="p">:</span>
+</span><span data-line="178"><span class="w">        </span><span class="sd">&quot;&quot;&quot;Registered Presentation Contexts.</span>
+</span><span data-line="179">
+</span><span data-line="180"><span class="sd">        Provides both the raw context items and their ASN.1 decoding bindings.</span>
+</span><span data-line="181">
+</span><span data-line="182"><span class="sd">        :return: The managed Presentation Context registry.</span>
+</span><span data-line="183"><span class="sd">        :rtype: ISO_PresentationContext</span>
+</span><span data-line="184"><span class="sd">        &quot;&quot;&quot;</span>
+</span><span data-line="185">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__context</span>
+</span><span data-line="186">
+</span><span data-line="187">    <span class="nd">@property</span>
+</span><span data-line="188">    <span class="k">def</span><span class="w"> </span><span class="nf">session</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ISO_Session</span><span class="p">:</span>
+</span><span data-line="189"><span class="w">        </span><span class="sd">&quot;&quot;&quot;Underlying Session object providing transport services.&quot;&quot;&quot;</span>
+</span><span data-line="190">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__session</span>
+</span><span data-line="191">
+</span><span data-line="192">    <span class="nd">@property</span>
+</span><span data-line="193">    <span class="k">def</span><span class="w"> </span><span class="nf">transport</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">COTP_Connection</span><span class="p">:</span>
+</span><span data-line="194"><span class="w">        </span><span class="sd">&quot;&quot;&quot;Underlying COTP transport connection (OSI transport layer).&quot;&quot;&quot;</span>
+</span><span data-line="195">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">transport</span>
+</span><span data-line="196">
+<div class="viewcode-block" id="ISO_Presentation.connect">
+<a class="viewcode-back" href="../../../../protocols/copp/presentation.html#icspacket.proto.iso_pres.presentation.ISO_Presentation.connect">[docs]</a>
+</span><span data-line="197">    <span class="nd">@override</span>
+</span><span data-line="198">    <span class="k">def</span><span class="w"> </span><span class="nf">connect</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">address</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="199"><span class="w">        </span><span class="sd">&quot;&quot;&quot;Establish a Presentation connection.</span>
+</span><span data-line="200">
+</span><span data-line="201"><span class="sd">        If already connected, the call is ignored. Otherwise, it delegates</span>
+</span><span data-line="202"><span class="sd">        connection establishment to the Session layer.</span>
+</span><span data-line="203">
+</span><span data-line="204"><span class="sd">        :param address: Network address tuple (host, port).</span>
+</span><span data-line="205"><span class="sd">        :type address: tuple[str, int]</span>
+</span><span data-line="206"><span class="sd">        &quot;&quot;&quot;</span>
+</span><span data-line="207">        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_connected</span><span class="p">():</span>
+</span><span data-line="208">            <span class="k">return</span>
+</span><span data-line="209">
+</span><span data-line="210">        <span class="bp">self</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">address</span><span class="p">)</span>
+</span><span data-line="211">        <span class="bp">self</span><span class="o">.</span><span class="n">_connected</span> <span class="o">=</span> <span class="kc">True</span>
+</span><span data-line="212">        <span class="bp">self</span><span class="o">.</span><span class="n">_valid</span> <span class="o">=</span> <span class="kc">False</span></div>
+
+</span><span data-line="213">
+<div class="viewcode-block" id="ISO_Presentation.close">
+<a class="viewcode-back" href="../../../../protocols/copp/presentation.html#icspacket.proto.iso_pres.presentation.ISO_Presentation.close">[docs]</a>
+</span><span data-line="214">    <span class="nd">@override</span>
+</span><span data-line="215">    <span class="k">def</span><span class="w"> </span><span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="216"><span class="w">        </span><span class="sd">&quot;&quot;&quot;Close the Presentation connection.</span>
+</span><span data-line="217">
+</span><span data-line="218"><span class="sd">        Delegates closure to the Session layer and marks the Presentation</span>
+</span><span data-line="219"><span class="sd">        context as invalid.</span>
+</span><span data-line="220"><span class="sd">        &quot;&quot;&quot;</span>
+</span><span data-line="221">        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_connected</span><span class="p">():</span>
+</span><span data-line="222">            <span class="bp">self</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</span><span data-line="223">            <span class="bp">self</span><span class="o">.</span><span class="n">_valid</span> <span class="o">=</span> <span class="kc">False</span>
+</span><span data-line="224">            <span class="bp">self</span><span class="o">.</span><span class="n">_connected</span> <span class="o">=</span> <span class="kc">False</span></div>
+
+</span><span data-line="225">
+<div class="viewcode-block" id="ISO_Presentation.init_session">
+<a class="viewcode-back" href="../../../../protocols/copp/presentation.html#icspacket.proto.iso_pres.presentation.ISO_Presentation.init_session">[docs]</a>
+</span><span data-line="226">    <span class="k">def</span><span class="w"> </span><span class="nf">init_session</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">app_octets</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">,</span> <span class="n">address</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span><span class="p">):</span>
+</span><span data-line="227"><span class="w">        </span><span class="sd">&quot;&quot;&quot;Initialize a Presentation session (A-ASSOCIATE equivalent).</span>
+</span><span data-line="228">
+</span><span data-line="229"><span class="sd">        Builds and transmits a *CP PPDU* (Connect Presentation PDU) carrying</span>
+</span><span data-line="230"><span class="sd">        application data, registered presentation contexts, and optional selectors.</span>
+</span><span data-line="231"><span class="sd">        Waits for a *CPA PPDU* (Connect Presentation Accept) in response.</span>
+</span><span data-line="232">
+</span><span data-line="233"><span class="sd">        - Includes all registered Presentation Context Items in negotiation.</span>
+</span><span data-line="234"><span class="sd">        - If ``calling_selector`` or ``called_selector`` are set, they are included</span>
+</span><span data-line="235"><span class="sd">          in the PPDU for AE identification.</span>
+</span><span data-line="236"><span class="sd">        - If ``use_version1`` is ``True``, forces negotiation of COPP v1.</span>
+</span><span data-line="237"><span class="sd">        - If ``custom_requirements`` is provided, overrides default presentation</span>
+</span><span data-line="238"><span class="sd">          requirements.</span>
+</span><span data-line="239">
+</span><span data-line="240"><span class="sd">        :param app_octets: Encoded application-layer data to include in the CP PPDU.</span>
+</span><span data-line="241"><span class="sd">        :type app_octets: bytes</span>
+</span><span data-line="242"><span class="sd">        :param address: Optional address for connection establishment if the</span>
+</span><span data-line="243"><span class="sd">            session is not already connected.</span>
+</span><span data-line="244"><span class="sd">        :type address: tuple[str, int] | None</span>
+</span><span data-line="245"><span class="sd">        :raises ConnectionError: If session initiation fails, invalid CPA received,</span>
+</span><span data-line="246"><span class="sd">            or unsupported mode is negotiated.</span>
+</span><span data-line="247"><span class="sd">        :return: Decoded user data if present in the CPA response, otherwise ``None``.</span>
+</span><span data-line="248"><span class="sd">        :rtype: Any | None</span>
+</span><span data-line="249"><span class="sd">        &quot;&quot;&quot;</span>
+</span><span data-line="250">        <span class="n">ppdu</span> <span class="o">=</span> <span class="n">build_connect_ppdu</span><span class="p">(</span>
+</span><span data-line="251">            <span class="n">app_octets</span><span class="p">,</span>
+</span><span data-line="252">            <span class="n">calling_presentation_selector</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">calling_selector</span><span class="p">,</span>
+</span><span data-line="253">            <span class="n">called_presentation_selector</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">called_selector</span><span class="p">,</span>
+</span><span data-line="254">            <span class="n">use_version_1</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">use_version1</span><span class="p">,</span>
+</span><span data-line="255">            <span class="n">requirements</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">custom_requirements</span><span class="p">,</span>
+</span><span data-line="256">            <span class="n">pres_context_items</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">presentation_context</span><span class="o">.</span><span class="n">items</span><span class="o">.</span><span class="n">values</span><span class="p">()),</span>
+</span><span data-line="257">        <span class="p">)</span>
+</span><span data-line="258">        <span class="n">pres_octets</span> <span class="o">=</span> <span class="n">ppdu</span><span class="o">.</span><span class="n">ber_encode</span><span class="p">()</span>
+</span><span data-line="259">        <span class="n">pres_result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">init_session</span><span class="p">(</span><span class="n">pres_octets</span><span class="p">,</span> <span class="n">address</span><span class="p">)</span>
+</span><span data-line="260">        <span class="bp">self</span><span class="o">.</span><span class="n">_connected</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">is_connected</span><span class="p">()</span>
+</span><span data-line="261">        <span class="k">if</span> <span class="ow">not</span> <span class="n">pres_octets</span><span class="p">:</span>
+</span><span data-line="262">            <span class="k">raise</span> <span class="ne">ConnectionError</span><span class="p">(</span><span class="s2">&quot;Failed to initiate session, no response received!&quot;</span><span class="p">)</span>
+</span><span data-line="263">
+</span><span data-line="264">        <span class="k">try</span><span class="p">:</span>
+</span><span data-line="265">            <span class="n">cpa_ppdu</span> <span class="o">=</span> <span class="n">CPA_PPDU</span><span class="o">.</span><span class="n">ber_decode</span><span class="p">(</span><span class="n">pres_result</span><span class="p">)</span>
+</span><span data-line="266">        <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+</span><span data-line="267">            <span class="k">raise</span> <span class="ne">ConnectionError</span><span class="p">(</span>
+</span><span data-line="268">                <span class="sa">f</span><span class="s2">&quot;Received invalid presentation result: </span><span class="si">{</span><span class="n">pres_result</span><span class="o">.</span><span class="n">hex</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span data-line="269">            <span class="p">)</span>
+</span><span data-line="270">
+</span><span data-line="271">        <span class="k">if</span> <span class="p">(</span>
+</span><span data-line="272">            <span class="n">cpa_ppdu</span><span class="o">.</span><span class="n">mode_selector</span><span class="o">.</span><span class="n">mode_value</span>
+</span><span data-line="273">            <span class="o">!=</span> <span class="n">Mode_selector</span><span class="o">.</span><span class="n">mode_value_VALUES</span><span class="o">.</span><span class="n">V_normal_mode</span>
+</span><span data-line="274">        <span class="p">):</span>
+</span><span data-line="275">            <span class="k">raise</span> <span class="ne">ConnectionError</span><span class="p">(</span>
+</span><span data-line="276">                <span class="sa">f</span><span class="s2">&quot;Unsupported CPA mode: </span><span class="si">{</span><span class="n">cpa_ppdu</span><span class="o">.</span><span class="n">mode_selector</span><span class="o">.</span><span class="n">mode_value</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span data-line="277">            <span class="p">)</span>
+</span><span data-line="278">
+</span><span data-line="279">        <span class="bp">self</span><span class="o">.</span><span class="n">_valid</span> <span class="o">=</span> <span class="kc">True</span>
+</span><span data-line="280">        <span class="n">user_data</span> <span class="o">=</span> <span class="n">cpa_ppdu</span><span class="o">.</span><span class="n">normal_mode_parameters</span><span class="o">.</span><span class="n">user_data</span>
+</span><span data-line="281">        <span class="k">if</span> <span class="n">user_data</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="282">            <span class="k">return</span> <span class="kc">None</span>
+</span><span data-line="283">
+</span><span data-line="284">        <span class="k">return</span> <span class="n">user_data_get_single_asn1</span><span class="p">(</span>
+</span><span data-line="285">            <span class="n">user_data</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">presentation_context</span><span class="o">.</span><span class="n">asn1_types</span>
+</span><span data-line="286">        <span class="p">)</span></div>
+
+</span><span data-line="287">
+<div class="viewcode-block" id="ISO_Presentation.close_session">
+<a class="viewcode-back" href="../../../../protocols/copp/presentation.html#icspacket.proto.iso_pres.presentation.ISO_Presentation.close_session">[docs]</a>
+</span><span data-line="288">    <span class="k">def</span><span class="w"> </span><span class="nf">close_session</span><span class="p">(</span>
+</span><span data-line="289">        <span class="bp">self</span><span class="p">,</span> <span class="n">octets</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">,</span> <span class="n">pres_ctx_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">graceful</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+</span><span data-line="290">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="291"><span class="w">        </span><span class="sd">&quot;&quot;&quot;Close the Presentation session.</span>
+</span><span data-line="292">
+</span><span data-line="293"><span class="sd">        Sends a *CN/CPA termination sequence* (Finish) via the Session layer,</span>
+</span><span data-line="294"><span class="sd">        optionally embedding user data.</span>
+</span><span data-line="295">
+</span><span data-line="296"><span class="sd">        - If ``pres_ctx_id`` is provided, the user data is bound to the given</span>
+</span><span data-line="297"><span class="sd">          Presentation Context Identifier.</span>
+</span><span data-line="298"><span class="sd">        - If ``graceful`` is ``True``, waits for a *Disconnect* confirmation and</span>
+</span><span data-line="299"><span class="sd">          returns raw response data.</span>
+</span><span data-line="300"><span class="sd">        - If ``graceful`` is ``False``, closes immediately.</span>
+</span><span data-line="301">
+</span><span data-line="302"><span class="sd">        :param octets: Encoded application user data to include.</span>
+</span><span data-line="303"><span class="sd">        :type octets: bytes</span>
+</span><span data-line="304"><span class="sd">        :param pres_ctx_id: Optional presentation context ID for user data binding.</span>
+</span><span data-line="305"><span class="sd">        :type pres_ctx_id: int | None</span>
+</span><span data-line="306"><span class="sd">        :param graceful: Whether to perform graceful closure with peer acknowledgment.</span>
+</span><span data-line="307"><span class="sd">        :type graceful: bool</span>
+</span><span data-line="308"><span class="sd">        :raises ConnectionStateError: If session has not been initialized.</span>
+</span><span data-line="309"><span class="sd">        :return: Raw data from peer if ``graceful`` is ``True``.</span>
+</span><span data-line="310"><span class="sd">        :rtype: bytes | None</span>
+</span><span data-line="311"><span class="sd">        &quot;&quot;&quot;</span>
+</span><span data-line="312">        <span class="bp">self</span><span class="o">.</span><span class="n">_assert_connected</span><span class="p">()</span>
+</span><span data-line="313">        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_valid</span><span class="p">:</span>
+</span><span data-line="314">            <span class="k">raise</span> <span class="n">ConnectionStateError</span><span class="p">(</span><span class="s2">&quot;Session must be initialized before closing&quot;</span><span class="p">)</span>
+</span><span data-line="315">
+</span><span data-line="316">        <span class="n">user_data</span> <span class="o">=</span> <span class="n">build_user_data</span><span class="p">(</span><span class="n">octets</span><span class="p">,</span> <span class="n">pres_ctx_id</span><span class="p">)</span>
+</span><span data-line="317">        <span class="n">raw_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">close_session</span><span class="p">(</span><span class="n">user_data</span><span class="o">.</span><span class="n">ber_encode</span><span class="p">(),</span> <span class="n">graceful</span><span class="o">=</span><span class="n">graceful</span><span class="p">)</span>
+</span><span data-line="318">        <span class="k">if</span> <span class="n">graceful</span><span class="p">:</span>
+</span><span data-line="319">            <span class="k">return</span> <span class="n">raw_data</span>
+</span><span data-line="320">
+</span><span data-line="321">        <span class="bp">self</span><span class="o">.</span><span class="n">_connected</span> <span class="o">=</span> <span class="kc">False</span>
+</span><span data-line="322">        <span class="bp">self</span><span class="o">.</span><span class="n">_valid</span> <span class="o">=</span> <span class="kc">False</span></div>
+
+</span><span data-line="323">
+<div class="viewcode-block" id="ISO_Presentation.send_data">
+<a class="viewcode-back" href="../../../../protocols/copp/presentation.html#icspacket.proto.iso_pres.presentation.ISO_Presentation.send_data">[docs]</a>
+</span><span data-line="324">    <span class="nd">@override</span>
+</span><span data-line="325">    <span class="k">def</span><span class="w"> </span><span class="nf">send_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">octets</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">,</span> <span class="o">/</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="326"><span class="w">        </span><span class="sd">&quot;&quot;&quot;Send raw user data.</span>
+</span><span data-line="327">
+</span><span data-line="328"><span class="sd">        Delegates to :meth:`send_encoded_data`.</span>
+</span><span data-line="329">
+</span><span data-line="330"><span class="sd">        :param octets: Encoded user data.</span>
+</span><span data-line="331"><span class="sd">        :type octets: bytes</span>
+</span><span data-line="332"><span class="sd">        &quot;&quot;&quot;</span>
+</span><span data-line="333">        <span class="bp">self</span><span class="o">.</span><span class="n">send_encoded_data</span><span class="p">(</span><span class="n">octets</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span></div>
+
+</span><span data-line="334">
+<div class="viewcode-block" id="ISO_Presentation.send_encoded_data">
+<a class="viewcode-back" href="../../../../protocols/copp/presentation.html#icspacket.proto.iso_pres.presentation.ISO_Presentation.send_encoded_data">[docs]</a>
+</span><span data-line="335">    <span class="k">def</span><span class="w"> </span><span class="nf">send_encoded_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">octets</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">,</span> <span class="n">pres_ctx_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="336"><span class="w">        </span><span class="sd">&quot;&quot;&quot;Send BER-encoded user data bound to a Presentation Context Identifier.</span>
+</span><span data-line="337">
+</span><span data-line="338"><span class="sd">        :param octets: User data to encode.</span>
+</span><span data-line="339"><span class="sd">        :type octets: bytes</span>
+</span><span data-line="340"><span class="sd">        :param pres_ctx_id: Optional Presentation Context ID. If omitted, default</span>
+</span><span data-line="341"><span class="sd">            context is used.</span>
+</span><span data-line="342"><span class="sd">        :type pres_ctx_id: int | None</span>
+</span><span data-line="343"><span class="sd">        :raises ConnectionStateError: If not connected.</span>
+</span><span data-line="344"><span class="sd">        &quot;&quot;&quot;</span>
+</span><span data-line="345">        <span class="bp">self</span><span class="o">.</span><span class="n">_assert_connected</span><span class="p">()</span>
+</span><span data-line="346">        <span class="n">user_data</span> <span class="o">=</span> <span class="n">build_user_data</span><span class="p">(</span><span class="n">octets</span><span class="p">,</span> <span class="n">presentation_context_id</span><span class="o">=</span><span class="n">pres_ctx_id</span><span class="p">)</span>
+</span><span data-line="347">        <span class="bp">self</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">send_data</span><span class="p">(</span><span class="n">user_data</span><span class="o">.</span><span class="n">ber_encode</span><span class="p">())</span></div>
+
+</span><span data-line="348">
+<div class="viewcode-block" id="ISO_Presentation.recv_data">
+<a class="viewcode-back" href="../../../../protocols/copp/presentation.html#icspacket.proto.iso_pres.presentation.ISO_Presentation.recv_data">[docs]</a>
+</span><span data-line="349">    <span class="nd">@override</span>
+</span><span data-line="350">    <span class="k">def</span><span class="w"> </span><span class="nf">recv_data</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bytes</span><span class="p">:</span>
+</span><span data-line="351"><span class="w">        </span><span class="sd">&quot;&quot;&quot;Receive raw user data from the session.</span>
+</span><span data-line="352">
+</span><span data-line="353"><span class="sd">        :return: Raw user data octets.</span>
+</span><span data-line="354"><span class="sd">        :rtype: bytes</span>
+</span><span data-line="355"><span class="sd">        &quot;&quot;&quot;</span>
+</span><span data-line="356">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">recv_data</span><span class="p">()</span></div>
+
+</span><span data-line="357">
+<div class="viewcode-block" id="ISO_Presentation.recv_encoded_data">
+<a class="viewcode-back" href="../../../../protocols/copp/presentation.html#icspacket.proto.iso_pres.presentation.ISO_Presentation.recv_encoded_data">[docs]</a>
+</span><span data-line="358">    <span class="k">def</span><span class="w"> </span><span class="nf">recv_encoded_data</span><span class="p">(</span>
+</span><span data-line="359">        <span class="bp">self</span><span class="p">,</span>
+</span><span data-line="360">        <span class="n">context</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">type</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span data-line="361">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="362"><span class="w">        </span><span class="sd">&quot;&quot;&quot;Receive and decode Presentation-encoded user data.</span>
+</span><span data-line="363">
+</span><span data-line="364"><span class="sd">        Attempts to decode *User-data* PPDU from the session. If decoding fails,</span>
+</span><span data-line="365"><span class="sd">        raises a type error.</span>
+</span><span data-line="366">
+</span><span data-line="367"><span class="sd">        :param context: Optional decoding context mapping PCI IDs to classes. If</span>
+</span><span data-line="368"><span class="sd">            omitted, the instance&#39;s default :attr:`presentation_context.asn1_types` is used.</span>
+</span><span data-line="369"><span class="sd">        :type context: dict[int, type] | None</span>
+</span><span data-line="370"><span class="sd">        :raises ConnectionClosedError: If no data is received (connection closed).</span>
+</span><span data-line="371"><span class="sd">        :raises TypeError: If decoding fails due to invalid BER.</span>
+</span><span data-line="372"><span class="sd">        :return: Decoded ASN.1 object or ``None``.</span>
+</span><span data-line="373"><span class="sd">        :rtype: Any | None</span>
+</span><span data-line="374"><span class="sd">        &quot;&quot;&quot;</span>
+</span><span data-line="375">        <span class="bp">self</span><span class="o">.</span><span class="n">_assert_connected</span><span class="p">()</span>
+</span><span data-line="376">        <span class="n">raw_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">recv_data</span><span class="p">()</span>
+</span><span data-line="377">        <span class="k">if</span> <span class="ow">not</span> <span class="n">raw_data</span><span class="p">:</span>
+</span><span data-line="378">            <span class="k">raise</span> <span class="n">ConnectionClosedError</span>
+</span><span data-line="379">
+</span><span data-line="380">        <span class="k">try</span><span class="p">:</span>
+</span><span data-line="381">            <span class="n">user_data</span> <span class="o">=</span> <span class="n">User_data</span><span class="o">.</span><span class="n">ber_decode</span><span class="p">(</span><span class="n">raw_data</span><span class="p">)</span>
+</span><span data-line="382">        <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+</span><span data-line="383">            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Received invalid user data: </span><span class="si">{</span><span class="n">raw_data</span><span class="o">.</span><span class="n">hex</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span data-line="384">
+</span><span data-line="385">        <span class="n">context</span> <span class="o">=</span> <span class="n">context</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">presentation_context</span><span class="o">.</span><span class="n">asn1_types</span>
+</span><span data-line="386">        <span class="k">return</span> <span class="n">user_data_get_single_asn1</span><span class="p">(</span><span class="n">user_data</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="n">context</span><span class="p">)</span></div>
+</div>
+
+</span></pre></div>
+        </article><button class="back-to-top" type="button">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+  </svg>
+  <span>Back to top</span>
+</button><div class="navigation flex print:hidden"></div></div>
+    </div>
+  </main>
+</div>
+<footer class="sy-foot">
+  <div class="sy-foot-inner sy-container mx-auto">
+    <div class="sy-foot-reserved md:flex justify-between items-center">
+      <div class="sy-foot-copyright"><p>2025, MatrixEditor</p>
+  
+  <p>
+    Made with
+    
+    <a href="https://www.sphinx-doc.org/">Sphinx</a> and
+    
+    <a href="https://shibuya.lepture.com">Shibuya theme</a>.
+  </p>
+</div>
+      <div class="sy-foot-socials">
+<a href="https://github.com/MatrixEditor/icspacket" aria-label="GitHub">
+  <iconify-icon icon="simple-icons:github"></iconify-icon>
+</a></div>
+    </div>
+  </div>
+</footer>
+      <script src="../../../../_static/documentation_options.js?v=e3b32040"></script>
+      <script src="../../../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../../../_static/design-tabs.js?v=f930bc37"></script>
+      <script src="../../../../_static/shibuya.js?v=e730760c"></script></body>
+</html>

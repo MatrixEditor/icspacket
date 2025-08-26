@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en" data-accent-color="lime" data-content_root="../../">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>API Reference - icspacket 0.1.dev1+g814ee7fee documentation</title><link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="API Reference" href="../copp/api.html" /><link rel="prev" title="Protocol Utilities" href="../mms/api_utils.html" />
+      <link rel="canonical" href="https://matrixeditor.github.io/icspacket/protocols/acse/api.html" /><script>
+    function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
+    setColorMode(localStorage._theme||"dark");
+  </script><link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=397bb51e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/shibuya.css?v=d48c410d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link media="print" rel="stylesheet" type="text/css" href="../../_static/print.css?v=20ff2c19" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --sy-f-text: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+  --sy-f-heading: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+}
+</style>
+    <meta property="og:type" content="website"/>
+<meta property="og:url" content="https://matrixeditor.github.io/icspacket/protocols/acse/api.html"/>
+<meta property="og:title" content="API Reference"/>
+<meta name="twitter:card" content="summary"/>
+  </head>
+<body><div class="sy-head">
+  <div class="sy-head-blur"></div>
+  <div class="sy-head-inner sy-container mx-auto">
+    <a class="sy-head-brand" href="../../index.html">
+      
+      
+      <strong>icspacket</strong>
+    </a>
+    <div class="sy-head-nav" id="head-nav">
+      <nav class="sy-head-links"><ul>
+      <li class="link"><a class="js-menu" href="../../examples/index.html" id="nav-trigger-1" aria-controls="nav-children-1">
+            <span>Examples</span>
+            <i class="i-lucide chevron-down"></i>
+          </a>
+        <ul id="nav-children-1" aria-labelledby="nav-trigger-1"><li><a href="../../examples/mms/index.html">
+                <span>MMS Utilities</span>
+                <small>Manufacturing Message Specification tools</small>
+              </a></li></ul>
+      </li></ul></nav>
+      <div class="sy-head-extra flex items-center print:hidden"><form class="searchbox flex items-center" action="../../search.html" method="get">
+  <input type="text" name="q" placeholder="Search" />
+  <kbd>/</kbd>
+</form><div class="sy-head-socials">
+  <a href="https://github.com/MatrixEditor/icspacket" aria-label="GitHub">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </a></div></div>
+    </div>
+    <div class="sy-head-actions flex items-center shrink-0 print:hidden"><button class="js-theme theme-switch flex items-center"
+data-aria-auto="Switch to light color mode"
+data-aria-light="Switch to dark color mode"
+data-aria-dark="Switch to auto color mode">
+<i class="i-lucide theme-icon"></i>
+</button><button class="md:hidden flex items-center js-menu" aria-label="Menu" type="button" aria-controls="head-nav" aria-expanded="false">
+        <div class="hamburger">
+          <span class="hamburger_1"></span>
+          <span class="hamburger_2 -translate-x-2"></span>
+          <span class="hamburger_3 -translate-x-1"></span>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>
+<div class="sy-page sy-container flex mx-auto">
+  <aside id="lside" class="sy-lside md:w-72 md:shrink-0 print:hidden">
+    <div class="sy-lside-inner md:sticky">
+      <div class="sy-scrollbar p-6"><div class="sidebar-links">
+  <ul>
+    <li><a class="icon-link" href="https://github.com/MatrixEditor/icspacket/discussions">
+  <span class="icon">
+    <svg viewBox="0 0 24 24" fill="none">
+      <path fill="var(--accent-9)" fill-rule="evenodd" clip-rule="evenodd" d="M11 5a6 6 0 0 0-4.687 9.746c.215.27.315.62.231.954l-.514 2.058a1 1 0 0 0 1.485 1.1l2.848-1.71c.174-.104.374-.15.576-.148H13a6 6 0 0 0 0-12h-2Z"/>
+      <circle fill="white" cx="12" cy="11" r="1"/>
+      <circle fill="white" cx="9" cy="11" r="1"/>
+      <circle fill="white" cx="15" cy="11" r="1"/>
+    </svg>
+  </span>
+  <span class="text">Discussion</span>
+</a></li>
+  </ul>
+</div>
+        <div class="globaltoc" data-expand-depth="2"><p class="caption" role="heading" aria-level="3"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../getting-started/installation.html">Installation</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../getting-started/protocols.html">Protocols Overview</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../getting-started/coreapi.html">Core API Reference</a></li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">MMS / ISO 9506</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../mms/demo_vars.html">Variable Target Format</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../mms/demo_vars.html#variableaccess-service-rwq">VariableAccess Service (rwq)</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../mms/demo_files.html">FileManagement Service</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../mms/api.html">API Reference</a><ul>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../mms/api_conn.html">MMS Connection</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../mms/api_data.html">Data Conversion</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../mms/api_utils.html">Protocol Utilities</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">ACSE / X.227</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">API Reference</a></li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">COPP / X.226 / ISO 8823</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../copp/api.html">API Reference</a><ul>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../copp/presentation.html">ISO Presentation</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../copp/utils.html">Protocol Utilities</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">COSP / X.225 / ISO 8237-1</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../cosp/api.html">API Reference</a><ul>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../cosp/tsdu.html">TSDU</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../cosp/spdu.html">SPDU Types</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../cosp/values.html">Parameter Values (PV)</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../cosp/session.html">ISO Session</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../cosp/utils.html">Protocol Utilities</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">COTP / X.224</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../cotp/api.html">API Reference</a><ul>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../cotp/structs.html">TPDU Types</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../cotp/connection.html">Connection</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">TPKT Protocol (RFC1006)</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../tpkt/usage.html">Using a TPKT Wrapper</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../tpkt/api.html">API Reference</a></li>
+</ul>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="lside-overlay js-menu" role="button" aria-label="Close left sidebar" aria-controls="lside" aria-expanded="false"></div>
+  <aside id="rside" class="sy-rside pb-3 w-64 shrink-0 order-last">
+    <button class="rside-close js-menu xl:hidden" aria-label="Close Table of Contents" type="button" aria-controls="rside" aria-expanded="false">
+      <i class="i-lucide close"></i>
+    </button>
+    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div class="localtoc"><h3>On this page</h3><ul>
+<li><a class="reference internal" href="#icspacket.proto.mms.acse.ACSEAuthenticationFailure"><code class="docutils literal notranslate"><span class="pre">ACSEAuthenticationFailure</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.mms.acse.ACSEConnectionError"><code class="docutils literal notranslate"><span class="pre">ACSEConnectionError</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.mms.acse.Association"><code class="docutils literal notranslate"><span class="pre">Association</span></code></a><ul>
+<li><a class="reference internal" href="#icspacket.proto.mms.acse.Association.presentation"><code class="docutils literal notranslate">presentation</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.mms.acse.Association.close"><code class="docutils literal notranslate">close()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.mms.acse.Association.connect"><code class="docutils literal notranslate">connect()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.mms.acse.Association.create"><code class="docutils literal notranslate">create()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.mms.acse.Association.release"><code class="docutils literal notranslate">release()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.mms.acse.Association.abort"><code class="docutils literal notranslate">abort()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.mms.acse.Association.send_data"><code class="docutils literal notranslate">send_data()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.mms.acse.Association.recv_data"><code class="docutils literal notranslate">recv_data()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.mms.acse.Association.recv_encoded_data"><code class="docutils literal notranslate">recv_encoded_data()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#icspacket.proto.mms.acse.Authenticator"><code class="docutils literal notranslate"><span class="pre">Authenticator</span></code></a><ul>
+<li><a class="reference internal" href="#icspacket.proto.mms.acse.Authenticator.prepare_association"><code class="docutils literal notranslate">prepare_association()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#icspacket.proto.mms.acse.build_abort_request"><code class="docutils literal notranslate"><span class="pre">build_abort_request()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.mms.acse.build_associate_request"><code class="docutils literal notranslate"><span class="pre">build_associate_request()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.mms.acse.build_release_request"><code class="docutils literal notranslate"><span class="pre">build_release_request()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.mms.acse.PasswordAuth"><code class="docutils literal notranslate"><span class="pre">PasswordAuth</span></code></a><ul>
+<li><a class="reference internal" href="#icspacket.proto.mms.acse.PasswordAuth.MECHANISM_NAME"><code class="docutils literal notranslate">MECHANISM_NAME</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.mms.acse.PasswordAuth.password"><code class="docutils literal notranslate">password</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.mms.acse.PasswordAuth.prepare_association"><code class="docutils literal notranslate">prepare_association()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</div><a class="js-repo-stats repo-stats flex items-center" href="https://github.com/MatrixEditor/icspacket"
+  data-type="github" data-user="MatrixEditor" data-repo="icspacket">
+  <span class="w-8 flex items-center justify-around shrink-0 text-3xl">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </span>
+  <span class="flex-grow px-2 break-all">
+    <span style="font-size: small;">MatrixEditor/icspacket</span>
+    <span class="flex text-sm repo-stats-count">
+      <span class="flex items-center pr-3">
+        <iconify-icon icon="lucide:star"></iconify-icon>
+        <strong class="js-repo-stars ml-1">0</strong>
+      </span>
+      <span class="flex items-center">
+        <iconify-icon icon="lucide:git-fork"></iconify-icon>
+        <strong class="js-repo-forks ml-1">0</strong>
+      </span>
+    </span>
+  </span>
+</a><div class="edit-this-page">
+  <a href="https://github.com/MatrixEditor/icspacket/blob/main/docs/protocols/acse/api.rst">Edit this page</a>
+</div></div>
+  </aside>
+  <div class="rside-overlay js-menu" role="button" aria-label="Close Table of Contents" aria-controls="rside" aria-expanded="false"></div>
+  <main class="sy-main w-full max-sm:max-w-full print:pt-6">
+<div class="sy-breadcrumbs" role="navigation">
+  <div class="sy-breadcrumbs-inner flex items-center">
+    <div class="md:hidden mr-3">
+      <button class="js-menu" aria-label="Menu" type="button" aria-controls="lside" aria-expanded="false">
+        <i class="i-lucide menu"></i>
+      </button>
+    </div>
+    <ol class="flex-1" itemscope itemtype="https://schema.org/BreadcrumbList"><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="../../index.html"><span itemprop="name">icspacket</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="1" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <strong itemprop="name">API Reference</strong>
+        <meta itemprop="position" content="2" />
+      </li></ol>
+    <div class="xl:hidden ml-1">
+      <button class="js-menu" aria-label="Show table of contents" type="button" aria-controls="rside"
+        aria-expanded="false">
+        <i class="i-lucide outdent"></i>
+      </button>
+    </div>
+  </div>
+</div><div class="flex flex-col break-words justify-between">
+      <div class="min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
+        <article class="yue" role="main">
+          <section id="module-icspacket.proto.mms.acse">
+<span id="api-reference"></span><span id="acse-index"></span><h1>API Reference<a class="headerlink" href="#module-icspacket.proto.mms.acse" title="Link to this heading">¶</a></h1>
+<dl class="py exception">
+<dt class="sig sig-object py" id="icspacket.proto.mms.acse.ACSEAuthenticationFailure">
+<em class="property"><span class="k"><span class="pre">exception</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">icspacket.proto.mms.acse.</span></span><span class="sig-name descname"><span class="pre">ACSEAuthenticationFailure</span></span><a class="reference internal" href="../../_modules/icspacket/proto/mms/acse.html#ACSEAuthenticationFailure"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.mms.acse.ACSEAuthenticationFailure" title="Link to this definition">¶</a></dt>
+<dd><p>Raised when ACSE authentication fails.</p>
+<p>This typically occurs during association setup (AARQ/AARE exchange),
+if the peer rejects the provided credentials or the
+authentication mechanism is not recognized.</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="icspacket.proto.mms.acse.ACSEConnectionError">
+<em class="property"><span class="k"><span class="pre">exception</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">icspacket.proto.mms.acse.</span></span><span class="sig-name descname"><span class="pre">ACSEConnectionError</span></span><a class="reference internal" href="../../_modules/icspacket/proto/mms/acse.html#ACSEConnectionError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.mms.acse.ACSEConnectionError" title="Link to this definition">¶</a></dt>
+<dd><p>Base exception for ACSE-level failures.</p>
+<p>Raised when association control messages (AARQ, AARE, ABRT, RLRQ, RLRE)
+cannot be successfully exchanged or processed. Subclasses distinguish
+between authentication failures, protocol negotiation errors, and
+other association-specific issues.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="icspacket.proto.mms.acse.Association">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">icspacket.proto.mms.acse.</span></span><span class="sig-name descname"><span class="pre">Association</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">presentation</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../copp/presentation.html#icspacket.proto.iso_pres.presentation.ISO_Presentation" title="icspacket.proto.iso_pres.presentation.ISO_Presentation"><span class="pre">ISO_Presentation</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">pres_ctx_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">syntax_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">asn1_cls</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">type</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">authenticator</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#icspacket.proto.mms.acse.Authenticator" title="icspacket.proto.mms.acse.Authenticator"><span class="pre">Authenticator</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/icspacket/proto/mms/acse.html#Association"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.mms.acse.Association" title="Link to this definition">¶</a></dt>
+<dd><p>Implements ACSE association management.</p>
+<p>This class provides establishment, release, and abort of associations
+using the ACSE protocol (ISO 8650 / X.227). It operates on top of the
+Presentation service and ensures proper mapping of user data into the
+negotiated presentation context.</p>
+<p>Example with MMS:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="gp">&gt;&gt;&gt; </span><span class="n">pres</span> <span class="o">=</span> <span class="n">ISO_Presentation</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+</span><span data-line="2"><span class="gp">&gt;&gt;&gt; </span><span class="n">assoc</span> <span class="o">=</span> <span class="n">Association</span><span class="p">(</span><span class="n">pres</span><span class="p">,</span> <span class="n">MMS_PRESENTATION_CONTEXT_ID</span><span class="p">,</span> <span class="n">MMS_ABSTRACT_SYNTAX_NAME</span><span class="p">,</span> <span class="n">MMSpdu</span><span class="p">)</span>
+</span><span data-line="3"><span class="gp">&gt;&gt;&gt; </span><span class="n">assoc</span><span class="o">.</span><span class="n">create</span><span class="p">((</span><span class="s2">&quot;127.0.0.1&quot;</span><span class="p">,</span> <span class="mi">1234</span><span class="p">))</span>
+</span><span data-line="4"><span class="go">&lt;MMSpdu&gt;</span>
+</span></pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>presentation</strong> (<a class="reference internal" href="../copp/presentation.html#icspacket.proto.iso_pres.presentation.ISO_Presentation" title="icspacket.proto.iso_pres.presentation.ISO_Presentation"><em>ISO_Presentation</em></a>) – Active presentation layer connection.</p></li>
+<li><p><strong>pres_ctx_id</strong> (<em>int</em><em> | </em><em>None</em>) – Optional initial presentation context identifier.</p></li>
+<li><p><strong>syntax_name</strong> (<em>str</em><em> | </em><em>None</em>) – Optional abstract syntax name for user data.</p></li>
+<li><p><strong>asn1_cls</strong> (<em>type</em><em> | </em><em>None</em>) – ASN.1 type class bound to the context, if known.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="icspacket.proto.mms.acse.Association.presentation">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">presentation</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="../copp/presentation.html#icspacket.proto.iso_pres.presentation.ISO_Presentation" title="icspacket.proto.iso_pres.presentation.ISO_Presentation"><span class="pre">ISO_Presentation</span></a></em><a class="headerlink" href="#icspacket.proto.mms.acse.Association.presentation" title="Link to this definition">¶</a></dt>
+<dd><p>Underlying presentation service bound to this ACSE association.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.mms.acse.Association.close">
+<span class="sig-name descname"><span class="pre">close</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../../_modules/icspacket/proto/mms/acse.html#Association.close"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.mms.acse.Association.close" title="Link to this definition">¶</a></dt>
+<dd><p>Close the ACSE association and underlying presentation connection.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.mms.acse.Association.connect">
+<span class="sig-name descname"><span class="pre">connect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">address</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../../_modules/icspacket/proto/mms/acse.html#Association.connect"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.mms.acse.Association.connect" title="Link to this definition">¶</a></dt>
+<dd><p>Connect the underlying presentation service.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>address</strong> (<em>tuple</em><em>[</em><em>str</em><em>, </em><em>int</em><em>]</em>) – Remote address tuple (host, port).</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.mms.acse.Association.create">
+<span class="sig-name descname"><span class="pre">create</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">address</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bytes</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pres_ctx_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">syntax_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">asn1_cls</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">type</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bytes</span></span></span><a class="reference internal" href="../../_modules/icspacket/proto/mms/acse.html#Association.create"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.mms.acse.Association.create" title="Link to this definition">¶</a></dt>
+<dd><p>Establish an ACSE association (AARQ/AARE exchange).</p>
+<p>This method sends an Association Request (AARQ) and waits for an
+Association Response (AARE). On success, the association becomes
+valid and returns the negotiated user information.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>address</strong> (<em>tuple</em><em>[</em><em>str</em><em>, </em><em>int</em><em>] </em><em>| </em><em>None</em>) – Optional remote address for initiating the session.</p></li>
+<li><p><strong>user_data</strong> (<em>bytes</em><em> | </em><em>None</em>) – Optional user data to include in the AARQ.</p></li>
+<li><p><strong>pres_ctx_id</strong> (<em>int</em><em> | </em><em>None</em>) – Presentation context identifier to use.</p></li>
+<li><p><strong>syntax_name</strong> (<em>str</em><em> | </em><em>None</em>) – Application context name to negotiate.</p></li>
+<li><p><strong>asn1_cls</strong> (<em>type</em><em> | </em><em>None</em>) – ASN.1 class for decoding user data.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Associated user information payload.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bytes</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><a class="reference internal" href="#icspacket.proto.mms.acse.ACSEConnectionError" title="icspacket.proto.mms.acse.ACSEConnectionError"><strong>ACSEConnectionError</strong></a> – If association negotiation fails.</p></li>
+<li><p><a class="reference internal" href="../../getting-started/coreapi.html#icspacket.core.connection.ConnectionError" title="icspacket.core.connection.ConnectionError"><strong>ConnectionError</strong></a> – If already connected.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Both <code class="docutils literal notranslate"><span class="pre">pres_ctx_id</span></code> and <code class="docutils literal notranslate"><span class="pre">syntax_name</span></code> must be provided, unless
+defaults are set using the constructor.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.mms.acse.Association.release">
+<span class="sig-name descname"><span class="pre">release</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">reason</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">VALUES</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">graceful</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../../_modules/icspacket/proto/mms/acse.html#Association.release"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.mms.acse.Association.release" title="Link to this definition">¶</a></dt>
+<dd><p>Release the ACSE association.</p>
+<p>Sends a Release Request (RLRQ). Depending on <code class="docutils literal notranslate"><span class="pre">graceful</span></code>, this
+either allows an orderly release or immediately terminates.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>reason</strong> (<em>Release_request_reason.VALUES</em><em>, </em><em>optional</em>) – Reason code for release (default = normal).</p></li>
+<li><p><strong>graceful</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, perform graceful closure; otherwise force.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><a class="reference internal" href="../../getting-started/coreapi.html#icspacket.core.connection.ConnectionClosedError" title="icspacket.core.connection.ConnectionClosedError"><strong>ConnectionClosedError</strong></a> – If no release response is received in non-graceful mode.</p></li>
+<li><p><a class="reference internal" href="#icspacket.proto.mms.acse.ACSEConnectionError" title="icspacket.proto.mms.acse.ACSEConnectionError"><strong>ACSEConnectionError</strong></a> – If an invalid response is returned.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.mms.acse.Association.abort">
+<span class="sig-name descname"><span class="pre">abort</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">VALUES</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bytes</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pres_context_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../../_modules/icspacket/proto/mms/acse.html#Association.abort"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.mms.acse.Association.abort" title="Link to this definition">¶</a></dt>
+<dd><p>Abort the ACSE association.</p>
+<p>Immediately terminates the association by sending an Abort (ABRT)
+APDU. Optionally includes diagnostic info and user data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>source</strong> (<em>ABRT_source.VALUES</em><em>, </em><em>optional</em>) – Abort initiator (default: ACSE service user).</p></li>
+<li><p><strong>user_data</strong> (<em>bytes</em><em>, </em><em>optional</em>) – Optional encoded user data to send.</p></li>
+<li><p><strong>pres_context_id</strong> (<em>int</em><em>, </em><em>optional</em>) – Context identifier for user data.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.mms.acse.Association.send_data">
+<span class="sig-name descname"><span class="pre">send_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">octets</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bytes</span></span></em>, <em class="sig-param"><span class="positional-only-separator o"><abbr title="Positional-only parameter separator (PEP 570)"><span class="pre">/</span></abbr></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../../_modules/icspacket/proto/mms/acse.html#Association.send_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.mms.acse.Association.send_data" title="Link to this definition">¶</a></dt>
+<dd><p>Send encoded user data via ACSE.</p>
+<p>The data is wrapped into the negotiated presentation context.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>octets</strong> (<em>bytes</em>) – Encoded ASN.1 payload.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="../../getting-started/coreapi.html#icspacket.core.connection.ConnectionNotEstablished" title="icspacket.core.connection.ConnectionNotEstablished"><strong>ConnectionNotEstablished</strong></a> – If no presentation context is bound.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.mms.acse.Association.recv_data">
+<span class="sig-name descname"><span class="pre">recv_data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bytes</span></span></span><a class="reference internal" href="../../_modules/icspacket/proto/mms/acse.html#Association.recv_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.mms.acse.Association.recv_data" title="Link to this definition">¶</a></dt>
+<dd><p>Not supported.</p>
+<p>Raw data reception is disallowed in ACSE. Use <code class="docutils literal notranslate"><span class="pre">recv_encoded_data</span></code>
+instead.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.mms.acse.Association.recv_encoded_data">
+<span class="sig-name descname"><span class="pre">recv_encoded_data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Any</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="reference internal" href="../../_modules/icspacket/proto/mms/acse.html#Association.recv_encoded_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.mms.acse.Association.recv_encoded_data" title="Link to this definition">¶</a></dt>
+<dd><p>Receive user data through ACSE association.</p>
+<p>Retrieves encoded user information, decoding it according to the
+negotiated ASN.1 type for the active presentation context.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Decoded user data instance or <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Any | None</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><a class="reference internal" href="../../getting-started/coreapi.html#icspacket.core.connection.ConnectionNotEstablished" title="icspacket.core.connection.ConnectionNotEstablished"><strong>ConnectionNotEstablished</strong></a> – If association has no context ID.</p></li>
+<li><p><a class="reference internal" href="../../getting-started/coreapi.html#icspacket.core.connection.ConnectionStateError" title="icspacket.core.connection.ConnectionStateError"><strong>ConnectionStateError</strong></a> – If no ASN.1 type is registered for the context.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="icspacket.proto.mms.acse.Authenticator">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">icspacket.proto.mms.acse.</span></span><span class="sig-name descname"><span class="pre">Authenticator</span></span><a class="reference internal" href="../../_modules/icspacket/proto/mms/acse.html#Authenticator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.mms.acse.Authenticator" title="Link to this definition">¶</a></dt>
+<dd><p>Abstract base class for ACSE authenticators.</p>
+<p>Implementations are responsible for populating an <code class="docutils literal notranslate"><span class="pre">AARQ-apdu</span></code> with
+the appropriate authentication information (mechanism OID, tokens,
+AP-title/AE-qualifier if applicable).</p>
+<p>Subclasses can implement different authentication mechanisms as
+specified in ISO 8650 (e.g., password).</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.mms.acse.Authenticator.prepare_association">
+<em class="property"><span class="k"><span class="pre">abstractmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">prepare_association</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">aarq</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">AARQ_apdu</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../../_modules/icspacket/proto/mms/acse.html#Authenticator.prepare_association"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.mms.acse.Authenticator.prepare_association" title="Link to this definition">¶</a></dt>
+<dd><p>Populate an <code class="docutils literal notranslate"><span class="pre">AARQ-apdu</span></code> with authentication credentials.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>aarq</strong> (<em>AARQ_apdu</em>) – Association Request APDU to modify before sending
+to the peer.</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This method should not send the APDU itself, only update
+its authentication-related fields. The caller is responsible
+for encoding and transmission.</p>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="icspacket.proto.mms.acse.build_abort_request">
+<span class="sig-prename descclassname"><span class="pre">icspacket.proto.mms.acse.</span></span><span class="sig-name descname"><span class="pre">build_abort_request</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">VALUES</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">diagnostic</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">VALUES</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bytes</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">presentation_context_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ABRT_apdu</span></span></span><a class="reference internal" href="../../_modules/icspacket/proto/mms/acse.html#build_abort_request"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.mms.acse.build_abort_request" title="Link to this definition">¶</a></dt>
+<dd><p>Build an ACSE Abort Request (ABRT) APDU.</p>
+<p>This creates an abort PDU for immediate termination of an ACSE
+association. It can optionally include diagnostic information and
+user data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>source</strong> (<em>ABRT_source.VALUES</em>) – Identifies whether the abort was initiated by ACSE service
+user or provider.</p></li>
+<li><p><strong>diagnostic</strong> (<em>ABRT_diagnostic.VALUES</em><em> | </em><em>None</em>) – Optional diagnostic code providing reason for abort.</p></li>
+<li><p><strong>user_data</strong> (<em>bytes</em><em> | </em><em>None</em>) – Optional user data payload to include with the abort.</p></li>
+<li><p><strong>presentation_context_id</strong> (<em>int</em><em> | </em><em>None</em>) – Context identifier for encoding user data.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Encoded ACSE Abort APDU.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>ABRT_apdu</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If user data is provided without a valid presentation
+context identifier.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="icspacket.proto.mms.acse.build_associate_request">
+<span class="sig-prename descclassname"><span class="pre">icspacket.proto.mms.acse.</span></span><span class="sig-name descname"><span class="pre">build_associate_request</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">user_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bytes</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">application_context_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">presentation_context_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">auth_mechanism_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">auth_token</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Authentication_value</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">AARQ_apdu</span></span></span><a class="reference internal" href="../../_modules/icspacket/proto/mms/acse.html#build_associate_request"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.mms.acse.build_associate_request" title="Link to this definition">¶</a></dt>
+<dd><p>Build an ACSE Association Request (AARQ) APDU.</p>
+<p>This constructs an AARQ PDU for establishing an ACSE association.
+Both the <em>application-context-name</em> and <em>presentation-context-identifier</em>
+must be supplied together; otherwise, defaults for MMS are applied.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>user_data</strong> (<em>bytes</em>) – Encoded user data payload.</p></li>
+<li><p><strong>application_context_name</strong> (<em>str</em><em> | </em><em>None</em>) – Optional application context name.</p></li>
+<li><p><strong>presentation_context_id</strong> (<em>int</em><em> | </em><em>None</em>) – Optional context identifier.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Encoded ACSE Association Request APDU.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>AARQ_apdu</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If only one of application_context_name or
+presentation_context_id is provided.</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If neither parameter is given, MMS defaults are used:
+<code class="docutils literal notranslate"><span class="pre">MMS_ABSTRACT_SYNTAX_NAME</span></code> and <code class="docutils literal notranslate"><span class="pre">MMS_PRESENTATION_CONTEXT_ID</span></code>.</p>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="icspacket.proto.mms.acse.build_release_request">
+<span class="sig-prename descclassname"><span class="pre">icspacket.proto.mms.acse.</span></span><span class="sig-name descname"><span class="pre">build_release_request</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">reason</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">VALUES</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">RLRQ_apdu</span></span></span><a class="reference internal" href="../../_modules/icspacket/proto/mms/acse.html#build_release_request"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.mms.acse.build_release_request" title="Link to this definition">¶</a></dt>
+<dd><p>Build an ACSE Release Request (RLRQ) APDU.</p>
+<p>This constructs a Release Request PDU according to ISO 8650 / X.227,
+which is used by an ACSE service user to signal the intention to
+terminate an established association.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>reason</strong> (<em>Release_request_reason.VALUES</em>) – Release request reason (e.g., normal release).</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Encoded ACSE Release Request APDU.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>RLRQ_apdu</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="icspacket.proto.mms.acse.PasswordAuth">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">icspacket.proto.mms.acse.</span></span><span class="sig-name descname"><span class="pre">PasswordAuth</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">password</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ap_title</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qualifier</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/icspacket/proto/mms/acse.html#PasswordAuth"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.mms.acse.PasswordAuth" title="Link to this definition">¶</a></dt>
+<dd><p>Annex B: Password-based authentication mechanism.</p>
+<p>Implements the ACSE-defined password mechanism
+<code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">joint-iso-itu-t(2)</span> <span class="pre">association-control(2)</span> <span class="pre">authentication-mechanism(3)</span> <span class="pre">password-1(1)</span> <span class="pre">}</span></code>.</p>
+<p>This authenticator inserts a cleartext password into the
+<code class="docutils literal notranslate"><span class="pre">calling-authentication-value</span></code> field of the <code class="docutils literal notranslate"><span class="pre">AARQ-apdu</span></code>,
+along with optional application entity identifiers.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Password authentication is considered weak and should
+generally only be used in test environments or legacy systems.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>password</strong> (<em>str</em>) – The cleartext password used for authentication.</p></li>
+<li><p><strong>ap_title</strong> (<em>str</em>) – Application Process Title (AP-title) identifying
+the calling entity.</p></li>
+<li><p><strong>qualifier</strong> (<em>int</em>) – Application Entity (AE) qualifier for the calling entity.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.mms.acse.PasswordAuth.MECHANISM_NAME">
+<span class="sig-name descname"><span class="pre">MECHANISM_NAME</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'2.2.3.1'</span></em><a class="headerlink" href="#icspacket.proto.mms.acse.PasswordAuth.MECHANISM_NAME" title="Link to this definition">¶</a></dt>
+<dd><p>Object identifier for ACSE password authentication.</p>
+<p>ASN.1 notation:
+<code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">joint-iso-itu-t(2)</span> <span class="pre">association-control(2)</span> <span class="pre">authentication-mechanism(3)</span> <span class="pre">password-1(1)</span> <span class="pre">}</span></code></p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="icspacket.proto.mms.acse.PasswordAuth.password">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">password</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#icspacket.proto.mms.acse.PasswordAuth.password" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The configured password.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.mms.acse.PasswordAuth.prepare_association">
+<span class="sig-name descname"><span class="pre">prepare_association</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">aarq</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">AARQ_apdu</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../../_modules/icspacket/proto/mms/acse.html#PasswordAuth.prepare_association"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.mms.acse.PasswordAuth.prepare_association" title="Link to this definition">¶</a></dt>
+<dd><p>Populate the given <code class="docutils literal notranslate"><span class="pre">AARQ-apdu</span></code> with password-based
+authentication fields.</p>
+<p>Sets the mechanism name to <code class="docutils literal notranslate"><span class="pre">PasswordAuth.MECHANISM_NAME</span></code>,
+inserts the password into <code class="docutils literal notranslate"><span class="pre">calling-authentication-value</span></code>,
+and fills in the <code class="docutils literal notranslate"><span class="pre">calling-AP-title</span></code> and
+<code class="docutils literal notranslate"><span class="pre">calling-AE-qualifier</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>aarq</strong> (<em>AARQ_apdu</em>) – Association Request APDU to modify.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+        </article><button class="back-to-top" type="button">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+  </svg>
+  <span>Back to top</span>
+</button><div class="navigation flex print:hidden"><div class="navigation-prev">
+    <a href="../mms/api_utils.html">
+      <i class="i-lucide chevron-left"></i>
+      <div class="page-info">
+        <span>Previous</span><div class="title">Protocol Utilities</div></div>
+    </a>
+  </div><div class="navigation-next">
+    <a href="../copp/api.html">
+      <div class="page-info">
+        <span>Next</span>
+        <div class="title">API Reference</div>
+      </div>
+      <i class="i-lucide chevron-right"></i>
+    </a>
+  </div></div></div>
+    </div>
+  </main>
+</div>
+<footer class="sy-foot">
+  <div class="sy-foot-inner sy-container mx-auto">
+    <div class="sy-foot-reserved md:flex justify-between items-center">
+      <div class="sy-foot-copyright"><p>2025, MatrixEditor</p>
+  
+  <p>
+    Made with
+    
+    <a href="https://www.sphinx-doc.org/">Sphinx</a> and
+    
+    <a href="https://shibuya.lepture.com">Shibuya theme</a>.
+  </p>
+</div>
+      <div class="sy-foot-socials">
+<a href="https://github.com/MatrixEditor/icspacket" aria-label="GitHub">
+  <iconify-icon icon="simple-icons:github"></iconify-icon>
+</a></div>
+    </div>
+  </div>
+</footer>
+      <script src="../../_static/documentation_options.js?v=e3b32040"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+      <script src="../../_static/shibuya.js?v=e730760c"></script></body>
+</html>

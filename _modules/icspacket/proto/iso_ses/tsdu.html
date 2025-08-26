@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en" data-accent-color="lime" data-content_root="../../../../">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>icspacket.proto.iso_ses.tsdu - icspacket 0.1.dev1+g814ee7fee documentation</title><link rel="index" title="Index" href="../../../../genindex.html" /><link rel="search" title="Search" href="../../../../search.html" />
+      <link rel="canonical" href="https://matrixeditor.github.io/icspacket/_modules/icspacket/proto/iso_ses/tsdu.html" /><script>
+    function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
+    setColorMode(localStorage._theme||"dark");
+  </script><link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=397bb51e" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/shibuya.css?v=d48c410d" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link media="print" rel="stylesheet" type="text/css" href="../../../../_static/print.css?v=20ff2c19" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --sy-f-text: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+  --sy-f-heading: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+}
+</style>
+    <meta property="og:type" content="website"/>
+<meta property="og:url" content="https://matrixeditor.github.io/icspacket/_modules/icspacket/proto/iso_ses/tsdu.html"/>
+<meta property="og:title" content="icspacket.proto.iso_ses.tsdu"/>
+<meta name="twitter:card" content="summary"/>
+  </head>
+<body><div class="sy-head">
+  <div class="sy-head-blur"></div>
+  <div class="sy-head-inner sy-container mx-auto">
+    <a class="sy-head-brand" href="../../../../index.html">
+      
+      
+      <strong>icspacket</strong>
+    </a>
+    <div class="sy-head-nav" id="head-nav">
+      <nav class="sy-head-links"><ul>
+      <li class="link"><a class="js-menu" href="../../../../examples/index.html" id="nav-trigger-1" aria-controls="nav-children-1">
+            <span>Examples</span>
+            <i class="i-lucide chevron-down"></i>
+          </a>
+        <ul id="nav-children-1" aria-labelledby="nav-trigger-1"><li><a href="../../../../examples/mms/index.html">
+                <span>MMS Utilities</span>
+                <small>Manufacturing Message Specification tools</small>
+              </a></li></ul>
+      </li></ul></nav>
+      <div class="sy-head-extra flex items-center print:hidden"><form class="searchbox flex items-center" action="../../../../search.html" method="get">
+  <input type="text" name="q" placeholder="Search" />
+  <kbd>/</kbd>
+</form><div class="sy-head-socials">
+  <a href="https://github.com/MatrixEditor/icspacket" aria-label="GitHub">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </a></div></div>
+    </div>
+    <div class="sy-head-actions flex items-center shrink-0 print:hidden"><button class="js-theme theme-switch flex items-center"
+data-aria-auto="Switch to light color mode"
+data-aria-light="Switch to dark color mode"
+data-aria-dark="Switch to auto color mode">
+<i class="i-lucide theme-icon"></i>
+</button><button class="md:hidden flex items-center js-menu" aria-label="Menu" type="button" aria-controls="head-nav" aria-expanded="false">
+        <div class="hamburger">
+          <span class="hamburger_1"></span>
+          <span class="hamburger_2 -translate-x-2"></span>
+          <span class="hamburger_3 -translate-x-1"></span>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>
+<div class="sy-page sy-container flex mx-auto">
+  <aside id="lside" class="sy-lside md:w-72 md:shrink-0 print:hidden">
+    <div class="sy-lside-inner md:sticky">
+      <div class="sy-scrollbar p-6"><div class="sidebar-links">
+  <ul>
+    <li><a class="icon-link" href="https://github.com/MatrixEditor/icspacket/discussions">
+  <span class="icon">
+    <svg viewBox="0 0 24 24" fill="none">
+      <path fill="var(--accent-9)" fill-rule="evenodd" clip-rule="evenodd" d="M11 5a6 6 0 0 0-4.687 9.746c.215.27.315.62.231.954l-.514 2.058a1 1 0 0 0 1.485 1.1l2.848-1.71c.174-.104.374-.15.576-.148H13a6 6 0 0 0 0-12h-2Z"/>
+      <circle fill="white" cx="12" cy="11" r="1"/>
+      <circle fill="white" cx="9" cy="11" r="1"/>
+      <circle fill="white" cx="15" cy="11" r="1"/>
+    </svg>
+  </span>
+  <span class="text">Discussion</span>
+</a></li>
+  </ul>
+</div>
+        <div class="globaltoc" data-expand-depth="2"><p class="caption" role="heading" aria-level="3"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../getting-started/installation.html">Installation</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../getting-started/protocols.html">Protocols Overview</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../getting-started/coreapi.html">Core API Reference</a></li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">MMS / ISO 9506</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../protocols/mms/demo_vars.html">Variable Target Format</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../protocols/mms/demo_vars.html#variableaccess-service-rwq">VariableAccess Service (rwq)</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../protocols/mms/demo_files.html">FileManagement Service</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../protocols/mms/api.html">API Reference</a><ul>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../../../../protocols/mms/api_conn.html">MMS Connection</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../../../../protocols/mms/api_data.html">Data Conversion</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../../../../protocols/mms/api_utils.html">Protocol Utilities</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">ACSE / X.227</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../protocols/acse/api.html">API Reference</a></li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">COPP / X.226 / ISO 8823</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../protocols/copp/api.html">API Reference</a><ul>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../../../../protocols/copp/presentation.html">ISO Presentation</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../../../../protocols/copp/utils.html">Protocol Utilities</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">COSP / X.225 / ISO 8237-1</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../protocols/cosp/api.html">API Reference</a><ul>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../../../../protocols/cosp/tsdu.html">TSDU</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../../../../protocols/cosp/spdu.html">SPDU Types</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../../../../protocols/cosp/values.html">Parameter Values (PV)</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../../../../protocols/cosp/session.html">ISO Session</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../../../../protocols/cosp/utils.html">Protocol Utilities</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">COTP / X.224</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../protocols/cotp/api.html">API Reference</a><ul>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../../../../protocols/cotp/structs.html">TPDU Types</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../../../../protocols/cotp/connection.html">Connection</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">TPKT Protocol (RFC1006)</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../protocols/tpkt/usage.html">Using a TPKT Wrapper</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../protocols/tpkt/api.html">API Reference</a></li>
+</ul>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="lside-overlay js-menu" role="button" aria-label="Close left sidebar" aria-controls="lside" aria-expanded="false"></div>
+  <aside id="rside" class="sy-rside pb-3 w-64 shrink-0 order-last">
+    <button class="rside-close js-menu xl:hidden" aria-label="Close Table of Contents" type="button" aria-controls="rside" aria-expanded="false">
+      <i class="i-lucide close"></i>
+    </button>
+    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><a class="js-repo-stats repo-stats flex items-center" href="https://github.com/MatrixEditor/icspacket"
+  data-type="github" data-user="MatrixEditor" data-repo="icspacket">
+  <span class="w-8 flex items-center justify-around shrink-0 text-3xl">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </span>
+  <span class="flex-grow px-2 break-all">
+    <span style="font-size: small;">MatrixEditor/icspacket</span>
+    <span class="flex text-sm repo-stats-count">
+      <span class="flex items-center pr-3">
+        <iconify-icon icon="lucide:star"></iconify-icon>
+        <strong class="js-repo-stars ml-1">0</strong>
+      </span>
+      <span class="flex items-center">
+        <iconify-icon icon="lucide:git-fork"></iconify-icon>
+        <strong class="js-repo-forks ml-1">0</strong>
+      </span>
+    </span>
+  </span>
+</a></div>
+  </aside>
+  <div class="rside-overlay js-menu" role="button" aria-label="Close Table of Contents" aria-controls="rside" aria-expanded="false"></div>
+  <main class="sy-main w-full max-sm:max-w-full print:pt-6">
+<div class="sy-breadcrumbs" role="navigation">
+  <div class="sy-breadcrumbs-inner flex items-center">
+    <div class="md:hidden mr-3">
+      <button class="js-menu" aria-label="Menu" type="button" aria-controls="lside" aria-expanded="false">
+        <i class="i-lucide menu"></i>
+      </button>
+    </div>
+    <ol class="flex-1" itemscope itemtype="https://schema.org/BreadcrumbList"><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="../../../../index.html"><span itemprop="name">icspacket</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="1" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="../../../index.html"><span itemprop="name">Module code</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="2" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <strong itemprop="name">icspacket.proto.iso_ses.tsdu</strong>
+        <meta itemprop="position" content="3" />
+      </li></ol>
+    <div class="xl:hidden ml-1">
+      <button class="js-menu" aria-label="Show table of contents" type="button" aria-controls="rside"
+        aria-expanded="false">
+        <i class="i-lucide outdent"></i>
+      </button>
+    </div>
+  </div>
+</div><div class="flex flex-col break-words justify-between">
+      <div class="min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
+        <article class="yue" role="main">
+          <h1>Source code for icspacket.proto.iso_ses.tsdu</h1><div class="highlight"><pre>
+<span></span><span data-line="1"><span class="c1"># This file is part of icspacket.</span>
+</span><span data-line="2"><span class="c1"># Copyright (C) 2025-present  MatrixEditor @ github</span>
+</span><span data-line="3"><span class="c1">#</span>
+</span><span data-line="4"><span class="c1"># This program is free software: you can redistribute it and/or modify</span>
+</span><span data-line="5"><span class="c1"># it under the terms of the GNU General Public License as published by</span>
+</span><span data-line="6"><span class="c1"># the Free Software Foundation, either version 3 of the License, or</span>
+</span><span data-line="7"><span class="c1"># (at your option) any later version.</span>
+</span><span data-line="8"><span class="c1">#</span>
+</span><span data-line="9"><span class="c1"># This program is distributed in the hope that it will be useful,</span>
+</span><span data-line="10"><span class="c1"># but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+</span><span data-line="11"><span class="c1"># MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+</span><span data-line="12"><span class="c1"># GNU General Public License for more details.</span>
+</span><span data-line="13"><span class="c1">#</span>
+</span><span data-line="14"><span class="c1"># You should have received a copy of the GNU General Public License</span>
+</span><span data-line="15"><span class="c1"># along with this program.  If not, see &lt;https://www.gnu.org/licenses/&gt;.</span>
+</span><span data-line="16"><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="17"><span class="sd">TSDU (Transport Service Data Unit) Handling</span>
+</span><span data-line="18"><span class="sd">-------------------------------------------</span>
+</span><span data-line="19">
+</span><span data-line="20"><span class="sd">This module implements parsing and building logic for **TSDUs** as defined in</span>
+</span><span data-line="21"><span class="sd">§8.1 of the X.225 specification.</span>
+</span><span data-line="22">
+</span><span data-line="23"><span class="sd">A TSDU is the *unit of data* exchanged between the session layer and the</span>
+</span><span data-line="24"><span class="sd">transport layer. It may contain:</span>
+</span><span data-line="25">
+</span><span data-line="26"><span class="sd">- One SPDU mapped directly to a TSDU (Category 1)</span>
+</span><span data-line="27"><span class="sd">- Multiple SPDUs concatenated (Category 0 + Category 2, or multiple Category 2s)</span>
+</span><span data-line="28"><span class="sd">- In special cases, only a Category 0 SPDU</span>
+</span><span data-line="29">
+</span><span data-line="30"><span class="sd">Concatenation rules are defined in §6.3.7:</span>
+</span><span data-line="31">
+</span><span data-line="32"><span class="sd">- **Category 0** SPDUs may be mapped one-to-one onto a TSDU *or*</span>
+</span><span data-line="33"><span class="sd">    concatenated with one or more Category 2 SPDUs.</span>
+</span><span data-line="34"><span class="sd">- **Category 1** SPDUs are always mapped one-to-one to a TSDU (no</span>
+</span><span data-line="35"><span class="sd">    concatenation).</span>
+</span><span data-line="36"><span class="sd">- **Category 2** SPDUs are never mapped one-to-one — they appear only after</span>
+</span><span data-line="37"><span class="sd">    a Category 0 SPDU in the same TSDU.</span>
+</span><span data-line="38">
+</span><span data-line="39"><span class="sd">.. seealso::</span>
+</span><span data-line="40">
+</span><span data-line="41"><span class="sd">    - §6.3.7 Concatenation rules</span>
+</span><span data-line="42"><span class="sd">    - §8.1 TSDU structure</span>
+</span><span data-line="43"><span class="sd">    - §8.2 SPDU structure</span>
+</span><span data-line="44"><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="45">
+</span><span data-line="46"><span class="kn">from</span><span class="w"> </span><span class="nn">collections.abc</span><span class="w"> </span><span class="kn">import</span> <span class="n">Iterator</span>
+</span><span data-line="47"><span class="kn">from</span><span class="w"> </span><span class="nn">caterpillar.model</span><span class="w"> </span><span class="kn">import</span> <span class="n">unpack</span>
+</span><span data-line="48">
+</span><span data-line="49"><span class="kn">from</span><span class="w"> </span><span class="nn">icspacket.proto.iso_ses.spdu</span><span class="w"> </span><span class="kn">import</span> <span class="n">LI</span><span class="p">,</span> <span class="n">SPDU</span><span class="p">,</span> <span class="n">SPDU_Category</span><span class="p">,</span> <span class="n">SPDU_Codes</span><span class="p">,</span> <span class="n">LI_Extended</span>
+</span><span data-line="50">
+</span><span data-line="51">
+<div class="viewcode-block" id="TSDU">
+<a class="viewcode-back" href="../../../../protocols/cosp/tsdu.html#icspacket.proto.iso_ses.tsdu.TSDU">[docs]</a>
+</span><span data-line="52"><span class="k">class</span><span class="w"> </span><span class="nc">TSDU</span><span class="p">:</span>
+</span><span data-line="53"><span class="w">    </span><span class="sd">&quot;&quot;&quot;TSDU container for one or more concatenated SPDUs — X.225 §8.1</span>
+</span><span data-line="54">
+</span><span data-line="55"><span class="sd">    Usage:</span>
+</span><span data-line="56">
+</span><span data-line="57"><span class="sd">    &gt;&gt;&gt; tsdu = TSDU.from_octets(data)   # Parse a raw TSDU from bytes</span>
+</span><span data-line="58"><span class="sd">    &gt;&gt;&gt; tsdu.build()                    # Encode back to raw bytes</span>
+</span><span data-line="59"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span data-line="60">
+</span><span data-line="61">    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="62">        <span class="bp">self</span><span class="o">.</span><span class="n">__spdus</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span data-line="63">
+</span><span data-line="64">    <span class="k">def</span><span class="w"> </span><span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+</span><span data-line="65">        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;TSDU(spdus=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">spdus</span><span class="si">}</span><span class="s2">)&quot;</span>
+</span><span data-line="66">
+</span><span data-line="67">    <span class="k">def</span><span class="w"> </span><span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+</span><span data-line="68">        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">spdus</span><span class="p">)</span>
+</span><span data-line="69">
+</span><span data-line="70">    <span class="k">def</span><span class="w"> </span><span class="fm">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Iterator</span><span class="p">[</span><span class="n">SPDU</span><span class="p">]:</span>
+</span><span data-line="71">        <span class="k">return</span> <span class="nb">iter</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">spdus</span><span class="p">)</span>
+</span><span data-line="72">
+<div class="viewcode-block" id="TSDU.add_spdu">
+<a class="viewcode-back" href="../../../../protocols/cosp/tsdu.html#icspacket.proto.iso_ses.tsdu.TSDU.add_spdu">[docs]</a>
+</span><span data-line="73">    <span class="k">def</span><span class="w"> </span><span class="nf">add_spdu</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">code</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">category</span><span class="p">:</span> <span class="n">SPDU_Category</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SPDU</span><span class="p">:</span>
+</span><span data-line="74"><span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a new SPDU and append it to this TSDU.</span>
+</span><span data-line="75">
+</span><span data-line="76"><span class="sd">        :param code: The SPDU code (see `SPDU_Codes`).</span>
+</span><span data-line="77"><span class="sd">        :type code: int</span>
+</span><span data-line="78"><span class="sd">        :param category: The SPDU category, defaults to False</span>
+</span><span data-line="79"><span class="sd">        :type category: SPDU_Category, optional</span>
+</span><span data-line="80"><span class="sd">        :return: The newly created SPDU object.</span>
+</span><span data-line="81"><span class="sd">        :rtype: SPDU</span>
+</span><span data-line="82"><span class="sd">        &quot;&quot;&quot;</span>
+</span><span data-line="83">        <span class="n">spdu</span> <span class="o">=</span> <span class="n">SPDU</span><span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="n">category</span><span class="p">)</span>
+</span><span data-line="84">        <span class="bp">self</span><span class="o">.</span><span class="n">spdus</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">spdu</span><span class="p">)</span>
+</span><span data-line="85">        <span class="k">return</span> <span class="n">spdu</span></div>
+
+</span><span data-line="86">
+</span><span data-line="87">    <span class="nd">@property</span>
+</span><span data-line="88">    <span class="k">def</span><span class="w"> </span><span class="nf">spdus</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">SPDU</span><span class="p">]:</span>
+</span><span data-line="89"><span class="w">        </span><span class="sd">&quot;&quot;&quot;List of SPDUs contained in this TSDU.</span>
+</span><span data-line="90">
+</span><span data-line="91"><span class="sd">        This property returns a direct reference to the internal list, so it can be</span>
+</span><span data-line="92"><span class="sd">        iterated over or modified directly.</span>
+</span><span data-line="93"><span class="sd">        &quot;&quot;&quot;</span>
+</span><span data-line="94">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__spdus</span>
+</span><span data-line="95">
+<div class="viewcode-block" id="TSDU.from_octets">
+<a class="viewcode-back" href="../../../../protocols/cosp/tsdu.html#icspacket.proto.iso_ses.tsdu.TSDU.from_octets">[docs]</a>
+</span><span data-line="96">    <span class="nd">@staticmethod</span>
+</span><span data-line="97">    <span class="k">def</span><span class="w"> </span><span class="nf">from_octets</span><span class="p">(</span><span class="n">octets</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">):</span>
+</span><span data-line="98"><span class="w">        </span><span class="sd">&quot;&quot;&quot;Decode a raw TSDU from its octet representation.</span>
+</span><span data-line="99">
+</span><span data-line="100"><span class="sd">        :param octets: The raw TSDU data as received from the transport layer.</span>
+</span><span data-line="101"><span class="sd">        :type octets: bytes</span>
+</span><span data-line="102"><span class="sd">        :raises ValueError: If a Category 0 SPDU has a non-zero length, or or if</span>
+</span><span data-line="103"><span class="sd">            any SPDU length is invalid (extends beyond buffer).</span>
+</span><span data-line="104"><span class="sd">        :return: A fully parsed TSDU object containing one or more SPDUs.</span>
+</span><span data-line="105"><span class="sd">        :rtype: TSDU</span>
+</span><span data-line="106"><span class="sd">        &quot;&quot;&quot;</span>
+</span><span data-line="107">        <span class="c1"># fmt: off</span>
+</span><span data-line="108">        <span class="n">tsdu</span> <span class="o">=</span> <span class="n">TSDU</span><span class="p">()</span>
+</span><span data-line="109">
+</span><span data-line="110">        <span class="c1"># --- Step 1: Detect Category 0 SPDU ---</span>
+</span><span data-line="111">        <span class="n">si</span> <span class="o">=</span> <span class="n">octets</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># SPDU Identifier</span>
+</span><span data-line="112">        <span class="n">offset</span> <span class="o">=</span> <span class="mi">0</span>           <span class="c1"># Current parsing position in TSDU buffer</span>
+</span><span data-line="113">        <span class="n">index</span> <span class="o">=</span> <span class="mi">0</span>            <span class="c1"># SPDU sequence index within TSDU</span>
+</span><span data-line="114">
+</span><span data-line="115">        <span class="c1"># Special case: Category 0 types (PLEASE_TOKENS, GIVE_TOKENS)</span>
+</span><span data-line="116">        <span class="k">if</span> <span class="n">si</span> <span class="ow">in</span> <span class="p">(</span><span class="n">SPDU_Codes</span><span class="o">.</span><span class="n">PLEASE_TOKENS_SPDU</span><span class="p">,</span> <span class="n">SPDU_Codes</span><span class="o">.</span><span class="n">GIVE_TOKENS_SPDU</span><span class="p">):</span>
+</span><span data-line="117">            <span class="n">tsdu</span><span class="o">.</span><span class="n">spdus</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">SPDU</span><span class="p">(</span><span class="n">si</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="n">SPDU_Category</span><span class="o">.</span><span class="n">CATEGORY_0</span><span class="p">))</span>
+</span><span data-line="118">            <span class="k">if</span> <span class="n">octets</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>  <span class="c1"># length MUST be null</span>
+</span><span data-line="119">                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Invalid length of Category 0 SPDU&quot;</span><span class="p">)</span>
+</span><span data-line="120">
+</span><span data-line="121">            <span class="n">offset</span> <span class="o">=</span> <span class="mi">2</span>      <span class="c1"># Skip SI + LI</span>
+</span><span data-line="122">            <span class="n">index</span> <span class="o">=</span> <span class="mi">1</span>
+</span><span data-line="123">
+</span><span data-line="124">        <span class="c1"># --- Step 2: Parse remaining SPDUs ---</span>
+</span><span data-line="125">        <span class="k">while</span> <span class="n">offset</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">octets</span><span class="p">):</span>
+</span><span data-line="126">            <span class="c1"># Read LI for this SPDU (octets[offset+1:] = LI + rest)</span>
+</span><span data-line="127">            <span class="n">li</span> <span class="o">=</span> <span class="n">unpack</span><span class="p">(</span><span class="n">LI_Extended</span><span class="p">,</span> <span class="n">octets</span><span class="p">[</span><span class="n">offset</span> <span class="o">+</span> <span class="mi">1</span> <span class="p">:])</span>
+</span><span data-line="128">            <span class="k">if</span> <span class="n">li</span> <span class="o">&gt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">octets</span><span class="p">)</span> <span class="ow">or</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">li</span> <span class="o">&gt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">octets</span><span class="p">):</span>
+</span><span data-line="129">                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+</span><span data-line="130">                    <span class="sa">f</span><span class="s2">&quot;Invalid length of SPDU [</span><span class="si">{</span><span class="n">index</span><span class="si">}</span><span class="s2">] at offset </span><span class="si">{</span><span class="n">offset</span><span class="si">}</span><span class="s2">+1&quot;</span>
+</span><span data-line="131">                <span class="p">)</span>
+</span><span data-line="132">
+</span><span data-line="133">            <span class="c1"># Parse SPDU without immediately decoding user information</span>
+</span><span data-line="134">            <span class="n">spdu</span> <span class="o">=</span> <span class="n">SPDU</span><span class="o">.</span><span class="n">from_octets</span><span class="p">(</span><span class="n">octets</span><span class="p">[</span><span class="n">offset</span><span class="p">:])</span>
+</span><span data-line="135">            <span class="n">category</span> <span class="o">=</span> <span class="n">SPDU_Category</span><span class="o">.</span><span class="n">CATEGORY_1</span>
+</span><span data-line="136">            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">tsdu</span><span class="o">.</span><span class="n">spdus</span><span class="p">)</span> <span class="ow">and</span> <span class="n">tsdu</span><span class="o">.</span><span class="n">spdus</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">category</span> <span class="o">==</span> <span class="n">SPDU_Category</span><span class="o">.</span><span class="n">CATEGORY_0</span><span class="p">:</span>
+</span><span data-line="137">                <span class="n">category</span> <span class="o">=</span> <span class="n">SPDU_Category</span><span class="o">.</span><span class="n">CATEGORY_2</span>
+</span><span data-line="138">
+</span><span data-line="139">            <span class="n">spdu</span><span class="o">.</span><span class="n">category</span> <span class="o">=</span> <span class="n">category</span>
+</span><span data-line="140">            <span class="c1"># Advance offset:</span>
+</span><span data-line="141">            <span class="c1">#   LI length (LI.octet_size) + LI value + SI (1 byte)</span>
+</span><span data-line="142">            <span class="c1">#   + any trailing user information bytes</span>
+</span><span data-line="143">            <span class="n">offset</span> <span class="o">+=</span> <span class="n">li</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">LI</span><span class="o">.</span><span class="n">octet_size</span><span class="p">(</span><span class="n">li</span><span class="p">)</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="n">spdu</span><span class="o">.</span><span class="n">user_information</span><span class="p">)</span>
+</span><span data-line="144">            <span class="n">tsdu</span><span class="o">.</span><span class="n">spdus</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">spdu</span><span class="p">)</span>
+</span><span data-line="145">
+</span><span data-line="146">        <span class="c1"># fmt: on</span>
+</span><span data-line="147">        <span class="k">return</span> <span class="n">tsdu</span></div>
+
+</span><span data-line="148">
+<div class="viewcode-block" id="TSDU.build">
+<a class="viewcode-back" href="../../../../protocols/cosp/tsdu.html#icspacket.proto.iso_ses.tsdu.TSDU.build">[docs]</a>
+</span><span data-line="149">    <span class="k">def</span><span class="w"> </span><span class="nf">build</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bytes</span><span class="p">:</span>
+</span><span data-line="150"><span class="w">        </span><span class="sd">&quot;&quot;&quot;Assemble the TSDU into its raw octet representation.</span>
+</span><span data-line="151">
+</span><span data-line="152"><span class="sd">        :return: The encoded TSDU, produced by concatenating each SPDU&#39;s octet</span>
+</span><span data-line="153"><span class="sd">            representation.</span>
+</span><span data-line="154"><span class="sd">        :rtype: bytes</span>
+</span><span data-line="155"><span class="sd">        &quot;&quot;&quot;</span>
+</span><span data-line="156">        <span class="k">return</span> <span class="sa">b</span><span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">spdu</span><span class="o">.</span><span class="n">build</span><span class="p">()</span> <span class="k">for</span> <span class="n">spdu</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">spdus</span><span class="p">])</span></div>
+</div>
+
+</span></pre></div>
+        </article><button class="back-to-top" type="button">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+  </svg>
+  <span>Back to top</span>
+</button><div class="navigation flex print:hidden"></div></div>
+    </div>
+  </main>
+</div>
+<footer class="sy-foot">
+  <div class="sy-foot-inner sy-container mx-auto">
+    <div class="sy-foot-reserved md:flex justify-between items-center">
+      <div class="sy-foot-copyright"><p>2025, MatrixEditor</p>
+  
+  <p>
+    Made with
+    
+    <a href="https://www.sphinx-doc.org/">Sphinx</a> and
+    
+    <a href="https://shibuya.lepture.com">Shibuya theme</a>.
+  </p>
+</div>
+      <div class="sy-foot-socials">
+<a href="https://github.com/MatrixEditor/icspacket" aria-label="GitHub">
+  <iconify-icon icon="simple-icons:github"></iconify-icon>
+</a></div>
+    </div>
+  </div>
+</footer>
+      <script src="../../../../_static/documentation_options.js?v=e3b32040"></script>
+      <script src="../../../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../../../_static/design-tabs.js?v=f930bc37"></script>
+      <script src="../../../../_static/shibuya.js?v=e730760c"></script></body>
+</html>

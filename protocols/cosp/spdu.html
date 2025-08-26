@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en" data-accent-color="lime" data-content_root="../../">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>SPDU Types - icspacket 0.1.dev1+g814ee7fee documentation</title><link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="Parameter Values (PV)" href="values.html" /><link rel="prev" title="TSDU" href="tsdu.html" />
+      <link rel="canonical" href="https://matrixeditor.github.io/icspacket/protocols/cosp/spdu.html" /><script>
+    function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
+    setColorMode(localStorage._theme||"dark");
+  </script><link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=397bb51e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/shibuya.css?v=d48c410d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link media="print" rel="stylesheet" type="text/css" href="../../_static/print.css?v=20ff2c19" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --sy-f-text: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+  --sy-f-heading: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+}
+</style>
+    <meta property="og:type" content="website"/>
+<meta property="og:url" content="https://matrixeditor.github.io/icspacket/protocols/cosp/spdu.html"/>
+<meta property="og:title" content="SPDU Types"/>
+<meta name="twitter:card" content="summary"/>
+  </head>
+<body><div class="sy-head">
+  <div class="sy-head-blur"></div>
+  <div class="sy-head-inner sy-container mx-auto">
+    <a class="sy-head-brand" href="../../index.html">
+      
+      
+      <strong>icspacket</strong>
+    </a>
+    <div class="sy-head-nav" id="head-nav">
+      <nav class="sy-head-links"><ul>
+      <li class="link"><a class="js-menu" href="../../examples/index.html" id="nav-trigger-1" aria-controls="nav-children-1">
+            <span>Examples</span>
+            <i class="i-lucide chevron-down"></i>
+          </a>
+        <ul id="nav-children-1" aria-labelledby="nav-trigger-1"><li><a href="../../examples/mms/index.html">
+                <span>MMS Utilities</span>
+                <small>Manufacturing Message Specification tools</small>
+              </a></li></ul>
+      </li></ul></nav>
+      <div class="sy-head-extra flex items-center print:hidden"><form class="searchbox flex items-center" action="../../search.html" method="get">
+  <input type="text" name="q" placeholder="Search" />
+  <kbd>/</kbd>
+</form><div class="sy-head-socials">
+  <a href="https://github.com/MatrixEditor/icspacket" aria-label="GitHub">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </a></div></div>
+    </div>
+    <div class="sy-head-actions flex items-center shrink-0 print:hidden"><button class="js-theme theme-switch flex items-center"
+data-aria-auto="Switch to light color mode"
+data-aria-light="Switch to dark color mode"
+data-aria-dark="Switch to auto color mode">
+<i class="i-lucide theme-icon"></i>
+</button><button class="md:hidden flex items-center js-menu" aria-label="Menu" type="button" aria-controls="head-nav" aria-expanded="false">
+        <div class="hamburger">
+          <span class="hamburger_1"></span>
+          <span class="hamburger_2 -translate-x-2"></span>
+          <span class="hamburger_3 -translate-x-1"></span>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>
+<div class="sy-page sy-container flex mx-auto">
+  <aside id="lside" class="sy-lside md:w-72 md:shrink-0 print:hidden">
+    <div class="sy-lside-inner md:sticky">
+      <div class="sy-scrollbar p-6"><div class="sidebar-links">
+  <ul>
+    <li><a class="icon-link" href="https://github.com/MatrixEditor/icspacket/discussions">
+  <span class="icon">
+    <svg viewBox="0 0 24 24" fill="none">
+      <path fill="var(--accent-9)" fill-rule="evenodd" clip-rule="evenodd" d="M11 5a6 6 0 0 0-4.687 9.746c.215.27.315.62.231.954l-.514 2.058a1 1 0 0 0 1.485 1.1l2.848-1.71c.174-.104.374-.15.576-.148H13a6 6 0 0 0 0-12h-2Z"/>
+      <circle fill="white" cx="12" cy="11" r="1"/>
+      <circle fill="white" cx="9" cy="11" r="1"/>
+      <circle fill="white" cx="15" cy="11" r="1"/>
+    </svg>
+  </span>
+  <span class="text">Discussion</span>
+</a></li>
+  </ul>
+</div>
+        <div class="globaltoc" data-expand-depth="2"><p class="caption" role="heading" aria-level="3"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../getting-started/installation.html">Installation</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../getting-started/protocols.html">Protocols Overview</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../getting-started/coreapi.html">Core API Reference</a></li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">MMS / ISO 9506</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../mms/demo_vars.html">Variable Target Format</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../mms/demo_vars.html#variableaccess-service-rwq">VariableAccess Service (rwq)</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../mms/demo_files.html">FileManagement Service</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../mms/api.html">API Reference</a><ul>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../mms/api_conn.html">MMS Connection</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../mms/api_data.html">Data Conversion</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../mms/api_utils.html">Protocol Utilities</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">ACSE / X.227</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../acse/api.html">API Reference</a></li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">COPP / X.226 / ISO 8823</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../copp/api.html">API Reference</a><ul>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../copp/presentation.html">ISO Presentation</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../copp/utils.html">Protocol Utilities</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">COSP / X.225 / ISO 8237-1</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="api.html">API Reference</a><ul class="current">
+<li class="toctree-l2 _expand"><a class="reference internal" href="tsdu.html">TSDU</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">SPDU Types</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="values.html">Parameter Values (PV)</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="session.html">ISO Session</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="utils.html">Protocol Utilities</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">COTP / X.224</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../cotp/api.html">API Reference</a><ul>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../cotp/structs.html">TPDU Types</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../cotp/connection.html">Connection</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">TPKT Protocol (RFC1006)</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../tpkt/usage.html">Using a TPKT Wrapper</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../tpkt/api.html">API Reference</a></li>
+</ul>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="lside-overlay js-menu" role="button" aria-label="Close left sidebar" aria-controls="lside" aria-expanded="false"></div>
+  <aside id="rside" class="sy-rside pb-3 w-64 shrink-0 order-last">
+    <button class="rside-close js-menu xl:hidden" aria-label="Close Table of Contents" type="button" aria-controls="rside" aria-expanded="false">
+      <i class="i-lucide close"></i>
+    </button>
+    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div class="localtoc"><h3>On this page</h3><ul>
+<li><a class="reference internal" href="#icspacket.proto.iso_ses.spdu.LI"><code class="docutils literal notranslate"><span class="pre">LI</span></code></a><ul>
+<li><a class="reference internal" href="#icspacket.proto.iso_ses.spdu.LI.EXTENDED_INDICATOR"><code class="docutils literal notranslate">EXTENDED_INDICATOR</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iso_ses.spdu.LI.octet_size"><code class="docutils literal notranslate">octet_size()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#icspacket.proto.iso_ses.spdu.LI_Extended"><code class="docutils literal notranslate"><span class="pre">LI_Extended</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iso_ses.spdu.SPDU_Codes"><code class="docutils literal notranslate"><span class="pre">SPDU_Codes</span></code></a><ul>
+<li><a class="reference internal" href="#icspacket.proto.iso_ses.spdu.SPDU_Codes.has_user_info"><code class="docutils literal notranslate">has_user_info()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#icspacket.proto.iso_ses.spdu.PGI_Code"><code class="docutils literal notranslate"><span class="pre">PGI_Code</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iso_ses.spdu.PI_Unit_Raw"><code class="docutils literal notranslate"><span class="pre">PI_Unit_Raw</span></code></a><ul>
+<li><a class="reference internal" href="#icspacket.proto.iso_ses.spdu.PI_Unit_Raw.pi"><code class="docutils literal notranslate">pi</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iso_ses.spdu.PI_Unit_Raw.value"><code class="docutils literal notranslate">value</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#icspacket.proto.iso_ses.spdu.PI_Units_Raw"><code class="docutils literal notranslate"><span class="pre">PI_Units_Raw</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iso_ses.spdu.PGI_Unit_Raw"><code class="docutils literal notranslate"><span class="pre">PGI_Unit_Raw</span></code></a><ul>
+<li><a class="reference internal" href="#icspacket.proto.iso_ses.spdu.PGI_Unit_Raw.pgi"><code class="docutils literal notranslate">pgi</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iso_ses.spdu.PGI_Unit_Raw.value"><code class="docutils literal notranslate">value</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#icspacket.proto.iso_ses.spdu.Px_Unit"><code class="docutils literal notranslate"><span class="pre">Px_Unit</span></code></a><ul>
+<li><a class="reference internal" href="#icspacket.proto.iso_ses.spdu.Px_Unit.pi"><code class="docutils literal notranslate">pi</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iso_ses.spdu.Px_Unit.value"><code class="docutils literal notranslate">value</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iso_ses.spdu.Px_Unit.is_group"><code class="docutils literal notranslate">is_group</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iso_ses.spdu.Px_Unit.is_user_data"><code class="docutils literal notranslate">is_user_data</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iso_ses.spdu.Px_Unit.add_parameter"><code class="docutils literal notranslate">add_parameter()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#icspacket.proto.iso_ses.spdu.Px_Units"><code class="docutils literal notranslate"><span class="pre">Px_Units</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iso_ses.spdu.SPDU_Raw"><code class="docutils literal notranslate"><span class="pre">SPDU_Raw</span></code></a><ul>
+<li><a class="reference internal" href="#icspacket.proto.iso_ses.spdu.SPDU_Raw.si"><code class="docutils literal notranslate">si</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iso_ses.spdu.SPDU_Raw.parameters_raw"><code class="docutils literal notranslate">parameters_raw</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iso_ses.spdu.SPDU_Raw.from_octets"><code class="docutils literal notranslate">from_octets()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#icspacket.proto.iso_ses.spdu.SPDU_Category"><code class="docutils literal notranslate"><span class="pre">SPDU_Category</span></code></a><ul>
+<li><a class="reference internal" href="#icspacket.proto.iso_ses.spdu.SPDU_Category.CATEGORY_0"><code class="docutils literal notranslate">CATEGORY_0</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iso_ses.spdu.SPDU_Category.CATEGORY_1"><code class="docutils literal notranslate">CATEGORY_1</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iso_ses.spdu.SPDU_Category.CATEGORY_2"><code class="docutils literal notranslate">CATEGORY_2</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#icspacket.proto.iso_ses.spdu.SPDU"><code class="docutils literal notranslate"><span class="pre">SPDU</span></code></a><ul>
+<li><a class="reference internal" href="#icspacket.proto.iso_ses.spdu.SPDU.code"><code class="docutils literal notranslate">code</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iso_ses.spdu.SPDU.category"><code class="docutils literal notranslate">category</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iso_ses.spdu.SPDU.add_parameter"><code class="docutils literal notranslate">add_parameter()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iso_ses.spdu.SPDU.parameters"><code class="docutils literal notranslate">parameters</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iso_ses.spdu.SPDU.iter_parameters"><code class="docutils literal notranslate">iter_parameters()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iso_ses.spdu.SPDU.name"><code class="docutils literal notranslate">name</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iso_ses.spdu.SPDU.parameter_by_id"><code class="docutils literal notranslate">parameter_by_id()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iso_ses.spdu.SPDU.has_user_information"><code class="docutils literal notranslate">has_user_information</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iso_ses.spdu.SPDU.user_information"><code class="docutils literal notranslate">user_information</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iso_ses.spdu.SPDU.from_octets"><code class="docutils literal notranslate">from_octets()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iso_ses.spdu.SPDU.build"><code class="docutils literal notranslate">build()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</div><a class="js-repo-stats repo-stats flex items-center" href="https://github.com/MatrixEditor/icspacket"
+  data-type="github" data-user="MatrixEditor" data-repo="icspacket">
+  <span class="w-8 flex items-center justify-around shrink-0 text-3xl">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </span>
+  <span class="flex-grow px-2 break-all">
+    <span style="font-size: small;">MatrixEditor/icspacket</span>
+    <span class="flex text-sm repo-stats-count">
+      <span class="flex items-center pr-3">
+        <iconify-icon icon="lucide:star"></iconify-icon>
+        <strong class="js-repo-stars ml-1">0</strong>
+      </span>
+      <span class="flex items-center">
+        <iconify-icon icon="lucide:git-fork"></iconify-icon>
+        <strong class="js-repo-forks ml-1">0</strong>
+      </span>
+    </span>
+  </span>
+</a><div class="edit-this-page">
+  <a href="https://github.com/MatrixEditor/icspacket/blob/main/docs/protocols/cosp/spdu.rst">Edit this page</a>
+</div></div>
+  </aside>
+  <div class="rside-overlay js-menu" role="button" aria-label="Close Table of Contents" aria-controls="rside" aria-expanded="false"></div>
+  <main class="sy-main w-full max-sm:max-w-full print:pt-6">
+<div class="sy-breadcrumbs" role="navigation">
+  <div class="sy-breadcrumbs-inner flex items-center">
+    <div class="md:hidden mr-3">
+      <button class="js-menu" aria-label="Menu" type="button" aria-controls="lside" aria-expanded="false">
+        <i class="i-lucide menu"></i>
+      </button>
+    </div>
+    <ol class="flex-1" itemscope itemtype="https://schema.org/BreadcrumbList"><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="../../index.html"><span itemprop="name">icspacket</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="1" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="api.html"><span itemprop="name">API Reference</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="2" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <strong itemprop="name">SPDU Types</strong>
+        <meta itemprop="position" content="3" />
+      </li></ol>
+    <div class="xl:hidden ml-1">
+      <button class="js-menu" aria-label="Show table of contents" type="button" aria-controls="rside"
+        aria-expanded="false">
+        <i class="i-lucide outdent"></i>
+      </button>
+    </div>
+  </div>
+</div><div class="flex flex-col break-words justify-between">
+      <div class="min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
+        <article class="yue" role="main">
+          <section id="module-icspacket.proto.iso_ses.spdu">
+<span id="spdu-types"></span><span id="cosp-spdu"></span><h1>SPDU Types<a class="headerlink" href="#module-icspacket.proto.iso_ses.spdu" title="Link to this heading">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="icspacket.proto.iso_ses.spdu.LI">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">icspacket.proto.iso_ses.spdu.</span></span><span class="sig-name descname"><span class="pre">LI</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extended</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/icspacket/proto/iso_ses/spdu.html#LI"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iso_ses.spdu.LI" title="Link to this definition">¶</a></dt>
+<dd><p>8.2.5 Length indicator field</p>
+<p>Encodes/decodes the length, in octets, of the associated parameter field.
+The LI value does <strong>not</strong> include the LI octets themselves nor any subsequent
+<em>user information</em> octets.</p>
+<p>Encoding forms:</p>
+<ul class="simple">
+<li><p><strong>Short form (1 octet)</strong>: values in range 0..254 are encoded in one octet.
+A value of <strong>0</strong> indicates that the associated parameter field is absent.</p></li>
+<li><p><strong>Extended form (3 octets)</strong>: values in range 255..65535 are encoded as:
+0xFF | &lt;length: uint16 big-endian&gt; i.e., first octet 1111 1111 (255),
+followed by two octets carrying the length.</p></li>
+</ul>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iso_ses.spdu.LI.EXTENDED_INDICATOR">
+<span class="sig-name descname"><span class="pre">EXTENDED_INDICATOR</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">b'\xff'</span></em><a class="headerlink" href="#icspacket.proto.iso_ses.spdu.LI.EXTENDED_INDICATOR" title="Link to this definition">¶</a></dt>
+<dd><p>Indicates an extended length indicator.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.iso_ses.spdu.LI.octet_size">
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">octet_size</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="../../_modules/icspacket/proto/iso_ses/spdu.html#LI.octet_size"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iso_ses.spdu.LI.octet_size" title="Link to this definition">¶</a></dt>
+<dd><p>Return the number of octets required to encode <cite>value</cite> as an LI.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="icspacket.proto.iso_ses.spdu.LI_Extended">
+<span class="sig-prename descclassname"><span class="pre">icspacket.proto.iso_ses.spdu.</span></span><span class="sig-name descname"><span class="pre">LI_Extended</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;icspacket.proto.iso_ses.spdu.LI</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#icspacket.proto.iso_ses.spdu.LI_Extended" title="Link to this definition">¶</a></dt>
+<dd><p>Convenience alias for LI that allows extended form</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="icspacket.proto.iso_ses.spdu.SPDU_Codes">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">icspacket.proto.iso_ses.spdu.</span></span><span class="sig-name descname"><span class="pre">SPDU_Codes</span></span><a class="reference internal" href="../../_modules/icspacket/proto/iso_ses/spdu.html#SPDU_Codes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iso_ses.spdu.SPDU_Codes" title="Link to this definition">¶</a></dt>
+<dd><p>Mapping of SPDU SI codes to mnemonic names.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Some codes in X.225 are <strong>contextual aliases</strong> (e.g., code 1 is used for
+both DT and GT) depending on category/semantics. This class preserves the
+code values.</p>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.iso_ses.spdu.SPDU_Codes.has_user_info">
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">has_user_info</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">code</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../../_modules/icspacket/proto/iso_ses/spdu.html#SPDU_Codes.has_user_info"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iso_ses.spdu.SPDU_Codes.has_user_info" title="Link to this definition">¶</a></dt>
+<dd><p>Return True if <strong>User Information Field</strong> is defined for this SI code.</p>
+<p>Per X.225, only a subset of SPDUs carry user data directly. In the
+connection-oriented subset, these are primarily:</p>
+<ul class="simple">
+<li><p>DATA TRANSFER (DT)</p></li>
+<li><p>EXPEDITED (EX)</p></li>
+<li><p>TYPED DATA (TD)</p></li>
+</ul>
+<p>Final presence is further constrained by <strong>Enclosure Item</strong> semantics for DT.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="icspacket.proto.iso_ses.spdu.PGI_Code">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">icspacket.proto.iso_ses.spdu.</span></span><span class="sig-name descname"><span class="pre">PGI_Code</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">values</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/icspacket/proto/iso_ses/spdu.html#PGI_Code"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iso_ses.spdu.PGI_Code" title="Link to this definition">¶</a></dt>
+<dd><p>Parameter Group Identifier (PGI) codes</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="icspacket.proto.iso_ses.spdu.PI_Unit_Raw">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">icspacket.proto.iso_ses.spdu.</span></span><span class="sig-name descname"><span class="pre">PI_Unit_Raw</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pi</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/icspacket/proto/iso_ses/spdu.html#PI_Unit_Raw"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iso_ses.spdu.PI_Unit_Raw" title="Link to this definition">¶</a></dt>
+<dd><p>PI Unit (Parameter) — X.225 §8.2.3</p>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-text">Wire format</span><a class="headerlink" href="#id1" title="Link to this code">¶</a></div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span><span data-line="1">+--------+--------+-----------------...
+</span><span data-line="2">|  PI    |   LI   | parameter value (LI octets)
+</span><span data-line="3">+--------+--------+-----------------...
+</span></pre></div>
+</div>
+</div>
+<ul class="simple">
+<li><p>PI: 1 octet identifier for the parameter.</p></li>
+<li><p>LI: Length Indicator (1 or 3 octets) for the parameter value.</p></li>
+<li><p>value_raw: Bytes of the parameter value (no nested parsing here).</p></li>
+</ul>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iso_ses.spdu.PI_Unit_Raw.pi">
+<span class="sig-name descname"><span class="pre">pi</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#icspacket.proto.iso_ses.spdu.PI_Unit_Raw.pi" title="Link to this definition">¶</a></dt>
+<dd><p>PI field that identifies the parameter.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iso_ses.spdu.PI_Unit_Raw.value">
+<span class="sig-name descname"><span class="pre">value</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Any</span></em><a class="headerlink" href="#icspacket.proto.iso_ses.spdu.PI_Unit_Raw.value" title="Link to this definition">¶</a></dt>
+<dd><p>Parameter value as raw bytes, length-prefixed by an LI, if not
+implemented in icspacket.iso_cosp.values.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="icspacket.proto.iso_ses.spdu.PI_Units_Raw">
+<span class="sig-prename descclassname"><span class="pre">icspacket.proto.iso_ses.spdu.</span></span><span class="sig-name descname"><span class="pre">PI_Units_Raw</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;Prefixed&gt;</span></em><a class="headerlink" href="#icspacket.proto.iso_ses.spdu.PI_Units_Raw" title="Link to this definition">¶</a></dt>
+<dd><p>Defines a list of PI Units (length-prefixed aggregate).</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="icspacket.proto.iso_ses.spdu.PGI_Unit_Raw">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">icspacket.proto.iso_ses.spdu.</span></span><span class="sig-name descname"><span class="pre">PGI_Unit_Raw</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pgi</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#icspacket.proto.iso_ses.spdu.PGI_Code" title="icspacket.proto.iso_ses.spdu.PGI_Code"><span class="pre">PGI_Code</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#icspacket.proto.iso_ses.spdu.PI_Unit_Raw" title="icspacket.proto.iso_ses.spdu.PI_Unit_Raw"><span class="pre">PI_Unit_Raw</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/icspacket/proto/iso_ses/spdu.html#PGI_Unit_Raw"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iso_ses.spdu.PGI_Unit_Raw" title="Link to this definition">¶</a></dt>
+<dd><p>PGI Unit (Parameter Group) — X.225 §8.2.2</p>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-text">Wire format</span><a class="headerlink" href="#id2" title="Link to this code">¶</a></div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span><span data-line="1">+--------+--------+-----------------...
+</span><span data-line="2">|  PGI   |   LI   |   parameter field
+</span><span data-line="3">+--------+--------+-----------------...
+</span></pre></div>
+</div>
+</div>
+<p>The parameter field of a PGI may be:</p>
+<ul class="simple">
+<li><ol class="arabic simple">
+<li><p>a <strong>single parameter value</strong>, or</p></li>
+</ol>
+</li>
+<li><ol class="arabic simple" start="2">
+<li><p>one or more <strong>PI units</strong> (each PI is again LI-prefixed).</p></li>
+</ol>
+</li>
+</ul>
+<p>This raw representation keeps the inner sequence as a list of PI_Unit_Raw.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iso_ses.spdu.PGI_Unit_Raw.pgi">
+<span class="sig-name descname"><span class="pre">pgi</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#icspacket.proto.iso_ses.spdu.PGI_Code" title="icspacket.proto.iso_ses.spdu.PGI_Code"><span class="pre">PGI_Code</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#icspacket.proto.iso_ses.spdu.PGI_Unit_Raw.pgi" title="Link to this definition">¶</a></dt>
+<dd><p>PGI field identifying the parameter group.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iso_ses.spdu.PGI_Unit_Raw.value">
+<span class="sig-name descname"><span class="pre">value</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#icspacket.proto.iso_ses.spdu.PI_Unit_Raw" title="icspacket.proto.iso_ses.spdu.PI_Unit_Raw"><span class="pre">PI_Unit_Raw</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#icspacket.proto.iso_ses.spdu.PGI_Unit_Raw.value" title="Link to this definition">¶</a></dt>
+<dd><p>Parameter field for the group: either a single value or multiple PI units.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="icspacket.proto.iso_ses.spdu.Px_Unit">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">icspacket.proto.iso_ses.spdu.</span></span><span class="sig-name descname"><span class="pre">Px_Unit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pi</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/icspacket/proto/iso_ses/spdu.html#Px_Unit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iso_ses.spdu.Px_Unit" title="Link to this definition">¶</a></dt>
+<dd><p>Unified view over either a <strong>PI</strong> or a <strong>PGI</strong>.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iso_ses.spdu.Px_Unit.pi">
+<span class="sig-name descname"><span class="pre">pi</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#icspacket.proto.iso_ses.spdu.Px_Unit.pi" title="Link to this definition">¶</a></dt>
+<dd><p>The 1-octet identifier. For PGIs this holds the PGI code; for PIs it is the
+PI.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iso_ses.spdu.Px_Unit.value">
+<span class="sig-name descname"><span class="pre">value</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Any</span></em><a class="headerlink" href="#icspacket.proto.iso_ses.spdu.Px_Unit.value" title="Link to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li><p>PGI: list of PI_Unit_Raw (unless USER_DATA/EXTENDED_USER_DATA)</p></li>
+<li><p>PI: raw value bytes (LI-prefixed)</p></li>
+</ul>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="icspacket.proto.iso_ses.spdu.Px_Unit.is_group">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">is_group</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#icspacket.proto.iso_ses.spdu.Px_Unit.is_group" title="Link to this definition">¶</a></dt>
+<dd><p>True if <cite>pi</cite> is a known PGI code.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="icspacket.proto.iso_ses.spdu.Px_Unit.is_user_data">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">is_user_data</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#icspacket.proto.iso_ses.spdu.Px_Unit.is_user_data" title="Link to this definition">¶</a></dt>
+<dd><p>True if <cite>pi</cite> is USER_DATA or EXTENDED_USER_DATA.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.iso_ses.spdu.Px_Unit.add_parameter">
+<span class="sig-name descname"><span class="pre">add_parameter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pi</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#icspacket.proto.iso_ses.spdu.Px_Unit" title="icspacket.proto.iso_ses.spdu.Px_Unit"><span class="pre">Px_Unit</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">bytes</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#icspacket.proto.iso_ses.spdu.Px_Unit" title="icspacket.proto.iso_ses.spdu.Px_Unit"><span class="pre">Px_Unit</span></a></span></span><a class="reference internal" href="../../_modules/icspacket/proto/iso_ses/spdu.html#Px_Unit.add_parameter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iso_ses.spdu.Px_Unit.add_parameter" title="Link to this definition">¶</a></dt>
+<dd><p>Add a parameter (PGI or PI) to the SPDU.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="icspacket.proto.iso_ses.spdu.Px_Units">
+<span class="sig-prename descclassname"><span class="pre">icspacket.proto.iso_ses.spdu.</span></span><span class="sig-name descname"><span class="pre">Px_Units</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;Prefixed&gt;</span></em><a class="headerlink" href="#icspacket.proto.iso_ses.spdu.Px_Units" title="Link to this definition">¶</a></dt>
+<dd><p>Defines a prefixed list of PGI or PI units (mixed).</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="icspacket.proto.iso_ses.spdu.SPDU_Raw">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">icspacket.proto.iso_ses.spdu.</span></span><span class="sig-name descname"><span class="pre">SPDU_Raw</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">si</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameters_raw</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#icspacket.proto.iso_ses.spdu.Px_Unit" title="icspacket.proto.iso_ses.spdu.Px_Unit"><span class="pre">Px_Unit</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/icspacket/proto/iso_ses/spdu.html#SPDU_Raw"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iso_ses.spdu.SPDU_Raw" title="Link to this definition">¶</a></dt>
+<dd><p>SPDU (raw representation) — X.225 §8.2</p>
+<div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption"><span class="caption-text">Wire format</span><a class="headerlink" href="#id3" title="Link to this code">¶</a></div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span><span data-line="1">+--------+--------+-----------------...
+</span><span data-line="2">|  SI    |   LI   | parameter field (LI octets)
+</span><span data-line="3">+--------+--------+-----------------...
+</span></pre></div>
+</div>
+</div>
+<ul class="simple">
+<li><p><cite>si</cite> (1 octet): SPDU Identifier (SI) — code that identifies the SPDU type
+(e.g., CN/AC/DT/etc.).</p></li>
+<li><p><cite>parameters_raw</cite> (LI-prefixed): a mixed sequence of <strong>PGI units</strong> and/or
+<strong>PI units</strong> as defined for that SPDU type.</p></li>
+</ul>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>The <strong>User Information Field</strong> (if any) is <em>not part</em> of this
+raw struct. It is handled by the higher-level <cite>SPDU</cite> wrapper because the
+presence rules depend on the SI code and items like the <strong>Enclosure Item</strong>.</p>
+</div>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iso_ses.spdu.SPDU_Raw.si">
+<span class="sig-name descname"><span class="pre">si</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#icspacket.proto.iso_ses.spdu.SPDU_Raw.si" title="Link to this definition">¶</a></dt>
+<dd><p>The SI field that identifies the type of SPDU.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iso_ses.spdu.SPDU_Raw.parameters_raw">
+<span class="sig-name descname"><span class="pre">parameters_raw</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#icspacket.proto.iso_ses.spdu.Px_Unit" title="icspacket.proto.iso_ses.spdu.Px_Unit"><span class="pre">Px_Unit</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#icspacket.proto.iso_ses.spdu.SPDU_Raw.parameters_raw" title="Link to this definition">¶</a></dt>
+<dd><p>The parameter field: a prefixed block of PGI units and/or PI units.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.iso_ses.spdu.SPDU_Raw.from_octets">
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_octets</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">octets</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bytes</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/icspacket/proto/iso_ses/spdu.html#SPDU_Raw.from_octets"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iso_ses.spdu.SPDU_Raw.from_octets" title="Link to this definition">¶</a></dt>
+<dd><p>Deserialize a raw SPDU from octets (SI + LI + parameter field).</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="icspacket.proto.iso_ses.spdu.SPDU_Category">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">icspacket.proto.iso_ses.spdu.</span></span><span class="sig-name descname"><span class="pre">SPDU_Category</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">values</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/icspacket/proto/iso_ses/spdu.html#SPDU_Category"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iso_ses.spdu.SPDU_Category" title="Link to this definition">¶</a></dt>
+<dd><p>SPDU categories for transport concatenation behavior — 6.3.7.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iso_ses.spdu.SPDU_Category.CATEGORY_0">
+<span class="sig-name descname"><span class="pre">CATEGORY_0</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></em><a class="headerlink" href="#icspacket.proto.iso_ses.spdu.SPDU_Category.CATEGORY_0" title="Link to this definition">¶</a></dt>
+<dd><ol class="loweralpha simple">
+<li><p>Category 0 SPDUs which may be mapped one-to-one onto a TSDU or may be
+concatenated with one or more category 2 SPDUs;</p></li>
+</ol>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iso_ses.spdu.SPDU_Category.CATEGORY_1">
+<span class="sig-name descname"><span class="pre">CATEGORY_1</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#icspacket.proto.iso_ses.spdu.SPDU_Category.CATEGORY_1" title="Link to this definition">¶</a></dt>
+<dd><ol class="loweralpha simple" start="2">
+<li><p>Category 1 SPDUs which are always mapped one-to-one onto a TSDU;</p></li>
+</ol>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iso_ses.spdu.SPDU_Category.CATEGORY_2">
+<span class="sig-name descname"><span class="pre">CATEGORY_2</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2</span></em><a class="headerlink" href="#icspacket.proto.iso_ses.spdu.SPDU_Category.CATEGORY_2" title="Link to this definition">¶</a></dt>
+<dd><ol class="loweralpha simple" start="3">
+<li><p>Category 2 SPDUs which are never mapped one-to-one onto a TSDU.</p></li>
+</ol>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="icspacket.proto.iso_ses.spdu.SPDU">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">icspacket.proto.iso_ses.spdu.</span></span><span class="sig-name descname"><span class="pre">SPDU</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">code</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">category</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#icspacket.proto.iso_ses.spdu.SPDU_Category" title="icspacket.proto.iso_ses.spdu.SPDU_Category"><span class="pre">SPDU_Category</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/icspacket/proto/iso_ses/spdu.html#SPDU"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iso_ses.spdu.SPDU" title="Link to this definition">¶</a></dt>
+<dd><p>Convenience wrapper over <a class="reference internal" href="#icspacket.proto.iso_ses.spdu.SPDU_Raw" title="icspacket.proto.iso_ses.spdu.SPDU_Raw"><code class="xref py py-class docutils literal notranslate"><span class="pre">SPDU_Raw</span></code></a> with user-info detection.</p>
+<p><strong>Structure (logical) — X.225 8.2</strong></p>
+<p>SPDUs shall contain, in order:</p>
+<ul class="simple">
+<li><ol class="loweralpha simple">
+<li><p>SI — identifies the SPDU type (1 octet).</p></li>
+</ol>
+</li>
+<li><ol class="loweralpha simple" start="2">
+<li><p>LI — length (in octets) of the <strong>parameter field</strong> (1 or 3 octets).</p></li>
+</ol>
+</li>
+<li><ol class="loweralpha simple" start="3">
+<li><p>Parameter field — zero or more <strong>PGI</strong>/<strong>PI</strong> units (the block whose</p></li>
+</ol>
+</li>
+<li><p>length is provided by the LI).</p></li>
+<li><ol class="loweralpha simple" start="4">
+<li><p><strong>User Information Field</strong> — if defined for the SPDU type and present.</p></li>
+</ol>
+</li>
+</ul>
+<p><a class="reference internal" href="#icspacket.proto.iso_ses.spdu.SPDU_Raw" title="icspacket.proto.iso_ses.spdu.SPDU_Raw"><code class="xref py py-class docutils literal notranslate"><span class="pre">SPDU_Raw</span></code></a> models (a)-(c). Whether (d) exists cannot be decided by
+just looking at the LI, because for some SPDU types (e.g., DT) the presence
+of user information depends on control items like the <strong>Enclosure Item</strong> and
+sequence rules (§7.11.2 and §8.3.*.4). This wrapper inspects parameters to
+decide if trailing octets belong to the User Information Field.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iso_ses.spdu.SPDU.code">
+<span class="sig-name descname"><span class="pre">code</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#icspacket.proto.iso_ses.spdu.SPDU.code" title="Link to this definition">¶</a></dt>
+<dd><p>The SI code (a.k.a. SPDU type).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iso_ses.spdu.SPDU.category">
+<span class="sig-name descname"><span class="pre">category</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#icspacket.proto.iso_ses.spdu.SPDU_Category" title="icspacket.proto.iso_ses.spdu.SPDU_Category"><span class="pre">SPDU_Category</span></a></em><a class="headerlink" href="#icspacket.proto.iso_ses.spdu.SPDU.category" title="Link to this definition">¶</a></dt>
+<dd><p>Concatenation category (6.3.7).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.iso_ses.spdu.SPDU.add_parameter">
+<span class="sig-name descname"><span class="pre">add_parameter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pi</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#icspacket.proto.iso_ses.spdu.Px_Unit" title="icspacket.proto.iso_ses.spdu.Px_Unit"><span class="pre">Px_Unit</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">bytes</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#icspacket.proto.iso_ses.spdu.Px_Unit" title="icspacket.proto.iso_ses.spdu.Px_Unit"><span class="pre">Px_Unit</span></a></span></span><a class="reference internal" href="../../_modules/icspacket/proto/iso_ses/spdu.html#SPDU.add_parameter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iso_ses.spdu.SPDU.add_parameter" title="Link to this definition">¶</a></dt>
+<dd><p>Add a parameter (PGI or PI) to the SPDU.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="icspacket.proto.iso_ses.spdu.SPDU.parameters">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">parameters</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#icspacket.proto.iso_ses.spdu.Px_Unit" title="icspacket.proto.iso_ses.spdu.Px_Unit"><span class="pre">Px_Unit</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#icspacket.proto.iso_ses.spdu.SPDU.parameters" title="Link to this definition">¶</a></dt>
+<dd><p>The top-level mixed list of PGI/PI units for this SPDU.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.iso_ses.spdu.SPDU.iter_parameters">
+<span class="sig-name descname"><span class="pre">iter_parameters</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Generator</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#icspacket.proto.iso_ses.spdu.Px_Unit" title="icspacket.proto.iso_ses.spdu.Px_Unit"><span class="pre">Px_Unit</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">None</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">None</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../../_modules/icspacket/proto/iso_ses/spdu.html#SPDU.iter_parameters"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iso_ses.spdu.SPDU.iter_parameters" title="Link to this definition">¶</a></dt>
+<dd><p>Yield parameters <strong>flattened</strong>: for PGIs, yield their inner PIs.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="icspacket.proto.iso_ses.spdu.SPDU.name">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#icspacket.proto.iso_ses.spdu.SPDU.name" title="Link to this definition">¶</a></dt>
+<dd><p>A human-readable name for this SPDU type.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.iso_ses.spdu.SPDU.parameter_by_id">
+<span class="sig-name descname"><span class="pre">parameter_by_id</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pi</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#icspacket.proto.iso_ses.spdu.Px_Unit" title="icspacket.proto.iso_ses.spdu.Px_Unit"><span class="pre">Px_Unit</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="reference internal" href="../../_modules/icspacket/proto/iso_ses/spdu.html#SPDU.parameter_by_id"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iso_ses.spdu.SPDU.parameter_by_id" title="Link to this definition">¶</a></dt>
+<dd><p>Get a parameter by its PI code.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>pi</strong> (<em>int</em>) – The PI code</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The parameter, or None if not found</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#icspacket.proto.iso_ses.spdu.Px_Unit" title="icspacket.proto.iso_ses.spdu.Px_Unit">Px_Unit</a> | None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="icspacket.proto.iso_ses.spdu.SPDU.has_user_information">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">has_user_information</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#icspacket.proto.iso_ses.spdu.SPDU.has_user_information" title="Link to this definition">¶</a></dt>
+<dd><p>Infer whether a <strong>User Information Field</strong> is expected/present.</p>
+<p>Rules applied</p>
+<ol class="arabic simple">
+<li><p>Only certain SI codes <strong>define</strong> user information (DT/EX/TD). See
+<cite>SPDU_Codes.has_user_info()</cite>. If not defined, return False.</p></li>
+<li><p>Category 0 SPDUs are excluded here (mapping rules may reserve bytes).</p></li>
+<li><p>For <strong>DATA TRANSFER (DT)</strong> in particular:</p>
+<ul class="simple">
+<li><p>If the <strong>Enclosure Item</strong> is present, its <strong>bit 2</strong> semantics affect
+whether user information should appear in a multi-SPDU sequence
+(§8.3.11/13.4, §7.11.2). If Enclosure indicates “more follows”
+(bit 1 == 0), user information must be present on all but the last.</p></li>
+</ul>
+</li>
+</ol>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>True if we should treat remaining octets as the User
+Information Field; False otherwise.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="icspacket.proto.iso_ses.spdu.SPDU.user_information">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">user_information</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bytes</span></em><a class="headerlink" href="#icspacket.proto.iso_ses.spdu.SPDU.user_information" title="Link to this definition">¶</a></dt>
+<dd><p>Raw bytes of the <strong>User Information Field</strong> (may be empty).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.iso_ses.spdu.SPDU.from_octets">
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_octets</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">octets</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bytes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">category</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#icspacket.proto.iso_ses.spdu.SPDU_Category" title="icspacket.proto.iso_ses.spdu.SPDU_Category"><span class="pre">SPDU_Category</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/icspacket/proto/iso_ses/spdu.html#SPDU.from_octets"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iso_ses.spdu.SPDU.from_octets" title="Link to this definition">¶</a></dt>
+<dd><p>Deserialize an SPDU from <cite>octets</cite> and extract user-info if applicable.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>octets</strong> (<em>bytes</em>) – The full SPDU octet string (SI + LI + parameters [+ user
+info?]).</p></li>
+<li><p><strong>category</strong> (<a class="reference internal" href="#icspacket.proto.iso_ses.spdu.SPDU_Category" title="icspacket.proto.iso_ses.spdu.SPDU_Category"><em>SPDU_Category</em></a><em>, </em><em>optional</em>) – The concatenation category to associate with this
+SPDU., defaults to SPDU_Category.CATEGORY_2</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A high-level SPDU with parameters and (if detected) user info.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#icspacket.proto.iso_ses.spdu.SPDU" title="icspacket.proto.iso_ses.spdu.SPDU">SPDU</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.iso_ses.spdu.SPDU.build">
+<span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bytes</span></span></span><a class="reference internal" href="../../_modules/icspacket/proto/iso_ses/spdu.html#SPDU.build"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iso_ses.spdu.SPDU.build" title="Link to this definition">¶</a></dt>
+<dd><p>Serialize the SPDU to octets.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+        </article><button class="back-to-top" type="button">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+  </svg>
+  <span>Back to top</span>
+</button><div class="navigation flex print:hidden"><div class="navigation-prev">
+    <a href="tsdu.html">
+      <i class="i-lucide chevron-left"></i>
+      <div class="page-info">
+        <span>Previous</span><div class="title">TSDU</div></div>
+    </a>
+  </div><div class="navigation-next">
+    <a href="values.html">
+      <div class="page-info">
+        <span>Next</span>
+        <div class="title">Parameter Values (PV)</div>
+      </div>
+      <i class="i-lucide chevron-right"></i>
+    </a>
+  </div></div></div>
+    </div>
+  </main>
+</div>
+<footer class="sy-foot">
+  <div class="sy-foot-inner sy-container mx-auto">
+    <div class="sy-foot-reserved md:flex justify-between items-center">
+      <div class="sy-foot-copyright"><p>2025, MatrixEditor</p>
+  
+  <p>
+    Made with
+    
+    <a href="https://www.sphinx-doc.org/">Sphinx</a> and
+    
+    <a href="https://shibuya.lepture.com">Shibuya theme</a>.
+  </p>
+</div>
+      <div class="sy-foot-socials">
+<a href="https://github.com/MatrixEditor/icspacket" aria-label="GitHub">
+  <iconify-icon icon="simple-icons:github"></iconify-icon>
+</a></div>
+    </div>
+  </div>
+</footer>
+      <script src="../../_static/documentation_options.js?v=e3b32040"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+      <script src="../../_static/shibuya.js?v=e730760c"></script></body>
+</html>

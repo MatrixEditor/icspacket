@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en" data-accent-color="lime" data-content_root="../../">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>ISO Presentation - icspacket 0.1.dev1+g814ee7fee documentation</title><link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="Protocol Utilities" href="utils.html" /><link rel="prev" title="API Reference" href="api.html" />
+      <link rel="canonical" href="https://matrixeditor.github.io/icspacket/protocols/copp/presentation.html" /><script>
+    function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
+    setColorMode(localStorage._theme||"dark");
+  </script><link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=397bb51e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/shibuya.css?v=d48c410d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link media="print" rel="stylesheet" type="text/css" href="../../_static/print.css?v=20ff2c19" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --sy-f-text: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+  --sy-f-heading: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+}
+</style>
+    <meta property="og:type" content="website"/>
+<meta property="og:url" content="https://matrixeditor.github.io/icspacket/protocols/copp/presentation.html"/>
+<meta property="og:title" content="ISO Presentation"/>
+<meta name="twitter:card" content="summary"/>
+  </head>
+<body><div class="sy-head">
+  <div class="sy-head-blur"></div>
+  <div class="sy-head-inner sy-container mx-auto">
+    <a class="sy-head-brand" href="../../index.html">
+      
+      
+      <strong>icspacket</strong>
+    </a>
+    <div class="sy-head-nav" id="head-nav">
+      <nav class="sy-head-links"><ul>
+      <li class="link"><a class="js-menu" href="../../examples/index.html" id="nav-trigger-1" aria-controls="nav-children-1">
+            <span>Examples</span>
+            <i class="i-lucide chevron-down"></i>
+          </a>
+        <ul id="nav-children-1" aria-labelledby="nav-trigger-1"><li><a href="../../examples/mms/index.html">
+                <span>MMS Utilities</span>
+                <small>Manufacturing Message Specification tools</small>
+              </a></li></ul>
+      </li></ul></nav>
+      <div class="sy-head-extra flex items-center print:hidden"><form class="searchbox flex items-center" action="../../search.html" method="get">
+  <input type="text" name="q" placeholder="Search" />
+  <kbd>/</kbd>
+</form><div class="sy-head-socials">
+  <a href="https://github.com/MatrixEditor/icspacket" aria-label="GitHub">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </a></div></div>
+    </div>
+    <div class="sy-head-actions flex items-center shrink-0 print:hidden"><button class="js-theme theme-switch flex items-center"
+data-aria-auto="Switch to light color mode"
+data-aria-light="Switch to dark color mode"
+data-aria-dark="Switch to auto color mode">
+<i class="i-lucide theme-icon"></i>
+</button><button class="md:hidden flex items-center js-menu" aria-label="Menu" type="button" aria-controls="head-nav" aria-expanded="false">
+        <div class="hamburger">
+          <span class="hamburger_1"></span>
+          <span class="hamburger_2 -translate-x-2"></span>
+          <span class="hamburger_3 -translate-x-1"></span>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>
+<div class="sy-page sy-container flex mx-auto">
+  <aside id="lside" class="sy-lside md:w-72 md:shrink-0 print:hidden">
+    <div class="sy-lside-inner md:sticky">
+      <div class="sy-scrollbar p-6"><div class="sidebar-links">
+  <ul>
+    <li><a class="icon-link" href="https://github.com/MatrixEditor/icspacket/discussions">
+  <span class="icon">
+    <svg viewBox="0 0 24 24" fill="none">
+      <path fill="var(--accent-9)" fill-rule="evenodd" clip-rule="evenodd" d="M11 5a6 6 0 0 0-4.687 9.746c.215.27.315.62.231.954l-.514 2.058a1 1 0 0 0 1.485 1.1l2.848-1.71c.174-.104.374-.15.576-.148H13a6 6 0 0 0 0-12h-2Z"/>
+      <circle fill="white" cx="12" cy="11" r="1"/>
+      <circle fill="white" cx="9" cy="11" r="1"/>
+      <circle fill="white" cx="15" cy="11" r="1"/>
+    </svg>
+  </span>
+  <span class="text">Discussion</span>
+</a></li>
+  </ul>
+</div>
+        <div class="globaltoc" data-expand-depth="2"><p class="caption" role="heading" aria-level="3"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../getting-started/installation.html">Installation</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../getting-started/protocols.html">Protocols Overview</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../getting-started/coreapi.html">Core API Reference</a></li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">MMS / ISO 9506</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../mms/demo_vars.html">Variable Target Format</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../mms/demo_vars.html#variableaccess-service-rwq">VariableAccess Service (rwq)</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../mms/demo_files.html">FileManagement Service</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../mms/api.html">API Reference</a><ul>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../mms/api_conn.html">MMS Connection</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../mms/api_data.html">Data Conversion</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../mms/api_utils.html">Protocol Utilities</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">ACSE / X.227</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../acse/api.html">API Reference</a></li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">COPP / X.226 / ISO 8823</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="api.html">API Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">ISO Presentation</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="utils.html">Protocol Utilities</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">COSP / X.225 / ISO 8237-1</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../cosp/api.html">API Reference</a><ul>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../cosp/tsdu.html">TSDU</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../cosp/spdu.html">SPDU Types</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../cosp/values.html">Parameter Values (PV)</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../cosp/session.html">ISO Session</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../cosp/utils.html">Protocol Utilities</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">COTP / X.224</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../cotp/api.html">API Reference</a><ul>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../cotp/structs.html">TPDU Types</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../cotp/connection.html">Connection</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">TPKT Protocol (RFC1006)</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../tpkt/usage.html">Using a TPKT Wrapper</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../tpkt/api.html">API Reference</a></li>
+</ul>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="lside-overlay js-menu" role="button" aria-label="Close left sidebar" aria-controls="lside" aria-expanded="false"></div>
+  <aside id="rside" class="sy-rside pb-3 w-64 shrink-0 order-last">
+    <button class="rside-close js-menu xl:hidden" aria-label="Close Table of Contents" type="button" aria-controls="rside" aria-expanded="false">
+      <i class="i-lucide close"></i>
+    </button>
+    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div class="localtoc"><h3>On this page</h3><ul>
+<li><a class="reference internal" href="#icspacket.proto.iso_pres.presentation.ISO_PresentationContext"><code class="docutils literal notranslate"><span class="pre">ISO_PresentationContext</span></code></a><ul>
+<li><a class="reference internal" href="#icspacket.proto.iso_pres.presentation.ISO_PresentationContext.items"><code class="docutils literal notranslate">items</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iso_pres.presentation.ISO_PresentationContext.asn1_types"><code class="docutils literal notranslate">asn1_types</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iso_pres.presentation.ISO_PresentationContext.add"><code class="docutils literal notranslate">add()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iso_pres.presentation.ISO_PresentationContext.new"><code class="docutils literal notranslate">new()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iso_pres.presentation.ISO_PresentationContext.remove"><code class="docutils literal notranslate">remove()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#icspacket.proto.iso_pres.presentation.ISO_PresentationSettings"><code class="docutils literal notranslate"><span class="pre">ISO_PresentationSettings</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iso_pres.presentation.ISO_Presentation"><code class="docutils literal notranslate"><span class="pre">ISO_Presentation</span></code></a><ul>
+<li><a class="reference internal" href="#icspacket.proto.iso_pres.presentation.ISO_Presentation.settings"><code class="docutils literal notranslate">settings</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iso_pres.presentation.ISO_Presentation.presentation_context"><code class="docutils literal notranslate">presentation_context</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iso_pres.presentation.ISO_Presentation.session"><code class="docutils literal notranslate">session</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iso_pres.presentation.ISO_Presentation.transport"><code class="docutils literal notranslate">transport</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iso_pres.presentation.ISO_Presentation.connect"><code class="docutils literal notranslate">connect()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iso_pres.presentation.ISO_Presentation.close"><code class="docutils literal notranslate">close()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iso_pres.presentation.ISO_Presentation.init_session"><code class="docutils literal notranslate">init_session()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iso_pres.presentation.ISO_Presentation.close_session"><code class="docutils literal notranslate">close_session()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iso_pres.presentation.ISO_Presentation.send_data"><code class="docutils literal notranslate">send_data()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iso_pres.presentation.ISO_Presentation.send_encoded_data"><code class="docutils literal notranslate">send_encoded_data()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iso_pres.presentation.ISO_Presentation.recv_data"><code class="docutils literal notranslate">recv_data()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iso_pres.presentation.ISO_Presentation.recv_encoded_data"><code class="docutils literal notranslate">recv_encoded_data()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</div><a class="js-repo-stats repo-stats flex items-center" href="https://github.com/MatrixEditor/icspacket"
+  data-type="github" data-user="MatrixEditor" data-repo="icspacket">
+  <span class="w-8 flex items-center justify-around shrink-0 text-3xl">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </span>
+  <span class="flex-grow px-2 break-all">
+    <span style="font-size: small;">MatrixEditor/icspacket</span>
+    <span class="flex text-sm repo-stats-count">
+      <span class="flex items-center pr-3">
+        <iconify-icon icon="lucide:star"></iconify-icon>
+        <strong class="js-repo-stars ml-1">0</strong>
+      </span>
+      <span class="flex items-center">
+        <iconify-icon icon="lucide:git-fork"></iconify-icon>
+        <strong class="js-repo-forks ml-1">0</strong>
+      </span>
+    </span>
+  </span>
+</a><div class="edit-this-page">
+  <a href="https://github.com/MatrixEditor/icspacket/blob/main/docs/protocols/copp/presentation.rst">Edit this page</a>
+</div></div>
+  </aside>
+  <div class="rside-overlay js-menu" role="button" aria-label="Close Table of Contents" aria-controls="rside" aria-expanded="false"></div>
+  <main class="sy-main w-full max-sm:max-w-full print:pt-6">
+<div class="sy-breadcrumbs" role="navigation">
+  <div class="sy-breadcrumbs-inner flex items-center">
+    <div class="md:hidden mr-3">
+      <button class="js-menu" aria-label="Menu" type="button" aria-controls="lside" aria-expanded="false">
+        <i class="i-lucide menu"></i>
+      </button>
+    </div>
+    <ol class="flex-1" itemscope itemtype="https://schema.org/BreadcrumbList"><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="../../index.html"><span itemprop="name">icspacket</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="1" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="api.html"><span itemprop="name">API Reference</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="2" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <strong itemprop="name">ISO Presentation</strong>
+        <meta itemprop="position" content="3" />
+      </li></ol>
+    <div class="xl:hidden ml-1">
+      <button class="js-menu" aria-label="Show table of contents" type="button" aria-controls="rside"
+        aria-expanded="false">
+        <i class="i-lucide outdent"></i>
+      </button>
+    </div>
+  </div>
+</div><div class="flex flex-col break-words justify-between">
+      <div class="min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
+        <article class="yue" role="main">
+          <section id="module-icspacket.proto.iso_pres.presentation">
+<span id="iso-presentation"></span><span id="copp-presentation"></span><h1>ISO Presentation<a class="headerlink" href="#module-icspacket.proto.iso_pres.presentation" title="Link to this heading">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="icspacket.proto.iso_pres.presentation.ISO_PresentationContext">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">icspacket.proto.iso_pres.presentation.</span></span><span class="sig-name descname"><span class="pre">ISO_PresentationContext</span></span><a class="reference internal" href="../../_modules/icspacket/proto/iso_pres/presentation.html#ISO_PresentationContext"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iso_pres.presentation.ISO_PresentationContext" title="Link to this definition">¶</a></dt>
+<dd><p>Manages Presentation Context Items.</p>
+<p>Each Presentation Context defines how user data is interpreted by
+binding an <em>abstract syntax</em> (ASN.1 type) to one or more <em>transfer syntaxes</em>.</p>
+<p>This class is used to create, register, and remove contexts, and is
+passed to <a class="reference internal" href="#icspacket.proto.iso_pres.presentation.ISO_Presentation" title="icspacket.proto.iso_pres.presentation.ISO_Presentation"><code class="xref py py-class docutils literal notranslate"><span class="pre">ISO_Presentation</span></code></a> to negotiate which contexts are valid
+during association.</p>
+<dl class="py property">
+<dt class="sig sig-object py" id="icspacket.proto.iso_pres.presentation.ISO_PresentationContext.items">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">items</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Member_TYPE</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#icspacket.proto.iso_pres.presentation.ISO_PresentationContext.items" title="Link to this definition">¶</a></dt>
+<dd><p>Dictionary of Presentation Context Items keyed by their ID.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="icspacket.proto.iso_pres.presentation.ISO_PresentationContext.asn1_types">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">asn1_types</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">type</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#icspacket.proto.iso_pres.presentation.ISO_PresentationContext.asn1_types" title="Link to this definition">¶</a></dt>
+<dd><p>Dictionary mapping context IDs to ASN.1 decoding classes.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.iso_pres.presentation.ISO_PresentationContext.add">
+<span class="sig-name descname"><span class="pre">add</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Member_TYPE</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">asn1_cls</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">type</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../../_modules/icspacket/proto/iso_pres/presentation.html#ISO_PresentationContext.add"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iso_pres.presentation.ISO_PresentationContext.add" title="Link to this definition">¶</a></dt>
+<dd><p>Register an existing Presentation Context Item and bind its ASN.1 class.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.iso_pres.presentation.ISO_PresentationContext.new">
+<span class="sig-name descname"><span class="pre">new</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ctx_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">asn1_cls</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transfer_syntax</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Member_TYPE</span></span></span><a class="reference internal" href="../../_modules/icspacket/proto/iso_pres/presentation.html#ISO_PresentationContext.new"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iso_pres.presentation.ISO_PresentationContext.new" title="Link to this definition">¶</a></dt>
+<dd><p>Create and register a new Presentation Context Item.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> – Abstract syntax name (object identifier or string).</p></li>
+<li><p><strong>ctx_id</strong> – Unique Presentation Context Identifier.</p></li>
+<li><p><strong>asn1_cls</strong> – ASN.1 decoding class for user data.</p></li>
+<li><p><strong>transfer_syntax</strong> – Transfer syntax to bind. Defaults to Basic (2.1.1).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The created context item.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>PresentaionContextItem</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.iso_pres.presentation.ISO_PresentationContext.remove">
+<span class="sig-name descname"><span class="pre">remove</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Member_TYPE</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../../_modules/icspacket/proto/iso_pres/presentation.html#ISO_PresentationContext.remove"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iso_pres.presentation.ISO_PresentationContext.remove" title="Link to this definition">¶</a></dt>
+<dd><p>Remove a Presentation Context Item and its ASN.1 binding.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="icspacket.proto.iso_pres.presentation.ISO_PresentationSettings">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">icspacket.proto.iso_pres.presentation.</span></span><span class="sig-name descname"><span class="pre">ISO_PresentationSettings</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">calling_selector</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bytes</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">called_selector</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bytes</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_version1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">custom_requirements</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Presentation_requirements</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/icspacket/proto/iso_pres/presentation.html#ISO_PresentationSettings"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iso_pres.presentation.ISO_PresentationSettings" title="Link to this definition">¶</a></dt>
+<dd><p>Configuration settings for the Presentation layer.</p>
+<p>These settings influence how the Presentation connection (COPP) is
+established, specifically how selectors and protocol versions are
+negotiated.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>calling_selector</strong> (<em>bytes</em><em> | </em><em>None</em>) – Local presentation selector, used to identify
+the calling application entity. If <code class="docutils literal notranslate"><span class="pre">None</span></code>, no selector is included.</p></li>
+<li><p><strong>called_selector</strong> (<em>bytes</em><em> | </em><em>None</em>) – Remote presentation selector, used to identify
+the destination application entity. If <code class="docutils literal notranslate"><span class="pre">None</span></code>, no selector is included.</p></li>
+<li><p><strong>use_version1</strong> (<em>bool</em>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, forces usage of COPP Version 1 semantics.
+If <code class="docutils literal notranslate"><span class="pre">False</span></code>, negotiates a higher version (default).</p></li>
+<li><p><strong>custom_requirements</strong> (<em>Presentation_requirements</em><em> | </em><em>None</em>) – Optional presentation requirements to override
+defaults. If <code class="docutils literal notranslate"><span class="pre">None</span></code>, a default requirements set is used.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="icspacket.proto.iso_pres.presentation.ISO_Presentation">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">icspacket.proto.iso_pres.presentation.</span></span><span class="sig-name descname"><span class="pre">ISO_Presentation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">session</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../cosp/session.html#icspacket.proto.iso_ses.session.ISO_Session" title="icspacket.proto.iso_ses.session.ISO_Session"><span class="pre">ISO_Session</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">settings</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#icspacket.proto.iso_pres.presentation.ISO_PresentationSettings" title="icspacket.proto.iso_pres.presentation.ISO_PresentationSettings"><span class="pre">ISO_PresentationSettings</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#icspacket.proto.iso_pres.presentation.ISO_PresentationContext" title="icspacket.proto.iso_pres.presentation.ISO_PresentationContext"><span class="pre">ISO_PresentationContext</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/icspacket/proto/iso_pres/presentation.html#ISO_Presentation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iso_pres.presentation.ISO_Presentation" title="Link to this definition">¶</a></dt>
+<dd><p>Implements the ISO Presentation protocol (X.226 / ISO 8823).</p>
+<p>The Presentation layer sits above the Session layer and provides
+context negotiation and user data encapsulation. It uses <em>PPDUs</em>
+(Presentation Protocol Data Units) for connection establishment and
+termination.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="gp">&gt;&gt;&gt; </span><span class="n">session</span> <span class="o">=</span> <span class="n">ISO_Session</span><span class="p">(</span><span class="o">...</span><span class="p">)</span> <span class="c1"># may require COTP_Connection</span>
+</span><span data-line="2"><span class="gp">&gt;&gt;&gt; </span><span class="n">presentation</span> <span class="o">=</span> <span class="n">ISO_Presentation</span><span class="p">(</span><span class="n">session</span><span class="p">)</span>
+</span></pre></div>
+</div>
+<p>To make sure your application layer user data is decoded and encoded
+correctly, register a new context id:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="gp">&gt;&gt;&gt; </span><span class="n">presentation</span><span class="o">.</span><span class="n">presentation_context</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;1.2.3&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">MyASN1Class</span><span class="p">)</span>
+</span><span data-line="2"><span class="go">&lt;Context_list.Member_TYPE&gt;</span>
+</span><span data-line="3"><span class="gp">&gt;&gt;&gt; </span><span class="n">presentation</span><span class="o">.</span><span class="n">init_session</span><span class="p">((</span><span class="s2">&quot;127.0.0.1&quot;</span><span class="p">,</span> <span class="mi">1234</span><span class="p">))</span>
+</span><span data-line="4"><span class="go">&lt;MyASN1Class&gt; # depending on server result and ctx_id</span>
+</span></pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>session</strong> (<a class="reference internal" href="../cosp/session.html#icspacket.proto.iso_ses.session.ISO_Session" title="icspacket.proto.iso_ses.session.ISO_Session"><em>ISO_Session</em></a>) – Underlying ISO Session instance to use for transport.</p></li>
+<li><p><strong>settings</strong> (<a class="reference internal" href="#icspacket.proto.iso_pres.presentation.ISO_PresentationSettings" title="icspacket.proto.iso_pres.presentation.ISO_PresentationSettings"><em>ISO_PresentationSettings</em></a><em> | </em><em>None</em>) – Optional Presentation settings (selectors, version, requirements).</p></li>
+<li><p><strong>context</strong> (<a class="reference internal" href="#icspacket.proto.iso_pres.presentation.ISO_PresentationContext" title="icspacket.proto.iso_pres.presentation.ISO_PresentationContext"><em>ISO_PresentationContext</em></a><em> | </em><em>None</em>) – Presentation context registry, managing context IDs and
+ASN.1 decoding classes.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iso_pres.presentation.ISO_Presentation.settings">
+<span class="sig-name descname"><span class="pre">settings</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#icspacket.proto.iso_pres.presentation.ISO_PresentationSettings" title="icspacket.proto.iso_pres.presentation.ISO_PresentationSettings"><span class="pre">ISO_PresentationSettings</span></a></em><a class="headerlink" href="#icspacket.proto.iso_pres.presentation.ISO_Presentation.settings" title="Link to this definition">¶</a></dt>
+<dd><p>Configuration settings for the Presentation layer.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="icspacket.proto.iso_pres.presentation.ISO_Presentation.presentation_context">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">presentation_context</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#icspacket.proto.iso_pres.presentation.ISO_PresentationContext" title="icspacket.proto.iso_pres.presentation.ISO_PresentationContext"><span class="pre">ISO_PresentationContext</span></a></em><a class="headerlink" href="#icspacket.proto.iso_pres.presentation.ISO_Presentation.presentation_context" title="Link to this definition">¶</a></dt>
+<dd><p>Registered Presentation Contexts.</p>
+<p>Provides both the raw context items and their ASN.1 decoding bindings.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The managed Presentation Context registry.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#icspacket.proto.iso_pres.presentation.ISO_PresentationContext" title="icspacket.proto.iso_pres.presentation.ISO_PresentationContext">ISO_PresentationContext</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="icspacket.proto.iso_pres.presentation.ISO_Presentation.session">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">session</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="../cosp/session.html#icspacket.proto.iso_ses.session.ISO_Session" title="icspacket.proto.iso_ses.session.ISO_Session"><span class="pre">ISO_Session</span></a></em><a class="headerlink" href="#icspacket.proto.iso_pres.presentation.ISO_Presentation.session" title="Link to this definition">¶</a></dt>
+<dd><p>Underlying Session object providing transport services.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="icspacket.proto.iso_pres.presentation.ISO_Presentation.transport">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">transport</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="../cotp/connection.html#icspacket.proto.cotp.connection.COTP_Connection" title="icspacket.proto.cotp.connection.COTP_Connection"><span class="pre">COTP_Connection</span></a></em><a class="headerlink" href="#icspacket.proto.iso_pres.presentation.ISO_Presentation.transport" title="Link to this definition">¶</a></dt>
+<dd><p>Underlying COTP transport connection (OSI transport layer).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.iso_pres.presentation.ISO_Presentation.connect">
+<span class="sig-name descname"><span class="pre">connect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">address</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../../_modules/icspacket/proto/iso_pres/presentation.html#ISO_Presentation.connect"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iso_pres.presentation.ISO_Presentation.connect" title="Link to this definition">¶</a></dt>
+<dd><p>Establish a Presentation connection.</p>
+<p>If already connected, the call is ignored. Otherwise, it delegates
+connection establishment to the Session layer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>address</strong> (<em>tuple</em><em>[</em><em>str</em><em>, </em><em>int</em><em>]</em>) – Network address tuple (host, port).</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.iso_pres.presentation.ISO_Presentation.close">
+<span class="sig-name descname"><span class="pre">close</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../../_modules/icspacket/proto/iso_pres/presentation.html#ISO_Presentation.close"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iso_pres.presentation.ISO_Presentation.close" title="Link to this definition">¶</a></dt>
+<dd><p>Close the Presentation connection.</p>
+<p>Delegates closure to the Session layer and marks the Presentation
+context as invalid.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.iso_pres.presentation.ISO_Presentation.init_session">
+<span class="sig-name descname"><span class="pre">init_session</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">app_octets</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bytes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">address</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/icspacket/proto/iso_pres/presentation.html#ISO_Presentation.init_session"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iso_pres.presentation.ISO_Presentation.init_session" title="Link to this definition">¶</a></dt>
+<dd><p>Initialize a Presentation session (A-ASSOCIATE equivalent).</p>
+<p>Builds and transmits a <em>CP PPDU</em> (Connect Presentation PDU) carrying
+application data, registered presentation contexts, and optional selectors.
+Waits for a <em>CPA PPDU</em> (Connect Presentation Accept) in response.</p>
+<ul class="simple">
+<li><p>Includes all registered Presentation Context Items in negotiation.</p></li>
+<li><p>If <code class="docutils literal notranslate"><span class="pre">calling_selector</span></code> or <code class="docutils literal notranslate"><span class="pre">called_selector</span></code> are set, they are included
+in the PPDU for AE identification.</p></li>
+<li><p>If <code class="docutils literal notranslate"><span class="pre">use_version1</span></code> is <code class="docutils literal notranslate"><span class="pre">True</span></code>, forces negotiation of COPP v1.</p></li>
+<li><p>If <code class="docutils literal notranslate"><span class="pre">custom_requirements</span></code> is provided, overrides default presentation
+requirements.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>app_octets</strong> (<em>bytes</em>) – Encoded application-layer data to include in the CP PPDU.</p></li>
+<li><p><strong>address</strong> (<em>tuple</em><em>[</em><em>str</em><em>, </em><em>int</em><em>] </em><em>| </em><em>None</em>) – Optional address for connection establishment if the
+session is not already connected.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="../../getting-started/coreapi.html#icspacket.core.connection.ConnectionError" title="icspacket.core.connection.ConnectionError"><strong>ConnectionError</strong></a> – If session initiation fails, invalid CPA received,
+or unsupported mode is negotiated.</p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Decoded user data if present in the CPA response, otherwise <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Any | None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.iso_pres.presentation.ISO_Presentation.close_session">
+<span class="sig-name descname"><span class="pre">close_session</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">octets</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bytes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pres_ctx_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">graceful</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../../_modules/icspacket/proto/iso_pres/presentation.html#ISO_Presentation.close_session"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iso_pres.presentation.ISO_Presentation.close_session" title="Link to this definition">¶</a></dt>
+<dd><p>Close the Presentation session.</p>
+<p>Sends a <em>CN/CPA termination sequence</em> (Finish) via the Session layer,
+optionally embedding user data.</p>
+<ul class="simple">
+<li><p>If <code class="docutils literal notranslate"><span class="pre">pres_ctx_id</span></code> is provided, the user data is bound to the given
+Presentation Context Identifier.</p></li>
+<li><p>If <code class="docutils literal notranslate"><span class="pre">graceful</span></code> is <code class="docutils literal notranslate"><span class="pre">True</span></code>, waits for a <em>Disconnect</em> confirmation and
+returns raw response data.</p></li>
+<li><p>If <code class="docutils literal notranslate"><span class="pre">graceful</span></code> is <code class="docutils literal notranslate"><span class="pre">False</span></code>, closes immediately.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>octets</strong> (<em>bytes</em>) – Encoded application user data to include.</p></li>
+<li><p><strong>pres_ctx_id</strong> (<em>int</em><em> | </em><em>None</em>) – Optional presentation context ID for user data binding.</p></li>
+<li><p><strong>graceful</strong> (<em>bool</em>) – Whether to perform graceful closure with peer acknowledgment.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="../../getting-started/coreapi.html#icspacket.core.connection.ConnectionStateError" title="icspacket.core.connection.ConnectionStateError"><strong>ConnectionStateError</strong></a> – If session has not been initialized.</p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Raw data from peer if <code class="docutils literal notranslate"><span class="pre">graceful</span></code> is <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bytes | None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.iso_pres.presentation.ISO_Presentation.send_data">
+<span class="sig-name descname"><span class="pre">send_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">octets</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bytes</span></span></em>, <em class="sig-param"><span class="positional-only-separator o"><abbr title="Positional-only parameter separator (PEP 570)"><span class="pre">/</span></abbr></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../../_modules/icspacket/proto/iso_pres/presentation.html#ISO_Presentation.send_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iso_pres.presentation.ISO_Presentation.send_data" title="Link to this definition">¶</a></dt>
+<dd><p>Send raw user data.</p>
+<p>Delegates to <a class="reference internal" href="#icspacket.proto.iso_pres.presentation.ISO_Presentation.send_encoded_data" title="icspacket.proto.iso_pres.presentation.ISO_Presentation.send_encoded_data"><code class="xref py py-meth docutils literal notranslate"><span class="pre">send_encoded_data()</span></code></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>octets</strong> (<em>bytes</em>) – Encoded user data.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.iso_pres.presentation.ISO_Presentation.send_encoded_data">
+<span class="sig-name descname"><span class="pre">send_encoded_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">octets</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bytes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pres_ctx_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../../_modules/icspacket/proto/iso_pres/presentation.html#ISO_Presentation.send_encoded_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iso_pres.presentation.ISO_Presentation.send_encoded_data" title="Link to this definition">¶</a></dt>
+<dd><p>Send BER-encoded user data bound to a Presentation Context Identifier.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>octets</strong> (<em>bytes</em>) – User data to encode.</p></li>
+<li><p><strong>pres_ctx_id</strong> (<em>int</em><em> | </em><em>None</em>) – Optional Presentation Context ID. If omitted, default
+context is used.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="../../getting-started/coreapi.html#icspacket.core.connection.ConnectionStateError" title="icspacket.core.connection.ConnectionStateError"><strong>ConnectionStateError</strong></a> – If not connected.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.iso_pres.presentation.ISO_Presentation.recv_data">
+<span class="sig-name descname"><span class="pre">recv_data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bytes</span></span></span><a class="reference internal" href="../../_modules/icspacket/proto/iso_pres/presentation.html#ISO_Presentation.recv_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iso_pres.presentation.ISO_Presentation.recv_data" title="Link to this definition">¶</a></dt>
+<dd><p>Receive raw user data from the session.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Raw user data octets.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bytes</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.iso_pres.presentation.ISO_Presentation.recv_encoded_data">
+<span class="sig-name descname"><span class="pre">recv_encoded_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">type</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Any</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="reference internal" href="../../_modules/icspacket/proto/iso_pres/presentation.html#ISO_Presentation.recv_encoded_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iso_pres.presentation.ISO_Presentation.recv_encoded_data" title="Link to this definition">¶</a></dt>
+<dd><p>Receive and decode Presentation-encoded user data.</p>
+<p>Attempts to decode <em>User-data</em> PPDU from the session. If decoding fails,
+raises a type error.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>context</strong> (<em>dict</em><em>[</em><em>int</em><em>, </em><em>type</em><em>] </em><em>| </em><em>None</em>) – Optional decoding context mapping PCI IDs to classes. If
+omitted, the instance’s default <code class="xref py py-attr docutils literal notranslate"><span class="pre">presentation_context.asn1_types</span></code> is used.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><a class="reference internal" href="../../getting-started/coreapi.html#icspacket.core.connection.ConnectionClosedError" title="icspacket.core.connection.ConnectionClosedError"><strong>ConnectionClosedError</strong></a> – If no data is received (connection closed).</p></li>
+<li><p><strong>TypeError</strong> – If decoding fails due to invalid BER.</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Decoded ASN.1 object or <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Any | None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+        </article><button class="back-to-top" type="button">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+  </svg>
+  <span>Back to top</span>
+</button><div class="navigation flex print:hidden"><div class="navigation-prev">
+    <a href="api.html">
+      <i class="i-lucide chevron-left"></i>
+      <div class="page-info">
+        <span>Previous</span><div class="title">API Reference</div></div>
+    </a>
+  </div><div class="navigation-next">
+    <a href="utils.html">
+      <div class="page-info">
+        <span>Next</span>
+        <div class="title">Protocol Utilities</div>
+      </div>
+      <i class="i-lucide chevron-right"></i>
+    </a>
+  </div></div></div>
+    </div>
+  </main>
+</div>
+<footer class="sy-foot">
+  <div class="sy-foot-inner sy-container mx-auto">
+    <div class="sy-foot-reserved md:flex justify-between items-center">
+      <div class="sy-foot-copyright"><p>2025, MatrixEditor</p>
+  
+  <p>
+    Made with
+    
+    <a href="https://www.sphinx-doc.org/">Sphinx</a> and
+    
+    <a href="https://shibuya.lepture.com">Shibuya theme</a>.
+  </p>
+</div>
+      <div class="sy-foot-socials">
+<a href="https://github.com/MatrixEditor/icspacket" aria-label="GitHub">
+  <iconify-icon icon="simple-icons:github"></iconify-icon>
+</a></div>
+    </div>
+  </div>
+</footer>
+      <script src="../../_static/documentation_options.js?v=e3b32040"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+      <script src="../../_static/shibuya.js?v=e730760c"></script></body>
+</html>

@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html lang="en" data-accent-color="lime" data-content_root="../../">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>MMS Connection - icspacket 0.1.dev1+g814ee7fee documentation</title><link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="Data Conversion" href="api_data.html" /><link rel="prev" title="API Reference" href="api.html" />
+      <link rel="canonical" href="https://matrixeditor.github.io/icspacket/protocols/mms/api_conn.html" /><script>
+    function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
+    setColorMode(localStorage._theme||"dark");
+  </script><link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=397bb51e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/shibuya.css?v=d48c410d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link media="print" rel="stylesheet" type="text/css" href="../../_static/print.css?v=20ff2c19" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --sy-f-text: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+  --sy-f-heading: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+}
+</style>
+    <meta property="og:type" content="website"/>
+<meta property="og:url" content="https://matrixeditor.github.io/icspacket/protocols/mms/api_conn.html"/>
+<meta property="og:title" content="MMS Connection"/>
+<meta name="twitter:card" content="summary"/>
+  </head>
+<body><div class="sy-head">
+  <div class="sy-head-blur"></div>
+  <div class="sy-head-inner sy-container mx-auto">
+    <a class="sy-head-brand" href="../../index.html">
+      
+      
+      <strong>icspacket</strong>
+    </a>
+    <div class="sy-head-nav" id="head-nav">
+      <nav class="sy-head-links"><ul>
+      <li class="link"><a class="js-menu" href="../../examples/index.html" id="nav-trigger-1" aria-controls="nav-children-1">
+            <span>Examples</span>
+            <i class="i-lucide chevron-down"></i>
+          </a>
+        <ul id="nav-children-1" aria-labelledby="nav-trigger-1"><li><a href="../../examples/mms/index.html">
+                <span>MMS Utilities</span>
+                <small>Manufacturing Message Specification tools</small>
+              </a></li></ul>
+      </li></ul></nav>
+      <div class="sy-head-extra flex items-center print:hidden"><form class="searchbox flex items-center" action="../../search.html" method="get">
+  <input type="text" name="q" placeholder="Search" />
+  <kbd>/</kbd>
+</form><div class="sy-head-socials">
+  <a href="https://github.com/MatrixEditor/icspacket" aria-label="GitHub">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </a></div></div>
+    </div>
+    <div class="sy-head-actions flex items-center shrink-0 print:hidden"><button class="js-theme theme-switch flex items-center"
+data-aria-auto="Switch to light color mode"
+data-aria-light="Switch to dark color mode"
+data-aria-dark="Switch to auto color mode">
+<i class="i-lucide theme-icon"></i>
+</button><button class="md:hidden flex items-center js-menu" aria-label="Menu" type="button" aria-controls="head-nav" aria-expanded="false">
+        <div class="hamburger">
+          <span class="hamburger_1"></span>
+          <span class="hamburger_2 -translate-x-2"></span>
+          <span class="hamburger_3 -translate-x-1"></span>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>
+<div class="sy-page sy-container flex mx-auto">
+  <aside id="lside" class="sy-lside md:w-72 md:shrink-0 print:hidden">
+    <div class="sy-lside-inner md:sticky">
+      <div class="sy-scrollbar p-6"><div class="sidebar-links">
+  <ul>
+    <li><a class="icon-link" href="https://github.com/MatrixEditor/icspacket/discussions">
+  <span class="icon">
+    <svg viewBox="0 0 24 24" fill="none">
+      <path fill="var(--accent-9)" fill-rule="evenodd" clip-rule="evenodd" d="M11 5a6 6 0 0 0-4.687 9.746c.215.27.315.62.231.954l-.514 2.058a1 1 0 0 0 1.485 1.1l2.848-1.71c.174-.104.374-.15.576-.148H13a6 6 0 0 0 0-12h-2Z"/>
+      <circle fill="white" cx="12" cy="11" r="1"/>
+      <circle fill="white" cx="9" cy="11" r="1"/>
+      <circle fill="white" cx="15" cy="11" r="1"/>
+    </svg>
+  </span>
+  <span class="text">Discussion</span>
+</a></li>
+  </ul>
+</div>
+        <div class="globaltoc" data-expand-depth="2"><p class="caption" role="heading" aria-level="3"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../getting-started/installation.html">Installation</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../getting-started/protocols.html">Protocols Overview</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../getting-started/coreapi.html">Core API Reference</a></li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">MMS / ISO 9506</span></p>
+<ul class="current">
+<li class="toctree-l1 _expand"><a class="reference internal" href="demo_vars.html">Variable Target Format</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="demo_vars.html#variableaccess-service-rwq">VariableAccess Service (rwq)</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="demo_files.html">FileManagement Service</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="api.html">API Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">MMS Connection</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="api_data.html">Data Conversion</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="api_utils.html">Protocol Utilities</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">ACSE / X.227</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../acse/api.html">API Reference</a></li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">COPP / X.226 / ISO 8823</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../copp/api.html">API Reference</a><ul>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../copp/presentation.html">ISO Presentation</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../copp/utils.html">Protocol Utilities</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">COSP / X.225 / ISO 8237-1</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../cosp/api.html">API Reference</a><ul>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../cosp/tsdu.html">TSDU</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../cosp/spdu.html">SPDU Types</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../cosp/values.html">Parameter Values (PV)</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../cosp/session.html">ISO Session</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../cosp/utils.html">Protocol Utilities</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">COTP / X.224</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../cotp/api.html">API Reference</a><ul>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../cotp/structs.html">TPDU Types</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../cotp/connection.html">Connection</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">TPKT Protocol (RFC1006)</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../tpkt/usage.html">Using a TPKT Wrapper</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../tpkt/api.html">API Reference</a></li>
+</ul>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="lside-overlay js-menu" role="button" aria-label="Close left sidebar" aria-controls="lside" aria-expanded="false"></div>
+  <aside id="rside" class="sy-rside pb-3 w-64 shrink-0 order-last">
+    <button class="rside-close js-menu xl:hidden" aria-label="Close Table of Contents" type="button" aria-controls="rside" aria-expanded="false">
+      <i class="i-lucide close"></i>
+    </button>
+    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div class="localtoc"><h3>On this page</h3><ul>
+<li><a class="reference internal" href="#icspacket.proto.mms.connection.MMS_Connection"><code class="docutils literal notranslate"><span class="pre">MMS_Connection</span></code></a><ul>
+<li><a class="reference internal" href="#icspacket.proto.mms.connection.MMS_Connection.session"><code class="docutils literal notranslate">session</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.mms.connection.MMS_Connection.transport"><code class="docutils literal notranslate">transport</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.mms.connection.MMS_Connection.presentation"><code class="docutils literal notranslate">presentation</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.mms.connection.MMS_Connection.association"><code class="docutils literal notranslate">association</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.mms.connection.MMS_Connection.next_invoke_id"><code class="docutils literal notranslate">next_invoke_id</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.mms.connection.MMS_Connection.invoke_id"><code class="docutils literal notranslate">invoke_id</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.mms.connection.MMS_Connection.connect"><code class="docutils literal notranslate">connect()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.mms.connection.MMS_Connection.associate"><code class="docutils literal notranslate">associate()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.mms.connection.MMS_Connection.release"><code class="docutils literal notranslate">release()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.mms.connection.MMS_Connection.abort"><code class="docutils literal notranslate">abort()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.mms.connection.MMS_Connection.close"><code class="docutils literal notranslate">close()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.mms.connection.MMS_Connection.send_data"><code class="docutils literal notranslate">send_data()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.mms.connection.MMS_Connection.send_mms_data"><code class="docutils literal notranslate">send_mms_data()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.mms.connection.MMS_Connection.recv_mms_data"><code class="docutils literal notranslate">recv_mms_data()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.mms.connection.MMS_Connection.get_status"><code class="docutils literal notranslate">get_status()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.mms.connection.MMS_Connection.get_name_list"><code class="docutils literal notranslate">get_name_list()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.mms.connection.MMS_Connection.identify"><code class="docutils literal notranslate">identify()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.mms.connection.MMS_Connection.get_capabilities"><code class="docutils literal notranslate">get_capabilities()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.mms.connection.MMS_Connection.read_variables"><code class="docutils literal notranslate">read_variables()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.mms.connection.MMS_Connection.write_variable"><code class="docutils literal notranslate">write_variable()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.mms.connection.MMS_Connection.variable_attributes"><code class="docutils literal notranslate">variable_attributes()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.mms.connection.MMS_Connection.file_open"><code class="docutils literal notranslate">file_open()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.mms.connection.MMS_Connection.file_read_chunk"><code class="docutils literal notranslate">file_read_chunk()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.mms.connection.MMS_Connection.file_read"><code class="docutils literal notranslate">file_read()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.mms.connection.MMS_Connection.file_close"><code class="docutils literal notranslate">file_close()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.mms.connection.MMS_Connection.file_rename"><code class="docutils literal notranslate">file_rename()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.mms.connection.MMS_Connection.file_delete"><code class="docutils literal notranslate">file_delete()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.mms.connection.MMS_Connection.list_directory"><code class="docutils literal notranslate">list_directory()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.mms.connection.MMS_Connection.additional_service_request"><code class="docutils literal notranslate">additional_service_request()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.mms.connection.MMS_Connection.service_request"><code class="docutils literal notranslate">service_request()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</div><a class="js-repo-stats repo-stats flex items-center" href="https://github.com/MatrixEditor/icspacket"
+  data-type="github" data-user="MatrixEditor" data-repo="icspacket">
+  <span class="w-8 flex items-center justify-around shrink-0 text-3xl">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </span>
+  <span class="flex-grow px-2 break-all">
+    <span style="font-size: small;">MatrixEditor/icspacket</span>
+    <span class="flex text-sm repo-stats-count">
+      <span class="flex items-center pr-3">
+        <iconify-icon icon="lucide:star"></iconify-icon>
+        <strong class="js-repo-stars ml-1">0</strong>
+      </span>
+      <span class="flex items-center">
+        <iconify-icon icon="lucide:git-fork"></iconify-icon>
+        <strong class="js-repo-forks ml-1">0</strong>
+      </span>
+    </span>
+  </span>
+</a><div class="edit-this-page">
+  <a href="https://github.com/MatrixEditor/icspacket/blob/main/docs/protocols/mms/api_conn.rst">Edit this page</a>
+</div></div>
+  </aside>
+  <div class="rside-overlay js-menu" role="button" aria-label="Close Table of Contents" aria-controls="rside" aria-expanded="false"></div>
+  <main class="sy-main w-full max-sm:max-w-full print:pt-6">
+<div class="sy-breadcrumbs" role="navigation">
+  <div class="sy-breadcrumbs-inner flex items-center">
+    <div class="md:hidden mr-3">
+      <button class="js-menu" aria-label="Menu" type="button" aria-controls="lside" aria-expanded="false">
+        <i class="i-lucide menu"></i>
+      </button>
+    </div>
+    <ol class="flex-1" itemscope itemtype="https://schema.org/BreadcrumbList"><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="../../index.html"><span itemprop="name">icspacket</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="1" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="api.html"><span itemprop="name">API Reference</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="2" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <strong itemprop="name">MMS Connection</strong>
+        <meta itemprop="position" content="3" />
+      </li></ol>
+    <div class="xl:hidden ml-1">
+      <button class="js-menu" aria-label="Show table of contents" type="button" aria-controls="rside"
+        aria-expanded="false">
+        <i class="i-lucide outdent"></i>
+      </button>
+    </div>
+  </div>
+</div><div class="flex flex-col break-words justify-between">
+      <div class="min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
+        <article class="yue" role="main">
+          <section id="module-icspacket.proto.mms.connection">
+<span id="mms-connection"></span><span id="api-mms-conn"></span><h1>MMS Connection<a class="headerlink" href="#module-icspacket.proto.mms.connection" title="Link to this heading">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="icspacket.proto.mms.connection.MMS_Connection">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">icspacket.proto.mms.connection.</span></span><span class="sig-name descname"><span class="pre">MMS_Connection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cotp_conn</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../cotp/connection.html#icspacket.proto.cotp.connection.COTP_Connection" title="icspacket.proto.cotp.connection.COTP_Connection"><span class="pre">COTP_Connection</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">session_config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../cosp/session.html#icspacket.proto.iso_ses.session.ISO_SessionSettings" title="icspacket.proto.iso_ses.session.ISO_SessionSettings"><span class="pre">ISO_SessionSettings</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">presentation_config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../copp/presentation.html#icspacket.proto.iso_pres.presentation.ISO_PresentationSettings" title="icspacket.proto.iso_pres.presentation.ISO_PresentationSettings"><span class="pre">ISO_PresentationSettings</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">auth</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../acse/api.html#icspacket.proto.mms.acse.Authenticator" title="icspacket.proto.mms.acse.Authenticator"><span class="pre">Authenticator</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/icspacket/proto/mms/connection.html#MMS_Connection"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.mms.connection.MMS_Connection" title="Link to this definition">¶</a></dt>
+<dd><p>Implementation of the MMS (Manufacturing Message Specification) connection
+handling (ISO 9506-1,2).</p>
+<p>This class provides a high-level MMS service endpoint on top of the ISO OSI stack.
+It integrates the following layers into a single connection object:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span><span data-line="1">+-----------------------------+
+</span><span data-line="2">| MMS (ISO 9506)              |
+</span><span data-line="3">+-----------------------------+
+</span><span data-line="4">| ACSE Association            |
+</span><span data-line="5">+-----------------------------+
+</span><span data-line="6">| ISO Presentation (ISO 8823) |
+</span><span data-line="7">+-----------------------------+
+</span><span data-line="8">| ISO Session (ISO 8327)      |
+</span><span data-line="9">+-----------------------------+
+</span><span data-line="10">| Transport (COTP, RFC 905)   |
+</span><span data-line="11">+-----------------------------+
+</span><span data-line="12">| TPKT / TCP                  |
+</span><span data-line="13">+-----------------------------+
+</span></pre></div>
+</div>
+<p>The class encapsulates these layers so that MMS service primitives such as
+<a class="reference internal" href="#icspacket.proto.mms.connection.MMS_Connection.associate" title="icspacket.proto.mms.connection.MMS_Connection.associate"><code class="xref py py-meth docutils literal notranslate"><span class="pre">associate()</span></code></a>, <a class="reference internal" href="#icspacket.proto.mms.connection.MMS_Connection.release" title="icspacket.proto.mms.connection.MMS_Connection.release"><code class="xref py py-meth docutils literal notranslate"><span class="pre">release()</span></code></a>, <a class="reference internal" href="#icspacket.proto.mms.connection.MMS_Connection.abort" title="icspacket.proto.mms.connection.MMS_Connection.abort"><code class="xref py py-meth docutils literal notranslate"><span class="pre">abort()</span></code></a>, and <a class="reference internal" href="#icspacket.proto.mms.connection.MMS_Connection.close" title="icspacket.proto.mms.connection.MMS_Connection.close"><code class="xref py py-meth docutils literal notranslate"><span class="pre">close()</span></code></a> can be
+directly invoked by the user without manually handling lower-layer PDUs.</p>
+<p>Establishing an MMS association to a remote server:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="kn">from</span><span class="w"> </span><span class="nn">mms.connection</span><span class="w"> </span><span class="kn">import</span> <span class="n">MMS_Connection</span>
+</span><span data-line="2">
+</span><span data-line="3"><span class="c1"># Create MMS connection</span>
+</span><span data-line="4"><span class="n">mms_conn</span> <span class="o">=</span> <span class="n">MMS_Connection</span><span class="p">()</span>
+</span><span data-line="5">
+</span><span data-line="6"><span class="c1"># Connect and associate with a peer MMS user</span>
+</span><span data-line="7"><span class="n">mms_conn</span><span class="o">.</span><span class="n">associate</span><span class="p">((</span><span class="s2">&quot;192.168.1.100&quot;</span><span class="p">,</span> <span class="mi">102</span><span class="p">))</span>
+</span><span data-line="8"><span class="k">assert</span> <span class="n">mms_conn</span><span class="o">.</span><span class="n">is_valid</span><span class="p">():</span>
+</span><span data-line="9">
+</span><span data-line="10"><span class="c1"># Release the association in an orderly manner</span>
+</span><span data-line="11"><span class="n">mms_conn</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>
+</span></pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cotp_conn</strong> (<a class="reference internal" href="../cotp/connection.html#icspacket.proto.cotp.connection.COTP_Connection" title="icspacket.proto.cotp.connection.COTP_Connection"><em>COTP_Connection</em></a><em> | </em><em>None</em>) – Optional transport layer (COTP) connection to use. If not provided,
+a new <code class="xref py py-class docutils literal notranslate"><span class="pre">COTP_Connection</span></code> is created using the default TPKT socket.</p></li>
+<li><p><strong>session_config</strong> (<a class="reference internal" href="../cosp/session.html#icspacket.proto.iso_ses.session.ISO_SessionSettings" title="icspacket.proto.iso_ses.session.ISO_SessionSettings"><em>ISO_SessionSettings</em></a><em> | </em><em>None</em>) – Optional ISO Session settings, passed down to the session layer.</p></li>
+<li><p><strong>presentation_config</strong> (<a class="reference internal" href="../copp/presentation.html#icspacket.proto.iso_pres.presentation.ISO_PresentationSettings" title="icspacket.proto.iso_pres.presentation.ISO_PresentationSettings"><em>ISO_PresentationSettings</em></a><em> | </em><em>None</em>) – Optional ISO Presentation settings, passed to the
+presentation layer.</p></li>
+<li><p><strong>auth</strong> (<a class="reference internal" href="../acse/api.html#icspacket.proto.mms.acse.Authenticator" title="icspacket.proto.mms.acse.Authenticator"><em>Authenticator</em></a><em> | </em><em>None</em>) – Optional ACSE <code class="xref py py-class docutils literal notranslate"><span class="pre">Authenticator</span></code> instance for authentication handling.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="icspacket.proto.mms.connection.MMS_Connection.session">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">session</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="../cosp/session.html#icspacket.proto.iso_ses.session.ISO_Session" title="icspacket.proto.iso_ses.session.ISO_Session"><span class="pre">ISO_Session</span></a></em><a class="headerlink" href="#icspacket.proto.mms.connection.MMS_Connection.session" title="Link to this definition">¶</a></dt>
+<dd><p>The ISO Session layer object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Underlying ISO Session instance.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="../cosp/session.html#icspacket.proto.iso_ses.session.ISO_Session" title="icspacket.proto.iso_ses.session.ISO_Session">ISO_Session</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="icspacket.proto.mms.connection.MMS_Connection.transport">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">transport</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="../cotp/connection.html#icspacket.proto.cotp.connection.COTP_Connection" title="icspacket.proto.cotp.connection.COTP_Connection"><span class="pre">COTP_Connection</span></a></em><a class="headerlink" href="#icspacket.proto.mms.connection.MMS_Connection.transport" title="Link to this definition">¶</a></dt>
+<dd><p>The transport layer (COTP) connection.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Underlying COTP transport connection.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="../cotp/connection.html#icspacket.proto.cotp.connection.COTP_Connection" title="icspacket.proto.cotp.connection.COTP_Connection">COTP_Connection</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="icspacket.proto.mms.connection.MMS_Connection.presentation">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">presentation</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="../copp/presentation.html#icspacket.proto.iso_pres.presentation.ISO_Presentation" title="icspacket.proto.iso_pres.presentation.ISO_Presentation"><span class="pre">ISO_Presentation</span></a></em><a class="headerlink" href="#icspacket.proto.mms.connection.MMS_Connection.presentation" title="Link to this definition">¶</a></dt>
+<dd><p>The ISO Presentation layer object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The presentation layer instance for this MMS connection.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="../copp/presentation.html#icspacket.proto.iso_pres.presentation.ISO_Presentation" title="icspacket.proto.iso_pres.presentation.ISO_Presentation">ISO_Presentation</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="icspacket.proto.mms.connection.MMS_Connection.association">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">association</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="../acse/api.html#icspacket.proto.mms.acse.Association" title="icspacket.proto.mms.acse.Association"><span class="pre">Association</span></a></em><a class="headerlink" href="#icspacket.proto.mms.connection.MMS_Connection.association" title="Link to this definition">¶</a></dt>
+<dd><p>The ACSE Association handler for this MMS connection.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Association object responsible for ACSE/MMS binding.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="../acse/api.html#icspacket.proto.mms.acse.Association" title="icspacket.proto.mms.acse.Association">Association</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="icspacket.proto.mms.connection.MMS_Connection.next_invoke_id">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">next_invoke_id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#icspacket.proto.mms.connection.MMS_Connection.next_invoke_id" title="Link to this definition">¶</a></dt>
+<dd><p>Increment and return the next available invoke-id.</p>
+<p>This value is used to uniquely identify outstanding MMS service
+requests.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Next invoke identifier.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="icspacket.proto.mms.connection.MMS_Connection.invoke_id">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">invoke_id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#icspacket.proto.mms.connection.MMS_Connection.invoke_id" title="Link to this definition">¶</a></dt>
+<dd><p>The current invoke-id counter.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Current invoke identifier.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.mms.connection.MMS_Connection.connect">
+<span class="sig-name descname"><span class="pre">connect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">address</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../../_modules/icspacket/proto/mms/connection.html#MMS_Connection.connect"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.mms.connection.MMS_Connection.connect" title="Link to this definition">¶</a></dt>
+<dd><p>Establish a transport/session/presentation connection.</p>
+<p>If the connection is already established, this call is ignored.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>address</strong> (<em>tuple</em><em>[</em><em>str</em><em>, </em><em>int</em><em>]</em>) – Remote address (host, port) to connect to.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.mms.connection.MMS_Connection.associate">
+<span class="sig-name descname"><span class="pre">associate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">address</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">request</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Initiate_RequestPDU</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../../_modules/icspacket/proto/mms/connection.html#MMS_Connection.associate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.mms.connection.MMS_Connection.associate" title="Link to this definition">¶</a></dt>
+<dd><p>6.9.1 M-ASSOCIATE Service (ISO 9506-1).</p>
+<p>Establishes an MMS association with a peer MMS-user.</p>
+<p>This method performs the ACSE and MMS-level handshake by sending an
+Initiate Request PDU and validating the Initiate Response PDU.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>address</strong> (<em>tuple</em><em>[</em><em>str</em><em>, </em><em>int</em><em>] </em><em>| </em><em>None</em>) – Optional peer address (host, port). If provided,
+a transport connection is established first.</p></li>
+<li><p><strong>request</strong> (<em>Initiate_RequestPDU</em><em> | </em><em>None</em>) – Optional Initiate Request PDU. If not provided,
+a default one is created using <code class="xref py py-func docutils literal notranslate"><span class="pre">new_initiate_request()</span></code>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>MMSConnectionError</strong> – If the peer responds with an MMS error PDU.</p></li>
+<li><p><strong>TypeError</strong> – If the peer responds with an unexpected PDU type.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.mms.connection.MMS_Connection.release">
+<span class="sig-name descname"><span class="pre">release</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">reason</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">VALUES</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">graceful</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../../_modules/icspacket/proto/mms/connection.html#MMS_Connection.release"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.mms.connection.MMS_Connection.release" title="Link to this definition">¶</a></dt>
+<dd><p>6.9.2 M-RELEASE Service (ISO 9506-1).</p>
+<p>Terminate the association in an orderly manner.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>reason</strong> (<em>Release_request_reason.VALUES</em><em> | </em><em>None</em>) – Optional release reason.</p></li>
+<li><p><strong>graceful</strong> (<em>bool</em>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, attempt a graceful release.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.mms.connection.MMS_Connection.abort">
+<span class="sig-name descname"><span class="pre">abort</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">VALUES</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../../_modules/icspacket/proto/mms/connection.html#MMS_Connection.abort"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.mms.connection.MMS_Connection.abort" title="Link to this definition">¶</a></dt>
+<dd><p>6.9.4 M-U-ABORT Service (ISO 9506-1).</p>
+<p>Abruptly terminate the association without completing an orderly
+release handshake.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>source</strong> (<em>ABRT_source.VALUES</em><em> | </em><em>None</em>) – Optional abort source identifier.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.mms.connection.MMS_Connection.close">
+<span class="sig-name descname"><span class="pre">close</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../../_modules/icspacket/proto/mms/connection.html#MMS_Connection.close"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.mms.connection.MMS_Connection.close" title="Link to this definition">¶</a></dt>
+<dd><p>Close the MMS association and underlying presentation connection.</p>
+<p>This performs a Conclude handshake (<code class="docutils literal notranslate"><span class="pre">Conclude-Request</span></code> /
+<code class="docutils literal notranslate"><span class="pre">Conclude-Response</span></code>). If the peer responds with an error,
+<code class="xref py py-class docutils literal notranslate"><span class="pre">MMSConnectionError</span></code> is raised.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>MMSConnectionError</strong> – If the peer responds with a conclude error.</p></li>
+<li><p><strong>TypeError</strong> – If the peer responds with an unexpected PDU.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.mms.connection.MMS_Connection.send_data">
+<span class="sig-name descname"><span class="pre">send_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">octets</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bytes</span></span></em>, <em class="sig-param"><span class="positional-only-separator o"><abbr title="Positional-only parameter separator (PEP 570)"><span class="pre">/</span></abbr></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../../_modules/icspacket/proto/mms/connection.html#MMS_Connection.send_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.mms.connection.MMS_Connection.send_data" title="Link to this definition">¶</a></dt>
+<dd><p>Send raw BER-encoded MMS data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>octets</strong> (<em>bytes</em>) – BER-encoded MMS PDU.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>AssertionError</strong> – If the connection is not established.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.mms.connection.MMS_Connection.send_mms_data">
+<span class="sig-name descname"><span class="pre">send_mms_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pdu</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">MMSpdu</span></span></em>, <em class="sig-param"><span class="positional-only-separator o"><abbr title="Positional-only parameter separator (PEP 570)"><span class="pre">/</span></abbr></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../../_modules/icspacket/proto/mms/connection.html#MMS_Connection.send_mms_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.mms.connection.MMS_Connection.send_mms_data" title="Link to this definition">¶</a></dt>
+<dd><p>Send an MMS PDU after BER encoding.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>pdu</strong> (<em>MMSpdu</em>) – MMS PDU to send.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.mms.connection.MMS_Connection.recv_mms_data">
+<span class="sig-name descname"><span class="pre">recv_mms_data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">MMSpdu</span></span></span><a class="reference internal" href="../../_modules/icspacket/proto/mms/connection.html#MMS_Connection.recv_mms_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.mms.connection.MMS_Connection.recv_mms_data" title="Link to this definition">¶</a></dt>
+<dd><p>Receive and decode an MMS PDU.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Decoded MMS PDU.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>MMSpdu</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>TypeError</strong> – If the received data is not an MMS PDU.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.mms.connection.MMS_Connection.get_status">
+<span class="sig-name descname"><span class="pre">get_status</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ex_derivation</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">vmdLogicalStatus_VALUES</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">vmdPhysicalStatus_VALUES</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../../_modules/icspacket/proto/mms/connection.html#MMS_Connection.get_status"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.mms.connection.MMS_Connection.get_status" title="Link to this definition">¶</a></dt>
+<dd><p>10.3 Status Service</p>
+<p>The <em>Status</em> service is used by an MMS client to determine the
+general condition or health of a VMD (Virtual Manufacturing Device).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ex_derivation</strong> (<em>bool</em>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, requests an <em>extended derivation</em>
+of the status response. This influences how the
+server derives the logical and physical VMD status
+(see ISO 9506-1, 10.3.1.1.1).</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><p>A tuple <code class="docutils literal notranslate"><span class="pre">(logical_status,</span> <span class="pre">physical_status)</span></code>, where:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">logical_status</span></code> is of type
+<code class="xref py py-class docutils literal notranslate"><span class="pre">StatusResponse.vmdLogicalStatus_VALUES</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">physical_status</span></code> is of type
+<code class="xref py py-class docutils literal notranslate"><span class="pre">StatusResponse.vmdPhysicalStatus_VALUES</span></code>.</p></li>
+</ul>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+<p>Example:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="gp">&gt;&gt;&gt; </span><span class="n">logical</span><span class="p">,</span> <span class="n">physical</span> <span class="o">=</span> <span class="n">mms_conn</span><span class="o">.</span><span class="n">get_status</span><span class="p">()</span>
+</span><span data-line="2"><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Logical VMD status: </span><span class="si">{</span><span class="n">logical</span><span class="si">!r}</span><span class="s2">, Physical VMD status: </span><span class="si">{</span><span class="n">physical</span><span class="si">!r}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span></pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.mms.connection.MMS_Connection.get_name_list">
+<span class="sig-name descname"><span class="pre">get_name_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">object_class</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ObjectClass</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scope</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">objectScope_TYPE</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../../_modules/icspacket/proto/mms/connection.html#MMS_Connection.get_name_list"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.mms.connection.MMS_Connection.get_name_list" title="Link to this definition">¶</a></dt>
+<dd><p>10.5 GetNameList Service</p>
+<p>The <em>GetNameList</em> service requests the list (or a subset) of object
+names defined at the VMD. The server may return the list in segments
+if it is too long to fit in a single response.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>object_class</strong> (<em>ObjectClass</em>) – The class of objects for which names are requested.
+For example: <code class="docutils literal notranslate"><span class="pre">ObjectClass.namelist.domain</span></code>.</p></li>
+<li><p><strong>scope</strong> (<em>GetNameList_Request.objectScope_TYPE</em><em> or </em><em>None</em>) – Optional scope of the name list request. If not provided,
+defaults to VMD-specific scope.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A list of object identifiers.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[str]</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If the MMS server returns an invalid response.</p>
+</dd>
+</dl>
+<p>Example:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="gp">&gt;&gt;&gt; </span><span class="n">domains</span> <span class="o">=</span> <span class="n">mms_conn</span><span class="o">.</span><span class="n">get_name_list</span><span class="p">(</span><span class="n">ObjectClass</span><span class="o">.</span><span class="n">domain</span><span class="p">)</span>
+</span><span data-line="2"><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Available domains:&quot;</span><span class="p">,</span> <span class="n">domains</span><span class="p">)</span>
+</span></pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.mms.connection.MMS_Connection.identify">
+<span class="sig-name descname"><span class="pre">identify</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../../_modules/icspacket/proto/mms/connection.html#MMS_Connection.identify"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.mms.connection.MMS_Connection.identify" title="Link to this definition">¶</a></dt>
+<dd><p>10.6 Identify Service</p>
+<p>The <em>Identify</em> service retrieves the vendor, model, and revision
+information of the remote MMS VMD.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A tuple <code class="docutils literal notranslate"><span class="pre">(vendor_name,</span> <span class="pre">model_name,</span> <span class="pre">revision)</span></code> with all
+fields mandatory as per ISO 9506-2.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>tuple[str, str, str]</p>
+</dd>
+</dl>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="gp">&gt;&gt;&gt; </span><span class="n">vendor</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">revision</span> <span class="o">=</span> <span class="n">mms_conn</span><span class="o">.</span><span class="n">identify</span><span class="p">()</span>
+</span><span data-line="2"><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Device: </span><span class="si">{</span><span class="n">vendor</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">model</span><span class="si">}</span><span class="s2"> (rev </span><span class="si">{</span><span class="n">revision</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+</span></pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.mms.connection.MMS_Connection.get_capabilities">
+<span class="sig-name descname"><span class="pre">get_capabilities</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../../_modules/icspacket/proto/mms/connection.html#MMS_Connection.get_capabilities"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.mms.connection.MMS_Connection.get_capabilities" title="Link to this definition">¶</a></dt>
+<dd><p>10.8 GetCapabilityList Service</p>
+<p>The <em>GetCapabilityList</em> service requests the list of services or
+features supported by the remote MMS server. Like <em>GetNameList</em>,
+the response may be segmented and require multiple follow-up requests.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A list of capability strings supported by the server.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>list[str]</p>
+</dd>
+</dl>
+<p>Example:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="gp">&gt;&gt;&gt; </span><span class="n">caps</span> <span class="o">=</span> <span class="n">mms_conn</span><span class="o">.</span><span class="n">get_capabilities</span><span class="p">()</span>
+</span><span data-line="2"><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Server capabilities:&quot;</span><span class="p">,</span> <span class="n">caps</span><span class="p">)</span>
+</span></pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.mms.connection.MMS_Connection.read_variables">
+<span class="sig-name descname"><span class="pre">read_variables</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">pos_variables</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Member_TYPE</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">variables</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">Member_TYPE</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spec_in_result</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">list_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ObjectName</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">AccessResult</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../../_modules/icspacket/proto/mms/connection.html#MMS_Connection.read_variables"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.mms.connection.MMS_Connection.read_variables" title="Link to this definition">¶</a></dt>
+<dd><p>14.6 Variable Read Service</p>
+<p>Reads one or more variables or an entire variable list from the
+remote MMS server.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pos_variables</strong> (<em>VariableAccessItem</em>) – Positional list of variables to read.</p></li>
+<li><p><strong>variables</strong> (<em>list</em><em>[</em><em>VariableAccessItem</em><em>] or </em><em>None</em>) – Alternative way of specifying variables via keyword.</p></li>
+<li><p><strong>spec_in_result</strong> (<em>bool</em>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, requests that the server return
+the <em>VariableAccessSpecification</em> in the response (14.6.1.1.1).
+Usually <code class="docutils literal notranslate"><span class="pre">False</span></code> for efficiency.</p></li>
+<li><p><strong>list_name</strong> (<em>ObjectName</em><em> or </em><em>None</em>) – If set, references a named variable list to read
+instead of individual variables.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A list of <code class="xref py py-class docutils literal notranslate"><span class="pre">AccessResult</span></code> objects, one per variable read.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[AccessResult]</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If no variables or list_name is provided, or if both
+are specified at once.</p>
+</dd>
+</dl>
+<p>Example (read two variables):</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="gp">&gt;&gt;&gt; </span><span class="n">var1</span> <span class="o">=</span> <span class="n">VariableAccessItem</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">ObjectName</span><span class="p">(</span><span class="n">vmd_specific</span><span class="o">=</span><span class="s2">&quot;TempSensor1&quot;</span><span class="p">))</span>
+</span><span data-line="2"><span class="gp">&gt;&gt;&gt; </span><span class="n">var2</span> <span class="o">=</span> <span class="n">VariableAccessItem</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">ObjectName</span><span class="p">(</span><span class="n">vmd_specific</span><span class="o">=</span><span class="s2">&quot;TempSensor2&quot;</span><span class="p">))</span>
+</span><span data-line="3"><span class="gp">&gt;&gt;&gt; </span><span class="n">results</span> <span class="o">=</span> <span class="n">mms_conn</span><span class="o">.</span><span class="n">read_variables</span><span class="p">(</span><span class="n">var1</span><span class="p">,</span> <span class="n">var2</span><span class="p">)</span>
+</span><span data-line="4"><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">res</span> <span class="ow">in</span> <span class="n">results</span><span class="p">:</span>
+</span><span data-line="5"><span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">success</span><span class="p">)</span>  <span class="c1"># AccessResult can be success or failure</span>
+</span></pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.mms.connection.MMS_Connection.write_variable">
+<span class="sig-name descname"><span class="pre">write_variable</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">variable</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Member_TYPE</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Data</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataAccessError</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="reference internal" href="../../_modules/icspacket/proto/mms/connection.html#MMS_Connection.write_variable"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.mms.connection.MMS_Connection.write_variable" title="Link to this definition">¶</a></dt>
+<dd><p>14.7 Variable Write Service</p>
+<p>Writes the value of a single variable at the MMS server.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>variable</strong> (<em>VariableAccessSpecification.listOfVariable_TYPE.Member_TYPE</em>) – The target variable to be written.</p></li>
+<li><p><strong>value</strong> (<em>Data</em>) – The value to write, encoded as MMS <code class="xref py py-class docutils literal notranslate"><span class="pre">Data</span></code>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">None</span></code> on success, or a <code class="xref py py-class docutils literal notranslate"><span class="pre">DataAccessError</span></code> if the
+write failed for this variable.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>DataAccessError or None</p>
+</dd>
+</dl>
+<p>Example (write a new integer value):</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="gp">&gt;&gt;&gt; </span><span class="n">var</span> <span class="o">=</span> <span class="n">VariableAccessItem</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">ObjectName</span><span class="p">(</span><span class="n">vmd_specific</span><span class="o">=</span><span class="s2">&quot;SetPoint&quot;</span><span class="p">))</span>
+</span><span data-line="2"><span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">Data</span><span class="p">()</span>
+</span><span data-line="3"><span class="gp">&gt;&gt;&gt; </span><span class="n">data</span><span class="o">.</span><span class="n">integer</span> <span class="o">=</span> <span class="mi">42</span>
+</span><span data-line="4"><span class="gp">&gt;&gt;&gt; </span><span class="n">err</span> <span class="o">=</span> <span class="n">mms_conn</span><span class="o">.</span><span class="n">write_variable</span><span class="p">(</span><span class="n">var</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+</span><span data-line="5"><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Write successful&quot;</span> <span class="k">if</span> <span class="n">err</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="sa">f</span><span class="s2">&quot;Failed: </span><span class="si">{</span><span class="n">err</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span></pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.mms.connection.MMS_Connection.variable_attributes">
+<span class="sig-name descname"><span class="pre">variable_attributes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ObjectName</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">address</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Address</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">GetVariableAccessAttributes_Response</span></span></span><a class="reference internal" href="../../_modules/icspacket/proto/mms/connection.html#MMS_Connection.variable_attributes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.mms.connection.MMS_Connection.variable_attributes" title="Link to this definition">¶</a></dt>
+<dd><p>14.9 GetVariableAccessAttributes Service</p>
+<p>Retrieves metadata describing a variable, such as its type,
+address, and whether it is deletable or modifiable.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>ObjectName</em><em> or </em><em>None</em>) – The object name of the variable to query.</p></li>
+<li><p><strong>address</strong> (<em>Address</em><em> or </em><em>None</em>) – The variable’s address (alternative to name).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The variable access attributes response from the MMS server.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>GetVariableAccessAttributes_Response</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If neither <code class="docutils literal notranslate"><span class="pre">name</span></code> nor <code class="docutils literal notranslate"><span class="pre">address</span></code> is specified,
+or if both are given at the same time.</p>
+</dd>
+</dl>
+<p>Example (query attributes by name):</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="gp">&gt;&gt;&gt; </span><span class="n">obj</span> <span class="o">=</span> <span class="n">ObjectName</span><span class="p">(</span><span class="n">vmd_specific</span><span class="o">=</span><span class="s2">&quot;TempSensor1&quot;</span><span class="p">)</span>
+</span><span data-line="2"><span class="gp">&gt;&gt;&gt; </span><span class="n">attrs</span> <span class="o">=</span> <span class="n">mms_conn</span><span class="o">.</span><span class="n">variable_attributes</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">obj</span><span class="p">)</span>
+</span><span data-line="3"><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Type description:&quot;</span><span class="p">,</span> <span class="n">attrs</span><span class="o">.</span><span class="n">typeDescription</span><span class="p">)</span>
+</span></pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.mms.connection.MMS_Connection.file_open">
+<span class="sig-name descname"><span class="pre">file_open</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">FileName</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="api_data.html#icspacket.proto.mms.data.FileHandle" title="icspacket.proto.mms.data.FileHandle"><span class="pre">FileHandle</span></a></span></span><a class="reference internal" href="../../_modules/icspacket/proto/mms/connection.html#MMS_Connection.file_open"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.mms.connection.MMS_Connection.file_open" title="Link to this definition">¶</a></dt>
+<dd><p>D.3 FileOpen Service</p>
+<p>Opens a file in the MMS server’s virtual filestore and returns a
+handle used for subsequent file operations (read, close, etc.).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>FileName</em>) – The file name to open.</p></li>
+<li><p><strong>offset</strong> (<em>int</em><em>, </em><em>optional</em>) – Initial byte offset from which to start reading.
+Defaults to <code class="docutils literal notranslate"><span class="pre">0</span></code> (beginning of the file).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A file handle including the FRSM ID and file attributes.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="api_data.html#icspacket.proto.mms.data.FileHandle" title="icspacket.proto.mms.data.FileHandle">FileHandle</a></p>
+</dd>
+</dl>
+<p>Example (complete):
+&gt;&gt;&gt; # Open a file for reading
+&gt;&gt;&gt; handle = mms_conn.file_open(FileName([“/logs/system.log”]))
+&gt;&gt;&gt; # Read complete file
+&gt;&gt;&gt; data = mms_conn.file_read(handle)
+&gt;&gt;&gt; print(data.decode(“utf-8”)[:200])  # show first 200 characters
+&gt;&gt;&gt; # Close the file handle
+&gt;&gt;&gt; mms_conn.file_close(handle)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.mms.connection.MMS_Connection.file_read_chunk">
+<span class="sig-name descname"><span class="pre">file_read_chunk</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">handle</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api_data.html#icspacket.proto.mms.data.FileHandle" title="icspacket.proto.mms.data.FileHandle"><span class="pre">FileHandle</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">bytes</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../../_modules/icspacket/proto/mms/connection.html#MMS_Connection.file_read_chunk"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.mms.connection.MMS_Connection.file_read_chunk" title="Link to this definition">¶</a></dt>
+<dd><p>D.4 FileRead (chunked)</p>
+<p>Reads a chunk of data from an open file handle.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>handle</strong> (<a class="reference internal" href="api_data.html#icspacket.proto.mms.data.FileHandle" title="icspacket.proto.mms.data.FileHandle"><em>FileHandle</em></a><em> or </em><em>int</em>) – A <code class="xref py py-class docutils literal notranslate"><span class="pre">FileHandle</span></code> or raw FRSM ID.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A tuple <code class="docutils literal notranslate"><span class="pre">(data,</span> <span class="pre">more_follows)</span></code> where:
+- <code class="docutils literal notranslate"><span class="pre">data</span></code> is a bytes object containing the chunk read.
+- <code class="docutils literal notranslate"><span class="pre">more_follows</span></code> is a boolean indicating if further reads are required.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple[bytes, bool]</p>
+</dd>
+</dl>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="gp">&gt;&gt;&gt; </span><span class="n">chunk</span><span class="p">,</span> <span class="n">more</span> <span class="o">=</span> <span class="n">mms_conn</span><span class="o">.</span><span class="n">file_read_chunk</span><span class="p">(</span><span class="n">handle</span><span class="p">)</span>
+</span><span data-line="2"><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">chunk</span><span class="p">),</span> <span class="s2">&quot;bytes read, more follows?&quot;</span><span class="p">,</span> <span class="n">more</span><span class="p">)</span>
+</span></pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.mms.connection.MMS_Connection.file_read">
+<span class="sig-name descname"><span class="pre">file_read</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">handle</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api_data.html#icspacket.proto.mms.data.FileHandle" title="icspacket.proto.mms.data.FileHandle"><span class="pre">FileHandle</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bytes</span></span></span><a class="reference internal" href="../../_modules/icspacket/proto/mms/connection.html#MMS_Connection.file_read"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.mms.connection.MMS_Connection.file_read" title="Link to this definition">¶</a></dt>
+<dd><p>D.4 FileRead (complete)</p>
+<p>Reads the entire content of a file by repeatedly fetching
+chunks until <code class="docutils literal notranslate"><span class="pre">moreFollows</span></code> is false.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>handle</strong> (<a class="reference internal" href="api_data.html#icspacket.proto.mms.data.FileHandle" title="icspacket.proto.mms.data.FileHandle"><em>FileHandle</em></a><em> or </em><em>int</em>) – A <code class="xref py py-class docutils literal notranslate"><span class="pre">FileHandle</span></code> or raw FRSM ID.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Complete file contents as bytes.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bytes</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.mms.connection.MMS_Connection.file_close">
+<span class="sig-name descname"><span class="pre">file_close</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">handle</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api_data.html#icspacket.proto.mms.data.FileHandle" title="icspacket.proto.mms.data.FileHandle"><span class="pre">FileHandle</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../../_modules/icspacket/proto/mms/connection.html#MMS_Connection.file_close"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.mms.connection.MMS_Connection.file_close" title="Link to this definition">¶</a></dt>
+<dd><p>D.5 FileClose Service</p>
+<p>Closes an open file handle. This releases the FRSM ID
+allocated by the server.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>handle</strong> (<a class="reference internal" href="api_data.html#icspacket.proto.mms.data.FileHandle" title="icspacket.proto.mms.data.FileHandle"><em>FileHandle</em></a><em> or </em><em>int</em>) – A <code class="xref py py-class docutils literal notranslate"><span class="pre">FileHandle</span></code> or raw FRSM ID.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.mms.connection.MMS_Connection.file_rename">
+<span class="sig-name descname"><span class="pre">file_rename</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">old_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">FileName</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">FileName</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../../_modules/icspacket/proto/mms/connection.html#MMS_Connection.file_rename"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.mms.connection.MMS_Connection.file_rename" title="Link to this definition">¶</a></dt>
+<dd><p>D.6 FileRename Service</p>
+<p>Renames a file in the server’s virtual filestore.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>old_name</strong> (<em>FileName</em>) – The current file name.</p></li>
+<li><p><strong>new_name</strong> (<em>FileName</em>) – The new file name to assign.</p></li>
+</ul>
+</dd>
+</dl>
+<p>Example:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="gp">&gt;&gt;&gt; </span><span class="n">mms_conn</span><span class="o">.</span><span class="n">file_rename</span><span class="p">(</span><span class="n">FileName</span><span class="p">([</span><span class="s2">&quot;/logs/old.log&quot;</span><span class="p">]),</span>
+</span><span data-line="2"><span class="gp">... </span>                     <span class="n">FileName</span><span class="p">([</span><span class="s2">&quot;/logs/new.log&quot;</span><span class="p">]))</span>
+</span></pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.mms.connection.MMS_Connection.file_delete">
+<span class="sig-name descname"><span class="pre">file_delete</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">FileName</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../../_modules/icspacket/proto/mms/connection.html#MMS_Connection.file_delete"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.mms.connection.MMS_Connection.file_delete" title="Link to this definition">¶</a></dt>
+<dd><p>D.7 FileDelete Service</p>
+<p>Deletes a file from the MMS server’s virtual filestore.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>name</strong> (<em>FileName</em>) – The file name to delete.</p>
+</dd>
+</dl>
+<p>Example:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="gp">&gt;&gt;&gt; </span><span class="n">mms_conn</span><span class="o">.</span><span class="n">file_delete</span><span class="p">(</span><span class="n">FileName</span><span class="p">([</span><span class="s2">&quot;/logs/obsolete.log&quot;</span><span class="p">]))</span>
+</span></pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.mms.connection.MMS_Connection.list_directory">
+<span class="sig-name descname"><span class="pre">list_directory</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">FileName</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">DirectoryEntry</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../../_modules/icspacket/proto/mms/connection.html#MMS_Connection.list_directory"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.mms.connection.MMS_Connection.list_directory" title="Link to this definition">¶</a></dt>
+<dd><p>D.8 FileDirectory Service</p>
+<p>Retrieves directory listings or file attributes from the
+server’s virtual filestore.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>name</strong> (<em>FileName</em><em> or </em><em>None</em>) – Optional file or directory name pattern. If omitted,
+the server returns an implementation-defined default set.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>List of directory entries, possibly spanning multiple responses.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[DirectoryEntry]</p>
+</dd>
+</dl>
+<p>Example:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="gp">&gt;&gt;&gt; </span><span class="n">entries</span> <span class="o">=</span> <span class="n">mms_conn</span><span class="o">.</span><span class="n">list_directory</span><span class="p">()</span>
+</span><span data-line="2"><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">entries</span><span class="p">:</span>
+</span><span data-line="3"><span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">fileName</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">e</span><span class="o">.</span><span class="n">fileAttributes</span><span class="o">.</span><span class="n">fileSize</span><span class="p">)</span>
+</span></pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.mms.connection.MMS_Connection.additional_service_request">
+<span class="sig-name descname"><span class="pre">additional_service_request</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">AdditionalService_Request</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">AdditionalService_Response</span></span></span><a class="reference internal" href="../../_modules/icspacket/proto/mms/connection.html#MMS_Connection.additional_service_request"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.mms.connection.MMS_Connection.additional_service_request" title="Link to this definition">¶</a></dt>
+<dd><p>Issues an MMS <strong>Additional Service</strong> request (ISO 9506-1:1990, Clause 19).</p>
+<p>This is a specialized helper that wraps an
+<code class="xref py py-class docutils literal notranslate"><span class="pre">AdditionalService_Request</span></code> in a
+<code class="xref py py-class docutils literal notranslate"><span class="pre">ConfirmedServiceRequest</span></code> and dispatches it via
+<a class="reference internal" href="#icspacket.proto.mms.connection.MMS_Connection.service_request" title="icspacket.proto.mms.connection.MMS_Connection.service_request"><code class="xref py py-meth docutils literal notranslate"><span class="pre">service_request()</span></code></a>.</p>
+<p>It is rarely used directly, but provides a template for invoking
+“non-standardized” or vendor-specific services.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>request</strong> (<em>AdditionalService_Request</em>) – The additional service request to send.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The decoded additional service response from the server.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>AdditionalService_Response</p>
+</dd>
+</dl>
+<p>Example:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="gp">&gt;&gt;&gt; </span><span class="n">req</span> <span class="o">=</span> <span class="n">AdditionalService_Request</span><span class="p">()</span>
+</span><span data-line="2"><span class="gp">&gt;&gt;&gt; </span><span class="c1"># populate request with service-specific fields</span>
+</span><span data-line="3"><span class="gp">&gt;&gt;&gt; </span><span class="n">resp</span> <span class="o">=</span> <span class="n">mms_conn</span><span class="o">.</span><span class="n">additional_service_request</span><span class="p">(</span><span class="n">req</span><span class="p">)</span>
+</span><span data-line="4"><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">resp</span><span class="p">)</span>
+</span></pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.mms.connection.MMS_Connection.service_request">
+<span class="sig-name descname"><span class="pre">service_request</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ConfirmedServiceRequest</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">need_response</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ConfirmedServiceResponse</span></span></span><a class="reference internal" href="../../_modules/icspacket/proto/mms/connection.html#MMS_Connection.service_request"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.mms.connection.MMS_Connection.service_request" title="Link to this definition">¶</a></dt>
+<dd><p>Issues a <strong>generic MMS Confirmed Service Request</strong> and returns
+the corresponding Confirmed Service Response.</p>
+<p>This is the central method through which <em>all</em> MMS services
+are ultimately invoked. Higher-level convenience wrappers
+(e.g., <a class="reference internal" href="#icspacket.proto.mms.connection.MMS_Connection.read_variables" title="icspacket.proto.mms.connection.MMS_Connection.read_variables"><code class="xref py py-meth docutils literal notranslate"><span class="pre">read_variables()</span></code></a>, <a class="reference internal" href="#icspacket.proto.mms.connection.MMS_Connection.file_open" title="icspacket.proto.mms.connection.MMS_Connection.file_open"><code class="xref py py-meth docutils literal notranslate"><span class="pre">file_open()</span></code></a>, etc.)
+construct the appropriate
+<code class="xref py py-class docutils literal notranslate"><span class="pre">ConfirmedServiceRequest</span></code> and delegate to this method.</p>
+<p><strong>Workflow:</strong></p>
+<ol class="arabic simple">
+<li><dl class="simple">
+<dt>A new <code class="xref py py-class docutils literal notranslate"><span class="pre">Confirmed_RequestPDU</span></code> is allocated and</dt><dd><p>tagged with the next available <code class="docutils literal notranslate"><span class="pre">invokeID</span></code>.</p>
+</dd>
+</dl>
+</li>
+<li><p>The caller-supplied <code class="docutils literal notranslate"><span class="pre">request</span></code> is embedded into the PDU.</p></li>
+<li><p>The request is wrapped into an <code class="xref py py-class docutils literal notranslate"><span class="pre">MMSpdu</span></code>.</p></li>
+<li><dl class="simple">
+<dt>Transmission is performed using</dt><dd><p><a class="reference internal" href="#icspacket.proto.mms.connection.MMS_Connection.send_mms_data" title="icspacket.proto.mms.connection.MMS_Connection.send_mms_data"><code class="xref py py-meth docutils literal notranslate"><span class="pre">send_mms_data()</span></code></a>.</p>
+</dd>
+</dl>
+</li>
+<li><p>A response is awaited via <a class="reference internal" href="#icspacket.proto.mms.connection.MMS_Connection.recv_mms_data" title="icspacket.proto.mms.connection.MMS_Connection.recv_mms_data"><code class="xref py py-meth docutils literal notranslate"><span class="pre">recv_mms_data()</span></code></a>.</p></li>
+<li><dl class="simple">
+<dt>Any detected service error is normalized using</dt><dd><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">_error_from_service_response()</span></code>.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>The decoded <code class="xref py py-class docutils literal notranslate"><span class="pre">ConfirmedServiceResponse</span></code></dt><dd><p>is returned to the caller.</p>
+</dd>
+</dl>
+</li>
+</ol>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>request</strong> (<em>ConfirmedServiceRequest</em>) – The service request PDU, e.g.
+<code class="xref py py-class docutils literal notranslate"><span class="pre">Read_Request</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">FileOpen_Request</span></code>, etc.,
+wrapped in a <code class="xref py py-class docutils literal notranslate"><span class="pre">ConfirmedServiceRequest</span></code>.</p></li>
+<li><p><strong>need_response</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether a response is required.
+If <code class="docutils literal notranslate"><span class="pre">False</span></code>, the method will still wait for the server
+response (ISO 9506-2 requires this) but certain services
+may ignore the payload.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>MMSConnectionError</strong> – If the response indicates a service error.</p></li>
+<li><p><strong>MMSServiceError</strong> – For generic or protocol-level failures.</p></li>
+<li><p><strong>MMSUnknownServiceError</strong> – If the service response cannot
+be mapped to a known type.</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The <code class="docutils literal notranslate"><span class="pre">service</span></code> component of the decoded
+<code class="xref py py-class docutils literal notranslate"><span class="pre">ConfirmedServiceResponse</span></code>, containing the
+service-specific result (e.g. a <code class="xref py py-class docutils literal notranslate"><span class="pre">Read_Response</span></code>).</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>ConfirmedServiceResponse</p>
+</dd>
+</dl>
+<p>Example:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Manually constructing a Read request</span>
+</span><span data-line="2"><span class="gp">&gt;&gt;&gt; </span><span class="n">read_req</span> <span class="o">=</span> <span class="n">Read_Request</span><span class="p">()</span>
+</span><span data-line="3"><span class="gp">&gt;&gt;&gt; </span><span class="n">read_req</span><span class="o">.</span><span class="n">variableAccessSpecification</span><span class="o">.</span><span class="n">listOfVariable</span> <span class="o">=</span> <span class="p">[</span><span class="n">var</span><span class="p">]</span>
+</span><span data-line="4"><span class="gp">&gt;&gt;&gt; </span><span class="n">csr</span> <span class="o">=</span> <span class="n">ConfirmedServiceRequest</span><span class="p">(</span><span class="n">read</span><span class="o">=</span><span class="n">read_req</span><span class="p">)</span>
+</span><span data-line="5"><span class="gp">&gt;&gt;&gt; </span><span class="n">resp</span> <span class="o">=</span> <span class="n">mms_conn</span><span class="o">.</span><span class="n">service_request</span><span class="p">(</span><span class="n">csr</span><span class="p">)</span>
+</span><span data-line="6"><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">resp</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">listOfAccessResult</span><span class="p">)</span>
+</span></pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+        </article><button class="back-to-top" type="button">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+  </svg>
+  <span>Back to top</span>
+</button><div class="navigation flex print:hidden"><div class="navigation-prev">
+    <a href="api.html">
+      <i class="i-lucide chevron-left"></i>
+      <div class="page-info">
+        <span>Previous</span><div class="title">API Reference</div></div>
+    </a>
+  </div><div class="navigation-next">
+    <a href="api_data.html">
+      <div class="page-info">
+        <span>Next</span>
+        <div class="title">Data Conversion</div>
+      </div>
+      <i class="i-lucide chevron-right"></i>
+    </a>
+  </div></div></div>
+    </div>
+  </main>
+</div>
+<footer class="sy-foot">
+  <div class="sy-foot-inner sy-container mx-auto">
+    <div class="sy-foot-reserved md:flex justify-between items-center">
+      <div class="sy-foot-copyright"><p>2025, MatrixEditor</p>
+  
+  <p>
+    Made with
+    
+    <a href="https://www.sphinx-doc.org/">Sphinx</a> and
+    
+    <a href="https://shibuya.lepture.com">Shibuya theme</a>.
+  </p>
+</div>
+      <div class="sy-foot-socials">
+<a href="https://github.com/MatrixEditor/icspacket" aria-label="GitHub">
+  <iconify-icon icon="simple-icons:github"></iconify-icon>
+</a></div>
+    </div>
+  </div>
+</footer>
+      <script src="../../_static/documentation_options.js?v=e3b32040"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+      <script src="../../_static/shibuya.js?v=e730760c"></script></body>
+</html>

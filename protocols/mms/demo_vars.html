@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en" data-accent-color="lime" data-content_root="../../">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Variable Target Format - icspacket 0.1.dev1+g814ee7fee documentation</title><link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="FileManagement Service" href="demo_files.html" /><link rel="prev" title="Core API Reference" href="../../getting-started/coreapi.html" />
+      <link rel="canonical" href="https://matrixeditor.github.io/icspacket/protocols/mms/demo_vars.html" /><script>
+    function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
+    setColorMode(localStorage._theme||"dark");
+  </script><link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=397bb51e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/shibuya.css?v=d48c410d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link media="print" rel="stylesheet" type="text/css" href="../../_static/print.css?v=20ff2c19" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --sy-f-text: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+  --sy-f-heading: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+}
+</style>
+    <meta property="og:type" content="website"/>
+<meta property="og:url" content="https://matrixeditor.github.io/icspacket/protocols/mms/demo_vars.html"/>
+<meta property="og:title" content="Variable Target Format"/>
+<meta name="twitter:card" content="summary"/>
+  </head>
+<body><div class="sy-head">
+  <div class="sy-head-blur"></div>
+  <div class="sy-head-inner sy-container mx-auto">
+    <a class="sy-head-brand" href="../../index.html">
+      
+      
+      <strong>icspacket</strong>
+    </a>
+    <div class="sy-head-nav" id="head-nav">
+      <nav class="sy-head-links"><ul>
+      <li class="link"><a class="js-menu" href="../../examples/index.html" id="nav-trigger-1" aria-controls="nav-children-1">
+            <span>Examples</span>
+            <i class="i-lucide chevron-down"></i>
+          </a>
+        <ul id="nav-children-1" aria-labelledby="nav-trigger-1"><li><a href="../../examples/mms/index.html">
+                <span>MMS Utilities</span>
+                <small>Manufacturing Message Specification tools</small>
+              </a></li></ul>
+      </li></ul></nav>
+      <div class="sy-head-extra flex items-center print:hidden"><form class="searchbox flex items-center" action="../../search.html" method="get">
+  <input type="text" name="q" placeholder="Search" />
+  <kbd>/</kbd>
+</form><div class="sy-head-socials">
+  <a href="https://github.com/MatrixEditor/icspacket" aria-label="GitHub">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </a></div></div>
+    </div>
+    <div class="sy-head-actions flex items-center shrink-0 print:hidden"><button class="js-theme theme-switch flex items-center"
+data-aria-auto="Switch to light color mode"
+data-aria-light="Switch to dark color mode"
+data-aria-dark="Switch to auto color mode">
+<i class="i-lucide theme-icon"></i>
+</button><button class="md:hidden flex items-center js-menu" aria-label="Menu" type="button" aria-controls="head-nav" aria-expanded="false">
+        <div class="hamburger">
+          <span class="hamburger_1"></span>
+          <span class="hamburger_2 -translate-x-2"></span>
+          <span class="hamburger_3 -translate-x-1"></span>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>
+<div class="sy-page sy-container flex mx-auto">
+  <aside id="lside" class="sy-lside md:w-72 md:shrink-0 print:hidden">
+    <div class="sy-lside-inner md:sticky">
+      <div class="sy-scrollbar p-6"><div class="sidebar-links">
+  <ul>
+    <li><a class="icon-link" href="https://github.com/MatrixEditor/icspacket/discussions">
+  <span class="icon">
+    <svg viewBox="0 0 24 24" fill="none">
+      <path fill="var(--accent-9)" fill-rule="evenodd" clip-rule="evenodd" d="M11 5a6 6 0 0 0-4.687 9.746c.215.27.315.62.231.954l-.514 2.058a1 1 0 0 0 1.485 1.1l2.848-1.71c.174-.104.374-.15.576-.148H13a6 6 0 0 0 0-12h-2Z"/>
+      <circle fill="white" cx="12" cy="11" r="1"/>
+      <circle fill="white" cx="9" cy="11" r="1"/>
+      <circle fill="white" cx="15" cy="11" r="1"/>
+    </svg>
+  </span>
+  <span class="text">Discussion</span>
+</a></li>
+  </ul>
+</div>
+        <div class="globaltoc" data-expand-depth="2"><p class="caption" role="heading" aria-level="3"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../getting-started/installation.html">Installation</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../getting-started/protocols.html">Protocols Overview</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../getting-started/coreapi.html">Core API Reference</a></li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">MMS / ISO 9506</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Variable Target Format</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="#variableaccess-service-rwq">VariableAccess Service (rwq)</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="demo_files.html">FileManagement Service</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="api.html">API Reference</a><ul>
+<li class="toctree-l2 _expand"><a class="reference internal" href="api_conn.html">MMS Connection</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="api_data.html">Data Conversion</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="api_utils.html">Protocol Utilities</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">ACSE / X.227</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../acse/api.html">API Reference</a></li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">COPP / X.226 / ISO 8823</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../copp/api.html">API Reference</a><ul>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../copp/presentation.html">ISO Presentation</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../copp/utils.html">Protocol Utilities</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">COSP / X.225 / ISO 8237-1</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../cosp/api.html">API Reference</a><ul>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../cosp/tsdu.html">TSDU</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../cosp/spdu.html">SPDU Types</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../cosp/values.html">Parameter Values (PV)</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../cosp/session.html">ISO Session</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../cosp/utils.html">Protocol Utilities</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">COTP / X.224</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../cotp/api.html">API Reference</a><ul>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../cotp/structs.html">TPDU Types</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../cotp/connection.html">Connection</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">TPKT Protocol (RFC1006)</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../tpkt/usage.html">Using a TPKT Wrapper</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../tpkt/api.html">API Reference</a></li>
+</ul>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="lside-overlay js-menu" role="button" aria-label="Close left sidebar" aria-controls="lside" aria-expanded="false"></div>
+  <aside id="rside" class="sy-rside pb-3 w-64 shrink-0 order-last">
+    <button class="rside-close js-menu xl:hidden" aria-label="Close Table of Contents" type="button" aria-controls="rside" aria-expanded="false">
+      <i class="i-lucide close"></i>
+    </button>
+    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div class="localtoc"><h3>On this page</h3><ul>
+<li><a class="reference internal" href="#">Variable Target Format</a></li>
+<li><a class="reference internal" href="#variableaccess-service-rwq">VariableAccess Service (rwq)</a><ul>
+<li><a class="reference internal" href="#querying-variables">Querying Variables</a></li>
+<li><a class="reference internal" href="#reading-variables">Reading Variables</a></li>
+<li><a class="reference internal" href="#writing-variables">Writing Variables</a></li>
+</ul>
+</li>
+</ul>
+</div><a class="js-repo-stats repo-stats flex items-center" href="https://github.com/MatrixEditor/icspacket"
+  data-type="github" data-user="MatrixEditor" data-repo="icspacket">
+  <span class="w-8 flex items-center justify-around shrink-0 text-3xl">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </span>
+  <span class="flex-grow px-2 break-all">
+    <span style="font-size: small;">MatrixEditor/icspacket</span>
+    <span class="flex text-sm repo-stats-count">
+      <span class="flex items-center pr-3">
+        <iconify-icon icon="lucide:star"></iconify-icon>
+        <strong class="js-repo-stars ml-1">0</strong>
+      </span>
+      <span class="flex items-center">
+        <iconify-icon icon="lucide:git-fork"></iconify-icon>
+        <strong class="js-repo-forks ml-1">0</strong>
+      </span>
+    </span>
+  </span>
+</a><div class="edit-this-page">
+  <a href="https://github.com/MatrixEditor/icspacket/blob/main/docs/protocols/mms/demo_vars.rst">Edit this page</a>
+</div></div>
+  </aside>
+  <div class="rside-overlay js-menu" role="button" aria-label="Close Table of Contents" aria-controls="rside" aria-expanded="false"></div>
+  <main class="sy-main w-full max-sm:max-w-full print:pt-6">
+<div class="sy-breadcrumbs" role="navigation">
+  <div class="sy-breadcrumbs-inner flex items-center">
+    <div class="md:hidden mr-3">
+      <button class="js-menu" aria-label="Menu" type="button" aria-controls="lside" aria-expanded="false">
+        <i class="i-lucide menu"></i>
+      </button>
+    </div>
+    <ol class="flex-1" itemscope itemtype="https://schema.org/BreadcrumbList"><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="../../index.html"><span itemprop="name">icspacket</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="1" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <strong itemprop="name">Variable Target Format</strong>
+        <meta itemprop="position" content="2" />
+      </li></ol>
+    <div class="xl:hidden ml-1">
+      <button class="js-menu" aria-label="Show table of contents" type="button" aria-controls="rside"
+        aria-expanded="false">
+        <i class="i-lucide outdent"></i>
+      </button>
+    </div>
+  </div>
+</div><div class="flex flex-col break-words justify-between">
+      <div class="min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
+        <article class="yue" role="main">
+          <section id="variable-target-format">
+<span id="mms-examples-variables"></span><h1>Variable Target Format<a class="headerlink" href="#variable-target-format" title="Link to this heading">¶</a></h1>
+<blockquote>
+<div><p>A “variable” is an abstract element of the VMD that is capable of providing (when read) or accepting (when
+written), or both, a typed data value. A “type description” is an abstract description of the class of data that may be
+conveyed by a variable’s value. A variable’s type description determines its abstract syntax, its range of possible
+values, and its representation while being communicated using MMS.</p>
+<p class="attribution">—ISO 9506-1 14.1</p>
+</div></blockquote>
+<p>Variables can be addressed using a <strong>target string specification</strong>.
+The CLI accepts one of the following formats:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;domain&gt;/&lt;variable&gt;</span></code>
+Explicitly specifies both the domain and the variable name.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;variable&gt;</span></code>
+A shorthand notation where a global domain is provided via <code class="docutils literal notranslate"><span class="pre">--domain</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">vmd:&lt;variable&gt;</span></code>
+Custom VMD defined named variable.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">aa:&lt;variable&gt;</span></code>
+Custom AA (application association) defined named variable.</p></li>
+<li><p>or a path to a file containing lines with one of the formats mentioned above</p></li>
+</ul>
+<p>Variables may be given as <strong>inline arguments</strong> or <strong>read from a file</strong>.
+If the provided string is a path to a file, each non-empty line in that file
+is treated as one variable target.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>In all ceses <code class="docutils literal notranslate"><span class="pre">&quot;.&quot;</span></code> in variable names will be replaced with <code class="docutils literal notranslate"><span class="pre">&quot;$&quot;</span></code> to comply with the
+specification. For example:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span data-line="1">mms_utility.py<span class="w"> </span>var<span class="w"> </span>--read<span class="w"> </span>DOMAIN_NAME/sensor.temperature<span class="w"> </span>&lt;host&gt;
+</span></pre></div>
+</div>
+<p>This will internally translate to the MMS variable name
+<code class="docutils literal notranslate"><span class="pre">DOMAIN_NAME/sensor$temperature</span></code>.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Only domain-specific variables are supported yet!</p>
+</div>
+</section>
+<section id="variableaccess-service-rwq">
+<h1>VariableAccess Service (rwq)<a class="headerlink" href="#variableaccess-service-rwq" title="Link to this heading">¶</a></h1>
+<p>The example tool provides three primary variable access services:</p>
+<ul class="simple">
+<li><p><strong>Query</strong> (<code class="docutils literal notranslate"><span class="pre">--query</span></code>): Retrieve metadata about a variable (type, address, attributes).</p></li>
+<li><p><strong>Read</strong> (<code class="docutils literal notranslate"><span class="pre">--read</span></code>): Retrieve the current value(s) of one or more variables.</p></li>
+<li><p><strong>Write</strong> (<code class="docutils literal notranslate"><span class="pre">--write</span></code>): Modify the value of a variable.</p></li>
+</ul>
+<section id="querying-variables">
+<h2>Querying Variables<a class="headerlink" href="#querying-variables" title="Link to this heading">¶</a></h2>
+<p>Use the <code class="docutils literal notranslate"><span class="pre">--query</span></code> flag to inspect the attributes of a variable.
+This is especially useful to determine the variable’s data type before writing to it.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span data-line="1">mms_utility.py<span class="w"> </span>var<span class="w"> </span>--query<span class="w"> </span>&lt;domain&gt;/&lt;valve_state&gt;<span class="w"> </span>&lt;host&gt;
+</span></pre></div>
+</div>
+<p>The response typically includes information such as:</p>
+<ul class="simple">
+<li><p>Variable type (e.g., <code class="docutils literal notranslate"><span class="pre">BOOLEAN</span></code>)</p></li>
+<li><p>Address specification (if available)</p></li>
+<li><p>Access rights (if present)</p></li>
+</ul>
+<figure class="align-center" id="id1">
+<img alt="../../_images/mms-query-var.png" src="../../_images/mms-query-var.png" />
+<figcaption>
+<p><span class="caption-text">Even complex types will be shown.</span><a class="headerlink" href="#id1" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="reading-variables">
+<h2>Reading Variables<a class="headerlink" href="#reading-variables" title="Link to this heading">¶</a></h2>
+<p>To read variables from a remote MMS peer, use the <code class="docutils literal notranslate"><span class="pre">--read</span></code> flag.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span data-line="1">mms_utility.py<span class="w"> </span>var<span class="w"> </span>--read<span class="w"> </span>&lt;domain&gt;/&lt;variable&gt;<span class="w"> </span>&lt;host&gt;
+</span></pre></div>
+</div>
+<p>Multiple variables may be specified:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span data-line="1">mms_utility.py<span class="w"> </span>var<span class="w"> </span>--read<span class="w"> </span>domain1/sensor1<span class="w"> </span>domain1/sensor2<span class="w"> </span>&lt;host&gt;
+</span></pre></div>
+</div>
+<p>Or, if a global domain is defined:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span data-line="1">mms_utility.py<span class="w"> </span>var<span class="w"> </span>--domain<span class="w"> </span>domain1<span class="w"> </span>--read<span class="w"> </span>sensor1<span class="w"> </span>sensor2<span class="w"> </span>&lt;host&gt;
+</span></pre></div>
+</div>
+<p>The result is a list of <code class="docutils literal notranslate"><span class="pre">AccessResult</span></code> values for each variable.</p>
+<figure class="align-center">
+<img alt="../../_images/mms-read-var.png" src="../../_images/mms-read-var.png" />
+</figure>
+</section>
+<section id="writing-variables">
+<h2>Writing Variables<a class="headerlink" href="#writing-variables" title="Link to this heading">¶</a></h2>
+<p>Writing requires both the <code class="docutils literal notranslate"><span class="pre">--write</span></code> flag and a <code class="docutils literal notranslate"><span class="pre">--value</span></code> specification.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">--value</span></code> follows the format <code class="docutils literal notranslate"><span class="pre">&lt;type&gt;:&lt;value&gt;</span></code>.
+Supported types are:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">str</span></code> → VisibleString</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">int</span></code> → Integer</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">float</span></code> → FloatingPoint</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">uint</span></code> → Unsigned</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bool</span></code> → BOOLEAN</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bits</span></code> → BIT STRING</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">oid</span></code> → ObjectIdentifier</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mms-str</span></code> → MMSString</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bytes</span></code> → OCTET STRING</p></li>
+</ul>
+<p>Example: writing a string value</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span data-line="1">mms_utility.py<span class="w"> </span>var<span class="w"> </span>--write<span class="w"> </span>--value<span class="w"> </span>str:<span class="s2">&quot;Pump started&quot;</span><span class="w"> </span>plant_data/status<span class="w"> </span>&lt;host&gt;
+</span></pre></div>
+</div>
+<p>Example: writing an integer value</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span data-line="1">mms_utility.py<span class="w"> </span>var<span class="w"> </span>--write<span class="w"> </span>--value<span class="w"> </span>int:42<span class="w"> </span>domainA/counter<span class="w"> </span>&lt;host&gt;
+</span></pre></div>
+</div>
+<p>Example: writing a boolean</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span data-line="1">mms_utility.py<span class="w"> </span>var<span class="w"> </span>--write<span class="w"> </span>--value<span class="w"> </span>bool:true<span class="w"> </span>domainA/valve_state<span class="w"> </span>&lt;host&gt;
+</span></pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>For <strong>binary/octet data</strong>, pass hex-encoded strings or a file path.</p></li>
+</ul>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<ul class="simple">
+<li><p><strong>structured values</strong> (arrays, structures) are not supported yet</p></li>
+</ul>
+</div>
+<hr></section>
+</section>
+
+        </article><button class="back-to-top" type="button">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+  </svg>
+  <span>Back to top</span>
+</button><div class="navigation flex print:hidden"><div class="navigation-prev">
+    <a href="../../getting-started/coreapi.html">
+      <i class="i-lucide chevron-left"></i>
+      <div class="page-info">
+        <span>Previous</span><div class="title">Core API Reference</div></div>
+    </a>
+  </div><div class="navigation-next">
+    <a href="demo_files.html">
+      <div class="page-info">
+        <span>Next</span>
+        <div class="title">FileManagement Service</div>
+      </div>
+      <i class="i-lucide chevron-right"></i>
+    </a>
+  </div></div></div>
+    </div>
+  </main>
+</div>
+<footer class="sy-foot">
+  <div class="sy-foot-inner sy-container mx-auto">
+    <div class="sy-foot-reserved md:flex justify-between items-center">
+      <div class="sy-foot-copyright"><p>2025, MatrixEditor</p>
+  
+  <p>
+    Made with
+    
+    <a href="https://www.sphinx-doc.org/">Sphinx</a> and
+    
+    <a href="https://shibuya.lepture.com">Shibuya theme</a>.
+  </p>
+</div>
+      <div class="sy-foot-socials">
+<a href="https://github.com/MatrixEditor/icspacket" aria-label="GitHub">
+  <iconify-icon icon="simple-icons:github"></iconify-icon>
+</a></div>
+    </div>
+  </div>
+</footer>
+      <script src="../../_static/documentation_options.js?v=e3b32040"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+      <script src="../../_static/shibuya.js?v=e730760c"></script></body>
+</html>

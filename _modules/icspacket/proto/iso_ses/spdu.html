@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="en" data-accent-color="lime" data-content_root="../../../../">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>icspacket.proto.iso_ses.spdu - icspacket 0.1.dev1+g814ee7fee documentation</title><link rel="index" title="Index" href="../../../../genindex.html" /><link rel="search" title="Search" href="../../../../search.html" />
+      <link rel="canonical" href="https://matrixeditor.github.io/icspacket/_modules/icspacket/proto/iso_ses/spdu.html" /><script>
+    function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
+    setColorMode(localStorage._theme||"dark");
+  </script><link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=397bb51e" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/shibuya.css?v=d48c410d" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link media="print" rel="stylesheet" type="text/css" href="../../../../_static/print.css?v=20ff2c19" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --sy-f-text: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+  --sy-f-heading: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+}
+</style>
+    <meta property="og:type" content="website"/>
+<meta property="og:url" content="https://matrixeditor.github.io/icspacket/_modules/icspacket/proto/iso_ses/spdu.html"/>
+<meta property="og:title" content="icspacket.proto.iso_ses.spdu"/>
+<meta name="twitter:card" content="summary"/>
+  </head>
+<body><div class="sy-head">
+  <div class="sy-head-blur"></div>
+  <div class="sy-head-inner sy-container mx-auto">
+    <a class="sy-head-brand" href="../../../../index.html">
+      
+      
+      <strong>icspacket</strong>
+    </a>
+    <div class="sy-head-nav" id="head-nav">
+      <nav class="sy-head-links"><ul>
+      <li class="link"><a class="js-menu" href="../../../../examples/index.html" id="nav-trigger-1" aria-controls="nav-children-1">
+            <span>Examples</span>
+            <i class="i-lucide chevron-down"></i>
+          </a>
+        <ul id="nav-children-1" aria-labelledby="nav-trigger-1"><li><a href="../../../../examples/mms/index.html">
+                <span>MMS Utilities</span>
+                <small>Manufacturing Message Specification tools</small>
+              </a></li></ul>
+      </li></ul></nav>
+      <div class="sy-head-extra flex items-center print:hidden"><form class="searchbox flex items-center" action="../../../../search.html" method="get">
+  <input type="text" name="q" placeholder="Search" />
+  <kbd>/</kbd>
+</form><div class="sy-head-socials">
+  <a href="https://github.com/MatrixEditor/icspacket" aria-label="GitHub">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </a></div></div>
+    </div>
+    <div class="sy-head-actions flex items-center shrink-0 print:hidden"><button class="js-theme theme-switch flex items-center"
+data-aria-auto="Switch to light color mode"
+data-aria-light="Switch to dark color mode"
+data-aria-dark="Switch to auto color mode">
+<i class="i-lucide theme-icon"></i>
+</button><button class="md:hidden flex items-center js-menu" aria-label="Menu" type="button" aria-controls="head-nav" aria-expanded="false">
+        <div class="hamburger">
+          <span class="hamburger_1"></span>
+          <span class="hamburger_2 -translate-x-2"></span>
+          <span class="hamburger_3 -translate-x-1"></span>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>
+<div class="sy-page sy-container flex mx-auto">
+  <aside id="lside" class="sy-lside md:w-72 md:shrink-0 print:hidden">
+    <div class="sy-lside-inner md:sticky">
+      <div class="sy-scrollbar p-6"><div class="sidebar-links">
+  <ul>
+    <li><a class="icon-link" href="https://github.com/MatrixEditor/icspacket/discussions">
+  <span class="icon">
+    <svg viewBox="0 0 24 24" fill="none">
+      <path fill="var(--accent-9)" fill-rule="evenodd" clip-rule="evenodd" d="M11 5a6 6 0 0 0-4.687 9.746c.215.27.315.62.231.954l-.514 2.058a1 1 0 0 0 1.485 1.1l2.848-1.71c.174-.104.374-.15.576-.148H13a6 6 0 0 0 0-12h-2Z"/>
+      <circle fill="white" cx="12" cy="11" r="1"/>
+      <circle fill="white" cx="9" cy="11" r="1"/>
+      <circle fill="white" cx="15" cy="11" r="1"/>
+    </svg>
+  </span>
+  <span class="text">Discussion</span>
+</a></li>
+  </ul>
+</div>
+        <div class="globaltoc" data-expand-depth="2"><p class="caption" role="heading" aria-level="3"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../getting-started/installation.html">Installation</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../getting-started/protocols.html">Protocols Overview</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../getting-started/coreapi.html">Core API Reference</a></li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">MMS / ISO 9506</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../protocols/mms/demo_vars.html">Variable Target Format</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../protocols/mms/demo_vars.html#variableaccess-service-rwq">VariableAccess Service (rwq)</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../protocols/mms/demo_files.html">FileManagement Service</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../protocols/mms/api.html">API Reference</a><ul>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../../../../protocols/mms/api_conn.html">MMS Connection</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../../../../protocols/mms/api_data.html">Data Conversion</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../../../../protocols/mms/api_utils.html">Protocol Utilities</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">ACSE / X.227</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../protocols/acse/api.html">API Reference</a></li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">COPP / X.226 / ISO 8823</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../protocols/copp/api.html">API Reference</a><ul>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../../../../protocols/copp/presentation.html">ISO Presentation</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../../../../protocols/copp/utils.html">Protocol Utilities</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">COSP / X.225 / ISO 8237-1</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../protocols/cosp/api.html">API Reference</a><ul>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../../../../protocols/cosp/tsdu.html">TSDU</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../../../../protocols/cosp/spdu.html">SPDU Types</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../../../../protocols/cosp/values.html">Parameter Values (PV)</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../../../../protocols/cosp/session.html">ISO Session</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../../../../protocols/cosp/utils.html">Protocol Utilities</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">COTP / X.224</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../protocols/cotp/api.html">API Reference</a><ul>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../../../../protocols/cotp/structs.html">TPDU Types</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../../../../protocols/cotp/connection.html">Connection</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">TPKT Protocol (RFC1006)</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../protocols/tpkt/usage.html">Using a TPKT Wrapper</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../protocols/tpkt/api.html">API Reference</a></li>
+</ul>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="lside-overlay js-menu" role="button" aria-label="Close left sidebar" aria-controls="lside" aria-expanded="false"></div>
+  <aside id="rside" class="sy-rside pb-3 w-64 shrink-0 order-last">
+    <button class="rside-close js-menu xl:hidden" aria-label="Close Table of Contents" type="button" aria-controls="rside" aria-expanded="false">
+      <i class="i-lucide close"></i>
+    </button>
+    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><a class="js-repo-stats repo-stats flex items-center" href="https://github.com/MatrixEditor/icspacket"
+  data-type="github" data-user="MatrixEditor" data-repo="icspacket">
+  <span class="w-8 flex items-center justify-around shrink-0 text-3xl">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </span>
+  <span class="flex-grow px-2 break-all">
+    <span style="font-size: small;">MatrixEditor/icspacket</span>
+    <span class="flex text-sm repo-stats-count">
+      <span class="flex items-center pr-3">
+        <iconify-icon icon="lucide:star"></iconify-icon>
+        <strong class="js-repo-stars ml-1">0</strong>
+      </span>
+      <span class="flex items-center">
+        <iconify-icon icon="lucide:git-fork"></iconify-icon>
+        <strong class="js-repo-forks ml-1">0</strong>
+      </span>
+    </span>
+  </span>
+</a></div>
+  </aside>
+  <div class="rside-overlay js-menu" role="button" aria-label="Close Table of Contents" aria-controls="rside" aria-expanded="false"></div>
+  <main class="sy-main w-full max-sm:max-w-full print:pt-6">
+<div class="sy-breadcrumbs" role="navigation">
+  <div class="sy-breadcrumbs-inner flex items-center">
+    <div class="md:hidden mr-3">
+      <button class="js-menu" aria-label="Menu" type="button" aria-controls="lside" aria-expanded="false">
+        <i class="i-lucide menu"></i>
+      </button>
+    </div>
+    <ol class="flex-1" itemscope itemtype="https://schema.org/BreadcrumbList"><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="../../../../index.html"><span itemprop="name">icspacket</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="1" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="../../../index.html"><span itemprop="name">Module code</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="2" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <strong itemprop="name">icspacket.proto.iso_ses.spdu</strong>
+        <meta itemprop="position" content="3" />
+      </li></ol>
+    <div class="xl:hidden ml-1">
+      <button class="js-menu" aria-label="Show table of contents" type="button" aria-controls="rside"
+        aria-expanded="false">
+        <i class="i-lucide outdent"></i>
+      </button>
+    </div>
+  </div>
+</div><div class="flex flex-col break-words justify-between">
+      <div class="min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
+        <article class="yue" role="main">
+          <h1>Source code for icspacket.proto.iso_ses.spdu</h1><div class="highlight"><pre>
+<span></span><span data-line="1"><span class="c1"># This file is part of icspacket.</span>
+</span><span data-line="2"><span class="c1"># Copyright (C) 2025-present  MatrixEditor @ github</span>
+</span><span data-line="3"><span class="c1">#</span>
+</span><span data-line="4"><span class="c1"># This program is free software: you can redistribute it and/or modify</span>
+</span><span data-line="5"><span class="c1"># it under the terms of the GNU General Public License as published by</span>
+</span><span data-line="6"><span class="c1"># the Free Software Foundation, either version 3 of the License, or</span>
+</span><span data-line="7"><span class="c1"># (at your option) any later version.</span>
+</span><span data-line="8"><span class="c1">#</span>
+</span><span data-line="9"><span class="c1"># This program is distributed in the hope that it will be useful,</span>
+</span><span data-line="10"><span class="c1"># but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+</span><span data-line="11"><span class="c1"># MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+</span><span data-line="12"><span class="c1"># GNU General Public License for more details.</span>
+</span><span data-line="13"><span class="c1">#</span>
+</span><span data-line="14"><span class="c1"># You should have received a copy of the GNU General Public License</span>
+</span><span data-line="15"><span class="c1"># along with this program.  If not, see &lt;https://www.gnu.org/licenses/&gt;.</span>
+</span><span data-line="16"><span class="c1"># pyright: reportInvalidTypeForm=false, reportGeneralTypeIssues=false, reportAssignmentType=false</span>
+</span><span data-line="17"><span class="kn">import</span><span class="w"> </span><span class="nn">enum</span>
+</span><span data-line="18">
+</span><span data-line="19"><span class="kn">from</span><span class="w"> </span><span class="nn">collections.abc</span><span class="w"> </span><span class="kn">import</span> <span class="n">Generator</span><span class="p">,</span> <span class="n">Iterator</span>
+</span><span data-line="20"><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span>
+</span><span data-line="21"><span class="kn">from</span><span class="w"> </span><span class="nn">typing_extensions</span><span class="w"> </span><span class="kn">import</span> <span class="n">Self</span>
+</span><span data-line="22">
+</span><span data-line="23"><span class="kn">from</span><span class="w"> </span><span class="nn">caterpillar.context</span><span class="w"> </span><span class="kn">import</span> <span class="n">CTX_STREAM</span>
+</span><span data-line="24"><span class="kn">from</span><span class="w"> </span><span class="nn">caterpillar.exception</span><span class="w"> </span><span class="kn">import</span> <span class="n">DynamicSizeError</span>
+</span><span data-line="25"><span class="kn">from</span><span class="w"> </span><span class="nn">caterpillar.fields</span><span class="w"> </span><span class="kn">import</span> <span class="n">FieldMixin</span><span class="p">,</span> <span class="n">Prefixed</span><span class="p">,</span> <span class="n">uint8</span><span class="p">,</span> <span class="n">uint16</span>
+</span><span data-line="26"><span class="kn">from</span><span class="w"> </span><span class="nn">caterpillar.options</span><span class="w"> </span><span class="kn">import</span> <span class="n">S_ADD_BYTES</span>
+</span><span data-line="27"><span class="kn">from</span><span class="w"> </span><span class="nn">caterpillar.shared</span><span class="w"> </span><span class="kn">import</span> <span class="n">getstruct</span>
+</span><span data-line="28"><span class="kn">from</span><span class="w"> </span><span class="nn">caterpillar.shortcuts</span><span class="w"> </span><span class="kn">import</span> <span class="n">F</span><span class="p">,</span> <span class="n">BigEndian</span><span class="p">,</span> <span class="n">struct</span><span class="p">,</span> <span class="n">this</span><span class="p">,</span> <span class="n">unpack</span>
+</span><span data-line="29">
+</span><span data-line="30"><span class="kn">from</span><span class="w"> </span><span class="nn">icspacket.proto.iso_ses</span><span class="w"> </span><span class="kn">import</span> <span class="n">values</span>
+</span><span data-line="31">
+</span><span data-line="32"><span class="c1"># [ITU X.225] – Connection-oriented session protocol</span>
+</span><span data-line="33"><span class="c1"># This protocol is a mess!</span>
+</span><span data-line="34">
+</span><span data-line="35">
+</span><span data-line="36"><span class="c1"># 8.2.5 Length indicator field</span>
+<div class="viewcode-block" id="LI">
+<a class="viewcode-back" href="../../../../protocols/cosp/spdu.html#icspacket.proto.iso_ses.spdu.LI">[docs]</a>
+</span><span data-line="37"><span class="k">class</span><span class="w"> </span><span class="nc">LI</span><span class="p">(</span><span class="n">FieldMixin</span><span class="p">):</span>
+</span><span data-line="38"><span class="w">    </span><span class="sd">&quot;&quot;&quot;8.2.5 Length indicator field</span>
+</span><span data-line="39">
+</span><span data-line="40"><span class="sd">    Encodes/decodes the length, in octets, of the associated parameter field.</span>
+</span><span data-line="41"><span class="sd">    The LI value does **not** include the LI octets themselves nor any subsequent</span>
+</span><span data-line="42"><span class="sd">    *user information* octets.</span>
+</span><span data-line="43">
+</span><span data-line="44"><span class="sd">    Encoding forms:</span>
+</span><span data-line="45">
+</span><span data-line="46"><span class="sd">    - **Short form (1 octet)**: values in range 0..254 are encoded in one octet.</span>
+</span><span data-line="47"><span class="sd">      A value of **0** indicates that the associated parameter field is absent.</span>
+</span><span data-line="48"><span class="sd">    - **Extended form (3 octets)**: values in range 255..65535 are encoded as:</span>
+</span><span data-line="49"><span class="sd">      0xFF | &lt;length: uint16 big-endian&gt; i.e., first octet 1111 1111 (255),</span>
+</span><span data-line="50"><span class="sd">      followed by two octets carrying the length.</span>
+</span><span data-line="51">
+</span><span data-line="52"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span data-line="53">
+</span><span data-line="54">    <span class="n">EXTENDED_INDICATOR</span> <span class="o">=</span> <span class="sa">b</span><span class="s2">&quot;</span><span class="se">\xff</span><span class="s2">&quot;</span>
+</span><span data-line="55"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Indicates an extended length indicator.&quot;&quot;&quot;</span>
+</span><span data-line="56">
+</span><span data-line="57">    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">extended</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="58">        <span class="bp">self</span><span class="o">.</span><span class="n">extended</span> <span class="o">=</span> <span class="n">extended</span>
+</span><span data-line="59">        <span class="c1"># Backing field to read the extended 2-byte big-endian length (after 0xFF).</span>
+</span><span data-line="60">        <span class="bp">self</span><span class="o">.</span><span class="n">__field</span> <span class="o">=</span> <span class="n">BigEndian</span> <span class="o">+</span> <span class="n">uint16</span>
+</span><span data-line="61">
+</span><span data-line="62">    <span class="k">def</span><span class="w"> </span><span class="nf">__size__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+</span><span data-line="63">        <span class="c1"># The LI can be either 1 or 3 octets depending on the value; callers must</span>
+</span><span data-line="64">        <span class="c1"># compute size from the actual value using LI.octet_size().</span>
+</span><span data-line="65">        <span class="k">raise</span> <span class="n">DynamicSizeError</span><span class="p">(</span><span class="s2">&quot;LI size is either 1 or 3 depending on its value&quot;</span><span class="p">)</span>
+</span><span data-line="66">
+</span><span data-line="67">    <span class="k">def</span><span class="w"> </span><span class="nf">__type__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">type</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
+</span><span data-line="68">        <span class="k">return</span> <span class="nb">int</span>
+</span><span data-line="69">
+</span><span data-line="70">    <span class="k">def</span><span class="w"> </span><span class="nf">__unpack__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+</span><span data-line="71">        <span class="n">stream</span> <span class="o">=</span> <span class="n">context</span><span class="p">[</span><span class="n">CTX_STREAM</span><span class="p">]</span>
+</span><span data-line="72">        <span class="n">first_octet</span> <span class="o">=</span> <span class="n">stream</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</span><span data-line="73">        <span class="c1"># LI fields indicating lengths within the range 0-254 shall comprise one</span>
+</span><span data-line="74">        <span class="c1"># octet.</span>
+</span><span data-line="75">        <span class="k">if</span> <span class="n">first_octet</span> <span class="o">!=</span> <span class="n">LI</span><span class="o">.</span><span class="n">EXTENDED_INDICATOR</span><span class="p">:</span>
+</span><span data-line="76">            <span class="k">return</span> <span class="n">first_octet</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</span><span data-line="77">
+</span><span data-line="78">        <span class="c1"># LI fields indicating lengths within the range 255-65 535 shall comprise</span>
+</span><span data-line="79">        <span class="c1"># three octets. The first octet shall be coded 1111 1111 and the second</span>
+</span><span data-line="80">        <span class="c1"># and third octets shall contain the length of the associated parameter</span>
+</span><span data-line="81">        <span class="c1"># field with the high order bits in the first of these two octets.</span>
+</span><span data-line="82">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__field</span><span class="o">.</span><span class="n">__unpack__</span><span class="p">(</span><span class="n">context</span><span class="p">)</span>
+</span><span data-line="83">
+</span><span data-line="84">    <span class="k">def</span><span class="w"> </span><span class="nf">__pack__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="85">        <span class="n">stream</span> <span class="o">=</span> <span class="n">context</span><span class="p">[</span><span class="n">CTX_STREAM</span><span class="p">]</span>
+</span><span data-line="86">        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">extended</span> <span class="ow">or</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">obj</span> <span class="o">&lt;=</span> <span class="mi">254</span><span class="p">:</span>
+</span><span data-line="87">            <span class="k">return</span> <span class="n">stream</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">bytes</span><span class="p">([</span><span class="n">obj</span> <span class="o">&amp;</span> <span class="mi">255</span><span class="p">]))</span>
+</span><span data-line="88">
+</span><span data-line="89">        <span class="n">stream</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">LI</span><span class="o">.</span><span class="n">EXTENDED_INDICATOR</span><span class="p">)</span>
+</span><span data-line="90">        <span class="c1"># NOTE: Per spec, LI does NOT include its own octets nor any following</span>
+</span><span data-line="91">        <span class="c1"># user information octets. We simply encode the numeric value here</span>
+</span><span data-line="92">        <span class="bp">self</span><span class="o">.</span><span class="n">__field</span><span class="o">.</span><span class="n">__pack__</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
+</span><span data-line="93">
+<div class="viewcode-block" id="LI.octet_size">
+<a class="viewcode-back" href="../../../../protocols/cosp/spdu.html#icspacket.proto.iso_ses.spdu.LI.octet_size">[docs]</a>
+</span><span data-line="94">    <span class="nd">@staticmethod</span>
+</span><span data-line="95">    <span class="k">def</span><span class="w"> </span><span class="nf">octet_size</span><span class="p">(</span><span class="n">value</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+</span><span data-line="96"><span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the number of octets required to encode `value` as an LI.&quot;&quot;&quot;</span>
+</span><span data-line="97">        <span class="k">return</span> <span class="mi">1</span> <span class="k">if</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">value</span> <span class="o">&lt;=</span> <span class="mi">254</span> <span class="k">else</span> <span class="mi">3</span></div>
+</div>
+
+</span><span data-line="98">
+</span><span data-line="99">
+</span><span data-line="100"><span class="n">LI_Extended</span> <span class="o">=</span> <span class="n">LI</span><span class="p">()</span>
+</span><span data-line="101"><span class="sd">&quot;&quot;&quot;Convenience alias for LI that allows extended form&quot;&quot;&quot;</span>
+</span><span data-line="102">
+</span><span data-line="103">
+</span><span data-line="104"><span class="c1"># ---------------------------------------------------------------------------</span>
+</span><span data-line="105"><span class="c1"># SPDU Codes (SI values)</span>
+</span><span data-line="106"><span class="c1"># ---------------------------------------------------------------------------</span>
+<div class="viewcode-block" id="SPDU_Codes">
+<a class="viewcode-back" href="../../../../protocols/cosp/spdu.html#icspacket.proto.iso_ses.spdu.SPDU_Codes">[docs]</a>
+</span><span data-line="107"><span class="k">class</span><span class="w"> </span><span class="nc">SPDU_Codes</span><span class="p">:</span>
+</span><span data-line="108"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Mapping of SPDU SI codes to mnemonic names.</span>
+</span><span data-line="109">
+</span><span data-line="110"><span class="sd">    .. note::</span>
+</span><span data-line="111"><span class="sd">        Some codes in X.225 are **contextual aliases** (e.g., code 1 is used for</span>
+</span><span data-line="112"><span class="sd">        both DT and GT) depending on category/semantics. This class preserves the</span>
+</span><span data-line="113"><span class="sd">        code values.</span>
+</span><span data-line="114"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span data-line="115">
+</span><span data-line="116">    <span class="c1"># fmt: off</span>
+</span><span data-line="117">    <span class="n">EXCEPTION_REPORT_SPDU</span> <span class="o">=</span> <span class="mi">0</span>         <span class="c1"># (ER)</span>
+</span><span data-line="118">    <span class="n">DATA_TRANSFER_SPDU</span> <span class="o">=</span> <span class="mi">1</span>            <span class="c1"># (DT)</span>
+</span><span data-line="119">    <span class="n">GIVE_TOKENS_SPDU</span> <span class="o">=</span> <span class="mi">1</span>              <span class="c1"># (GT)  — shares code with DT in some contexts</span>
+</span><span data-line="120">    <span class="n">PLEASE_TOKENS_SPDU</span> <span class="o">=</span> <span class="mi">2</span>            <span class="c1"># (PT)</span>
+</span><span data-line="121">    <span class="n">EXPEDITED_SPDU</span> <span class="o">=</span> <span class="mi">5</span>                <span class="c1"># (EX)</span>
+</span><span data-line="122">    <span class="n">PREPARE_SPDU</span> <span class="o">=</span> <span class="mi">7</span>                  <span class="c1"># (PR)</span>
+</span><span data-line="123">    <span class="n">NOT_FINISHED_SPDU</span> <span class="o">=</span> <span class="mi">8</span>             <span class="c1"># (NF)</span>
+</span><span data-line="124">    <span class="n">FINISH_SPDU</span> <span class="o">=</span> <span class="mi">9</span>                   <span class="c1"># (FN)</span>
+</span><span data-line="125">    <span class="n">DISCONNECT_SPDU</span> <span class="o">=</span> <span class="mi">10</span>              <span class="c1"># (DN)</span>
+</span><span data-line="126">    <span class="n">REFUSE_SPDU</span> <span class="o">=</span> <span class="mi">12</span>                  <span class="c1"># (RF)</span>
+</span><span data-line="127">    <span class="n">CONNECT_SPDU</span> <span class="o">=</span> <span class="mi">13</span>                 <span class="c1"># (CN)</span>
+</span><span data-line="128">    <span class="n">ACCEPT_SPDU</span> <span class="o">=</span> <span class="mi">14</span>                  <span class="c1"># (AC)</span>
+</span><span data-line="129">    <span class="n">CONNECT_DATA_OVERFLOW_SPDU</span> <span class="o">=</span> <span class="mi">15</span>   <span class="c1"># (CDO)</span>
+</span><span data-line="130">    <span class="n">OVERFLOW_ACCEPT_SPDU</span> <span class="o">=</span> <span class="mi">16</span>         <span class="c1"># (OA)</span>
+</span><span data-line="131">    <span class="n">GIVE_TOKENS_CONFIRM_SPDU</span> <span class="o">=</span> <span class="mi">21</span>     <span class="c1"># (GTC)</span>
+</span><span data-line="132">    <span class="n">GIVE_TOKENS_ACK_SPDU</span> <span class="o">=</span> <span class="mi">22</span>         <span class="c1"># (GTA)</span>
+</span><span data-line="133">    <span class="n">ABORT_SPDU</span> <span class="o">=</span> <span class="mi">25</span>                   <span class="c1"># (AB)</span>
+</span><span data-line="134">    <span class="n">ACTIVITY_INTERRUPT_SPDU</span> <span class="o">=</span> <span class="mi">25</span>      <span class="c1"># (AI) — code reuse</span>
+</span><span data-line="135">    <span class="n">ABORT_ACCEPT_SPDU</span> <span class="o">=</span> <span class="mi">26</span>            <span class="c1"># (AA)</span>
+</span><span data-line="136">    <span class="n">ACTIVITY_INTERRUPT_ACK_SPDU</span> <span class="o">=</span> <span class="mi">26</span>  <span class="c1"># (AIA) — code reuse</span>
+</span><span data-line="137">    <span class="n">ACTIVITY_RESUME_SPDU</span> <span class="o">=</span> <span class="mi">29</span>         <span class="c1"># (AR)</span>
+</span><span data-line="138">    <span class="n">TYPED_DATA_SPDU</span> <span class="o">=</span> <span class="mi">33</span>              <span class="c1"># (TD)</span>
+</span><span data-line="139">    <span class="n">RESYNCHRONIZE_ACK_SPDU</span> <span class="o">=</span> <span class="mi">34</span>       <span class="c1"># (RA)</span>
+</span><span data-line="140">    <span class="n">ACTIVITY_END_SPDU</span> <span class="o">=</span> <span class="mi">41</span>            <span class="c1"># (AE)</span>
+</span><span data-line="141">    <span class="n">MAJOR_SYNC_POINT_SPDU</span> <span class="o">=</span> <span class="mi">41</span>        <span class="c1"># (MAP) — code reuse</span>
+</span><span data-line="142">    <span class="n">MAJOR_SYNC_ACK_SPDU</span> <span class="o">=</span> <span class="mi">42</span>          <span class="c1"># (MAA)</span>
+</span><span data-line="143">    <span class="n">ACTIVITY_START_SPDU</span> <span class="o">=</span> <span class="mi">45</span>          <span class="c1"># (AS)</span>
+</span><span data-line="144">    <span class="n">EXCEPTION_DATA_SPDU</span> <span class="o">=</span> <span class="mi">48</span>          <span class="c1"># (ED)</span>
+</span><span data-line="145">    <span class="n">MINOR_SYNC_POINT_SPDU</span> <span class="o">=</span> <span class="mi">49</span>        <span class="c1"># (MIP)</span>
+</span><span data-line="146">    <span class="n">MINOR_SYNC_ACK_SPDU</span> <span class="o">=</span> <span class="mi">50</span>          <span class="c1"># (MIA)</span>
+</span><span data-line="147">    <span class="n">RESYNCHRONIZE_SPDU</span> <span class="o">=</span> <span class="mi">53</span>           <span class="c1"># (RS)</span>
+</span><span data-line="148">    <span class="n">ACTIVITY_DISCARD_SPDU</span> <span class="o">=</span> <span class="mi">57</span>        <span class="c1"># (AD)</span>
+</span><span data-line="149">    <span class="n">ACTIVITY_DISCARD_ACK_SPDU</span> <span class="o">=</span> <span class="mi">58</span>    <span class="c1"># (ADA)</span>
+</span><span data-line="150">    <span class="n">CAPABILITY_DATA_SPDU</span> <span class="o">=</span> <span class="mi">61</span>         <span class="c1"># (CD)</span>
+</span><span data-line="151">    <span class="n">CAPABILITY_DATA_ACK_SPDU</span> <span class="o">=</span> <span class="mi">62</span>     <span class="c1"># (CDA)</span>
+</span><span data-line="152">    <span class="n">CLSES_UNIT_DATA</span> <span class="o">=</span> <span class="mi">64</span>              <span class="c1"># Connectionless Session (CL-mode) U-Data</span>
+</span><span data-line="153">    <span class="c1"># fmt: on</span>
+</span><span data-line="154">
+<div class="viewcode-block" id="SPDU_Codes.has_user_info">
+<a class="viewcode-back" href="../../../../protocols/cosp/spdu.html#icspacket.proto.iso_ses.spdu.SPDU_Codes.has_user_info">[docs]</a>
+</span><span data-line="155">    <span class="nd">@staticmethod</span>
+</span><span data-line="156">    <span class="k">def</span><span class="w"> </span><span class="nf">has_user_info</span><span class="p">(</span><span class="n">code</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+</span><span data-line="157"><span class="w">        </span><span class="sd">&quot;&quot;&quot;Return True if **User Information Field** is defined for this SI code.</span>
+</span><span data-line="158">
+</span><span data-line="159"><span class="sd">        Per X.225, only a subset of SPDUs carry user data directly. In the</span>
+</span><span data-line="160"><span class="sd">        connection-oriented subset, these are primarily:</span>
+</span><span data-line="161">
+</span><span data-line="162"><span class="sd">        - DATA TRANSFER (DT)</span>
+</span><span data-line="163"><span class="sd">        - EXPEDITED (EX)</span>
+</span><span data-line="164"><span class="sd">        - TYPED DATA (TD)</span>
+</span><span data-line="165">
+</span><span data-line="166"><span class="sd">        Final presence is further constrained by **Enclosure Item** semantics for DT.</span>
+</span><span data-line="167"><span class="sd">        &quot;&quot;&quot;</span>
+</span><span data-line="168">        <span class="c1"># fmt: off</span>
+</span><span data-line="169">        <span class="k">return</span> <span class="n">code</span> <span class="ow">in</span> <span class="p">(</span>
+</span><span data-line="170">            <span class="n">SPDU_Codes</span><span class="o">.</span><span class="n">DATA_TRANSFER_SPDU</span><span class="p">,</span>  <span class="c1"># DATA TRANSFER (DT)</span>
+</span><span data-line="171">            <span class="n">SPDU_Codes</span><span class="o">.</span><span class="n">EXPEDITED_SPDU</span><span class="p">,</span>      <span class="c1"># EXPEDITED (EX)</span>
+</span><span data-line="172">            <span class="n">SPDU_Codes</span><span class="o">.</span><span class="n">TYPED_DATA_SPDU</span><span class="p">,</span>     <span class="c1"># TYPED DATA (TD)</span>
+</span><span data-line="173">        <span class="p">)</span></div>
+</div>
+
+</span><span data-line="174">        <span class="c1"># fmt: on</span>
+</span><span data-line="175">
+</span><span data-line="176">
+</span><span data-line="177"><span class="c1"># ---------------------------------------------------------------------------</span>
+</span><span data-line="178"><span class="c1"># PGI (Parameter Group) Codes</span>
+</span><span data-line="179"><span class="c1"># ---------------------------------------------------------------------------</span>
+<div class="viewcode-block" id="PGI_Code">
+<a class="viewcode-back" href="../../../../protocols/cosp/spdu.html#icspacket.proto.iso_ses.spdu.PGI_Code">[docs]</a>
+</span><span data-line="180"><span class="k">class</span><span class="w"> </span><span class="nc">PGI_Code</span><span class="p">(</span><span class="n">enum</span><span class="o">.</span><span class="n">IntEnum</span><span class="p">):</span>
+</span><span data-line="181"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Parameter Group Identifier (PGI) codes&quot;&quot;&quot;</span>
+</span><span data-line="182">
+</span><span data-line="183">    <span class="c1"># NOTE - PGIs and PIs reserved for use by Recommendation T.62 are not</span>
+</span><span data-line="184">    <span class="c1"># defined here.</span>
+</span><span data-line="185">    <span class="n">__struct__</span> <span class="o">=</span> <span class="n">uint8</span>
+</span><span data-line="186">
+</span><span data-line="187">    <span class="c1"># Reserved for extension = 0</span>
+</span><span data-line="188">    <span class="n">CONNECTION_ID</span> <span class="o">=</span> <span class="mi">1</span>
+</span><span data-line="189">    <span class="c1"># Non-basic session capabilities = 2</span>
+</span><span data-line="190">    <span class="n">ACCEPT_ITEM</span> <span class="o">=</span> <span class="mi">5</span>
+</span><span data-line="191">    <span class="c1"># Reserved for extension = 32</span>
+</span><span data-line="192">    <span class="n">LINKING_INFORMATION</span> <span class="o">=</span> <span class="mi">33</span>
+</span><span data-line="193">    <span class="c1"># Reserved for extension = 64</span>
+</span><span data-line="194">    <span class="c1"># Non-baseic teletex terminal capabilities = 65</span>
+</span><span data-line="195">    <span class="n">USER_DATA</span> <span class="o">=</span> <span class="mi">193</span>
+</span><span data-line="196">    <span class="n">EXTENDED_USER_DATA</span> <span class="o">=</span> <span class="mi">194</span></div>
+
+</span><span data-line="197">
+</span><span data-line="198">
+</span><span data-line="199"><span class="c1"># ---------------------------------------------------------------------------</span>
+</span><span data-line="200"><span class="c1"># Raw PI / PGI units (length-prefixed)</span>
+</span><span data-line="201"><span class="c1"># ---------------------------------------------------------------------------</span>
+</span><span data-line="202"><span class="k">def</span><span class="w"> </span><span class="nf">_pi_from_context</span><span class="p">(</span><span class="n">pi</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+</span><span data-line="203">    <span class="n">pv_struct</span> <span class="o">=</span> <span class="n">values</span><span class="o">.</span><span class="n">PV_TYPES</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">pi</span><span class="p">)</span>
+</span><span data-line="204">    <span class="k">if</span> <span class="n">pv_struct</span><span class="p">:</span>
+</span><span data-line="205">        <span class="k">return</span> <span class="n">Prefixed</span><span class="p">(</span><span class="n">LI_Extended</span><span class="p">,</span> <span class="n">getstruct</span><span class="p">(</span><span class="n">pv_struct</span><span class="p">,</span> <span class="n">pv_struct</span><span class="p">))</span>
+</span><span data-line="206">
+</span><span data-line="207">    <span class="c1"># revert to raw bytes instead</span>
+</span><span data-line="208">    <span class="k">return</span> <span class="n">Prefixed</span><span class="p">(</span><span class="n">LI_Extended</span><span class="p">)</span>
+</span><span data-line="209">
+</span><span data-line="210">
+<div class="viewcode-block" id="PI_Unit_Raw">
+<a class="viewcode-back" href="../../../../protocols/cosp/spdu.html#icspacket.proto.iso_ses.spdu.PI_Unit_Raw">[docs]</a>
+</span><span data-line="211"><span class="nd">@struct</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="n">S_ADD_BYTES</span><span class="p">])</span>
+</span><span data-line="212"><span class="k">class</span><span class="w"> </span><span class="nc">PI_Unit_Raw</span><span class="p">:</span>
+</span><span data-line="213"><span class="w">    </span><span class="sd">&quot;&quot;&quot;PI Unit (Parameter) — X.225 §8.2.3</span>
+</span><span data-line="214">
+</span><span data-line="215"><span class="sd">    .. code-block:: text</span>
+</span><span data-line="216"><span class="sd">        :caption: Wire format</span>
+</span><span data-line="217">
+</span><span data-line="218"><span class="sd">        +--------+--------+-----------------...</span>
+</span><span data-line="219"><span class="sd">        |  PI    |   LI   | parameter value (LI octets)</span>
+</span><span data-line="220"><span class="sd">        +--------+--------+-----------------...</span>
+</span><span data-line="221">
+</span><span data-line="222">
+</span><span data-line="223"><span class="sd">    - PI: 1 octet identifier for the parameter.</span>
+</span><span data-line="224"><span class="sd">    - LI: Length Indicator (1 or 3 octets) for the parameter value.</span>
+</span><span data-line="225"><span class="sd">    - value_raw: Bytes of the parameter value (no nested parsing here).</span>
+</span><span data-line="226"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span data-line="227">
+</span><span data-line="228">    <span class="n">pi</span><span class="p">:</span> <span class="n">uint8</span>
+</span><span data-line="229"><span class="w">    </span><span class="sd">&quot;&quot;&quot;PI field that identifies the parameter.&quot;&quot;&quot;</span>
+</span><span data-line="230">
+</span><span data-line="231">    <span class="n">value</span><span class="p">:</span> <span class="n">F</span><span class="p">(</span><span class="n">this</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span> <span class="o">&gt;&gt;</span> <span class="n">_pi_from_context</span>
+</span><span data-line="232"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Parameter value as raw bytes, length-prefixed by an LI, if not</span>
+</span><span data-line="233"><span class="sd">    implemented in icspacket.iso_cosp.values.</span>
+</span><span data-line="234"><span class="sd">    &quot;&quot;&quot;</span></div>
+
+</span><span data-line="235">
+</span><span data-line="236">
+</span><span data-line="237"><span class="n">PI_Units_Raw</span> <span class="o">=</span> <span class="n">Prefixed</span><span class="p">(</span><span class="n">LI_Extended</span><span class="p">,</span> <span class="n">PI_Unit_Raw</span><span class="p">[</span><span class="o">...</span><span class="p">])</span>
+</span><span data-line="238"><span class="sd">&quot;&quot;&quot;Defines a list of PI Units (length-prefixed aggregate).&quot;&quot;&quot;</span>
+</span><span data-line="239">
+</span><span data-line="240">
+<div class="viewcode-block" id="PGI_Unit_Raw">
+<a class="viewcode-back" href="../../../../protocols/cosp/spdu.html#icspacket.proto.iso_ses.spdu.PGI_Unit_Raw">[docs]</a>
+</span><span data-line="241"><span class="nd">@struct</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="n">S_ADD_BYTES</span><span class="p">])</span>
+</span><span data-line="242"><span class="k">class</span><span class="w"> </span><span class="nc">PGI_Unit_Raw</span><span class="p">:</span>  <span class="c1"># unused</span>
+</span><span data-line="243"><span class="w">    </span><span class="sd">&quot;&quot;&quot;PGI Unit (Parameter Group) — X.225 §8.2.2</span>
+</span><span data-line="244">
+</span><span data-line="245"><span class="sd">    .. code-block:: text</span>
+</span><span data-line="246"><span class="sd">        :caption: Wire format</span>
+</span><span data-line="247">
+</span><span data-line="248"><span class="sd">        +--------+--------+-----------------...</span>
+</span><span data-line="249"><span class="sd">        |  PGI   |   LI   |   parameter field</span>
+</span><span data-line="250"><span class="sd">        +--------+--------+-----------------...</span>
+</span><span data-line="251">
+</span><span data-line="252">
+</span><span data-line="253"><span class="sd">    The parameter field of a PGI may be:</span>
+</span><span data-line="254">
+</span><span data-line="255"><span class="sd">    -  1) a **single parameter value**, or</span>
+</span><span data-line="256"><span class="sd">    -  2) one or more **PI units** (each PI is again LI-prefixed).</span>
+</span><span data-line="257">
+</span><span data-line="258"><span class="sd">    This raw representation keeps the inner sequence as a list of PI_Unit_Raw.</span>
+</span><span data-line="259"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span data-line="260">
+</span><span data-line="261">    <span class="n">pgi</span><span class="p">:</span> <span class="n">PGI_Code</span>
+</span><span data-line="262"><span class="w">    </span><span class="sd">&quot;&quot;&quot;PGI field identifying the parameter group.&quot;&quot;&quot;</span>
+</span><span data-line="263">
+</span><span data-line="264">    <span class="n">value</span><span class="p">:</span> <span class="n">PI_Units_Raw</span>
+</span><span data-line="265"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Parameter field for the group: either a single value or multiple PI units.&quot;&quot;&quot;</span></div>
+
+</span><span data-line="266">
+</span><span data-line="267">
+</span><span data-line="268"><span class="k">def</span><span class="w"> </span><span class="nf">_px_from_context</span><span class="p">(</span><span class="n">pi</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+</span><span data-line="269"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Dynamic selector for the value format of a parameter-like unit.&quot;&quot;&quot;</span>
+</span><span data-line="270">    <span class="k">if</span> <span class="n">pi</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">PGI_Code</span><span class="p">):</span>
+</span><span data-line="271">        <span class="k">if</span> <span class="n">pi</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="n">PGI_Code</span><span class="o">.</span><span class="n">USER_DATA</span><span class="p">,</span> <span class="n">PGI_Code</span><span class="o">.</span><span class="n">EXTENDED_USER_DATA</span><span class="p">):</span>
+</span><span data-line="272">            <span class="k">return</span> <span class="n">PI_Units_Raw</span>
+</span><span data-line="273">
+</span><span data-line="274">    <span class="k">return</span> <span class="n">_pi_from_context</span><span class="p">(</span><span class="n">pi</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
+</span><span data-line="275">
+</span><span data-line="276">
+<div class="viewcode-block" id="Px_Unit">
+<a class="viewcode-back" href="../../../../protocols/cosp/spdu.html#icspacket.proto.iso_ses.spdu.Px_Unit">[docs]</a>
+</span><span data-line="277"><span class="nd">@struct</span>
+</span><span data-line="278"><span class="k">class</span><span class="w"> </span><span class="nc">Px_Unit</span><span class="p">:</span>
+</span><span data-line="279"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Unified view over either a **PI** or a **PGI**.&quot;&quot;&quot;</span>
+</span><span data-line="280">
+</span><span data-line="281">    <span class="n">pi</span><span class="p">:</span> <span class="n">uint8</span>
+</span><span data-line="282"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="283"><span class="sd">    The 1-octet identifier. For PGIs this holds the PGI code; for PIs it is the</span>
+</span><span data-line="284"><span class="sd">    PI.</span>
+</span><span data-line="285"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span data-line="286">
+</span><span data-line="287">    <span class="n">value</span><span class="p">:</span> <span class="n">F</span><span class="p">(</span><span class="n">this</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span> <span class="o">&gt;&gt;</span> <span class="n">_px_from_context</span>
+</span><span data-line="288"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="289"><span class="sd">    - PGI: list of PI_Unit_Raw (unless USER_DATA/EXTENDED_USER_DATA)</span>
+</span><span data-line="290"><span class="sd">    - PI: raw value bytes (LI-prefixed)</span>
+</span><span data-line="291"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span data-line="292">
+</span><span data-line="293">    <span class="nd">@property</span>
+</span><span data-line="294">    <span class="k">def</span><span class="w"> </span><span class="nf">is_group</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+</span><span data-line="295"><span class="w">        </span><span class="sd">&quot;&quot;&quot;True if `pi` is a known PGI code.&quot;&quot;&quot;</span>
+</span><span data-line="296">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">pi</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">PGI_Code</span><span class="p">)</span>
+</span><span data-line="297">
+</span><span data-line="298">    <span class="nd">@property</span>
+</span><span data-line="299">    <span class="k">def</span><span class="w"> </span><span class="nf">is_user_data</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+</span><span data-line="300"><span class="w">        </span><span class="sd">&quot;&quot;&quot;True if `pi` is USER_DATA or EXTENDED_USER_DATA.&quot;&quot;&quot;</span>
+</span><span data-line="301">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">pi</span> <span class="ow">in</span> <span class="p">(</span><span class="n">PGI_Code</span><span class="o">.</span><span class="n">USER_DATA</span><span class="p">,</span> <span class="n">PGI_Code</span><span class="o">.</span><span class="n">EXTENDED_USER_DATA</span><span class="p">)</span>
+</span><span data-line="302">
+<div class="viewcode-block" id="Px_Unit.add_parameter">
+<a class="viewcode-back" href="../../../../protocols/cosp/spdu.html#icspacket.proto.iso_ses.spdu.Px_Unit.add_parameter">[docs]</a>
+</span><span data-line="303">    <span class="k">def</span><span class="w"> </span><span class="nf">add_parameter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pi</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="s2">&quot;Px_Unit&quot;</span><span class="p">]</span> <span class="o">|</span> <span class="nb">bytes</span> <span class="o">|</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Px_Unit&quot;</span><span class="p">:</span>
+</span><span data-line="304"><span class="w">        </span><span class="sd">&quot;&quot;&quot;Add a parameter (PGI or PI) to the SPDU.&quot;&quot;&quot;</span>
+</span><span data-line="305">        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+</span><span data-line="306">            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;This parameter is not a group!&quot;</span><span class="p">)</span>
+</span><span data-line="307">
+</span><span data-line="308">        <span class="n">param</span> <span class="o">=</span> <span class="n">Px_Unit</span><span class="p">(</span><span class="n">pi</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+</span><span data-line="309">        <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">param</span><span class="p">)</span>
+</span><span data-line="310">        <span class="k">return</span> <span class="n">param</span></div>
+</div>
+
+</span><span data-line="311">
+</span><span data-line="312">
+</span><span data-line="313"><span class="n">Px_Units</span> <span class="o">=</span> <span class="n">Prefixed</span><span class="p">(</span><span class="n">LI_Extended</span><span class="p">,</span> <span class="n">Px_Unit</span><span class="p">[</span><span class="o">...</span><span class="p">])</span>
+</span><span data-line="314"><span class="sd">&quot;&quot;&quot;Defines a prefixed list of PGI or PI units (mixed).&quot;&quot;&quot;</span>
+</span><span data-line="315">
+</span><span data-line="316">
+</span><span data-line="317"><span class="c1"># ---------------------------------------------------------------------------</span>
+</span><span data-line="318"><span class="c1"># Raw SPDU (SI + parameter field)</span>
+</span><span data-line="319"><span class="c1"># ---------------------------------------------------------------------------</span>
+<div class="viewcode-block" id="SPDU_Raw">
+<a class="viewcode-back" href="../../../../protocols/cosp/spdu.html#icspacket.proto.iso_ses.spdu.SPDU_Raw">[docs]</a>
+</span><span data-line="320"><span class="nd">@struct</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="n">S_ADD_BYTES</span><span class="p">])</span>
+</span><span data-line="321"><span class="k">class</span><span class="w"> </span><span class="nc">SPDU_Raw</span><span class="p">:</span>
+</span><span data-line="322"><span class="w">    </span><span class="sd">&quot;&quot;&quot;SPDU (raw representation) — X.225 §8.2</span>
+</span><span data-line="323">
+</span><span data-line="324"><span class="sd">    .. code-block:: text</span>
+</span><span data-line="325"><span class="sd">        :caption: Wire format</span>
+</span><span data-line="326">
+</span><span data-line="327"><span class="sd">        +--------+--------+-----------------...</span>
+</span><span data-line="328"><span class="sd">        |  SI    |   LI   | parameter field (LI octets)</span>
+</span><span data-line="329"><span class="sd">        +--------+--------+-----------------...</span>
+</span><span data-line="330">
+</span><span data-line="331">
+</span><span data-line="332"><span class="sd">    - `si` (1 octet): SPDU Identifier (SI) — code that identifies the SPDU type</span>
+</span><span data-line="333"><span class="sd">      (e.g., CN/AC/DT/etc.).</span>
+</span><span data-line="334"><span class="sd">    - `parameters_raw` (LI-prefixed): a mixed sequence of **PGI units** and/or</span>
+</span><span data-line="335"><span class="sd">      **PI units** as defined for that SPDU type.</span>
+</span><span data-line="336">
+</span><span data-line="337"><span class="sd">    .. important::</span>
+</span><span data-line="338">
+</span><span data-line="339"><span class="sd">        The **User Information Field** (if any) is *not part* of this</span>
+</span><span data-line="340"><span class="sd">        raw struct. It is handled by the higher-level `SPDU` wrapper because the</span>
+</span><span data-line="341"><span class="sd">        presence rules depend on the SI code and items like the **Enclosure Item**.</span>
+</span><span data-line="342"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span data-line="343">
+</span><span data-line="344">    <span class="n">si</span><span class="p">:</span> <span class="n">uint8</span>
+</span><span data-line="345"><span class="w">    </span><span class="sd">&quot;&quot;&quot;The SI field that identifies the type of SPDU.&quot;&quot;&quot;</span>
+</span><span data-line="346">
+</span><span data-line="347">    <span class="n">parameters_raw</span><span class="p">:</span> <span class="n">Px_Units</span>
+</span><span data-line="348"><span class="w">    </span><span class="sd">&quot;&quot;&quot;The parameter field: a prefixed block of PGI units and/or PI units.&quot;&quot;&quot;</span>
+</span><span data-line="349">
+<div class="viewcode-block" id="SPDU_Raw.from_octets">
+<a class="viewcode-back" href="../../../../protocols/cosp/spdu.html#icspacket.proto.iso_ses.spdu.SPDU_Raw.from_octets">[docs]</a>
+</span><span data-line="350">    <span class="nd">@staticmethod</span>
+</span><span data-line="351">    <span class="k">def</span><span class="w"> </span><span class="nf">from_octets</span><span class="p">(</span><span class="n">octets</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">):</span>
+</span><span data-line="352"><span class="w">        </span><span class="sd">&quot;&quot;&quot;Deserialize a raw SPDU from octets (SI + LI + parameter field).&quot;&quot;&quot;</span>
+</span><span data-line="353">        <span class="k">return</span> <span class="n">unpack</span><span class="p">(</span><span class="n">SPDU_Raw</span><span class="p">,</span> <span class="n">octets</span><span class="p">)</span></div>
+</div>
+
+</span><span data-line="354">
+</span><span data-line="355">
+</span><span data-line="356"><span class="c1"># ---------------------------------------------------------------------------</span>
+</span><span data-line="357"><span class="c1"># Concatenation categories (mapping to TSDU usage) — X.225 §6.3.7</span>
+</span><span data-line="358"><span class="c1"># ---------------------------------------------------------------------------</span>
+<div class="viewcode-block" id="SPDU_Category">
+<a class="viewcode-back" href="../../../../protocols/cosp/spdu.html#icspacket.proto.iso_ses.spdu.SPDU_Category">[docs]</a>
+</span><span data-line="359"><span class="k">class</span><span class="w"> </span><span class="nc">SPDU_Category</span><span class="p">(</span><span class="n">enum</span><span class="o">.</span><span class="n">IntEnum</span><span class="p">):</span>
+</span><span data-line="360"><span class="w">    </span><span class="sd">&quot;&quot;&quot;SPDU categories for transport concatenation behavior — 6.3.7.&quot;&quot;&quot;</span>
+</span><span data-line="361">
+</span><span data-line="362">    <span class="n">CATEGORY_0</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span data-line="363"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="364"><span class="sd">    a) Category 0 SPDUs which may be mapped one-to-one onto a TSDU or may be</span>
+</span><span data-line="365"><span class="sd">       concatenated with one or more category 2 SPDUs;</span>
+</span><span data-line="366"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span data-line="367">
+</span><span data-line="368">    <span class="n">CATEGORY_1</span> <span class="o">=</span> <span class="mi">1</span>
+</span><span data-line="369"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="370"><span class="sd">    b) Category 1 SPDUs which are always mapped one-to-one onto a TSDU;</span>
+</span><span data-line="371"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span data-line="372">
+</span><span data-line="373">    <span class="n">CATEGORY_2</span> <span class="o">=</span> <span class="mi">2</span>
+</span><span data-line="374"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="375"><span class="sd">    c) Category 2 SPDUs which are never mapped one-to-one onto a TSDU.</span>
+</span><span data-line="376"><span class="sd">    &quot;&quot;&quot;</span></div>
+
+</span><span data-line="377">
+</span><span data-line="378">
+</span><span data-line="379"><span class="c1"># ---------------------------------------------------------------------------</span>
+</span><span data-line="380"><span class="c1"># High-level SPDU wrapper (adds user-info detection and helpers)</span>
+</span><span data-line="381"><span class="c1"># ---------------------------------------------------------------------------</span>
+</span><span data-line="382">
+</span><span data-line="383">
+<div class="viewcode-block" id="SPDU">
+<a class="viewcode-back" href="../../../../protocols/cosp/spdu.html#icspacket.proto.iso_ses.spdu.SPDU">[docs]</a>
+</span><span data-line="384"><span class="k">class</span><span class="w"> </span><span class="nc">SPDU</span><span class="p">:</span>
+</span><span data-line="385"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Convenience wrapper over :class:`SPDU_Raw` with user-info detection.</span>
+</span><span data-line="386">
+</span><span data-line="387"><span class="sd">    **Structure (logical) — X.225 8.2**</span>
+</span><span data-line="388">
+</span><span data-line="389"><span class="sd">    SPDUs shall contain, in order:</span>
+</span><span data-line="390">
+</span><span data-line="391"><span class="sd">    - a) SI — identifies the SPDU type (1 octet).</span>
+</span><span data-line="392"><span class="sd">    - b) LI — length (in octets) of the **parameter field** (1 or 3 octets).</span>
+</span><span data-line="393"><span class="sd">    - c) Parameter field — zero or more **PGI**/**PI** units (the block whose</span>
+</span><span data-line="394"><span class="sd">    -    length is provided by the LI).</span>
+</span><span data-line="395"><span class="sd">    - d) **User Information Field** — if defined for the SPDU type and present.</span>
+</span><span data-line="396">
+</span><span data-line="397"><span class="sd">    :class:`SPDU_Raw` models (a)-(c). Whether (d) exists cannot be decided by</span>
+</span><span data-line="398"><span class="sd">    just looking at the LI, because for some SPDU types (e.g., DT) the presence</span>
+</span><span data-line="399"><span class="sd">    of user information depends on control items like the **Enclosure Item** and</span>
+</span><span data-line="400"><span class="sd">    sequence rules (§7.11.2 and §8.3.*.4). This wrapper inspects parameters to</span>
+</span><span data-line="401"><span class="sd">    decide if trailing octets belong to the User Information Field.</span>
+</span><span data-line="402"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span data-line="403">
+</span><span data-line="404">    <span class="n">code</span><span class="p">:</span> <span class="nb">int</span>
+</span><span data-line="405"><span class="w">    </span><span class="sd">&quot;&quot;&quot;The SI code (a.k.a. SPDU type).&quot;&quot;&quot;</span>
+</span><span data-line="406">
+</span><span data-line="407">    <span class="n">category</span><span class="p">:</span> <span class="n">SPDU_Category</span>
+</span><span data-line="408"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Concatenation category (6.3.7).&quot;&quot;&quot;</span>
+</span><span data-line="409">
+</span><span data-line="410">    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">code</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">category</span><span class="p">:</span> <span class="n">SPDU_Category</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="411">        <span class="c1"># public (modifiable) members</span>
+</span><span data-line="412">        <span class="bp">self</span><span class="o">.</span><span class="n">code</span> <span class="o">=</span> <span class="n">code</span>
+</span><span data-line="413">        <span class="k">if</span> <span class="n">category</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="414">            <span class="k">if</span> <span class="n">code</span> <span class="ow">in</span> <span class="n">CATEGORY_2_NAMES</span><span class="p">:</span>
+</span><span data-line="415">                <span class="bp">self</span><span class="o">.</span><span class="n">category</span> <span class="o">=</span> <span class="n">SPDU_Category</span><span class="o">.</span><span class="n">CATEGORY_2</span>
+</span><span data-line="416">            <span class="k">elif</span> <span class="n">code</span> <span class="ow">in</span> <span class="n">CATEGORY_1_NAMES</span><span class="p">:</span>
+</span><span data-line="417">                <span class="bp">self</span><span class="o">.</span><span class="n">category</span> <span class="o">=</span> <span class="n">SPDU_Category</span><span class="o">.</span><span class="n">CATEGORY_1</span>
+</span><span data-line="418">            <span class="k">else</span><span class="p">:</span>
+</span><span data-line="419">                <span class="bp">self</span><span class="o">.</span><span class="n">category</span> <span class="o">=</span> <span class="n">SPDU_Category</span><span class="o">.</span><span class="n">CATEGORY_0</span>
+</span><span data-line="420">        <span class="k">else</span><span class="p">:</span>
+</span><span data-line="421">            <span class="bp">self</span><span class="o">.</span><span class="n">category</span> <span class="o">=</span> <span class="n">category</span>
+</span><span data-line="422">
+</span><span data-line="423">        <span class="c1"># private members</span>
+</span><span data-line="424">        <span class="bp">self</span><span class="o">.</span><span class="n">__parameters</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span data-line="425">        <span class="bp">self</span><span class="o">.</span><span class="n">__user_information</span> <span class="o">=</span> <span class="sa">b</span><span class="s2">&quot;&quot;</span>
+</span><span data-line="426">
+</span><span data-line="427">    <span class="k">def</span><span class="w"> </span><span class="fm">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="n">Self</span> <span class="o">|</span> <span class="nb">list</span><span class="p">[</span><span class="s2">&quot;SPDU&quot;</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="s2">&quot;SPDU&quot;</span><span class="p">]:</span>
+</span><span data-line="428"><span class="w">        </span><span class="sd">&quot;&quot;&quot;Allow `spdu1 + spdu2` or `spdu + [spdu2, spdu3]` to build lists quickly.&quot;&quot;&quot;</span>
+</span><span data-line="429">        <span class="k">match</span> <span class="n">other</span><span class="p">:</span>
+</span><span data-line="430">            <span class="k">case</span> <span class="nb">list</span><span class="p">():</span>
+</span><span data-line="431">                <span class="n">other</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>
+</span><span data-line="432">                <span class="k">return</span> <span class="n">other</span>
+</span><span data-line="433">            <span class="k">case</span><span class="w"> </span><span class="k">_</span><span class="p">:</span>
+</span><span data-line="434">                <span class="k">return</span> <span class="p">[</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">]</span>
+</span><span data-line="435">
+</span><span data-line="436">    <span class="k">def</span><span class="w"> </span><span class="fm">__radd__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="n">Self</span> <span class="o">|</span> <span class="nb">list</span><span class="p">[</span><span class="s2">&quot;SPDU&quot;</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="s2">&quot;SPDU&quot;</span><span class="p">]:</span>
+</span><span data-line="437"><span class="w">        </span><span class="sd">&quot;&quot;&quot;Symmetric addition to support `[spdu1] + spdu2`.&quot;&quot;&quot;</span>
+</span><span data-line="438">        <span class="k">match</span> <span class="n">other</span><span class="p">:</span>
+</span><span data-line="439">            <span class="k">case</span> <span class="nb">list</span><span class="p">():</span>
+</span><span data-line="440">                <span class="n">other</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+</span><span data-line="441">                <span class="k">return</span> <span class="n">other</span>
+</span><span data-line="442">            <span class="k">case</span><span class="w"> </span><span class="k">_</span><span class="p">:</span>
+</span><span data-line="443">                <span class="k">return</span> <span class="p">[</span><span class="n">other</span><span class="p">,</span> <span class="bp">self</span><span class="p">]</span>
+</span><span data-line="444">
+</span><span data-line="445">    <span class="k">def</span><span class="w"> </span><span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+</span><span data-line="446">        <span class="n">fields</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span data-line="447">        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="p">:</span>
+</span><span data-line="448">            <span class="n">fields</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;parameters=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">__parameters</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span data-line="449">        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">user_information</span><span class="p">:</span>
+</span><span data-line="450">            <span class="n">fields</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;user_information=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">__user_information</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span data-line="451">
+</span><span data-line="452">        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;&lt;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2"> [</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">category</span><span class="o">.</span><span class="n">value</span><span class="si">}</span><span class="s2">] </span><span class="si">{</span><span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">fields</span><span class="p">)</span><span class="si">}</span><span class="s2">&gt;&quot;</span>
+</span><span data-line="453">
+</span><span data-line="454">    <span class="k">def</span><span class="w"> </span><span class="fm">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Iterator</span><span class="p">[</span><span class="n">Px_Unit</span><span class="p">]:</span>
+</span><span data-line="455"><span class="w">        </span><span class="sd">&quot;&quot;&quot;Iterate over **flattened parameters** (recursing into PGI contents).&quot;&quot;&quot;</span>
+</span><span data-line="456">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">iter_parameters</span><span class="p">()</span>
+</span><span data-line="457">
+<div class="viewcode-block" id="SPDU.add_parameter">
+<a class="viewcode-back" href="../../../../protocols/cosp/spdu.html#icspacket.proto.iso_ses.spdu.SPDU.add_parameter">[docs]</a>
+</span><span data-line="458">    <span class="k">def</span><span class="w"> </span><span class="nf">add_parameter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pi</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Px_Unit</span><span class="p">]</span> <span class="o">|</span> <span class="nb">bytes</span> <span class="o">|</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Px_Unit</span><span class="p">:</span>
+</span><span data-line="459"><span class="w">        </span><span class="sd">&quot;&quot;&quot;Add a parameter (PGI or PI) to the SPDU.&quot;&quot;&quot;</span>
+</span><span data-line="460">        <span class="n">param</span> <span class="o">=</span> <span class="n">Px_Unit</span><span class="p">(</span><span class="n">pi</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+</span><span data-line="461">        <span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">param</span><span class="p">)</span>
+</span><span data-line="462">        <span class="k">return</span> <span class="n">param</span></div>
+
+</span><span data-line="463">
+</span><span data-line="464">    <span class="nd">@property</span>
+</span><span data-line="465">    <span class="k">def</span><span class="w"> </span><span class="nf">parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">Px_Unit</span><span class="p">]:</span>
+</span><span data-line="466"><span class="w">        </span><span class="sd">&quot;&quot;&quot;The top-level mixed list of PGI/PI units for this SPDU.&quot;&quot;&quot;</span>
+</span><span data-line="467">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__parameters</span>
+</span><span data-line="468">
+<div class="viewcode-block" id="SPDU.iter_parameters">
+<a class="viewcode-back" href="../../../../protocols/cosp/spdu.html#icspacket.proto.iso_ses.spdu.SPDU.iter_parameters">[docs]</a>
+</span><span data-line="469">    <span class="k">def</span><span class="w"> </span><span class="nf">iter_parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Generator</span><span class="p">[</span><span class="n">Px_Unit</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">]:</span>
+</span><span data-line="470"><span class="w">        </span><span class="sd">&quot;&quot;&quot;Yield parameters **flattened**: for PGIs, yield their inner PIs.&quot;&quot;&quot;</span>
+</span><span data-line="471">        <span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="p">:</span>
+</span><span data-line="472">            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">param</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+</span><span data-line="473">                <span class="k">yield from</span> <span class="n">param</span><span class="o">.</span><span class="n">value</span>
+</span><span data-line="474">            <span class="k">else</span><span class="p">:</span>
+</span><span data-line="475">                <span class="k">yield</span> <span class="n">param</span></div>
+
+</span><span data-line="476">
+</span><span data-line="477">    <span class="nd">@property</span>
+</span><span data-line="478">    <span class="k">def</span><span class="w"> </span><span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+</span><span data-line="479"><span class="w">        </span><span class="sd">&quot;&quot;&quot;A human-readable name for this SPDU type.&quot;&quot;&quot;</span>
+</span><span data-line="480">        <span class="k">return</span> <span class="n">spdu_name</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">code</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">category</span><span class="p">)</span>
+</span><span data-line="481">
+<div class="viewcode-block" id="SPDU.parameter_by_id">
+<a class="viewcode-back" href="../../../../protocols/cosp/spdu.html#icspacket.proto.iso_ses.spdu.SPDU.parameter_by_id">[docs]</a>
+</span><span data-line="482">    <span class="k">def</span><span class="w"> </span><span class="nf">parameter_by_id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pi</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Px_Unit</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="483"><span class="w">        </span><span class="sd">&quot;&quot;&quot;Get a parameter by its PI code.</span>
+</span><span data-line="484">
+</span><span data-line="485"><span class="sd">        :param pi: The PI code</span>
+</span><span data-line="486"><span class="sd">        :type pi: int</span>
+</span><span data-line="487"><span class="sd">        :return: The parameter, or None if not found</span>
+</span><span data-line="488"><span class="sd">        :rtype: Px_Unit | None</span>
+</span><span data-line="489"><span class="sd">        &quot;&quot;&quot;</span>
+</span><span data-line="490">        <span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">iter_parameters</span><span class="p">():</span>
+</span><span data-line="491">            <span class="k">if</span> <span class="n">param</span><span class="o">.</span><span class="n">pi</span> <span class="o">==</span> <span class="n">pi</span><span class="p">:</span>
+</span><span data-line="492">                <span class="k">return</span> <span class="n">param</span></div>
+
+</span><span data-line="493">
+</span><span data-line="494">    <span class="nd">@property</span>
+</span><span data-line="495">    <span class="k">def</span><span class="w"> </span><span class="nf">has_user_information</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+</span><span data-line="496"><span class="w">        </span><span class="sd">&quot;&quot;&quot;Infer whether a **User Information Field** is expected/present.</span>
+</span><span data-line="497">
+</span><span data-line="498"><span class="sd">        Rules applied</span>
+</span><span data-line="499">
+</span><span data-line="500"><span class="sd">        1. Only certain SI codes **define** user information (DT/EX/TD). See</span>
+</span><span data-line="501"><span class="sd">           `SPDU_Codes.has_user_info()`. If not defined, return False.</span>
+</span><span data-line="502"><span class="sd">        2. Category 0 SPDUs are excluded here (mapping rules may reserve bytes).</span>
+</span><span data-line="503"><span class="sd">        3. For **DATA TRANSFER (DT)** in particular:</span>
+</span><span data-line="504">
+</span><span data-line="505"><span class="sd">           - If the **Enclosure Item** is present, its **bit 2** semantics affect</span>
+</span><span data-line="506"><span class="sd">             whether user information should appear in a multi-SPDU sequence</span>
+</span><span data-line="507"><span class="sd">             (§8.3.11/13.4, §7.11.2). If Enclosure indicates “more follows”</span>
+</span><span data-line="508"><span class="sd">             (bit 1 == 0), user information must be present on all but the last.</span>
+</span><span data-line="509">
+</span><span data-line="510"><span class="sd">        :return: True if we should treat remaining octets as the User</span>
+</span><span data-line="511"><span class="sd">            Information Field; False otherwise.</span>
+</span><span data-line="512"><span class="sd">        :rtype: bool</span>
+</span><span data-line="513"><span class="sd">        &quot;&quot;&quot;</span>
+</span><span data-line="514">        <span class="c1"># d) the user information field, if defined for the SPDU and if present.</span>
+</span><span data-line="515">        <span class="c1"># User Information Field is defined for the following SPDUs:</span>
+</span><span data-line="516">        <span class="c1"># - DATA TRANSFER (DT) SPDU</span>
+</span><span data-line="517">        <span class="c1"># - EXPEDITED (EX) SPDU</span>
+</span><span data-line="518">        <span class="c1"># - TYPED DATA (TD) SPDU</span>
+</span><span data-line="519">        <span class="c1"># NOTE: there are some extra cases handled in the from_octets() method</span>
+</span><span data-line="520">        <span class="k">if</span> <span class="p">(</span>
+</span><span data-line="521">            <span class="ow">not</span> <span class="n">SPDU_Codes</span><span class="o">.</span><span class="n">has_user_info</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">code</span><span class="p">)</span>
+</span><span data-line="522">            <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">category</span> <span class="o">==</span> <span class="n">SPDU_Category</span><span class="o">.</span><span class="n">CATEGORY_0</span>
+</span><span data-line="523">        <span class="p">):</span>
+</span><span data-line="524">            <span class="k">return</span> <span class="kc">False</span>
+</span><span data-line="525">
+</span><span data-line="526">        <span class="n">has_user_info</span> <span class="o">=</span> <span class="kc">True</span>
+</span><span data-line="527">        <span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">iter_parameters</span><span class="p">():</span>
+</span><span data-line="528">            <span class="k">if</span> <span class="n">param</span><span class="o">.</span><span class="n">pi</span> <span class="o">==</span> <span class="mi">25</span><span class="p">:</span>  <span class="c1"># Enclosure Item</span>
+</span><span data-line="529">                <span class="c1"># 8.3.{11,13}.4</span>
+</span><span data-line="530">                <span class="c1"># The User Information Field, if present, shall contain user</span>
+</span><span data-line="531">                <span class="c1"># data supplied by the SS-user. The User Information Field shall</span>
+</span><span data-line="532">                <span class="c1"># be present if the Enclosure Item is not present, or has bit 2</span>
+</span><span data-line="533">                <span class="c1"># = 0.</span>
+</span><span data-line="534">                <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">param</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">values</span><span class="o">.</span><span class="n">PV_EnclosureItem</span><span class="p">):</span>
+</span><span data-line="535">                    <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Expected EnclosureItem, got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">param</span><span class="o">.</span><span class="n">value</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span data-line="536">
+</span><span data-line="537">                <span class="k">if</span> <span class="n">param</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">end</span><span class="p">:</span>
+</span><span data-line="538">                    <span class="c1"># 7.11.2 Sending the DATA TRANSFER SPDU</span>
+</span><span data-line="539">                    <span class="c1"># All DATA TRANSFER SPDUs, except the last DATA TRANSFER</span>
+</span><span data-line="540">                    <span class="c1"># SPDU in a sequence greater than one, must have user</span>
+</span><span data-line="541">                    <span class="c1"># information.</span>
+</span><span data-line="542">                    <span class="c1">#</span>
+</span><span data-line="543">                    <span class="c1"># That means the flags should indicate that this is not the</span>
+</span><span data-line="544">                    <span class="c1"># last SPDU.</span>
+</span><span data-line="545">                    <span class="k">if</span> <span class="ow">not</span> <span class="n">param</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">start</span><span class="p">:</span>
+</span><span data-line="546">                        <span class="n">has_user_info</span> <span class="o">=</span> <span class="kc">False</span>
+</span><span data-line="547">
+</span><span data-line="548">        <span class="k">return</span> <span class="n">has_user_info</span>
+</span><span data-line="549">
+</span><span data-line="550">    <span class="nd">@property</span>
+</span><span data-line="551">    <span class="k">def</span><span class="w"> </span><span class="nf">user_information</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bytes</span><span class="p">:</span>
+</span><span data-line="552"><span class="w">        </span><span class="sd">&quot;&quot;&quot;Raw bytes of the **User Information Field** (may be empty).&quot;&quot;&quot;</span>
+</span><span data-line="553">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__user_information</span>
+</span><span data-line="554">
+</span><span data-line="555">    <span class="nd">@user_information</span><span class="o">.</span><span class="n">setter</span>
+</span><span data-line="556">    <span class="k">def</span><span class="w"> </span><span class="nf">user_information</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">):</span>
+</span><span data-line="557">        <span class="bp">self</span><span class="o">.</span><span class="n">__user_information</span> <span class="o">=</span> <span class="n">value</span>
+</span><span data-line="558">
+<div class="viewcode-block" id="SPDU.from_octets">
+<a class="viewcode-back" href="../../../../protocols/cosp/spdu.html#icspacket.proto.iso_ses.spdu.SPDU.from_octets">[docs]</a>
+</span><span data-line="559">    <span class="nd">@staticmethod</span>
+</span><span data-line="560">    <span class="k">def</span><span class="w"> </span><span class="nf">from_octets</span><span class="p">(</span><span class="n">octets</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">,</span> <span class="n">category</span><span class="p">:</span> <span class="n">SPDU_Category</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+</span><span data-line="561"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="562"><span class="sd">        Deserialize an SPDU from `octets` and extract user-info if applicable.</span>
+</span><span data-line="563">
+</span><span data-line="564"><span class="sd">        :param octets: The full SPDU octet string (SI + LI + parameters [+ user</span>
+</span><span data-line="565"><span class="sd">            info?]).</span>
+</span><span data-line="566"><span class="sd">        :type octets: bytes</span>
+</span><span data-line="567"><span class="sd">        :param category: The concatenation category to associate with this</span>
+</span><span data-line="568"><span class="sd">            SPDU., defaults to SPDU_Category.CATEGORY_2</span>
+</span><span data-line="569"><span class="sd">        :type category: SPDU_Category, optional</span>
+</span><span data-line="570"><span class="sd">        :return: A high-level SPDU with parameters and (if detected) user info.</span>
+</span><span data-line="571"><span class="sd">        :rtype: SPDU</span>
+</span><span data-line="572"><span class="sd">        &quot;&quot;&quot;</span>
+</span><span data-line="573">        <span class="c1"># Parse parameters first; user-info detection needs parameter semantics.</span>
+</span><span data-line="574">        <span class="n">raw_spdu</span> <span class="o">=</span> <span class="n">SPDU_Raw</span><span class="o">.</span><span class="n">from_octets</span><span class="p">(</span><span class="n">octets</span><span class="p">)</span>
+</span><span data-line="575">        <span class="n">spdu_len</span> <span class="o">=</span> <span class="n">unpack</span><span class="p">(</span><span class="n">LI_Extended</span><span class="p">,</span> <span class="n">octets</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
+</span><span data-line="576">
+</span><span data-line="577">        <span class="n">spdu</span> <span class="o">=</span> <span class="n">SPDU</span><span class="p">(</span><span class="n">raw_spdu</span><span class="o">.</span><span class="n">si</span><span class="p">,</span> <span class="n">category</span><span class="p">)</span>
+</span><span data-line="578">        <span class="n">spdu</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">raw_spdu</span><span class="o">.</span><span class="n">parameters_raw</span><span class="p">)</span>
+</span><span data-line="579">
+</span><span data-line="580">        <span class="k">if</span> <span class="n">spdu</span><span class="o">.</span><span class="n">has_user_information</span><span class="p">:</span>
+</span><span data-line="581">            <span class="c1"># Compute the start of user information:</span>
+</span><span data-line="582">            <span class="c1">#   SI(1) + LI(octets) + parameter_field_length</span>
+</span><span data-line="583">            <span class="n">offset</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">LI</span><span class="o">.</span><span class="n">octet_size</span><span class="p">(</span><span class="n">spdu_len</span><span class="p">)</span> <span class="o">+</span> <span class="n">spdu_len</span>
+</span><span data-line="584">            <span class="n">spdu</span><span class="o">.</span><span class="n">__user_information</span> <span class="o">=</span> <span class="n">octets</span><span class="p">[</span><span class="n">offset</span><span class="p">:]</span>
+</span><span data-line="585">
+</span><span data-line="586">        <span class="k">return</span> <span class="n">spdu</span></div>
+
+</span><span data-line="587">
+<div class="viewcode-block" id="SPDU.build">
+<a class="viewcode-back" href="../../../../protocols/cosp/spdu.html#icspacket.proto.iso_ses.spdu.SPDU.build">[docs]</a>
+</span><span data-line="588">    <span class="k">def</span><span class="w"> </span><span class="nf">build</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bytes</span><span class="p">:</span>
+</span><span data-line="589"><span class="w">        </span><span class="sd">&quot;&quot;&quot;Serialize the SPDU to octets.&quot;&quot;&quot;</span>
+</span><span data-line="590">        <span class="n">spdu_raw</span> <span class="o">=</span> <span class="n">SPDU_Raw</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">code</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="p">)</span>
+</span><span data-line="591">        <span class="n">spdu_data</span> <span class="o">=</span> <span class="nb">bytes</span><span class="p">(</span><span class="n">spdu_raw</span><span class="p">)</span>
+</span><span data-line="592">        <span class="k">return</span> <span class="n">spdu_data</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">user_information</span></div>
+</div>
+
+</span><span data-line="593">
+</span><span data-line="594">
+</span><span data-line="595"><span class="k">def</span><span class="w"> </span><span class="nf">spdu_name</span><span class="p">(</span><span class="n">code</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">category</span><span class="p">:</span> <span class="n">SPDU_Category</span> <span class="o">=</span> <span class="n">SPDU_Category</span><span class="o">.</span><span class="n">CATEGORY_2</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+</span><span data-line="596">    <span class="n">names</span> <span class="o">=</span> <span class="p">{}</span>
+</span><span data-line="597">    <span class="k">match</span> <span class="n">category</span><span class="p">:</span>
+</span><span data-line="598">        <span class="k">case</span> <span class="n">SPDU_Category</span><span class="o">.</span><span class="n">CATEGORY_0</span><span class="p">:</span>
+</span><span data-line="599">            <span class="n">names</span> <span class="o">=</span> <span class="n">CATEGORY_0_NAMES</span>
+</span><span data-line="600">        <span class="k">case</span> <span class="n">SPDU_Category</span><span class="o">.</span><span class="n">CATEGORY_1</span><span class="p">:</span>
+</span><span data-line="601">            <span class="n">names</span> <span class="o">=</span> <span class="n">CATEGORY_1_NAMES</span>
+</span><span data-line="602">        <span class="k">case</span> <span class="n">SPDU_Category</span><span class="o">.</span><span class="n">CATEGORY_2</span><span class="p">:</span>
+</span><span data-line="603">            <span class="n">names</span> <span class="o">=</span> <span class="n">CATEGORY_2_NAMES</span>
+</span><span data-line="604">
+</span><span data-line="605">    <span class="k">return</span> <span class="n">names</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Unknown (</span><span class="si">{</span><span class="n">code</span><span class="si">:</span><span class="s2">02X</span><span class="si">}</span><span class="s2">) SPDU&quot;</span><span class="p">)</span>
+</span><span data-line="606">
+</span><span data-line="607">
+</span><span data-line="608"><span class="n">CATEGORY_0_NAMES</span> <span class="o">=</span> <span class="p">{</span>
+</span><span data-line="609">    <span class="mi">1</span><span class="p">:</span> <span class="s2">&quot;GIVE TOKENS (GT)&quot;</span><span class="p">,</span>
+</span><span data-line="610">    <span class="mi">2</span><span class="p">:</span> <span class="s2">&quot;PLEASE TOKENS (PT)&quot;</span><span class="p">,</span>
+</span><span data-line="611"><span class="p">}</span>
+</span><span data-line="612">
+</span><span data-line="613"><span class="n">CATEGORY_1_NAMES</span> <span class="o">=</span> <span class="p">{</span>
+</span><span data-line="614">    <span class="mi">7</span><span class="p">:</span> <span class="s2">&quot;PREPARE (PR) SPDU&quot;</span><span class="p">,</span>
+</span><span data-line="615">    <span class="mi">8</span><span class="p">:</span> <span class="s2">&quot;NOT FINISHED (NF) SPDU&quot;</span><span class="p">,</span>
+</span><span data-line="616">    <span class="mi">9</span><span class="p">:</span> <span class="s2">&quot;FINISH (FN) SPDU&quot;</span><span class="p">,</span>
+</span><span data-line="617">    <span class="mi">10</span><span class="p">:</span> <span class="s2">&quot;DISCONNECT (DN) SPDU&quot;</span><span class="p">,</span>
+</span><span data-line="618">    <span class="mi">12</span><span class="p">:</span> <span class="s2">&quot;REFUSE (RF) SPDU&quot;</span><span class="p">,</span>
+</span><span data-line="619">    <span class="mi">13</span><span class="p">:</span> <span class="s2">&quot;CONNECT (CN) SPDU&quot;</span><span class="p">,</span>
+</span><span data-line="620">    <span class="mi">14</span><span class="p">:</span> <span class="s2">&quot;ACCEPT (AC) SPDU&quot;</span><span class="p">,</span>
+</span><span data-line="621">    <span class="mi">15</span><span class="p">:</span> <span class="s2">&quot;CONNECT DATA OVERFLOW (CDO) SPDU&quot;</span><span class="p">,</span>
+</span><span data-line="622">    <span class="mi">16</span><span class="p">:</span> <span class="s2">&quot;OVERFLOW ACCEPT (OA) SPDU&quot;</span><span class="p">,</span>
+</span><span data-line="623">    <span class="mi">21</span><span class="p">:</span> <span class="s2">&quot;GIVE TOKENS CONFIRM (GTC) SPDU&quot;</span><span class="p">,</span>
+</span><span data-line="624">    <span class="mi">22</span><span class="p">:</span> <span class="s2">&quot;GIVE TOKENS ACK (GTA) SPDU&quot;</span><span class="p">,</span>
+</span><span data-line="625">    <span class="mi">25</span><span class="p">:</span> <span class="s2">&quot;ABORT (AB) SPDU&quot;</span><span class="p">,</span>
+</span><span data-line="626">    <span class="mi">26</span><span class="p">:</span> <span class="s2">&quot;ABORT ACCEPT (AA) SPDU&quot;</span><span class="p">,</span>
+</span><span data-line="627">    <span class="mi">33</span><span class="p">:</span> <span class="s2">&quot;TYPED DATA (TD) SPDU&quot;</span><span class="p">,</span>
+</span><span data-line="628"><span class="p">}</span>
+</span><span data-line="629">
+</span><span data-line="630"><span class="n">CATEGORY_2_NAMES</span> <span class="o">=</span> <span class="p">{</span>
+</span><span data-line="631">    <span class="mi">1</span><span class="p">:</span> <span class="s2">&quot;DATA TRANSFER (DT) SPDU&quot;</span><span class="p">,</span>
+</span><span data-line="632">    <span class="mi">5</span><span class="p">:</span> <span class="s2">&quot;EXPEDITED (EX) SPDU&quot;</span><span class="p">,</span>
+</span><span data-line="633">    <span class="mi">25</span><span class="p">:</span> <span class="s2">&quot;ACTIVITY INTERRUPT (AI) SPDU&quot;</span><span class="p">,</span>
+</span><span data-line="634">    <span class="mi">26</span><span class="p">:</span> <span class="s2">&quot;ACTIVITY INTERRUPT ACK (AIA) SPDU&quot;</span><span class="p">,</span>
+</span><span data-line="635">    <span class="mi">29</span><span class="p">:</span> <span class="s2">&quot;ACTIVITY RESUME (AR) SPDU&quot;</span><span class="p">,</span>
+</span><span data-line="636">    <span class="mi">34</span><span class="p">:</span> <span class="s2">&quot;RESYNCHRONIZE ACK (RA) SPDU&quot;</span><span class="p">,</span>
+</span><span data-line="637">    <span class="mi">41</span><span class="p">:</span> <span class="s2">&quot;ACTIVITY END (AE) SPDU&quot;</span><span class="p">,</span>
+</span><span data-line="638">    <span class="mi">41</span><span class="p">:</span> <span class="s2">&quot;MAJOR SYNC POINT (MAP) SPDU&quot;</span><span class="p">,</span>
+</span><span data-line="639">    <span class="mi">42</span><span class="p">:</span> <span class="s2">&quot;MAJOR SYNC ACK (MAA) SPDU&quot;</span><span class="p">,</span>
+</span><span data-line="640">    <span class="mi">45</span><span class="p">:</span> <span class="s2">&quot;ACTIVITY START (AS) SPDU&quot;</span><span class="p">,</span>
+</span><span data-line="641">    <span class="mi">48</span><span class="p">:</span> <span class="s2">&quot;EXCEPTION DATA (ED) SPDU&quot;</span><span class="p">,</span>
+</span><span data-line="642">    <span class="mi">49</span><span class="p">:</span> <span class="s2">&quot;MINOR SYNC POINT (MIP) SPDU&quot;</span><span class="p">,</span>
+</span><span data-line="643">    <span class="mi">50</span><span class="p">:</span> <span class="s2">&quot;MINOR SYNC ACK (MIA) SPDU&quot;</span><span class="p">,</span>
+</span><span data-line="644">    <span class="mi">53</span><span class="p">:</span> <span class="s2">&quot;RESYNCHRONIZE (RS) SPDU&quot;</span><span class="p">,</span>
+</span><span data-line="645">    <span class="mi">57</span><span class="p">:</span> <span class="s2">&quot;ACTIVITY DISCARD (AD) SPDU&quot;</span><span class="p">,</span>
+</span><span data-line="646">    <span class="mi">58</span><span class="p">:</span> <span class="s2">&quot;ACTIVITY DISCARD ACK (ADA) SPDU&quot;</span><span class="p">,</span>
+</span><span data-line="647">    <span class="mi">61</span><span class="p">:</span> <span class="s2">&quot;CAPABILITY DATA (CD) SPDU&quot;</span><span class="p">,</span>
+</span><span data-line="648">    <span class="mi">62</span><span class="p">:</span> <span class="s2">&quot;CAPABILITY DATA ACK (CDA) SPDU&quot;</span><span class="p">,</span>
+</span><span data-line="649"><span class="p">}</span>
+</span></pre></div>
+        </article><button class="back-to-top" type="button">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+  </svg>
+  <span>Back to top</span>
+</button><div class="navigation flex print:hidden"></div></div>
+    </div>
+  </main>
+</div>
+<footer class="sy-foot">
+  <div class="sy-foot-inner sy-container mx-auto">
+    <div class="sy-foot-reserved md:flex justify-between items-center">
+      <div class="sy-foot-copyright"><p>2025, MatrixEditor</p>
+  
+  <p>
+    Made with
+    
+    <a href="https://www.sphinx-doc.org/">Sphinx</a> and
+    
+    <a href="https://shibuya.lepture.com">Shibuya theme</a>.
+  </p>
+</div>
+      <div class="sy-foot-socials">
+<a href="https://github.com/MatrixEditor/icspacket" aria-label="GitHub">
+  <iconify-icon icon="simple-icons:github"></iconify-icon>
+</a></div>
+    </div>
+  </div>
+</footer>
+      <script src="../../../../_static/documentation_options.js?v=e3b32040"></script>
+      <script src="../../../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../../../_static/design-tabs.js?v=f930bc37"></script>
+      <script src="../../../../_static/shibuya.js?v=e730760c"></script></body>
+</html>

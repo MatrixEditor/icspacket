@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en" data-accent-color="lime" data-content_root="../../">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Connection - icspacket 0.1.dev1+g814ee7fee documentation</title><link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="Using a TPKT Wrapper" href="../tpkt/usage.html" /><link rel="prev" title="TPDU Types" href="structs.html" />
+      <link rel="canonical" href="https://matrixeditor.github.io/icspacket/protocols/cotp/connection.html" /><script>
+    function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
+    setColorMode(localStorage._theme||"dark");
+  </script><link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=397bb51e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/shibuya.css?v=d48c410d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link media="print" rel="stylesheet" type="text/css" href="../../_static/print.css?v=20ff2c19" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --sy-f-text: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+  --sy-f-heading: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+}
+</style>
+    <meta property="og:type" content="website"/>
+<meta property="og:url" content="https://matrixeditor.github.io/icspacket/protocols/cotp/connection.html"/>
+<meta property="og:title" content="Connection"/>
+<meta name="twitter:card" content="summary"/>
+  </head>
+<body><div class="sy-head">
+  <div class="sy-head-blur"></div>
+  <div class="sy-head-inner sy-container mx-auto">
+    <a class="sy-head-brand" href="../../index.html">
+      
+      
+      <strong>icspacket</strong>
+    </a>
+    <div class="sy-head-nav" id="head-nav">
+      <nav class="sy-head-links"><ul>
+      <li class="link"><a class="js-menu" href="../../examples/index.html" id="nav-trigger-1" aria-controls="nav-children-1">
+            <span>Examples</span>
+            <i class="i-lucide chevron-down"></i>
+          </a>
+        <ul id="nav-children-1" aria-labelledby="nav-trigger-1"><li><a href="../../examples/mms/index.html">
+                <span>MMS Utilities</span>
+                <small>Manufacturing Message Specification tools</small>
+              </a></li></ul>
+      </li></ul></nav>
+      <div class="sy-head-extra flex items-center print:hidden"><form class="searchbox flex items-center" action="../../search.html" method="get">
+  <input type="text" name="q" placeholder="Search" />
+  <kbd>/</kbd>
+</form><div class="sy-head-socials">
+  <a href="https://github.com/MatrixEditor/icspacket" aria-label="GitHub">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </a></div></div>
+    </div>
+    <div class="sy-head-actions flex items-center shrink-0 print:hidden"><button class="js-theme theme-switch flex items-center"
+data-aria-auto="Switch to light color mode"
+data-aria-light="Switch to dark color mode"
+data-aria-dark="Switch to auto color mode">
+<i class="i-lucide theme-icon"></i>
+</button><button class="md:hidden flex items-center js-menu" aria-label="Menu" type="button" aria-controls="head-nav" aria-expanded="false">
+        <div class="hamburger">
+          <span class="hamburger_1"></span>
+          <span class="hamburger_2 -translate-x-2"></span>
+          <span class="hamburger_3 -translate-x-1"></span>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>
+<div class="sy-page sy-container flex mx-auto">
+  <aside id="lside" class="sy-lside md:w-72 md:shrink-0 print:hidden">
+    <div class="sy-lside-inner md:sticky">
+      <div class="sy-scrollbar p-6"><div class="sidebar-links">
+  <ul>
+    <li><a class="icon-link" href="https://github.com/MatrixEditor/icspacket/discussions">
+  <span class="icon">
+    <svg viewBox="0 0 24 24" fill="none">
+      <path fill="var(--accent-9)" fill-rule="evenodd" clip-rule="evenodd" d="M11 5a6 6 0 0 0-4.687 9.746c.215.27.315.62.231.954l-.514 2.058a1 1 0 0 0 1.485 1.1l2.848-1.71c.174-.104.374-.15.576-.148H13a6 6 0 0 0 0-12h-2Z"/>
+      <circle fill="white" cx="12" cy="11" r="1"/>
+      <circle fill="white" cx="9" cy="11" r="1"/>
+      <circle fill="white" cx="15" cy="11" r="1"/>
+    </svg>
+  </span>
+  <span class="text">Discussion</span>
+</a></li>
+  </ul>
+</div>
+        <div class="globaltoc" data-expand-depth="2"><p class="caption" role="heading" aria-level="3"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../getting-started/installation.html">Installation</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../getting-started/protocols.html">Protocols Overview</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../getting-started/coreapi.html">Core API Reference</a></li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">MMS / ISO 9506</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../mms/demo_vars.html">Variable Target Format</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../mms/demo_vars.html#variableaccess-service-rwq">VariableAccess Service (rwq)</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../mms/demo_files.html">FileManagement Service</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../mms/api.html">API Reference</a><ul>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../mms/api_conn.html">MMS Connection</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../mms/api_data.html">Data Conversion</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../mms/api_utils.html">Protocol Utilities</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">ACSE / X.227</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../acse/api.html">API Reference</a></li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">COPP / X.226 / ISO 8823</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../copp/api.html">API Reference</a><ul>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../copp/presentation.html">ISO Presentation</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../copp/utils.html">Protocol Utilities</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">COSP / X.225 / ISO 8237-1</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../cosp/api.html">API Reference</a><ul>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../cosp/tsdu.html">TSDU</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../cosp/spdu.html">SPDU Types</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../cosp/values.html">Parameter Values (PV)</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../cosp/session.html">ISO Session</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../cosp/utils.html">Protocol Utilities</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">COTP / X.224</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="api.html">API Reference</a><ul class="current">
+<li class="toctree-l2 _expand"><a class="reference internal" href="structs.html">TPDU Types</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Connection</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">TPKT Protocol (RFC1006)</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../tpkt/usage.html">Using a TPKT Wrapper</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../tpkt/api.html">API Reference</a></li>
+</ul>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="lside-overlay js-menu" role="button" aria-label="Close left sidebar" aria-controls="lside" aria-expanded="false"></div>
+  <aside id="rside" class="sy-rside pb-3 w-64 shrink-0 order-last">
+    <button class="rside-close js-menu xl:hidden" aria-label="Close Table of Contents" type="button" aria-controls="rside" aria-expanded="false">
+      <i class="i-lucide close"></i>
+    </button>
+    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div class="localtoc"><h3>On this page</h3><ul>
+<li><a class="reference internal" href="#icspacket.proto.cotp.connection.COTP_DEFAULT_SRC_REF"><code class="docutils literal notranslate"><span class="pre">COTP_DEFAULT_SRC_REF</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cotp.connection.COTP_Connection"><code class="docutils literal notranslate"><span class="pre">COTP_Connection</span></code></a><ul>
+<li><a class="reference internal" href="#icspacket.proto.cotp.connection.COTP_Connection.protocol_class"><code class="docutils literal notranslate">protocol_class</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cotp.connection.COTP_Connection.connect"><code class="docutils literal notranslate">connect()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cotp.connection.COTP_Connection.connect_raw"><code class="docutils literal notranslate">connect_raw()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cotp.connection.COTP_Connection.close"><code class="docutils literal notranslate">close()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cotp.connection.COTP_Connection.close_with_reason"><code class="docutils literal notranslate">close_with_reason()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cotp.connection.COTP_Connection.close_raw"><code class="docutils literal notranslate">close_raw()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cotp.connection.COTP_Connection.send_tpdu"><code class="docutils literal notranslate">send_tpdu()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cotp.connection.COTP_Connection.receive_tpdu"><code class="docutils literal notranslate">receive_tpdu()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cotp.connection.COTP_Connection.send_data"><code class="docutils literal notranslate">send_data()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cotp.connection.COTP_Connection.recv_data"><code class="docutils literal notranslate">recv_data()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</div><a class="js-repo-stats repo-stats flex items-center" href="https://github.com/MatrixEditor/icspacket"
+  data-type="github" data-user="MatrixEditor" data-repo="icspacket">
+  <span class="w-8 flex items-center justify-around shrink-0 text-3xl">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </span>
+  <span class="flex-grow px-2 break-all">
+    <span style="font-size: small;">MatrixEditor/icspacket</span>
+    <span class="flex text-sm repo-stats-count">
+      <span class="flex items-center pr-3">
+        <iconify-icon icon="lucide:star"></iconify-icon>
+        <strong class="js-repo-stars ml-1">0</strong>
+      </span>
+      <span class="flex items-center">
+        <iconify-icon icon="lucide:git-fork"></iconify-icon>
+        <strong class="js-repo-forks ml-1">0</strong>
+      </span>
+    </span>
+  </span>
+</a><div class="edit-this-page">
+  <a href="https://github.com/MatrixEditor/icspacket/blob/main/docs/protocols/cotp/connection.rst">Edit this page</a>
+</div></div>
+  </aside>
+  <div class="rside-overlay js-menu" role="button" aria-label="Close Table of Contents" aria-controls="rside" aria-expanded="false"></div>
+  <main class="sy-main w-full max-sm:max-w-full print:pt-6">
+<div class="sy-breadcrumbs" role="navigation">
+  <div class="sy-breadcrumbs-inner flex items-center">
+    <div class="md:hidden mr-3">
+      <button class="js-menu" aria-label="Menu" type="button" aria-controls="lside" aria-expanded="false">
+        <i class="i-lucide menu"></i>
+      </button>
+    </div>
+    <ol class="flex-1" itemscope itemtype="https://schema.org/BreadcrumbList"><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="../../index.html"><span itemprop="name">icspacket</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="1" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="api.html"><span itemprop="name">API Reference</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="2" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <strong itemprop="name">Connection</strong>
+        <meta itemprop="position" content="3" />
+      </li></ol>
+    <div class="xl:hidden ml-1">
+      <button class="js-menu" aria-label="Show table of contents" type="button" aria-controls="rside"
+        aria-expanded="false">
+        <i class="i-lucide outdent"></i>
+      </button>
+    </div>
+  </div>
+</div><div class="flex flex-col break-words justify-between">
+      <div class="min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
+        <article class="yue" role="main">
+          <section id="module-icspacket.proto.cotp.connection">
+<span id="connection"></span><span id="api-cotp-conn"></span><h1>Connection<a class="headerlink" href="#module-icspacket.proto.cotp.connection" title="Link to this heading">¶</a></h1>
+<dl class="py data">
+<dt class="sig sig-object py" id="icspacket.proto.cotp.connection.COTP_DEFAULT_SRC_REF">
+<span class="sig-prename descclassname"><span class="pre">icspacket.proto.cotp.connection.</span></span><span class="sig-name descname"><span class="pre">COTP_DEFAULT_SRC_REF</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></em><a class="headerlink" href="#icspacket.proto.cotp.connection.COTP_DEFAULT_SRC_REF" title="Link to this definition">¶</a></dt>
+<dd><p>Default source reference identifier for COTP connections.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="icspacket.proto.cotp.connection.COTP_Connection">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">icspacket.proto.cotp.connection.</span></span><span class="sig-name descname"><span class="pre">COTP_Connection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">src_ref</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sock</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">socket</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sock_cls</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">type</span><span class="p"><span class="pre">[</span></span><span class="pre">socket</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">protocol_class</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="structs.html#icspacket.proto.cotp.structs.TPDU_Class" title="icspacket.proto.cotp.structs.TPDU_Class"><span class="pre">TPDU_Class</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">TPDU_Class.CLASS0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_tpdu_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="structs.html#icspacket.proto.cotp.structs.TPDU_Size" title="icspacket.proto.cotp.structs.TPDU_Size"><span class="pre">TPDU_Size</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">TPDU_Size.SIZE_1024</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">src_tsap</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'0000'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dst_tsap</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'0000'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameters</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="structs.html#icspacket.proto.cotp.structs.Parameter" title="icspacket.proto.cotp.structs.Parameter"><span class="pre">Parameter</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/icspacket/proto/cotp/connection.html#COTP_Connection"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.cotp.connection.COTP_Connection" title="Link to this definition">¶</a></dt>
+<dd><p>Manages a COTP (Connection-Oriented Transport Protocol) connection over a TCP/IP socket.</p>
+<p>This class provides a high-level interface to establish, maintain, and terminate a
+COTP session on top of a stream-oriented transport such as TCP. It encapsulates the
+connection establishment (CR/CC exchange), error handling, data segmentation, and
+orderly connection release via DR TPDU messages.</p>
+<p>Example:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="gp">&gt;&gt;&gt; </span><span class="n">conn</span> <span class="o">=</span> <span class="n">COTP_Connection</span><span class="p">(</span><span class="n">sock_cls</span><span class="o">=</span><span class="n">tpktsock</span><span class="p">)</span>
+</span><span data-line="2"><span class="gp">&gt;&gt;&gt; </span><span class="n">conn</span><span class="o">.</span><span class="n">connect</span><span class="p">((</span><span class="s2">&quot;127.0.0.1&quot;</span><span class="p">,</span> <span class="mi">1234</span><span class="p">))</span>
+</span><span data-line="3"><span class="gp">&gt;&gt;&gt; </span><span class="n">conn</span><span class="o">.</span><span class="n">send_data</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;Hello, world!&quot;</span><span class="p">)</span>
+</span><span data-line="4"><span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">recv_data</span><span class="p">()</span>
+</span><span data-line="5"><span class="gp">&gt;&gt;&gt; </span><span class="n">conn</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</span></pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>src_ref</strong> (<em>int</em><em> | </em><em>None</em>) – Source reference identifier (defaults to <a class="reference internal" href="#icspacket.proto.cotp.connection.COTP_DEFAULT_SRC_REF" title="icspacket.proto.cotp.connection.COTP_DEFAULT_SRC_REF"><code class="xref py py-data docutils literal notranslate"><span class="pre">COTP_DEFAULT_SRC_REF</span></code></a>).</p></li>
+<li><p><strong>sock</strong> (<em>socket.socket</em><em> | </em><em>None</em>) – Existing socket instance to use for communication.</p></li>
+<li><p><strong>sock_cls</strong> (<em>type</em><em>[</em><em>socket.socket</em><em>] </em><em>| </em><em>None</em>) – Socket class to use if <code class="docutils literal notranslate"><span class="pre">sock</span></code> is not provided.</p></li>
+<li><p><strong>protocol_class</strong> (<a class="reference internal" href="structs.html#icspacket.proto.cotp.structs.TPDU_Class" title="icspacket.proto.cotp.structs.TPDU_Class"><em>TPDU_Class</em></a>) – The COTP protocol class to use (default: <code class="xref py py-class docutils literal notranslate"><span class="pre">TPDU_Class.CLASS0</span></code>).</p></li>
+<li><p><strong>max_tpdu_size</strong> (<a class="reference internal" href="structs.html#icspacket.proto.cotp.structs.TPDU_Size" title="icspacket.proto.cotp.structs.TPDU_Size"><em>TPDU_Size</em></a>) – Negotiated maximum TPDU size capability (default: <code class="xref py py-class docutils literal notranslate"><span class="pre">TPDU_Size.SIZE_1024</span></code>).</p></li>
+<li><p><strong>src_tsap</strong> (<em>str</em>) – Calling transport selector as a hex string (default: “0000”).</p></li>
+<li><p><strong>dst_tsap</strong> (<em>str</em>) – Called transport selector as a hex string (default: “0000”).</p></li>
+<li><p><strong>parameters</strong> (<em>Iterable</em><em>[</em><a class="reference internal" href="structs.html#icspacket.proto.cotp.structs.Parameter" title="icspacket.proto.cotp.structs.Parameter"><em>Parameter</em></a><em>] </em><em>| </em><em>None</em>) – Additional transport parameters to include in the CR TPDU.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="icspacket.proto.cotp.connection.COTP_Connection.protocol_class">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">protocol_class</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="structs.html#icspacket.proto.cotp.structs.TPDU_Class" title="icspacket.proto.cotp.structs.TPDU_Class"><span class="pre">TPDU_Class</span></a></em><a class="headerlink" href="#icspacket.proto.cotp.connection.COTP_Connection.protocol_class" title="Link to this definition">¶</a></dt>
+<dd><p>Configured transport protocol class.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.cotp.connection.COTP_Connection.connect">
+<span class="sig-name descname"><span class="pre">connect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">address</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../../_modules/icspacket/proto/cotp/connection.html#COTP_Connection.connect"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.cotp.connection.COTP_Connection.connect" title="Link to this definition">¶</a></dt>
+<dd><p>Establish a COTP connection to a remote endpoint.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>address</strong> (<em>tuple</em><em>[</em><em>str</em><em>, </em><em>int</em><em>]</em>) – Tuple specifying the (host, port) for the TCP connection.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="../../getting-started/coreapi.html#icspacket.core.connection.ConnectionError" title="icspacket.core.connection.ConnectionError"><strong>ConnectionError</strong></a> – If the TCP connection fails or the CC TPDU is invalid.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.cotp.connection.COTP_Connection.connect_raw">
+<span class="sig-name descname"><span class="pre">connect_raw</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">address</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tpdu_cr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="structs.html#icspacket.proto.cotp.structs.TPDU_ConnectionRequest" title="icspacket.proto.cotp.structs.TPDU_ConnectionRequest"><span class="pre">TPDU_ConnectionRequest</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../../_modules/icspacket/proto/cotp/connection.html#COTP_Connection.connect_raw"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.cotp.connection.COTP_Connection.connect_raw" title="Link to this definition">¶</a></dt>
+<dd><p>Perform raw COTP connection establishment with a provided CR TPDU.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>address</strong> (<em>tuple</em><em>[</em><em>str</em><em>, </em><em>int</em><em>]</em>) – (host, port) tuple for the remote TCP endpoint.</p></li>
+<li><p><strong>tpdu_cr</strong> (<a class="reference internal" href="structs.html#icspacket.proto.cotp.structs.TPDU_ConnectionRequest" title="icspacket.proto.cotp.structs.TPDU_ConnectionRequest"><em>TPDU_ConnectionRequest</em></a>) – Pre-constructed CR TPDU to send.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>ConnectionRefusedError</strong> – If a Disconnect Request TPDU is received.</p></li>
+<li><p><a class="reference internal" href="../../getting-started/coreapi.html#icspacket.core.connection.ConnectionError" title="icspacket.core.connection.ConnectionError"><strong>ConnectionError</strong></a> – If an unexpected or invalid TPDU is received.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.cotp.connection.COTP_Connection.close">
+<span class="sig-name descname"><span class="pre">close</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../../_modules/icspacket/proto/cotp/connection.html#COTP_Connection.close"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.cotp.connection.COTP_Connection.close" title="Link to this definition">¶</a></dt>
+<dd><p>Close the connection gracefully with a normal disconnect reason.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.cotp.connection.COTP_Connection.close_with_reason">
+<span class="sig-name descname"><span class="pre">close_with_reason</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">reason</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="structs.html#icspacket.proto.cotp.structs.TPDU_DisconnectReason" title="icspacket.proto.cotp.structs.TPDU_DisconnectReason"><span class="pre">TPDU_DisconnectReason</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">TPDU_DisconnectReason.NORMAL</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../../_modules/icspacket/proto/cotp/connection.html#COTP_Connection.close_with_reason"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.cotp.connection.COTP_Connection.close_with_reason" title="Link to this definition">¶</a></dt>
+<dd><p>Close the connection with an explicit disconnect reason.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>reason</strong> (<a class="reference internal" href="structs.html#icspacket.proto.cotp.structs.TPDU_DisconnectReason" title="icspacket.proto.cotp.structs.TPDU_DisconnectReason"><em>TPDU_DisconnectReason</em></a>) – Disconnect reason code (default: NORMAL).</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.cotp.connection.COTP_Connection.close_raw">
+<span class="sig-name descname"><span class="pre">close_raw</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dr_tdpu</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="structs.html#icspacket.proto.cotp.structs.TPDU_DisconnectRequest" title="icspacket.proto.cotp.structs.TPDU_DisconnectRequest"><span class="pre">TPDU_DisconnectRequest</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../../_modules/icspacket/proto/cotp/connection.html#COTP_Connection.close_raw"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.cotp.connection.COTP_Connection.close_raw" title="Link to this definition">¶</a></dt>
+<dd><p>Perform low-level connection close with a provided Disconnect Request TPDU.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>dr_tdpu</strong> (<a class="reference internal" href="structs.html#icspacket.proto.cotp.structs.TPDU_DisconnectRequest" title="icspacket.proto.cotp.structs.TPDU_DisconnectRequest"><em>TPDU_DisconnectRequest</em></a>) – Pre-constructed DR TPDU to send.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.cotp.connection.COTP_Connection.send_tpdu">
+<span class="sig-name descname"><span class="pre">send_tpdu</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tpdu</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="structs.html#icspacket.proto.cotp.structs.TPDU" title="icspacket.proto.cotp.structs.TPDU"><span class="pre">TPDU</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="structs.html#icspacket.proto.cotp.structs.TPDU_ConnectionConfirm" title="icspacket.proto.cotp.structs.TPDU_ConnectionConfirm"><span class="pre">TPDU_ConnectionConfirm</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="structs.html#icspacket.proto.cotp.structs.TPDU_ConnectionRequest" title="icspacket.proto.cotp.structs.TPDU_ConnectionRequest"><span class="pre">TPDU_ConnectionRequest</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="structs.html#icspacket.proto.cotp.structs.TPDU_Data" title="icspacket.proto.cotp.structs.TPDU_Data"><span class="pre">TPDU_Data</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="structs.html#icspacket.proto.cotp.structs.TPDU_DataAcknowledgement" title="icspacket.proto.cotp.structs.TPDU_DataAcknowledgement"><span class="pre">TPDU_DataAcknowledgement</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="structs.html#icspacket.proto.cotp.structs.TPDU_DisconnectConfirm" title="icspacket.proto.cotp.structs.TPDU_DisconnectConfirm"><span class="pre">TPDU_DisconnectConfirm</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="structs.html#icspacket.proto.cotp.structs.TPDU_DisconnectRequest" title="icspacket.proto.cotp.structs.TPDU_DisconnectRequest"><span class="pre">TPDU_DisconnectRequest</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="structs.html#icspacket.proto.cotp.structs.TPDU_Error" title="icspacket.proto.cotp.structs.TPDU_Error"><span class="pre">TPDU_Error</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="structs.html#icspacket.proto.cotp.structs.TPDU_ExpeditedData" title="icspacket.proto.cotp.structs.TPDU_ExpeditedData"><span class="pre">TPDU_ExpeditedData</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="structs.html#icspacket.proto.cotp.structs.TPDU_ExpeditedDataAcknowledgement" title="icspacket.proto.cotp.structs.TPDU_ExpeditedDataAcknowledgement"><span class="pre">TPDU_ExpeditedDataAcknowledgement</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="structs.html#icspacket.proto.cotp.structs.TPDU_Reject" title="icspacket.proto.cotp.structs.TPDU_Reject"><span class="pre">TPDU_Reject</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../../_modules/icspacket/proto/cotp/connection.html#COTP_Connection.send_tpdu"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.cotp.connection.COTP_Connection.send_tpdu" title="Link to this definition">¶</a></dt>
+<dd><p>Serialize and send a TPDU over the transport connection.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>tpdu</strong> (<a class="reference internal" href="structs.html#icspacket.proto.cotp.structs.TPDU" title="icspacket.proto.cotp.structs.TPDU"><em>TPDU</em></a>) – TPDU instance to send.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="../../getting-started/coreapi.html#icspacket.core.connection.ConnectionError" title="icspacket.core.connection.ConnectionError"><strong>ConnectionError</strong></a> – If the connection is not established.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.cotp.connection.COTP_Connection.receive_tpdu">
+<span class="sig-name descname"><span class="pre">receive_tpdu</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/icspacket/proto/cotp/connection.html#COTP_Connection.receive_tpdu"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.cotp.connection.COTP_Connection.receive_tpdu" title="Link to this definition">¶</a></dt>
+<dd><p>Receive and parse a TPDU from the transport connection.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Parsed TPDU instance.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="structs.html#icspacket.proto.cotp.structs.TPDU" title="icspacket.proto.cotp.structs.TPDU">TPDU</a></p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="../../getting-started/coreapi.html#icspacket.core.connection.ConnectionError" title="icspacket.core.connection.ConnectionError"><strong>ConnectionError</strong></a> – If the connection is not established or closed.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.cotp.connection.COTP_Connection.send_data">
+<span class="sig-name descname"><span class="pre">send_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bytes</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../../_modules/icspacket/proto/cotp/connection.html#COTP_Connection.send_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.cotp.connection.COTP_Connection.send_data" title="Link to this definition">¶</a></dt>
+<dd><p>Send user data segmented into DT (Data Transfer) TPDUs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>bytes</em>) – User data to transmit.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="../../getting-started/coreapi.html#icspacket.core.connection.ConnectionError" title="icspacket.core.connection.ConnectionError"><strong>ConnectionError</strong></a> – If the connection is not valid or established.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.cotp.connection.COTP_Connection.recv_data">
+<span class="sig-name descname"><span class="pre">recv_data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bytes</span></span></span><a class="reference internal" href="../../_modules/icspacket/proto/cotp/connection.html#COTP_Connection.recv_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.cotp.connection.COTP_Connection.recv_data" title="Link to this definition">¶</a></dt>
+<dd><p>Receive user data segmented across multiple DT TPDUs (or just a single
+DT TPDU).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The complete reassembled user data stream.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bytes</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="../../getting-started/coreapi.html#icspacket.core.connection.ConnectionError" title="icspacket.core.connection.ConnectionError"><strong>ConnectionError</strong></a> – If the connection is not valid or a non-DT TPDU is received.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+        </article><button class="back-to-top" type="button">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+  </svg>
+  <span>Back to top</span>
+</button><div class="navigation flex print:hidden"><div class="navigation-prev">
+    <a href="structs.html">
+      <i class="i-lucide chevron-left"></i>
+      <div class="page-info">
+        <span>Previous</span><div class="title">TPDU Types</div></div>
+    </a>
+  </div><div class="navigation-next">
+    <a href="../tpkt/usage.html">
+      <div class="page-info">
+        <span>Next</span>
+        <div class="title">Using a TPKT Wrapper</div>
+      </div>
+      <i class="i-lucide chevron-right"></i>
+    </a>
+  </div></div></div>
+    </div>
+  </main>
+</div>
+<footer class="sy-foot">
+  <div class="sy-foot-inner sy-container mx-auto">
+    <div class="sy-foot-reserved md:flex justify-between items-center">
+      <div class="sy-foot-copyright"><p>2025, MatrixEditor</p>
+  
+  <p>
+    Made with
+    
+    <a href="https://www.sphinx-doc.org/">Sphinx</a> and
+    
+    <a href="https://shibuya.lepture.com">Shibuya theme</a>.
+  </p>
+</div>
+      <div class="sy-foot-socials">
+<a href="https://github.com/MatrixEditor/icspacket" aria-label="GitHub">
+  <iconify-icon icon="simple-icons:github"></iconify-icon>
+</a></div>
+    </div>
+  </div>
+</footer>
+      <script src="../../_static/documentation_options.js?v=e3b32040"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+      <script src="../../_static/shibuya.js?v=e730760c"></script></body>
+</html>

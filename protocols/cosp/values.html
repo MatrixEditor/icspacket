@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en" data-accent-color="lime" data-content_root="../../">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Parameter Values (PV) - icspacket 0.1.dev1+g814ee7fee documentation</title><link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="ISO Session" href="session.html" /><link rel="prev" title="SPDU Types" href="spdu.html" />
+      <link rel="canonical" href="https://matrixeditor.github.io/icspacket/protocols/cosp/values.html" /><script>
+    function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
+    setColorMode(localStorage._theme||"dark");
+  </script><link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=397bb51e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/shibuya.css?v=d48c410d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link media="print" rel="stylesheet" type="text/css" href="../../_static/print.css?v=20ff2c19" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --sy-f-text: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+  --sy-f-heading: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+}
+</style>
+    <meta property="og:type" content="website"/>
+<meta property="og:url" content="https://matrixeditor.github.io/icspacket/protocols/cosp/values.html"/>
+<meta property="og:title" content="Parameter Values (PV)"/>
+<meta name="twitter:card" content="summary"/>
+  </head>
+<body><div class="sy-head">
+  <div class="sy-head-blur"></div>
+  <div class="sy-head-inner sy-container mx-auto">
+    <a class="sy-head-brand" href="../../index.html">
+      
+      
+      <strong>icspacket</strong>
+    </a>
+    <div class="sy-head-nav" id="head-nav">
+      <nav class="sy-head-links"><ul>
+      <li class="link"><a class="js-menu" href="../../examples/index.html" id="nav-trigger-1" aria-controls="nav-children-1">
+            <span>Examples</span>
+            <i class="i-lucide chevron-down"></i>
+          </a>
+        <ul id="nav-children-1" aria-labelledby="nav-trigger-1"><li><a href="../../examples/mms/index.html">
+                <span>MMS Utilities</span>
+                <small>Manufacturing Message Specification tools</small>
+              </a></li></ul>
+      </li></ul></nav>
+      <div class="sy-head-extra flex items-center print:hidden"><form class="searchbox flex items-center" action="../../search.html" method="get">
+  <input type="text" name="q" placeholder="Search" />
+  <kbd>/</kbd>
+</form><div class="sy-head-socials">
+  <a href="https://github.com/MatrixEditor/icspacket" aria-label="GitHub">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </a></div></div>
+    </div>
+    <div class="sy-head-actions flex items-center shrink-0 print:hidden"><button class="js-theme theme-switch flex items-center"
+data-aria-auto="Switch to light color mode"
+data-aria-light="Switch to dark color mode"
+data-aria-dark="Switch to auto color mode">
+<i class="i-lucide theme-icon"></i>
+</button><button class="md:hidden flex items-center js-menu" aria-label="Menu" type="button" aria-controls="head-nav" aria-expanded="false">
+        <div class="hamburger">
+          <span class="hamburger_1"></span>
+          <span class="hamburger_2 -translate-x-2"></span>
+          <span class="hamburger_3 -translate-x-1"></span>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>
+<div class="sy-page sy-container flex mx-auto">
+  <aside id="lside" class="sy-lside md:w-72 md:shrink-0 print:hidden">
+    <div class="sy-lside-inner md:sticky">
+      <div class="sy-scrollbar p-6"><div class="sidebar-links">
+  <ul>
+    <li><a class="icon-link" href="https://github.com/MatrixEditor/icspacket/discussions">
+  <span class="icon">
+    <svg viewBox="0 0 24 24" fill="none">
+      <path fill="var(--accent-9)" fill-rule="evenodd" clip-rule="evenodd" d="M11 5a6 6 0 0 0-4.687 9.746c.215.27.315.62.231.954l-.514 2.058a1 1 0 0 0 1.485 1.1l2.848-1.71c.174-.104.374-.15.576-.148H13a6 6 0 0 0 0-12h-2Z"/>
+      <circle fill="white" cx="12" cy="11" r="1"/>
+      <circle fill="white" cx="9" cy="11" r="1"/>
+      <circle fill="white" cx="15" cy="11" r="1"/>
+    </svg>
+  </span>
+  <span class="text">Discussion</span>
+</a></li>
+  </ul>
+</div>
+        <div class="globaltoc" data-expand-depth="2"><p class="caption" role="heading" aria-level="3"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../getting-started/installation.html">Installation</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../getting-started/protocols.html">Protocols Overview</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../getting-started/coreapi.html">Core API Reference</a></li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">MMS / ISO 9506</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../mms/demo_vars.html">Variable Target Format</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../mms/demo_vars.html#variableaccess-service-rwq">VariableAccess Service (rwq)</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../mms/demo_files.html">FileManagement Service</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../mms/api.html">API Reference</a><ul>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../mms/api_conn.html">MMS Connection</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../mms/api_data.html">Data Conversion</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../mms/api_utils.html">Protocol Utilities</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">ACSE / X.227</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../acse/api.html">API Reference</a></li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">COPP / X.226 / ISO 8823</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../copp/api.html">API Reference</a><ul>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../copp/presentation.html">ISO Presentation</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../copp/utils.html">Protocol Utilities</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">COSP / X.225 / ISO 8237-1</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="api.html">API Reference</a><ul class="current">
+<li class="toctree-l2 _expand"><a class="reference internal" href="tsdu.html">TSDU</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="spdu.html">SPDU Types</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Parameter Values (PV)</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="session.html">ISO Session</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="utils.html">Protocol Utilities</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">COTP / X.224</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../cotp/api.html">API Reference</a><ul>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../cotp/structs.html">TPDU Types</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../cotp/connection.html">Connection</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">TPKT Protocol (RFC1006)</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../tpkt/usage.html">Using a TPKT Wrapper</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../tpkt/api.html">API Reference</a></li>
+</ul>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="lside-overlay js-menu" role="button" aria-label="Close left sidebar" aria-controls="lside" aria-expanded="false"></div>
+  <aside id="rside" class="sy-rside pb-3 w-64 shrink-0 order-last">
+    <button class="rside-close js-menu xl:hidden" aria-label="Close Table of Contents" type="button" aria-controls="rside" aria-expanded="false">
+      <i class="i-lucide close"></i>
+    </button>
+    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div class="localtoc"><h3>On this page</h3><ul>
+<li><a class="reference internal" href="#icspacket.proto.iso_ses.values.PI_Code"><code class="docutils literal notranslate"><span class="pre">PI_Code</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iso_ses.values.PV_VersionNumber"><code class="docutils literal notranslate"><span class="pre">PV_VersionNumber</span></code></a><ul>
+<li><a class="reference internal" href="#icspacket.proto.iso_ses.values.PV_VersionNumber.version2"><code class="docutils literal notranslate">version2</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iso_ses.values.PV_VersionNumber.version1"><code class="docutils literal notranslate">version1</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#icspacket.proto.iso_ses.values.PV_TokenSettingPairType"><code class="docutils literal notranslate"><span class="pre">PV_TokenSettingPairType</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iso_ses.values.PV_TokenSetting"><code class="docutils literal notranslate"><span class="pre">PV_TokenSetting</span></code></a><ul>
+<li><a class="reference internal" href="#icspacket.proto.iso_ses.values.PV_TokenSetting.release"><code class="docutils literal notranslate">release</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iso_ses.values.PV_TokenSetting.activity"><code class="docutils literal notranslate">activity</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iso_ses.values.PV_TokenSetting.sync"><code class="docutils literal notranslate">sync</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iso_ses.values.PV_TokenSetting.data"><code class="docutils literal notranslate">data</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#icspacket.proto.iso_ses.values.PV_TokenItem"><code class="docutils literal notranslate"><span class="pre">PV_TokenItem</span></code></a><ul>
+<li><a class="reference internal" href="#icspacket.proto.iso_ses.values.PV_TokenItem.release_token"><code class="docutils literal notranslate">release_token</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iso_ses.values.PV_TokenItem.activity_token"><code class="docutils literal notranslate">activity_token</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iso_ses.values.PV_TokenItem.sync_minor_token"><code class="docutils literal notranslate">sync_minor_token</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iso_ses.values.PV_TokenItem.data_token"><code class="docutils literal notranslate">data_token</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#icspacket.proto.iso_ses.values.PV_SessionRequirements"><code class="docutils literal notranslate"><span class="pre">PV_SessionRequirements</span></code></a><ul>
+<li><a class="reference internal" href="#icspacket.proto.iso_ses.values.PV_SessionRequirements.data_separation"><code class="docutils literal notranslate">data_separation</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iso_ses.values.PV_SessionRequirements.symmetric_sync"><code class="docutils literal notranslate">symmetric_sync</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iso_ses.values.PV_SessionRequirements.typed"><code class="docutils literal notranslate">typed</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iso_ses.values.PV_SessionRequirements.exceptions"><code class="docutils literal notranslate">exceptions</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iso_ses.values.PV_SessionRequirements.capability_data_exchange"><code class="docutils literal notranslate">capability_data_exchange</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iso_ses.values.PV_SessionRequirements.negotiated_release"><code class="docutils literal notranslate">negotiated_release</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iso_ses.values.PV_SessionRequirements.activity_management"><code class="docutils literal notranslate">activity_management</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iso_ses.values.PV_SessionRequirements.resync"><code class="docutils literal notranslate">resync</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iso_ses.values.PV_SessionRequirements.major_sync"><code class="docutils literal notranslate">major_sync</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iso_ses.values.PV_SessionRequirements.minor_sync"><code class="docutils literal notranslate">minor_sync</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iso_ses.values.PV_SessionRequirements.expedited"><code class="docutils literal notranslate">expedited</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iso_ses.values.PV_SessionRequirements.duplex"><code class="docutils literal notranslate">duplex</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iso_ses.values.PV_SessionRequirements.half_duplex"><code class="docutils literal notranslate">half_duplex</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#icspacket.proto.iso_ses.values.PV_EnclosureItem"><code class="docutils literal notranslate"><span class="pre">PV_EnclosureItem</span></code></a><ul>
+<li><a class="reference internal" href="#icspacket.proto.iso_ses.values.PV_EnclosureItem.end"><code class="docutils literal notranslate">end</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iso_ses.values.PV_EnclosureItem.start"><code class="docutils literal notranslate">start</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#icspacket.proto.iso_ses.values.PV_ProtocolOptions"><code class="docutils literal notranslate"><span class="pre">PV_ProtocolOptions</span></code></a><ul>
+<li><a class="reference internal" href="#icspacket.proto.iso_ses.values.PV_ProtocolOptions.extended"><code class="docutils literal notranslate">extended</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#icspacket.proto.iso_ses.values.PV_TYPES"><code class="docutils literal notranslate"><span class="pre">PV_TYPES</span></code></a></li>
+</ul>
+</div><a class="js-repo-stats repo-stats flex items-center" href="https://github.com/MatrixEditor/icspacket"
+  data-type="github" data-user="MatrixEditor" data-repo="icspacket">
+  <span class="w-8 flex items-center justify-around shrink-0 text-3xl">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </span>
+  <span class="flex-grow px-2 break-all">
+    <span style="font-size: small;">MatrixEditor/icspacket</span>
+    <span class="flex text-sm repo-stats-count">
+      <span class="flex items-center pr-3">
+        <iconify-icon icon="lucide:star"></iconify-icon>
+        <strong class="js-repo-stars ml-1">0</strong>
+      </span>
+      <span class="flex items-center">
+        <iconify-icon icon="lucide:git-fork"></iconify-icon>
+        <strong class="js-repo-forks ml-1">0</strong>
+      </span>
+    </span>
+  </span>
+</a><div class="edit-this-page">
+  <a href="https://github.com/MatrixEditor/icspacket/blob/main/docs/protocols/cosp/values.rst">Edit this page</a>
+</div></div>
+  </aside>
+  <div class="rside-overlay js-menu" role="button" aria-label="Close Table of Contents" aria-controls="rside" aria-expanded="false"></div>
+  <main class="sy-main w-full max-sm:max-w-full print:pt-6">
+<div class="sy-breadcrumbs" role="navigation">
+  <div class="sy-breadcrumbs-inner flex items-center">
+    <div class="md:hidden mr-3">
+      <button class="js-menu" aria-label="Menu" type="button" aria-controls="lside" aria-expanded="false">
+        <i class="i-lucide menu"></i>
+      </button>
+    </div>
+    <ol class="flex-1" itemscope itemtype="https://schema.org/BreadcrumbList"><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="../../index.html"><span itemprop="name">icspacket</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="1" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="api.html"><span itemprop="name">API Reference</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="2" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <strong itemprop="name">Parameter Values (PV)</strong>
+        <meta itemprop="position" content="3" />
+      </li></ol>
+    <div class="xl:hidden ml-1">
+      <button class="js-menu" aria-label="Show table of contents" type="button" aria-controls="rside"
+        aria-expanded="false">
+        <i class="i-lucide outdent"></i>
+      </button>
+    </div>
+  </div>
+</div><div class="flex flex-col break-words justify-between">
+      <div class="min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
+        <article class="yue" role="main">
+          <section id="module-icspacket.proto.iso_ses.values">
+<span id="parameter-values-pv"></span><span id="cosp-values"></span><h1>Parameter Values (PV)<a class="headerlink" href="#module-icspacket.proto.iso_ses.values" title="Link to this heading">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="icspacket.proto.iso_ses.values.PI_Code">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">icspacket.proto.iso_ses.values.</span></span><span class="sig-name descname"><span class="pre">PI_Code</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">values</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/icspacket/proto/iso_ses/values.html#PI_Code"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iso_ses.values.PI_Code" title="Link to this definition">¶</a></dt>
+<dd><p>Common <strong>Parameter Identifier</strong> (PI) codes — X.225 8.3</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>Not all PI codes are mapped to PV implementations here; only those
+with common, structured bitfield encodings are represented.</p></li>
+<li><p>Other PIs may be treated as raw byte values in other parts of the
+parser.</p></li>
+</ul>
+</div>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="icspacket.proto.iso_ses.values.PV_VersionNumber">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">icspacket.proto.iso_ses.values.</span></span><span class="sig-name descname"><span class="pre">PV_VersionNumber</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">reserved</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/icspacket/proto/iso_ses/values.html#PV_VersionNumber"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iso_ses.values.PV_VersionNumber" title="Link to this definition">¶</a></dt>
+<dd><p>Version Number PV — X.225</p>
+<p>Indicates which protocol versions are <strong>proposed</strong> for use over this session
+connection.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iso_ses.values.PV_VersionNumber.version2">
+<span class="sig-name descname"><span class="pre">version2</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#icspacket.proto.iso_ses.values.PV_VersionNumber.version2" title="Link to this definition">¶</a></dt>
+<dd><p>True if <strong>Protocol Version 2</strong> is proposed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iso_ses.values.PV_VersionNumber.version1">
+<span class="sig-name descname"><span class="pre">version1</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#icspacket.proto.iso_ses.values.PV_VersionNumber.version1" title="Link to this definition">¶</a></dt>
+<dd><p>True if <strong>Protocol Version 1</strong> is proposed.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="icspacket.proto.iso_ses.values.PV_TokenSettingPairType">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">icspacket.proto.iso_ses.values.</span></span><span class="sig-name descname"><span class="pre">PV_TokenSettingPairType</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">values</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/icspacket/proto/iso_ses/values.html#PV_TokenSettingPairType"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iso_ses.values.PV_TokenSettingPairType" title="Link to this definition">¶</a></dt>
+<dd><p>Enumerated meaning of a <strong>token-setting bit pair</strong></p>
+<p>Each token position is indicated using a 2-bit value:</p>
+<ul class="simple">
+<li><p>0 — Token initially with the initiator</p></li>
+<li><p>1 — Token initially with the responder</p></li>
+<li><p>2 — Token location decided by the SS-user (“user’s choice”)</p></li>
+<li><p>3 — Reserved</p></li>
+</ul>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="icspacket.proto.iso_ses.values.PV_TokenSetting">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">icspacket.proto.iso_ses.values.</span></span><span class="sig-name descname"><span class="pre">PV_TokenSetting</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">release</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#icspacket.proto.iso_ses.values.PV_TokenSettingPairType" title="icspacket.proto.iso_ses.values.PV_TokenSettingPairType"><span class="pre">PV_TokenSettingPairType</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">PV_TokenSettingPairType.INITIATOR</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">activity</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#icspacket.proto.iso_ses.values.PV_TokenSettingPairType" title="icspacket.proto.iso_ses.values.PV_TokenSettingPairType"><span class="pre">PV_TokenSettingPairType</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">PV_TokenSettingPairType.INITIATOR</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sync</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#icspacket.proto.iso_ses.values.PV_TokenSettingPairType" title="icspacket.proto.iso_ses.values.PV_TokenSettingPairType"><span class="pre">PV_TokenSettingPairType</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">PV_TokenSettingPairType.INITIATOR</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#icspacket.proto.iso_ses.values.PV_TokenSettingPairType" title="icspacket.proto.iso_ses.values.PV_TokenSettingPairType"><span class="pre">PV_TokenSettingPairType</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">PV_TokenSettingPairType.INITIATOR</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/icspacket/proto/iso_ses/values.html#PV_TokenSetting"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iso_ses.values.PV_TokenSetting" title="Link to this definition">¶</a></dt>
+<dd><p>Token Setting Item PV — X.225</p>
+<p>If present, indicates the <strong>initial position</strong> of the protocol’s tokens.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iso_ses.values.PV_TokenSetting.release">
+<span class="sig-name descname"><span class="pre">release</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#icspacket.proto.iso_ses.values.PV_TokenSettingPairType" title="icspacket.proto.iso_ses.values.PV_TokenSettingPairType"><span class="pre">PV_TokenSettingPairType</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></em><a class="headerlink" href="#icspacket.proto.iso_ses.values.PV_TokenSetting.release" title="Link to this definition">¶</a></dt>
+<dd><p>Initial position of the <strong>release token</strong>.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iso_ses.values.PV_TokenSetting.activity">
+<span class="sig-name descname"><span class="pre">activity</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#icspacket.proto.iso_ses.values.PV_TokenSettingPairType" title="icspacket.proto.iso_ses.values.PV_TokenSettingPairType"><span class="pre">PV_TokenSettingPairType</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></em><a class="headerlink" href="#icspacket.proto.iso_ses.values.PV_TokenSetting.activity" title="Link to this definition">¶</a></dt>
+<dd><p>Initial position of the <strong>activity token</strong>.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iso_ses.values.PV_TokenSetting.sync">
+<span class="sig-name descname"><span class="pre">sync</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#icspacket.proto.iso_ses.values.PV_TokenSettingPairType" title="icspacket.proto.iso_ses.values.PV_TokenSettingPairType"><span class="pre">PV_TokenSettingPairType</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></em><a class="headerlink" href="#icspacket.proto.iso_ses.values.PV_TokenSetting.sync" title="Link to this definition">¶</a></dt>
+<dd><p>Initial position of the <strong>synchronization token</strong>.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iso_ses.values.PV_TokenSetting.data">
+<span class="sig-name descname"><span class="pre">data</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#icspacket.proto.iso_ses.values.PV_TokenSettingPairType" title="icspacket.proto.iso_ses.values.PV_TokenSettingPairType"><span class="pre">PV_TokenSettingPairType</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></em><a class="headerlink" href="#icspacket.proto.iso_ses.values.PV_TokenSetting.data" title="Link to this definition">¶</a></dt>
+<dd><p>Initial position of the <strong>data token</strong>.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="icspacket.proto.iso_ses.values.PV_TokenItem">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">icspacket.proto.iso_ses.values.</span></span><span class="sig-name descname"><span class="pre">PV_TokenItem</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_reserved_1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">release_token</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_reserved_2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">activity_token</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_reserved_3</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sync_minor_token</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_reserved_4</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_token</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/icspacket/proto/iso_ses/values.html#PV_TokenItem"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iso_ses.values.PV_TokenItem" title="Link to this definition">¶</a></dt>
+<dd><p>Token Item PV — X.225</p>
+<p>Indicates which tokens are <strong>requested</strong> by the called SS-user.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iso_ses.values.PV_TokenItem.release_token">
+<span class="sig-name descname"><span class="pre">release_token</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#icspacket.proto.iso_ses.values.PV_TokenItem.release_token" title="Link to this definition">¶</a></dt>
+<dd><p>Request for the <strong>release token</strong>.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iso_ses.values.PV_TokenItem.activity_token">
+<span class="sig-name descname"><span class="pre">activity_token</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#icspacket.proto.iso_ses.values.PV_TokenItem.activity_token" title="Link to this definition">¶</a></dt>
+<dd><p>Request for the <strong>activity token</strong>.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iso_ses.values.PV_TokenItem.sync_minor_token">
+<span class="sig-name descname"><span class="pre">sync_minor_token</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#icspacket.proto.iso_ses.values.PV_TokenItem.sync_minor_token" title="Link to this definition">¶</a></dt>
+<dd><p>Request for the <strong>minor sync token</strong>.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iso_ses.values.PV_TokenItem.data_token">
+<span class="sig-name descname"><span class="pre">data_token</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#icspacket.proto.iso_ses.values.PV_TokenItem.data_token" title="Link to this definition">¶</a></dt>
+<dd><p>Request for the <strong>data token</strong>.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="icspacket.proto.iso_ses.values.PV_SessionRequirements">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">icspacket.proto.iso_ses.values.</span></span><span class="sig-name descname"><span class="pre">PV_SessionRequirements</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_reserved</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_separation</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">symmetric_sync</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">typed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exceptions</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">capability_data_exchange</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">negotiated_release</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">activity_management</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resync</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">major_sync</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">minor_sync</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">expedited</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">duplex</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">half_duplex</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/icspacket/proto/iso_ses/values.html#PV_SessionRequirements"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iso_ses.values.PV_SessionRequirements" title="Link to this definition">¶</a></dt>
+<dd><p>Session Requirements PV — X.225</p>
+<p>Indicates the functional units proposed by the <strong>calling SS-user</strong>.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iso_ses.values.PV_SessionRequirements.data_separation">
+<span class="sig-name descname"><span class="pre">data_separation</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#icspacket.proto.iso_ses.values.PV_SessionRequirements.data_separation" title="Link to this definition">¶</a></dt>
+<dd><p>Functional unit: Data separation</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iso_ses.values.PV_SessionRequirements.symmetric_sync">
+<span class="sig-name descname"><span class="pre">symmetric_sync</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#icspacket.proto.iso_ses.values.PV_SessionRequirements.symmetric_sync" title="Link to this definition">¶</a></dt>
+<dd><p>Functional unit: Symmetric synchronization</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iso_ses.values.PV_SessionRequirements.typed">
+<span class="sig-name descname"><span class="pre">typed</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#icspacket.proto.iso_ses.values.PV_SessionRequirements.typed" title="Link to this definition">¶</a></dt>
+<dd><p>Functional unit: Typed data</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iso_ses.values.PV_SessionRequirements.exceptions">
+<span class="sig-name descname"><span class="pre">exceptions</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#icspacket.proto.iso_ses.values.PV_SessionRequirements.exceptions" title="Link to this definition">¶</a></dt>
+<dd><p>Functional unit: Exceptions</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iso_ses.values.PV_SessionRequirements.capability_data_exchange">
+<span class="sig-name descname"><span class="pre">capability_data_exchange</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#icspacket.proto.iso_ses.values.PV_SessionRequirements.capability_data_exchange" title="Link to this definition">¶</a></dt>
+<dd><p>Functional unit: Capability data exchange</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iso_ses.values.PV_SessionRequirements.negotiated_release">
+<span class="sig-name descname"><span class="pre">negotiated_release</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#icspacket.proto.iso_ses.values.PV_SessionRequirements.negotiated_release" title="Link to this definition">¶</a></dt>
+<dd><p>Functional unit: Negotiated release</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iso_ses.values.PV_SessionRequirements.activity_management">
+<span class="sig-name descname"><span class="pre">activity_management</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#icspacket.proto.iso_ses.values.PV_SessionRequirements.activity_management" title="Link to this definition">¶</a></dt>
+<dd><p>Functional unit: Activity management</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iso_ses.values.PV_SessionRequirements.resync">
+<span class="sig-name descname"><span class="pre">resync</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#icspacket.proto.iso_ses.values.PV_SessionRequirements.resync" title="Link to this definition">¶</a></dt>
+<dd><p>Functional unit: Resynchronization</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iso_ses.values.PV_SessionRequirements.major_sync">
+<span class="sig-name descname"><span class="pre">major_sync</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#icspacket.proto.iso_ses.values.PV_SessionRequirements.major_sync" title="Link to this definition">¶</a></dt>
+<dd><p>Functional unit: Major synchronization</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iso_ses.values.PV_SessionRequirements.minor_sync">
+<span class="sig-name descname"><span class="pre">minor_sync</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#icspacket.proto.iso_ses.values.PV_SessionRequirements.minor_sync" title="Link to this definition">¶</a></dt>
+<dd><p>Functional unit: Minor synchronization</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iso_ses.values.PV_SessionRequirements.expedited">
+<span class="sig-name descname"><span class="pre">expedited</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#icspacket.proto.iso_ses.values.PV_SessionRequirements.expedited" title="Link to this definition">¶</a></dt>
+<dd><p>Functional unit: Expedited data</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iso_ses.values.PV_SessionRequirements.duplex">
+<span class="sig-name descname"><span class="pre">duplex</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#icspacket.proto.iso_ses.values.PV_SessionRequirements.duplex" title="Link to this definition">¶</a></dt>
+<dd><p>Functional unit: Full-duplex</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iso_ses.values.PV_SessionRequirements.half_duplex">
+<span class="sig-name descname"><span class="pre">half_duplex</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#icspacket.proto.iso_ses.values.PV_SessionRequirements.half_duplex" title="Link to this definition">¶</a></dt>
+<dd><p>Functional unit: Half-duplex</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="icspacket.proto.iso_ses.values.PV_EnclosureItem">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">icspacket.proto.iso_ses.values.</span></span><span class="sig-name descname"><span class="pre">PV_EnclosureItem</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_reserved</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/icspacket/proto/iso_ses/values.html#PV_EnclosureItem"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iso_ses.values.PV_EnclosureItem" title="Link to this definition">¶</a></dt>
+<dd><p>Enclosure Item PV — X.225</p>
+<p>Indicates whether this SPDU is the <strong>start</strong> and/or <strong>end</strong> of an SSDU.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iso_ses.values.PV_EnclosureItem.end">
+<span class="sig-name descname"><span class="pre">end</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#icspacket.proto.iso_ses.values.PV_EnclosureItem.end" title="Link to this definition">¶</a></dt>
+<dd><p>True if this SPDU is the <strong>end</strong> of the SSDU.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iso_ses.values.PV_EnclosureItem.start">
+<span class="sig-name descname"><span class="pre">start</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#icspacket.proto.iso_ses.values.PV_EnclosureItem.start" title="Link to this definition">¶</a></dt>
+<dd><p>True if this SPDU is the <strong>start</strong> of the SSDU.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="icspacket.proto.iso_ses.values.PV_ProtocolOptions">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">icspacket.proto.iso_ses.values.</span></span><span class="sig-name descname"><span class="pre">PV_ProtocolOptions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_reserved</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extended</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/icspacket/proto/iso_ses/values.html#PV_ProtocolOptions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iso_ses.values.PV_ProtocolOptions" title="Link to this definition">¶</a></dt>
+<dd><p>Protocol Options PV — X.225 §8.3.19</p>
+<p>Indicates whether the initiator can receive <strong>extended concatenated SPDUs</strong>.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iso_ses.values.PV_ProtocolOptions.extended">
+<span class="sig-name descname"><span class="pre">extended</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#icspacket.proto.iso_ses.values.PV_ProtocolOptions.extended" title="Link to this definition">¶</a></dt>
+<dd><p>True if extended concatenated SPDUs are supported.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="icspacket.proto.iso_ses.values.PV_TYPES">
+<span class="sig-prename descclassname"><span class="pre">icspacket.proto.iso_ses.values.</span></span><span class="sig-name descname"><span class="pre">PV_TYPES</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{PI_Code.TOKEN_ITEM:</span> <span class="pre">&lt;class</span> <span class="pre">'icspacket.proto.iso_ses.values.PV_TokenItem'&gt;,</span> <span class="pre">PI_Code.PROTOCOL_OPTIONS:</span> <span class="pre">&lt;class</span> <span class="pre">'icspacket.proto.iso_ses.values.PV_ProtocolOptions'&gt;,</span> <span class="pre">PI_Code.SESSION_REQUIREMENT:</span> <span class="pre">&lt;class</span> <span class="pre">'icspacket.proto.iso_ses.values.PV_SessionRequirements'&gt;,</span> <span class="pre">PI_Code.TSDU_MAXIMUM_SIZE:</span> <span class="pre">&lt;int32&gt;,</span> <span class="pre">PI_Code.VERSION_NUMBER:</span> <span class="pre">&lt;class</span> <span class="pre">'icspacket.proto.iso_ses.values.PV_VersionNumber'&gt;,</span> <span class="pre">PI_Code.ENCLOSUREITEM:</span> <span class="pre">&lt;class</span> <span class="pre">'icspacket.proto.iso_ses.values.PV_EnclosureItem'&gt;,</span> <span class="pre">PI_Code.TOKEN_SETTING_ITEM:</span> <span class="pre">&lt;class</span> <span class="pre">'icspacket.proto.iso_ses.values.PV_TokenSetting'&gt;}</span></em><a class="headerlink" href="#icspacket.proto.iso_ses.values.PV_TYPES" title="Link to this definition">¶</a></dt>
+<dd><p>Mapping from PI codes to their associated <strong>Parameter Value</strong> types.</p>
+<p>This table is used during SPDU parameter decoding to instantiate the right PV
+object.</p>
+</dd></dl>
+
+</section>
+
+        </article><button class="back-to-top" type="button">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+  </svg>
+  <span>Back to top</span>
+</button><div class="navigation flex print:hidden"><div class="navigation-prev">
+    <a href="spdu.html">
+      <i class="i-lucide chevron-left"></i>
+      <div class="page-info">
+        <span>Previous</span><div class="title">SPDU Types</div></div>
+    </a>
+  </div><div class="navigation-next">
+    <a href="session.html">
+      <div class="page-info">
+        <span>Next</span>
+        <div class="title">ISO Session</div>
+      </div>
+      <i class="i-lucide chevron-right"></i>
+    </a>
+  </div></div></div>
+    </div>
+  </main>
+</div>
+<footer class="sy-foot">
+  <div class="sy-foot-inner sy-container mx-auto">
+    <div class="sy-foot-reserved md:flex justify-between items-center">
+      <div class="sy-foot-copyright"><p>2025, MatrixEditor</p>
+  
+  <p>
+    Made with
+    
+    <a href="https://www.sphinx-doc.org/">Sphinx</a> and
+    
+    <a href="https://shibuya.lepture.com">Shibuya theme</a>.
+  </p>
+</div>
+      <div class="sy-foot-socials">
+<a href="https://github.com/MatrixEditor/icspacket" aria-label="GitHub">
+  <iconify-icon icon="simple-icons:github"></iconify-icon>
+</a></div>
+    </div>
+  </div>
+</footer>
+      <script src="../../_static/documentation_options.js?v=e3b32040"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+      <script src="../../_static/shibuya.js?v=e730760c"></script></body>
+</html>
