@@ -45,17 +45,17 @@ PyCompat_DEF_ENUM(ServiceError_errorClass_ANON_2_initiate);
 PyCompat_DEF_ENUM(ServiceError_errorClass_ANON_2_conclude);
 PyCompat_DEF_ENUM(ServiceError_errorClass_ANON_2_cancel);
 PyCompat_DEF_ENUM(ServiceError_errorClass_ANON_2_file);
-PyCompat_DEF_ANON_STRUCT(ServiceError_serviceSpecificInfo_ANON_78, ServiceError__serviceSpecificInfo);
-PyCompat_DEF_TYPE(ServiceError_serviceSpecificInfo_ANON_78);
-PyCompat_DEF_ENUM(ServiceError_serviceSpecificInfo_ANON_78_PRESENT);
+PyCompat_DEF_ANON_STRUCT(ServiceError_serviceSpecificInfo_ANON_79, ServiceError__serviceSpecificInfo);
+PyCompat_DEF_TYPE(ServiceError_serviceSpecificInfo_ANON_79);
+PyCompat_DEF_ENUM(ServiceError_serviceSpecificInfo_ANON_79_PRESENT);
 PyCompat_DEF_STRUCT(ServiceError);
 PyCompat_DEF_TYPE(ServiceError);
 
 /* Type Converters */
 int PyAsnServiceError_errorClass_ANON_2_FromPython(PyObject *pObj, ServiceError_errorClass_ANON_2_t *pDst);
 PyObject *PyAsnServiceError_errorClass_ANON_2_ToPython(ServiceError_errorClass_ANON_2_t *pSrc, PyObject *parent);
-int PyAsnServiceError_serviceSpecificInfo_ANON_78_FromPython(PyObject *pObj, ServiceError_serviceSpecificInfo_ANON_78_t *pDst);
-PyObject *PyAsnServiceError_serviceSpecificInfo_ANON_78_ToPython(ServiceError_serviceSpecificInfo_ANON_78_t *pSrc, PyObject *parent);
+int PyAsnServiceError_serviceSpecificInfo_ANON_79_FromPython(PyObject *pObj, ServiceError_serviceSpecificInfo_ANON_79_t *pDst);
+PyObject *PyAsnServiceError_serviceSpecificInfo_ANON_79_ToPython(ServiceError_serviceSpecificInfo_ANON_79_t *pSrc, PyObject *parent);
 int PyAsnServiceError_FromPython(PyObject *pObj, ServiceError_t *pDst);
 PyObject *PyAsnServiceError_ToPython(ServiceError_t *pSrc, PyObject *parent);
 

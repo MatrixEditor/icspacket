@@ -310,8 +310,11 @@ class MMSClient(cmd2.Cmd):
 
     @override
     def pexcept(self, msg: Any, *, end: str = "\n", apply_style: bool = True) -> None:
-        if isinstance(msg, MMSUnknownServiceError):
-            return logging.error(str(msg))
+        match msg:
+            case MMSUnknownServiceError():
+                return logging.error(str(msg))
+            case ConnectionClosedError():
+                return logging.warning(str(msg))
 
         return super().pexcept(msg, end=end, apply_style=apply_style)
 

@@ -83,6 +83,7 @@ typedef enum ServiceError__errorClass__service {
 	ServiceError__errorClass__service_other	= 0,
 	ServiceError__errorClass__service_primitives_out_of_sequence	= 1,
 	ServiceError__errorClass__service_object_state_conflict	= 2,
+	ServiceError__errorClass__service_pdu_size	= 3,
 	ServiceError__errorClass__service_continuation_invalid	= 4,
 	ServiceError__errorClass__service_object_constraint_conflict	= 5
 } e_ServiceError__errorClass__service;

@@ -617,7 +617,7 @@ asn_TYPE_descriptor_t asn_DEF_errorClass_2 = {
 	&asn_SPC_errorClass_specs_2	/* Additional specs */
 };
 
-static asn_TYPE_member_t asn_MBR_serviceSpecificInfo_78[] = {
+static asn_TYPE_member_t asn_MBR_serviceSpecificInfo_79[] = {
 	{ ATF_NOFLAGS, 0, offsetof(struct ServiceError__serviceSpecificInfo, choice.obtainFile),
 		(ASN_TAG_CLASS_CONTEXT | (0 << 2)),
 		-1,	/* IMPLICIT tag at current level */
@@ -859,7 +859,7 @@ static asn_TYPE_member_t asn_MBR_serviceSpecificInfo_78[] = {
 		"changeAccessControl"
 		},
 };
-static const asn_TYPE_tag2member_t asn_MAP_serviceSpecificInfo_tag2el_78[] = {
+static const asn_TYPE_tag2member_t asn_MAP_serviceSpecificInfo_tag2el_79[] = {
     { (ASN_TAG_CLASS_CONTEXT | (0 << 2)), 0, 0, 0 }, /* obtainFile */
     { (ASN_TAG_CLASS_CONTEXT | (1 << 2)), 1, 0, 0 }, /* start */
     { (ASN_TAG_CLASS_CONTEXT | (2 << 2)), 2, 0, 0 }, /* stop */
@@ -873,18 +873,18 @@ static const asn_TYPE_tag2member_t asn_MAP_serviceSpecificInfo_tag2el_78[] = {
     { (ASN_TAG_CLASS_CONTEXT | (10 << 2)), 10, 0, 0 }, /* additionalService */
     { (ASN_TAG_CLASS_CONTEXT | (11 << 2)), 11, 0, 0 } /* changeAccessControl */
 };
-static asn_CHOICE_specifics_t asn_SPC_serviceSpecificInfo_specs_78 = {
+static asn_CHOICE_specifics_t asn_SPC_serviceSpecificInfo_specs_79 = {
 	sizeof(struct ServiceError__serviceSpecificInfo),
 	offsetof(struct ServiceError__serviceSpecificInfo, _asn_ctx),
 	offsetof(struct ServiceError__serviceSpecificInfo, present),
 	sizeof(((struct ServiceError__serviceSpecificInfo *)0)->present),
-	asn_MAP_serviceSpecificInfo_tag2el_78,
+	asn_MAP_serviceSpecificInfo_tag2el_79,
 	12,	/* Count of tags in the map */
 	0, 0,
 	-1	/* Extensions start */
 };
 static /* Use -fall-defs-global to expose */
-asn_TYPE_descriptor_t asn_DEF_serviceSpecificInfo_78 = {
+asn_TYPE_descriptor_t asn_DEF_serviceSpecificInfo_79 = {
 	"serviceSpecificInfo",
 	"serviceSpecificInfo",
 	&asn_OP_CHOICE,
@@ -904,9 +904,9 @@ asn_TYPE_descriptor_t asn_DEF_serviceSpecificInfo_78 = {
 #endif  /* !defined(ASN_DISABLE_JER_SUPPORT) */
 		CHOICE_constraint
 	},
-	asn_MBR_serviceSpecificInfo_78,
+	asn_MBR_serviceSpecificInfo_79,
 	12,	/* Elements count */
-	&asn_SPC_serviceSpecificInfo_specs_78	/* Additional specs */
+	&asn_SPC_serviceSpecificInfo_specs_79	/* Additional specs */
 };
 
 asn_TYPE_member_t asn_MBR_ServiceError_1[] = {
@@ -973,7 +973,7 @@ asn_TYPE_member_t asn_MBR_ServiceError_1[] = {
 	{ ATF_POINTER, 1, offsetof(struct ServiceError, serviceSpecificInfo),
 		(ASN_TAG_CLASS_CONTEXT | (3 << 2)),
 		+1,	/* EXPLICIT tag at current level */
-		&asn_DEF_serviceSpecificInfo_78,
+		&asn_DEF_serviceSpecificInfo_79,
 		0,
 		{
 #if !defined(ASN_DISABLE_OER_SUPPORT)

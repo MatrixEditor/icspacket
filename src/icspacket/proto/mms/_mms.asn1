@@ -503,6 +503,7 @@ ServiceError ::= SEQUENCE {
             other(0),
             primitives-out-of-sequence(1),
             object-state-conflict(2),
+            pdu-size(3), -- added by IEC61850 8-1
             continuation-invalid(4),
             object-constraint-conflict(5)
         } (0..5),

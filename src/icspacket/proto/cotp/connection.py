@@ -259,7 +259,10 @@ class COTP_Connection(connection):
             len(tpdu_data),
             tpdu.nr.eot if isinstance(tpdu, TPDU_Data) else True,
         )
-        self.sock.sendall(tpdu_data)
+        try:
+            self.sock.sendall(tpdu_data)
+        except BrokenPipeError:
+            raise ConnectionClosedError("Connection closed")
 
     def receive_tpdu(self):
         """

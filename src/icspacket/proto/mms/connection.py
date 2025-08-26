@@ -458,7 +458,7 @@ class MMS_Connection(connection):
         self,
         object_class: ObjectClass,
         scope: ObjectScope | None = None,
-    ) -> list[Identifier]:
+    ) -> list[str]:
         """10.5 GetNameList Service
 
         The *GetNameList* service requests the list (or a subset) of object
@@ -473,7 +473,7 @@ class MMS_Connection(connection):
         :type scope: GetNameList_Request.objectScope_TYPE or None
 
         :returns: A list of object identifiers.
-        :rtype: list[Identifier]
+        :rtype: list[str]
 
         :raises ValueError: If the MMS server returns an invalid response.
 

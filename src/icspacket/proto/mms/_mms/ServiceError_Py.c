@@ -111,94 +111,94 @@ PY_IMPL_SEQ_ANON_ATTR_FROMPY(ServiceError, errorClass, &src->errorClass, Service
 PY_IMPL_SEQ_ANON_ATTR_TOPY(ServiceError, errorClass, &src->errorClass, ServiceError_errorClass_ANON_2);
 PY_IMPL_SEQ_INNER_SETATTR(ServiceError, errorClass, errorClass, ServiceError_errorClass_ANON_2);
 PY_IMPL_SEQ_INNER_GETATTR(ServiceError, errorClass, &self->ob_value->errorClass, ServiceError_errorClass_ANON_2);
-PY_IMPL_CHOICE_ATTR_FROMPY(ServiceError_serviceSpecificInfo_ANON_78, ServiceError__serviceSpecificInfo, obtainFile, obtainFile,PyAsnObtainFile_Error_FromPython(value, &dst->choice.obtainFile));
-PY_IMPL_CHOICE_ATTR_TOPY(ServiceError_serviceSpecificInfo_ANON_78, obtainFile, PyCompatAsnType_FromParent(&PyAsnObtainFile_Error_Type, parent,  (void *)&src->choice.obtainFile));
-PY_IMPL_CHOICE_GETATTR(ServiceError_serviceSpecificInfo_ANON_78, ServiceError__serviceSpecificInfo, obtainFile, obtainFile);
-PY_IMPL_CHOICE_GENERIC_SETATTR(ServiceError_serviceSpecificInfo_ANON_78, ServiceError__serviceSpecificInfo, obtainFile, obtainFile, *asn_DEF_ServiceError.elements[3].type);
-PY_IMPL_CHOICE_ATTR_FROMPY(ServiceError_serviceSpecificInfo_ANON_78, ServiceError__serviceSpecificInfo, start, start,PyAsnStart_Error_FromPython(value, &dst->choice.start));
-PY_IMPL_CHOICE_ATTR_TOPY(ServiceError_serviceSpecificInfo_ANON_78, start, PyCompatAsnType_FromParent(&PyAsnStart_Error_Type, parent,  (void *)&src->choice.start));
-PY_IMPL_CHOICE_GETATTR(ServiceError_serviceSpecificInfo_ANON_78, ServiceError__serviceSpecificInfo, start, start);
-PY_IMPL_CHOICE_GENERIC_SETATTR(ServiceError_serviceSpecificInfo_ANON_78, ServiceError__serviceSpecificInfo, start, start, *asn_DEF_ServiceError.elements[3].type);
-PY_IMPL_CHOICE_ATTR_FROMPY(ServiceError_serviceSpecificInfo_ANON_78, ServiceError__serviceSpecificInfo, stop, stop,PyAsnStop_Error_FromPython(value, &dst->choice.stop));
-PY_IMPL_CHOICE_ATTR_TOPY(ServiceError_serviceSpecificInfo_ANON_78, stop, PyCompatAsnType_FromParent(&PyAsnStop_Error_Type, parent,  (void *)&src->choice.stop));
-PY_IMPL_CHOICE_GETATTR(ServiceError_serviceSpecificInfo_ANON_78, ServiceError__serviceSpecificInfo, stop, stop);
-PY_IMPL_CHOICE_GENERIC_SETATTR(ServiceError_serviceSpecificInfo_ANON_78, ServiceError__serviceSpecificInfo, stop, stop, *asn_DEF_ServiceError.elements[3].type);
-PY_IMPL_CHOICE_ATTR_FROMPY(ServiceError_serviceSpecificInfo_ANON_78, ServiceError__serviceSpecificInfo, resume, resume,PyAsnResume_Error_FromPython(value, &dst->choice.resume));
-PY_IMPL_CHOICE_ATTR_TOPY(ServiceError_serviceSpecificInfo_ANON_78, resume, PyCompatAsnType_FromParent(&PyAsnResume_Error_Type, parent,  (void *)&src->choice.resume));
-PY_IMPL_CHOICE_GETATTR(ServiceError_serviceSpecificInfo_ANON_78, ServiceError__serviceSpecificInfo, resume, resume);
-PY_IMPL_CHOICE_GENERIC_SETATTR(ServiceError_serviceSpecificInfo_ANON_78, ServiceError__serviceSpecificInfo, resume, resume, *asn_DEF_ServiceError.elements[3].type);
-PY_IMPL_CHOICE_ATTR_FROMPY(ServiceError_serviceSpecificInfo_ANON_78, ServiceError__serviceSpecificInfo, reset, reset,PyAsnReset_Error_FromPython(value, &dst->choice.reset));
-PY_IMPL_CHOICE_ATTR_TOPY(ServiceError_serviceSpecificInfo_ANON_78, reset, PyCompatAsnType_FromParent(&PyAsnReset_Error_Type, parent,  (void *)&src->choice.reset));
-PY_IMPL_CHOICE_GETATTR(ServiceError_serviceSpecificInfo_ANON_78, ServiceError__serviceSpecificInfo, reset, reset);
-PY_IMPL_CHOICE_GENERIC_SETATTR(ServiceError_serviceSpecificInfo_ANON_78, ServiceError__serviceSpecificInfo, reset, reset, *asn_DEF_ServiceError.elements[3].type);
-PY_IMPL_CHOICE_ATTR_FROMPY(ServiceError_serviceSpecificInfo_ANON_78, ServiceError__serviceSpecificInfo, deleteVariableAccess, deleteVariableAccess,PyAsnDeleteVariableAccess_Error_FromPython(value, &dst->choice.deleteVariableAccess));
-PY_IMPL_CHOICE_ATTR_TOPY(ServiceError_serviceSpecificInfo_ANON_78, deleteVariableAccess, PyCompatAsnType_FromParent(&PyAsnDeleteVariableAccess_Error_Type, parent,  (void *)&src->choice.deleteVariableAccess));
-PY_IMPL_CHOICE_GETATTR(ServiceError_serviceSpecificInfo_ANON_78, ServiceError__serviceSpecificInfo, deleteVariableAccess, deleteVariableAccess);
-PY_IMPL_CHOICE_GENERIC_SETATTR(ServiceError_serviceSpecificInfo_ANON_78, ServiceError__serviceSpecificInfo, deleteVariableAccess, deleteVariableAccess, *asn_DEF_ServiceError.elements[3].type);
-PY_IMPL_CHOICE_ATTR_FROMPY(ServiceError_serviceSpecificInfo_ANON_78, ServiceError__serviceSpecificInfo, deleteNamedVariableList, deleteNamedVariableList,PyAsnDeleteNamedVariableList_Error_FromPython(value, &dst->choice.deleteNamedVariableList));
-PY_IMPL_CHOICE_ATTR_TOPY(ServiceError_serviceSpecificInfo_ANON_78, deleteNamedVariableList, PyCompatAsnType_FromParent(&PyAsnDeleteNamedVariableList_Error_Type, parent,  (void *)&src->choice.deleteNamedVariableList));
-PY_IMPL_CHOICE_GETATTR(ServiceError_serviceSpecificInfo_ANON_78, ServiceError__serviceSpecificInfo, deleteNamedVariableList, deleteNamedVariableList);
-PY_IMPL_CHOICE_GENERIC_SETATTR(ServiceError_serviceSpecificInfo_ANON_78, ServiceError__serviceSpecificInfo, deleteNamedVariableList, deleteNamedVariableList, *asn_DEF_ServiceError.elements[3].type);
-PY_IMPL_CHOICE_ATTR_FROMPY(ServiceError_serviceSpecificInfo_ANON_78, ServiceError__serviceSpecificInfo, deleteNamedType, deleteNamedType,PyAsnDeleteNamedType_Error_FromPython(value, &dst->choice.deleteNamedType));
-PY_IMPL_CHOICE_ATTR_TOPY(ServiceError_serviceSpecificInfo_ANON_78, deleteNamedType, PyCompatAsnType_FromParent(&PyAsnDeleteNamedType_Error_Type, parent,  (void *)&src->choice.deleteNamedType));
-PY_IMPL_CHOICE_GETATTR(ServiceError_serviceSpecificInfo_ANON_78, ServiceError__serviceSpecificInfo, deleteNamedType, deleteNamedType);
-PY_IMPL_CHOICE_GENERIC_SETATTR(ServiceError_serviceSpecificInfo_ANON_78, ServiceError__serviceSpecificInfo, deleteNamedType, deleteNamedType, *asn_DEF_ServiceError.elements[3].type);
-PY_IMPL_CHOICE_ATTR_FROMPY(ServiceError_serviceSpecificInfo_ANON_78, ServiceError__serviceSpecificInfo, defineEventEnrollment_Error, defineEventEnrollment_Error,PyAsnDefineEventEnrollment_Error_FromPython(value, &dst->choice.defineEventEnrollment_Error));
-PY_IMPL_CHOICE_ATTR_TOPY(ServiceError_serviceSpecificInfo_ANON_78, defineEventEnrollment_Error, PyCompatAsnType_FromParent(&PyAsnDefineEventEnrollment_Error_Type, parent,  (void *)&src->choice.defineEventEnrollment_Error));
-PY_IMPL_CHOICE_GETATTR(ServiceError_serviceSpecificInfo_ANON_78, ServiceError__serviceSpecificInfo, defineEventEnrollment_Error, defineEventEnrollment_Error);
-PY_IMPL_CHOICE_GENERIC_SETATTR(ServiceError_serviceSpecificInfo_ANON_78, ServiceError__serviceSpecificInfo, defineEventEnrollment_Error, defineEventEnrollment_Error, *asn_DEF_ServiceError.elements[3].type);
-PY_IMPL_CHOICE_ATTR_FROMPY(ServiceError_serviceSpecificInfo_ANON_78, ServiceError__serviceSpecificInfo, fileRename, fileRename,PyAsnFileRename_Error_FromPython(value, &dst->choice.fileRename));
-PY_IMPL_CHOICE_ATTR_TOPY(ServiceError_serviceSpecificInfo_ANON_78, fileRename, PyCompatAsnType_FromParent(&PyAsnFileRename_Error_Type, parent,  (void *)&src->choice.fileRename));
-PY_IMPL_CHOICE_GETATTR(ServiceError_serviceSpecificInfo_ANON_78, ServiceError__serviceSpecificInfo, fileRename, fileRename);
-PY_IMPL_CHOICE_GENERIC_SETATTR(ServiceError_serviceSpecificInfo_ANON_78, ServiceError__serviceSpecificInfo, fileRename, fileRename, *asn_DEF_ServiceError.elements[3].type);
-PY_IMPL_CHOICE_ATTR_FROMPY(ServiceError_serviceSpecificInfo_ANON_78, ServiceError__serviceSpecificInfo, additionalService, additionalService,PyAsnAdditionalService_Error_FromPython(value, &dst->choice.additionalService));
-PY_IMPL_CHOICE_ATTR_TOPY(ServiceError_serviceSpecificInfo_ANON_78, additionalService, PyCompatAsnType_FromParent(&PyAsnAdditionalService_Error_Type, parent,  (void *)&src->choice.additionalService));
-PY_IMPL_CHOICE_GETATTR(ServiceError_serviceSpecificInfo_ANON_78, ServiceError__serviceSpecificInfo, additionalService, additionalService);
-PY_IMPL_CHOICE_GENERIC_SETATTR(ServiceError_serviceSpecificInfo_ANON_78, ServiceError__serviceSpecificInfo, additionalService, additionalService, *asn_DEF_ServiceError.elements[3].type);
-PY_IMPL_CHOICE_ATTR_FROMPY(ServiceError_serviceSpecificInfo_ANON_78, ServiceError__serviceSpecificInfo, changeAccessControl, changeAccessControl,PyAsnChangeAccessControl_Error_FromPython(value, &dst->choice.changeAccessControl));
-PY_IMPL_CHOICE_ATTR_TOPY(ServiceError_serviceSpecificInfo_ANON_78, changeAccessControl, PyCompatAsnType_FromParent(&PyAsnChangeAccessControl_Error_Type, parent,  (void *)&src->choice.changeAccessControl));
-PY_IMPL_CHOICE_GETATTR(ServiceError_serviceSpecificInfo_ANON_78, ServiceError__serviceSpecificInfo, changeAccessControl, changeAccessControl);
-PY_IMPL_CHOICE_GENERIC_SETATTR(ServiceError_serviceSpecificInfo_ANON_78, ServiceError__serviceSpecificInfo, changeAccessControl, changeAccessControl, *asn_DEF_ServiceError.elements[3].type);
-PY_IMPL_CHECK_CONSTRAINTS(ServiceError_serviceSpecificInfo_ANON_78, asn_DEF_ServiceError.elements[3].type);
-PY_IMPL_ENCODE(ServiceError_serviceSpecificInfo_ANON_78, asn_DEF_ServiceError.elements[3].type);
-PY_IMPL_DECODE(ServiceError_serviceSpecificInfo_ANON_78, asn_DEF_ServiceError.elements[3].type);
-PY_IMPL_DEALLOC(ServiceError_serviceSpecificInfo_ANON_78, *(asn_DEF_ServiceError.elements[3].type));
-PY_IMPL_SEQ_TOPY(ServiceError_serviceSpecificInfo_ANON_78, asn_DEF_ServiceError.elements[3].type);
-PY_IMPL_GENERIC_REPR(ServiceError_serviceSpecificInfo_ANON_78, ServiceError__serviceSpecificInfo);
-PY_IMPL_DECODE_BER(ServiceError_serviceSpecificInfo_ANON_78);
-PY_IMPL_ENCODE_SPECIFIC(ServiceError_serviceSpecificInfo_ANON_78, ber, ATS_BER);
-PY_IMPL_DECODE_DER(ServiceError_serviceSpecificInfo_ANON_78);
-PY_IMPL_ENCODE_SPECIFIC(ServiceError_serviceSpecificInfo_ANON_78, der, ATS_DER);
-PY_IMPL_DECODE_CER(ServiceError_serviceSpecificInfo_ANON_78);
-PY_IMPL_ENCODE_SPECIFIC(ServiceError_serviceSpecificInfo_ANON_78, cer, ATS_BER);
-PY_IMPL_DECODE_XER(ServiceError_serviceSpecificInfo_ANON_78);
-PY_IMPL_ENCODE_XER(ServiceError_serviceSpecificInfo_ANON_78);
-PY_IMPL_ENCODE_SPECIFIC(ServiceError_serviceSpecificInfo_ANON_78, plain, ATS_NONSTANDARD_PLAINTEXT);
-PY_IMPL_DECODE_JER(ServiceError_serviceSpecificInfo_ANON_78);
-PY_IMPL_ENCODE_JER(ServiceError_serviceSpecificInfo_ANON_78);
-PyObject *PyAsnEnumServiceError_serviceSpecificInfo_ANON_78_PRESENT_Type = NULL;
-PY_IMPL_CHOICE_PRESENT_ATTR(ServiceError_serviceSpecificInfo_ANON_78);
-PY_IMPL_GENERIC_NEW(ServiceError_serviceSpecificInfo_ANON_78, NULL);
-PY_IMPL_GENERIC_IS_VALID(ServiceError_serviceSpecificInfo_ANON_78);
-PY_IMPL_CHOICE_FROMPY(ServiceError_serviceSpecificInfo_ANON_78, asn_DEF_ServiceError.elements[3].type,
-	PY_IMPL_CHOICE_INIT_ATTR(ServiceError_serviceSpecificInfo_ANON_78, ServiceError__serviceSpecificInfo, obtainFile, obtainFile, obtainFile);
-	PY_IMPL_CHOICE_INIT_ATTR(ServiceError_serviceSpecificInfo_ANON_78, ServiceError__serviceSpecificInfo, start, start, start);
-	PY_IMPL_CHOICE_INIT_ATTR(ServiceError_serviceSpecificInfo_ANON_78, ServiceError__serviceSpecificInfo, stop, stop, stop);
-	PY_IMPL_CHOICE_INIT_ATTR(ServiceError_serviceSpecificInfo_ANON_78, ServiceError__serviceSpecificInfo, resume, resume, resume);
-	PY_IMPL_CHOICE_INIT_ATTR(ServiceError_serviceSpecificInfo_ANON_78, ServiceError__serviceSpecificInfo, reset, reset, reset);
-	PY_IMPL_CHOICE_INIT_ATTR(ServiceError_serviceSpecificInfo_ANON_78, ServiceError__serviceSpecificInfo, deleteVariableAccess, deleteVariableAccess, deleteVariableAccess);
-	PY_IMPL_CHOICE_INIT_ATTR(ServiceError_serviceSpecificInfo_ANON_78, ServiceError__serviceSpecificInfo, deleteNamedVariableList, deleteNamedVariableList, deleteNamedVariableList);
-	PY_IMPL_CHOICE_INIT_ATTR(ServiceError_serviceSpecificInfo_ANON_78, ServiceError__serviceSpecificInfo, deleteNamedType, deleteNamedType, deleteNamedType);
-	PY_IMPL_CHOICE_INIT_ATTR(ServiceError_serviceSpecificInfo_ANON_78, ServiceError__serviceSpecificInfo, defineEventEnrollment_Error, defineEventEnrollment_Error, defineEventEnrollment_Error);
-	PY_IMPL_CHOICE_INIT_ATTR(ServiceError_serviceSpecificInfo_ANON_78, ServiceError__serviceSpecificInfo, fileRename, fileRename, fileRename);
-	PY_IMPL_CHOICE_INIT_ATTR(ServiceError_serviceSpecificInfo_ANON_78, ServiceError__serviceSpecificInfo, additionalService, additionalService, additionalService);
-	PY_IMPL_CHOICE_INIT_ATTR(ServiceError_serviceSpecificInfo_ANON_78, ServiceError__serviceSpecificInfo, changeAccessControl, changeAccessControl, changeAccessControl);
+PY_IMPL_CHOICE_ATTR_FROMPY(ServiceError_serviceSpecificInfo_ANON_79, ServiceError__serviceSpecificInfo, obtainFile, obtainFile,PyAsnObtainFile_Error_FromPython(value, &dst->choice.obtainFile));
+PY_IMPL_CHOICE_ATTR_TOPY(ServiceError_serviceSpecificInfo_ANON_79, obtainFile, PyCompatAsnType_FromParent(&PyAsnObtainFile_Error_Type, parent,  (void *)&src->choice.obtainFile));
+PY_IMPL_CHOICE_GETATTR(ServiceError_serviceSpecificInfo_ANON_79, ServiceError__serviceSpecificInfo, obtainFile, obtainFile);
+PY_IMPL_CHOICE_GENERIC_SETATTR(ServiceError_serviceSpecificInfo_ANON_79, ServiceError__serviceSpecificInfo, obtainFile, obtainFile, *asn_DEF_ServiceError.elements[3].type);
+PY_IMPL_CHOICE_ATTR_FROMPY(ServiceError_serviceSpecificInfo_ANON_79, ServiceError__serviceSpecificInfo, start, start,PyAsnStart_Error_FromPython(value, &dst->choice.start));
+PY_IMPL_CHOICE_ATTR_TOPY(ServiceError_serviceSpecificInfo_ANON_79, start, PyCompatAsnType_FromParent(&PyAsnStart_Error_Type, parent,  (void *)&src->choice.start));
+PY_IMPL_CHOICE_GETATTR(ServiceError_serviceSpecificInfo_ANON_79, ServiceError__serviceSpecificInfo, start, start);
+PY_IMPL_CHOICE_GENERIC_SETATTR(ServiceError_serviceSpecificInfo_ANON_79, ServiceError__serviceSpecificInfo, start, start, *asn_DEF_ServiceError.elements[3].type);
+PY_IMPL_CHOICE_ATTR_FROMPY(ServiceError_serviceSpecificInfo_ANON_79, ServiceError__serviceSpecificInfo, stop, stop,PyAsnStop_Error_FromPython(value, &dst->choice.stop));
+PY_IMPL_CHOICE_ATTR_TOPY(ServiceError_serviceSpecificInfo_ANON_79, stop, PyCompatAsnType_FromParent(&PyAsnStop_Error_Type, parent,  (void *)&src->choice.stop));
+PY_IMPL_CHOICE_GETATTR(ServiceError_serviceSpecificInfo_ANON_79, ServiceError__serviceSpecificInfo, stop, stop);
+PY_IMPL_CHOICE_GENERIC_SETATTR(ServiceError_serviceSpecificInfo_ANON_79, ServiceError__serviceSpecificInfo, stop, stop, *asn_DEF_ServiceError.elements[3].type);
+PY_IMPL_CHOICE_ATTR_FROMPY(ServiceError_serviceSpecificInfo_ANON_79, ServiceError__serviceSpecificInfo, resume, resume,PyAsnResume_Error_FromPython(value, &dst->choice.resume));
+PY_IMPL_CHOICE_ATTR_TOPY(ServiceError_serviceSpecificInfo_ANON_79, resume, PyCompatAsnType_FromParent(&PyAsnResume_Error_Type, parent,  (void *)&src->choice.resume));
+PY_IMPL_CHOICE_GETATTR(ServiceError_serviceSpecificInfo_ANON_79, ServiceError__serviceSpecificInfo, resume, resume);
+PY_IMPL_CHOICE_GENERIC_SETATTR(ServiceError_serviceSpecificInfo_ANON_79, ServiceError__serviceSpecificInfo, resume, resume, *asn_DEF_ServiceError.elements[3].type);
+PY_IMPL_CHOICE_ATTR_FROMPY(ServiceError_serviceSpecificInfo_ANON_79, ServiceError__serviceSpecificInfo, reset, reset,PyAsnReset_Error_FromPython(value, &dst->choice.reset));
+PY_IMPL_CHOICE_ATTR_TOPY(ServiceError_serviceSpecificInfo_ANON_79, reset, PyCompatAsnType_FromParent(&PyAsnReset_Error_Type, parent,  (void *)&src->choice.reset));
+PY_IMPL_CHOICE_GETATTR(ServiceError_serviceSpecificInfo_ANON_79, ServiceError__serviceSpecificInfo, reset, reset);
+PY_IMPL_CHOICE_GENERIC_SETATTR(ServiceError_serviceSpecificInfo_ANON_79, ServiceError__serviceSpecificInfo, reset, reset, *asn_DEF_ServiceError.elements[3].type);
+PY_IMPL_CHOICE_ATTR_FROMPY(ServiceError_serviceSpecificInfo_ANON_79, ServiceError__serviceSpecificInfo, deleteVariableAccess, deleteVariableAccess,PyAsnDeleteVariableAccess_Error_FromPython(value, &dst->choice.deleteVariableAccess));
+PY_IMPL_CHOICE_ATTR_TOPY(ServiceError_serviceSpecificInfo_ANON_79, deleteVariableAccess, PyCompatAsnType_FromParent(&PyAsnDeleteVariableAccess_Error_Type, parent,  (void *)&src->choice.deleteVariableAccess));
+PY_IMPL_CHOICE_GETATTR(ServiceError_serviceSpecificInfo_ANON_79, ServiceError__serviceSpecificInfo, deleteVariableAccess, deleteVariableAccess);
+PY_IMPL_CHOICE_GENERIC_SETATTR(ServiceError_serviceSpecificInfo_ANON_79, ServiceError__serviceSpecificInfo, deleteVariableAccess, deleteVariableAccess, *asn_DEF_ServiceError.elements[3].type);
+PY_IMPL_CHOICE_ATTR_FROMPY(ServiceError_serviceSpecificInfo_ANON_79, ServiceError__serviceSpecificInfo, deleteNamedVariableList, deleteNamedVariableList,PyAsnDeleteNamedVariableList_Error_FromPython(value, &dst->choice.deleteNamedVariableList));
+PY_IMPL_CHOICE_ATTR_TOPY(ServiceError_serviceSpecificInfo_ANON_79, deleteNamedVariableList, PyCompatAsnType_FromParent(&PyAsnDeleteNamedVariableList_Error_Type, parent,  (void *)&src->choice.deleteNamedVariableList));
+PY_IMPL_CHOICE_GETATTR(ServiceError_serviceSpecificInfo_ANON_79, ServiceError__serviceSpecificInfo, deleteNamedVariableList, deleteNamedVariableList);
+PY_IMPL_CHOICE_GENERIC_SETATTR(ServiceError_serviceSpecificInfo_ANON_79, ServiceError__serviceSpecificInfo, deleteNamedVariableList, deleteNamedVariableList, *asn_DEF_ServiceError.elements[3].type);
+PY_IMPL_CHOICE_ATTR_FROMPY(ServiceError_serviceSpecificInfo_ANON_79, ServiceError__serviceSpecificInfo, deleteNamedType, deleteNamedType,PyAsnDeleteNamedType_Error_FromPython(value, &dst->choice.deleteNamedType));
+PY_IMPL_CHOICE_ATTR_TOPY(ServiceError_serviceSpecificInfo_ANON_79, deleteNamedType, PyCompatAsnType_FromParent(&PyAsnDeleteNamedType_Error_Type, parent,  (void *)&src->choice.deleteNamedType));
+PY_IMPL_CHOICE_GETATTR(ServiceError_serviceSpecificInfo_ANON_79, ServiceError__serviceSpecificInfo, deleteNamedType, deleteNamedType);
+PY_IMPL_CHOICE_GENERIC_SETATTR(ServiceError_serviceSpecificInfo_ANON_79, ServiceError__serviceSpecificInfo, deleteNamedType, deleteNamedType, *asn_DEF_ServiceError.elements[3].type);
+PY_IMPL_CHOICE_ATTR_FROMPY(ServiceError_serviceSpecificInfo_ANON_79, ServiceError__serviceSpecificInfo, defineEventEnrollment_Error, defineEventEnrollment_Error,PyAsnDefineEventEnrollment_Error_FromPython(value, &dst->choice.defineEventEnrollment_Error));
+PY_IMPL_CHOICE_ATTR_TOPY(ServiceError_serviceSpecificInfo_ANON_79, defineEventEnrollment_Error, PyCompatAsnType_FromParent(&PyAsnDefineEventEnrollment_Error_Type, parent,  (void *)&src->choice.defineEventEnrollment_Error));
+PY_IMPL_CHOICE_GETATTR(ServiceError_serviceSpecificInfo_ANON_79, ServiceError__serviceSpecificInfo, defineEventEnrollment_Error, defineEventEnrollment_Error);
+PY_IMPL_CHOICE_GENERIC_SETATTR(ServiceError_serviceSpecificInfo_ANON_79, ServiceError__serviceSpecificInfo, defineEventEnrollment_Error, defineEventEnrollment_Error, *asn_DEF_ServiceError.elements[3].type);
+PY_IMPL_CHOICE_ATTR_FROMPY(ServiceError_serviceSpecificInfo_ANON_79, ServiceError__serviceSpecificInfo, fileRename, fileRename,PyAsnFileRename_Error_FromPython(value, &dst->choice.fileRename));
+PY_IMPL_CHOICE_ATTR_TOPY(ServiceError_serviceSpecificInfo_ANON_79, fileRename, PyCompatAsnType_FromParent(&PyAsnFileRename_Error_Type, parent,  (void *)&src->choice.fileRename));
+PY_IMPL_CHOICE_GETATTR(ServiceError_serviceSpecificInfo_ANON_79, ServiceError__serviceSpecificInfo, fileRename, fileRename);
+PY_IMPL_CHOICE_GENERIC_SETATTR(ServiceError_serviceSpecificInfo_ANON_79, ServiceError__serviceSpecificInfo, fileRename, fileRename, *asn_DEF_ServiceError.elements[3].type);
+PY_IMPL_CHOICE_ATTR_FROMPY(ServiceError_serviceSpecificInfo_ANON_79, ServiceError__serviceSpecificInfo, additionalService, additionalService,PyAsnAdditionalService_Error_FromPython(value, &dst->choice.additionalService));
+PY_IMPL_CHOICE_ATTR_TOPY(ServiceError_serviceSpecificInfo_ANON_79, additionalService, PyCompatAsnType_FromParent(&PyAsnAdditionalService_Error_Type, parent,  (void *)&src->choice.additionalService));
+PY_IMPL_CHOICE_GETATTR(ServiceError_serviceSpecificInfo_ANON_79, ServiceError__serviceSpecificInfo, additionalService, additionalService);
+PY_IMPL_CHOICE_GENERIC_SETATTR(ServiceError_serviceSpecificInfo_ANON_79, ServiceError__serviceSpecificInfo, additionalService, additionalService, *asn_DEF_ServiceError.elements[3].type);
+PY_IMPL_CHOICE_ATTR_FROMPY(ServiceError_serviceSpecificInfo_ANON_79, ServiceError__serviceSpecificInfo, changeAccessControl, changeAccessControl,PyAsnChangeAccessControl_Error_FromPython(value, &dst->choice.changeAccessControl));
+PY_IMPL_CHOICE_ATTR_TOPY(ServiceError_serviceSpecificInfo_ANON_79, changeAccessControl, PyCompatAsnType_FromParent(&PyAsnChangeAccessControl_Error_Type, parent,  (void *)&src->choice.changeAccessControl));
+PY_IMPL_CHOICE_GETATTR(ServiceError_serviceSpecificInfo_ANON_79, ServiceError__serviceSpecificInfo, changeAccessControl, changeAccessControl);
+PY_IMPL_CHOICE_GENERIC_SETATTR(ServiceError_serviceSpecificInfo_ANON_79, ServiceError__serviceSpecificInfo, changeAccessControl, changeAccessControl, *asn_DEF_ServiceError.elements[3].type);
+PY_IMPL_CHECK_CONSTRAINTS(ServiceError_serviceSpecificInfo_ANON_79, asn_DEF_ServiceError.elements[3].type);
+PY_IMPL_ENCODE(ServiceError_serviceSpecificInfo_ANON_79, asn_DEF_ServiceError.elements[3].type);
+PY_IMPL_DECODE(ServiceError_serviceSpecificInfo_ANON_79, asn_DEF_ServiceError.elements[3].type);
+PY_IMPL_DEALLOC(ServiceError_serviceSpecificInfo_ANON_79, *(asn_DEF_ServiceError.elements[3].type));
+PY_IMPL_SEQ_TOPY(ServiceError_serviceSpecificInfo_ANON_79, asn_DEF_ServiceError.elements[3].type);
+PY_IMPL_GENERIC_REPR(ServiceError_serviceSpecificInfo_ANON_79, ServiceError__serviceSpecificInfo);
+PY_IMPL_DECODE_BER(ServiceError_serviceSpecificInfo_ANON_79);
+PY_IMPL_ENCODE_SPECIFIC(ServiceError_serviceSpecificInfo_ANON_79, ber, ATS_BER);
+PY_IMPL_DECODE_DER(ServiceError_serviceSpecificInfo_ANON_79);
+PY_IMPL_ENCODE_SPECIFIC(ServiceError_serviceSpecificInfo_ANON_79, der, ATS_DER);
+PY_IMPL_DECODE_CER(ServiceError_serviceSpecificInfo_ANON_79);
+PY_IMPL_ENCODE_SPECIFIC(ServiceError_serviceSpecificInfo_ANON_79, cer, ATS_BER);
+PY_IMPL_DECODE_XER(ServiceError_serviceSpecificInfo_ANON_79);
+PY_IMPL_ENCODE_XER(ServiceError_serviceSpecificInfo_ANON_79);
+PY_IMPL_ENCODE_SPECIFIC(ServiceError_serviceSpecificInfo_ANON_79, plain, ATS_NONSTANDARD_PLAINTEXT);
+PY_IMPL_DECODE_JER(ServiceError_serviceSpecificInfo_ANON_79);
+PY_IMPL_ENCODE_JER(ServiceError_serviceSpecificInfo_ANON_79);
+PyObject *PyAsnEnumServiceError_serviceSpecificInfo_ANON_79_PRESENT_Type = NULL;
+PY_IMPL_CHOICE_PRESENT_ATTR(ServiceError_serviceSpecificInfo_ANON_79);
+PY_IMPL_GENERIC_NEW(ServiceError_serviceSpecificInfo_ANON_79, NULL);
+PY_IMPL_GENERIC_IS_VALID(ServiceError_serviceSpecificInfo_ANON_79);
+PY_IMPL_CHOICE_FROMPY(ServiceError_serviceSpecificInfo_ANON_79, asn_DEF_ServiceError.elements[3].type,
+	PY_IMPL_CHOICE_INIT_ATTR(ServiceError_serviceSpecificInfo_ANON_79, ServiceError__serviceSpecificInfo, obtainFile, obtainFile, obtainFile);
+	PY_IMPL_CHOICE_INIT_ATTR(ServiceError_serviceSpecificInfo_ANON_79, ServiceError__serviceSpecificInfo, start, start, start);
+	PY_IMPL_CHOICE_INIT_ATTR(ServiceError_serviceSpecificInfo_ANON_79, ServiceError__serviceSpecificInfo, stop, stop, stop);
+	PY_IMPL_CHOICE_INIT_ATTR(ServiceError_serviceSpecificInfo_ANON_79, ServiceError__serviceSpecificInfo, resume, resume, resume);
+	PY_IMPL_CHOICE_INIT_ATTR(ServiceError_serviceSpecificInfo_ANON_79, ServiceError__serviceSpecificInfo, reset, reset, reset);
+	PY_IMPL_CHOICE_INIT_ATTR(ServiceError_serviceSpecificInfo_ANON_79, ServiceError__serviceSpecificInfo, deleteVariableAccess, deleteVariableAccess, deleteVariableAccess);
+	PY_IMPL_CHOICE_INIT_ATTR(ServiceError_serviceSpecificInfo_ANON_79, ServiceError__serviceSpecificInfo, deleteNamedVariableList, deleteNamedVariableList, deleteNamedVariableList);
+	PY_IMPL_CHOICE_INIT_ATTR(ServiceError_serviceSpecificInfo_ANON_79, ServiceError__serviceSpecificInfo, deleteNamedType, deleteNamedType, deleteNamedType);
+	PY_IMPL_CHOICE_INIT_ATTR(ServiceError_serviceSpecificInfo_ANON_79, ServiceError__serviceSpecificInfo, defineEventEnrollment_Error, defineEventEnrollment_Error, defineEventEnrollment_Error);
+	PY_IMPL_CHOICE_INIT_ATTR(ServiceError_serviceSpecificInfo_ANON_79, ServiceError__serviceSpecificInfo, fileRename, fileRename, fileRename);
+	PY_IMPL_CHOICE_INIT_ATTR(ServiceError_serviceSpecificInfo_ANON_79, ServiceError__serviceSpecificInfo, additionalService, additionalService, additionalService);
+	PY_IMPL_CHOICE_INIT_ATTR(ServiceError_serviceSpecificInfo_ANON_79, ServiceError__serviceSpecificInfo, changeAccessControl, changeAccessControl, changeAccessControl);
 );
-PY_IMPL_CHOICE_INIT_GENERIC(ServiceError_serviceSpecificInfo_ANON_78, ServiceError__serviceSpecificInfo);
-PY_IMPL_SEQ_ANON_ATTR_FROMPY(ServiceError, serviceSpecificInfo, src->serviceSpecificInfo, ServiceError_serviceSpecificInfo_ANON_78);
-PY_IMPL_SEQ_ANON_ATTR_TOPY(ServiceError, serviceSpecificInfo, src->serviceSpecificInfo, ServiceError_serviceSpecificInfo_ANON_78);
-PY_IMPL_SEQ_INNER_OPT_SETATTR(ServiceError, serviceSpecificInfo, serviceSpecificInfo, ServiceError_serviceSpecificInfo_ANON_78, *asn_DEF_ServiceError.elements[3].type);
-PY_IMPL_SEQ_INNER_GETATTR(ServiceError, serviceSpecificInfo, self->ob_value->serviceSpecificInfo, ServiceError_serviceSpecificInfo_ANON_78);
+PY_IMPL_CHOICE_INIT_GENERIC(ServiceError_serviceSpecificInfo_ANON_79, ServiceError__serviceSpecificInfo);
+PY_IMPL_SEQ_ANON_ATTR_FROMPY(ServiceError, serviceSpecificInfo, src->serviceSpecificInfo, ServiceError_serviceSpecificInfo_ANON_79);
+PY_IMPL_SEQ_ANON_ATTR_TOPY(ServiceError, serviceSpecificInfo, src->serviceSpecificInfo, ServiceError_serviceSpecificInfo_ANON_79);
+PY_IMPL_SEQ_INNER_OPT_SETATTR(ServiceError, serviceSpecificInfo, serviceSpecificInfo, ServiceError_serviceSpecificInfo_ANON_79, *asn_DEF_ServiceError.elements[3].type);
+PY_IMPL_SEQ_INNER_GETATTR(ServiceError, serviceSpecificInfo, self->ob_value->serviceSpecificInfo, ServiceError_serviceSpecificInfo_ANON_79);
 PY_IMPL_SEQ_ATTR_GENERIC_FREE(ServiceError, additionalCode);
 PY_IMPL_SEQ_ATTR_GENERIC_NEW(ServiceError, additionalCode, long);
 PY_IMPL_SEQ_ATTR_INDIRECT_FROMPY(ServiceError, additionalCode, PyCompatLong_FromObject(value, target, 1));
@@ -256,20 +256,20 @@ static PyGetSetDef PyAsnServiceError_errorClass_ANON_2_getset[] = {
 	PY_IMPL_GETSET_ITEM_INTERNAL(ServiceError_errorClass_ANON_2, others, others),
 	{NULL, NULL, NULL, NULL, NULL} /* sentinel */
 };
-static PyGetSetDef PyAsnServiceError_serviceSpecificInfo_ANON_78_getset[] = {
-	{"present",  (getter)PyAsnServiceError_serviceSpecificInfo_ANON_78__get_present, NULL, NULL, NULL},
-	PY_IMPL_GETSET_ITEM_INTERNAL(ServiceError_serviceSpecificInfo_ANON_78, obtainFile, obtainFile),
-	PY_IMPL_GETSET_ITEM_INTERNAL(ServiceError_serviceSpecificInfo_ANON_78, start, start),
-	PY_IMPL_GETSET_ITEM_INTERNAL(ServiceError_serviceSpecificInfo_ANON_78, stop, stop),
-	PY_IMPL_GETSET_ITEM_INTERNAL(ServiceError_serviceSpecificInfo_ANON_78, resume, resume),
-	PY_IMPL_GETSET_ITEM_INTERNAL(ServiceError_serviceSpecificInfo_ANON_78, reset, reset),
-	PY_IMPL_GETSET_ITEM_INTERNAL(ServiceError_serviceSpecificInfo_ANON_78, deleteVariableAccess, deleteVariableAccess),
-	PY_IMPL_GETSET_ITEM_INTERNAL(ServiceError_serviceSpecificInfo_ANON_78, deleteNamedVariableList, deleteNamedVariableList),
-	PY_IMPL_GETSET_ITEM_INTERNAL(ServiceError_serviceSpecificInfo_ANON_78, deleteNamedType, deleteNamedType),
-	PY_IMPL_GETSET_ITEM_INTERNAL(ServiceError_serviceSpecificInfo_ANON_78, defineEventEnrollment_Error, defineEventEnrollment_Error),
-	PY_IMPL_GETSET_ITEM_INTERNAL(ServiceError_serviceSpecificInfo_ANON_78, fileRename, fileRename),
-	PY_IMPL_GETSET_ITEM_INTERNAL(ServiceError_serviceSpecificInfo_ANON_78, additionalService, additionalService),
-	PY_IMPL_GETSET_ITEM_INTERNAL(ServiceError_serviceSpecificInfo_ANON_78, changeAccessControl, changeAccessControl),
+static PyGetSetDef PyAsnServiceError_serviceSpecificInfo_ANON_79_getset[] = {
+	{"present",  (getter)PyAsnServiceError_serviceSpecificInfo_ANON_79__get_present, NULL, NULL, NULL},
+	PY_IMPL_GETSET_ITEM_INTERNAL(ServiceError_serviceSpecificInfo_ANON_79, obtainFile, obtainFile),
+	PY_IMPL_GETSET_ITEM_INTERNAL(ServiceError_serviceSpecificInfo_ANON_79, start, start),
+	PY_IMPL_GETSET_ITEM_INTERNAL(ServiceError_serviceSpecificInfo_ANON_79, stop, stop),
+	PY_IMPL_GETSET_ITEM_INTERNAL(ServiceError_serviceSpecificInfo_ANON_79, resume, resume),
+	PY_IMPL_GETSET_ITEM_INTERNAL(ServiceError_serviceSpecificInfo_ANON_79, reset, reset),
+	PY_IMPL_GETSET_ITEM_INTERNAL(ServiceError_serviceSpecificInfo_ANON_79, deleteVariableAccess, deleteVariableAccess),
+	PY_IMPL_GETSET_ITEM_INTERNAL(ServiceError_serviceSpecificInfo_ANON_79, deleteNamedVariableList, deleteNamedVariableList),
+	PY_IMPL_GETSET_ITEM_INTERNAL(ServiceError_serviceSpecificInfo_ANON_79, deleteNamedType, deleteNamedType),
+	PY_IMPL_GETSET_ITEM_INTERNAL(ServiceError_serviceSpecificInfo_ANON_79, defineEventEnrollment_Error, defineEventEnrollment_Error),
+	PY_IMPL_GETSET_ITEM_INTERNAL(ServiceError_serviceSpecificInfo_ANON_79, fileRename, fileRename),
+	PY_IMPL_GETSET_ITEM_INTERNAL(ServiceError_serviceSpecificInfo_ANON_79, additionalService, additionalService),
+	PY_IMPL_GETSET_ITEM_INTERNAL(ServiceError_serviceSpecificInfo_ANON_79, changeAccessControl, changeAccessControl),
 	{NULL, NULL, NULL, NULL, NULL} /* sentinel */
 };
 static PyGetSetDef PyAsnServiceError_getset[] = {
@@ -297,20 +297,20 @@ static PyMethodDef PyAsnServiceError_errorClass_ANON_2_methods[] = {
 	PY_IMPL_METHODDEF_ITEM(ServiceError_errorClass_ANON_2, jer_decode, METH_VARARGS | METH_KEYWORDS | METH_STATIC),
 	{NULL, NULL, 0, NULL} /* sentinel */
 };
-static PyMethodDef PyAsnServiceError_serviceSpecificInfo_ANON_78_methods[] = {
-	PY_IMPL_METHODDEF_ITEM(ServiceError_serviceSpecificInfo_ANON_78, is_valid, METH_NOARGS),
-	PY_IMPL_METHODDEF_ITEM(ServiceError_serviceSpecificInfo_ANON_78, check_constraints, METH_NOARGS),
-	PY_IMPL_METHODDEF_ITEM(ServiceError_serviceSpecificInfo_ANON_78, ber_encode, METH_NOARGS),
-	PY_IMPL_METHODDEF_ITEM(ServiceError_serviceSpecificInfo_ANON_78, ber_decode, METH_VARARGS | METH_STATIC),
-	PY_IMPL_METHODDEF_ITEM(ServiceError_serviceSpecificInfo_ANON_78, der_encode, METH_NOARGS),
-	PY_IMPL_METHODDEF_ITEM(ServiceError_serviceSpecificInfo_ANON_78, der_decode, METH_VARARGS | METH_STATIC),
-	PY_IMPL_METHODDEF_ITEM(ServiceError_serviceSpecificInfo_ANON_78, cer_encode, METH_NOARGS),
-	PY_IMPL_METHODDEF_ITEM(ServiceError_serviceSpecificInfo_ANON_78, cer_decode, METH_VARARGS | METH_STATIC),
-	PY_IMPL_METHODDEF_ITEM(ServiceError_serviceSpecificInfo_ANON_78, xer_encode, METH_VARARGS | METH_KEYWORDS),
-	PY_IMPL_METHODDEF_ITEM(ServiceError_serviceSpecificInfo_ANON_78, xer_decode, METH_VARARGS | METH_KEYWORDS | METH_STATIC),
-	{"to_text", (PyCFunction)PyAsnServiceError_serviceSpecificInfo_ANON_78__plain_encode, (METH_NOARGS), NULL},
-	PY_IMPL_METHODDEF_ITEM(ServiceError_serviceSpecificInfo_ANON_78, jer_encode, METH_VARARGS | METH_KEYWORDS),
-	PY_IMPL_METHODDEF_ITEM(ServiceError_serviceSpecificInfo_ANON_78, jer_decode, METH_VARARGS | METH_KEYWORDS | METH_STATIC),
+static PyMethodDef PyAsnServiceError_serviceSpecificInfo_ANON_79_methods[] = {
+	PY_IMPL_METHODDEF_ITEM(ServiceError_serviceSpecificInfo_ANON_79, is_valid, METH_NOARGS),
+	PY_IMPL_METHODDEF_ITEM(ServiceError_serviceSpecificInfo_ANON_79, check_constraints, METH_NOARGS),
+	PY_IMPL_METHODDEF_ITEM(ServiceError_serviceSpecificInfo_ANON_79, ber_encode, METH_NOARGS),
+	PY_IMPL_METHODDEF_ITEM(ServiceError_serviceSpecificInfo_ANON_79, ber_decode, METH_VARARGS | METH_STATIC),
+	PY_IMPL_METHODDEF_ITEM(ServiceError_serviceSpecificInfo_ANON_79, der_encode, METH_NOARGS),
+	PY_IMPL_METHODDEF_ITEM(ServiceError_serviceSpecificInfo_ANON_79, der_decode, METH_VARARGS | METH_STATIC),
+	PY_IMPL_METHODDEF_ITEM(ServiceError_serviceSpecificInfo_ANON_79, cer_encode, METH_NOARGS),
+	PY_IMPL_METHODDEF_ITEM(ServiceError_serviceSpecificInfo_ANON_79, cer_decode, METH_VARARGS | METH_STATIC),
+	PY_IMPL_METHODDEF_ITEM(ServiceError_serviceSpecificInfo_ANON_79, xer_encode, METH_VARARGS | METH_KEYWORDS),
+	PY_IMPL_METHODDEF_ITEM(ServiceError_serviceSpecificInfo_ANON_79, xer_decode, METH_VARARGS | METH_KEYWORDS | METH_STATIC),
+	{"to_text", (PyCFunction)PyAsnServiceError_serviceSpecificInfo_ANON_79__plain_encode, (METH_NOARGS), NULL},
+	PY_IMPL_METHODDEF_ITEM(ServiceError_serviceSpecificInfo_ANON_79, jer_encode, METH_VARARGS | METH_KEYWORDS),
+	PY_IMPL_METHODDEF_ITEM(ServiceError_serviceSpecificInfo_ANON_79, jer_decode, METH_VARARGS | METH_KEYWORDS | METH_STATIC),
 	{NULL, NULL, 0, NULL} /* sentinel */
 };
 static PyMethodDef PyAsnServiceError_methods[] = {
@@ -344,17 +344,17 @@ PyTypeObject PyAsnServiceError_errorClass_ANON_2_Type = {
 	.tp_methods = PyAsnServiceError_errorClass_ANON_2_methods,
 	.tp_doc = "ASN.1 anonymous type ServiceError__errorClass_TYPE part of ServiceError",
 };
-PyTypeObject PyAsnServiceError_serviceSpecificInfo_ANON_78_Type = {
+PyTypeObject PyAsnServiceError_serviceSpecificInfo_ANON_79_Type = {
 	PyVarObject_HEAD_INIT(NULL, 0)
 	.tp_name = "_mms.ServiceError.serviceSpecificInfo_TYPE",
-	.tp_basicsize = sizeof(PyAsnServiceError_serviceSpecificInfo_ANON_78Object),
+	.tp_basicsize = sizeof(PyAsnServiceError_serviceSpecificInfo_ANON_79Object),
 	.tp_flags = Py_TPFLAGS_DEFAULT | Py_TPFLAGS_BASETYPE,
-	.tp_new = (newfunc)PyAsnServiceError_serviceSpecificInfo_ANON_78__new,
-	.tp_repr = (reprfunc)PyAsnServiceError_serviceSpecificInfo_ANON_78__repr,
-	.tp_dealloc = (destructor)PyAsnServiceError_serviceSpecificInfo_ANON_78__dealloc,
-	.tp_init = (initproc)PyAsnServiceError_serviceSpecificInfo_ANON_78__init,
-	.tp_getset = PyAsnServiceError_serviceSpecificInfo_ANON_78_getset,
-	.tp_methods = PyAsnServiceError_serviceSpecificInfo_ANON_78_methods,
+	.tp_new = (newfunc)PyAsnServiceError_serviceSpecificInfo_ANON_79__new,
+	.tp_repr = (reprfunc)PyAsnServiceError_serviceSpecificInfo_ANON_79__repr,
+	.tp_dealloc = (destructor)PyAsnServiceError_serviceSpecificInfo_ANON_79__dealloc,
+	.tp_init = (initproc)PyAsnServiceError_serviceSpecificInfo_ANON_79__init,
+	.tp_getset = PyAsnServiceError_serviceSpecificInfo_ANON_79_getset,
+	.tp_methods = PyAsnServiceError_serviceSpecificInfo_ANON_79_methods,
 	.tp_doc = "ASN.1 anonymous type ServiceError__serviceSpecificInfo_TYPE part of ServiceError",
 };
 PyTypeObject PyAsnServiceError_Type = {
@@ -374,7 +374,7 @@ PyTypeObject PyAsnServiceError_Type = {
 /* module initializer */
 int PyAsnServiceError_ModSetupTypes(void) {
 	if (PyType_Ready(&PyAsnServiceError_errorClass_ANON_2_Type) < 0) return -1;
-	if (PyType_Ready(&PyAsnServiceError_serviceSpecificInfo_ANON_78_Type) < 0) return -1;
+	if (PyType_Ready(&PyAsnServiceError_serviceSpecificInfo_ANON_79_Type) < 0) return -1;
 	if (PyType_Ready(&PyAsnServiceError_Type) < 0) return -1;
     return 0;
 }
@@ -393,7 +393,7 @@ void PyAsnServiceError_ModClear(PyObject *mod) {
 	Py_CLEAR(PyAsnEnumServiceError_errorClass_ANON_2_cancel_Type);
 	Py_CLEAR(PyAsnEnumServiceError_errorClass_ANON_2_file_Type);
 	Py_CLEAR(PyAsnEnumServiceError_errorClass_ANON_2_PRESENT_Type);
-	Py_CLEAR(PyAsnEnumServiceError_serviceSpecificInfo_ANON_78_PRESENT_Type);
+	Py_CLEAR(PyAsnEnumServiceError_serviceSpecificInfo_ANON_79_PRESENT_Type);
 }
 
 int PyAsnServiceError_ModInit(PyObject *mod) {
@@ -436,6 +436,7 @@ int PyAsnServiceError_ModInit(PyObject *mod) {
 		PY_IMPL_ENUM_VALUE(V_other, ServiceError__errorClass__service_other, 0);
 		PY_IMPL_ENUM_VALUE(V_primitives_out_of_sequence, ServiceError__errorClass__service_primitives_out_of_sequence, 1);
 		PY_IMPL_ENUM_VALUE(V_object_state_conflict, ServiceError__errorClass__service_object_state_conflict, 2);
+		PY_IMPL_ENUM_VALUE(V_pdu_size, ServiceError__errorClass__service_pdu_size, 3);
 		PY_IMPL_ENUM_VALUE(V_continuation_invalid, ServiceError__errorClass__service_continuation_invalid, 4);
 		PY_IMPL_ENUM_VALUE(V_object_constraint_conflict, ServiceError__errorClass__service_object_constraint_conflict, 5);
 	);
@@ -512,7 +513,7 @@ int PyAsnServiceError_ModInit(PyObject *mod) {
 	PY_IMPL_ASSIGN_ENUM_DIRECT(ServiceError_errorClass_ANON_2, ServiceError_errorClass_ANON_2_PRESENT, PRESENT);
 	PY_IMPL_MOD_ASSIGN_OBJECT(ServiceError, errorClass_TYPE, &PyAsnServiceError_errorClass_ANON_2_Type);
 	PY_IMPL_MOD_ADD_OBJECT(mod, ServiceError_errorClass_ANON_2);
-	PY_IMPL_NEW_ENUM(ServiceError.serviceSpecificInfo_TYPE.PRESENT, PyAsnEnumServiceError_serviceSpecificInfo_ANON_78_PRESENT_Type, -1, 
+	PY_IMPL_NEW_ENUM(ServiceError.serviceSpecificInfo_TYPE.PRESENT, PyAsnEnumServiceError_serviceSpecificInfo_ANON_79_PRESENT_Type, -1, 
 		PY_IMPL_ENUM_VALUE(PR_NOTHING, ServiceError__serviceSpecificInfo_PR_NOTHING, 0);
 		PY_IMPL_ENUM_VALUE(PR_obtainFile, ServiceError__serviceSpecificInfo_PR_obtainFile, 1);
 		PY_IMPL_ENUM_VALUE(PR_start, ServiceError__serviceSpecificInfo_PR_start, 2);
@@ -527,9 +528,9 @@ int PyAsnServiceError_ModInit(PyObject *mod) {
 		PY_IMPL_ENUM_VALUE(PR_additionalService, ServiceError__serviceSpecificInfo_PR_additionalService, 11);
 		PY_IMPL_ENUM_VALUE(PR_changeAccessControl, ServiceError__serviceSpecificInfo_PR_changeAccessControl, 12);
 	);
-	PY_IMPL_ASSIGN_ENUM_DIRECT(ServiceError_serviceSpecificInfo_ANON_78, ServiceError_serviceSpecificInfo_ANON_78_PRESENT, PRESENT);
-	PY_IMPL_MOD_ASSIGN_OBJECT(ServiceError, serviceSpecificInfo_TYPE, &PyAsnServiceError_serviceSpecificInfo_ANON_78_Type);
-	PY_IMPL_MOD_ADD_OBJECT(mod, ServiceError_serviceSpecificInfo_ANON_78);
+	PY_IMPL_ASSIGN_ENUM_DIRECT(ServiceError_serviceSpecificInfo_ANON_79, ServiceError_serviceSpecificInfo_ANON_79_PRESENT, PRESENT);
+	PY_IMPL_MOD_ASSIGN_OBJECT(ServiceError, serviceSpecificInfo_TYPE, &PyAsnServiceError_serviceSpecificInfo_ANON_79_Type);
+	PY_IMPL_MOD_ADD_OBJECT(mod, ServiceError_serviceSpecificInfo_ANON_79);
 	PY_IMPL_MOD_ADD_OBJECT(mod, ServiceError);
     return 0;
 }
