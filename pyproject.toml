@@ -48,6 +48,7 @@ dependencies = [
   "rich",              # colored terminal output and logging
   "cmd2",              # advanced command shells (cmd 2.0)
   "typing-extensions", # compatibility with 3.10
+  "crcmod",            # dnp3 checksum algorithm
 ]
 
 [project.urls]
