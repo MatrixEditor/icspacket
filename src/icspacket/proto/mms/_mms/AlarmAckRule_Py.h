@@ -26,7 +26,7 @@ PyCompat_DEF_ENUM(AlarmAckRule);
 static inline int PyAsnAlarmAckRule_FromPython(PyObject *pObj, AlarmAckRule_t *pDst)
 {
 	PY_IMPL_FROMPY_COMPAT(AlarmAckRule, pObj, pDst);
-	return PyCompatEnum_FromObject(pObj, (void *)pDst, 1);
+	return PyCompatEnum_FromObject(pObj, (void *)pDst, 0);
 }
 static inline PyObject *PyAsnAlarmAckRule_ToPython(AlarmAckRule_t *pSrc, PyObject *parent)
 {

@@ -26,7 +26,7 @@ PyCompat_DEF_ENUM(ABRT_source);
 static inline int PyAsnABRT_source_FromPython(PyObject *pObj, ABRT_source_t *pDst)
 {
 	PY_IMPL_FROMPY_COMPAT(ABRT_source, pObj, pDst);
-	return PyCompatEnum_FromObject(pObj, (void *)pDst, 1);
+	return PyCompatEnum_FromObject(pObj, (void *)pDst, 0);
 }
 static inline PyObject *PyAsnABRT_source_ToPython(ABRT_source_t *pSrc, PyObject *parent)
 {

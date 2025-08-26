@@ -6,11 +6,11 @@
 #include <Presentation-context-deletion-result-list_Py.h>
 
 /* class implementation */
-PY_IMPL_SEQ_OF_ITEM_FROMPY(Presentation_context_deletion_result_list, Py_ssize_t, PyCompatLong_FromObject(value, target, 1));
-PY_IMPL_SEQ_OF_ITEM_TOPY(Presentation_context_deletion_result_list, Py_ssize_t, PyCompatLong_AsObject(src, 1));
-PY_IMPL_SEQ_OF_FROMPY(Presentation_context_deletion_result_list, Py_ssize_t);
-PY_IMPL_SEQ_OF_SETITEM(Presentation_context_deletion_result_list, Py_ssize_t);
-PY_IMPL_SEQ_OF_ADD(Presentation_context_deletion_result_list, Py_ssize_t);
+PY_IMPL_SEQ_OF_ITEM_FROMPY(Presentation_context_deletion_result_list, unsigned long, PyCompatLong_FromObject(value, target, 0));
+PY_IMPL_SEQ_OF_ITEM_TOPY(Presentation_context_deletion_result_list, unsigned long, PyCompatLong_AsObject(src, 0));
+PY_IMPL_SEQ_OF_FROMPY(Presentation_context_deletion_result_list, unsigned long);
+PY_IMPL_SEQ_OF_SETITEM(Presentation_context_deletion_result_list, unsigned long);
+PY_IMPL_SEQ_OF_ADD(Presentation_context_deletion_result_list, unsigned long);
 PY_IMPL_SEQ_OF_NEW(Presentation_context_deletion_result_list);
 PY_IMPL_SEQ_OF_DEALLOC(Presentation_context_deletion_result_list, asn_set_empty);
 PY_IMPL_SEQ_OF_INIT(Presentation_context_deletion_result_list);

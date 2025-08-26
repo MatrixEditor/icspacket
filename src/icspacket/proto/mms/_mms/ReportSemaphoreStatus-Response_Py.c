@@ -11,8 +11,8 @@ PY_IMPL_SEQ_ATTR_TOPY(ReportSemaphoreStatus_Response, mmsDeletable, PyCompatBool
 PY_IMPL_SEQ_GETATTR(ReportSemaphoreStatus_Response, mmsDeletable);
 PY_IMPL_SEQ_SETATTR(ReportSemaphoreStatus_Response, mmsDeletable);
 PyObject *PyAsnEnumReportSemaphoreStatus_Response_Class_Type = NULL;
-PY_IMPL_SEQ_ATTR_FROMPY(ReportSemaphoreStatus_Response, Class, PyCompatEnum_FromObject(value, target, 1));
-PY_IMPL_SEQ_ATTR_TOPY(ReportSemaphoreStatus_Response, Class, PyCompatEnum_AsObject(PyAsnEnumReportSemaphoreStatus_Response_Class_Type, target, 1));
+PY_IMPL_SEQ_ATTR_FROMPY(ReportSemaphoreStatus_Response, Class, PyCompatEnum_FromObject(value, target, 0));
+PY_IMPL_SEQ_ATTR_TOPY(ReportSemaphoreStatus_Response, Class, PyCompatEnum_AsObject(PyAsnEnumReportSemaphoreStatus_Response_Class_Type, target, 0));
 PY_IMPL_SEQ_GETATTR(ReportSemaphoreStatus_Response, Class);
 PY_IMPL_SEQ_SETATTR(ReportSemaphoreStatus_Response, Class);
 PY_IMPL_SEQ_ATTR_FROMPY(ReportSemaphoreStatus_Response, numberOfTokens, PyAsnUnsigned16_FromPython(value, (Unsigned16_t *)target));

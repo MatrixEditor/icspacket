@@ -7,13 +7,13 @@
 
 /* class implementation */
 PyObject *PyAsnEnumObjectClass_basicObjectClass_Type = NULL;
-PY_IMPL_CHOICE_ATTR_FROMPY(ObjectClass, ObjectClass, basicObjectClass, basicObjectClass,PyCompatEnum_FromObject(value, (void *)&dst->choice.basicObjectClass, 1));
-PY_IMPL_CHOICE_ATTR_TOPY(ObjectClass, basicObjectClass, PyCompatEnum_AsObject(PyAsnEnumObjectClass_basicObjectClass_Type, (void *)&src->choice.basicObjectClass, 1));
+PY_IMPL_CHOICE_ATTR_FROMPY(ObjectClass, ObjectClass, basicObjectClass, basicObjectClass,PyCompatEnum_FromObject(value, (void *)&dst->choice.basicObjectClass, 0));
+PY_IMPL_CHOICE_ATTR_TOPY(ObjectClass, basicObjectClass, PyCompatEnum_AsObject(PyAsnEnumObjectClass_basicObjectClass_Type, (void *)&src->choice.basicObjectClass, 0));
 PY_IMPL_CHOICE_GETATTR(ObjectClass, ObjectClass, basicObjectClass, basicObjectClass);
 PY_IMPL_CHOICE_SETATTR(ObjectClass, ObjectClass, basicObjectClass, basicObjectClass);
 PyObject *PyAsnEnumObjectClass_csObjectClass_Type = NULL;
-PY_IMPL_CHOICE_ATTR_FROMPY(ObjectClass, ObjectClass, csObjectClass, csObjectClass,PyCompatEnum_FromObject(value, (void *)&dst->choice.csObjectClass, 1));
-PY_IMPL_CHOICE_ATTR_TOPY(ObjectClass, csObjectClass, PyCompatEnum_AsObject(PyAsnEnumObjectClass_csObjectClass_Type, (void *)&src->choice.csObjectClass, 1));
+PY_IMPL_CHOICE_ATTR_FROMPY(ObjectClass, ObjectClass, csObjectClass, csObjectClass,PyCompatEnum_FromObject(value, (void *)&dst->choice.csObjectClass, 0));
+PY_IMPL_CHOICE_ATTR_TOPY(ObjectClass, csObjectClass, PyCompatEnum_AsObject(PyAsnEnumObjectClass_csObjectClass_Type, (void *)&src->choice.csObjectClass, 0));
 PY_IMPL_CHOICE_GETATTR(ObjectClass, ObjectClass, csObjectClass, csObjectClass);
 PY_IMPL_CHOICE_SETATTR(ObjectClass, ObjectClass, csObjectClass, csObjectClass);
 PY_IMPL_GENERIC_DEALLOC(ObjectClass);

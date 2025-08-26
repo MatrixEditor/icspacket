@@ -26,7 +26,7 @@ PyCompat_DEF_ENUM(EC_Class);
 static inline int PyAsnEC_Class_FromPython(PyObject *pObj, EC_Class_t *pDst)
 {
 	PY_IMPL_FROMPY_COMPAT(EC_Class, pObj, pDst);
-	return PyCompatEnum_FromObject(pObj, (void *)pDst, 1);
+	return PyCompatEnum_FromObject(pObj, (void *)pDst, 0);
 }
 static inline PyObject *PyAsnEC_Class_ToPython(EC_Class_t *pSrc, PyObject *parent)
 {

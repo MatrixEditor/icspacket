@@ -26,7 +26,7 @@ PyCompat_DEF_ENUM(Event_identifier);
 static inline int PyAsnEvent_identifier_FromPython(PyObject *pObj, Event_identifier_t *pDst)
 {
 	PY_IMPL_FROMPY_COMPAT(Event_identifier, pObj, pDst);
-	return PyCompatEnum_FromObject(pObj, (void *)pDst, 1);
+	return PyCompatEnum_FromObject(pObj, (void *)pDst, 0);
 }
 static inline PyObject *PyAsnEvent_identifier_ToPython(Event_identifier_t *pSrc, PyObject *parent)
 {

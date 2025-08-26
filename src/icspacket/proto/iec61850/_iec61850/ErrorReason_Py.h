@@ -26,7 +26,7 @@ PyCompat_DEF_ENUM(ErrorReason);
 static inline int PyAsnErrorReason_FromPython(PyObject *pObj, ErrorReason_t *pDst)
 {
 	PY_IMPL_FROMPY_COMPAT(ErrorReason, pObj, pDst);
-	return PyCompatEnum_FromObject(pObj, (void *)pDst, 1);
+	return PyCompatEnum_FromObject(pObj, (void *)pDst, 0);
 }
 static inline PyObject *PyAsnErrorReason_ToPython(ErrorReason_t *pSrc, PyObject *parent)
 {

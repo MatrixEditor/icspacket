@@ -26,7 +26,7 @@ PyCompat_DEF_ENUM(Provider_reason);
 static inline int PyAsnProvider_reason_FromPython(PyObject *pObj, Provider_reason_t *pDst)
 {
 	PY_IMPL_FROMPY_COMPAT(Provider_reason, pObj, pDst);
-	return PyCompatEnum_FromObject(pObj, (void *)pDst, 1);
+	return PyCompatEnum_FromObject(pObj, (void *)pDst, 0);
 }
 static inline PyObject *PyAsnProvider_reason_ToPython(Provider_reason_t *pSrc, PyObject *parent)
 {

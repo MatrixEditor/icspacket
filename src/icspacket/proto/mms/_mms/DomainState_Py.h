@@ -26,7 +26,7 @@ PyCompat_DEF_ENUM(DomainState);
 static inline int PyAsnDomainState_FromPython(PyObject *pObj, DomainState_t *pDst)
 {
 	PY_IMPL_FROMPY_COMPAT(DomainState, pObj, pDst);
-	return PyCompatEnum_FromObject(pObj, (void *)pDst, 1);
+	return PyCompatEnum_FromObject(pObj, (void *)pDst, 0);
 }
 static inline PyObject *PyAsnDomainState_ToPython(DomainState_t *pSrc, PyObject *parent)
 {

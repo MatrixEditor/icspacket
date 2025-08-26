@@ -26,7 +26,7 @@ PyCompat_DEF_ENUM(Abort_reason);
 static inline int PyAsnAbort_reason_FromPython(PyObject *pObj, Abort_reason_t *pDst)
 {
 	PY_IMPL_FROMPY_COMPAT(Abort_reason, pObj, pDst);
-	return PyCompatEnum_FromObject(pObj, (void *)pDst, 1);
+	return PyCompatEnum_FromObject(pObj, (void *)pDst, 0);
 }
 static inline PyObject *PyAsnAbort_reason_ToPython(Abort_reason_t *pSrc, PyObject *parent)
 {

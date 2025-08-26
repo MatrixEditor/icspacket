@@ -7,8 +7,8 @@
 
 /* class implementation */
 PyObject *PyAsnEnumMode_selector_mode_value_Type = NULL;
-PY_IMPL_SEQ_ATTR_FROMPY(Mode_selector, mode_value, PyCompatEnum_FromObject(value, target, 1));
-PY_IMPL_SEQ_ATTR_TOPY(Mode_selector, mode_value, PyCompatEnum_AsObject(PyAsnEnumMode_selector_mode_value_Type, target, 1));
+PY_IMPL_SEQ_ATTR_FROMPY(Mode_selector, mode_value, PyCompatEnum_FromObject(value, target, 0));
+PY_IMPL_SEQ_ATTR_TOPY(Mode_selector, mode_value, PyCompatEnum_AsObject(PyAsnEnumMode_selector_mode_value_Type, target, 0));
 PY_IMPL_SET_GETATTR(Mode_selector, Mode_selector, mode_value);
 PY_IMPL_SET_SETATTR(Mode_selector, Mode_selector, mode_value);
 PY_IMPL_GENERIC_DEALLOC(Mode_selector);

@@ -26,7 +26,7 @@ PyCompat_DEF_ENUM(ProgramInvocationState);
 static inline int PyAsnProgramInvocationState_FromPython(PyObject *pObj, ProgramInvocationState_t *pDst)
 {
 	PY_IMPL_FROMPY_COMPAT(ProgramInvocationState, pObj, pDst);
-	return PyCompatEnum_FromObject(pObj, (void *)pDst, 1);
+	return PyCompatEnum_FromObject(pObj, (void *)pDst, 0);
 }
 static inline PyObject *PyAsnProgramInvocationState_ToPython(ProgramInvocationState_t *pSrc, PyObject *parent)
 {

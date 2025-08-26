@@ -12,8 +12,8 @@ PY_IMPL_SEQ_REF_ATTR_TOPY(ReportSemaphoreEntryStatus_Request, semaphoreName, Obj
 PY_IMPL_SEQ_GETATTR(ReportSemaphoreEntryStatus_Request, semaphoreName);
 PY_IMPL_SEQ_SETATTR(ReportSemaphoreEntryStatus_Request, semaphoreName);
 PyObject *PyAsnEnumReportSemaphoreEntryStatus_Request_state_Type = NULL;
-PY_IMPL_SEQ_ATTR_FROMPY(ReportSemaphoreEntryStatus_Request, state, PyCompatEnum_FromObject(value, target, 1));
-PY_IMPL_SEQ_ATTR_TOPY(ReportSemaphoreEntryStatus_Request, state, PyCompatEnum_AsObject(PyAsnEnumReportSemaphoreEntryStatus_Request_state_Type, target, 1));
+PY_IMPL_SEQ_ATTR_FROMPY(ReportSemaphoreEntryStatus_Request, state, PyCompatEnum_FromObject(value, target, 0));
+PY_IMPL_SEQ_ATTR_TOPY(ReportSemaphoreEntryStatus_Request, state, PyCompatEnum_AsObject(PyAsnEnumReportSemaphoreEntryStatus_Request_state_Type, target, 0));
 PY_IMPL_SEQ_GETATTR(ReportSemaphoreEntryStatus_Request, state);
 PY_IMPL_SEQ_SETATTR(ReportSemaphoreEntryStatus_Request, state);
 PY_IMPL_SEQ_ATTR_GENERIC_FREE(ReportSemaphoreEntryStatus_Request, entryIDToStartAfter);

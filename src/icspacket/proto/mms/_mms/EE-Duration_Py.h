@@ -26,7 +26,7 @@ PyCompat_DEF_ENUM(EE_Duration);
 static inline int PyAsnEE_Duration_FromPython(PyObject *pObj, EE_Duration_t *pDst)
 {
 	PY_IMPL_FROMPY_COMPAT(EE_Duration, pObj, pDst);
-	return PyCompatEnum_FromObject(pObj, (void *)pDst, 1);
+	return PyCompatEnum_FromObject(pObj, (void *)pDst, 0);
 }
 static inline PyObject *PyAsnEE_Duration_ToPython(EE_Duration_t *pSrc, PyObject *parent)
 {

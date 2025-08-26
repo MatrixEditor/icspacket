@@ -26,7 +26,7 @@ PyCompat_DEF_ENUM(Release_response_reason);
 static inline int PyAsnRelease_response_reason_FromPython(PyObject *pObj, Release_response_reason_t *pDst)
 {
 	PY_IMPL_FROMPY_COMPAT(Release_response_reason, pObj, pDst);
-	return PyCompatEnum_FromObject(pObj, (void *)pDst, 1);
+	return PyCompatEnum_FromObject(pObj, (void *)pDst, 0);
 }
 static inline PyObject *PyAsnRelease_response_reason_ToPython(Release_response_reason_t *pSrc, PyObject *parent)
 {

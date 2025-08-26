@@ -7,13 +7,13 @@
 
 /* class implementation */
 PyObject *PyAsnEnumAssociate_source_diagnostic_acse_service_user_Type = NULL;
-PY_IMPL_CHOICE_ATTR_FROMPY(Associate_source_diagnostic, Associate_source_diagnostic, acse_service_user, acse_service_user,PyCompatEnum_FromObject(value, (void *)&dst->choice.acse_service_user, 1));
-PY_IMPL_CHOICE_ATTR_TOPY(Associate_source_diagnostic, acse_service_user, PyCompatEnum_AsObject(PyAsnEnumAssociate_source_diagnostic_acse_service_user_Type, (void *)&src->choice.acse_service_user, 1));
+PY_IMPL_CHOICE_ATTR_FROMPY(Associate_source_diagnostic, Associate_source_diagnostic, acse_service_user, acse_service_user,PyCompatEnum_FromObject(value, (void *)&dst->choice.acse_service_user, 0));
+PY_IMPL_CHOICE_ATTR_TOPY(Associate_source_diagnostic, acse_service_user, PyCompatEnum_AsObject(PyAsnEnumAssociate_source_diagnostic_acse_service_user_Type, (void *)&src->choice.acse_service_user, 0));
 PY_IMPL_CHOICE_GETATTR(Associate_source_diagnostic, Associate_source_diagnostic, acse_service_user, acse_service_user);
 PY_IMPL_CHOICE_SETATTR(Associate_source_diagnostic, Associate_source_diagnostic, acse_service_user, acse_service_user);
 PyObject *PyAsnEnumAssociate_source_diagnostic_acse_service_provider_Type = NULL;
-PY_IMPL_CHOICE_ATTR_FROMPY(Associate_source_diagnostic, Associate_source_diagnostic, acse_service_provider, acse_service_provider,PyCompatEnum_FromObject(value, (void *)&dst->choice.acse_service_provider, 1));
-PY_IMPL_CHOICE_ATTR_TOPY(Associate_source_diagnostic, acse_service_provider, PyCompatEnum_AsObject(PyAsnEnumAssociate_source_diagnostic_acse_service_provider_Type, (void *)&src->choice.acse_service_provider, 1));
+PY_IMPL_CHOICE_ATTR_FROMPY(Associate_source_diagnostic, Associate_source_diagnostic, acse_service_provider, acse_service_provider,PyCompatEnum_FromObject(value, (void *)&dst->choice.acse_service_provider, 0));
+PY_IMPL_CHOICE_ATTR_TOPY(Associate_source_diagnostic, acse_service_provider, PyCompatEnum_AsObject(PyAsnEnumAssociate_source_diagnostic_acse_service_provider_Type, (void *)&src->choice.acse_service_provider, 0));
 PY_IMPL_CHOICE_GETATTR(Associate_source_diagnostic, Associate_source_diagnostic, acse_service_provider, acse_service_provider);
 PY_IMPL_CHOICE_SETATTR(Associate_source_diagnostic, Associate_source_diagnostic, acse_service_provider, acse_service_provider);
 PY_IMPL_GENERIC_DEALLOC(Associate_source_diagnostic);

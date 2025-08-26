@@ -26,7 +26,7 @@ PyCompat_DEF_ENUM(ABRT_diagnostic);
 static inline int PyAsnABRT_diagnostic_FromPython(PyObject *pObj, ABRT_diagnostic_t *pDst)
 {
 	PY_IMPL_FROMPY_COMPAT(ABRT_diagnostic, pObj, pDst);
-	return PyCompatEnum_FromObject(pObj, (void *)pDst, 1);
+	return PyCompatEnum_FromObject(pObj, (void *)pDst, 0);
 }
 static inline PyObject *PyAsnABRT_diagnostic_ToPython(ABRT_diagnostic_t *pSrc, PyObject *parent)
 {

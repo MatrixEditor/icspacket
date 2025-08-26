@@ -12,8 +12,8 @@ PY_IMPL_SEQ_ATTR_TOPY(SemaphoreEntry, entryID, PyCompatBytes_FromStringAndSize((
 PY_IMPL_SEQ_GETATTR(SemaphoreEntry, entryID);
 PY_IMPL_SEQ_SETATTR(SemaphoreEntry, entryID);
 PyObject *PyAsnEnumSemaphoreEntry_entryClass_Type = NULL;
-PY_IMPL_SEQ_ATTR_FROMPY(SemaphoreEntry, entryClass, PyCompatEnum_FromObject(value, target, 1));
-PY_IMPL_SEQ_ATTR_TOPY(SemaphoreEntry, entryClass, PyCompatEnum_AsObject(PyAsnEnumSemaphoreEntry_entryClass_Type, target, 1));
+PY_IMPL_SEQ_ATTR_FROMPY(SemaphoreEntry, entryClass, PyCompatEnum_FromObject(value, target, 0));
+PY_IMPL_SEQ_ATTR_TOPY(SemaphoreEntry, entryClass, PyCompatEnum_AsObject(PyAsnEnumSemaphoreEntry_entryClass_Type, target, 0));
 PY_IMPL_SEQ_GETATTR(SemaphoreEntry, entryClass);
 PY_IMPL_SEQ_SETATTR(SemaphoreEntry, entryClass);
 PY_IMPL_SEQ_ATTR_FROMPY(SemaphoreEntry, applicationReference, PyAsnApplicationReference_FromPython(value, (ApplicationReference_t *)target));

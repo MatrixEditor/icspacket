@@ -26,7 +26,7 @@ PyCompat_DEF_ENUM(GlbErrors);
 static inline int PyAsnGlbErrors_FromPython(PyObject *pObj, GlbErrors_t *pDst)
 {
 	PY_IMPL_FROMPY_COMPAT(GlbErrors, pObj, pDst);
-	return PyCompatEnum_FromObject(pObj, (void *)pDst, 1);
+	return PyCompatEnum_FromObject(pObj, (void *)pDst, 0);
 }
 static inline PyObject *PyAsnGlbErrors_ToPython(GlbErrors_t *pSrc, PyObject *parent)
 {

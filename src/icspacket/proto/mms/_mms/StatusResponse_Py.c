@@ -7,13 +7,13 @@
 
 /* class implementation */
 PyObject *PyAsnEnumStatusResponse_vmdLogicalStatus_Type = NULL;
-PY_IMPL_SEQ_ATTR_FROMPY(StatusResponse, vmdLogicalStatus, PyCompatEnum_FromObject(value, target, 1));
-PY_IMPL_SEQ_ATTR_TOPY(StatusResponse, vmdLogicalStatus, PyCompatEnum_AsObject(PyAsnEnumStatusResponse_vmdLogicalStatus_Type, target, 1));
+PY_IMPL_SEQ_ATTR_FROMPY(StatusResponse, vmdLogicalStatus, PyCompatEnum_FromObject(value, target, 0));
+PY_IMPL_SEQ_ATTR_TOPY(StatusResponse, vmdLogicalStatus, PyCompatEnum_AsObject(PyAsnEnumStatusResponse_vmdLogicalStatus_Type, target, 0));
 PY_IMPL_SEQ_GETATTR(StatusResponse, vmdLogicalStatus);
 PY_IMPL_SEQ_SETATTR(StatusResponse, vmdLogicalStatus);
 PyObject *PyAsnEnumStatusResponse_vmdPhysicalStatus_Type = NULL;
-PY_IMPL_SEQ_ATTR_FROMPY(StatusResponse, vmdPhysicalStatus, PyCompatEnum_FromObject(value, target, 1));
-PY_IMPL_SEQ_ATTR_TOPY(StatusResponse, vmdPhysicalStatus, PyCompatEnum_AsObject(PyAsnEnumStatusResponse_vmdPhysicalStatus_Type, target, 1));
+PY_IMPL_SEQ_ATTR_FROMPY(StatusResponse, vmdPhysicalStatus, PyCompatEnum_FromObject(value, target, 0));
+PY_IMPL_SEQ_ATTR_TOPY(StatusResponse, vmdPhysicalStatus, PyCompatEnum_AsObject(PyAsnEnumStatusResponse_vmdPhysicalStatus_Type, target, 0));
 PY_IMPL_SEQ_GETATTR(StatusResponse, vmdPhysicalStatus);
 PY_IMPL_SEQ_SETATTR(StatusResponse, vmdPhysicalStatus);
 PY_IMPL_SEQ_ATTR_GENERIC_FREE(StatusResponse, localDetail);

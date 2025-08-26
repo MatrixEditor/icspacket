@@ -55,8 +55,8 @@ PY_IMPL_SEQ_ATTR_INDIRECT_TOPY(GetAlarmSummary_Request, activeAlarmsOnly, PyComp
 PY_IMPL_SEQ_OPT_GETATTR(GetAlarmSummary_Request, activeAlarmsOnly);
 PY_IMPL_SEQ_OPT_SETATTR(GetAlarmSummary_Request, activeAlarmsOnly);
 PyObject *PyAsnEnumGetAlarmSummary_Request_acknowledgementFilter_Type = NULL;
-PY_IMPL_SEQ_ATTR_FROMPY(GetAlarmSummary_Request, acknowledgementFilter, PyCompatEnum_FromObject(value, target, 1));
-PY_IMPL_SEQ_ATTR_TOPY(GetAlarmSummary_Request, acknowledgementFilter, PyCompatEnum_AsObject(PyAsnEnumGetAlarmSummary_Request_acknowledgementFilter_Type, target, 1));
+PY_IMPL_SEQ_ATTR_FROMPY(GetAlarmSummary_Request, acknowledgementFilter, PyCompatEnum_FromObject(value, target, 0));
+PY_IMPL_SEQ_ATTR_TOPY(GetAlarmSummary_Request, acknowledgementFilter, PyCompatEnum_AsObject(PyAsnEnumGetAlarmSummary_Request_acknowledgementFilter_Type, target, 0));
 PY_IMPL_SEQ_GETATTR(GetAlarmSummary_Request, acknowledgementFilter);
 PY_IMPL_SEQ_SETATTR(GetAlarmSummary_Request, acknowledgementFilter);
 PY_IMPL_SEQ_ATTR_GENERIC_FREE(GetAlarmSummary_Request, continueAfter);

@@ -26,7 +26,7 @@ PyCompat_DEF_ENUM(DataAccessError);
 static inline int PyAsnDataAccessError_FromPython(PyObject *pObj, DataAccessError_t *pDst)
 {
 	PY_IMPL_FROMPY_COMPAT(DataAccessError, pObj, pDst);
-	return PyCompatEnum_FromObject(pObj, (void *)pDst, 1);
+	return PyCompatEnum_FromObject(pObj, (void *)pDst, 0);
 }
 static inline PyObject *PyAsnDataAccessError_ToPython(DataAccessError_t *pSrc, PyObject *parent)
 {
