@@ -6,6 +6,7 @@
 #ifndef _PyConvert_H_
 #define _PyConvert_H_
 
+#define PY_SSIZE_T_CLEAN
 #include <Python.h>
 #include <py_application.h>
 
@@ -213,7 +214,7 @@ end:
 static inline PyObject *PyCompatEnum_FromSize_t(PyObject *pEnumType,
                                                 size_t value) {
     PyObject *nValue = NULL, *nResult = NULL;
-    if ((nValue = PyLong_FromSize_t(value)) == NULL) {
+    if ((nValue = PyLong_FromSize_t(value & 0x7fffffffffffffff)) == NULL) {
         goto end;
     }
     nResult = PyObject_CallOneArg(pEnumType, nValue);
