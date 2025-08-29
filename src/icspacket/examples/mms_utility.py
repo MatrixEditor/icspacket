@@ -33,7 +33,7 @@ from rich.table import Table
 from rich import box, pretty
 
 from icspacket.core.connection import ConnectionClosedError
-from icspacket.proto.cotp.structs import TPDU_Size
+from icspacket.examples.util import add_logging_options
 from icspacket.proto.mms._mms import DataAccessError, TypeDescription
 from icspacket.proto.mms.asn1types import (
     Data,
@@ -53,7 +53,11 @@ from icspacket.proto.mms.util import (
     object_name_to_string,
 )
 
-from icspacket.examples.util.mms import init_mms_connection, parse_variable_target
+from icspacket.examples.util.mms import (
+    add_mms_connection_options,
+    init_mms_connection,
+    parse_variable_target,
+)
 
 
 def data_to_str(data: Data) -> str | dict | list:
@@ -362,30 +366,8 @@ def cli_main():
         --value oid:1.3.6.1.4
     """)
 
-    # ------------------------------------------------------------------------
-    # Authentication options
-    # ------------------------------------------------------------------------
-    auth_group = parser.add_argument_group("Authentication Options", "ACSE/Password authentication for MMS association")
-    auth_group.add_argument("--auth", type=str, metavar="<qualifier>@<title>:<password>", help="Password-based authentication specification, e.g., '100@operator:secret'", default=None)
-    auth_group.add_argument("--auth-stdin", action="store_true", help="Read authentication specification from stdin (interactive prompt)", default=False)
-
-    # ------------------------------------------------------------------------
-    # Connection options
-    # ------------------------------------------------------------------------
-    conn_group = parser.add_argument_group("Connection Options","Specify transport layer settings and target host information")
-    conn_group.add_argument("-p", "--port", type=int, help="TCP port of the target MMS server (default: 102)", default=102)
-    conn_group.add_argument("--max-tpdu-size", type=int, metavar="SIZE", help="Maximum TPDU size to negotiate during COTP connection", default=TPDU_Size.SIZE_1024)
-    conn_group.add_argument("--timeout", type=float, metavar="SEC", help="Timeout in seconds for transport-level operations (default: None)", default=None)
-    conn_group.add_argument("host", type=str, help="Target host (IP address or hostname) to establish MMS connection")
-
-    # ------------------------------------------------------------------------
-    # Logging options
-    # ------------------------------------------------------------------------
-    log_group = parser.add_argument_group("Logging Options", "Control verbosity and formatting of log messages")
-    log_group.add_argument("-v", action="count", help="Increase logging verbosity (can be specified multiple times)", dest="verbosity", default=0)
-    log_group.add_argument("-q", "--quiet", action="store_true", help="Suppress informational logs (errors still printed)", default=False)
-    log_group.add_argument("--ts", action="store_true", help="Add timestamps to log messages", default=False)
-    # fmt: on
+    add_mms_connection_options(parser)
+    add_logging_options(parser)
 
     args = parser.parse_args()
     args.console = Console()

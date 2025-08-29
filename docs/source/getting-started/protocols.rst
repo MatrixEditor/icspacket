@@ -14,6 +14,7 @@ Protocols Overview
     iso_pres
     acse
     mms
+    dnp3
 
 
 **Protocol references**
@@ -60,4 +61,11 @@ Protocols Overview
         :link-type: ref
 
         Manufacturing Message Specification protocol.
+
+
+    .. grid-item-card:: :octicon:`zap` DNP3.0 (IEEE 1815)
+        :link: mms_index
+        :link-type: ref
+
+        Distributed Network Protocol 3.0.
 

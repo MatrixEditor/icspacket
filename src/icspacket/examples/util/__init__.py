@@ -16,3 +16,15 @@
 """\
 Support code for icspacket's examples
 """
+
+
+def add_logging_options(parser):
+    # fmt: off
+    # ------------------------------------------------------------------------
+    # Logging options
+    # ------------------------------------------------------------------------
+    log_group = parser.add_argument_group("Logging Options", "Control verbosity and formatting of log messages")
+    log_group.add_argument("-v", action="count", help="Increase logging verbosity (can be specified multiple times)", dest="verbosity", default=0)
+    log_group.add_argument("-q", "--quiet", action="store_true", help="Suppress informational logs (errors still printed)", default=False)
+    log_group.add_argument("--ts", action="store_true", help="Add timestamps to log messages", default=False)
+    # fmt: on

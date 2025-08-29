@@ -74,14 +74,15 @@ html_theme_options = {
     "github_url": "https://github.com/MatrixEditor/icspacket",
     "discussion_url": "https://github.com/MatrixEditor/icspacket/discussions",
     "globaltoc_expand_depth": 2,
+    "toctree_maxdepth": 5,
     "nav_links": [
         {
             "title": "Examples",
-            "url": "examples/index",
+            "url": "getting-started/protocols",
             "children": [
                 {
                     "title": "MMS Utilities",
-                    "url": "examples/mms/index",
+                    "url": "protocols/mms/examples",
                     "summary": "Manufacturing Message Specification tools",
                     "children": [
                         {
@@ -96,6 +97,11 @@ html_theme_options = {
                         },
                     ],
                 },
+                {
+                    "title": "DNP3 Tools",
+                    "url": "protocols/dnp3/examples",
+                    "summary": "DNP3 utilities and tools",
+                }
             ],
         },
     ],

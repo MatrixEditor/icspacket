@@ -12,7 +12,7 @@ icspacket
 .. container:: buttons
 
     `Getting Started <getting-started/installation.html>`_
-    `Examples <examples/index.html>`_
+    `Examples <getting-started/protocols.html>`_
     `GitHub <https://github.com/MatrixEditor/icspacket>`_
 
 
@@ -37,6 +37,13 @@ Installation requires Python development headers, CMake, Ninja and a C compiler
     getting-started/installation
     getting-started/protocols
     getting-started/coreapi
+
+.. toctree::
+    :caption: DNP3 / IEEE 1815
+    :hidden:
+
+    protocols/dnp3/dnp3dump
+    protocols/dnp3/api
 
 .. toctree::
     :caption: MMS / ISO 9506
