@@ -2,7 +2,7 @@
 <html lang="en" data-accent-color="lime" data-content_root="../">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Core API Reference - icspacket 0.1.dev1+g50e10a589 documentation</title><link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Variable Target Format" href="../protocols/mms/demo_vars.html" /><link rel="prev" title="Protocols Overview" href="protocols.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Core API Reference - icspacket 0.1.dev1+g5d2cc2c49 documentation</title><link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Dumping Objects" href="../protocols/dnp3/dnp3dump.html" /><link rel="prev" title="Protocols Overview" href="protocols.html" />
       <link rel="canonical" href="https://matrixeditor.github.io/icspacket/getting-started/coreapi.html" /><script>
     function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
     setColorMode(localStorage._theme||"dark");
@@ -35,13 +35,16 @@
     </a>
     <div class="sy-head-nav" id="head-nav">
       <nav class="sy-head-links"><ul>
-      <li class="link"><a class="js-menu" href="../examples/index.html" id="nav-trigger-1" aria-controls="nav-children-1">
+      <li class="link"><a class="js-menu" href="protocols.html" id="nav-trigger-1" aria-controls="nav-children-1">
             <span>Examples</span>
             <i class="i-lucide chevron-down"></i>
           </a>
-        <ul id="nav-children-1" aria-labelledby="nav-trigger-1"><li><a href="../examples/mms/index.html">
+        <ul id="nav-children-1" aria-labelledby="nav-trigger-1"><li><a href="../protocols/mms/examples.html">
                 <span>MMS Utilities</span>
                 <small>Manufacturing Message Specification tools</small>
+              </a></li><li><a href="../protocols/dnp3/examples.html">
+                <span>DNP3 Tools</span>
+                <small>DNP3 utilities and tools</small>
               </a></li></ul>
       </li></ul></nav>
       <div class="sy-head-extra flex items-center print:hidden"><form class="searchbox flex items-center" action="../search.html" method="get">
@@ -90,6 +93,24 @@ data-aria-dark="Switch to auto color mode">
 <li class="toctree-l1 _expand"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l1 _expand"><a class="reference internal" href="protocols.html">Protocols Overview</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Core API Reference</a></li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">DNP3 / IEEE 1815</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../protocols/dnp3/dnp3dump.html">Dumping Objects</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../protocols/dnp3/api.html">API Reference</a><ul>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../protocols/dnp3/api/link.html">Link Layer</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../protocols/dnp3/api/transport.html">Transport Layer</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../protocols/dnp3/api/application.html">Application Layer</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../protocols/dnp3/api/master.html">Master</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../protocols/dnp3/api/object_library.html">Object Library</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../protocols/dnp3/api/primitives.html">Primitive Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../protocols/dnp3/api/coding.html">Encoding / Decoding</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../protocols/dnp3/api/variations.html">Variations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../protocols/dnp3/api/coding_utils.html">Object Utilities</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 <p class="caption" role="heading" aria-level="3"><span class="caption-text">MMS / ISO 9506</span></p>
 <ul>
@@ -164,6 +185,7 @@ data-aria-dark="Switch to auto color mode">
 </li>
 <li><a class="reference internal" href="#icspacket.core.logger.SAFE"><code class="docutils literal notranslate"><span class="pre">SAFE</span></code></a></li>
 <li><a class="reference internal" href="#icspacket.core.logger.TRACE"><code class="docutils literal notranslate"><span class="pre">TRACE</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.core.logger.TRACE_PACKETS"><code class="docutils literal notranslate"><span class="pre">TRACE_PACKETS</span></code></a></li>
 <li><a class="reference internal" href="#icspacket.core.logger.PrefixFormatter"><code class="docutils literal notranslate"><span class="pre">PrefixFormatter</span></code></a><ul>
 <li><a class="reference internal" href="#icspacket.core.logger.PrefixFormatter.format"><code class="docutils literal notranslate">format()</span></code></a></li>
 </ul>
@@ -396,6 +418,16 @@ Rich markup injection.</p>
 5). These messages will appear when using <code class="docutils literal notranslate"><span class="pre">-vvv</span></code> verbosity.</p>
 </dd></dl>
 
+<dl class="py data">
+<dt class="sig sig-object py" id="icspacket.core.logger.TRACE_PACKETS">
+<span class="sig-prename descclassname"><span class="pre">icspacket.core.logger.</span></span><span class="sig-name descname"><span class="pre">TRACE_PACKETS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">4</span></em><a class="headerlink" href="#icspacket.core.logger.TRACE_PACKETS" title="Link to this definition">¶</a></dt>
+<dd><p>Custom logging level to trace packets, numerically below <code class="docutils literal notranslate"><span class="pre">TRACE</span></code> (value =
+4). These messages will appear when using <code class="docutils literal notranslate"><span class="pre">-vvvv</span></code> verbosity.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.2.0.</span></p>
+</div>
+</dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="icspacket.core.logger.PrefixFormatter">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">icspacket.core.logger.</span></span><span class="sig-name descname"><span class="pre">PrefixFormatter</span></span><a class="reference internal" href="../_modules/icspacket/core/logger.html#PrefixFormatter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.core.logger.PrefixFormatter" title="Link to this definition">¶</a></dt>
@@ -432,7 +464,8 @@ message escaping.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">verbosity</span> <span class="pre">=</span> <span class="pre">0</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">INFO</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">verbosity</span> <span class="pre">=</span> <span class="pre">1</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">DEBUG</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">verbosity</span> <span class="pre">&gt;=</span> <span class="pre">2</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">TRACE</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">verbosity</span> <span class="pre">=</span> <span class="pre">2</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">TRACE</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">verbosity</span> <span class="pre">&gt;=</span> <span class="pre">3</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">TRACE_PACKETS</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">quiet</span> <span class="pre">=</span> <span class="pre">True</span></code> -&gt; force <code class="docutils literal notranslate"><span class="pre">ERROR</span></code> regardless of verbosity</p></li>
 </ul>
 <dl class="field-list simple">
@@ -460,10 +493,10 @@ message escaping.</p>
         <span>Previous</span><div class="title">Protocols Overview</div></div>
     </a>
   </div><div class="navigation-next">
-    <a href="../protocols/mms/demo_vars.html">
+    <a href="../protocols/dnp3/dnp3dump.html">
       <div class="page-info">
         <span>Next</span>
-        <div class="title">Variable Target Format</div>
+        <div class="title">Dumping Objects</div>
       </div>
       <i class="i-lucide chevron-right"></i>
     </a>
@@ -491,7 +524,7 @@ message escaping.</p>
     </div>
   </div>
 </footer>
-      <script src="../_static/documentation_options.js?v=125e2f71"></script>
+      <script src="../_static/documentation_options.js?v=0df3b029"></script>
       <script src="../_static/doctools.js?v=9bcbadda"></script>
       <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="../_static/clipboard.min.js?v=a7894cd8"></script>

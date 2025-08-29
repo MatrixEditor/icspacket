@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en" data-accent-color="lime" data-content_root="../../../../">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>icspacket.proto.dnp3.const - icspacket 0.1.dev1+g5d2cc2c49 documentation</title><link rel="index" title="Index" href="../../../../genindex.html" /><link rel="search" title="Search" href="../../../../search.html" />
+      <link rel="canonical" href="https://matrixeditor.github.io/icspacket/_modules/icspacket/proto/dnp3/const.html" /><script>
+    function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
+    setColorMode(localStorage._theme||"dark");
+  </script><link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=397bb51e" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/shibuya.css?v=d48c410d" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link media="print" rel="stylesheet" type="text/css" href="../../../../_static/print.css?v=20ff2c19" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --sy-f-text: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+  --sy-f-heading: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+}
+</style>
+    <meta property="og:type" content="website"/>
+<meta property="og:url" content="https://matrixeditor.github.io/icspacket/_modules/icspacket/proto/dnp3/const.html"/>
+<meta property="og:title" content="icspacket.proto.dnp3.const"/>
+<meta name="twitter:card" content="summary"/>
+  </head>
+<body><div class="sy-head">
+  <div class="sy-head-blur"></div>
+  <div class="sy-head-inner sy-container mx-auto">
+    <a class="sy-head-brand" href="../../../../index.html">
+      
+      
+      <strong>icspacket</strong>
+    </a>
+    <div class="sy-head-nav" id="head-nav">
+      <nav class="sy-head-links"><ul>
+      <li class="link"><a class="js-menu" href="../../../../getting-started/protocols.html" id="nav-trigger-1" aria-controls="nav-children-1">
+            <span>Examples</span>
+            <i class="i-lucide chevron-down"></i>
+          </a>
+        <ul id="nav-children-1" aria-labelledby="nav-trigger-1"><li><a href="../../../../protocols/mms/examples.html">
+                <span>MMS Utilities</span>
+                <small>Manufacturing Message Specification tools</small>
+              </a></li><li><a href="../../../../protocols/dnp3/examples.html">
+                <span>DNP3 Tools</span>
+                <small>DNP3 utilities and tools</small>
+              </a></li></ul>
+      </li></ul></nav>
+      <div class="sy-head-extra flex items-center print:hidden"><form class="searchbox flex items-center" action="../../../../search.html" method="get">
+  <input type="text" name="q" placeholder="Search" />
+  <kbd>/</kbd>
+</form><div class="sy-head-socials">
+  <a href="https://github.com/MatrixEditor/icspacket" aria-label="GitHub">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </a></div></div>
+    </div>
+    <div class="sy-head-actions flex items-center shrink-0 print:hidden"><button class="js-theme theme-switch flex items-center"
+data-aria-auto="Switch to light color mode"
+data-aria-light="Switch to dark color mode"
+data-aria-dark="Switch to auto color mode">
+<i class="i-lucide theme-icon"></i>
+</button><button class="md:hidden flex items-center js-menu" aria-label="Menu" type="button" aria-controls="head-nav" aria-expanded="false">
+        <div class="hamburger">
+          <span class="hamburger_1"></span>
+          <span class="hamburger_2 -translate-x-2"></span>
+          <span class="hamburger_3 -translate-x-1"></span>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>
+<div class="sy-page sy-container flex mx-auto">
+  <aside id="lside" class="sy-lside md:w-72 md:shrink-0 print:hidden">
+    <div class="sy-lside-inner md:sticky">
+      <div class="sy-scrollbar p-6"><div class="sidebar-links">
+  <ul>
+    <li><a class="icon-link" href="https://github.com/MatrixEditor/icspacket/discussions">
+  <span class="icon">
+    <svg viewBox="0 0 24 24" fill="none">
+      <path fill="var(--accent-9)" fill-rule="evenodd" clip-rule="evenodd" d="M11 5a6 6 0 0 0-4.687 9.746c.215.27.315.62.231.954l-.514 2.058a1 1 0 0 0 1.485 1.1l2.848-1.71c.174-.104.374-.15.576-.148H13a6 6 0 0 0 0-12h-2Z"/>
+      <circle fill="white" cx="12" cy="11" r="1"/>
+      <circle fill="white" cx="9" cy="11" r="1"/>
+      <circle fill="white" cx="15" cy="11" r="1"/>
+    </svg>
+  </span>
+  <span class="text">Discussion</span>
+</a></li>
+  </ul>
+</div>
+        <div class="globaltoc" data-expand-depth="2"><p class="caption" role="heading" aria-level="3"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../getting-started/installation.html">Installation</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../getting-started/protocols.html">Protocols Overview</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../getting-started/coreapi.html">Core API Reference</a></li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">DNP3 / IEEE 1815</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../protocols/dnp3/dnp3dump.html">Dumping Objects</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../protocols/dnp3/api.html">API Reference</a><ul>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../../../../protocols/dnp3/api/link.html">Link Layer</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../../../../protocols/dnp3/api/transport.html">Transport Layer</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../../../../protocols/dnp3/api/application.html">Application Layer</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../../../../protocols/dnp3/api/master.html">Master</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../../../../protocols/dnp3/api/object_library.html">Object Library</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../protocols/dnp3/api/primitives.html">Primitive Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../protocols/dnp3/api/coding.html">Encoding / Decoding</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../protocols/dnp3/api/variations.html">Variations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../protocols/dnp3/api/coding_utils.html">Object Utilities</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">MMS / ISO 9506</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../protocols/mms/demo_vars.html">Variable Target Format</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../protocols/mms/demo_vars.html#variableaccess-service-rwq">VariableAccess Service (rwq)</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../protocols/mms/demo_files.html">FileManagement Service</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../protocols/mms/api.html">API Reference</a><ul>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../../../../protocols/mms/api_conn.html">MMS Connection</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../../../../protocols/mms/api_data.html">Data Conversion</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../../../../protocols/mms/api_utils.html">Protocol Utilities</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">ACSE / X.227</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../protocols/acse/api.html">API Reference</a></li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">COPP / X.226 / ISO 8823</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../protocols/copp/api.html">API Reference</a><ul>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../../../../protocols/copp/presentation.html">ISO Presentation</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../../../../protocols/copp/utils.html">Protocol Utilities</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">COSP / X.225 / ISO 8237-1</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../protocols/cosp/api.html">API Reference</a><ul>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../../../../protocols/cosp/tsdu.html">TSDU</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../../../../protocols/cosp/spdu.html">SPDU Types</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../../../../protocols/cosp/values.html">Parameter Values (PV)</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../../../../protocols/cosp/session.html">ISO Session</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../../../../protocols/cosp/utils.html">Protocol Utilities</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">COTP / X.224</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../protocols/cotp/api.html">API Reference</a><ul>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../../../../protocols/cotp/structs.html">TPDU Types</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../../../../protocols/cotp/connection.html">Connection</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">TPKT Protocol (RFC1006)</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../protocols/tpkt/usage.html">Using a TPKT Wrapper</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../protocols/tpkt/api.html">API Reference</a></li>
+</ul>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="lside-overlay js-menu" role="button" aria-label="Close left sidebar" aria-controls="lside" aria-expanded="false"></div>
+  <aside id="rside" class="sy-rside pb-3 w-64 shrink-0 order-last">
+    <button class="rside-close js-menu xl:hidden" aria-label="Close Table of Contents" type="button" aria-controls="rside" aria-expanded="false">
+      <i class="i-lucide close"></i>
+    </button>
+    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><a class="js-repo-stats repo-stats flex items-center" href="https://github.com/MatrixEditor/icspacket"
+  data-type="github" data-user="MatrixEditor" data-repo="icspacket">
+  <span class="w-8 flex items-center justify-around shrink-0 text-3xl">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </span>
+  <span class="flex-grow px-2 break-all">
+    <span style="font-size: small;">MatrixEditor/icspacket</span>
+    <span class="flex text-sm repo-stats-count">
+      <span class="flex items-center pr-3">
+        <iconify-icon icon="lucide:star"></iconify-icon>
+        <strong class="js-repo-stars ml-1">0</strong>
+      </span>
+      <span class="flex items-center">
+        <iconify-icon icon="lucide:git-fork"></iconify-icon>
+        <strong class="js-repo-forks ml-1">0</strong>
+      </span>
+    </span>
+  </span>
+</a></div>
+  </aside>
+  <div class="rside-overlay js-menu" role="button" aria-label="Close Table of Contents" aria-controls="rside" aria-expanded="false"></div>
+  <main class="sy-main w-full max-sm:max-w-full print:pt-6">
+<div class="sy-breadcrumbs" role="navigation">
+  <div class="sy-breadcrumbs-inner flex items-center">
+    <div class="md:hidden mr-3">
+      <button class="js-menu" aria-label="Menu" type="button" aria-controls="lside" aria-expanded="false">
+        <i class="i-lucide menu"></i>
+      </button>
+    </div>
+    <ol class="flex-1" itemscope itemtype="https://schema.org/BreadcrumbList"><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="../../../../index.html"><span itemprop="name">icspacket</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="1" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="../../../index.html"><span itemprop="name">Module code</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="2" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <strong itemprop="name">icspacket.proto.dnp3.const</strong>
+        <meta itemprop="position" content="3" />
+      </li></ol>
+    <div class="xl:hidden ml-1">
+      <button class="js-menu" aria-label="Show table of contents" type="button" aria-controls="rside"
+        aria-expanded="false">
+        <i class="i-lucide outdent"></i>
+      </button>
+    </div>
+  </div>
+</div><div class="flex flex-col break-words justify-between">
+      <div class="min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
+        <article class="yue" role="main">
+          <h1>Source code for icspacket.proto.dnp3.const</h1><div class="highlight"><pre>
+<span></span><span data-line="1"><span class="c1"># This file is part of icspacket.</span>
+</span><span data-line="2"><span class="c1"># Copyright (C) 2025-present  MatrixEditor @ github</span>
+</span><span data-line="3"><span class="c1">#</span>
+</span><span data-line="4"><span class="c1"># This program is free software: you can redistribute it and/or modify</span>
+</span><span data-line="5"><span class="c1"># it under the terms of the GNU General Public License as published by</span>
+</span><span data-line="6"><span class="c1"># the Free Software Foundation, either version 3 of the License, or</span>
+</span><span data-line="7"><span class="c1"># (at your option) any later version.</span>
+</span><span data-line="8"><span class="c1">#</span>
+</span><span data-line="9"><span class="c1"># This program is distributed in the hope that it will be useful,</span>
+</span><span data-line="10"><span class="c1"># but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+</span><span data-line="11"><span class="c1"># MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+</span><span data-line="12"><span class="c1"># GNU General Public License for more details.</span>
+</span><span data-line="13"><span class="c1">#</span>
+</span><span data-line="14"><span class="c1"># You should have received a copy of the GNU General Public License</span>
+</span><span data-line="15"><span class="c1"># along with this program.  If not, see &lt;https://www.gnu.org/licenses/&gt;.</span>
+</span><span data-line="16"><span class="kn">import</span><span class="w"> </span><span class="nn">enum</span>
+</span><span data-line="17">
+</span><span data-line="18"><span class="kn">from</span><span class="w"> </span><span class="nn">caterpillar.byteorder</span><span class="w"> </span><span class="kn">import</span> <span class="n">LittleEndian</span>
+</span><span data-line="19"><span class="kn">from</span><span class="w"> </span><span class="nn">caterpillar.fields</span><span class="w"> </span><span class="kn">import</span> <span class="n">DEFAULT_OPTION</span><span class="p">,</span> <span class="n">uint8</span><span class="p">,</span> <span class="n">uint16</span><span class="p">,</span> <span class="n">uint32</span><span class="p">,</span> <span class="n">Pass</span>
+</span><span data-line="20">
+</span><span data-line="21"><span class="c1"># ============================================================================ #</span>
+</span><span data-line="22"><span class="c1"># DNP3 Constants and Enumerations</span>
+</span><span data-line="23"><span class="c1"># ============================================================================ #</span>
+</span><span data-line="24">
+</span><span data-line="25"><span class="n">APDU_REQ_FUNC_MIN</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span data-line="26"><span class="sd">&quot;&quot;&quot;Minimum function code value for Application Layer requests.&quot;&quot;&quot;</span>
+</span><span data-line="27">
+</span><span data-line="28"><span class="n">APDU_REQ_FUNC_MAX</span> <span class="o">=</span> <span class="mi">128</span>
+</span><span data-line="29"><span class="sd">&quot;&quot;&quot;Maximum function code value for Application Layer requests.&quot;&quot;&quot;</span>
+</span><span data-line="30">
+</span><span data-line="31"><span class="n">APDU_RESP_FUNC_MIN</span> <span class="o">=</span> <span class="mi">129</span>
+</span><span data-line="32"><span class="sd">&quot;&quot;&quot;Minimum function code value for Application Layer responses.&quot;&quot;&quot;</span>
+</span><span data-line="33">
+</span><span data-line="34"><span class="n">APDU_RESP_FUNC_MAX</span> <span class="o">=</span> <span class="mi">255</span>
+</span><span data-line="35"><span class="sd">&quot;&quot;&quot;Maximum function code value for Application Layer responses.&quot;&quot;&quot;</span>
+</span><span data-line="36">
+</span><span data-line="37">
+<div class="viewcode-block" id="FunctionCode">
+<a class="viewcode-back" href="../../../../protocols/dnp3/api/application.html#icspacket.proto.dnp3.application.FunctionCode">[docs]</a>
+</span><span data-line="38"><span class="k">class</span><span class="w"> </span><span class="nc">FunctionCode</span><span class="p">(</span><span class="n">enum</span><span class="o">.</span><span class="n">IntEnum</span><span class="p">):</span>
+</span><span data-line="39"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="40"><span class="sd">    Application Layer Function Codes.</span>
+</span><span data-line="41">
+</span><span data-line="42"><span class="sd">    Function codes define the type of operation performed by the</span>
+</span><span data-line="43"><span class="sd">    Application Layer. They are carried in the first octet of an</span>
+</span><span data-line="44"><span class="sd">    Application Protocol Data Unit (APDU).</span>
+</span><span data-line="45">
+</span><span data-line="46"><span class="sd">    (See DNP3 Specification, Section 4.2.2.5)</span>
+</span><span data-line="47"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span data-line="48">
+</span><span data-line="49">    <span class="n">__struct__</span> <span class="o">=</span> <span class="n">uint8</span>
+</span><span data-line="50">
+</span><span data-line="51">    <span class="n">CONFIRM</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span data-line="52"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Master confirms receipt of an Application Layer fragment.&quot;&quot;&quot;</span>
+</span><span data-line="53">
+</span><span data-line="54">    <span class="n">READ</span> <span class="o">=</span> <span class="mi">1</span>
+</span><span data-line="55"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Outstation shall return the data specified in the request.&quot;&quot;&quot;</span>
+</span><span data-line="56">
+</span><span data-line="57">    <span class="n">WRITE</span> <span class="o">=</span> <span class="mi">2</span>
+</span><span data-line="58"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Outstation shall store the data specified in the request.&quot;&quot;&quot;</span>
+</span><span data-line="59">
+</span><span data-line="60">    <span class="n">SELECT</span> <span class="o">=</span> <span class="mi">3</span>
+</span><span data-line="61"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Outstation selects output points in preparation for an `OPERATE` command.&quot;&quot;&quot;</span>
+</span><span data-line="62">
+</span><span data-line="63">    <span class="n">OPERATE</span> <span class="o">=</span> <span class="mi">4</span>
+</span><span data-line="64"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Outstation activates output points selected by a prior `SELECT`.&quot;&quot;&quot;</span>
+</span><span data-line="65">
+</span><span data-line="66">    <span class="n">DIRECT_OPERATE</span> <span class="o">=</span> <span class="mi">5</span>
+</span><span data-line="67"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Outstation immediately actuates output points without requiring `SELECT`.&quot;&quot;&quot;</span>
+</span><span data-line="68">
+</span><span data-line="69">    <span class="n">DIRECT_OPERATE_NR</span> <span class="o">=</span> <span class="mi">6</span>
+</span><span data-line="70"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Same as `DIRECT_OPERATE` but without sending a response.&quot;&quot;&quot;</span>
+</span><span data-line="71">
+</span><span data-line="72">    <span class="n">IMMED_FREEZE</span> <span class="o">=</span> <span class="mi">7</span>
+</span><span data-line="73"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Outstation copies data values into a freeze buffer.&quot;&quot;&quot;</span>
+</span><span data-line="74">
+</span><span data-line="75">    <span class="n">IMMED_FREEZE_NR</span> <span class="o">=</span> <span class="mi">8</span>
+</span><span data-line="76"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Same as `IMMED_FREEZE` but without sending a response.&quot;&quot;&quot;</span>
+</span><span data-line="77">
+</span><span data-line="78">    <span class="n">FREEZE_CLEAR</span> <span class="o">=</span> <span class="mi">9</span>
+</span><span data-line="79"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Outstation copies data values into a freeze buffer and clears originals.&quot;&quot;&quot;</span>
+</span><span data-line="80">
+</span><span data-line="81">    <span class="n">FREEZE_CLEAR_NR</span> <span class="o">=</span> <span class="mi">10</span>
+</span><span data-line="82"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Same as `FREEZE_CLEAR` but without sending a response.&quot;&quot;&quot;</span>
+</span><span data-line="83">
+</span><span data-line="84">    <span class="n">FREEZE_AT_TIME</span> <span class="o">=</span> <span class="mi">11</span>
+</span><span data-line="85"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Outstation freezes data values at a specified time/interval.&quot;&quot;&quot;</span>
+</span><span data-line="86">
+</span><span data-line="87">    <span class="n">FREEZE_AT_TIME_NR</span> <span class="o">=</span> <span class="mi">12</span>
+</span><span data-line="88"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Same as `FREEZE_AT_TIME` but without sending a response.&quot;&quot;&quot;</span>
+</span><span data-line="89">
+</span><span data-line="90">    <span class="n">COLD_RESTART</span> <span class="o">=</span> <span class="mi">13</span>
+</span><span data-line="91"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Outstation performs a full reset of hardware and software.&quot;&quot;&quot;</span>
+</span><span data-line="92">
+</span><span data-line="93">    <span class="n">WARM_RESTART</span> <span class="o">=</span> <span class="mi">14</span>
+</span><span data-line="94"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Outstation performs a partial reset of the device.&quot;&quot;&quot;</span>
+</span><span data-line="95">
+</span><span data-line="96">    <span class="n">INITIALIZE_DATA</span> <span class="o">=</span> <span class="mi">15</span>
+</span><span data-line="97"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Obsolete — not to be used in new designs.&quot;&quot;&quot;</span>
+</span><span data-line="98">
+</span><span data-line="99">    <span class="n">INITIALIZE_APPL</span> <span class="o">=</span> <span class="mi">16</span>
+</span><span data-line="100"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Outstation places applications into ready-to-run state.&quot;&quot;&quot;</span>
+</span><span data-line="101">
+</span><span data-line="102">    <span class="n">START_APPL</span> <span class="o">=</span> <span class="mi">17</span>
+</span><span data-line="103"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Outstation starts the specified applications.&quot;&quot;&quot;</span>
+</span><span data-line="104">
+</span><span data-line="105">    <span class="n">STOP_APPL</span> <span class="o">=</span> <span class="mi">18</span>
+</span><span data-line="106"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Outstation stops the specified applications.&quot;&quot;&quot;</span>
+</span><span data-line="107">
+</span><span data-line="108">    <span class="n">SAVE_CONFIG</span> <span class="o">=</span> <span class="mi">19</span>
+</span><span data-line="109"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Deprecated — saving of configuration (do not use in new designs).&quot;&quot;&quot;</span>
+</span><span data-line="110">
+</span><span data-line="111">    <span class="n">ENABLE_UNSOLICITED</span> <span class="o">=</span> <span class="mi">20</span>
+</span><span data-line="112"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Outstation enables unsolicited responses for specified points.&quot;&quot;&quot;</span>
+</span><span data-line="113">
+</span><span data-line="114">    <span class="n">DISABLE_UNSOLICITED</span> <span class="o">=</span> <span class="mi">21</span>
+</span><span data-line="115"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Outstation disables unsolicited responses for specified points.&quot;&quot;&quot;</span>
+</span><span data-line="116">
+</span><span data-line="117">    <span class="n">ASSIGN_CLASS</span> <span class="o">=</span> <span class="mi">22</span>
+</span><span data-line="118"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Outstation assigns points/events to one of the defined classes.&quot;&quot;&quot;</span>
+</span><span data-line="119">
+</span><span data-line="120">    <span class="n">DELAY_MESSAGE</span> <span class="o">=</span> <span class="mi">23</span>
+</span><span data-line="121"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Outstation reports processing/transmission delay time.&quot;&quot;&quot;</span>
+</span><span data-line="122">
+</span><span data-line="123">    <span class="n">RECORD_CURRENT_TIME</span> <span class="o">=</span> <span class="mi">24</span>
+</span><span data-line="124"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Outstation records the current time when the last octet is received.&quot;&quot;&quot;</span>
+</span><span data-line="125">
+</span><span data-line="126">    <span class="n">OPEN_FILE</span> <span class="o">=</span> <span class="mi">25</span>
+</span><span data-line="127"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Outstation opens a file.&quot;&quot;&quot;</span>
+</span><span data-line="128">
+</span><span data-line="129">    <span class="n">CLOSE_FILE</span> <span class="o">=</span> <span class="mi">26</span>
+</span><span data-line="130"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Outstation closes a file.&quot;&quot;&quot;</span>
+</span><span data-line="131">
+</span><span data-line="132">    <span class="n">DELETE_FILE</span> <span class="o">=</span> <span class="mi">27</span>
+</span><span data-line="133"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Outstation deletes a file.&quot;&quot;&quot;</span>
+</span><span data-line="134">
+</span><span data-line="135">    <span class="n">GET_FILE_INFO</span> <span class="o">=</span> <span class="mi">28</span>
+</span><span data-line="136"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Outstation retrieves information about a file.&quot;&quot;&quot;</span>
+</span><span data-line="137">
+</span><span data-line="138">    <span class="n">AUTHENTICATE_FILE</span> <span class="o">=</span> <span class="mi">29</span>
+</span><span data-line="139"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Outstation returns a file authentication key.&quot;&quot;&quot;</span>
+</span><span data-line="140">
+</span><span data-line="141">    <span class="n">ABORT_FILE</span> <span class="o">=</span> <span class="mi">30</span>
+</span><span data-line="142"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Outstation aborts an ongoing file transfer.&quot;&quot;&quot;</span>
+</span><span data-line="143">
+</span><span data-line="144">    <span class="n">ACTIVATE_CONFIG</span> <span class="o">=</span> <span class="mi">31</span>
+</span><span data-line="145"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Outstation activates a configuration.&quot;&quot;&quot;</span>
+</span><span data-line="146">
+</span><span data-line="147">    <span class="n">AUTHENTICATE_REQ</span> <span class="o">=</span> <span class="mi">32</span>
+</span><span data-line="148"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Master sends an authentication request requiring acknowledgement.&quot;&quot;&quot;</span>
+</span><span data-line="149">
+</span><span data-line="150">    <span class="n">AUTH_REQ_NO_ACK</span> <span class="o">=</span> <span class="mi">33</span>
+</span><span data-line="151"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Master sends an authentication request not requiring acknowledgement.&quot;&quot;&quot;</span>
+</span><span data-line="152">
+</span><span data-line="153">    <span class="n">RESPONSE</span> <span class="o">=</span> <span class="mi">129</span>
+</span><span data-line="154"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Application Layer response to a master request.&quot;&quot;&quot;</span>
+</span><span data-line="155">
+</span><span data-line="156">    <span class="n">UNSOLICITED_RESPONSE</span> <span class="o">=</span> <span class="mi">130</span>
+</span><span data-line="157"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Unsolicited Application Layer response from the outstation.&quot;&quot;&quot;</span>
+</span><span data-line="158">
+</span><span data-line="159">    <span class="n">AUTHENTICATE_RESP</span> <span class="o">=</span> <span class="mi">131</span>
+</span><span data-line="160"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Outstation issues an authentication response to the master.&quot;&quot;&quot;</span></div>
+
+</span><span data-line="161">
+</span><span data-line="162">
+<div class="viewcode-block" id="ObjectPrefixCode">
+<a class="viewcode-back" href="../../../../protocols/dnp3/api/application.html#icspacket.proto.dnp3.application.ObjectPrefixCode">[docs]</a>
+</span><span data-line="163"><span class="k">class</span><span class="w"> </span><span class="nc">ObjectPrefixCode</span><span class="p">(</span><span class="n">enum</span><span class="o">.</span><span class="n">IntEnum</span><span class="p">):</span>
+</span><span data-line="164"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="165"><span class="sd">    Object Prefix Codes.</span>
+</span><span data-line="166">
+</span><span data-line="167"><span class="sd">    Define how objects are prefixed when encoded in an Application Layer</span>
+</span><span data-line="168"><span class="sd">    message.</span>
+</span><span data-line="169"><span class="sd">    (See DNP3 Specification, Section 4.2.2.7.3.2)</span>
+</span><span data-line="170"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span data-line="171">
+</span><span data-line="172">    <span class="n">NONE</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span data-line="173"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Objects are encoded without any index prefix.&quot;&quot;&quot;</span>
+</span><span data-line="174">
+</span><span data-line="175">    <span class="n">INDEX_8</span> <span class="o">=</span> <span class="mi">1</span>
+</span><span data-line="176"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Objects are prefixed with an 8-bit index.&quot;&quot;&quot;</span>
+</span><span data-line="177">
+</span><span data-line="178">    <span class="n">INDEX_16</span> <span class="o">=</span> <span class="mi">2</span>
+</span><span data-line="179"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Objects are prefixed with a 16-bit index.&quot;&quot;&quot;</span>
+</span><span data-line="180">
+</span><span data-line="181">    <span class="n">INDEX_32</span> <span class="o">=</span> <span class="mi">3</span>
+</span><span data-line="182"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Objects are prefixed with a 32-bit index.&quot;&quot;&quot;</span>
+</span><span data-line="183">
+</span><span data-line="184">    <span class="n">OBJECT_SIZE_8</span> <span class="o">=</span> <span class="mi">4</span>
+</span><span data-line="185"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Objects are prefixed with an 8-bit object size.&quot;&quot;&quot;</span>
+</span><span data-line="186">
+</span><span data-line="187">    <span class="n">OBJECT_SIZE_16</span> <span class="o">=</span> <span class="mi">5</span>
+</span><span data-line="188"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Objects are prefixed with a 16-bit object size.&quot;&quot;&quot;</span>
+</span><span data-line="189">
+</span><span data-line="190">    <span class="n">OBJECT_SIZE_32</span> <span class="o">=</span> <span class="mi">6</span>
+</span><span data-line="191"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Objects are prefixed with a 32-bit object size.&quot;&quot;&quot;</span>
+</span><span data-line="192">
+</span><span data-line="193">    <span class="n">RESERVED</span> <span class="o">=</span> <span class="mi">7</span>
+</span><span data-line="194"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Reserved for future use.&quot;&quot;&quot;</span></div>
+
+</span><span data-line="195">
+</span><span data-line="196">
+<div class="viewcode-block" id="RangeSpecifierCode">
+<a class="viewcode-back" href="../../../../protocols/dnp3/api/application.html#icspacket.proto.dnp3.application.RangeSpecifierCode">[docs]</a>
+</span><span data-line="197"><span class="k">class</span><span class="w"> </span><span class="nc">RangeSpecifierCode</span><span class="p">(</span><span class="n">enum</span><span class="o">.</span><span class="n">IntEnum</span><span class="p">):</span>
+</span><span data-line="198"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="199"><span class="sd">    Range Specifier Codes.</span>
+</span><span data-line="200">
+</span><span data-line="201"><span class="sd">    Indicate how ranges of objects are expressed in a qualifier field,</span>
+</span><span data-line="202"><span class="sd">    including start/stop indexes, virtual addresses, or counts.</span>
+</span><span data-line="203"><span class="sd">    (See DNP3 Specification, Section 4.2.2.7.3.3)</span>
+</span><span data-line="204"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span data-line="205">
+</span><span data-line="206">    <span class="n">RANGE_8</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span data-line="207"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Range field contains 1-octet start and stop indexes.&quot;&quot;&quot;</span>
+</span><span data-line="208">
+</span><span data-line="209">    <span class="n">RANGE_16</span> <span class="o">=</span> <span class="mi">1</span>
+</span><span data-line="210"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Range field contains 2-octet start and stop indexes.&quot;&quot;&quot;</span>
+</span><span data-line="211">
+</span><span data-line="212">    <span class="n">RANGE_32</span> <span class="o">=</span> <span class="mi">2</span>
+</span><span data-line="213"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Range field contains 4-octet start and stop indexes.&quot;&quot;&quot;</span>
+</span><span data-line="214">
+</span><span data-line="215">    <span class="n">RANGE_8_VIRTUAL</span> <span class="o">=</span> <span class="mi">3</span>
+</span><span data-line="216"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Range field contains 1-octet start and stop virtual addresses.&quot;&quot;&quot;</span>
+</span><span data-line="217">
+</span><span data-line="218">    <span class="n">RANGE_16_VIRTUAL</span> <span class="o">=</span> <span class="mi">4</span>
+</span><span data-line="219"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Range field contains 2-octet start and stop virtual addresses.&quot;&quot;&quot;</span>
+</span><span data-line="220">
+</span><span data-line="221">    <span class="n">RANGE_32_VIRTUAL</span> <span class="o">=</span> <span class="mi">5</span>
+</span><span data-line="222"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Range field contains 4-octet start and stop virtual addresses.&quot;&quot;&quot;</span>
+</span><span data-line="223">
+</span><span data-line="224">    <span class="n">NONE</span> <span class="o">=</span> <span class="mi">6</span>
+</span><span data-line="225"><span class="w">    </span><span class="sd">&quot;&quot;&quot;No range field is used (implies all values).&quot;&quot;&quot;</span>
+</span><span data-line="226">
+</span><span data-line="227">    <span class="n">COUNT_8</span> <span class="o">=</span> <span class="mi">7</span>
+</span><span data-line="228"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Range field contains a 1-octet count of objects.&quot;&quot;&quot;</span>
+</span><span data-line="229">
+</span><span data-line="230">    <span class="n">COUNT_16</span> <span class="o">=</span> <span class="mi">8</span>
+</span><span data-line="231"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Range field contains a 2-octet count of objects.&quot;&quot;&quot;</span>
+</span><span data-line="232">
+</span><span data-line="233">    <span class="n">COUNT_32</span> <span class="o">=</span> <span class="mi">9</span>
+</span><span data-line="234"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Range field contains a 4-octet count of objects.&quot;&quot;&quot;</span>
+</span><span data-line="235">
+</span><span data-line="236">    <span class="n">VARIABLE</span> <span class="o">=</span> <span class="mi">11</span>
+</span><span data-line="237"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Variable format qualifier with a 1-octet object count.&quot;&quot;&quot;</span></div>
+
+</span><span data-line="238">
+</span><span data-line="239">
+</span><span data-line="240"><span class="n">APDU_RANGE_TYPES</span> <span class="o">=</span> <span class="p">{</span>
+</span><span data-line="241">    <span class="n">RangeSpecifierCode</span><span class="o">.</span><span class="n">COUNT_8</span><span class="p">:</span> <span class="n">uint8</span><span class="p">,</span>
+</span><span data-line="242">    <span class="n">RangeSpecifierCode</span><span class="o">.</span><span class="n">COUNT_16</span><span class="p">:</span> <span class="n">LittleEndian</span> <span class="o">+</span> <span class="n">uint16</span><span class="p">,</span>
+</span><span data-line="243">    <span class="n">RangeSpecifierCode</span><span class="o">.</span><span class="n">COUNT_32</span><span class="p">:</span> <span class="n">LittleEndian</span> <span class="o">+</span> <span class="n">uint32</span><span class="p">,</span>
+</span><span data-line="244">    <span class="n">RangeSpecifierCode</span><span class="o">.</span><span class="n">RANGE_8</span><span class="p">:</span> <span class="n">uint8</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span>
+</span><span data-line="245">    <span class="n">RangeSpecifierCode</span><span class="o">.</span><span class="n">RANGE_16</span><span class="p">:</span> <span class="n">LittleEndian</span> <span class="o">+</span> <span class="n">uint16</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span>
+</span><span data-line="246">    <span class="n">RangeSpecifierCode</span><span class="o">.</span><span class="n">RANGE_32</span><span class="p">:</span> <span class="n">LittleEndian</span> <span class="o">+</span> <span class="n">uint32</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span>
+</span><span data-line="247">    <span class="n">RangeSpecifierCode</span><span class="o">.</span><span class="n">RANGE_8_VIRTUAL</span><span class="p">:</span> <span class="n">uint8</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span>
+</span><span data-line="248">    <span class="n">RangeSpecifierCode</span><span class="o">.</span><span class="n">RANGE_16_VIRTUAL</span><span class="p">:</span> <span class="n">LittleEndian</span> <span class="o">+</span> <span class="n">uint16</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span>
+</span><span data-line="249">    <span class="n">RangeSpecifierCode</span><span class="o">.</span><span class="n">RANGE_32_VIRTUAL</span><span class="p">:</span> <span class="n">LittleEndian</span> <span class="o">+</span> <span class="n">uint32</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span>
+</span><span data-line="250">    <span class="n">DEFAULT_OPTION</span><span class="p">:</span> <span class="n">Pass</span><span class="p">,</span>
+</span><span data-line="251"><span class="p">}</span>
+</span><span data-line="252">
+</span><span data-line="253"><span class="n">APDU_PREFIX_TYPES</span> <span class="o">=</span> <span class="p">{</span>
+</span><span data-line="254">    <span class="n">ObjectPrefixCode</span><span class="o">.</span><span class="n">INDEX_8</span><span class="p">:</span> <span class="n">uint8</span><span class="p">,</span>
+</span><span data-line="255">    <span class="n">ObjectPrefixCode</span><span class="o">.</span><span class="n">INDEX_16</span><span class="p">:</span> <span class="n">LittleEndian</span> <span class="o">+</span> <span class="n">uint16</span><span class="p">,</span>
+</span><span data-line="256">    <span class="n">ObjectPrefixCode</span><span class="o">.</span><span class="n">INDEX_32</span><span class="p">:</span> <span class="n">LittleEndian</span> <span class="o">+</span> <span class="n">uint32</span><span class="p">,</span>
+</span><span data-line="257">    <span class="n">ObjectPrefixCode</span><span class="o">.</span><span class="n">OBJECT_SIZE_8</span><span class="p">:</span> <span class="n">uint8</span><span class="p">,</span>
+</span><span data-line="258">    <span class="n">ObjectPrefixCode</span><span class="o">.</span><span class="n">OBJECT_SIZE_16</span><span class="p">:</span> <span class="n">LittleEndian</span> <span class="o">+</span> <span class="n">uint16</span><span class="p">,</span>
+</span><span data-line="259">    <span class="n">ObjectPrefixCode</span><span class="o">.</span><span class="n">OBJECT_SIZE_32</span><span class="p">:</span> <span class="n">LittleEndian</span> <span class="o">+</span> <span class="n">uint32</span><span class="p">,</span>
+</span><span data-line="260">    <span class="c1"># Objects are packed without an index prefix.</span>
+</span><span data-line="261">    <span class="n">DEFAULT_OPTION</span><span class="p">:</span> <span class="n">Pass</span><span class="p">,</span>
+</span><span data-line="262"><span class="p">}</span>
+</span></pre></div>
+        </article><button class="back-to-top" type="button">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+  </svg>
+  <span>Back to top</span>
+</button><div class="navigation flex print:hidden"></div></div>
+    </div>
+  </main>
+</div>
+<footer class="sy-foot">
+  <div class="sy-foot-inner sy-container mx-auto">
+    <div class="sy-foot-reserved md:flex justify-between items-center">
+      <div class="sy-foot-copyright"><p>2025, MatrixEditor</p>
+  
+  <p>
+    Made with
+    
+    <a href="https://www.sphinx-doc.org/">Sphinx</a> and
+    
+    <a href="https://shibuya.lepture.com">Shibuya theme</a>.
+  </p>
+</div>
+      <div class="sy-foot-socials">
+<a href="https://github.com/MatrixEditor/icspacket" aria-label="GitHub">
+  <iconify-icon icon="simple-icons:github"></iconify-icon>
+</a></div>
+    </div>
+  </div>
+</footer>
+      <script src="../../../../_static/documentation_options.js?v=0df3b029"></script>
+      <script src="../../../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../../../_static/design-tabs.js?v=f930bc37"></script>
+      <script src="../../../../_static/shibuya.js?v=e730760c"></script></body>
+</html>

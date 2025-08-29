@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="en" data-accent-color="lime" data-content_root="../../../">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Master - icspacket 0.1.dev1+g5d2cc2c49 documentation</title><link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" /><link rel="next" title="Object Library" href="object_library.html" /><link rel="prev" title="Application Layer" href="application.html" />
+      <link rel="canonical" href="https://matrixeditor.github.io/icspacket/protocols/dnp3/api/master.html" /><script>
+    function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
+    setColorMode(localStorage._theme||"dark");
+  </script><link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=397bb51e" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/shibuya.css?v=d48c410d" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link media="print" rel="stylesheet" type="text/css" href="../../../_static/print.css?v=20ff2c19" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --sy-f-text: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+  --sy-f-heading: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+}
+</style>
+    <meta property="og:type" content="website"/>
+<meta property="og:url" content="https://matrixeditor.github.io/icspacket/protocols/dnp3/api/master.html"/>
+<meta property="og:title" content="Master"/>
+<meta name="twitter:card" content="summary"/>
+  </head>
+<body><div class="sy-head">
+  <div class="sy-head-blur"></div>
+  <div class="sy-head-inner sy-container mx-auto">
+    <a class="sy-head-brand" href="../../../index.html">
+      
+      
+      <strong>icspacket</strong>
+    </a>
+    <div class="sy-head-nav" id="head-nav">
+      <nav class="sy-head-links"><ul>
+      <li class="link"><a class="js-menu" href="../../../getting-started/protocols.html" id="nav-trigger-1" aria-controls="nav-children-1">
+            <span>Examples</span>
+            <i class="i-lucide chevron-down"></i>
+          </a>
+        <ul id="nav-children-1" aria-labelledby="nav-trigger-1"><li><a href="../../mms/examples.html">
+                <span>MMS Utilities</span>
+                <small>Manufacturing Message Specification tools</small>
+              </a></li><li><a href="../examples.html">
+                <span>DNP3 Tools</span>
+                <small>DNP3 utilities and tools</small>
+              </a></li></ul>
+      </li></ul></nav>
+      <div class="sy-head-extra flex items-center print:hidden"><form class="searchbox flex items-center" action="../../../search.html" method="get">
+  <input type="text" name="q" placeholder="Search" />
+  <kbd>/</kbd>
+</form><div class="sy-head-socials">
+  <a href="https://github.com/MatrixEditor/icspacket" aria-label="GitHub">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </a></div></div>
+    </div>
+    <div class="sy-head-actions flex items-center shrink-0 print:hidden"><button class="js-theme theme-switch flex items-center"
+data-aria-auto="Switch to light color mode"
+data-aria-light="Switch to dark color mode"
+data-aria-dark="Switch to auto color mode">
+<i class="i-lucide theme-icon"></i>
+</button><button class="md:hidden flex items-center js-menu" aria-label="Menu" type="button" aria-controls="head-nav" aria-expanded="false">
+        <div class="hamburger">
+          <span class="hamburger_1"></span>
+          <span class="hamburger_2 -translate-x-2"></span>
+          <span class="hamburger_3 -translate-x-1"></span>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>
+<div class="sy-page sy-container flex mx-auto">
+  <aside id="lside" class="sy-lside md:w-72 md:shrink-0 print:hidden">
+    <div class="sy-lside-inner md:sticky">
+      <div class="sy-scrollbar p-6"><div class="sidebar-links">
+  <ul>
+    <li><a class="icon-link" href="https://github.com/MatrixEditor/icspacket/discussions">
+  <span class="icon">
+    <svg viewBox="0 0 24 24" fill="none">
+      <path fill="var(--accent-9)" fill-rule="evenodd" clip-rule="evenodd" d="M11 5a6 6 0 0 0-4.687 9.746c.215.27.315.62.231.954l-.514 2.058a1 1 0 0 0 1.485 1.1l2.848-1.71c.174-.104.374-.15.576-.148H13a6 6 0 0 0 0-12h-2Z"/>
+      <circle fill="white" cx="12" cy="11" r="1"/>
+      <circle fill="white" cx="9" cy="11" r="1"/>
+      <circle fill="white" cx="15" cy="11" r="1"/>
+    </svg>
+  </span>
+  <span class="text">Discussion</span>
+</a></li>
+  </ul>
+</div>
+        <div class="globaltoc" data-expand-depth="2"><p class="caption" role="heading" aria-level="3"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../getting-started/installation.html">Installation</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../getting-started/protocols.html">Protocols Overview</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../getting-started/coreapi.html">Core API Reference</a></li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">DNP3 / IEEE 1815</span></p>
+<ul class="current">
+<li class="toctree-l1 _expand"><a class="reference internal" href="../dnp3dump.html">Dumping Objects</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../api.html">API Reference</a><ul class="current">
+<li class="toctree-l2 _expand"><a class="reference internal" href="link.html">Link Layer</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="transport.html">Transport Layer</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="application.html">Application Layer</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Master</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="object_library.html">Object Library</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="primitives.html">Primitive Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="coding.html">Encoding / Decoding</a></li>
+<li class="toctree-l3"><a class="reference internal" href="variations.html">Variations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="coding_utils.html">Object Utilities</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">MMS / ISO 9506</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../mms/demo_vars.html">Variable Target Format</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../mms/demo_vars.html#variableaccess-service-rwq">VariableAccess Service (rwq)</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../mms/demo_files.html">FileManagement Service</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../mms/api.html">API Reference</a><ul>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../../mms/api_conn.html">MMS Connection</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../../mms/api_data.html">Data Conversion</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../../mms/api_utils.html">Protocol Utilities</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">ACSE / X.227</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../acse/api.html">API Reference</a></li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">COPP / X.226 / ISO 8823</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../copp/api.html">API Reference</a><ul>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../../copp/presentation.html">ISO Presentation</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../../copp/utils.html">Protocol Utilities</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">COSP / X.225 / ISO 8237-1</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../cosp/api.html">API Reference</a><ul>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../../cosp/tsdu.html">TSDU</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../../cosp/spdu.html">SPDU Types</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../../cosp/values.html">Parameter Values (PV)</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../../cosp/session.html">ISO Session</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../../cosp/utils.html">Protocol Utilities</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">COTP / X.224</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../cotp/api.html">API Reference</a><ul>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../../cotp/structs.html">TPDU Types</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../../cotp/connection.html">Connection</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">TPKT Protocol (RFC1006)</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../tpkt/usage.html">Using a TPKT Wrapper</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../tpkt/api.html">API Reference</a></li>
+</ul>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="lside-overlay js-menu" role="button" aria-label="Close left sidebar" aria-controls="lside" aria-expanded="false"></div>
+  <aside id="rside" class="sy-rside pb-3 w-64 shrink-0 order-last">
+    <button class="rside-close js-menu xl:hidden" aria-label="Close Table of Contents" type="button" aria-controls="rside" aria-expanded="false">
+      <i class="i-lucide close"></i>
+    </button>
+    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div class="localtoc"><h3>On this page</h3><ul>
+<li><a class="reference internal" href="#icspacket.proto.dnp3.master.DNP3_Task"><code class="docutils literal notranslate"><span class="pre">DNP3_Task</span></code></a><ul>
+<li><a class="reference internal" href="#icspacket.proto.dnp3.master.DNP3_Task.prepare_transmit"><code class="docutils literal notranslate">prepare_transmit()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.dnp3.master.DNP3_Task.on_message"><code class="docutils literal notranslate">on_message()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#icspacket.proto.dnp3.master.DNP3_Link"><code class="docutils literal notranslate"><span class="pre">DNP3_Link</span></code></a><ul>
+<li><a class="reference internal" href="#icspacket.proto.dnp3.master.DNP3_Link.in_queue"><code class="docutils literal notranslate">in_queue</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.dnp3.master.DNP3_Link.mode"><code class="docutils literal notranslate">mode</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.dnp3.master.DNP3_Link.source"><code class="docutils literal notranslate">source</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.dnp3.master.DNP3_Link.destination"><code class="docutils literal notranslate">destination</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.dnp3.master.DNP3_Link.send_data"><code class="docutils literal notranslate">send_data()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.dnp3.master.DNP3_Link.send_lpdu"><code class="docutils literal notranslate">send_lpdu()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.dnp3.master.DNP3_Link.recv_data"><code class="docutils literal notranslate">recv_data()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.dnp3.master.DNP3_Link.send_link_status"><code class="docutils literal notranslate">send_link_status()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.dnp3.master.DNP3_Link.send_not_supported"><code class="docutils literal notranslate">send_not_supported()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.dnp3.master.DNP3_Link.recv_lpdu"><code class="docutils literal notranslate">recv_lpdu()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.dnp3.master.DNP3_Link.connect"><code class="docutils literal notranslate">connect()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.dnp3.master.DNP3_Link.close"><code class="docutils literal notranslate">close()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#icspacket.proto.dnp3.master.DNP3_Transport"><code class="docutils literal notranslate"><span class="pre">DNP3_Transport</span></code></a><ul>
+<li><a class="reference internal" href="#icspacket.proto.dnp3.master.DNP3_Transport.link"><code class="docutils literal notranslate">link</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.dnp3.master.DNP3_Transport.connect"><code class="docutils literal notranslate">connect()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.dnp3.master.DNP3_Transport.close"><code class="docutils literal notranslate">close()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.dnp3.master.DNP3_Transport.next_sequence"><code class="docutils literal notranslate">next_sequence()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.dnp3.master.DNP3_Transport.send_data"><code class="docutils literal notranslate">send_data()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.dnp3.master.DNP3_Transport.recv_data"><code class="docutils literal notranslate">recv_data()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#icspacket.proto.dnp3.master.DNP3_Master"><code class="docutils literal notranslate"><span class="pre">DNP3_Master</span></code></a><ul>
+<li><a class="reference internal" href="#icspacket.proto.dnp3.master.DNP3_Master.tasks"><code class="docutils literal notranslate">tasks</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.dnp3.master.DNP3_Master.transport"><code class="docutils literal notranslate">transport</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.dnp3.master.DNP3_Master.sequence"><code class="docutils literal notranslate">sequence</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.dnp3.master.DNP3_Master.get_task"><code class="docutils literal notranslate">get_task()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.dnp3.master.DNP3_Master.pop_task"><code class="docutils literal notranslate">pop_task()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.dnp3.master.DNP3_Master.associate"><code class="docutils literal notranslate">associate()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.dnp3.master.DNP3_Master.release"><code class="docutils literal notranslate">release()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.dnp3.master.DNP3_Master.submit_task"><code class="docutils literal notranslate">submit_task()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.dnp3.master.DNP3_Master.submit_noreturn"><code class="docutils literal notranslate">submit_noreturn()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.dnp3.master.DNP3_Master.transmit"><code class="docutils literal notranslate">transmit()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.dnp3.master.DNP3_Master.request"><code class="docutils literal notranslate">request()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</div><a class="js-repo-stats repo-stats flex items-center" href="https://github.com/MatrixEditor/icspacket"
+  data-type="github" data-user="MatrixEditor" data-repo="icspacket">
+  <span class="w-8 flex items-center justify-around shrink-0 text-3xl">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </span>
+  <span class="flex-grow px-2 break-all">
+    <span style="font-size: small;">MatrixEditor/icspacket</span>
+    <span class="flex text-sm repo-stats-count">
+      <span class="flex items-center pr-3">
+        <iconify-icon icon="lucide:star"></iconify-icon>
+        <strong class="js-repo-stars ml-1">0</strong>
+      </span>
+      <span class="flex items-center">
+        <iconify-icon icon="lucide:git-fork"></iconify-icon>
+        <strong class="js-repo-forks ml-1">0</strong>
+      </span>
+    </span>
+  </span>
+</a><div class="edit-this-page">
+  <a href="https://github.com/MatrixEditor/icspacket/blob/main/docs/protocols/dnp3/api/master.rst">Edit this page</a>
+</div></div>
+  </aside>
+  <div class="rside-overlay js-menu" role="button" aria-label="Close Table of Contents" aria-controls="rside" aria-expanded="false"></div>
+  <main class="sy-main w-full max-sm:max-w-full print:pt-6">
+<div class="sy-breadcrumbs" role="navigation">
+  <div class="sy-breadcrumbs-inner flex items-center">
+    <div class="md:hidden mr-3">
+      <button class="js-menu" aria-label="Menu" type="button" aria-controls="lside" aria-expanded="false">
+        <i class="i-lucide menu"></i>
+      </button>
+    </div>
+    <ol class="flex-1" itemscope itemtype="https://schema.org/BreadcrumbList"><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="../../../index.html"><span itemprop="name">icspacket</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="1" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="../api.html"><span itemprop="name">API Reference</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="2" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <strong itemprop="name">Master</strong>
+        <meta itemprop="position" content="3" />
+      </li></ol>
+    <div class="xl:hidden ml-1">
+      <button class="js-menu" aria-label="Show table of contents" type="button" aria-controls="rside"
+        aria-expanded="false">
+        <i class="i-lucide outdent"></i>
+      </button>
+    </div>
+  </div>
+</div><div class="flex flex-col break-words justify-between">
+      <div class="min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
+        <article class="yue" role="main">
+          <section id="module-icspacket.proto.dnp3.master">
+<span id="master"></span><span id="dnp3-lib-master"></span><h1>Master<a class="headerlink" href="#module-icspacket.proto.dnp3.master" title="Link to this heading">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="icspacket.proto.dnp3.master.DNP3_Task">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">icspacket.proto.dnp3.master.</span></span><span class="sig-name descname"><span class="pre">DNP3_Task</span></span><a class="reference internal" href="../../../_modules/icspacket/proto/dnp3/master.html#DNP3_Task"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.dnp3.master.DNP3_Task" title="Link to this definition">¶</a></dt>
+<dd><p>Abstract base class for a DNP3 task.</p>
+<p>A DNP3 task represents a unit of work that the Master initiates, such as
+sending a request and handling its response. Each task is responsible
+for preparing an APDU for transmission and for processing the received
+APDU messages once a response arrives.</p>
+<p>Subclasses implement specific task behavior, such as blocking until
+a response is received or executing a callback when a response is
+available.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Variables<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>sequence</strong> (<em>int</em>) – Application layer sequence number associated with the
+task. Initialized to <code class="docutils literal notranslate"><span class="pre">-1</span></code> and updated when the APDU is transmitted.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.dnp3.master.DNP3_Task.prepare_transmit">
+<span class="sig-name descname"><span class="pre">prepare_transmit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">master</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#icspacket.proto.dnp3.master.DNP3_Master" title="icspacket.proto.dnp3.master.DNP3_Master"><span class="pre">DNP3_Master</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="application.html#icspacket.proto.dnp3.application.APDU" title="icspacket.proto.dnp3.application.APDU"><span class="pre">APDU</span></a></span></span><a class="reference internal" href="../../../_modules/icspacket/proto/dnp3/master.html#DNP3_Task.prepare_transmit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.dnp3.master.DNP3_Task.prepare_transmit" title="Link to this definition">¶</a></dt>
+<dd><p>Prepare the APDU for transmission.</p>
+<p>Subclasses must implement this to return the request APDU that will
+be sent to the outstation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>master</strong> (<a class="reference internal" href="#icspacket.proto.dnp3.master.DNP3_Master" title="icspacket.proto.dnp3.master.DNP3_Master"><em>DNP3_Master</em></a>) – The DNP3 master instance initiating the transmission.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The APDU to transmit.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="application.html#icspacket.proto.dnp3.application.APDU" title="icspacket.proto.dnp3.application.APDU">APDU</a></p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>NotImplementedError</strong> – If the method is not overridden in
+a subclass.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.dnp3.master.DNP3_Task.on_message">
+<span class="sig-name descname"><span class="pre">on_message</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">master</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#icspacket.proto.dnp3.master.DNP3_Master" title="icspacket.proto.dnp3.master.DNP3_Master"><span class="pre">DNP3_Master</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="application.html#icspacket.proto.dnp3.application.APDU" title="icspacket.proto.dnp3.application.APDU"><span class="pre">APDU</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../../../_modules/icspacket/proto/dnp3/master.html#DNP3_Task.on_message"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.dnp3.master.DNP3_Task.on_message" title="Link to this definition">¶</a></dt>
+<dd><p>Handle a received APDU message.</p>
+<p>This is called when the Master receives a response APDU for the
+task. The default implementation does nothing.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>master</strong> (<a class="reference internal" href="#icspacket.proto.dnp3.master.DNP3_Master" title="icspacket.proto.dnp3.master.DNP3_Master"><em>DNP3_Master</em></a>) – The DNP3 master instance handling the message.</p></li>
+<li><p><strong>message</strong> (<a class="reference internal" href="application.html#icspacket.proto.dnp3.application.APDU" title="icspacket.proto.dnp3.application.APDU"><em>APDU</em></a>) – The received APDU response.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="icspacket.proto.dnp3.master.DNP3_Link">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">icspacket.proto.dnp3.master.</span></span><span class="sig-name descname"><span class="pre">DNP3_Link</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">src</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dst</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sock</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">socket</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="link.html#icspacket.proto.dnp3.link.LinkDirection" title="icspacket.proto.dnp3.link.LinkDirection"><span class="pre">LinkDirection</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">LinkDirection.MASTER</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/icspacket/proto/dnp3/master.html#DNP3_Link"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.dnp3.master.DNP3_Link" title="Link to this definition">¶</a></dt>
+<dd><p>Implements the DNP3 Link Layer.</p>
+<p>The Link Layer provides reliable delivery of Link Protocol Data Units (LPDUs)
+between a DNP3 master and outstation over a transport medium such as TCP.
+This class is responsible for:</p>
+<ul class="simple">
+<li><p>Encapsulation of octet streams into LPDUs.</p></li>
+<li><p>Validation of source/destination addresses.</p></li>
+<li><p>Handling link-layer function codes (e.g., <cite>UNCONFIRMED_USER_DATA</cite>,
+<cite>REQUEST_LINK_STATUS</cite>, <cite>LINK_STATUS</cite>, <cite>NOT_SUPPORTED</cite>).</p></li>
+<li><p>Forwarding valid user data to the upper layer.</p></li>
+</ul>
+<p>The class maintains an internal input queue of received LPDUs that have
+passed validation and are intended for the upper layers.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>src</strong> (<em>int</em>) – The source link-layer address of this endpoint.</p></li>
+<li><p><strong>dst</strong> (<em>int</em>) – The expected destination address of the remote peer.</p></li>
+<li><p><strong>sock</strong> (<em>socket.socket</em><em> | </em><em>None</em>) – Optional pre-initialized TCP socket. If <code class="docutils literal notranslate"><span class="pre">None</span></code>, a new
+socket will be created.</p></li>
+<li><p><strong>mode</strong> (<a class="reference internal" href="link.html#icspacket.proto.dnp3.link.LinkDirection" title="icspacket.proto.dnp3.link.LinkDirection"><em>LinkDirection</em></a>) – Link direction, either MASTER or OUTSTATION.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="icspacket.proto.dnp3.master.DNP3_Link.in_queue">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">in_queue</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Queue</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="link.html#icspacket.proto.dnp3.link.LPDU" title="icspacket.proto.dnp3.link.LPDU"><span class="pre">LPDU</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#icspacket.proto.dnp3.master.DNP3_Link.in_queue" title="Link to this definition">¶</a></dt>
+<dd><p>Queue of validated inbound LPDUs.</p>
+<p>Only LPDUs that pass address and direction checks are placed into
+this queue for higher-layer consumption.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Queue[<a class="reference internal" href="link.html#icspacket.proto.dnp3.link.LPDU" title="icspacket.proto.dnp3.link.LPDU">LPDU</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="icspacket.proto.dnp3.master.DNP3_Link.mode">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">mode</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="link.html#icspacket.proto.dnp3.link.LinkDirection" title="icspacket.proto.dnp3.link.LinkDirection"><span class="pre">LinkDirection</span></a></em><a class="headerlink" href="#icspacket.proto.dnp3.master.DNP3_Link.mode" title="Link to this definition">¶</a></dt>
+<dd><p>Link direction of this endpoint.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="link.html#icspacket.proto.dnp3.link.LinkDirection" title="icspacket.proto.dnp3.link.LinkDirection">LinkDirection</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="icspacket.proto.dnp3.master.DNP3_Link.source">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">source</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#icspacket.proto.dnp3.master.DNP3_Link.source" title="Link to this definition">¶</a></dt>
+<dd><p>The source address of this endpoint.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="icspacket.proto.dnp3.master.DNP3_Link.destination">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">destination</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#icspacket.proto.dnp3.master.DNP3_Link.destination" title="Link to this definition">¶</a></dt>
+<dd><p>The expected destination address of the peer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.dnp3.master.DNP3_Link.send_data">
+<span class="sig-name descname"><span class="pre">send_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">octets</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bytes</span></span></em>, <em class="sig-param"><span class="positional-only-separator o"><abbr title="Positional-only parameter separator (PEP 570)"><span class="pre">/</span></abbr></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../../../_modules/icspacket/proto/dnp3/master.html#DNP3_Link.send_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.dnp3.master.DNP3_Link.send_data" title="Link to this definition">¶</a></dt>
+<dd><p>Send user data as an unconfirmed LPDU.</p>
+<p>The octets are wrapped into a Link Layer frame with the
+function code <cite>UNCONFIRMED_USER_DATA</cite> and transmitted.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>octets</strong> (<em>bytes</em>) – The application/user data to send.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="../../../getting-started/coreapi.html#icspacket.core.connection.ConnectionError" title="icspacket.core.connection.ConnectionError"><strong>ConnectionError</strong></a> – If the socket is not connected.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.dnp3.master.DNP3_Link.send_lpdu">
+<span class="sig-name descname"><span class="pre">send_lpdu</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lpdu</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="link.html#icspacket.proto.dnp3.link.LPDU" title="icspacket.proto.dnp3.link.LPDU"><span class="pre">LPDU</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../../../_modules/icspacket/proto/dnp3/master.html#DNP3_Link.send_lpdu"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.dnp3.master.DNP3_Link.send_lpdu" title="Link to this definition">¶</a></dt>
+<dd><p>Send a fully constructed LPDU.</p>
+<p>This method sets the LPDU’s source and destination before
+serializing and transmitting it over the socket.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>lpdu</strong> (<a class="reference internal" href="link.html#icspacket.proto.dnp3.link.LPDU" title="icspacket.proto.dnp3.link.LPDU"><em>LPDU</em></a>) – The LPDU to send.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="../../../getting-started/coreapi.html#icspacket.core.connection.ConnectionError" title="icspacket.core.connection.ConnectionError"><strong>ConnectionError</strong></a> – If the socket is not connected.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.dnp3.master.DNP3_Link.recv_data">
+<span class="sig-name descname"><span class="pre">recv_data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bytes</span></span></span><a class="reference internal" href="../../../_modules/icspacket/proto/dnp3/master.html#DNP3_Link.recv_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.dnp3.master.DNP3_Link.recv_data" title="Link to this definition">¶</a></dt>
+<dd><p>Receive raw LPDU octets from the socket.</p>
+<p>Reads up to 292 bytes, which is the maximum LPDU size
+(per Link Layer specification, length field max 255
+plus headers).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Raw bytes read from the socket.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bytes</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="../../../getting-started/coreapi.html#icspacket.core.connection.ConnectionError" title="icspacket.core.connection.ConnectionError"><strong>ConnectionError</strong></a> – If the socket is not connected.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.dnp3.master.DNP3_Link.send_link_status">
+<span class="sig-name descname"><span class="pre">send_link_status</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../../../_modules/icspacket/proto/dnp3/master.html#DNP3_Link.send_link_status"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.dnp3.master.DNP3_Link.send_link_status" title="Link to this definition">¶</a></dt>
+<dd><p>Send a link status response.</p>
+<p>Constructs an LPDU with function code <cite>LINK_STATUS</cite>
+and transmits it.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="../../../getting-started/coreapi.html#icspacket.core.connection.ConnectionError" title="icspacket.core.connection.ConnectionError"><strong>ConnectionError</strong></a> – If the socket is not connected.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.dnp3.master.DNP3_Link.send_not_supported">
+<span class="sig-name descname"><span class="pre">send_not_supported</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../../../_modules/icspacket/proto/dnp3/master.html#DNP3_Link.send_not_supported"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.dnp3.master.DNP3_Link.send_not_supported" title="Link to this definition">¶</a></dt>
+<dd><p>Send a ‘Not Supported’ response.</p>
+<p>Constructs an LPDU with function code <cite>NOT_SUPPORTED</cite>
+and transmits it.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="../../../getting-started/coreapi.html#icspacket.core.connection.ConnectionError" title="icspacket.core.connection.ConnectionError"><strong>ConnectionError</strong></a> – If the socket is not connected.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.dnp3.master.DNP3_Link.recv_lpdu">
+<span class="sig-name descname"><span class="pre">recv_lpdu</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="link.html#icspacket.proto.dnp3.link.LPDU" title="icspacket.proto.dnp3.link.LPDU"><span class="pre">LPDU</span></a></span></span><a class="reference internal" href="../../../_modules/icspacket/proto/dnp3/master.html#DNP3_Link.recv_lpdu"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.dnp3.master.DNP3_Link.recv_lpdu" title="Link to this definition">¶</a></dt>
+<dd><p>Receive and parse the next valid LPDU.</p>
+<p>This method handles fragmented reception (multiple LPDUs in
+one read) and incomplete frames. Valid frames that pass link
+validation are placed in the inbound queue.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The next valid LPDU for the upper layer.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="link.html#icspacket.proto.dnp3.link.LPDU" title="icspacket.proto.dnp3.link.LPDU">LPDU</a></p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="../../../getting-started/coreapi.html#icspacket.core.connection.ConnectionError" title="icspacket.core.connection.ConnectionError"><strong>ConnectionError</strong></a> – If the socket is not connected.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.dnp3.master.DNP3_Link.connect">
+<span class="sig-name descname"><span class="pre">connect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">address</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../../../_modules/icspacket/proto/dnp3/master.html#DNP3_Link.connect"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.dnp3.master.DNP3_Link.connect" title="Link to this definition">¶</a></dt>
+<dd><p>Connect the socket to the specified peer address.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>address</strong> (<em>tuple</em><em>[</em><em>str</em><em>, </em><em>int</em><em>]</em>) – Peer address as a tuple of (host, port).</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.dnp3.master.DNP3_Link.close">
+<span class="sig-name descname"><span class="pre">close</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../../../_modules/icspacket/proto/dnp3/master.html#DNP3_Link.close"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.dnp3.master.DNP3_Link.close" title="Link to this definition">¶</a></dt>
+<dd><p>Close the underlying socket connection.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="icspacket.proto.dnp3.master.DNP3_Transport">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">icspacket.proto.dnp3.master.</span></span><span class="sig-name descname"><span class="pre">DNP3_Transport</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">link</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#icspacket.proto.dnp3.master.DNP3_Link" title="icspacket.proto.dnp3.master.DNP3_Link"><span class="pre">DNP3_Link</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">unsolicited_callback</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="application.html#icspacket.proto.dnp3.application.APDU" title="icspacket.proto.dnp3.application.APDU"><span class="pre">APDU</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">None</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/icspacket/proto/dnp3/master.html#DNP3_Transport"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.dnp3.master.DNP3_Transport" title="Link to this definition">¶</a></dt>
+<dd><p>DNP3 Transport Layer implementation.</p>
+<p>This class implements the transport layer of the DNP3 protocol, providing
+fragmentation and reassembly of Application Protocol Data Units (APDUs)
+into Transport Protocol Data Units (TPDUs). It sits above the Link Layer
+(<a class="reference internal" href="#icspacket.proto.dnp3.master.DNP3_Link" title="icspacket.proto.dnp3.master.DNP3_Link"><code class="xref py py-class docutils literal notranslate"><span class="pre">DNP3_Link</span></code></a>) and ensures that application data is transmitted in
+compliance with the transport rules defined in the DNP3 standard.</p>
+<p>Key responsibilities of this layer include:</p>
+<ul class="simple">
+<li><p>Fragmenting application data into transport segments (1-249 octets each).</p></li>
+<li><p>Wrapping each fragment into a TPDU with proper sequence numbering.</p></li>
+<li><p>Reassembling received TPDUs into complete APDUs.</p></li>
+<li><p>Detecting and handling unsolicited responses, optionally invoking a
+user-provided callback.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>link</strong> (<a class="reference internal" href="#icspacket.proto.dnp3.master.DNP3_Link" title="icspacket.proto.dnp3.master.DNP3_Link"><em>DNP3_Link</em></a>) – The link layer object that provides LPDU transmission and reception.</p></li>
+<li><p><strong>unsolicited_callback</strong> (<em>Callable</em><em>[</em><em>[</em><a class="reference internal" href="application.html#icspacket.proto.dnp3.application.APDU" title="icspacket.proto.dnp3.application.APDU"><em>APDU</em></a><em>]</em><em>, </em><em>None</em><em>] </em><em>| </em><em>None</em>) – Optional callback function invoked when an unsolicited
+response APDU is received from the outstation.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="icspacket.proto.dnp3.master.DNP3_Transport.link">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">link</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#icspacket.proto.dnp3.master.DNP3_Link" title="icspacket.proto.dnp3.master.DNP3_Link"><span class="pre">DNP3_Link</span></a></em><a class="headerlink" href="#icspacket.proto.dnp3.master.DNP3_Transport.link" title="Link to this definition">¶</a></dt>
+<dd><p>Return the underlying link layer object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The active <a class="reference internal" href="#icspacket.proto.dnp3.master.DNP3_Link" title="icspacket.proto.dnp3.master.DNP3_Link"><code class="xref py py-class docutils literal notranslate"><span class="pre">DNP3_Link</span></code></a> instance.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#icspacket.proto.dnp3.master.DNP3_Link" title="icspacket.proto.dnp3.master.DNP3_Link">DNP3_Link</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.dnp3.master.DNP3_Transport.connect">
+<span class="sig-name descname"><span class="pre">connect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">address</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../../../_modules/icspacket/proto/dnp3/master.html#DNP3_Transport.connect"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.dnp3.master.DNP3_Transport.connect" title="Link to this definition">¶</a></dt>
+<dd><p>Establish a connection through the link layer.</p>
+<p>This method delegates the connection setup to the underlying
+<a class="reference internal" href="#icspacket.proto.dnp3.master.DNP3_Link" title="icspacket.proto.dnp3.master.DNP3_Link"><code class="xref py py-class docutils literal notranslate"><span class="pre">DNP3_Link</span></code></a> object, updating the transport connection state.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>address</strong> (<em>tuple</em><em>[</em><em>str</em><em>, </em><em>int</em><em>]</em>) – A tuple containing the IP address and port number of the outstation.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.dnp3.master.DNP3_Transport.close">
+<span class="sig-name descname"><span class="pre">close</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../../../_modules/icspacket/proto/dnp3/master.html#DNP3_Transport.close"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.dnp3.master.DNP3_Transport.close" title="Link to this definition">¶</a></dt>
+<dd><p>Close the transport connection.</p>
+<p>This method closes the link layer connection and updates the
+internal connection status.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.dnp3.master.DNP3_Transport.next_sequence">
+<span class="sig-name descname"><span class="pre">next_sequence</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="../../../_modules/icspacket/proto/dnp3/master.html#DNP3_Transport.next_sequence"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.dnp3.master.DNP3_Transport.next_sequence" title="Link to this definition">¶</a></dt>
+<dd><p>Get the next transport sequence number.</p>
+<p>The transport layer maintains an internal 6-bit sequence counter
+used for ordering TPDUs. After reaching the maximum value, the
+counter wraps around to zero.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The current transport sequence number before incrementing.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.dnp3.master.DNP3_Transport.send_data">
+<span class="sig-name descname"><span class="pre">send_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">octets</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bytes</span></span></em>, <em class="sig-param"><span class="positional-only-separator o"><abbr title="Positional-only parameter separator (PEP 570)"><span class="pre">/</span></abbr></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../../../_modules/icspacket/proto/dnp3/master.html#DNP3_Transport.send_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.dnp3.master.DNP3_Transport.send_data" title="Link to this definition">¶</a></dt>
+<dd><p>Send application data through the transport layer.</p>
+<p>This method fragments the given application data into one or more
+TPDUs (each up to 249 octets). Each TPDU is assigned sequence
+numbers and FIR/FIN flags. The fragments are then transmitted via
+the link layer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>octets</strong> (<em>bytes</em>) – The application data bytes to transmit.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="../../../getting-started/coreapi.html#icspacket.core.connection.ConnectionError" title="icspacket.core.connection.ConnectionError"><strong>ConnectionError</strong></a> – If the transport connection is not established.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.dnp3.master.DNP3_Transport.recv_data">
+<span class="sig-name descname"><span class="pre">recv_data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bytes</span></span></span><a class="reference internal" href="../../../_modules/icspacket/proto/dnp3/master.html#DNP3_Transport.recv_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.dnp3.master.DNP3_Transport.recv_data" title="Link to this definition">¶</a></dt>
+<dd><p>Receive and reassemble application data from the transport layer.</p>
+<p>This method collects one or more TPDUs received from the link layer
+and reconstructs the original APDU. It validates transport sequence
+numbers to ensure proper ordering. Unsolicited responses are detected
+and optionally passed to the callback without being returned to the caller.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The fully reassembled APDU bytes.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bytes</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="../../../getting-started/coreapi.html#icspacket.core.connection.ConnectionError" title="icspacket.core.connection.ConnectionError"><strong>ConnectionError</strong></a> – If the transport connection is not established.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="icspacket.proto.dnp3.master.DNP3_Master">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">icspacket.proto.dnp3.master.</span></span><span class="sig-name descname"><span class="pre">DNP3_Master</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">link_addr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initial_seq</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sock</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">socket</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/icspacket/proto/dnp3/master.html#DNP3_Master"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.dnp3.master.DNP3_Master" title="Link to this definition">¶</a></dt>
+<dd><p>DNP3 Master (Application Layer interface).</p>
+<p>This class provides the master-side interface of the DNP3 protocol stack,
+built on top of the transport and link layers. It manages request/response
+exchanges with an outstation, schedules tasks, and assigns application
+sequence numbers. The master does not implement actual application logic —
+instead, it delegates handling to user-defined <a class="reference internal" href="#icspacket.proto.dnp3.master.DNP3_Task" title="icspacket.proto.dnp3.master.DNP3_Task"><code class="xref py py-class docutils literal notranslate"><span class="pre">DNP3_Task</span></code></a> objects.</p>
+<p>This implementation supports:</p>
+<ul class="simple">
+<li><p>Establishing and releasing associations with outstations.</p></li>
+<li><p>Submitting tasks that generate and transmit APDUs.</p></li>
+<li><p>Assigning and cycling application sequence numbers.</p></li>
+<li><p>Supporting both blocking and non-blocking request patterns.</p></li>
+<li><p>Optionally dispatching requests without expecting a return
+(<a class="reference internal" href="#icspacket.proto.dnp3.master.DNP3_Master.submit_noreturn" title="icspacket.proto.dnp3.master.DNP3_Master.submit_noreturn"><code class="xref py py-meth docutils literal notranslate"><span class="pre">submit_noreturn()</span></code></a>).</p></li>
+</ul>
+<p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="n">master</span> <span class="o">=</span> <span class="n">DNP3_Master</span><span class="p">(</span><span class="n">link_addr</span><span class="o">=</span><span class="mh">0x0001</span><span class="p">)</span>
+</span><span data-line="2"><span class="c1"># connect to remote at 127.0.0.1:20000 with link addr 1024</span>
+</span><span data-line="3"><span class="n">master</span><span class="o">.</span><span class="n">associate</span><span class="p">((</span><span class="mi">1024</span><span class="p">,</span> <span class="s2">&quot;127.0.0.1&quot;</span><span class="p">,</span> <span class="mi">20000</span><span class="p">))</span>
+</span><span data-line="4">
+</span><span data-line="5"><span class="c1"># request class 1 objects</span>
+</span><span data-line="6"><span class="n">objects</span> <span class="o">=</span> <span class="n">new_class_data_request</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</span><span data-line="7"><span class="n">result</span> <span class="o">=</span> <span class="n">master</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="n">FunctionCode</span><span class="o">.</span><span class="n">READ</span><span class="p">,</span> <span class="n">objects</span><span class="p">)</span>
+</span></pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>link_addr</strong> (<em>int</em>) – The source link-layer address of the master.</p></li>
+<li><p><strong>initial_seq</strong> (<em>int</em><em> | </em><em>None</em>) – Optional initial application sequence number.
+Defaults to <code class="docutils literal notranslate"><span class="pre">0</span></code> if not provided.</p></li>
+<li><p><strong>sock</strong> (<em>socket.socket</em><em> | </em><em>None</em>) – Optional socket to bind the link layer to. If omitted,
+a new socket will be created when associating with an outstation.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="icspacket.proto.dnp3.master.DNP3_Master.tasks">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">tasks</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Collection</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#icspacket.proto.dnp3.master.DNP3_Task" title="icspacket.proto.dnp3.master.DNP3_Task"><span class="pre">DNP3_Task</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#icspacket.proto.dnp3.master.DNP3_Master.tasks" title="Link to this definition">¶</a></dt>
+<dd><p>Return the currently registered tasks.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A collection of active tasks indexed by sequence number.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Collection[<a class="reference internal" href="#icspacket.proto.dnp3.master.DNP3_Task" title="icspacket.proto.dnp3.master.DNP3_Task">DNP3_Task</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="icspacket.proto.dnp3.master.DNP3_Master.transport">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">transport</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#icspacket.proto.dnp3.master.DNP3_Transport" title="icspacket.proto.dnp3.master.DNP3_Transport"><span class="pre">DNP3_Transport</span></a></em><a class="headerlink" href="#icspacket.proto.dnp3.master.DNP3_Master.transport" title="Link to this definition">¶</a></dt>
+<dd><p>Return the transport layer instance.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The active <a class="reference internal" href="#icspacket.proto.dnp3.master.DNP3_Transport" title="icspacket.proto.dnp3.master.DNP3_Transport"><code class="xref py py-class docutils literal notranslate"><span class="pre">DNP3_Transport</span></code></a> object.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#icspacket.proto.dnp3.master.DNP3_Transport" title="icspacket.proto.dnp3.master.DNP3_Transport">DNP3_Transport</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="icspacket.proto.dnp3.master.DNP3_Master.sequence">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">sequence</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#icspacket.proto.dnp3.master.DNP3_Master.sequence" title="Link to this definition">¶</a></dt>
+<dd><p>Return the current application sequence number.</p>
+<p>The sequence number is incremented and wrapped automatically
+whenever a request is submitted.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The current APDU sequence number.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.dnp3.master.DNP3_Master.get_task">
+<span class="sig-name descname"><span class="pre">get_task</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sequence</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#icspacket.proto.dnp3.master.DNP3_Task" title="icspacket.proto.dnp3.master.DNP3_Task"><span class="pre">DNP3_Task</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="reference internal" href="../../../_modules/icspacket/proto/dnp3/master.html#DNP3_Master.get_task"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.dnp3.master.DNP3_Master.get_task" title="Link to this definition">¶</a></dt>
+<dd><p>Retrieve a task by its sequence number.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>sequence</strong> (<em>int</em>) – The sequence number of the task to fetch.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The corresponding <a class="reference internal" href="#icspacket.proto.dnp3.master.DNP3_Task" title="icspacket.proto.dnp3.master.DNP3_Task"><code class="xref py py-class docutils literal notranslate"><span class="pre">DNP3_Task</span></code></a>, or <code class="docutils literal notranslate"><span class="pre">None</span></code> if not found.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#icspacket.proto.dnp3.master.DNP3_Task" title="icspacket.proto.dnp3.master.DNP3_Task">DNP3_Task</a> | None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.dnp3.master.DNP3_Master.pop_task">
+<span class="sig-name descname"><span class="pre">pop_task</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sequence</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#icspacket.proto.dnp3.master.DNP3_Task" title="icspacket.proto.dnp3.master.DNP3_Task"><span class="pre">DNP3_Task</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="reference internal" href="../../../_modules/icspacket/proto/dnp3/master.html#DNP3_Master.pop_task"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.dnp3.master.DNP3_Master.pop_task" title="Link to this definition">¶</a></dt>
+<dd><p>Remove and return a task by its sequence number.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>sequence</strong> (<em>int</em>) – The sequence number of the task to remove.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The removed <a class="reference internal" href="#icspacket.proto.dnp3.master.DNP3_Task" title="icspacket.proto.dnp3.master.DNP3_Task"><code class="xref py py-class docutils literal notranslate"><span class="pre">DNP3_Task</span></code></a>, or <code class="docutils literal notranslate"><span class="pre">None</span></code> if not found.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#icspacket.proto.dnp3.master.DNP3_Task" title="icspacket.proto.dnp3.master.DNP3_Task">DNP3_Task</a> | None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.dnp3.master.DNP3_Master.associate">
+<span class="sig-name descname"><span class="pre">associate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">address</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../../../_modules/icspacket/proto/dnp3/master.html#DNP3_Master.associate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.dnp3.master.DNP3_Master.associate" title="Link to this definition">¶</a></dt>
+<dd><p>Establish an association with an outstation.</p>
+<p>This method sets up the underlying link and transport layers,
+connects to the given host/port, and starts background processing
+of incoming messages.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>address</strong> (<em>tuple</em><em>[</em><em>int</em><em>, </em><em>str</em><em>, </em><em>int</em><em>]</em>) – A tuple of the form <code class="docutils literal notranslate"><span class="pre">(link_addr,</span> <span class="pre">host,</span> <span class="pre">port)</span></code>.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If the provided address tuple is invalid.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.dnp3.master.DNP3_Master.release">
+<span class="sig-name descname"><span class="pre">release</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../../../_modules/icspacket/proto/dnp3/master.html#DNP3_Master.release"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.dnp3.master.DNP3_Master.release" title="Link to this definition">¶</a></dt>
+<dd><p>Release the association with the outstation.</p>
+<p>This method stops the background thread, closes the transport
+connection, and invalidates the master instance.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>timeout</strong> (<em>float</em><em> | </em><em>None</em>) – Optional timeout (in seconds) to wait for the
+background thread to join.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.dnp3.master.DNP3_Master.submit_task">
+<span class="sig-name descname"><span class="pre">submit_task</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">task</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#icspacket.proto.dnp3.master.DNP3_Task" title="icspacket.proto.dnp3.master.DNP3_Task"><span class="pre">DNP3_Task</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../../../_modules/icspacket/proto/dnp3/master.html#DNP3_Master.submit_task"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.dnp3.master.DNP3_Master.submit_task" title="Link to this definition">¶</a></dt>
+<dd><p>Submit a task and register it for response handling.</p>
+<p>The task will be assigned the current application sequence number,
+which is then incremented. The request APDU is built by the task
+and transmitted through the transport layer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>task</strong> (<a class="reference internal" href="#icspacket.proto.dnp3.master.DNP3_Task" title="icspacket.proto.dnp3.master.DNP3_Task"><em>DNP3_Task</em></a>) – The task to be submitted.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="../../../getting-started/coreapi.html#icspacket.core.connection.ConnectionError" title="icspacket.core.connection.ConnectionError"><strong>ConnectionError</strong></a> – If the task fails to produce a valid APDU.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.dnp3.master.DNP3_Master.submit_noreturn">
+<span class="sig-name descname"><span class="pre">submit_noreturn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">task</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#icspacket.proto.dnp3.master.DNP3_Task" title="icspacket.proto.dnp3.master.DNP3_Task"><span class="pre">DNP3_Task</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../../../_modules/icspacket/proto/dnp3/master.html#DNP3_Master.submit_noreturn"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.dnp3.master.DNP3_Master.submit_noreturn" title="Link to this definition">¶</a></dt>
+<dd><p>Submit a task without expecting a response.</p>
+<p>Unlike <a class="reference internal" href="#icspacket.proto.dnp3.master.DNP3_Master.submit_task" title="icspacket.proto.dnp3.master.DNP3_Master.submit_task"><code class="xref py py-meth docutils literal notranslate"><span class="pre">submit_task()</span></code></a>, the task is not registered for later
+lookup, meaning no response will be matched or delivered.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>task</strong> (<a class="reference internal" href="#icspacket.proto.dnp3.master.DNP3_Task" title="icspacket.proto.dnp3.master.DNP3_Task"><em>DNP3_Task</em></a>) – The task to be submitted.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="../../../getting-started/coreapi.html#icspacket.core.connection.ConnectionError" title="icspacket.core.connection.ConnectionError"><strong>ConnectionError</strong></a> – If the task fails to produce a valid APDU.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.dnp3.master.DNP3_Master.transmit">
+<span class="sig-name descname"><span class="pre">transmit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="application.html#icspacket.proto.dnp3.application.APDU" title="icspacket.proto.dnp3.application.APDU"><span class="pre">APDU</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">block</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">callback</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#icspacket.proto.dnp3.master.DNP3_Master" title="icspacket.proto.dnp3.master.DNP3_Master"><span class="pre">DNP3_Master</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="application.html#icspacket.proto.dnp3.application.APDU" title="icspacket.proto.dnp3.application.APDU"><span class="pre">APDU</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">None</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noreturn</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="application.html#icspacket.proto.dnp3.application.APDU" title="icspacket.proto.dnp3.application.APDU"><span class="pre">APDU</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="reference internal" href="../../../_modules/icspacket/proto/dnp3/master.html#DNP3_Master.transmit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.dnp3.master.DNP3_Master.transmit" title="Link to this definition">¶</a></dt>
+<dd><p>Transmit a request APDU to the outstation.</p>
+<p>This method provides both blocking and non-blocking transmission
+modes. In blocking mode, it waits for the corresponding response
+before returning. In non-blocking mode, the provided callback will
+be invoked when the response is received.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>request</strong> (<a class="reference internal" href="application.html#icspacket.proto.dnp3.application.APDU" title="icspacket.proto.dnp3.application.APDU"><em>APDU</em></a>) – The APDU to transmit.</p></li>
+<li><p><strong>block</strong> (<em>bool</em>) – Whether to wait for the response. Defaults to <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p></li>
+<li><p><strong>callback</strong> (<em>Callable</em><em>[</em><em>[</em><em>&quot;DNP3_Master&quot;</em><em>, </em><a class="reference internal" href="application.html#icspacket.proto.dnp3.application.APDU" title="icspacket.proto.dnp3.application.APDU"><em>APDU</em></a><em>]</em><em>, </em><em>None</em><em>] </em><em>| </em><em>None</em>) – Optional callback to invoke with the response in
+non-blocking mode.</p></li>
+<li><p><strong>noreturn</strong> (<em>bool</em>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, the request is sent without expecting
+a response.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The received APDU if in blocking mode, otherwise <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="application.html#icspacket.proto.dnp3.application.APDU" title="icspacket.proto.dnp3.application.APDU">APDU</a> | None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.dnp3.master.DNP3_Master.request">
+<span class="sig-name descname"><span class="pre">request</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">function</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="application.html#icspacket.proto.dnp3.const.FunctionCode" title="icspacket.proto.dnp3.const.FunctionCode"><span class="pre">FunctionCode</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">objects</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="coding.html#icspacket.proto.dnp3.objects.coding.DNP3Objects" title="icspacket.proto.dnp3.objects.coding.DNP3Objects"><span class="pre">DNP3Objects</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">need_confirm</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">callback</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#icspacket.proto.dnp3.master.DNP3_Master" title="icspacket.proto.dnp3.master.DNP3_Master"><span class="pre">DNP3_Master</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="application.html#icspacket.proto.dnp3.application.APDU" title="icspacket.proto.dnp3.application.APDU"><span class="pre">APDU</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">None</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noreturn</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="application.html#icspacket.proto.dnp3.application.APDU" title="icspacket.proto.dnp3.application.APDU"><span class="pre">APDU</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="reference internal" href="../../../_modules/icspacket/proto/dnp3/master.html#DNP3_Master.request"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.dnp3.master.DNP3_Master.request" title="Link to this definition">¶</a></dt>
+<dd><p>Build and transmit a request APDU.</p>
+<p>This is the high-level entry point for sending function code requests
+to an outstation. Optionally, objects can be included, confirmation
+can be requested, and the call may be synchronous or asynchronous.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>function</strong> (<a class="reference internal" href="application.html#icspacket.proto.dnp3.const.FunctionCode" title="icspacket.proto.dnp3.const.FunctionCode"><em>FunctionCode</em></a>) – The DNP3 application function code.</p></li>
+<li><p><strong>objects</strong> (<a class="reference internal" href="coding.html#icspacket.proto.dnp3.objects.coding.DNP3Objects" title="icspacket.proto.dnp3.objects.coding.DNP3Objects"><em>DNP3Objects</em></a><em> | </em><em>None</em>) – Optional collection of DNP3 objects to include.</p></li>
+<li><p><strong>need_confirm</strong> (<em>bool</em>) – Whether a confirmation is required.</p></li>
+<li><p><strong>block</strong> (<em>bool</em>) – Whether to wait for the response.</p></li>
+<li><p><strong>callback</strong> (<em>Callable</em><em>[</em><em>[</em><em>&quot;DNP3_Master&quot;</em><em>, </em><a class="reference internal" href="application.html#icspacket.proto.dnp3.application.APDU" title="icspacket.proto.dnp3.application.APDU"><em>APDU</em></a><em>]</em><em>, </em><em>None</em><em>] </em><em>| </em><em>None</em>) – Callback to invoke in asynchronous mode.</p></li>
+<li><p><strong>noreturn</strong> (<em>bool</em>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, send without expecting a response.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The APDU response in blocking mode, otherwise <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="application.html#icspacket.proto.dnp3.application.APDU" title="icspacket.proto.dnp3.application.APDU">APDU</a> | None</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If both <code class="docutils literal notranslate"><span class="pre">need_confirm</span></code> and <code class="docutils literal notranslate"><span class="pre">noreturn</span></code> are set.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+        </article><button class="back-to-top" type="button">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+  </svg>
+  <span>Back to top</span>
+</button><div class="navigation flex print:hidden"><div class="navigation-prev">
+    <a href="application.html">
+      <i class="i-lucide chevron-left"></i>
+      <div class="page-info">
+        <span>Previous</span><div class="title">Application Layer</div></div>
+    </a>
+  </div><div class="navigation-next">
+    <a href="object_library.html">
+      <div class="page-info">
+        <span>Next</span>
+        <div class="title">Object Library</div>
+      </div>
+      <i class="i-lucide chevron-right"></i>
+    </a>
+  </div></div></div>
+    </div>
+  </main>
+</div>
+<footer class="sy-foot">
+  <div class="sy-foot-inner sy-container mx-auto">
+    <div class="sy-foot-reserved md:flex justify-between items-center">
+      <div class="sy-foot-copyright"><p>2025, MatrixEditor</p>
+  
+  <p>
+    Made with
+    
+    <a href="https://www.sphinx-doc.org/">Sphinx</a> and
+    
+    <a href="https://shibuya.lepture.com">Shibuya theme</a>.
+  </p>
+</div>
+      <div class="sy-foot-socials">
+<a href="https://github.com/MatrixEditor/icspacket" aria-label="GitHub">
+  <iconify-icon icon="simple-icons:github"></iconify-icon>
+</a></div>
+    </div>
+  </div>
+</footer>
+      <script src="../../../_static/documentation_options.js?v=0df3b029"></script>
+      <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+      <script src="../../../_static/shibuya.js?v=e730760c"></script></body>
+</html>

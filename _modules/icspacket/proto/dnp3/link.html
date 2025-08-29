@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en" data-accent-color="lime" data-content_root="../../../../">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>icspacket.proto.dnp3.link - icspacket 0.1.dev1+g5d2cc2c49 documentation</title><link rel="index" title="Index" href="../../../../genindex.html" /><link rel="search" title="Search" href="../../../../search.html" />
+      <link rel="canonical" href="https://matrixeditor.github.io/icspacket/_modules/icspacket/proto/dnp3/link.html" /><script>
+    function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
+    setColorMode(localStorage._theme||"dark");
+  </script><link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=397bb51e" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/shibuya.css?v=d48c410d" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link media="print" rel="stylesheet" type="text/css" href="../../../../_static/print.css?v=20ff2c19" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --sy-f-text: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+  --sy-f-heading: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+}
+</style>
+    <meta property="og:type" content="website"/>
+<meta property="og:url" content="https://matrixeditor.github.io/icspacket/_modules/icspacket/proto/dnp3/link.html"/>
+<meta property="og:title" content="icspacket.proto.dnp3.link"/>
+<meta name="twitter:card" content="summary"/>
+  </head>
+<body><div class="sy-head">
+  <div class="sy-head-blur"></div>
+  <div class="sy-head-inner sy-container mx-auto">
+    <a class="sy-head-brand" href="../../../../index.html">
+      
+      
+      <strong>icspacket</strong>
+    </a>
+    <div class="sy-head-nav" id="head-nav">
+      <nav class="sy-head-links"><ul>
+      <li class="link"><a class="js-menu" href="../../../../getting-started/protocols.html" id="nav-trigger-1" aria-controls="nav-children-1">
+            <span>Examples</span>
+            <i class="i-lucide chevron-down"></i>
+          </a>
+        <ul id="nav-children-1" aria-labelledby="nav-trigger-1"><li><a href="../../../../protocols/mms/examples.html">
+                <span>MMS Utilities</span>
+                <small>Manufacturing Message Specification tools</small>
+              </a></li><li><a href="../../../../protocols/dnp3/examples.html">
+                <span>DNP3 Tools</span>
+                <small>DNP3 utilities and tools</small>
+              </a></li></ul>
+      </li></ul></nav>
+      <div class="sy-head-extra flex items-center print:hidden"><form class="searchbox flex items-center" action="../../../../search.html" method="get">
+  <input type="text" name="q" placeholder="Search" />
+  <kbd>/</kbd>
+</form><div class="sy-head-socials">
+  <a href="https://github.com/MatrixEditor/icspacket" aria-label="GitHub">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </a></div></div>
+    </div>
+    <div class="sy-head-actions flex items-center shrink-0 print:hidden"><button class="js-theme theme-switch flex items-center"
+data-aria-auto="Switch to light color mode"
+data-aria-light="Switch to dark color mode"
+data-aria-dark="Switch to auto color mode">
+<i class="i-lucide theme-icon"></i>
+</button><button class="md:hidden flex items-center js-menu" aria-label="Menu" type="button" aria-controls="head-nav" aria-expanded="false">
+        <div class="hamburger">
+          <span class="hamburger_1"></span>
+          <span class="hamburger_2 -translate-x-2"></span>
+          <span class="hamburger_3 -translate-x-1"></span>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>
+<div class="sy-page sy-container flex mx-auto">
+  <aside id="lside" class="sy-lside md:w-72 md:shrink-0 print:hidden">
+    <div class="sy-lside-inner md:sticky">
+      <div class="sy-scrollbar p-6"><div class="sidebar-links">
+  <ul>
+    <li><a class="icon-link" href="https://github.com/MatrixEditor/icspacket/discussions">
+  <span class="icon">
+    <svg viewBox="0 0 24 24" fill="none">
+      <path fill="var(--accent-9)" fill-rule="evenodd" clip-rule="evenodd" d="M11 5a6 6 0 0 0-4.687 9.746c.215.27.315.62.231.954l-.514 2.058a1 1 0 0 0 1.485 1.1l2.848-1.71c.174-.104.374-.15.576-.148H13a6 6 0 0 0 0-12h-2Z"/>
+      <circle fill="white" cx="12" cy="11" r="1"/>
+      <circle fill="white" cx="9" cy="11" r="1"/>
+      <circle fill="white" cx="15" cy="11" r="1"/>
+    </svg>
+  </span>
+  <span class="text">Discussion</span>
+</a></li>
+  </ul>
+</div>
+        <div class="globaltoc" data-expand-depth="2"><p class="caption" role="heading" aria-level="3"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../getting-started/installation.html">Installation</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../getting-started/protocols.html">Protocols Overview</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../getting-started/coreapi.html">Core API Reference</a></li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">DNP3 / IEEE 1815</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../protocols/dnp3/dnp3dump.html">Dumping Objects</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../protocols/dnp3/api.html">API Reference</a><ul>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../../../../protocols/dnp3/api/link.html">Link Layer</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../../../../protocols/dnp3/api/transport.html">Transport Layer</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../../../../protocols/dnp3/api/application.html">Application Layer</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../../../../protocols/dnp3/api/master.html">Master</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../../../../protocols/dnp3/api/object_library.html">Object Library</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../protocols/dnp3/api/primitives.html">Primitive Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../protocols/dnp3/api/coding.html">Encoding / Decoding</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../protocols/dnp3/api/variations.html">Variations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../protocols/dnp3/api/coding_utils.html">Object Utilities</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">MMS / ISO 9506</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../protocols/mms/demo_vars.html">Variable Target Format</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../protocols/mms/demo_vars.html#variableaccess-service-rwq">VariableAccess Service (rwq)</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../protocols/mms/demo_files.html">FileManagement Service</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../protocols/mms/api.html">API Reference</a><ul>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../../../../protocols/mms/api_conn.html">MMS Connection</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../../../../protocols/mms/api_data.html">Data Conversion</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../../../../protocols/mms/api_utils.html">Protocol Utilities</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">ACSE / X.227</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../protocols/acse/api.html">API Reference</a></li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">COPP / X.226 / ISO 8823</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../protocols/copp/api.html">API Reference</a><ul>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../../../../protocols/copp/presentation.html">ISO Presentation</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../../../../protocols/copp/utils.html">Protocol Utilities</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">COSP / X.225 / ISO 8237-1</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../protocols/cosp/api.html">API Reference</a><ul>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../../../../protocols/cosp/tsdu.html">TSDU</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../../../../protocols/cosp/spdu.html">SPDU Types</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../../../../protocols/cosp/values.html">Parameter Values (PV)</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../../../../protocols/cosp/session.html">ISO Session</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../../../../protocols/cosp/utils.html">Protocol Utilities</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">COTP / X.224</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../protocols/cotp/api.html">API Reference</a><ul>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../../../../protocols/cotp/structs.html">TPDU Types</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../../../../protocols/cotp/connection.html">Connection</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">TPKT Protocol (RFC1006)</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../protocols/tpkt/usage.html">Using a TPKT Wrapper</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../protocols/tpkt/api.html">API Reference</a></li>
+</ul>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="lside-overlay js-menu" role="button" aria-label="Close left sidebar" aria-controls="lside" aria-expanded="false"></div>
+  <aside id="rside" class="sy-rside pb-3 w-64 shrink-0 order-last">
+    <button class="rside-close js-menu xl:hidden" aria-label="Close Table of Contents" type="button" aria-controls="rside" aria-expanded="false">
+      <i class="i-lucide close"></i>
+    </button>
+    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><a class="js-repo-stats repo-stats flex items-center" href="https://github.com/MatrixEditor/icspacket"
+  data-type="github" data-user="MatrixEditor" data-repo="icspacket">
+  <span class="w-8 flex items-center justify-around shrink-0 text-3xl">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </span>
+  <span class="flex-grow px-2 break-all">
+    <span style="font-size: small;">MatrixEditor/icspacket</span>
+    <span class="flex text-sm repo-stats-count">
+      <span class="flex items-center pr-3">
+        <iconify-icon icon="lucide:star"></iconify-icon>
+        <strong class="js-repo-stars ml-1">0</strong>
+      </span>
+      <span class="flex items-center">
+        <iconify-icon icon="lucide:git-fork"></iconify-icon>
+        <strong class="js-repo-forks ml-1">0</strong>
+      </span>
+    </span>
+  </span>
+</a></div>
+  </aside>
+  <div class="rside-overlay js-menu" role="button" aria-label="Close Table of Contents" aria-controls="rside" aria-expanded="false"></div>
+  <main class="sy-main w-full max-sm:max-w-full print:pt-6">
+<div class="sy-breadcrumbs" role="navigation">
+  <div class="sy-breadcrumbs-inner flex items-center">
+    <div class="md:hidden mr-3">
+      <button class="js-menu" aria-label="Menu" type="button" aria-controls="lside" aria-expanded="false">
+        <i class="i-lucide menu"></i>
+      </button>
+    </div>
+    <ol class="flex-1" itemscope itemtype="https://schema.org/BreadcrumbList"><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="../../../../index.html"><span itemprop="name">icspacket</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="1" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="../../../index.html"><span itemprop="name">Module code</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="2" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <strong itemprop="name">icspacket.proto.dnp3.link</strong>
+        <meta itemprop="position" content="3" />
+      </li></ol>
+    <div class="xl:hidden ml-1">
+      <button class="js-menu" aria-label="Show table of contents" type="button" aria-controls="rside"
+        aria-expanded="false">
+        <i class="i-lucide outdent"></i>
+      </button>
+    </div>
+  </div>
+</div><div class="flex flex-col break-words justify-between">
+      <div class="min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
+        <article class="yue" role="main">
+          <h1>Source code for icspacket.proto.dnp3.link</h1><div class="highlight"><pre>
+<span></span><span data-line="1"><span class="c1"># This file is part of icspacket.</span>
+</span><span data-line="2"><span class="c1"># Copyright (C) 2025-present  MatrixEditor @ github</span>
+</span><span data-line="3"><span class="c1">#</span>
+</span><span data-line="4"><span class="c1"># This program is free software: you can redistribute it and/or modify</span>
+</span><span data-line="5"><span class="c1"># it under the terms of the GNU General Public License as published by</span>
+</span><span data-line="6"><span class="c1"># the Free Software Foundation, either version 3 of the License, or</span>
+</span><span data-line="7"><span class="c1"># (at your option) any later version.</span>
+</span><span data-line="8"><span class="c1">#</span>
+</span><span data-line="9"><span class="c1"># This program is distributed in the hope that it will be useful,</span>
+</span><span data-line="10"><span class="c1"># but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+</span><span data-line="11"><span class="c1"># MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+</span><span data-line="12"><span class="c1"># GNU General Public License for more details.</span>
+</span><span data-line="13"><span class="c1">#</span>
+</span><span data-line="14"><span class="c1"># You should have received a copy of the GNU General Public License</span>
+</span><span data-line="15"><span class="c1"># along with this program.  If not, see &lt;https://www.gnu.org/licenses/&gt;.</span>
+</span><span data-line="16"><span class="c1"># pyright: reportGeneralTypeIssues=false, reportUninitializedInstanceVariable=false, reportInvalidTypeForm=false</span>
+</span><span data-line="17"><span class="kn">import</span><span class="w"> </span><span class="nn">enum</span>
+</span><span data-line="18"><span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+</span><span data-line="19">
+</span><span data-line="20"><span class="kn">import</span><span class="w"> </span><span class="nn">crcmod.predefined</span>
+</span><span data-line="21">
+</span><span data-line="22"><span class="kn">from</span><span class="w"> </span><span class="nn">caterpillar.shortcuts</span><span class="w"> </span><span class="kn">import</span> <span class="n">this</span><span class="p">,</span> <span class="n">struct</span><span class="p">,</span> <span class="n">bitfield</span><span class="p">,</span> <span class="n">LittleEndian</span>
+</span><span data-line="23"><span class="kn">from</span><span class="w"> </span><span class="nn">caterpillar.fields</span><span class="w"> </span><span class="kn">import</span> <span class="n">singleton</span><span class="p">,</span> <span class="n">uint16</span><span class="p">,</span> <span class="n">uint8</span>
+</span><span data-line="24"><span class="kn">from</span><span class="w"> </span><span class="nn">caterpillar.model</span><span class="w"> </span><span class="kn">import</span> <span class="n">EnumFactory</span><span class="p">,</span> <span class="n">pack</span><span class="p">,</span> <span class="n">unpack</span>
+</span><span data-line="25"><span class="kn">from</span><span class="w"> </span><span class="nn">caterpillar.context</span><span class="w"> </span><span class="kn">import</span> <span class="n">CTX_STREAM</span>
+</span><span data-line="26"><span class="kn">from</span><span class="w"> </span><span class="nn">caterpillar.exception</span><span class="w"> </span><span class="kn">import</span> <span class="n">ValidationError</span>
+</span><span data-line="27">
+</span><span data-line="28"><span class="kn">from</span><span class="w"> </span><span class="nn">icspacket.proto.dnp3.application</span><span class="w"> </span><span class="kn">import</span> <span class="n">APDU</span>
+</span><span data-line="29"><span class="kn">from</span><span class="w"> </span><span class="nn">icspacket.proto.dnp3.transport</span><span class="w"> </span><span class="kn">import</span> <span class="n">TPDU</span>
+</span><span data-line="30">
+</span><span data-line="31">
+</span><span data-line="32"><span class="n">Crc16DNP</span> <span class="o">=</span> <span class="n">crcmod</span><span class="o">.</span><span class="n">predefined</span><span class="o">.</span><span class="n">mkCrcFun</span><span class="p">(</span><span class="s2">&quot;crc-16-dnp&quot;</span><span class="p">)</span>
+</span><span data-line="33">
+</span><span data-line="34"><span class="c1"># The minimum header length (only header)</span>
+</span><span data-line="35"><span class="n">LPDU_HEADER_MIN_LENGTH</span> <span class="o">=</span> <span class="mi">5</span>
+</span><span data-line="36"><span class="sd">&quot;&quot;&quot;Minimum number of bytes required to represent an LPDU header.&quot;&quot;&quot;</span>
+</span><span data-line="37">
+</span><span data-line="38"><span class="c1"># The maximum header length</span>
+</span><span data-line="39"><span class="n">LPDU_HEADER_MAX_LENGTH</span> <span class="o">=</span> <span class="mi">255</span>
+</span><span data-line="40"><span class="sd">&quot;&quot;&quot;Maximum possible size of an LPDU header in bytes.&quot;&quot;&quot;</span>
+</span><span data-line="41">
+</span><span data-line="42"><span class="c1"># The maximum number of user data octets that a single frame can hold is 250</span>
+</span><span data-line="43"><span class="n">LPDU_USER_DATA_MAX_LENGTH</span> <span class="o">=</span> <span class="n">LPDU_HEADER_MAX_LENGTH</span> <span class="o">-</span> <span class="n">LPDU_HEADER_MIN_LENGTH</span>
+</span><span data-line="44"><span class="sd">&quot;&quot;&quot;Maximum user data size (250 bytes) that a single LPDU can contain.&quot;&quot;&quot;</span>
+</span><span data-line="45">
+</span><span data-line="46">
+<div class="viewcode-block" id="LinkDirection">
+<a class="viewcode-back" href="../../../../protocols/dnp3/api/link.html#icspacket.proto.dnp3.link.LinkDirection">[docs]</a>
+</span><span data-line="47"><span class="k">class</span><span class="w"> </span><span class="nc">LinkDirection</span><span class="p">(</span><span class="n">enum</span><span class="o">.</span><span class="n">IntEnum</span><span class="p">):</span>
+</span><span data-line="48"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="49"><span class="sd">    Direction indicator bit for the DNP3 link layer (DIR field).</span>
+</span><span data-line="50">
+</span><span data-line="51"><span class="sd">    (See DNP3 Specification, Section 9.2.4.1.3.1)</span>
+</span><span data-line="52"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span data-line="53">
+</span><span data-line="54">    <span class="n">MASTER</span> <span class="o">=</span> <span class="mi">1</span>
+</span><span data-line="55"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Indicates a frame sent from a Master device.&quot;&quot;&quot;</span>
+</span><span data-line="56">
+</span><span data-line="57">    <span class="n">OUTSTATION</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span data-line="58"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Indicates a frame sent from an Outstation device.&quot;&quot;&quot;</span></div>
+
+</span><span data-line="59">
+</span><span data-line="60">
+<div class="viewcode-block" id="LinkPrimaryFunctionCode">
+<a class="viewcode-back" href="../../../../protocols/dnp3/api/link.html#icspacket.proto.dnp3.link.LinkPrimaryFunctionCode">[docs]</a>
+</span><span data-line="61"><span class="k">class</span><span class="w"> </span><span class="nc">LinkPrimaryFunctionCode</span><span class="p">(</span><span class="n">enum</span><span class="o">.</span><span class="n">IntEnum</span><span class="p">):</span>
+</span><span data-line="62"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="63"><span class="sd">    Primary-to-Secondary function codes for the Link Layer.</span>
+</span><span data-line="64">
+</span><span data-line="65"><span class="sd">    These codes are valid when the PRM bit is set (PRM = 1).</span>
+</span><span data-line="66"><span class="sd">    (See DNP3 Specification, Table 9-1)</span>
+</span><span data-line="67"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span data-line="68">
+</span><span data-line="69">    <span class="n">RESET_LINK_STATES</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span data-line="70"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Reset link states.&quot;&quot;&quot;</span>
+</span><span data-line="71">
+</span><span data-line="72">    <span class="n">TEST_LINK_STATES</span> <span class="o">=</span> <span class="mi">2</span>
+</span><span data-line="73"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Test link states.&quot;&quot;&quot;</span>
+</span><span data-line="74">
+</span><span data-line="75">    <span class="n">CONFIRMED_USER_DATA</span> <span class="o">=</span> <span class="mi">3</span>
+</span><span data-line="76"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Confirmed user data transfer.&quot;&quot;&quot;</span>
+</span><span data-line="77">
+</span><span data-line="78">    <span class="n">UNCONFIRMED_USER_DATA</span> <span class="o">=</span> <span class="mi">4</span>
+</span><span data-line="79"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Unconfirmed user data transfer.&quot;&quot;&quot;</span>
+</span><span data-line="80">
+</span><span data-line="81">    <span class="n">REQUEST_LINK_STATUS</span> <span class="o">=</span> <span class="mi">9</span>
+</span><span data-line="82"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Request link status.&quot;&quot;&quot;</span></div>
+
+</span><span data-line="83">
+</span><span data-line="84">
+<div class="viewcode-block" id="LinkSecondaryFunctionCode">
+<a class="viewcode-back" href="../../../../protocols/dnp3/api/link.html#icspacket.proto.dnp3.link.LinkSecondaryFunctionCode">[docs]</a>
+</span><span data-line="85"><span class="k">class</span><span class="w"> </span><span class="nc">LinkSecondaryFunctionCode</span><span class="p">(</span><span class="n">enum</span><span class="o">.</span><span class="n">IntEnum</span><span class="p">):</span>
+</span><span data-line="86"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="87"><span class="sd">    Secondary-to-Primary function codes for the Link Layer.</span>
+</span><span data-line="88">
+</span><span data-line="89"><span class="sd">    These codes are valid when the PRM bit is clear (PRM = 0).</span>
+</span><span data-line="90"><span class="sd">    (See DNP3 Specification, Table 9-2)</span>
+</span><span data-line="91"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span data-line="92">
+</span><span data-line="93">    <span class="n">ACK</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span data-line="94"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Acknowledgement.&quot;&quot;&quot;</span>
+</span><span data-line="95">
+</span><span data-line="96">    <span class="n">NACK</span> <span class="o">=</span> <span class="mi">1</span>
+</span><span data-line="97"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Negative acknowledgement.&quot;&quot;&quot;</span>
+</span><span data-line="98">
+</span><span data-line="99">    <span class="n">LINK_STATUS</span> <span class="o">=</span> <span class="mi">11</span>
+</span><span data-line="100"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Report link status.&quot;&quot;&quot;</span>
+</span><span data-line="101">
+</span><span data-line="102">    <span class="n">NOT_SUPPORTED</span> <span class="o">=</span> <span class="mi">15</span>
+</span><span data-line="103"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Function code not supported.&quot;&quot;&quot;</span></div>
+
+</span><span data-line="104">
+</span><span data-line="105">
+<div class="viewcode-block" id="LinkControl">
+<a class="viewcode-back" href="../../../../protocols/dnp3/api/link.html#icspacket.proto.dnp3.link.LinkControl">[docs]</a>
+</span><span data-line="106"><span class="nd">@bitfield</span>
+</span><span data-line="107"><span class="k">class</span><span class="w"> </span><span class="nc">LinkControl</span><span class="p">:</span>
+</span><span data-line="108"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="109"><span class="sd">    Control field of the Link Layer Protocol Data Unit (LPDU).</span>
+</span><span data-line="110">
+</span><span data-line="111"><span class="sd">    Stores metadata about the frame direction, initiator,</span>
+</span><span data-line="112"><span class="sd">    error handling, and function code.</span>
+</span><span data-line="113"><span class="sd">    (See DNP3 Specification, Section 9.2.4.1.3)</span>
+</span><span data-line="114"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span data-line="115">
+</span><span data-line="116">    <span class="n">direction</span><span class="p">:</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">EnumFactory</span><span class="p">(</span><span class="n">LinkDirection</span><span class="p">))</span> <span class="o">=</span> <span class="n">LinkDirection</span><span class="o">.</span><span class="n">MASTER</span>
+</span><span data-line="117"><span class="w">    </span><span class="sd">&quot;&quot;&quot;DIR bit. Indicates the physical origin of the frame (Master/Outstation).&quot;&quot;&quot;</span>
+</span><span data-line="118">
+</span><span data-line="119">    <span class="n">primary_message</span><span class="p">:</span> <span class="mi">1</span> <span class="o">=</span> <span class="kc">False</span>
+</span><span data-line="120"><span class="w">    </span><span class="sd">&quot;&quot;&quot;PRM bit.</span>
+</span><span data-line="121">
+</span><span data-line="122"><span class="sd">    - ``True`` :octicon:`arrow-right` Frame initiates a transaction.</span>
+</span><span data-line="123"><span class="sd">    - ``False`` :octicon:`arrow-right` Frame completes a transaction.</span>
+</span><span data-line="124"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span data-line="125">
+</span><span data-line="126">    <span class="n">frame_count_bit</span><span class="p">:</span> <span class="mi">1</span> <span class="o">=</span> <span class="kc">False</span>
+</span><span data-line="127"><span class="w">    </span><span class="sd">&quot;&quot;&quot;FCB bit. Used in primary-to-secondary frames to detect loss or duplication.&quot;&quot;&quot;</span>
+</span><span data-line="128">
+</span><span data-line="129">    <span class="n">frame_count_valid</span><span class="p">:</span> <span class="mi">1</span> <span class="o">=</span> <span class="kc">False</span>
+</span><span data-line="130"><span class="w">    </span><span class="sd">&quot;&quot;&quot;FCV bit. Specifies whether the secondary station must examine the FCB.&quot;&quot;&quot;</span>
+</span><span data-line="131">
+</span><span data-line="132">    <span class="n">function_code</span><span class="p">:</span> <span class="mi">4</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span data-line="133"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Function code field identifying the service or command type.&quot;&quot;&quot;</span>
+</span><span data-line="134">
+</span><span data-line="135">    <span class="nd">@property</span>
+</span><span data-line="136">    <span class="k">def</span><span class="w"> </span><span class="nf">data_flow_control</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+</span><span data-line="137"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="138"><span class="sd">        Report data flow availability (DFC bit).</span>
+</span><span data-line="139">
+</span><span data-line="140"><span class="sd">        Indicates insufficient Data Link Layer buffer capacity.</span>
+</span><span data-line="141">
+</span><span data-line="142"><span class="sd">        :return: ``True`` if buffer space is insufficient, ``False`` otherwise.</span>
+</span><span data-line="143"><span class="sd">        :rtype: bool</span>
+</span><span data-line="144"><span class="sd">        &quot;&quot;&quot;</span>
+</span><span data-line="145">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">frame_count_valid</span>
+</span><span data-line="146">
+</span><span data-line="147">    <span class="nd">@property</span>
+</span><span data-line="148">    <span class="k">def</span><span class="w"> </span><span class="nf">pri2sec_code</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">LinkPrimaryFunctionCode</span><span class="p">:</span>
+</span><span data-line="149"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="150"><span class="sd">        Interpret the function code for Primary-to-Secondary frames.</span>
+</span><span data-line="151">
+</span><span data-line="152"><span class="sd">        :return: Link layer function code for PRM = 1.</span>
+</span><span data-line="153"><span class="sd">        :rtype: LinkPrimaryFunctionCode</span>
+</span><span data-line="154"><span class="sd">        &quot;&quot;&quot;</span>
+</span><span data-line="155">        <span class="k">return</span> <span class="n">LinkPrimaryFunctionCode</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">function_code</span><span class="p">)</span>
+</span><span data-line="156">
+</span><span data-line="157">    <span class="nd">@property</span>
+</span><span data-line="158">    <span class="k">def</span><span class="w"> </span><span class="nf">sec2pri_code</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">LinkSecondaryFunctionCode</span><span class="p">:</span>
+</span><span data-line="159"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="160"><span class="sd">        Interpret the function code for Secondary-to-Primary frames.</span>
+</span><span data-line="161">
+</span><span data-line="162"><span class="sd">        :return: Link layer function code for PRM = 0.</span>
+</span><span data-line="163"><span class="sd">        :rtype: LinkSecondaryFunctionCode</span>
+</span><span data-line="164"><span class="sd">        &quot;&quot;&quot;</span>
+</span><span data-line="165">        <span class="k">return</span> <span class="n">LinkSecondaryFunctionCode</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">function_code</span><span class="p">)</span></div>
+
+</span><span data-line="166">
+</span><span data-line="167">
+</span><span data-line="168"><span class="nd">@singleton</span>
+</span><span data-line="169"><span class="k">class</span><span class="w"> </span><span class="nc">LinkUserData</span><span class="p">:</span>
+</span><span data-line="170"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="171"><span class="sd">    Encapsulates user data blocks inside an LPDU.</span>
+</span><span data-line="172">
+</span><span data-line="173"><span class="sd">    Each block consists of up to 16 bytes of data followed by a 16-bit CRC.</span>
+</span><span data-line="174"><span class="sd">    (See DNP3 Specification, Section 9.2.4.4)</span>
+</span><span data-line="175"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span data-line="176">
+</span><span data-line="177">    <span class="k">def</span><span class="w"> </span><span class="nf">__type__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span data-line="178">        <span class="k">return</span> <span class="nb">bytes</span>
+</span><span data-line="179">
+</span><span data-line="180">    <span class="k">def</span><span class="w"> </span><span class="nf">__size__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+</span><span data-line="181"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="182"><span class="sd">        Calculate the size of the user data field.</span>
+</span><span data-line="183">
+</span><span data-line="184"><span class="sd">        The size is determined at runtime based on the LPDU length field.</span>
+</span><span data-line="185">
+</span><span data-line="186"><span class="sd">        :param context: Parsing context.</span>
+</span><span data-line="187"><span class="sd">        :type context: dict</span>
+</span><span data-line="188"><span class="sd">        :raises NotImplementedError: Always, since size is computed dynamically.</span>
+</span><span data-line="189"><span class="sd">        &quot;&quot;&quot;</span>
+</span><span data-line="190">        <span class="k">raise</span> <span class="ne">NotImplementedError</span>
+</span><span data-line="191">
+</span><span data-line="192">    <span class="k">def</span><span class="w"> </span><span class="nf">__unpack__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+</span><span data-line="193"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="194"><span class="sd">        Unpack and validate user data from the input stream.</span>
+</span><span data-line="195">
+</span><span data-line="196"><span class="sd">        Reads the user data in chunks of up to 16 bytes,</span>
+</span><span data-line="197"><span class="sd">        verifying each block against its CRC.</span>
+</span><span data-line="198">
+</span><span data-line="199"><span class="sd">        :param context: Parsing context with active input stream.</span>
+</span><span data-line="200"><span class="sd">        :type context: dict</span>
+</span><span data-line="201"><span class="sd">        :raises ValueError: If a CRC mismatch is detected.</span>
+</span><span data-line="202"><span class="sd">        :return: Reassembled TPDU from unpacked user data.</span>
+</span><span data-line="203"><span class="sd">        :rtype: TPDU</span>
+</span><span data-line="204"><span class="sd">        &quot;&quot;&quot;</span>
+</span><span data-line="205">        <span class="n">length</span> <span class="o">=</span> <span class="n">this</span><span class="o">.</span><span class="n">length</span><span class="p">(</span><span class="n">context</span><span class="p">)</span> <span class="o">-</span> <span class="n">LPDU_HEADER_MIN_LENGTH</span>
+</span><span data-line="206">        <span class="n">user_data</span> <span class="o">=</span> <span class="nb">bytearray</span><span class="p">()</span>
+</span><span data-line="207">        <span class="k">while</span> <span class="n">length</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+</span><span data-line="208">            <span class="n">size</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">length</span><span class="p">,</span> <span class="mi">16</span><span class="p">)</span>
+</span><span data-line="209">            <span class="n">chunk_data</span> <span class="o">=</span> <span class="n">context</span><span class="p">[</span><span class="n">CTX_STREAM</span><span class="p">]</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">size</span><span class="p">)</span>
+</span><span data-line="210">            <span class="n">chunk_crc</span> <span class="o">=</span> <span class="n">uint16</span><span class="o">.</span><span class="n">__unpack__</span><span class="p">(</span><span class="n">context</span><span class="p">)</span>
+</span><span data-line="211">            <span class="n">expected_crc</span> <span class="o">=</span> <span class="n">Crc16DNP</span><span class="p">(</span><span class="n">chunk_data</span><span class="p">)</span>
+</span><span data-line="212">            <span class="k">if</span> <span class="n">expected_crc</span> <span class="o">!=</span> <span class="n">chunk_crc</span><span class="p">:</span>
+</span><span data-line="213">                <span class="k">raise</span> <span class="n">ValidationError</span><span class="p">(</span>
+</span><span data-line="214">                    <span class="sa">f</span><span class="s2">&quot;CRC error: expected </span><span class="si">{</span><span class="n">expected_crc</span><span class="si">}</span><span class="s2">, got </span><span class="si">{</span><span class="n">chunk_crc</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span data-line="215">                <span class="p">)</span>
+</span><span data-line="216">
+</span><span data-line="217">            <span class="n">user_data</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">chunk_data</span><span class="p">)</span>
+</span><span data-line="218">            <span class="n">length</span> <span class="o">-=</span> <span class="n">size</span>
+</span><span data-line="219">
+</span><span data-line="220">        <span class="k">return</span> <span class="n">unpack</span><span class="p">(</span><span class="n">TPDU</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">(</span><span class="n">user_data</span><span class="p">))</span> <span class="k">if</span> <span class="n">user_data</span> <span class="k">else</span> <span class="kc">None</span>
+</span><span data-line="221">
+</span><span data-line="222">    <span class="k">def</span><span class="w"> </span><span class="nf">__pack__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+</span><span data-line="223"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="224"><span class="sd">        Pack user data into LPDU chunks with CRCs.</span>
+</span><span data-line="225">
+</span><span data-line="226"><span class="sd">        Splits the data into 16-byte chunks, computes CRC for each,</span>
+</span><span data-line="227"><span class="sd">        and writes them sequentially.</span>
+</span><span data-line="228">
+</span><span data-line="229"><span class="sd">        :param obj: User data to pack (converted to bytes).</span>
+</span><span data-line="230"><span class="sd">        :type obj: TPDU | bytes</span>
+</span><span data-line="231"><span class="sd">        :param context: Output packing context with writable stream.</span>
+</span><span data-line="232"><span class="sd">        :type context: dict</span>
+</span><span data-line="233"><span class="sd">        &quot;&quot;&quot;</span>
+</span><span data-line="234">        <span class="n">data</span> <span class="o">=</span> <span class="nb">bytes</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
+</span><span data-line="235">        <span class="n">length</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</span><span data-line="236">        <span class="k">while</span> <span class="n">length</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+</span><span data-line="237">            <span class="n">size</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">length</span><span class="p">,</span> <span class="mi">16</span><span class="p">)</span>
+</span><span data-line="238">            <span class="n">chunk_data</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="p">[:</span><span class="n">size</span><span class="p">],</span> <span class="n">data</span><span class="p">[</span><span class="n">size</span><span class="p">:]</span>
+</span><span data-line="239">            <span class="n">context</span><span class="p">[</span><span class="n">CTX_STREAM</span><span class="p">]</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">chunk_data</span><span class="p">)</span>
+</span><span data-line="240">            <span class="n">uint16</span><span class="o">.</span><span class="n">__pack__</span><span class="p">(</span><span class="n">Crc16DNP</span><span class="p">(</span><span class="n">chunk_data</span><span class="p">),</span> <span class="n">context</span><span class="p">)</span>
+</span><span data-line="241">            <span class="n">length</span> <span class="o">-=</span> <span class="n">size</span>
+</span><span data-line="242">
+</span><span data-line="243">
+<div class="viewcode-block" id="LPDU">
+<a class="viewcode-back" href="../../../../protocols/dnp3/api/link.html#icspacket.proto.dnp3.link.LPDU">[docs]</a>
+</span><span data-line="244"><span class="nd">@struct</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="n">LittleEndian</span><span class="p">)</span>
+</span><span data-line="245"><span class="k">class</span><span class="w"> </span><span class="nc">LPDU</span><span class="p">:</span>
+</span><span data-line="246"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="247"><span class="sd">    Link-layer Protocol Data Unit (LPDU).</span>
+</span><span data-line="248">
+</span><span data-line="249"><span class="sd">    Each LPDU consists of a fixed header block and a variable-length</span>
+</span><span data-line="250"><span class="sd">    sequence of data blocks, each terminated by a 16-bit CRC.</span>
+</span><span data-line="251"><span class="sd">    (See DNP3 Specification, Section 9.2.4)</span>
+</span><span data-line="252"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span data-line="253">
+</span><span data-line="254">    <span class="n">start</span><span class="p">:</span> <span class="sa">b</span><span class="s2">&quot;</span><span class="se">\x05\x64</span><span class="s2">&quot;</span>
+</span><span data-line="255"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Sync bytes marking the start of every LPDU (0x05, 0x64).&quot;&quot;&quot;</span>
+</span><span data-line="256">
+</span><span data-line="257">    <span class="n">length</span><span class="p">:</span> <span class="n">uint8</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span data-line="258"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Length field.</span>
+</span><span data-line="259"><span class="sd">    Number of non-CRC bytes following the header. Includes CONTROL,</span>
+</span><span data-line="260"><span class="sd">    DESTINATION, SOURCE, and USER DATA fields.&quot;&quot;&quot;</span>
+</span><span data-line="261">
+</span><span data-line="262">    <span class="n">control</span><span class="p">:</span> <span class="n">LinkControl</span> <span class="o">=</span> <span class="kc">None</span>
+</span><span data-line="263"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Control field containing direction, function, and status flags.&quot;&quot;&quot;</span>
+</span><span data-line="264">
+</span><span data-line="265">    <span class="n">destination</span><span class="p">:</span> <span class="n">uint16</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span data-line="266"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Destination address of the data link frame.&quot;&quot;&quot;</span>
+</span><span data-line="267">
+</span><span data-line="268">    <span class="n">source</span><span class="p">:</span> <span class="n">uint16</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span data-line="269"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Source address of the data link frame.&quot;&quot;&quot;</span>
+</span><span data-line="270">
+</span><span data-line="271">    <span class="n">crc16</span><span class="p">:</span> <span class="n">uint16</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span data-line="272"><span class="w">    </span><span class="sd">&quot;&quot;&quot;CRC checksum for the LPDU header block.&quot;&quot;&quot;</span>
+</span><span data-line="273">
+</span><span data-line="274">    <span class="n">user_data</span><span class="p">:</span> <span class="n">LinkUserData</span> <span class="o">=</span> <span class="sa">b</span><span class="s2">&quot;&quot;</span>
+</span><span data-line="275"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Payload data field containing one or more user data chunks.&quot;&quot;&quot;</span>
+</span><span data-line="276">
+</span><span data-line="277">    <span class="k">def</span><span class="w"> </span><span class="nf">__post_init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span data-line="278">        <span class="bp">self</span><span class="o">.</span><span class="n">control</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">control</span> <span class="ow">or</span> <span class="n">LinkControl</span><span class="p">()</span>
+</span><span data-line="279">
+<div class="viewcode-block" id="LPDU.build">
+<a class="viewcode-back" href="../../../../protocols/dnp3/api/link.html#icspacket.proto.dnp3.link.LPDU.build">[docs]</a>
+</span><span data-line="280">    <span class="k">def</span><span class="w"> </span><span class="nf">build</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bytes</span><span class="p">:</span>
+</span><span data-line="281"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="282"><span class="sd">        Construct a serialized LPDU with correct length.</span>
+</span><span data-line="283">
+</span><span data-line="284"><span class="sd">        :return: Encoded LPDU bytes.</span>
+</span><span data-line="285"><span class="sd">        :rtype: bytes</span>
+</span><span data-line="286"><span class="sd">        &quot;&quot;&quot;</span>
+</span><span data-line="287">        <span class="bp">self</span><span class="o">.</span><span class="n">length</span> <span class="o">=</span> <span class="n">LPDU_HEADER_MIN_LENGTH</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="nb">bytes</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">user_data</span><span class="p">))</span>
+</span><span data-line="288">        <span class="bp">self</span><span class="o">.</span><span class="n">crc16</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span data-line="289">        <span class="n">header_octets</span> <span class="o">=</span> <span class="n">pack</span><span class="p">(</span><span class="bp">self</span><span class="p">)[:</span><span class="mi">8</span><span class="p">]</span>
+</span><span data-line="290">        <span class="bp">self</span><span class="o">.</span><span class="n">crc16</span> <span class="o">=</span> <span class="n">Crc16DNP</span><span class="p">(</span><span class="n">header_octets</span><span class="p">)</span>
+</span><span data-line="291">        <span class="k">return</span> <span class="n">pack</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
+
+</span><span data-line="292">
+</span><span data-line="293">    <span class="nd">@staticmethod</span>
+</span><span data-line="294">    <span class="k">def</span><span class="w"> </span><span class="nf">full_length</span><span class="p">(</span><span class="n">length</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+</span><span data-line="295">        <span class="n">base_length</span> <span class="o">=</span> <span class="mi">3</span>  <span class="c1"># +(start, length)</span>
+</span><span data-line="296">        <span class="n">base_length</span> <span class="o">+=</span> <span class="mi">2</span>  <span class="c1"># +(crc of header)</span>
+</span><span data-line="297">        <span class="n">base_length</span> <span class="o">+=</span> <span class="n">length</span>
+</span><span data-line="298">        <span class="c1"># +(crc of user data)</span>
+</span><span data-line="299">        <span class="n">base_length</span> <span class="o">+=</span> <span class="n">math</span><span class="o">.</span><span class="n">ceil</span><span class="p">((</span><span class="n">length</span> <span class="o">-</span> <span class="n">LPDU_HEADER_MIN_LENGTH</span><span class="p">)</span> <span class="o">/</span> <span class="mi">16</span><span class="p">)</span> <span class="o">*</span> <span class="mi">2</span>
+</span><span data-line="300">        <span class="k">return</span> <span class="n">base_length</span>
+</span><span data-line="301">
+</span><span data-line="302">    <span class="k">def</span><span class="w"> </span><span class="fm">__bytes__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span data-line="303"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="304"><span class="sd">        Get the byte representation of the LPDU.</span>
+</span><span data-line="305">
+</span><span data-line="306"><span class="sd">        :return: Encoded LPDU bytes.</span>
+</span><span data-line="307"><span class="sd">        :rtype: bytes</span>
+</span><span data-line="308"><span class="sd">        &quot;&quot;&quot;</span>
+</span><span data-line="309">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">build</span><span class="p">()</span>
+</span><span data-line="310">
+<div class="viewcode-block" id="LPDU.from_octets">
+<a class="viewcode-back" href="../../../../protocols/dnp3/api/link.html#icspacket.proto.dnp3.link.LPDU.from_octets">[docs]</a>
+</span><span data-line="311">    <span class="nd">@staticmethod</span>
+</span><span data-line="312">    <span class="k">def</span><span class="w"> </span><span class="nf">from_octets</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;LPDU&quot;</span><span class="p">:</span>
+</span><span data-line="313"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="314"><span class="sd">        Parse an LPDU from a raw byte sequence.</span>
+</span><span data-line="315">
+</span><span data-line="316"><span class="sd">        .. versionchanged:: 0.2.0</span>
+</span><span data-line="317"><span class="sd">            Renamed from ``from_bytes`` to ``from_octets``</span>
+</span><span data-line="318">
+</span><span data-line="319"><span class="sd">        :param data: Encoded LPDU bytes.</span>
+</span><span data-line="320"><span class="sd">        :type data: bytes</span>
+</span><span data-line="321"><span class="sd">        :return: Decoded LPDU instance.</span>
+</span><span data-line="322"><span class="sd">        :rtype: LPDU</span>
+</span><span data-line="323"><span class="sd">        &quot;&quot;&quot;</span>
+</span><span data-line="324">        <span class="k">return</span> <span class="n">unpack</span><span class="p">(</span><span class="n">LPDU</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span></div>
+
+</span><span data-line="325">
+</span><span data-line="326">    <span class="nd">@property</span>
+</span><span data-line="327">    <span class="k">def</span><span class="w"> </span><span class="nf">apdu</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">APDU</span><span class="p">:</span>
+</span><span data-line="328"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="329"><span class="sd">        Parse the APDU contained in the TPDU.</span>
+</span><span data-line="330"><span class="sd">        &quot;&quot;&quot;</span>
+</span><span data-line="331">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">user_data</span><span class="o">.</span><span class="n">apdu</span>
+</span><span data-line="332">
+</span><span data-line="333">    <span class="nd">@property</span>
+</span><span data-line="334">    <span class="k">def</span><span class="w"> </span><span class="nf">tpdu</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TPDU</span><span class="p">:</span>
+</span><span data-line="335"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="336"><span class="sd">        The TPDU contained in the LPDU.</span>
+</span><span data-line="337"><span class="sd">        &quot;&quot;&quot;</span>
+</span><span data-line="338">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">user_data</span></div>
+
+</span></pre></div>
+        </article><button class="back-to-top" type="button">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+  </svg>
+  <span>Back to top</span>
+</button><div class="navigation flex print:hidden"></div></div>
+    </div>
+  </main>
+</div>
+<footer class="sy-foot">
+  <div class="sy-foot-inner sy-container mx-auto">
+    <div class="sy-foot-reserved md:flex justify-between items-center">
+      <div class="sy-foot-copyright"><p>2025, MatrixEditor</p>
+  
+  <p>
+    Made with
+    
+    <a href="https://www.sphinx-doc.org/">Sphinx</a> and
+    
+    <a href="https://shibuya.lepture.com">Shibuya theme</a>.
+  </p>
+</div>
+      <div class="sy-foot-socials">
+<a href="https://github.com/MatrixEditor/icspacket" aria-label="GitHub">
+  <iconify-icon icon="simple-icons:github"></iconify-icon>
+</a></div>
+    </div>
+  </div>
+</footer>
+      <script src="../../../../_static/documentation_options.js?v=0df3b029"></script>
+      <script src="../../../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../../../_static/design-tabs.js?v=f930bc37"></script>
+      <script src="../../../../_static/shibuya.js?v=e730760c"></script></body>
+</html>

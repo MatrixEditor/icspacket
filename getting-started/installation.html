@@ -2,7 +2,7 @@
 <html lang="en" data-accent-color="lime" data-content_root="../">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Installation - icspacket 0.1.dev1+g50e10a589 documentation</title><link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Protocols Overview" href="protocols.html" /><link rel="prev" title="icspacket" href="../index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Installation - icspacket 0.1.dev1+g5d2cc2c49 documentation</title><link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Protocols Overview" href="protocols.html" /><link rel="prev" title="icspacket" href="../index.html" />
       <link rel="canonical" href="https://matrixeditor.github.io/icspacket/getting-started/installation.html" /><script>
     function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
     setColorMode(localStorage._theme||"dark");
@@ -35,13 +35,16 @@
     </a>
     <div class="sy-head-nav" id="head-nav">
       <nav class="sy-head-links"><ul>
-      <li class="link"><a class="js-menu" href="../examples/index.html" id="nav-trigger-1" aria-controls="nav-children-1">
+      <li class="link"><a class="js-menu" href="protocols.html" id="nav-trigger-1" aria-controls="nav-children-1">
             <span>Examples</span>
             <i class="i-lucide chevron-down"></i>
           </a>
-        <ul id="nav-children-1" aria-labelledby="nav-trigger-1"><li><a href="../examples/mms/index.html">
+        <ul id="nav-children-1" aria-labelledby="nav-trigger-1"><li><a href="../protocols/mms/examples.html">
                 <span>MMS Utilities</span>
                 <small>Manufacturing Message Specification tools</small>
+              </a></li><li><a href="../protocols/dnp3/examples.html">
+                <span>DNP3 Tools</span>
+                <small>DNP3 utilities and tools</small>
               </a></li></ul>
       </li></ul></nav>
       <div class="sy-head-extra flex items-center print:hidden"><form class="searchbox flex items-center" action="../search.html" method="get">
@@ -90,6 +93,24 @@ data-aria-dark="Switch to auto color mode">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Installation</a></li>
 <li class="toctree-l1 _expand"><a class="reference internal" href="protocols.html">Protocols Overview</a></li>
 <li class="toctree-l1 _expand"><a class="reference internal" href="coreapi.html">Core API Reference</a></li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">DNP3 / IEEE 1815</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../protocols/dnp3/dnp3dump.html">Dumping Objects</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../protocols/dnp3/api.html">API Reference</a><ul>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../protocols/dnp3/api/link.html">Link Layer</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../protocols/dnp3/api/transport.html">Transport Layer</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../protocols/dnp3/api/application.html">Application Layer</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../protocols/dnp3/api/master.html">Master</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../protocols/dnp3/api/object_library.html">Object Library</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../protocols/dnp3/api/primitives.html">Primitive Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../protocols/dnp3/api/coding.html">Encoding / Decoding</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../protocols/dnp3/api/variations.html">Variations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../protocols/dnp3/api/coding_utils.html">Object Utilities</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 <p class="caption" role="heading" aria-level="3"><span class="caption-text">MMS / ISO 9506</span></p>
 <ul>
@@ -199,10 +220,27 @@ data-aria-dark="Switch to auto color mode">
         <article class="yue" role="main">
           <section id="installation">
 <span id="getting-started-install"></span><h1>Installation<a class="headerlink" href="#installation" title="Link to this heading">¶</a></h1>
-<p><em>WIP</em></p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>For development, Python headers must be available.</p>
+<p>There are pre-built wheels on PyPI for Python 3.10 to 3.13 for Linux, Windows
+and MacOS. Any other Python version is not officially supported:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="n">pip</span> <span class="n">install</span> <span class="n">icspacket</span>
+</span></pre></div>
+</div>
+<p>Alternatively, to build from source, Python development headers, CMake, Ninja
+and a compatible compiler must be installed (preferably GCC, MSVC and clang work
+too):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="n">pip</span> <span class="n">install</span> <span class="s2">&quot;git+https://github.com/MatrixEditor/icspacket&quot;</span>
+</span></pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>For development and debugging, there are additional compile time options.
+Take a look at <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code> or add the following line to the
+<code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="n">add_definitions</span><span class="p">(</span><span class="o">-</span><span class="n">DASN_EMIT_DEBUG</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</span></pre></div>
+</div>
+<p>Be aware that there will be A LOT of textual output if you enable this extra
+logging feature.</p>
 </div>
 </section>
 
@@ -249,7 +287,7 @@ data-aria-dark="Switch to auto color mode">
     </div>
   </div>
 </footer>
-      <script src="../_static/documentation_options.js?v=125e2f71"></script>
+      <script src="../_static/documentation_options.js?v=0df3b029"></script>
       <script src="../_static/doctools.js?v=9bcbadda"></script>
       <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="../_static/clipboard.min.js?v=a7894cd8"></script>

@@ -2,7 +2,7 @@
 <html lang="en" data-accent-color="lime" data-content_root="../../../">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>icspacket.core.logger - icspacket 0.1.dev1+g50e10a589 documentation</title><link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>icspacket.core.logger - icspacket 0.1.dev1+g5d2cc2c49 documentation</title><link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" />
       <link rel="canonical" href="https://matrixeditor.github.io/icspacket/_modules/icspacket/core/logger.html" /><script>
     function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
     setColorMode(localStorage._theme||"dark");
@@ -35,13 +35,16 @@
     </a>
     <div class="sy-head-nav" id="head-nav">
       <nav class="sy-head-links"><ul>
-      <li class="link"><a class="js-menu" href="../../../examples/index.html" id="nav-trigger-1" aria-controls="nav-children-1">
+      <li class="link"><a class="js-menu" href="../../../getting-started/protocols.html" id="nav-trigger-1" aria-controls="nav-children-1">
             <span>Examples</span>
             <i class="i-lucide chevron-down"></i>
           </a>
-        <ul id="nav-children-1" aria-labelledby="nav-trigger-1"><li><a href="../../../examples/mms/index.html">
+        <ul id="nav-children-1" aria-labelledby="nav-trigger-1"><li><a href="../../../protocols/mms/examples.html">
                 <span>MMS Utilities</span>
                 <small>Manufacturing Message Specification tools</small>
+              </a></li><li><a href="../../../protocols/dnp3/examples.html">
+                <span>DNP3 Tools</span>
+                <small>DNP3 utilities and tools</small>
               </a></li></ul>
       </li></ul></nav>
       <div class="sy-head-extra flex items-center print:hidden"><form class="searchbox flex items-center" action="../../../search.html" method="get">
@@ -90,6 +93,24 @@ data-aria-dark="Switch to auto color mode">
 <li class="toctree-l1 _expand"><a class="reference internal" href="../../../getting-started/installation.html">Installation</a></li>
 <li class="toctree-l1 _expand"><a class="reference internal" href="../../../getting-started/protocols.html">Protocols Overview</a></li>
 <li class="toctree-l1 _expand"><a class="reference internal" href="../../../getting-started/coreapi.html">Core API Reference</a></li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">DNP3 / IEEE 1815</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../protocols/dnp3/dnp3dump.html">Dumping Objects</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../protocols/dnp3/api.html">API Reference</a><ul>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../../../protocols/dnp3/api/link.html">Link Layer</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../../../protocols/dnp3/api/transport.html">Transport Layer</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../../../protocols/dnp3/api/application.html">Application Layer</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../../../protocols/dnp3/api/master.html">Master</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../../../protocols/dnp3/api/object_library.html">Object Library</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../protocols/dnp3/api/primitives.html">Primitive Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../protocols/dnp3/api/coding.html">Encoding / Decoding</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../protocols/dnp3/api/variations.html">Variations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../protocols/dnp3/api/coding_utils.html">Object Utilities</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 <p class="caption" role="heading" aria-level="3"><span class="caption-text">MMS / ISO 9506</span></p>
 <ul>
@@ -233,113 +254,123 @@ data-aria-dark="Switch to auto color mode">
 </span><span data-line="31"><span class="sd">5). These messages will appear when using ``-vvv`` verbosity.</span>
 </span><span data-line="32"><span class="sd">&quot;&quot;&quot;</span>
 </span><span data-line="33">
-</span><span data-line="34">
+</span><span data-line="34"><span class="n">TRACE_PACKETS</span> <span class="o">=</span> <span class="mi">4</span>
+</span><span data-line="35"><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="36"><span class="sd">Custom logging level to trace packets, numerically below ``TRACE`` (value =</span>
+</span><span data-line="37"><span class="sd">4). These messages will appear when using ``-vvvv`` verbosity.</span>
+</span><span data-line="38">
+</span><span data-line="39"><span class="sd">.. versionadded:: 0.2.0</span>
+</span><span data-line="40"><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="41">
+</span><span data-line="42">
 <div class="viewcode-block" id="PrefixFormatter">
 <a class="viewcode-back" href="../../../getting-started/coreapi.html#icspacket.core.logger.PrefixFormatter">[docs]</a>
-</span><span data-line="35"><span class="k">class</span><span class="w"> </span><span class="nc">PrefixFormatter</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">Formatter</span><span class="p">):</span>
-</span><span data-line="36"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span data-line="37"><span class="sd">    Custom log formatter that injects colored prefixes and safely handles</span>
-</span><span data-line="38"><span class="sd">    message escaping.</span>
-</span><span data-line="39"><span class="sd">    &quot;&quot;&quot;</span>
-</span><span data-line="40">
-</span><span data-line="41">    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-</span><span data-line="42">        <span class="n">logging</span><span class="o">.</span><span class="n">Formatter</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">%(prefix)s</span><span class="s2"> </span><span class="si">%(message)s</span><span class="s2">&quot;</span><span class="p">)</span>
-</span><span data-line="43">
+</span><span data-line="43"><span class="k">class</span><span class="w"> </span><span class="nc">PrefixFormatter</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">Formatter</span><span class="p">):</span>
+</span><span data-line="44"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="45"><span class="sd">    Custom log formatter that injects colored prefixes and safely handles</span>
+</span><span data-line="46"><span class="sd">    message escaping.</span>
+</span><span data-line="47"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span data-line="48">
+</span><span data-line="49">    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span data-line="50">        <span class="n">logging</span><span class="o">.</span><span class="n">Formatter</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">%(prefix)s</span><span class="s2"> </span><span class="si">%(message)s</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span data-line="51">
 <div class="viewcode-block" id="PrefixFormatter.format">
 <a class="viewcode-back" href="../../../getting-started/coreapi.html#icspacket.core.logger.PrefixFormatter.format">[docs]</a>
-</span><span data-line="44">    <span class="k">def</span><span class="w"> </span><span class="nf">format</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">record</span><span class="p">):</span>
-</span><span data-line="45"><span class="w">        </span><span class="sd">&quot;&quot;&quot;Format a log record by injecting a prefix and optionally escaping the message.&quot;&quot;&quot;</span>
-</span><span data-line="46">        <span class="k">match</span> <span class="n">record</span><span class="o">.</span><span class="n">levelno</span><span class="p">:</span>
-</span><span data-line="47">            <span class="k">case</span> <span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">:</span>
-</span><span data-line="48">                <span class="n">record</span><span class="o">.</span><span class="n">prefix</span> <span class="o">=</span> <span class="s2">&quot;[[cyan]I[/]]&quot;</span>
-</span><span data-line="49">            <span class="k">case</span> <span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">:</span>
-</span><span data-line="50">                <span class="n">record</span><span class="o">.</span><span class="n">prefix</span> <span class="o">=</span> <span class="s2">&quot;[[green]D[/]]&quot;</span>
-</span><span data-line="51">            <span class="k">case</span> <span class="n">logging</span><span class="o">.</span><span class="n">WARNING</span><span class="p">:</span>
-</span><span data-line="52">                <span class="n">record</span><span class="o">.</span><span class="n">prefix</span> <span class="o">=</span> <span class="s2">&quot;[[yellow]W[/]]&quot;</span>
-</span><span data-line="53">            <span class="k">case</span> <span class="n">logging</span><span class="o">.</span><span class="n">ERROR</span><span class="p">:</span>
-</span><span data-line="54">                <span class="n">record</span><span class="o">.</span><span class="n">prefix</span> <span class="o">=</span> <span class="s2">&quot;[[red]E[/]]&quot;</span>
-</span><span data-line="55">            <span class="k">case</span> <span class="n">logging</span><span class="o">.</span><span class="n">CRITICAL</span><span class="p">:</span>
-</span><span data-line="56">                <span class="n">record</span><span class="o">.</span><span class="n">prefix</span> <span class="o">=</span> <span class="s2">&quot;[[white on red]C[/]]&quot;</span>
-</span><span data-line="57">            <span class="k">case</span> <span class="mi">5</span><span class="p">:</span>
-</span><span data-line="58">                <span class="n">record</span><span class="o">.</span><span class="n">prefix</span> <span class="o">=</span> <span class="s2">&quot;[[dark_green]T[/]]&quot;</span>
-</span><span data-line="59">            <span class="k">case</span><span class="w"> </span><span class="k">_</span><span class="p">:</span>
-</span><span data-line="60">                <span class="n">record</span><span class="o">.</span><span class="n">prefix</span> <span class="o">=</span> <span class="s2">&quot;[[bright_black]-[/]]&quot;</span>
-</span><span data-line="61">
-</span><span data-line="62">        <span class="k">if</span> <span class="n">SAFE</span> <span class="ow">in</span> <span class="p">(</span><span class="n">record</span><span class="o">.</span><span class="n">args</span> <span class="ow">or</span> <span class="p">()):</span>
-</span><span data-line="63">            <span class="n">index</span> <span class="o">=</span> <span class="n">record</span><span class="o">.</span><span class="n">args</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">SAFE</span><span class="p">)</span>
-</span><span data-line="64">            <span class="n">record</span><span class="o">.</span><span class="n">msg</span> <span class="o">=</span> <span class="n">escape</span><span class="p">(</span><span class="n">record</span><span class="o">.</span><span class="n">msg</span><span class="p">)</span>
-</span><span data-line="65">            <span class="c1"># REVISIT: this does not work properly</span>
-</span><span data-line="66">            <span class="n">record</span><span class="o">.</span><span class="n">args</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">record</span><span class="o">.</span><span class="n">args</span><span class="p">[:</span><span class="n">index</span><span class="p">])</span> <span class="o">+</span> <span class="nb">list</span><span class="p">(</span><span class="n">record</span><span class="o">.</span><span class="n">args</span><span class="p">[</span><span class="n">index</span> <span class="o">+</span> <span class="mi">1</span> <span class="p">:])</span>
-</span><span data-line="67">
-</span><span data-line="68">        <span class="k">if</span> <span class="n">record</span><span class="o">.</span><span class="n">name</span> <span class="o">!=</span> <span class="s2">&quot;root&quot;</span><span class="p">:</span>
-</span><span data-line="69">            <span class="n">record</span><span class="o">.</span><span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;([i]</span><span class="si">{</span><span class="n">record</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">[/]) </span><span class="si">{</span><span class="n">record</span><span class="o">.</span><span class="n">msg</span><span class="si">}</span><span class="s2">&quot;</span>
-</span><span data-line="70">
-</span><span data-line="71">        <span class="k">return</span> <span class="n">logging</span><span class="o">.</span><span class="n">Formatter</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">record</span><span class="p">)</span></div>
+</span><span data-line="52">    <span class="k">def</span><span class="w"> </span><span class="nf">format</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">record</span><span class="p">):</span>
+</span><span data-line="53"><span class="w">        </span><span class="sd">&quot;&quot;&quot;Format a log record by injecting a prefix and optionally escaping the message.&quot;&quot;&quot;</span>
+</span><span data-line="54">        <span class="k">match</span> <span class="n">record</span><span class="o">.</span><span class="n">levelno</span><span class="p">:</span>
+</span><span data-line="55">            <span class="k">case</span> <span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">:</span>
+</span><span data-line="56">                <span class="n">record</span><span class="o">.</span><span class="n">prefix</span> <span class="o">=</span> <span class="s2">&quot;[[cyan]I[/]]&quot;</span>
+</span><span data-line="57">            <span class="k">case</span> <span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">:</span>
+</span><span data-line="58">                <span class="n">record</span><span class="o">.</span><span class="n">prefix</span> <span class="o">=</span> <span class="s2">&quot;[[green]D[/]]&quot;</span>
+</span><span data-line="59">            <span class="k">case</span> <span class="n">logging</span><span class="o">.</span><span class="n">WARNING</span><span class="p">:</span>
+</span><span data-line="60">                <span class="n">record</span><span class="o">.</span><span class="n">prefix</span> <span class="o">=</span> <span class="s2">&quot;[[yellow]W[/]]&quot;</span>
+</span><span data-line="61">            <span class="k">case</span> <span class="n">logging</span><span class="o">.</span><span class="n">ERROR</span><span class="p">:</span>
+</span><span data-line="62">                <span class="n">record</span><span class="o">.</span><span class="n">prefix</span> <span class="o">=</span> <span class="s2">&quot;[[red]E[/]]&quot;</span>
+</span><span data-line="63">            <span class="k">case</span> <span class="n">logging</span><span class="o">.</span><span class="n">CRITICAL</span><span class="p">:</span>
+</span><span data-line="64">                <span class="n">record</span><span class="o">.</span><span class="n">prefix</span> <span class="o">=</span> <span class="s2">&quot;[[white on red]C[/]]&quot;</span>
+</span><span data-line="65">            <span class="k">case</span> <span class="mi">5</span> <span class="o">|</span> <span class="mi">4</span><span class="p">:</span>
+</span><span data-line="66">                <span class="n">record</span><span class="o">.</span><span class="n">prefix</span> <span class="o">=</span> <span class="s2">&quot;[[dark_green]T[/]]&quot;</span>
+</span><span data-line="67">            <span class="k">case</span><span class="w"> </span><span class="k">_</span><span class="p">:</span>
+</span><span data-line="68">                <span class="n">record</span><span class="o">.</span><span class="n">prefix</span> <span class="o">=</span> <span class="s2">&quot;[[bright_black]-[/]]&quot;</span>
+</span><span data-line="69">
+</span><span data-line="70">        <span class="k">if</span> <span class="n">SAFE</span> <span class="ow">in</span> <span class="p">(</span><span class="n">record</span><span class="o">.</span><span class="n">args</span> <span class="ow">or</span> <span class="p">()):</span>
+</span><span data-line="71">            <span class="n">index</span> <span class="o">=</span> <span class="n">record</span><span class="o">.</span><span class="n">args</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">SAFE</span><span class="p">)</span>
+</span><span data-line="72">            <span class="n">record</span><span class="o">.</span><span class="n">msg</span> <span class="o">=</span> <span class="n">escape</span><span class="p">(</span><span class="n">record</span><span class="o">.</span><span class="n">msg</span><span class="p">)</span>
+</span><span data-line="73">            <span class="c1"># REVISIT: this does not work properly</span>
+</span><span data-line="74">            <span class="n">record</span><span class="o">.</span><span class="n">args</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">record</span><span class="o">.</span><span class="n">args</span><span class="p">[:</span><span class="n">index</span><span class="p">])</span> <span class="o">+</span> <span class="nb">list</span><span class="p">(</span><span class="n">record</span><span class="o">.</span><span class="n">args</span><span class="p">[</span><span class="n">index</span> <span class="o">+</span> <span class="mi">1</span> <span class="p">:])</span>
+</span><span data-line="75">
+</span><span data-line="76">        <span class="k">if</span> <span class="n">record</span><span class="o">.</span><span class="n">name</span> <span class="o">!=</span> <span class="s2">&quot;root&quot;</span><span class="p">:</span>
+</span><span data-line="77">            <span class="n">record</span><span class="o">.</span><span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;([i]</span><span class="si">{</span><span class="n">record</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">[/]) </span><span class="si">{</span><span class="n">record</span><span class="o">.</span><span class="n">msg</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span data-line="78">
+</span><span data-line="79">        <span class="k">return</span> <span class="n">logging</span><span class="o">.</span><span class="n">Formatter</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">record</span><span class="p">)</span></div>
 </div>
 
-</span><span data-line="72">
-</span><span data-line="73">
+</span><span data-line="80">
+</span><span data-line="81">
 <div class="viewcode-block" id="init">
 <a class="viewcode-back" href="../../../getting-started/coreapi.html#icspacket.core.logger.init">[docs]</a>
-</span><span data-line="74"><span class="k">def</span><span class="w"> </span><span class="nf">init</span><span class="p">(</span><span class="n">ts</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">level</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">):</span>
-</span><span data-line="75"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Initialize the global logging system with Rich-based formatting.</span>
-</span><span data-line="76">
-</span><span data-line="77"><span class="sd">    Can optionally show timestamps.</span>
-</span><span data-line="78">
-</span><span data-line="79"><span class="sd">    :param ts: Whether to include timestamps in log messages.</span>
-</span><span data-line="80"><span class="sd">    :type ts: bool</span>
-</span><span data-line="81"><span class="sd">    :param level: Logging level to configure for the root logger.</span>
-</span><span data-line="82"><span class="sd">    :type level: int</span>
-</span><span data-line="83"><span class="sd">    &quot;&quot;&quot;</span>
-</span><span data-line="84">    <span class="n">handler</span> <span class="o">=</span> <span class="n">RichHandler</span><span class="p">(</span>
-</span><span data-line="85">        <span class="n">level</span><span class="o">=</span><span class="n">level</span><span class="p">,</span>
-</span><span data-line="86">        <span class="n">show_level</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-</span><span data-line="87">        <span class="n">show_path</span><span class="o">=</span><span class="n">level</span> <span class="o">&lt;=</span> <span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">,</span>
-</span><span data-line="88">        <span class="n">show_time</span><span class="o">=</span><span class="n">ts</span><span class="p">,</span>
-</span><span data-line="89">        <span class="n">rich_tracebacks</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-</span><span data-line="90">        <span class="n">markup</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-</span><span data-line="91">        <span class="n">keywords</span><span class="o">=</span><span class="p">[],</span>
-</span><span data-line="92">        <span class="n">omit_repeated_times</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-</span><span data-line="93">    <span class="p">)</span>
-</span><span data-line="94">    <span class="c1"># we don&#39;t want to use any highlighter</span>
-</span><span data-line="95">    <span class="n">handler</span><span class="o">.</span><span class="n">highlighter</span> <span class="o">=</span> <span class="kc">None</span>
-</span><span data-line="96">
-</span><span data-line="97">    <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">()</span>
-</span><span data-line="98">    <span class="n">logger</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">level</span><span class="p">)</span>
-</span><span data-line="99">    <span class="n">handler</span><span class="o">.</span><span class="n">setFormatter</span><span class="p">(</span><span class="n">PrefixFormatter</span><span class="p">())</span>
-</span><span data-line="100">    <span class="n">logger</span><span class="o">.</span><span class="n">addHandler</span><span class="p">(</span><span class="n">handler</span><span class="p">)</span></div>
+</span><span data-line="82"><span class="k">def</span><span class="w"> </span><span class="nf">init</span><span class="p">(</span><span class="n">ts</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">level</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">):</span>
+</span><span data-line="83"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Initialize the global logging system with Rich-based formatting.</span>
+</span><span data-line="84">
+</span><span data-line="85"><span class="sd">    Can optionally show timestamps.</span>
+</span><span data-line="86">
+</span><span data-line="87"><span class="sd">    :param ts: Whether to include timestamps in log messages.</span>
+</span><span data-line="88"><span class="sd">    :type ts: bool</span>
+</span><span data-line="89"><span class="sd">    :param level: Logging level to configure for the root logger.</span>
+</span><span data-line="90"><span class="sd">    :type level: int</span>
+</span><span data-line="91"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span data-line="92">    <span class="n">handler</span> <span class="o">=</span> <span class="n">RichHandler</span><span class="p">(</span>
+</span><span data-line="93">        <span class="n">level</span><span class="o">=</span><span class="n">level</span><span class="p">,</span>
+</span><span data-line="94">        <span class="n">show_level</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+</span><span data-line="95">        <span class="n">show_path</span><span class="o">=</span><span class="n">level</span> <span class="o">&lt;=</span> <span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">,</span>
+</span><span data-line="96">        <span class="n">show_time</span><span class="o">=</span><span class="n">ts</span><span class="p">,</span>
+</span><span data-line="97">        <span class="n">rich_tracebacks</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+</span><span data-line="98">        <span class="n">markup</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+</span><span data-line="99">        <span class="n">keywords</span><span class="o">=</span><span class="p">[],</span>
+</span><span data-line="100">        <span class="n">omit_repeated_times</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+</span><span data-line="101">    <span class="p">)</span>
+</span><span data-line="102">    <span class="c1"># we don&#39;t want to use any highlighter</span>
+</span><span data-line="103">    <span class="n">handler</span><span class="o">.</span><span class="n">highlighter</span> <span class="o">=</span> <span class="kc">None</span>
+</span><span data-line="104">
+</span><span data-line="105">    <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">()</span>
+</span><span data-line="106">    <span class="n">logger</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">level</span><span class="p">)</span>
+</span><span data-line="107">    <span class="n">handler</span><span class="o">.</span><span class="n">setFormatter</span><span class="p">(</span><span class="n">PrefixFormatter</span><span class="p">())</span>
+</span><span data-line="108">    <span class="n">logger</span><span class="o">.</span><span class="n">addHandler</span><span class="p">(</span><span class="n">handler</span><span class="p">)</span></div>
 
-</span><span data-line="101">
-</span><span data-line="102">
+</span><span data-line="109">
+</span><span data-line="110">
 <div class="viewcode-block" id="init_from_args">
 <a class="viewcode-back" href="../../../getting-started/coreapi.html#icspacket.core.logger.init_from_args">[docs]</a>
-</span><span data-line="103"><span class="k">def</span><span class="w"> </span><span class="nf">init_from_args</span><span class="p">(</span><span class="n">verbosity</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span> <span class="n">ts</span><span class="p">:</span> <span class="nb">bool</span><span class="p">):</span>
-</span><span data-line="104"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Initialize logging from CLI-like verbosity/quiet flags.</span>
-</span><span data-line="105">
-</span><span data-line="106"><span class="sd">    This helper interprets CLI verbosity levels into logging levels:</span>
-</span><span data-line="107">
-</span><span data-line="108"><span class="sd">    * ``verbosity = 0`` -&gt; ``INFO``</span>
-</span><span data-line="109"><span class="sd">    * ``verbosity = 1`` -&gt; ``DEBUG``</span>
-</span><span data-line="110"><span class="sd">    * ``verbosity &gt;= 2`` -&gt; ``TRACE``</span>
-</span><span data-line="111"><span class="sd">    * ``quiet = True`` -&gt; force ``ERROR`` regardless of verbosity</span>
-</span><span data-line="112">
-</span><span data-line="113"><span class="sd">    :param verbosity: CLI verbosity count (``-v`` flags).</span>
-</span><span data-line="114"><span class="sd">    :type verbosity: int</span>
-</span><span data-line="115"><span class="sd">    :param quiet: Whether quiet mode is enabled (suppresses most logs).</span>
-</span><span data-line="116"><span class="sd">    :type quiet: bool</span>
-</span><span data-line="117"><span class="sd">    :param ts: Whether to show timestamps in log output.</span>
-</span><span data-line="118"><span class="sd">    :type ts: bool</span>
-</span><span data-line="119"><span class="sd">    &quot;&quot;&quot;</span>
-</span><span data-line="120">    <span class="n">level</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">INFO</span>
-</span><span data-line="121">    <span class="k">if</span> <span class="n">verbosity</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-</span><span data-line="122">        <span class="n">level</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span>
-</span><span data-line="123">    <span class="k">elif</span> <span class="n">verbosity</span> <span class="o">&gt;=</span> <span class="mi">2</span><span class="p">:</span>
-</span><span data-line="124">        <span class="n">level</span> <span class="o">=</span> <span class="n">TRACE</span>
-</span><span data-line="125">
-</span><span data-line="126">    <span class="k">if</span> <span class="n">quiet</span><span class="p">:</span>
-</span><span data-line="127">        <span class="n">level</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">ERROR</span>
-</span><span data-line="128">
-</span><span data-line="129">    <span class="n">init</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span> <span class="n">level</span><span class="p">)</span></div>
+</span><span data-line="111"><span class="k">def</span><span class="w"> </span><span class="nf">init_from_args</span><span class="p">(</span><span class="n">verbosity</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span> <span class="n">ts</span><span class="p">:</span> <span class="nb">bool</span><span class="p">):</span>
+</span><span data-line="112"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Initialize logging from CLI-like verbosity/quiet flags.</span>
+</span><span data-line="113">
+</span><span data-line="114"><span class="sd">    This helper interprets CLI verbosity levels into logging levels:</span>
+</span><span data-line="115">
+</span><span data-line="116"><span class="sd">    * ``verbosity = 0`` -&gt; ``INFO``</span>
+</span><span data-line="117"><span class="sd">    * ``verbosity = 1`` -&gt; ``DEBUG``</span>
+</span><span data-line="118"><span class="sd">    * ``verbosity = 2`` -&gt; ``TRACE``</span>
+</span><span data-line="119"><span class="sd">    * ``verbosity &gt;= 3`` -&gt; ``TRACE_PACKETS``</span>
+</span><span data-line="120"><span class="sd">    * ``quiet = True`` -&gt; force ``ERROR`` regardless of verbosity</span>
+</span><span data-line="121">
+</span><span data-line="122"><span class="sd">    :param verbosity: CLI verbosity count (``-v`` flags).</span>
+</span><span data-line="123"><span class="sd">    :type verbosity: int</span>
+</span><span data-line="124"><span class="sd">    :param quiet: Whether quiet mode is enabled (suppresses most logs).</span>
+</span><span data-line="125"><span class="sd">    :type quiet: bool</span>
+</span><span data-line="126"><span class="sd">    :param ts: Whether to show timestamps in log output.</span>
+</span><span data-line="127"><span class="sd">    :type ts: bool</span>
+</span><span data-line="128"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span data-line="129">    <span class="n">level</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">INFO</span>
+</span><span data-line="130">    <span class="k">if</span> <span class="n">verbosity</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+</span><span data-line="131">        <span class="n">level</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span>
+</span><span data-line="132">    <span class="k">elif</span> <span class="n">verbosity</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+</span><span data-line="133">        <span class="n">level</span> <span class="o">=</span> <span class="n">TRACE</span>
+</span><span data-line="134">    <span class="k">elif</span> <span class="n">verbosity</span> <span class="o">&gt;=</span> <span class="mi">3</span><span class="p">:</span>
+</span><span data-line="135">        <span class="n">level</span> <span class="o">=</span> <span class="n">TRACE_PACKETS</span>
+</span><span data-line="136">    <span class="k">if</span> <span class="n">quiet</span><span class="p">:</span>
+</span><span data-line="137">        <span class="n">level</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">ERROR</span>
+</span><span data-line="138">
+</span><span data-line="139">    <span class="n">init</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span> <span class="n">level</span><span class="p">)</span></div>
 
 </span></pre></div>
         </article><button class="back-to-top" type="button">
@@ -371,7 +402,7 @@ data-aria-dark="Switch to auto color mode">
     </div>
   </div>
 </footer>
-      <script src="../../../_static/documentation_options.js?v=125e2f71"></script>
+      <script src="../../../_static/documentation_options.js?v=0df3b029"></script>
       <script src="../../../_static/doctools.js?v=9bcbadda"></script>
       <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>

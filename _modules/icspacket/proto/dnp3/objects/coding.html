@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en" data-accent-color="lime" data-content_root="../../../../../">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>icspacket.proto.dnp3.objects.coding - icspacket 0.1.dev1+g5d2cc2c49 documentation</title><link rel="index" title="Index" href="../../../../../genindex.html" /><link rel="search" title="Search" href="../../../../../search.html" />
+      <link rel="canonical" href="https://matrixeditor.github.io/icspacket/_modules/icspacket/proto/dnp3/objects/coding.html" /><script>
+    function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
+    setColorMode(localStorage._theme||"dark");
+  </script><link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=397bb51e" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/shibuya.css?v=d48c410d" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link media="print" rel="stylesheet" type="text/css" href="../../../../../_static/print.css?v=20ff2c19" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --sy-f-text: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+  --sy-f-heading: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+}
+</style>
+    <meta property="og:type" content="website"/>
+<meta property="og:url" content="https://matrixeditor.github.io/icspacket/_modules/icspacket/proto/dnp3/objects/coding.html"/>
+<meta property="og:title" content="icspacket.proto.dnp3.objects.coding"/>
+<meta name="twitter:card" content="summary"/>
+  </head>
+<body><div class="sy-head">
+  <div class="sy-head-blur"></div>
+  <div class="sy-head-inner sy-container mx-auto">
+    <a class="sy-head-brand" href="../../../../../index.html">
+      
+      
+      <strong>icspacket</strong>
+    </a>
+    <div class="sy-head-nav" id="head-nav">
+      <nav class="sy-head-links"><ul>
+      <li class="link"><a class="js-menu" href="../../../../../getting-started/protocols.html" id="nav-trigger-1" aria-controls="nav-children-1">
+            <span>Examples</span>
+            <i class="i-lucide chevron-down"></i>
+          </a>
+        <ul id="nav-children-1" aria-labelledby="nav-trigger-1"><li><a href="../../../../../protocols/mms/examples.html">
+                <span>MMS Utilities</span>
+                <small>Manufacturing Message Specification tools</small>
+              </a></li><li><a href="../../../../../protocols/dnp3/examples.html">
+                <span>DNP3 Tools</span>
+                <small>DNP3 utilities and tools</small>
+              </a></li></ul>
+      </li></ul></nav>
+      <div class="sy-head-extra flex items-center print:hidden"><form class="searchbox flex items-center" action="../../../../../search.html" method="get">
+  <input type="text" name="q" placeholder="Search" />
+  <kbd>/</kbd>
+</form><div class="sy-head-socials">
+  <a href="https://github.com/MatrixEditor/icspacket" aria-label="GitHub">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </a></div></div>
+    </div>
+    <div class="sy-head-actions flex items-center shrink-0 print:hidden"><button class="js-theme theme-switch flex items-center"
+data-aria-auto="Switch to light color mode"
+data-aria-light="Switch to dark color mode"
+data-aria-dark="Switch to auto color mode">
+<i class="i-lucide theme-icon"></i>
+</button><button class="md:hidden flex items-center js-menu" aria-label="Menu" type="button" aria-controls="head-nav" aria-expanded="false">
+        <div class="hamburger">
+          <span class="hamburger_1"></span>
+          <span class="hamburger_2 -translate-x-2"></span>
+          <span class="hamburger_3 -translate-x-1"></span>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>
+<div class="sy-page sy-container flex mx-auto">
+  <aside id="lside" class="sy-lside md:w-72 md:shrink-0 print:hidden">
+    <div class="sy-lside-inner md:sticky">
+      <div class="sy-scrollbar p-6"><div class="sidebar-links">
+  <ul>
+    <li><a class="icon-link" href="https://github.com/MatrixEditor/icspacket/discussions">
+  <span class="icon">
+    <svg viewBox="0 0 24 24" fill="none">
+      <path fill="var(--accent-9)" fill-rule="evenodd" clip-rule="evenodd" d="M11 5a6 6 0 0 0-4.687 9.746c.215.27.315.62.231.954l-.514 2.058a1 1 0 0 0 1.485 1.1l2.848-1.71c.174-.104.374-.15.576-.148H13a6 6 0 0 0 0-12h-2Z"/>
+      <circle fill="white" cx="12" cy="11" r="1"/>
+      <circle fill="white" cx="9" cy="11" r="1"/>
+      <circle fill="white" cx="15" cy="11" r="1"/>
+    </svg>
+  </span>
+  <span class="text">Discussion</span>
+</a></li>
+  </ul>
+</div>
+        <div class="globaltoc" data-expand-depth="2"><p class="caption" role="heading" aria-level="3"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../getting-started/installation.html">Installation</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../getting-started/protocols.html">Protocols Overview</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../getting-started/coreapi.html">Core API Reference</a></li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">DNP3 / IEEE 1815</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../protocols/dnp3/dnp3dump.html">Dumping Objects</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../protocols/dnp3/api.html">API Reference</a><ul>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../../../../../protocols/dnp3/api/link.html">Link Layer</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../../../../../protocols/dnp3/api/transport.html">Transport Layer</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../../../../../protocols/dnp3/api/application.html">Application Layer</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../../../../../protocols/dnp3/api/master.html">Master</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../../../../../protocols/dnp3/api/object_library.html">Object Library</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../protocols/dnp3/api/primitives.html">Primitive Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../protocols/dnp3/api/coding.html">Encoding / Decoding</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../protocols/dnp3/api/variations.html">Variations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../protocols/dnp3/api/coding_utils.html">Object Utilities</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">MMS / ISO 9506</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../protocols/mms/demo_vars.html">Variable Target Format</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../protocols/mms/demo_vars.html#variableaccess-service-rwq">VariableAccess Service (rwq)</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../protocols/mms/demo_files.html">FileManagement Service</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../protocols/mms/api.html">API Reference</a><ul>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../../../../../protocols/mms/api_conn.html">MMS Connection</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../../../../../protocols/mms/api_data.html">Data Conversion</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../../../../../protocols/mms/api_utils.html">Protocol Utilities</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">ACSE / X.227</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../protocols/acse/api.html">API Reference</a></li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">COPP / X.226 / ISO 8823</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../protocols/copp/api.html">API Reference</a><ul>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../../../../../protocols/copp/presentation.html">ISO Presentation</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../../../../../protocols/copp/utils.html">Protocol Utilities</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">COSP / X.225 / ISO 8237-1</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../protocols/cosp/api.html">API Reference</a><ul>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../../../../../protocols/cosp/tsdu.html">TSDU</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../../../../../protocols/cosp/spdu.html">SPDU Types</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../../../../../protocols/cosp/values.html">Parameter Values (PV)</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../../../../../protocols/cosp/session.html">ISO Session</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../../../../../protocols/cosp/utils.html">Protocol Utilities</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">COTP / X.224</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../protocols/cotp/api.html">API Reference</a><ul>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../../../../../protocols/cotp/structs.html">TPDU Types</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../../../../../protocols/cotp/connection.html">Connection</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">TPKT Protocol (RFC1006)</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../protocols/tpkt/usage.html">Using a TPKT Wrapper</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../protocols/tpkt/api.html">API Reference</a></li>
+</ul>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="lside-overlay js-menu" role="button" aria-label="Close left sidebar" aria-controls="lside" aria-expanded="false"></div>
+  <aside id="rside" class="sy-rside pb-3 w-64 shrink-0 order-last">
+    <button class="rside-close js-menu xl:hidden" aria-label="Close Table of Contents" type="button" aria-controls="rside" aria-expanded="false">
+      <i class="i-lucide close"></i>
+    </button>
+    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><a class="js-repo-stats repo-stats flex items-center" href="https://github.com/MatrixEditor/icspacket"
+  data-type="github" data-user="MatrixEditor" data-repo="icspacket">
+  <span class="w-8 flex items-center justify-around shrink-0 text-3xl">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </span>
+  <span class="flex-grow px-2 break-all">
+    <span style="font-size: small;">MatrixEditor/icspacket</span>
+    <span class="flex text-sm repo-stats-count">
+      <span class="flex items-center pr-3">
+        <iconify-icon icon="lucide:star"></iconify-icon>
+        <strong class="js-repo-stars ml-1">0</strong>
+      </span>
+      <span class="flex items-center">
+        <iconify-icon icon="lucide:git-fork"></iconify-icon>
+        <strong class="js-repo-forks ml-1">0</strong>
+      </span>
+    </span>
+  </span>
+</a></div>
+  </aside>
+  <div class="rside-overlay js-menu" role="button" aria-label="Close Table of Contents" aria-controls="rside" aria-expanded="false"></div>
+  <main class="sy-main w-full max-sm:max-w-full print:pt-6">
+<div class="sy-breadcrumbs" role="navigation">
+  <div class="sy-breadcrumbs-inner flex items-center">
+    <div class="md:hidden mr-3">
+      <button class="js-menu" aria-label="Menu" type="button" aria-controls="lside" aria-expanded="false">
+        <i class="i-lucide menu"></i>
+      </button>
+    </div>
+    <ol class="flex-1" itemscope itemtype="https://schema.org/BreadcrumbList"><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="../../../../../index.html"><span itemprop="name">icspacket</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="1" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="../../../../index.html"><span itemprop="name">Module code</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="2" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <strong itemprop="name">icspacket.proto.dnp3.objects.coding</strong>
+        <meta itemprop="position" content="3" />
+      </li></ol>
+    <div class="xl:hidden ml-1">
+      <button class="js-menu" aria-label="Show table of contents" type="button" aria-controls="rside"
+        aria-expanded="false">
+        <i class="i-lucide outdent"></i>
+      </button>
+    </div>
+  </div>
+</div><div class="flex flex-col break-words justify-between">
+      <div class="min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
+        <article class="yue" role="main">
+          <h1>Source code for icspacket.proto.dnp3.objects.coding</h1><div class="highlight"><pre>
+<span></span><span data-line="1"><span class="c1"># This file is part of icspacket.</span>
+</span><span data-line="2"><span class="c1"># Copyright (C) 2025-present  MatrixEditor @ github</span>
+</span><span data-line="3"><span class="c1">#</span>
+</span><span data-line="4"><span class="c1"># This program is free software: you can redistribute it and/or modify</span>
+</span><span data-line="5"><span class="c1"># it under the terms of the GNU General Public License as published by</span>
+</span><span data-line="6"><span class="c1"># the Free Software Foundation, either version 3 of the License, or</span>
+</span><span data-line="7"><span class="c1"># (at your option) any later version.</span>
+</span><span data-line="8"><span class="c1">#</span>
+</span><span data-line="9"><span class="c1"># This program is distributed in the hope that it will be useful,</span>
+</span><span data-line="10"><span class="c1"># but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+</span><span data-line="11"><span class="c1"># MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+</span><span data-line="12"><span class="c1"># GNU General Public License for more details.</span>
+</span><span data-line="13"><span class="c1">#</span>
+</span><span data-line="14"><span class="c1"># You should have received a copy of the GNU General Public License</span>
+</span><span data-line="15"><span class="c1"># along with this program.  If not, see &lt;https://www.gnu.org/licenses/&gt;.</span>
+</span><span data-line="16"><span class="c1"># pyright: reportGeneralTypeIssues=false, reportUninitializedInstanceVariable=false, reportInvalidTypeForm=false</span>
+</span><span data-line="17"><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="18"><span class="sd">This module implements parsing and serialization of **DNP3 Application Layer</span>
+</span><span data-line="19"><span class="sd">objects** as defined in section *4.2.2.7 Object Headers* of the DNP3</span>
+</span><span data-line="20"><span class="sd">specification.</span>
+</span><span data-line="21">
+</span><span data-line="22"><span class="sd">In DNP3, object headers describe data structures that cannot be conveyed</span>
+</span><span data-line="23"><span class="sd">through the application header alone. Each object header specifies:</span>
+</span><span data-line="24">
+</span><span data-line="25"><span class="sd">- **Group**: The type of data (e.g., binary inputs, analog outputs).</span>
+</span><span data-line="26"><span class="sd">- **Variation**: The representation of the data (e.g., packed, 16-bit, 32-bit).</span>
+</span><span data-line="27"><span class="sd">- **Qualifier fields**: Indicate how many objects follow and what range or</span>
+</span><span data-line="28"><span class="sd">  prefixing mechanism is applied.</span>
+</span><span data-line="29"><span class="sd">- **Objects**: The actual data values.</span>
+</span><span data-line="30">
+</span><span data-line="31"><span class="sd">Example: Class0123 Request</span>
+</span><span data-line="32"><span class="sd">--------------------------</span>
+</span><span data-line="33">
+</span><span data-line="34"><span class="sd">.. code-block:: python</span>
+</span><span data-line="35">
+</span><span data-line="36"><span class="sd">    # no prefix and no range needed here</span>
+</span><span data-line="37"><span class="sd">    objects = DNP3Objects()</span>
+</span><span data-line="38"><span class="sd">    objects.add_emtpy(60, 1) # object 60, variation 1 (Class 0)</span>
+</span><span data-line="39"><span class="sd">    objects.add_emtpy(60, 2) # object 60, variation 2 (Class 1)</span>
+</span><span data-line="40"><span class="sd">    objects.add_emtpy(60, 3) # object 60, variation 3 (Class 2)</span>
+</span><span data-line="41"><span class="sd">    objects.add_emtpy(60, 4) # object 60, variation 4 (Class 3)</span>
+</span><span data-line="42">
+</span><span data-line="43"><span class="sd">    encoded = pack_objects(objects)</span>
+</span><span data-line="44">
+</span><span data-line="45"><span class="sd">    # ...</span>
+</span><span data-line="46">
+</span><span data-line="47"><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="48">
+</span><span data-line="49"><span class="kn">import</span><span class="w"> </span><span class="nn">io</span>
+</span><span data-line="50"><span class="kn">import</span><span class="w"> </span><span class="nn">dataclasses</span>
+</span><span data-line="51"><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span>
+</span><span data-line="52">
+</span><span data-line="53"><span class="kn">from</span><span class="w"> </span><span class="nn">caterpillar.fields</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pass</span><span class="p">,</span> <span class="n">uint8</span>
+</span><span data-line="54"><span class="kn">from</span><span class="w"> </span><span class="nn">caterpillar.model</span><span class="w"> </span><span class="kn">import</span> <span class="n">EnumFactory</span><span class="p">,</span> <span class="n">pack_into</span>
+</span><span data-line="55"><span class="kn">from</span><span class="w"> </span><span class="nn">caterpillar.shortcuts</span><span class="w"> </span><span class="kn">import</span> <span class="n">bitfield</span><span class="p">,</span> <span class="n">unpack</span>
+</span><span data-line="56">
+</span><span data-line="57"><span class="kn">from</span><span class="w"> </span><span class="nn">icspacket.proto.dnp3.const</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+</span><span data-line="58">    <span class="n">APDU_PREFIX_TYPES</span><span class="p">,</span>
+</span><span data-line="59">    <span class="n">APDU_RANGE_TYPES</span><span class="p">,</span>
+</span><span data-line="60">    <span class="n">ObjectPrefixCode</span><span class="p">,</span>
+</span><span data-line="61">    <span class="n">RangeSpecifierCode</span><span class="p">,</span>
+</span><span data-line="62"><span class="p">)</span>
+</span><span data-line="63"><span class="kn">from</span><span class="w"> </span><span class="nn">icspacket.proto.dnp3.objects.variations</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_variation</span>
+</span><span data-line="64">
+</span><span data-line="65">
+</span><span data-line="66"><span class="c1"># /4.2.2.7 Object headers</span>
+</span><span data-line="67"><span class="c1"># object headers and objects provide supplementary information as required when</span>
+</span><span data-line="68"><span class="c1"># the application header alone cannot convey the complete message.</span>
+<div class="viewcode-block" id="ObjectHeader">
+<a class="viewcode-back" href="../../../../../protocols/dnp3/api/coding.html#icspacket.proto.dnp3.objects.coding.ObjectHeader">[docs]</a>
+</span><span data-line="69"><span class="nd">@bitfield</span>
+</span><span data-line="70"><span class="k">class</span><span class="w"> </span><span class="nc">ObjectHeader</span><span class="p">:</span>
+</span><span data-line="71"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Represents a **DNP3 Object Header**.</span>
+</span><span data-line="72">
+</span><span data-line="73"><span class="sd">    Object headers provide additional context about a set of objects</span>
+</span><span data-line="74"><span class="sd">    transmitted in the Application Layer. They define the group, variation,</span>
+</span><span data-line="75"><span class="sd">    and addressing/range information for associated data objects.</span>
+</span><span data-line="76"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span data-line="77">
+</span><span data-line="78">    <span class="c1"># fmt: off</span>
+</span><span data-line="79">    <span class="c1">#: /4.2.2.7.1 Object group</span>
+</span><span data-line="80">    <span class="c1">#: The object group specifies what data type or values are included in a</span>
+</span><span data-line="81">    <span class="c1">#: master request or in an outstation response.</span>
+</span><span data-line="82">    <span class="n">group</span>           <span class="p">:</span> <span class="n">uint8</span>
+</span><span data-line="83">
+</span><span data-line="84">    <span class="c1">#: /4.2.2.7.2 Object variation</span>
+</span><span data-line="85">    <span class="c1">#: Specifies the data format of DNP3 objects. The object group and object variation</span>
+</span><span data-line="86">    <span class="c1">#: together uniquely specify the structure of a DNP3 object and the type of data that</span>
+</span><span data-line="87">    <span class="c1">#: it references.</span>
+</span><span data-line="88">    <span class="n">variation</span>       <span class="p">:</span> <span class="n">uint8</span>
+</span><span data-line="89">
+</span><span data-line="90">    <span class="c1"># 4.2.2.7.3 Qualifier and range fields</span>
+</span><span data-line="91">    <span class="n">reserved</span>        <span class="p">:</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span>                             <span class="o">=</span> <span class="mi">0</span>
+</span><span data-line="92">    <span class="c1">#: /4.2.2.7.3.2 Object prefix code</span>
+</span><span data-line="93">    <span class="c1">#: Specifies what, if any, prefix value appears before each of the DNP3</span>
+</span><span data-line="94">    <span class="c1">#: objects that follow the object header. Prefixes are either an index number</span>
+</span><span data-line="95">    <span class="c1">#: or an object size.</span>
+</span><span data-line="96">    <span class="n">obj_prefix</span>      <span class="p">:</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">EnumFactory</span><span class="p">(</span><span class="n">ObjectPrefixCode</span><span class="p">))</span>   <span class="o">=</span> <span class="n">ObjectPrefixCode</span><span class="o">.</span><span class="n">NONE</span>
+</span><span data-line="97">
+</span><span data-line="98">    <span class="c1">#: /4.2.2.7.3.3 Range specifier codes</span>
+</span><span data-line="99">    <span class="n">range_spec</span>      <span class="p">:</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">EnumFactory</span><span class="p">(</span><span class="n">RangeSpecifierCode</span><span class="p">))</span> <span class="o">=</span> <span class="n">RangeSpecifierCode</span><span class="o">.</span><span class="n">NONE</span></div>
+
+</span><span data-line="100">    <span class="c1"># fmt: on</span>
+</span><span data-line="101">
+</span><span data-line="102">
+</span><span data-line="103"><span class="c1"># Simple storage object that represents a transmitted DNP3 object</span>
+<div class="viewcode-block" id="DNP3Object">
+<a class="viewcode-back" href="../../../../../protocols/dnp3/api/coding.html#icspacket.proto.dnp3.objects.coding.DNP3Object">[docs]</a>
+</span><span data-line="104"><span class="nd">@dataclasses</span><span class="o">.</span><span class="n">dataclass</span>
+</span><span data-line="105"><span class="k">class</span><span class="w"> </span><span class="nc">DNP3Object</span><span class="p">:</span>
+</span><span data-line="106"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="107"><span class="sd">    Represents a single transmitted **DNP3 object instance**.</span>
+</span><span data-line="108">
+</span><span data-line="109"><span class="sd">    A DNP3 object may optionally include a prefix (such as an index),</span>
+</span><span data-line="110"><span class="sd">    followed by its data value.</span>
+</span><span data-line="111"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span data-line="112">
+</span><span data-line="113">    <span class="n">prefix</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span>
+</span><span data-line="114"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Parsed prefix value (if present). This may represent an index or size.&quot;&quot;&quot;</span>
+</span><span data-line="115">    <span class="n">index</span><span class="p">:</span> <span class="nb">int</span>
+</span><span data-line="116"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Sequential index of this object within its variation.&quot;&quot;&quot;</span>
+</span><span data-line="117">    <span class="n">instance</span><span class="p">:</span> <span class="n">Any</span>
+</span><span data-line="118"><span class="w">    </span><span class="sd">&quot;&quot;&quot;The parsed data payload for this object (actual value).&quot;&quot;&quot;</span></div>
+
+</span><span data-line="119">
+</span><span data-line="120">
+<div class="viewcode-block" id="DNP3ObjectVariations">
+<a class="viewcode-back" href="../../../../../protocols/dnp3/api/coding.html#icspacket.proto.dnp3.objects.coding.DNP3ObjectVariations">[docs]</a>
+</span><span data-line="121"><span class="k">class</span><span class="w"> </span><span class="nc">DNP3ObjectVariations</span><span class="p">(</span><span class="nb">list</span><span class="p">[</span><span class="n">DNP3Object</span><span class="p">]):</span>
+</span><span data-line="122"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="123"><span class="sd">    Represents all **objects of a given variation** within a group.</span>
+</span><span data-line="124">
+</span><span data-line="125"><span class="sd">    Extends ``list[DNP3Object]`` to hold multiple instances of the same</span>
+</span><span data-line="126"><span class="sd">    group/variation. Additional metadata about range and prefixing is stored</span>
+</span><span data-line="127"><span class="sd">    here for proper serialization.</span>
+</span><span data-line="128">
+</span><span data-line="129"><span class="sd">    &gt;&gt;&gt; v = DNP3ObjectVariations() # generic interface</span>
+</span><span data-line="130"><span class="sd">    &gt;&gt;&gt; v.add(DNP3ObjectG2V1(state=1))</span>
+</span><span data-line="131"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span data-line="132">
+</span><span data-line="133">    <span class="n">range_type</span><span class="p">:</span> <span class="n">RangeSpecifierCode</span>
+</span><span data-line="134"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="135"><span class="sd">    Indicates the range encoding used for this variation (count or start/end).</span>
+</span><span data-line="136"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span data-line="137">
+</span><span data-line="138">    <span class="nb">range</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]</span> <span class="o">|</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span>
+</span><span data-line="139"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="140"><span class="sd">    The decoded range value. May be a tuple ``(start, stop)`` for index ranges,</span>
+</span><span data-line="141"><span class="sd">    an integer count, or ``None`` if not specified.</span>
+</span><span data-line="142"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span data-line="143">
+</span><span data-line="144">    <span class="n">prefix_type</span><span class="p">:</span> <span class="n">ObjectPrefixCode</span> <span class="o">|</span> <span class="kc">None</span>
+</span><span data-line="145"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="146"><span class="sd">    Prefix encoding used for the objects (e.g., none, 1-byte, 2-byte index).</span>
+</span><span data-line="147"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span data-line="148">
+</span><span data-line="149">    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="150">        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+</span><span data-line="151">        <span class="bp">self</span><span class="o">.</span><span class="n">range_type</span> <span class="o">=</span> <span class="n">RangeSpecifierCode</span><span class="o">.</span><span class="n">NONE</span>
+</span><span data-line="152">        <span class="bp">self</span><span class="o">.</span><span class="n">range</span> <span class="o">=</span> <span class="kc">None</span>
+</span><span data-line="153">        <span class="bp">self</span><span class="o">.</span><span class="n">prefix_type</span> <span class="o">=</span> <span class="kc">None</span>
+</span><span data-line="154">
+<div class="viewcode-block" id="DNP3ObjectVariations.get_range">
+<a class="viewcode-back" href="../../../../../protocols/dnp3/api/coding.html#icspacket.proto.dnp3.objects.coding.DNP3ObjectVariations.get_range">[docs]</a>
+</span><span data-line="155">    <span class="k">def</span><span class="w"> </span><span class="nf">get_range</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]</span> <span class="o">|</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="156"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="157"><span class="sd">        Compute the effective range of objects for this variation.</span>
+</span><span data-line="158">
+</span><span data-line="159"><span class="sd">        If an explicit range is already set, it is returned. Otherwise,</span>
+</span><span data-line="160"><span class="sd">        derives the range based on the range type.</span>
+</span><span data-line="161">
+</span><span data-line="162"><span class="sd">        :return: The start/end tuple, object count, or ``None``.</span>
+</span><span data-line="163"><span class="sd">        :rtype: tuple[int, int] | int | None</span>
+</span><span data-line="164"><span class="sd">        &quot;&quot;&quot;</span>
+</span><span data-line="165">        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">range</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="166">            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">range</span>
+</span><span data-line="167">
+</span><span data-line="168">        <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">range_type</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">7</span><span class="p">:</span>
+</span><span data-line="169">            <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+</span><span data-line="170">
+</span><span data-line="171">        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">range_type</span> <span class="o">!=</span> <span class="n">RangeSpecifierCode</span><span class="o">.</span><span class="n">NONE</span><span class="p">:</span>
+</span><span data-line="172">            <span class="k">return</span> <span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="bp">self</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">)</span></div>
+
+</span><span data-line="173">
+<div class="viewcode-block" id="DNP3ObjectVariations.add">
+<a class="viewcode-back" href="../../../../../protocols/dnp3/api/coding.html#icspacket.proto.dnp3.objects.coding.DNP3ObjectVariations.add">[docs]</a>
+</span><span data-line="174">    <span class="k">def</span><span class="w"> </span><span class="nf">add</span><span class="p">(</span>
+</span><span data-line="175">        <span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="o">/</span><span class="p">,</span> <span class="n">prefix</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">index</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+</span><span data-line="176">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="177"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="178"><span class="sd">        Add a new object instance to this variation.</span>
+</span><span data-line="179">
+</span><span data-line="180"><span class="sd">        :param Any value: The parsed object payload.</span>
+</span><span data-line="181"><span class="sd">        :param int | None prefix: Optional prefix (e.g., index) associated</span>
+</span><span data-line="182"><span class="sd">            with this object.</span>
+</span><span data-line="183"><span class="sd">        :param int | None index: Explicit index. Defaults to sequential numbering.</span>
+</span><span data-line="184"><span class="sd">        &quot;&quot;&quot;</span>
+</span><span data-line="185">        <span class="k">if</span> <span class="n">index</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="186">            <span class="n">index</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+</span><span data-line="187">
+</span><span data-line="188">        <span class="bp">self</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">DNP3Object</span><span class="p">(</span><span class="n">prefix</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">value</span><span class="p">))</span></div>
+</div>
+
+</span><span data-line="189">
+</span><span data-line="190">
+<div class="viewcode-block" id="DNP3Objects">
+<a class="viewcode-back" href="../../../../../protocols/dnp3/api/coding.html#icspacket.proto.dnp3.objects.coding.DNP3Objects">[docs]</a>
+</span><span data-line="191"><span class="k">class</span><span class="w"> </span><span class="nc">DNP3Objects</span><span class="p">(</span><span class="nb">dict</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="n">DNP3ObjectVariations</span> <span class="o">|</span> <span class="kc">None</span><span class="p">]]):</span>
+</span><span data-line="192"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="193"><span class="sd">    A container for all **DNP3 objects in a fragment**.</span>
+</span><span data-line="194">
+</span><span data-line="195"><span class="sd">    Maps group numbers to variations, which then contain one or more</span>
+</span><span data-line="196"><span class="sd">    object instances.</span>
+</span><span data-line="197">
+</span><span data-line="198"><span class="sd">    Structure::</span>
+</span><span data-line="199">
+</span><span data-line="200"><span class="sd">        DNP3Objects[group][variation] -&gt; DNP3ObjectVariations</span>
+</span><span data-line="201"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span data-line="202">
+</span><span data-line="203">    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="204">        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+</span><span data-line="205">
+<div class="viewcode-block" id="DNP3Objects.get_variation">
+<a class="viewcode-back" href="../../../../../protocols/dnp3/api/coding.html#icspacket.proto.dnp3.objects.coding.DNP3Objects.get_variation">[docs]</a>
+</span><span data-line="206">    <span class="k">def</span><span class="w"> </span><span class="nf">get_variation</span><span class="p">(</span>
+</span><span data-line="207">        <span class="bp">self</span><span class="p">,</span> <span class="n">group</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">variation</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="o">/</span>
+</span><span data-line="208">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">DNP3ObjectVariations</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="209"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="210"><span class="sd">        Retrieve or create a variation container for the given group/variation.</span>
+</span><span data-line="211">
+</span><span data-line="212"><span class="sd">        :param int group: DNP3 object group number.</span>
+</span><span data-line="213"><span class="sd">        :param int variation: DNP3 object variation number.</span>
+</span><span data-line="214"><span class="sd">        :return: A variation container if known, otherwise ``None``.</span>
+</span><span data-line="215"><span class="sd">        :rtype: DNP3ObjectVariations | None</span>
+</span><span data-line="216"><span class="sd">        &quot;&quot;&quot;</span>
+</span><span data-line="217">        <span class="n">group_instance</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="n">group</span><span class="p">,</span> <span class="p">{})</span>
+</span><span data-line="218">        <span class="k">return</span> <span class="n">group_instance</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="n">variation</span><span class="p">,</span> <span class="n">DNP3ObjectVariations</span><span class="p">())</span></div>
+
+</span><span data-line="219">
+</span><span data-line="220">    <span class="k">def</span><span class="w"> </span><span class="nf">add_variation0</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">group</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="o">/</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="221">        <span class="bp">self</span><span class="o">.</span><span class="n">add_empty</span><span class="p">(</span><span class="n">group</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</span><span data-line="222">
+</span><span data-line="223">    <span class="k">def</span><span class="w"> </span><span class="nf">add_empty</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">group</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">variation</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="o">/</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="224">        <span class="n">_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="n">group</span><span class="p">,</span> <span class="p">{})</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="n">variation</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span></div>
+
+</span><span data-line="225">
+</span><span data-line="226">
+<div class="viewcode-block" id="unpack_objects">
+<a class="viewcode-back" href="../../../../../protocols/dnp3/api/coding.html#icspacket.proto.dnp3.objects.coding.unpack_objects">[docs]</a>
+</span><span data-line="227"><span class="k">def</span><span class="w"> </span><span class="nf">unpack_objects</span><span class="p">(</span><span class="n">object_data</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">DNP3Objects</span><span class="p">:</span>
+</span><span data-line="228"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="229"><span class="sd">    Parse raw DNP3 object data into structured representations.</span>
+</span><span data-line="230">
+</span><span data-line="231"><span class="sd">    Reads one or more object headers and associated objects from</span>
+</span><span data-line="232"><span class="sd">    a byte sequence. Automatically handles range specifiers, prefix</span>
+</span><span data-line="233"><span class="sd">    codes, and object variations.</span>
+</span><span data-line="234">
+</span><span data-line="235"><span class="sd">    :param bytes object_data: Encoded DNP3 object data.</span>
+</span><span data-line="236"><span class="sd">    :return: A structured mapping of groups, variations, and parsed objects.</span>
+</span><span data-line="237"><span class="sd">    :rtype: DNP3Objects</span>
+</span><span data-line="238"><span class="sd">    :raises ValueError: If an unknown object variation is encountered.</span>
+</span><span data-line="239"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span data-line="240">    <span class="n">stream</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">BytesIO</span><span class="p">(</span><span class="n">object_data</span><span class="p">)</span>
+</span><span data-line="241">    <span class="n">objects</span> <span class="o">=</span> <span class="n">DNP3Objects</span><span class="p">()</span>
+</span><span data-line="242">    <span class="c1"># /4.2.2.1 General fragment structure</span>
+</span><span data-line="243">    <span class="k">while</span> <span class="n">stream</span><span class="o">.</span><span class="n">tell</span><span class="p">()</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">object_data</span><span class="p">):</span>
+</span><span data-line="244">        <span class="c1"># one or more sets of object headers and possibly DNP3 objects are</span>
+</span><span data-line="245">        <span class="c1"># included after the application header</span>
+</span><span data-line="246">        <span class="n">header</span> <span class="o">=</span> <span class="n">unpack</span><span class="p">(</span><span class="n">ObjectHeader</span><span class="p">,</span> <span class="n">stream</span><span class="p">)</span>
+</span><span data-line="247">        <span class="n">target_range</span> <span class="o">=</span> <span class="n">unpack</span><span class="p">(</span>
+</span><span data-line="248">            <span class="n">APDU_RANGE_TYPES</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">header</span><span class="o">.</span><span class="n">range_spec</span><span class="p">,</span> <span class="n">Pass</span><span class="p">),</span>
+</span><span data-line="249">            <span class="n">stream</span><span class="p">,</span>
+</span><span data-line="250">            <span class="n">as_field</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+</span><span data-line="251">        <span class="p">)</span>
+</span><span data-line="252">        <span class="c1"># The number of objects will be specified by the range</span>
+</span><span data-line="253">        <span class="n">num_objects</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span data-line="254">        <span class="n">start</span> <span class="o">=</span> <span class="n">stop</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span data-line="255">        <span class="k">match</span> <span class="n">target_range</span><span class="p">:</span>
+</span><span data-line="256">            <span class="k">case</span> <span class="nb">int</span><span class="p">():</span>
+</span><span data-line="257">                <span class="n">num_objects</span> <span class="o">=</span> <span class="n">target_range</span>
+</span><span data-line="258">                <span class="n">stop</span> <span class="o">=</span> <span class="n">num_objects</span>
+</span><span data-line="259">            <span class="k">case</span> <span class="nb">list</span><span class="p">():</span>
+</span><span data-line="260">                <span class="n">num_objects</span> <span class="o">=</span> <span class="p">(</span><span class="n">target_range</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="n">target_range</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</span><span data-line="261">                <span class="n">start</span> <span class="o">=</span> <span class="n">target_range</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</span><span data-line="262">                <span class="n">stop</span> <span class="o">=</span> <span class="n">target_range</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span>
+</span><span data-line="263">            <span class="k">case</span><span class="w"> </span><span class="k">_</span><span class="p">:</span>
+</span><span data-line="264">                <span class="k">pass</span>
+</span><span data-line="265">
+</span><span data-line="266">        <span class="c1"># /4.2.2.7.3.2 Object prefix code</span>
+</span><span data-line="267">        <span class="c1"># It specifies what, if any, prefix value appears before each of the</span>
+</span><span data-line="268">        <span class="c1"># DNP3 objects that follow the object header.</span>
+</span><span data-line="269">        <span class="n">prefix_ty</span> <span class="o">=</span> <span class="n">APDU_PREFIX_TYPES</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">header</span><span class="o">.</span><span class="n">obj_prefix</span><span class="p">,</span> <span class="n">Pass</span><span class="p">)</span>
+</span><span data-line="270">        <span class="n">target_variant</span> <span class="o">=</span> <span class="n">get_variation</span><span class="p">(</span><span class="n">header</span><span class="o">.</span><span class="n">group</span><span class="p">,</span> <span class="n">header</span><span class="o">.</span><span class="n">variation</span><span class="p">)</span>
+</span><span data-line="271">        <span class="k">if</span> <span class="ow">not</span> <span class="n">target_variant</span><span class="p">:</span>
+</span><span data-line="272">            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+</span><span data-line="273">                <span class="sa">f</span><span class="s2">&quot;Unknown object variation </span><span class="si">{</span><span class="n">header</span><span class="o">.</span><span class="n">variation</span><span class="si">}</span><span class="s2"> for group </span><span class="si">{</span><span class="n">header</span><span class="o">.</span><span class="n">group</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span data-line="274">            <span class="p">)</span>
+</span><span data-line="275">
+</span><span data-line="276">        <span class="n">variation_instance</span> <span class="o">=</span> <span class="n">objects</span><span class="o">.</span><span class="n">get_variation</span><span class="p">(</span><span class="n">header</span><span class="o">.</span><span class="n">group</span><span class="p">,</span> <span class="n">header</span><span class="o">.</span><span class="n">variation</span><span class="p">)</span>
+</span><span data-line="277">        <span class="n">variation_instance</span><span class="o">.</span><span class="n">range_type</span> <span class="o">=</span> <span class="n">header</span><span class="o">.</span><span class="n">range_spec</span>
+</span><span data-line="278">        <span class="n">variation_instance</span><span class="o">.</span><span class="n">range</span> <span class="o">=</span> <span class="n">target_range</span>
+</span><span data-line="279">        <span class="n">variation_instance</span><span class="o">.</span><span class="n">prefix_type</span> <span class="o">=</span> <span class="n">header</span><span class="o">.</span><span class="n">obj_prefix</span>
+</span><span data-line="280">        <span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">stop</span><span class="p">):</span>
+</span><span data-line="281">            <span class="n">prefix</span> <span class="o">=</span> <span class="n">unpack</span><span class="p">(</span><span class="n">prefix_ty</span><span class="p">,</span> <span class="n">stream</span><span class="p">,</span> <span class="n">as_field</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span data-line="282">            <span class="n">value</span> <span class="o">=</span> <span class="n">unpack</span><span class="p">(</span>
+</span><span data-line="283">                <span class="n">target_variant</span><span class="p">,</span>
+</span><span data-line="284">                <span class="n">stream</span><span class="p">,</span>
+</span><span data-line="285">                <span class="nb">range</span><span class="o">=</span><span class="n">target_range</span><span class="p">,</span>
+</span><span data-line="286">                <span class="n">range_count</span><span class="o">=</span><span class="n">num_objects</span><span class="p">,</span>
+</span><span data-line="287">                <span class="n">prefic</span><span class="o">=</span><span class="n">prefix</span><span class="p">,</span>
+</span><span data-line="288">            <span class="p">)</span>
+</span><span data-line="289">            <span class="k">if</span> <span class="n">value</span><span class="p">:</span>
+</span><span data-line="290">                <span class="k">if</span> <span class="n">target_variant</span><span class="o">.</span><span class="n">is_packed</span><span class="p">:</span>
+</span><span data-line="291">                    <span class="k">for</span> <span class="n">real_value</span> <span class="ow">in</span> <span class="n">value</span><span class="p">:</span>
+</span><span data-line="292">                        <span class="n">variation_instance</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">real_value</span><span class="p">,</span> <span class="n">prefix</span><span class="p">)</span>
+</span><span data-line="293">                <span class="k">else</span><span class="p">:</span>
+</span><span data-line="294">                    <span class="n">variation_instance</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">prefix</span><span class="p">,</span> <span class="n">index</span><span class="p">)</span>
+</span><span data-line="295">            <span class="k">if</span> <span class="n">target_variant</span><span class="o">.</span><span class="n">is_packed</span><span class="p">:</span>
+</span><span data-line="296">                <span class="c1"># all objects are packed within one value</span>
+</span><span data-line="297">                <span class="k">break</span>
+</span><span data-line="298">
+</span><span data-line="299">        <span class="k">if</span> <span class="n">num_objects</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+</span><span data-line="300">            <span class="n">objects</span><span class="p">[</span><span class="n">header</span><span class="o">.</span><span class="n">group</span><span class="p">][</span><span class="n">header</span><span class="o">.</span><span class="n">variation</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+</span><span data-line="301">
+</span><span data-line="302">    <span class="k">return</span> <span class="n">objects</span></div>
+
+</span><span data-line="303">
+</span><span data-line="304">
+<div class="viewcode-block" id="pack_objects">
+<a class="viewcode-back" href="../../../../../protocols/dnp3/api/coding.html#icspacket.proto.dnp3.objects.coding.pack_objects">[docs]</a>
+</span><span data-line="305"><span class="k">def</span><span class="w"> </span><span class="nf">pack_objects</span><span class="p">(</span>
+</span><span data-line="306">    <span class="n">objects</span><span class="p">:</span> <span class="n">DNP3Objects</span><span class="p">,</span>
+</span><span data-line="307">    <span class="n">prefix_type</span><span class="p">:</span> <span class="n">ObjectPrefixCode</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span data-line="308">    <span class="n">range_type</span><span class="p">:</span> <span class="n">RangeSpecifierCode</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span data-line="309"><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bytes</span><span class="p">:</span>
+</span><span data-line="310"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="311"><span class="sd">    Serialize structured DNP3 objects into raw bytes.</span>
+</span><span data-line="312">
+</span><span data-line="313"><span class="sd">    Iterates over all object groups and variations in the provided</span>
+</span><span data-line="314"><span class="sd">    container, generating object headers, range/prefix encodings,</span>
+</span><span data-line="315"><span class="sd">    and packed values.</span>
+</span><span data-line="316">
+</span><span data-line="317"><span class="sd">    :param DNP3Objects objects: Structured DNP3 objects to serialize.</span>
+</span><span data-line="318"><span class="sd">    :param ObjectPrefixCode | None prefix_type: Default prefix type to</span>
+</span><span data-line="319"><span class="sd">        apply when none is specified.</span>
+</span><span data-line="320"><span class="sd">    :param RangeSpecifierCode | None range_type: Default range type to</span>
+</span><span data-line="321"><span class="sd">        apply when none is specified.</span>
+</span><span data-line="322"><span class="sd">    :return: Encoded object data suitable for transmission.</span>
+</span><span data-line="323"><span class="sd">    :rtype: bytes</span>
+</span><span data-line="324"><span class="sd">    :raises ValueError: If an unknown object variation is encountered.</span>
+</span><span data-line="325"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span data-line="326">    <span class="k">if</span> <span class="n">prefix_type</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="327">        <span class="n">prefix_type</span> <span class="o">=</span> <span class="n">ObjectPrefixCode</span><span class="o">.</span><span class="n">NONE</span>
+</span><span data-line="328">    <span class="k">if</span> <span class="n">range_type</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="329">        <span class="n">range_type</span> <span class="o">=</span> <span class="n">RangeSpecifierCode</span><span class="o">.</span><span class="n">NONE</span>
+</span><span data-line="330">
+</span><span data-line="331">    <span class="n">stream</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">BytesIO</span><span class="p">()</span>
+</span><span data-line="332">    <span class="k">for</span> <span class="n">group_id</span><span class="p">,</span> <span class="n">variations</span> <span class="ow">in</span> <span class="n">objects</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+</span><span data-line="333">        <span class="k">for</span> <span class="n">variation_id</span><span class="p">,</span> <span class="n">instances</span> <span class="ow">in</span> <span class="n">variations</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+</span><span data-line="334">            <span class="n">num_objects</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span data-line="335">            <span class="k">if</span> <span class="n">instances</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="336">                <span class="n">variation</span> <span class="o">=</span> <span class="n">get_variation</span><span class="p">(</span><span class="n">group_id</span><span class="p">,</span> <span class="n">variation_id</span><span class="p">)</span>
+</span><span data-line="337">                <span class="k">if</span> <span class="ow">not</span> <span class="n">variation</span><span class="p">:</span>
+</span><span data-line="338">                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+</span><span data-line="339">                        <span class="sa">f</span><span class="s2">&quot;Unknown object variation </span><span class="si">{</span><span class="n">variation_id</span><span class="si">}</span><span class="s2"> for group </span><span class="si">{</span><span class="n">group_id</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span data-line="340">                    <span class="p">)</span>
+</span><span data-line="341">
+</span><span data-line="342">                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">instances</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+</span><span data-line="343">                    <span class="n">num_objects</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">objects</span><span class="p">)</span>
+</span><span data-line="344">
+</span><span data-line="345">                <span class="k">if</span> <span class="n">instances</span><span class="o">.</span><span class="n">range_type</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="346">                    <span class="k">if</span> <span class="n">range_type</span> <span class="o">==</span> <span class="n">RangeSpecifierCode</span><span class="o">.</span><span class="n">NONE</span> <span class="ow">and</span> <span class="n">num_objects</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+</span><span data-line="347">                        <span class="c1"># automatically use a simple range specifier</span>
+</span><span data-line="348">                        <span class="k">if</span> <span class="n">num_objects</span> <span class="o">&gt;</span> <span class="mi">255</span><span class="p">:</span>
+</span><span data-line="349">                            <span class="n">range_type</span> <span class="o">=</span> <span class="n">RangeSpecifierCode</span><span class="o">.</span><span class="n">COUNT_32</span>
+</span><span data-line="350">                        <span class="k">else</span><span class="p">:</span>
+</span><span data-line="351">                            <span class="n">range_type</span> <span class="o">=</span> <span class="n">RangeSpecifierCode</span><span class="o">.</span><span class="n">COUNT_8</span>
+</span><span data-line="352">                    <span class="n">instances</span><span class="o">.</span><span class="n">range_type</span> <span class="o">=</span> <span class="n">range_type</span>
+</span><span data-line="353">
+</span><span data-line="354">                <span class="k">if</span> <span class="n">instances</span><span class="o">.</span><span class="n">prefix_type</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="355">                    <span class="n">instances</span><span class="o">.</span><span class="n">prefix_type</span> <span class="o">=</span> <span class="n">prefix_type</span>
+</span><span data-line="356">
+</span><span data-line="357">                <span class="n">header</span> <span class="o">=</span> <span class="n">ObjectHeader</span><span class="p">(</span>
+</span><span data-line="358">                    <span class="n">group</span><span class="o">=</span><span class="n">group_id</span><span class="p">,</span>
+</span><span data-line="359">                    <span class="n">variation</span><span class="o">=</span><span class="n">variation_id</span><span class="p">,</span>
+</span><span data-line="360">                    <span class="n">obj_prefix</span><span class="o">=</span><span class="n">instances</span><span class="o">.</span><span class="n">prefix_type</span><span class="p">,</span>
+</span><span data-line="361">                    <span class="n">range_spec</span><span class="o">=</span><span class="n">instances</span><span class="o">.</span><span class="n">range_type</span><span class="p">,</span>
+</span><span data-line="362">                <span class="p">)</span>
+</span><span data-line="363">
+</span><span data-line="364">                <span class="n">pack_into</span><span class="p">(</span><span class="n">header</span><span class="p">,</span> <span class="n">stream</span><span class="p">)</span>
+</span><span data-line="365">                <span class="n">pack_into</span><span class="p">(</span>
+</span><span data-line="366">                    <span class="n">instances</span><span class="o">.</span><span class="n">get_range</span><span class="p">(),</span>
+</span><span data-line="367">                    <span class="n">stream</span><span class="p">,</span>
+</span><span data-line="368">                    <span class="n">APDU_RANGE_TYPES</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">instances</span><span class="o">.</span><span class="n">range_type</span><span class="p">,</span> <span class="n">Pass</span><span class="p">),</span>
+</span><span data-line="369">                <span class="p">)</span>
+</span><span data-line="370">                <span class="k">for</span> <span class="nb">object</span> <span class="ow">in</span> <span class="n">instances</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">instances</span><span class="p">,</span> <span class="nb">list</span><span class="p">)</span> <span class="k">else</span> <span class="p">[</span><span class="n">instances</span><span class="p">]:</span>
+</span><span data-line="371">                    <span class="n">pack_into</span><span class="p">(</span>
+</span><span data-line="372">                        <span class="nb">object</span><span class="o">.</span><span class="n">prefix</span><span class="p">,</span>
+</span><span data-line="373">                        <span class="n">stream</span><span class="p">,</span>
+</span><span data-line="374">                        <span class="n">APDU_PREFIX_TYPES</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">instances</span><span class="o">.</span><span class="n">prefix_type</span><span class="p">,</span> <span class="n">Pass</span><span class="p">),</span>
+</span><span data-line="375">                    <span class="p">)</span>
+</span><span data-line="376">                    <span class="k">if</span> <span class="n">variation</span><span class="o">.</span><span class="n">is_packed</span><span class="p">:</span>
+</span><span data-line="377">                        <span class="n">value</span> <span class="o">=</span> <span class="p">[</span><span class="n">v</span><span class="o">.</span><span class="n">instance</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">instances</span><span class="p">]</span>
+</span><span data-line="378">                        <span class="n">pack_into</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">stream</span><span class="p">,</span> <span class="n">variation</span><span class="p">)</span>
+</span><span data-line="379">                        <span class="k">break</span>
+</span><span data-line="380">                    <span class="n">pack_into</span><span class="p">(</span><span class="nb">object</span><span class="o">.</span><span class="n">instance</span><span class="p">,</span> <span class="n">stream</span><span class="p">,</span> <span class="n">variation</span><span class="p">,</span> <span class="n">prefix</span><span class="o">=</span><span class="nb">object</span><span class="o">.</span><span class="n">prefix</span><span class="p">)</span>
+</span><span data-line="381">            <span class="k">else</span><span class="p">:</span>
+</span><span data-line="382">                <span class="n">header</span> <span class="o">=</span> <span class="n">ObjectHeader</span><span class="p">(</span><span class="n">group</span><span class="o">=</span><span class="n">group_id</span><span class="p">,</span> <span class="n">variation</span><span class="o">=</span><span class="n">variation_id</span><span class="p">)</span>
+</span><span data-line="383">                <span class="n">pack_into</span><span class="p">(</span><span class="n">header</span><span class="p">,</span> <span class="n">stream</span><span class="p">)</span>
+</span><span data-line="384">
+</span><span data-line="385">    <span class="k">return</span> <span class="n">stream</span><span class="o">.</span><span class="n">getvalue</span><span class="p">()</span></div>
+
+</span></pre></div>
+        </article><button class="back-to-top" type="button">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+  </svg>
+  <span>Back to top</span>
+</button><div class="navigation flex print:hidden"></div></div>
+    </div>
+  </main>
+</div>
+<footer class="sy-foot">
+  <div class="sy-foot-inner sy-container mx-auto">
+    <div class="sy-foot-reserved md:flex justify-between items-center">
+      <div class="sy-foot-copyright"><p>2025, MatrixEditor</p>
+  
+  <p>
+    Made with
+    
+    <a href="https://www.sphinx-doc.org/">Sphinx</a> and
+    
+    <a href="https://shibuya.lepture.com">Shibuya theme</a>.
+  </p>
+</div>
+      <div class="sy-foot-socials">
+<a href="https://github.com/MatrixEditor/icspacket" aria-label="GitHub">
+  <iconify-icon icon="simple-icons:github"></iconify-icon>
+</a></div>
+    </div>
+  </div>
+</footer>
+      <script src="../../../../../_static/documentation_options.js?v=0df3b029"></script>
+      <script src="../../../../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../../../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../../../../_static/design-tabs.js?v=f930bc37"></script>
+      <script src="../../../../../_static/shibuya.js?v=e730760c"></script></body>
+</html>
