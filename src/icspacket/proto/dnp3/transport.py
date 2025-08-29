@@ -14,6 +14,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 # pyright: reportGeneralTypeIssues=false, reportUninitializedInstanceVariable=false, reportInvalidTypeForm=false
+from caterpillar.fields import Bytes
 from caterpillar.shortcuts import opt, bitfield
 
 from icspacket.proto.dnp3.application import APDU
@@ -21,6 +22,7 @@ from icspacket.proto.dnp3.application import APDU
 # Maximum border number of a sequence number
 TPDU_SEQUENCE_MAX = 64
 
+TPDU_APPLICATION_MAX_LENGTH = 249
 
 @bitfield(options=[opt.S_ADD_BYTES])
 class TPDU:
@@ -45,8 +47,13 @@ class TPDU:
     sequence : 6 = 0
     """6-bit sequence number for ordering transport segments."""
 
-    app_fragment : "APDU"
-    """Application Layer fragment associated with this TPDU."""
+    app_fragment : Bytes(...) = b""
+    """
+    Application Layer fragment associated with this TPDU.
+
+    .. versionchanged:: 0.2.0
+        Changed type to ``bytes`` in order to support segmentation.
+    """
     # fmt: on
 
     @property
@@ -61,3 +68,12 @@ class TPDU:
         :rtype: int
         """
         return self.sequence % TPDU_SEQUENCE_MAX
+
+    @property
+    def apdu(self) -> APDU:
+        """
+        Parses the APDU contained in the TPDU.
+
+        .. versionadded:: 0.2.0
+        """
+        return APDU.from_octets(self.app_fragment)

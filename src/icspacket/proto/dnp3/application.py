@@ -14,6 +14,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 # pyright: reportGeneralTypeIssues=false, reportUninitializedInstanceVariable=false, reportInvalidTypeForm=false
+from caterpillar.options import S_ADD_BYTES
 from caterpillar.shared import getstruct
 from caterpillar.shortcuts import struct, bitfield
 from caterpillar.fields import Bytes
@@ -26,6 +27,12 @@ from icspacket.proto.dnp3.const import (
     APDU_RESP_FUNC_MIN,
 )
 
+APDU_SEQ_MAX = 16
+"""
+Maximum border number of a sequence number within an APDU.
+
+.. versionadded:: 0.2.0
+"""
 
 # /4.2.2.4 Application control octet
 # Provides information needed to construct and reassemble multiple fragment
@@ -91,59 +98,58 @@ class IIN:
     function codes.
     """
 
-    broadcast: 1 = 0
-    """A broadcast message was received."""
+    device_restart: 1 = False
+    """Indicates that the outstation has **restarted**."""
 
-    class_1_events: 1 = False
-    """Indicates unreported **Class 1 events** are pending at the outstation."""
-
-    class_2_events: 1 = False
-    """Indicates unreported **Class 2 events** are pending at the outstation."""
-
-    class_3_events: 1 = False
-    """Indicates unreported **Class 3 events** are pending at the outstation."""
-
-    need_time: 1 = False
-    """Indicates that the outstation requires **time synchronization**."""
+    device_trouble: 1 = False
+    """An abnormal, device-specific condition exists in the outstation."""
 
     local_control: 1 = False
     """Indicates one or more of the outstation's points are in **local control
     mode**."""
 
-    device_trouble: 1 = False
-    """An abnormal, device-specific condition exists in the outstation."""
+    need_time: 1 = False
+    """Indicates that the outstation requires **time synchronization**."""
 
-    device_restart: (1, EndGroup) = False
-    """Indicates that the outstation has **restarted**."""
+    class_3_events: 1 = False
+    """Indicates unreported **Class 3 events** are pending at the outstation."""
+
+    class_2_events: 1 = False
+    """Indicates unreported **Class 2 events** are pending at the outstation."""
+
+    class_1_events: 1 = False
+    """Indicates unreported **Class 1 events** are pending at the outstation."""
+
+    broadcast: (1, EndGroup) = 0
+    """A broadcast message was received."""
 
     # Second byte
+    reserved: 2 = 0
 
-    no_func_code_support: 1 = False
-    """The outstation does not support the requested **function code**."""
-
-    object_unknown: 1 = False
-    """The outstation does not support the requested **object(s)** in the request."""
-
-    parameter_error: 1 = False
-    """A **parameter error** was detected in the request."""
-
-    event_buffer_overflow: 1 = False
-    """An **event buffer overflow** occurred, and at least one unconfirmed
-    event was lost."""
+    config_corrupt: 1 = False
+    """The outstation detected **corrupt configuration data**. Support is optional."""
 
     already_executing: 1 = False
     """The requested operation is already executing. Support for this field is
     optional."""
 
-    config_corrupt: 1 = False
-    """The outstation detected **corrupt configuration data**. Support is optional."""
+    event_buffer_overflow: 1 = False
+    """An **event buffer overflow** occurred, and at least one unconfirmed
+    event was lost."""
 
-    # Reserved: 2 bits
+    parameter_error: 1 = False
+    """A **parameter error** was detected in the request."""
+
+    object_unknown: 1 = False
+    """The outstation does not support the requested **object(s)** in the request."""
+
+    no_func_code_support: 1 = False
+    """The outstation does not support the requested **function code**."""
 
 
 # /4.2.2 Application Layer fragment structure
 # Request and response fragments are similar and can be represented by a single APDU structure.
-@struct
+@struct(options=[S_ADD_BYTES])
 class APDU:
     """Represents the **Application Protocol Data Unit (APDU)** in DNP3 (§4.2.2).
 
@@ -151,32 +157,41 @@ class APDU:
     outstations. Both request and response fragments share the same structural
     format, consisting of an application control octet, a function code, internal
     indications, and object headers.
+
+    .. versionchanged:: 0.2.0
+        Added support for building an APDU using ``bytes(obj)``.
     """
 
-    control: ApplicationControl
+    control: ApplicationControl = None
     """Application control octet providing fragment sequencing and acknowledgment
     control.
     """
 
-    function: FunctionCode
+    function: FunctionCode = FunctionCode.CONFIRM
     """Function code octet indicating the operation requested or responded to.
     Values range from ``0-128`` for requests and ``129-255`` for responses.
     """
 
-    iin: getstruct(IIN) // _apdu_is_response
+    iin: getstruct(IIN) // _apdu_is_response = None
     """Internal indications (IIN) structure, included only in **response APDUs**.
     Encodes device states and error conditions.
 
     Parsing is conditional on the APDU being a response (function code ≥ 129).
     """
 
-    objects: Bytes(...)
+    objects: Bytes(...) = b""
     """Application objects included in the fragment. These represent the payload
     of the APDU and are parsed separately according to object headers.
 
     :meta: May include measurement data, control commands, or file operations.
     """
 
+    def __post_init__(self):
+        self.control = self.control or ApplicationControl()
+        self.function = self.function or FunctionCode.CONFIRM
+        self.iin = self.iin or IIN()
+
     @staticmethod
     def from_octets(octets: bytes):
+        """Parse an APDU from a raw byte sequence."""
         return unpack(APDU, octets)

@@ -22,11 +22,11 @@ from caterpillar.fields import singleton, uint16, uint8
 from caterpillar.model import EnumFactory, pack, unpack
 from caterpillar.context import CTX_STREAM
 
+from icspacket.proto.dnp3.application import APDU
 from icspacket.proto.dnp3.transport import TPDU
 
 
 Crc16DNP = crcmod.predefined.mkCrcFun("crc-16-dnp")
-"""CRC-16 function configured for the DNP3 standard polynomial."""
 
 # The minimum header length (only header)
 LPDU_HEADER_MIN_LENGTH = 5
@@ -115,8 +115,9 @@ class LinkControl:
 
     primary_message: 1 = False
     """PRM bit.
-    - ``True`` → Frame initiates a transaction.
-    - ``False`` → Frame completes a transaction.
+
+    - ``True`` :octicon:`arrow-right` Frame initiates a transaction.
+    - ``False`` :octicon:`arrow-right` Frame completes a transaction.
     """
 
     frame_count_bit: 1 = False
@@ -211,7 +212,7 @@ class LinkUserData:
             user_data.extend(chunk_data)
             length -= size
 
-        return unpack(TPDU, bytes(user_data))
+        return unpack(TPDU, bytes(user_data)) if user_data else None
 
     def __pack__(self, obj, context):
         """
@@ -253,7 +254,7 @@ class LPDU:
     Number of non-CRC bytes following the header. Includes CONTROL,
     DESTINATION, SOURCE, and USER DATA fields."""
 
-    control: LinkControl
+    control: LinkControl = None
     """Control field containing direction, function, and status flags."""
 
     destination: uint16 = 0
@@ -265,8 +266,11 @@ class LPDU:
     crc16: uint16 = 0
     """CRC checksum for the LPDU header block."""
 
-    user_data: LinkUserData
+    user_data: LinkUserData = b""
     """Payload data field containing one or more user data chunks."""
+
+    def __post_init__(self):
+        self.control = self.control or LinkControl()
 
     def build(self) -> bytes:
         """
@@ -276,6 +280,9 @@ class LPDU:
         :rtype: bytes
         """
         self.length = LPDU_HEADER_MIN_LENGTH + len(bytes(self.user_data))
+        self.crc16 = 0
+        header_octets = pack(self)[:8]
+        self.crc16 = Crc16DNP(header_octets)
         return pack(self)
 
     def __bytes__(self):
@@ -288,9 +295,12 @@ class LPDU:
         return self.build()
 
     @staticmethod
-    def from_bytes(data: bytes):
+    def from_octets(data: bytes) -> "LPDU":
         """
         Parse an LPDU from a raw byte sequence.
+
+        .. versionchanged:: 0.2.0
+            Renamed from ``from_bytes`` to ``from_octets``
 
         :param data: Encoded LPDU bytes.
         :type data: bytes
@@ -298,3 +308,17 @@ class LPDU:
         :rtype: LPDU
         """
         return unpack(LPDU, data)
+
+    @property
+    def apdu(self) -> APDU:
+        """
+        Parse the APDU contained in the TPDU.
+        """
+        return self.user_data.apdu
+
+    @property
+    def tpdu(self) -> TPDU:
+        """
+        The TPDU contained in the LPDU.
+        """
+        return self.user_data
