@@ -22,12 +22,10 @@ icspacket
 Getting Started
 ---------------
 
-Installation requires Python development headers, CMake, Ninja and a C compiler
-(preferrably GCC).
+There are pre-built wheels on PyPI for Python 3.10 to 3.13 for Linux, Windows
+and MacOS. Any other Python version is not officially supported::
 
-.. code-block:: bash
-
-    pip install git+https://github.com/MatrixEditor/icspacket
+    pip install icspacket
 
 
 .. toctree::
