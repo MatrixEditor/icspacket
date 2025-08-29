@@ -12,6 +12,7 @@ API Reference
     api/link
     api/transport
     api/application
+    api/master
 
 
 .. toctree::
