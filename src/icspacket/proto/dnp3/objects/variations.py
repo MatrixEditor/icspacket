@@ -34,6 +34,7 @@ from icspacket.proto.dnp3.objects.primitive import (
     UINT24,
     VSTR,
     OSTR,
+    BCD,
 )
 
 
@@ -85,7 +86,6 @@ class DNP3ObjectVariation(Transformer):
         """
         return f"<Group{self.group}Var{self.variation}>"
 
-
 #: Registry of DNP3 object variations by group and variation.
 #: Maps ``group -> variation -> DNP3ObjectVariation``.
 __groups__: dict[int, dict[int, DNP3ObjectVariation]] = defaultdict(dict)
@@ -94,7 +94,6 @@ __groups__: dict[int, dict[int, DNP3ObjectVariation]] = defaultdict(dict)
 #: - If value is a ``str``, it describes the group / all variations.
 #: - If value is a ``dict``, it maps ``variation -> description string``.
 __variation_desc__: dict[int, dict[int, str] | str] = defaultdict(dict)
-
 
 def get_variation(group: int, variation: int) -> DNP3ObjectVariation | None:
     """
@@ -109,7 +108,6 @@ def get_variation(group: int, variation: int) -> DNP3ObjectVariation | None:
     if group_spec:
         return group_spec.get(variation)
 
-
 def get_variation_desc(group: int, variation: int) -> str | None:
     """
     Retrieve a human-readable description of a variation.
@@ -121,10 +119,7 @@ def get_variation_desc(group: int, variation: int) -> str | None:
     """
     group_spec = __variation_desc__.get(group)
     if group_spec:
-        return (
-            group_spec.get(variation) if not isinstance(group_spec, str) else group_spec
-        )
-
+        return group_spec.get(variation) if not isinstance(group_spec , str) else group_spec
 
 def get_group_name(group: int) -> str | None:
     """
@@ -142,7 +137,6 @@ def get_group_name(group: int) -> str | None:
 
     first = list(group_spec.values())[0]
     return first.split(" - ")[0]
-
 
 def register_variation(
     group: int,
@@ -168,7 +162,6 @@ def register_variation(
     __groups__[group][variation] = variation_obj
     __variation_desc__[group][variation] = desc
     return variation_obj
-
 
 # fmt: off
 
@@ -1695,9 +1688,24 @@ __groups__[86][2] = DNP3ObjectVariation(86, 2, DNP3ObjectG86V2, packed=False)
 # DNP3ObjectG90V1 NOT IMPLEMENTED
 # DNP3ObjectG91V1 NOT IMPLEMENTED
 # DNP3ObjectG100V* NOT IMPLEMENTED
-# DNP3ObjectG101V1 NOT IMPLEMENTED
-# DNP3ObjectG101V2 NOT IMPLEMENTED
-# DNP3ObjectG101V3 NOT IMPLEMENTED
+@struct(order=LittleEndian)
+class DNP3ObjectG101V1:
+    value: BCD(4)
+
+__groups__[101][1] = DNP3ObjectVariation(101, 1, DNP3ObjectG101V1, packed=False)
+
+@struct(order=LittleEndian)
+class DNP3ObjectG101V2:
+    value: BCD(8)
+
+__groups__[101][2] = DNP3ObjectVariation(101, 2, DNP3ObjectG101V2, packed=False)
+
+@struct(order=LittleEndian)
+class DNP3ObjectG101V3:
+    value: BCD(16)
+
+__groups__[101][3] = DNP3ObjectVariation(101, 3, DNP3ObjectG101V3, packed=False)
+
 @struct(order=LittleEndian)
 class DNP3ObjectG102V1:
     value: UINT8
@@ -2113,3 +2121,4 @@ __variation_desc__[122][1] = "Security statistic event - 32-bit with flag"
 __variation_desc__[122][2] = "Security statistic event - 32-bit with flag and time"
 ### END GENERATED CONTENT ###
 # fmt: on
+

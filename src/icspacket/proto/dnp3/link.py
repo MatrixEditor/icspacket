@@ -15,12 +15,15 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 # pyright: reportGeneralTypeIssues=false, reportUninitializedInstanceVariable=false, reportInvalidTypeForm=false
 import enum
+import math
+
 import crcmod.predefined
 
 from caterpillar.shortcuts import this, struct, bitfield, LittleEndian
 from caterpillar.fields import singleton, uint16, uint8
 from caterpillar.model import EnumFactory, pack, unpack
 from caterpillar.context import CTX_STREAM
+from caterpillar.exception import ValidationError
 
 from icspacket.proto.dnp3.application import APDU
 from icspacket.proto.dnp3.transport import TPDU
@@ -207,7 +210,9 @@ class LinkUserData:
             chunk_crc = uint16.__unpack__(context)
             expected_crc = Crc16DNP(chunk_data)
             if expected_crc != chunk_crc:
-                raise ValueError(f"CRC error: expected {expected_crc}, got {chunk_crc}")
+                raise ValidationError(
+                    f"CRC error: expected {expected_crc}, got {chunk_crc}"
+                )
 
             user_data.extend(chunk_data)
             length -= size
@@ -284,6 +289,15 @@ class LPDU:
         header_octets = pack(self)[:8]
         self.crc16 = Crc16DNP(header_octets)
         return pack(self)
+
+    @staticmethod
+    def full_length(length: int) -> int:
+        base_length = 3  # +(start, length)
+        base_length += 2  # +(crc of header)
+        base_length += length
+        # +(crc of user data)
+        base_length += math.ceil((length - LPDU_HEADER_MIN_LENGTH) / 16) * 2
+        return base_length
 
     def __bytes__(self):
         """

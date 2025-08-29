@@ -86,5 +86,7 @@ def hexdump(data: bytes, width: int = 16) -> str:
         chunk_ascii = [chr(b) if b in ascii_letters_bytes else "." for b in chunk]
         suffix = "".join(chunk_ascii)
 
+        if len(chunk_ascii) < width:
+            suffix = ("   " * (width - len(chunk_ascii))) + suffix
         _ = result.write(f"{offset:08x}:   {chunk_hex}   {suffix}\n")
     return result.getvalue()

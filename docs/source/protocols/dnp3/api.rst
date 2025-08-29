@@ -3,6 +3,8 @@
 API Reference
 =============
 
+.. automodule:: icspacket.proto.dnp3
+
 
 .. toctree::
     :caption: Layers
@@ -10,4 +12,9 @@ API Reference
     api/link
     api/transport
     api/application
+
+
+.. toctree::
+    :caption: Object Standard Library
+
     api/object_library

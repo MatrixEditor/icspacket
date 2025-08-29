@@ -33,22 +33,25 @@ Two kinds of bit string encodings are implemented:
 
     These types are used internally by the unpacking and packing mechanisms
     when parsing or constructing DNP3 Application Layer objects.
-
-
 """
 
 # 11.3 Primitive data types
+import datetime
+from io import BytesIO, StringIO
 import math
 import bitarray
+from caterpillar.byteorder import LittleEndian
 from caterpillar.context import CTX_STREAM
 from caterpillar.fields import (
     Bytes,
     String,
+    Transformer,
     UInt,
     float32,
     float64,
     int16,
     int32,
+    singleton,
     uint16,
     uint24,
     uint32,
@@ -78,9 +81,6 @@ INT32 = int32
 VSTR = String
 """Variable-length string."""
 
-DNP3TIME = UInt(48)
-"""48-bit DNP3 timestamp type."""
-
 OSTR = Bytes
 """Octet string (arbitrary-length byte sequence)."""
 
@@ -89,6 +89,117 @@ FLT32 = float32
 
 FLT64 = float64
 """64-bit IEEE-754 floating point."""
+
+
+@singleton
+class DNP3TIME(Transformer):
+    """48-bit DNP3 timestamp type.
+
+    This type represents a DNP3-compliant timestamp using a 48-bit unsigned
+    integer. The timestamp is encoded as the number of **milliseconds since
+    the Unix epoch (1970-01-01 00:00:00 UTC)**.
+
+    It provides automatic conversion between the raw integer form and a
+    :class:`datetime.datetime` object when decoding, while encoding supports
+    either integer millisecond values or datetime objects.
+    """
+
+    def __init__(self) -> None:
+        super().__init__(LittleEndian + UInt(48))
+
+    def decode(self, parsed: int, context) -> datetime.datetime | int:
+        """Decode a 48-bit integer timestamp into a datetime object.
+
+        :param parsed: The parsed integer value representing milliseconds
+            since the Unix epoch.
+        :type parsed: int
+        :param context: Transformation context (unused in this implementation).
+        :type context: Any
+        :return: A :class:`datetime.datetime` object if the value is within
+            the valid timestamp range, otherwise the raw integer value.
+        :rtype: datetime.datetime | int
+        """
+        try:
+            return datetime.datetime.fromtimestamp(parsed / 1000)
+        except ValueError:
+            return parsed
+
+    def encode(self, obj: int | datetime.datetime, context) -> int:
+        """Encode a datetime object or integer into a 48-bit millisecond value.
+
+        :param obj: The timestamp to encode, either as a datetime or an integer
+            number of milliseconds since the Unix epoch.
+        :type obj: int | datetime.datetime
+        :param context: Transformation context (unused in this implementation).
+        :type context: Any
+        :return: The encoded timestamp as an integer in milliseconds.
+        :rtype: int
+        """
+        if isinstance(obj, datetime.datetime):
+            obj = int(obj.timestamp()) * 1000
+        return int(obj)
+
+
+class BCD(Transformer):
+    """Binary-coded decimal (BCD) type.
+
+    Implements DNP3 section 11.3.6: *Binary-coded decimal values use the notation
+    BCDn, where ``n`` represents the number of BCD characters. For example,
+    ``BCD8`` requires 8 BCD characters.*
+
+    Each BCD character is stored in 4 bits (a nibble). Two characters are packed
+    into a single byte in little-endian order.
+    """
+
+    def __init__(self, count: int) -> None:
+        """Decode BCD bytes into a string of decimal digits.
+
+        :param parsed: Encoded binary-coded decimal bytes.
+        :type parsed: bytes
+        :param context: Transformation context (unused in this implementation).
+        :type context: Any
+        :return: The decoded decimal string, e.g. "1234".
+        :rtype: str
+        """
+        # Each BCD character requires 4 bits
+        super().__init__(Bytes(count / 2))
+
+    def decode(self, parsed: bytes, context) -> str:
+        """Encode a string of decimal digits into BCD bytes.
+
+        :param obj: The decimal string to encode. A '-' character may be used
+            to represent a nibble value of 10.
+        :type obj: str
+        :param context: Transformation context (unused in this implementation).
+        :type context: Any
+        :return: Encoded BCD bytes.
+        :rtype: bytes
+        """
+        string = StringIO()
+        for byte in parsed:
+            # because of little endian encoding
+            low_number = (byte & 0b11110000) >> 4
+            high_number = byte & 0b00001111
+            if high_number >= 10:
+                _ = string.write("-")
+            else:
+                _ = string.write(str(high_number))
+            _ = string.write(str(low_number))
+        return string.getvalue()
+
+    def encode(self, obj: str, context) -> bytes:
+        packed = BytesIO()
+        for i in range(0, len(obj), 2):
+            low_number_str = obj[i]
+            high_number_str = obj[i + 1]
+            if high_number_str == "-":
+                high_number = 10
+            else:
+                high_number = int(high_number_str)
+            low_number = int(low_number_str)
+            _ = packed.write(high_number | low_number << 4)
+
+        return packed.getvalue()
 
 
 class BSTRn:

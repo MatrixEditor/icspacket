@@ -31,6 +31,14 @@ Custom logging level for trace messages, numerically below ``DEBUG`` (value =
 5). These messages will appear when using ``-vvv`` verbosity.
 """
 
+TRACE_PACKETS = 4
+"""
+Custom logging level to trace packets, numerically below ``TRACE`` (value =
+4). These messages will appear when using ``-vvvv`` verbosity.
+
+.. versionadded:: 0.2.0
+"""
+
 
 class PrefixFormatter(logging.Formatter):
     """
@@ -54,7 +62,7 @@ class PrefixFormatter(logging.Formatter):
                 record.prefix = "[[red]E[/]]"
             case logging.CRITICAL:
                 record.prefix = "[[white on red]C[/]]"
-            case 5:
+            case 5 | 4:
                 record.prefix = "[[dark_green]T[/]]"
             case _:
                 record.prefix = "[[bright_black]-[/]]"
@@ -107,7 +115,8 @@ def init_from_args(verbosity: int, quiet: bool, ts: bool):
 
     * ``verbosity = 0`` -> ``INFO``
     * ``verbosity = 1`` -> ``DEBUG``
-    * ``verbosity >= 2`` -> ``TRACE``
+    * ``verbosity = 2`` -> ``TRACE``
+    * ``verbosity >= 3`` -> ``TRACE_PACKETS``
     * ``quiet = True`` -> force ``ERROR`` regardless of verbosity
 
     :param verbosity: CLI verbosity count (``-v`` flags).
@@ -120,9 +129,10 @@ def init_from_args(verbosity: int, quiet: bool, ts: bool):
     level = logging.INFO
     if verbosity == 1:
         level = logging.DEBUG
-    elif verbosity >= 2:
+    elif verbosity == 2:
         level = TRACE
-
+    elif verbosity >= 3:
+        level = TRACE_PACKETS
     if quiet:
         level = logging.ERROR
 

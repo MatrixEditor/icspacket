@@ -14,13 +14,14 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 """\
-IEEE 1815 - Distributed Network Protocol (DNP3)
-===============================================
+**IEEE 1815 - Distributed Network Protocol (DNP3)**
 
-Abstract: The DNP3 protocol structure, functions, and interoperable application
-options (subset levels) are specified. The simplest application level is
-intended for low-cost distribution feeder devices, and the most complex for
-full-featured systems.
+    Abstract: The DNP3 protocol structure, functions, and interoperable application
+    options (subset levels) are specified. The simplest application level is
+    intended for low-cost distribution feeder devices, and the most complex for
+    full-featured systems.
 
--- IEEE 1815
+    -- IEEE 1815
+
+.. versionadded:: 0.2.0
 """
