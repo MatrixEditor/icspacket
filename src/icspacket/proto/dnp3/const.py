@@ -15,6 +15,7 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 import enum
 
+from caterpillar.byteorder import LittleEndian
 from caterpillar.fields import DEFAULT_OPTION, uint8, uint16, uint32, Pass
 
 # ============================================================================ #
@@ -44,6 +45,8 @@ class FunctionCode(enum.IntEnum):
 
     (See DNP3 Specification, Section 4.2.2.5)
     """
+
+    __struct__ = uint8
 
     CONFIRM = 0
     """Master confirms receipt of an Application Layer fragment."""
@@ -236,24 +239,24 @@ class RangeSpecifierCode(enum.IntEnum):
 
 APDU_RANGE_TYPES = {
     RangeSpecifierCode.COUNT_8: uint8,
-    RangeSpecifierCode.COUNT_16: uint16,
-    RangeSpecifierCode.COUNT_32: uint32,
+    RangeSpecifierCode.COUNT_16: LittleEndian + uint16,
+    RangeSpecifierCode.COUNT_32: LittleEndian + uint32,
     RangeSpecifierCode.RANGE_8: uint8[2],
-    RangeSpecifierCode.RANGE_16: uint16[2],
-    RangeSpecifierCode.RANGE_32: uint32[2],
+    RangeSpecifierCode.RANGE_16: LittleEndian + uint16[2],
+    RangeSpecifierCode.RANGE_32: LittleEndian + uint32[2],
     RangeSpecifierCode.RANGE_8_VIRTUAL: uint8[2],
-    RangeSpecifierCode.RANGE_16_VIRTUAL: uint16[2],
-    RangeSpecifierCode.RANGE_32_VIRTUAL: uint32[2],
+    RangeSpecifierCode.RANGE_16_VIRTUAL: LittleEndian + uint16[2],
+    RangeSpecifierCode.RANGE_32_VIRTUAL: LittleEndian + uint32[2],
     DEFAULT_OPTION: Pass,
 }
 
 APDU_PREFIX_TYPES = {
     ObjectPrefixCode.INDEX_8: uint8,
-    ObjectPrefixCode.INDEX_16: uint16,
-    ObjectPrefixCode.INDEX_32: uint32,
+    ObjectPrefixCode.INDEX_16: LittleEndian + uint16,
+    ObjectPrefixCode.INDEX_32: LittleEndian + uint32,
     ObjectPrefixCode.OBJECT_SIZE_8: uint8,
-    ObjectPrefixCode.OBJECT_SIZE_16: uint16,
-    ObjectPrefixCode.OBJECT_SIZE_32: uint32,
+    ObjectPrefixCode.OBJECT_SIZE_16: LittleEndian + uint16,
+    ObjectPrefixCode.OBJECT_SIZE_32: LittleEndian + uint32,
     # Objects are packed without an index prefix.
     DEFAULT_OPTION: Pass,
 }
