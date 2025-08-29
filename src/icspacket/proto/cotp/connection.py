@@ -234,7 +234,7 @@ class COTP_Connection(connection):
 
 
         :param tpdu: Received TPDU to check.
-        :type tpdu: TPDU
+        :type tpdu: ~icspacket.proto.cotp.structs.TPDU
         :raises ConnectionError: If the TPDU is an Error TPDU.
         """
         if isinstance(tpdu, TPDU_Error):
@@ -245,7 +245,7 @@ class COTP_Connection(connection):
         Serialize and send a TPDU over the transport connection.
 
         :param tpdu: TPDU instance to send.
-        :type tpdu: TPDU
+        :type tpdu: ~icspacket.proto.cotp.structs.TPDU
         :raises ConnectionError: If the connection is not established.
         """
         if not self.is_connected():
@@ -269,7 +269,7 @@ class COTP_Connection(connection):
         Receive and parse a TPDU from the transport connection.
 
         :return: Parsed TPDU instance.
-        :rtype: TPDU
+        :rtype: ~icspacket.proto.cotp.structs.TPDU
         :raises ConnectionError: If the connection is not established or closed.
         """
         if not self.is_connected():
