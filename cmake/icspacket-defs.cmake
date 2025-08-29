@@ -27,7 +27,7 @@ if(WIN32 AND NOT DEFINED Python_LIBRARY)
     set(Python_VERSION_MINOR ${CMAKE_MATCH_2})
     set(Python_VERSION_PATCH ${CMAKE_MATCH_3})
 
-    set(DYNAMIC_PYTHON_LIB_FILENAME "python${Python_VERSION_MAJOR}${Python_VERSION_MINOR}_d.lib")
+    set(DYNAMIC_PYTHON_LIB_FILENAME "python${Python_VERSION_MAJOR}${Python_VERSION_MINOR}.lib")
     set(EXPECTED_PYTHON_VERSION_DIR "C:/hostedtoolcache/windows/Python/${Python_VERSION}/x64/libs")
     set(Python_LIBRARY "${EXPECTED_PYTHON_VERSION_DIR}/${DYNAMIC_PYTHON_LIB_FILENAME}")
 

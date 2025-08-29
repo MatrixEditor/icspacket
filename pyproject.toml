@@ -59,7 +59,7 @@ GitHub = "https://github.com/MatrixEditor/icspacket"
 [tool.scikit-build.cmake]
 # NOTE: To enable extra debugging output at runtime you might also add
 # -DASN_EMIT_DEBUG=1 as a compile-time define.
-build-type = "Debug"
+# build-type = "Debug"
 
 # --- Dynamic Version scheme
 [tool.scikit-build]
