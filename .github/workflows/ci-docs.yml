@@ -1,8 +1,12 @@
 name: "CI: Build and Deploy Docs"
 
 on:
+  workflow_dispatch:
   push:
-    branches: [master, workflow_dispatch]
+    branches: [master]
+  release:
+    types:
+      - published
 
 jobs:
   build:
