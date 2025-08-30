@@ -40,6 +40,7 @@ and MacOS. Any other Python version is not officially supported::
     :caption: DNP3 / IEEE 1815
     :hidden:
 
+    protocols/dnp3/dnp3read
     protocols/dnp3/dnp3dump
     protocols/dnp3/api
 
