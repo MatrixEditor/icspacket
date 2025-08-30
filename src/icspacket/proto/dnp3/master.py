@@ -52,6 +52,7 @@ logger = logging.getLogger(__name__)
 _UnsolicitedResponseCallback = Callable[[APDU], None]
 _APDUCallback = Callable[["DNP3_Master", APDU], None]
 
+
 class DNP3_Task:
     """Abstract base class for a DNP3 task.
 
@@ -301,6 +302,10 @@ class DNP3_Link(connection):
         """
         return self.__dst
 
+    @destination.setter
+    def destination(self, dst: int) -> None:
+        self.__dst = dst
+
     def send_data(self, octets: bytes, /) -> None:
         """Send user data as an unconfirmed LPDU.
 
@@ -352,13 +357,18 @@ class DNP3_Link(connection):
         # always 292
         return self.sock.recv(292)
 
-    def send_link_status(self) -> None:
+    def send_link_status(self, request: LPDU) -> None:
         """Send a link status response.
 
         Constructs an LPDU with function code `LINK_STATUS`
         and transmits it.
 
+        :param request: The received REQUEST_LINK_STATUS LPDU.
+        :type request: LPDU
         :raises ConnectionError: If the socket is not connected.
+
+        .. versionchanged:: 0.2.2
+            Added ``request`` parameter.
         """
         self._assert_connected()
         lpdu = LPDU()
@@ -437,7 +447,7 @@ class DNP3_Link(connection):
                 return True
             case LinkPrimaryFunctionCode.REQUEST_LINK_STATUS:
                 logger.log(TRACE, "Peer requested link status")
-                self.send_link_status()
+                self.send_link_status(lpdu)
             case _:
                 logger.log(
                     TRACE_PACKETS,
@@ -793,7 +803,11 @@ class DNP3_Master:
         """
         return self.__tasks.pop(sequence, None)
 
-    def associate(self, address: tuple[int, str, int]) -> None:
+    def associate(
+        self,
+        address: tuple[int, str, int],
+        link_cls: type[DNP3_Link] | None = None,
+    ) -> None:
         """Establish an association with an outstation.
 
         This method sets up the underlying link and transport layers,
@@ -802,7 +816,13 @@ class DNP3_Master:
 
         :param address: A tuple of the form ``(link_addr, host, port)``.
         :type address: tuple[int, str, int]
+        :param link_cls: Optional link layer class to use. If not provided,
+            the default :class:`DNP3_Link` will be used.
+        :type link_cls: type[DNP3_Link]
         :raises ValueError: If the provided address tuple is invalid.
+
+        .. versionchanged:: 0.2.2
+            Added ``link_cls`` parameter.
         """
         if self._valid:
             return
@@ -812,7 +832,9 @@ class DNP3_Master:
 
         link_dst, host, port = address
         self.__transport = DNP3_Transport(
-            DNP3_Link(sock=self.__socket, src=self.__link_addr, dst=link_dst)
+            (link_cls or DNP3_Link)(
+                sock=self.__socket, src=self.__link_addr, dst=link_dst
+            )
         )
         self.__transport.connect((host, port))
         self._valid = True

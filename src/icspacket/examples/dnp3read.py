@@ -124,7 +124,10 @@ class DNP3Reader:
 def cli_main():
     from icspacket import __version__
 
-    parser = argparse.ArgumentParser(formatter_class=argparse.RawTextHelpFormatter)
+    parser = argparse.ArgumentParser(
+        formatter_class=argparse.RawTextHelpFormatter,
+        description="Utility to read data from an outstation using the DNP3 protocol",
+    )
     # fmt: off
     group = parser.add_argument_group("Connection Options")
     group.add_argument("-t", "--target", type=str, help="Target host (IP address or hostname) to establish the connection (default port is 20000)", metavar="<link_addr>@<host>[:<port>]", required=True)
