@@ -7,7 +7,8 @@ icspacket
 
 .. rst-class:: lead
 
-    *Contents of this side are WIP*
+    *A collection of Python classes and tools to interact with industrial control
+    systems using their protocols.*
 
 .. container:: buttons
 
@@ -17,6 +18,8 @@ icspacket
 
 
 
+
+*Contents of this side are WIP*
 
 
 Getting Started
@@ -42,6 +45,7 @@ and MacOS. Any other Python version is not officially supported::
 
     protocols/dnp3/dnp3read
     protocols/dnp3/dnp3dump
+    protocols/dnp3/dnp3resolve
     protocols/dnp3/api
 
 .. toctree::

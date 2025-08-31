@@ -1,6 +1,19 @@
 # icspacket
 
-*Content will be added soon enough...*
+A collection of Python classes and tools to interact with industrial control
+systems using their protocols. Currently supported protocols are:
+
+```
+- DNP3.0 (IEEE 1815)
+- MMS (ISO 9506) and mappings for IEC 61850
+- ACSE (X.227)
+- COPP (X.226)
+- COSP (X.225)
+- COTP (X.224)
+- TPKT (RFC1006)
+```
+
+**Please review the documentation for more information and tools: [icspacket-docs](https://matrixeditor.github.io/icspacket/)**
 
 **CI Status**
 
