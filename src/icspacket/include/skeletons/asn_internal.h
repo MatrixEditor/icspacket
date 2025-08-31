@@ -13,6 +13,9 @@
 
 #include "asn_application.h" /* Application-visible API */
 
+#define PY_SSIZE_T_CLEAN
+#include <Python.h>
+
 #ifndef __NO_ASSERT_H__ /* Include assert.h only for internal use. */
 #include <assert.h>     /* for assert() macro */
 #endif
@@ -34,10 +37,10 @@ extern "C" {
 #define ASN1C_ENVIRONMENT_VERSION 923    /* Compile-time version */
 int get_asn1c_environment_version(void); /* Run-time version */
 
-#define CALLOC(nmemb, size) calloc(nmemb, size)
-#define MALLOC(size) malloc(size)
-#define REALLOC(oldptr, size) realloc(oldptr, size)
-#define FREEMEM(ptr) free(ptr)
+#define CALLOC(nmemb, size) PyMem_RawCalloc(nmemb, size)
+#define MALLOC(size) PyMem_RawMalloc(size)
+#define REALLOC(oldptr, size) PyMem_RawRealloc(oldptr, size)
+#define FREEMEM(ptr) PyMem_RawFree(ptr)
 
 #define asn_debug_indent 0
 #define ASN_DEBUG_INDENT_ADD(i) \

@@ -59,7 +59,7 @@ static inline PyObject *PyCompatLong_AsObject(void *val, int is_signed) {
         return ret;                                                 \
     }
 
-#define PyCompatBool_FromLong(val) ((val) ? Py_True : Py_False)
+#define PyCompatBool_FromLong(val) ((val) ? Py_NewRef(Py_True) : Py_NewRef(Py_False))
 #define PyCompatBool_AsLong(obj) (PyObject_IsTrue(obj))
 
 static inline int PyCompatBool_FromObject(PyObject *pObj, unsigned *val) {
