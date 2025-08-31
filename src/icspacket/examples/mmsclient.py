@@ -331,6 +331,13 @@ def cli_main():
     parser = argparse.ArgumentParser(
         usage="%(prog)s [options] host [command [args...]]",
     )
+    parser.add_argument(
+        "-i",
+        "--interactive",
+        action="store_true",
+        help="Continue in interactive mode acter executing the first command (only if given)",
+        default=False,
+    )
     add_mms_connection_options(parser)
     add_logging_options(parser)
 

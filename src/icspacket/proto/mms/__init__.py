@@ -17,6 +17,7 @@
 # default context definitions
 MMS_PRESENTATION_CONTEXT_ID = 3
 MMS_ABSTRACT_SYNTAX_NAME = "1.0.9506.2.1"
+MMS_CONTEXT_NAME = "1.0.9506.2.3"
 
-MMS_IMPL_ID = 1337
-"""Implementation identifier for this package"""
+MMS_IMPL_MAX_SIZE = 65000
+"""Implementation maximum response size"""

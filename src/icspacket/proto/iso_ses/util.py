@@ -29,14 +29,15 @@ from icspacket.proto.iso_ses.values import (
     PV_VersionNumber,
 )
 
+DEFAULT_S_SEL = bytes.fromhex("0001")
 
 def build_connect_spdu(
     *,
     extended: bool = False,
     version2: bool = True,
     requirements: PV_SessionRequirements | None = None,
-    called_ses_sel: bytes | None = None,
-    calling_ses_sel: bytes | None = None,
+    called_ses_sel: bytes | None = DEFAULT_S_SEL,
+    calling_ses_sel: bytes | None = DEFAULT_S_SEL,
     user_data: bytes | None = None,
     extra_parameters: Iterable[Px_Unit] | None = None,
 ) -> SPDU:
@@ -100,10 +101,10 @@ def build_connect_spdu(
     _ = spdu.add_parameter(PI_Code.SESSION_REQUIREMENT, requirements)
 
     if called_ses_sel:
-        _ = accept_item.add_parameter(PI_Code.CALLED_SESSION_SELECTOR, called_ses_sel)
+        _ = spdu.add_parameter(PI_Code.CALLED_SESSION_SELECTOR, called_ses_sel)
 
     if calling_ses_sel:
-        _ = accept_item.add_parameter(PI_Code.CALLING_SESSION_SELECTOR, calling_ses_sel)
+        _ = spdu.add_parameter(PI_Code.CALLING_SESSION_SELECTOR, calling_ses_sel)
 
     # user data
     if user_data:

@@ -27,7 +27,7 @@ from icspacket.core.connection import (
 )
 from icspacket.proto.iso_pres.presentation import ISO_Presentation
 from icspacket.proto.mms import (
-    MMS_ABSTRACT_SYNTAX_NAME,
+    MMS_CONTEXT_NAME,
     MMS_PRESENTATION_CONTEXT_ID,
 )
 
@@ -167,7 +167,7 @@ def build_associate_request(
     .. note::
 
         If neither parameter is given, MMS defaults are used:
-        ``MMS_ABSTRACT_SYNTAX_NAME`` and ``MMS_PRESENTATION_CONTEXT_ID``.
+        ``MMS_CONTEXT_NAME`` and ``MMS_PRESENTATION_CONTEXT_ID``.
     """
     if presentation_context_id and not application_context_name:
         raise ValueError(
@@ -180,7 +180,7 @@ def build_associate_request(
         )
 
     if not application_context_name:
-        application_context_name = MMS_ABSTRACT_SYNTAX_NAME
+        application_context_name = MMS_CONTEXT_NAME
 
     if not presentation_context_id:
         presentation_context_id = MMS_PRESENTATION_CONTEXT_ID
@@ -188,13 +188,10 @@ def build_associate_request(
     apdu = AARQ_apdu()
     apdu.application_context_name.value = application_context_name
 
-    version = AARQ_apdu.protocol_version_TYPE()
-    version.V_version1 = True
-    apdu.protocol_version = version
-
     value = EXTERNAL()
     value.indirect_reference = presentation_context_id
     value.encoding.single_ASN1_type = user_data
+    value.direct_reference = "2.1.1"
     apdu.user_information = [value]
 
     if auth_mechanism_name:
@@ -414,6 +411,7 @@ class Association(connection):
         user_data: bytes | None = None,
         pres_ctx_id: int | None = None,
         syntax_name: str | None = None,
+        application_context_name: str | None = None,
         asn1_cls: type | None = None,
     ) -> bytes:
         """Establish an ACSE association (AARQ/AARE exchange).
@@ -467,7 +465,7 @@ class Association(connection):
         aarq = build_associate_request(
             user_data or b"",
             presentation_context_id=pres_ctx_id,
-            application_context_name=syntax_name,
+            application_context_name=application_context_name or syntax_name,
         )
         if self.authenticator is not None:
             self.authenticator.prepare_association(aarq)

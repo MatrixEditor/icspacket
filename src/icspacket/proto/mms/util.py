@@ -14,7 +14,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-from icspacket.proto.mms import MMS_IMPL_ID
+from icspacket.proto.mms import MMS_IMPL_MAX_SIZE
 from icspacket.proto.mms.asn1types import (
     GetNameList_Request,
     Initiate_RequestPDU,
@@ -36,6 +36,9 @@ ObjectScope = GetNameList_Request.objectScope_TYPE
 """Alias for the MMS ``GetNameList-Request.objectScope`` type."""
 
 VariableAccessItem = VariableAccessSpecification.listOfVariable_TYPE.Member_TYPE
+"""Alias for the MMS ``VariableAccessSpecification.listOfVariable.Member`` type."""
+
+NamedVariableSpecificationItem = VariableAccessSpecification.listOfVariable_TYPE.Member_TYPE
 """Alias for the MMS ``VariableAccessSpecification.listOfVariable.Member`` type."""
 
 DEFAULT_MAX_CALLED = 10
@@ -93,7 +96,7 @@ def new_initiate_request(
         ISO 9506-1 §8.2, "Initiate Service"
     """
     if local_detail_calling is None:
-        local_detail_calling = MMS_IMPL_ID
+        local_detail_calling = MMS_IMPL_MAX_SIZE
 
     if data_nesting_depth is not None and not 0 <= data_nesting_depth <= 255:
         raise ValueError("proposedDataStructureNestingLevel must be between 0 and 255")

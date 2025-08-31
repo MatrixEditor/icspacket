@@ -74,7 +74,7 @@ class COTP_Connection(connection):
     :type max_tpdu_size: TPDU_Size
     :param src_tsap: Calling transport selector as a hex string (default: "0000").
     :type src_tsap: str
-    :param dst_tsap: Called transport selector as a hex string (default: "0000").
+    :param dst_tsap: Called transport selector as a hex string (default: "0001").
     :type dst_tsap: str
     :param parameters: Additional transport parameters to include in the CR TPDU.
     :type parameters: Iterable[Parameter] | None
@@ -88,7 +88,7 @@ class COTP_Connection(connection):
         protocol_class: TPDU_Class = TPDU_Class.CLASS0,
         max_tpdu_size: TPDU_Size = TPDU_Size.SIZE_1024,
         src_tsap: str = "0000",
-        dst_tsap: str = "0000",
+        dst_tsap: str = "0001",
         parameters: Iterable[Parameter] | None = None,
         timeout: float | None = None,
     ) -> None:
@@ -134,8 +134,8 @@ class COTP_Connection(connection):
         cr_tpdu.parameters.extend(list(self.conn_params))
         cr_tpdu.parameters += [
             Parameter(Parameter_Code.TPDU_SIZE, self.__tpdu_size),
-            Parameter(Parameter_Code.CALLING_T_SELECTOR, self.src_tsap),
-            Parameter(Parameter_Code.CALLED_T_SELECTOR, self.dst_tsap),
+            Parameter(Parameter_Code.CALLING_T_SELECTOR, self.dst_tsap),
+            Parameter(Parameter_Code.CALLED_T_SELECTOR, self.src_tsap),
         ]
         self.connect_raw(address, cr_tpdu)
 

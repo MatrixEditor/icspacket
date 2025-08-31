@@ -254,13 +254,13 @@ def init_mms_connection(
         if auth is None:
             logging.error("Could not associate, please provide authentication options!")
         else:
-            logging.exception("Could not associate", e)
+            logging.error("Could not associate: %s", e)
     except ConnectionRefusedError:
         logging.error(
             f"Failed to connect to {host} with port {port} (connection refused)"
         )
     except ConnectionError as e:
-        logging.exception("Encountered an error while connecting to target", e)
+        logging.error("Encountered an error while connecting to target: %s", e)
     except KeyboardInterrupt:
         logging.error("Operation cancelled by user")
     else:
@@ -270,7 +270,6 @@ def init_mms_connection(
 
 def add_mms_connection_options(parser: ArgumentParser) -> None:
     # fmt: off
-    parser.add_argument("-i", "--interactive", action="store_true", help="Continue in interactive mode acter executing the first command (only if given)", default=False)
     # ------------------------------------------------------------------------
     # Authentication options
     # ------------------------------------------------------------------------

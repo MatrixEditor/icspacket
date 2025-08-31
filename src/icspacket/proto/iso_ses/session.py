@@ -64,8 +64,8 @@ class ISO_SessionSettings:
     :type extended: bool
     """
 
-    calling_ses_sel: bytes = bytes.fromhex("0000")
-    called_ses_sel: bytes = bytes.fromhex("0000")
+    calling_ses_sel: bytes = bytes.fromhex("0001")
+    called_ses_sel: bytes = bytes.fromhex("0001")
     session_req: PV_SessionRequirements = field(default_factory=PV_SessionRequirements)
     version: int = 2
     extended: bool = False

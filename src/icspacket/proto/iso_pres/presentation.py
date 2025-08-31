@@ -121,8 +121,8 @@ class ISO_PresentationSettings:
     :type custom_requirements: Presentation_requirements | None
     """
 
-    calling_selector: bytes | None = None
-    called_selector: bytes | None = None
+    calling_selector: bytes | None = bytes.fromhex("00000001")
+    called_selector: bytes | None = bytes.fromhex("00000001")
     use_version1: bool = False
     custom_requirements: Presentation_requirements | None = None
 

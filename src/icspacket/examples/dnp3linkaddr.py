@@ -65,7 +65,6 @@ class CustomDNP3_Link(DNP3_Link):
 def cli_main():
     from icspacket import __version__
 
-
     parser = argparse.ArgumentParser(formatter_class=argparse.RawTextHelpFormatter, description=__doc__)
     # fmt: off
     group = parser.add_argument_group("Connection Options")
@@ -80,7 +79,6 @@ def cli_main():
     add_logging_options(parser)
 
     args = parser.parse_args()
-    print(args.__dict__)
     logger.init_from_args(args.verbosity, args.quiet, args.ts)
     if args.verbosity > 0:
         print(f"icspacket v{__version__}\n")

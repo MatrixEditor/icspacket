@@ -235,7 +235,7 @@ def do_variable(args, conn: MMS_Connection):
         if data is None:
             sys.exit(1)
 
-        write_result = conn.write_variable(access, data)
+        write_result = conn.write_variable(data, variable=access)
         if write_result is None:
             logging.info("Write operation succeeded")
         else:
@@ -283,6 +283,46 @@ def do_variable(args, conn: MMS_Connection):
             args.console.print(f"- [bold]Type:[/] {type_descr.present.name[3:]}")
 
 
+def do_variable_list(args, conn: MMS_Connection):
+    if args.var_read:
+        # try to read a variable
+        if not args.var_target:
+            return logging.error("No variable target specified")
+
+        targets = parse_variable_target(args.var_target, args.domain)
+        if not targets:
+            sys.exit(1)
+
+        logging.debug("Preparing to read  %d variable(s)...", len(targets))
+        # 1. build access specification
+        for variable_list_name in targets:
+            list_name_safe = object_name_to_string(variable_list_name).replace("$", ".")
+            logging.debug("Reading %s from peer...", list_name_safe)
+            with args.console.status("Awaiting access results..."):
+                results = conn.read_variables(list_name=variable_list_name, spec_in_result=True)
+
+            table = Table(title=list_name_safe, safe_box=True, expand=False, box=box.ASCII_DOUBLE_HEAD)
+            table.add_column("Variable", justify="left")
+            table.add_column("Value", justify="left")
+            for object_name, result in zip(targets, results):
+                item = object_name_to_string(object_name).replace("$", ".")
+                if result.failure:
+                    error_code = result.failure.value
+                    error_msg = f"[red]({error_code})[/]"
+                    if hasattr(error_code, "name"):
+                        error_msg = f"[red bold]{error_code.name[2:]}[/] {error_msg}"
+                    else:
+                        error_msg = f"[red]Error during read op[/] {error_msg}"
+                    table.add_row(item, error_msg)
+                else:
+                    value = data_to_str(result.success)
+                    if not isinstance(value, str):
+                        value = pretty.pretty_repr(value)
+
+                    table.add_row(item, value, end_section=True)
+
+            args.console.print(table)
+
 def cli_main():
     import argparse
 
@@ -329,7 +369,7 @@ def cli_main():
 
     value_group = variable.add_argument_group("Variable Value Options", "Specify values to write using the '<type>:<value>' format")
     value_group.add_argument("--value", type=str, metavar="<type>:<value>", dest="var_value", help="Value to write to variable(s). See epilog for type specifications")
-    variable.add_argument("var_target", nargs="*", type=str, help="Target variable(s), either '<domain>/<variable>' or '<variable>' if using --domain for domain variables, "
+    variable.add_argument("var_target", nargs="+", type=str, help="Target variable(s), either '<domain>/<variable>' or '<variable>' if using --domain for domain variables, "
         + "vmd:<variable for VMD specific and aa:<variable> for AA-specific variables; or just a path to a file")
     variable.formatter_class = argparse.RawDescriptionHelpFormatter
     variable.epilog = textwrap.dedent("""\
@@ -365,6 +405,19 @@ def cli_main():
         --value bytes:0A0B0C
         --value oid:1.3.6.1.4
     """)
+
+    variable_list = services.add_parser("varlist", aliases=["vl"], help="Perform operations on MMS named variable lists (read)")
+    variable_list.set_defaults(func=do_variable_list)
+    variable_list.add_argument("-D", "--domain", type=str, required=False, help="Global domain to use if variable targets do not include a domain")
+
+    op_group = variable_list.add_argument_group("Operations", "Specify exactly one operation")
+    op_group_mutex = op_group.add_mutually_exclusive_group(required=True)
+    op_group_mutex.add_argument("-r", "--read", action="store_true", dest="var_read", help="Read the specified variable list(s) from the target MMS server")
+
+    value_group = variable_list.add_argument_group("Variable Value Options", "Specify values to write using the '<type>:<value>' format")
+    variable_list.add_argument("var_target", nargs="+", type=str, help="Target variable list(s), either '<domain>/<variable>' or '<variable>' if using --domain for domain variables, "
+        + "vmd:<variable for VMD specific and aa:<variable> for AA-specific variables; or just a path to a file", metavar="TARGET")
+
 
     add_mms_connection_options(parser)
     add_logging_options(parser)

@@ -18,6 +18,10 @@ import logging
 from typing_extensions import override
 
 from icspacket.core.connection import connection
+from icspacket.proto.mms._mms import (
+    GetNamedVariableListAttributes_Request,
+    GetNamedVariableListAttributes_Response,
+)
 from icspacket.proto.tpkt import tpktsock
 from icspacket.proto.cotp.connection import COTP_Connection
 from icspacket.proto.iso_ses.session import ISO_Session, ISO_SessionSettings
@@ -25,7 +29,11 @@ from icspacket.proto.iso_pres.presentation import (
     ISO_Presentation,
     ISO_PresentationSettings,
 )
-from icspacket.proto.mms import MMS_ABSTRACT_SYNTAX_NAME, MMS_PRESENTATION_CONTEXT_ID
+from icspacket.proto.mms import (
+    MMS_ABSTRACT_SYNTAX_NAME,
+    MMS_CONTEXT_NAME,
+    MMS_PRESENTATION_CONTEXT_ID,
+)
 from icspacket.proto.mms.asn1types import (
     ABRT_source,
     AccessResult,
@@ -174,7 +182,7 @@ class MMS_Connection(connection):
             authenticator=auth,
         )
         self._connected = self.presentation.is_connected()
-        self.__invoke_id = 0
+        self.__invoke_id = 1
 
     # ---------------------------------------------------------------------- #
     # Properties
@@ -293,7 +301,9 @@ class MMS_Connection(connection):
         request = request or new_initiate_request()
         mms_pdu = MMSpdu(initiate_RequestPDU=request)
 
-        raw_data = self.association.create(address, mms_pdu.ber_encode())
+        raw_data = self.association.create(
+            address, mms_pdu.ber_encode(), application_context_name=MMS_CONTEXT_NAME
+        )
         try:
             # M-ASSOCIATE.cnf
             mms_pdu = MMSpdu.ber_decode(raw_data)
@@ -495,7 +505,6 @@ class MMS_Connection(connection):
             scope.vmdSpecific = None
 
         request.objectScope = scope
-
         service = ConfirmedServiceRequest(getNameList=request)
         response = self.service_request(service)
         name_list = response.getNameList
@@ -663,8 +672,10 @@ class MMS_Connection(connection):
 
     def write_variable(
         self,
-        variable: VariableAccessSpecification.listOfVariable_TYPE.Member_TYPE,
-        value: Data,
+        value: Data | list[Data],
+        /,
+        variable: VariableAccessItem | None = None,
+        list_name: ObjectName | None = None,
     ) -> DataAccessError | None:
         """14.7 Variable Write Service
 
@@ -673,7 +684,7 @@ class MMS_Connection(connection):
         :param variable: The target variable to be written.
         :type variable: VariableAccessSpecification.listOfVariable_TYPE.Member_TYPE
         :param value: The value to write, encoded as MMS :class:`Data`.
-        :type value: Data
+        :type value: Data | list[Data]
 
         :returns: ``None`` on success, or a :class:`DataAccessError` if the
             write failed for this variable.
@@ -686,10 +697,22 @@ class MMS_Connection(connection):
         >>> data.integer = 42
         >>> err = mms_conn.write_variable(var, data)
         >>> print("Write successful" if err is None else f"Failed: {err}")
+
+        .. versionchanged:: 0.2.2
+            Multiple Data objects allowed within the ``value`` parameter. Ordering
+            of parameters has changed.
         """
         request = Write_Request()
-        request.variableAccessSpecification.listOfVariable = [variable]
-        request.listOfData = [value]
+        if not variable and not list_name:
+            raise ValueError(
+                "Need at least one variable or a variable list name to write"
+            )
+        if not list_name:
+            request.variableAccessSpecification.listOfVariable = [variable]
+        else:
+            request.variableAccessSpecification.variableListName = list_name
+
+        request.listOfData = [value] if not isinstance(value, list) else value
 
         service = ConfirmedServiceRequest(write=request)
         response = self.service_request(service, need_response=False)
@@ -749,6 +772,20 @@ class MMS_Connection(connection):
         service = ConfirmedServiceRequest(getDomainAttributes=request)
         response = self.service_request(service)
         return response.getDomainAttributes
+
+    # ---------------------------------------------------------------------------
+    # 14.13 GetNamedVariableListAttributes service
+    # ---------------------------------------------------------------------------
+    def variable_list_attributes(
+        self, name: ObjectName, /
+    ) -> GetNamedVariableListAttributes_Response:
+        """
+        .. versionadded:: 0.2.3
+        """
+        request = GetNamedVariableListAttributes_Request(name)
+        service = ConfirmedServiceRequest(getNamedVariableListAttributes=request)
+        response = self.service_request(service)
+        return response.getNamedVariableListAttributes
 
     # ---------------------------------------------------------------------------
     # Annex D - File Management
