@@ -2,7 +2,7 @@
 <html lang="en" data-accent-color="lime" data-content_root="../../../">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Master - icspacket 0.2.1 documentation</title><link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" /><link rel="next" title="Object Library" href="object_library.html" /><link rel="prev" title="Application Layer" href="application.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Master - icspacket 0.1.dev1+gdba28063c documentation</title><link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" /><link rel="next" title="Object Library" href="object_library.html" /><link rel="prev" title="Application Layer" href="application.html" />
       <link rel="canonical" href="https://matrixeditor.github.io/icspacket/protocols/dnp3/api/master.html" /><script>
     function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
     setColorMode(localStorage._theme||"dark");
@@ -45,6 +45,9 @@
               </a></li><li><a href="../examples.html">
                 <span>DNP3 Tools</span>
                 <small>DNP3 utilities and tools</small>
+              </a></li><li><a href="../../iec61850/iedmap.html">
+                <span>IED Enumeration Tool</span>
+                <small>Logical Device enumeration and more</small>
               </a></li></ul>
       </li></ul></nav>
       <div class="sy-head-extra flex items-center print:hidden"><form class="searchbox flex items-center" action="../../../search.html" method="get">
@@ -98,6 +101,7 @@ data-aria-dark="Switch to auto color mode">
 <ul class="current">
 <li class="toctree-l1 _expand"><a class="reference internal" href="../dnp3read.html">Reading Objects</a></li>
 <li class="toctree-l1 _expand"><a class="reference internal" href="../dnp3dump.html">Dumping Objects</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../dnp3resolve.html">Resolve Link Addresses</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../api.html">API Reference</a><ul class="current">
 <li class="toctree-l2 _expand"><a class="reference internal" href="link.html">Link Layer</a></li>
 <li class="toctree-l2 _expand"><a class="reference internal" href="transport.html">Transport Layer</a></li>
@@ -110,6 +114,16 @@ data-aria-dark="Switch to auto color mode">
 <li class="toctree-l3"><a class="reference internal" href="coding_utils.html">Object Utilities</a></li>
 </ul>
 </li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">IEC 61850</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../iec61850/iedmap.html">Enumerating IEDs</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../iec61850/api.html">API Reference</a><ul>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../../iec61850/api_data_classes.html">Data Classes</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../../iec61850/api_path.html">Object / Data References</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../../iec61850/api_client.html">IED Client</a></li>
 </ul>
 </li>
 </ul>
@@ -455,15 +469,21 @@ plus headers).</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.master.DNP3_Link.send_link_status">
-<span class="sig-name descname"><span class="pre">send_link_status</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../../../_modules/icspacket/proto/dnp3/master.html#DNP3_Link.send_link_status"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.dnp3.master.DNP3_Link.send_link_status" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">send_link_status</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="link.html#icspacket.proto.dnp3.link.LPDU" title="icspacket.proto.dnp3.link.LPDU"><span class="pre">LPDU</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../../../_modules/icspacket/proto/dnp3/master.html#DNP3_Link.send_link_status"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.dnp3.master.DNP3_Link.send_link_status" title="Link to this definition">¶</a></dt>
 <dd><p>Send a link status response.</p>
 <p>Constructs an LPDU with function code <cite>LINK_STATUS</cite>
 and transmits it.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Raises<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference internal" href="../../../getting-started/coreapi.html#icspacket.core.connection.ConnectionError" title="icspacket.core.connection.ConnectionError"><strong>ConnectionError</strong></a> – If the socket is not connected.</p>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>request</strong> (<a class="reference internal" href="link.html#icspacket.proto.dnp3.link.LPDU" title="icspacket.proto.dnp3.link.LPDU"><em>LPDU</em></a>) – The received REQUEST_LINK_STATUS LPDU.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="../../../getting-started/coreapi.html#icspacket.core.connection.ConnectionError" title="icspacket.core.connection.ConnectionError"><strong>ConnectionError</strong></a> – If the socket is not connected.</p>
 </dd>
 </dl>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 0.2.2: </span>Added <code class="docutils literal notranslate"><span class="pre">request</span></code> parameter.</p>
+</div>
 </dd></dl>
 
 <dl class="py method">
@@ -756,19 +776,26 @@ whenever a request is submitted.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.master.DNP3_Master.associate">
-<span class="sig-name descname"><span class="pre">associate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">address</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../../../_modules/icspacket/proto/dnp3/master.html#DNP3_Master.associate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.dnp3.master.DNP3_Master.associate" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">associate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">address</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">link_cls</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">type</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#icspacket.proto.dnp3.master.DNP3_Link" title="icspacket.proto.dnp3.master.DNP3_Link"><span class="pre">DNP3_Link</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../../../_modules/icspacket/proto/dnp3/master.html#DNP3_Master.associate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.dnp3.master.DNP3_Master.associate" title="Link to this definition">¶</a></dt>
 <dd><p>Establish an association with an outstation.</p>
 <p>This method sets up the underlying link and transport layers,
 connects to the given host/port, and starts background processing
 of incoming messages.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>address</strong> (<em>tuple</em><em>[</em><em>int</em><em>, </em><em>str</em><em>, </em><em>int</em><em>]</em>) – A tuple of the form <code class="docutils literal notranslate"><span class="pre">(link_addr,</span> <span class="pre">host,</span> <span class="pre">port)</span></code>.</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>address</strong> (<em>tuple</em><em>[</em><em>int</em><em>, </em><em>str</em><em>, </em><em>int</em><em>]</em>) – A tuple of the form <code class="docutils literal notranslate"><span class="pre">(link_addr,</span> <span class="pre">host,</span> <span class="pre">port)</span></code>.</p></li>
+<li><p><strong>link_cls</strong> (<em>type</em><em>[</em><a class="reference internal" href="#icspacket.proto.dnp3.master.DNP3_Link" title="icspacket.proto.dnp3.master.DNP3_Link"><em>DNP3_Link</em></a><em>]</em>) – Optional link layer class to use. If not provided,
+the default <a class="reference internal" href="#icspacket.proto.dnp3.master.DNP3_Link" title="icspacket.proto.dnp3.master.DNP3_Link"><code class="xref py py-class docutils literal notranslate"><span class="pre">DNP3_Link</span></code></a> will be used.</p></li>
+</ul>
 </dd>
 <dt class="field-even">Raises<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>ValueError</strong> – If the provided address tuple is invalid.</p>
 </dd>
 </dl>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 0.2.2: </span>Added <code class="docutils literal notranslate"><span class="pre">link_cls</span></code> parameter.</p>
+</div>
 </dd></dl>
 
 <dl class="py method">
@@ -923,7 +950,7 @@ can be requested, and the call may be synchronous or asynchronous.</p>
     </div>
   </div>
 </footer>
-      <script src="../../../_static/documentation_options.js?v=7f2f09dd"></script>
+      <script src="../../../_static/documentation_options.js?v=8fd3cfc3"></script>
       <script src="../../../_static/doctools.js?v=9bcbadda"></script>
       <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>

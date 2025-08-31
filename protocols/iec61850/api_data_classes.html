@@ -1,0 +1,1184 @@
+<!DOCTYPE html>
+<html lang="en" data-accent-color="lime" data-content_root="../../">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Data Classes - icspacket 0.1.dev1+gdba28063c documentation</title><link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="Object / Data References" href="api_path.html" /><link rel="prev" title="API Reference" href="api.html" />
+      <link rel="canonical" href="https://matrixeditor.github.io/icspacket/protocols/iec61850/api_data_classes.html" /><script>
+    function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
+    setColorMode(localStorage._theme||"dark");
+  </script><link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=397bb51e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/shibuya.css?v=d48c410d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link media="print" rel="stylesheet" type="text/css" href="../../_static/print.css?v=20ff2c19" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --sy-f-text: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+  --sy-f-heading: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+}
+</style>
+    <meta property="og:type" content="website"/>
+<meta property="og:url" content="https://matrixeditor.github.io/icspacket/protocols/iec61850/api_data_classes.html"/>
+<meta property="og:title" content="Data Classes"/>
+<meta name="twitter:card" content="summary"/>
+  </head>
+<body><div class="sy-head">
+  <div class="sy-head-blur"></div>
+  <div class="sy-head-inner sy-container mx-auto">
+    <a class="sy-head-brand" href="../../index.html">
+      
+      
+      <strong>icspacket</strong>
+    </a>
+    <div class="sy-head-nav" id="head-nav">
+      <nav class="sy-head-links"><ul>
+      <li class="link"><a class="js-menu" href="../../getting-started/protocols.html" id="nav-trigger-1" aria-controls="nav-children-1">
+            <span>Examples</span>
+            <i class="i-lucide chevron-down"></i>
+          </a>
+        <ul id="nav-children-1" aria-labelledby="nav-trigger-1"><li><a href="../mms/examples.html">
+                <span>MMS Utilities</span>
+                <small>Manufacturing Message Specification tools</small>
+              </a></li><li><a href="../dnp3/examples.html">
+                <span>DNP3 Tools</span>
+                <small>DNP3 utilities and tools</small>
+              </a></li><li><a href="iedmap.html">
+                <span>IED Enumeration Tool</span>
+                <small>Logical Device enumeration and more</small>
+              </a></li></ul>
+      </li></ul></nav>
+      <div class="sy-head-extra flex items-center print:hidden"><form class="searchbox flex items-center" action="../../search.html" method="get">
+  <input type="text" name="q" placeholder="Search" />
+  <kbd>/</kbd>
+</form><div class="sy-head-socials">
+  <a href="https://github.com/MatrixEditor/icspacket" aria-label="GitHub">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </a></div></div>
+    </div>
+    <div class="sy-head-actions flex items-center shrink-0 print:hidden"><button class="js-theme theme-switch flex items-center"
+data-aria-auto="Switch to light color mode"
+data-aria-light="Switch to dark color mode"
+data-aria-dark="Switch to auto color mode">
+<i class="i-lucide theme-icon"></i>
+</button><button class="md:hidden flex items-center js-menu" aria-label="Menu" type="button" aria-controls="head-nav" aria-expanded="false">
+        <div class="hamburger">
+          <span class="hamburger_1"></span>
+          <span class="hamburger_2 -translate-x-2"></span>
+          <span class="hamburger_3 -translate-x-1"></span>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>
+<div class="sy-page sy-container flex mx-auto">
+  <aside id="lside" class="sy-lside md:w-72 md:shrink-0 print:hidden">
+    <div class="sy-lside-inner md:sticky">
+      <div class="sy-scrollbar p-6"><div class="sidebar-links">
+  <ul>
+    <li><a class="icon-link" href="https://github.com/MatrixEditor/icspacket/discussions">
+  <span class="icon">
+    <svg viewBox="0 0 24 24" fill="none">
+      <path fill="var(--accent-9)" fill-rule="evenodd" clip-rule="evenodd" d="M11 5a6 6 0 0 0-4.687 9.746c.215.27.315.62.231.954l-.514 2.058a1 1 0 0 0 1.485 1.1l2.848-1.71c.174-.104.374-.15.576-.148H13a6 6 0 0 0 0-12h-2Z"/>
+      <circle fill="white" cx="12" cy="11" r="1"/>
+      <circle fill="white" cx="9" cy="11" r="1"/>
+      <circle fill="white" cx="15" cy="11" r="1"/>
+    </svg>
+  </span>
+  <span class="text">Discussion</span>
+</a></li>
+  </ul>
+</div>
+        <div class="globaltoc" data-expand-depth="2"><p class="caption" role="heading" aria-level="3"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../getting-started/installation.html">Installation</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../getting-started/protocols.html">Protocols Overview</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../getting-started/coreapi.html">Core API Reference</a></li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">DNP3 / IEEE 1815</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../dnp3/dnp3read.html">Reading Objects</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../dnp3/dnp3dump.html">Dumping Objects</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../dnp3/dnp3resolve.html">Resolve Link Addresses</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../dnp3/api.html">API Reference</a><ul>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../dnp3/api/link.html">Link Layer</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../dnp3/api/transport.html">Transport Layer</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../dnp3/api/application.html">Application Layer</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../dnp3/api/master.html">Master</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../dnp3/api/object_library.html">Object Library</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../dnp3/api/primitives.html">Primitive Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dnp3/api/coding.html">Encoding / Decoding</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dnp3/api/variations.html">Variations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dnp3/api/coding_utils.html">Object Utilities</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">IEC 61850</span></p>
+<ul class="current">
+<li class="toctree-l1 _expand"><a class="reference internal" href="iedmap.html">Enumerating IEDs</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="api.html">API Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Data Classes</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="api_path.html">Object / Data References</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="api_client.html">IED Client</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">MMS / ISO 9506</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../mms/demo_vars.html">Variable Target Format</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../mms/demo_vars.html#variableaccess-service-rwq">VariableAccess Service (rwq)</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../mms/demo_files.html">FileManagement Service</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../mms/api.html">API Reference</a><ul>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../mms/api_conn.html">MMS Connection</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../mms/api_data.html">Data Conversion</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../mms/api_utils.html">Protocol Utilities</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">ACSE / X.227</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../acse/api.html">API Reference</a></li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">COPP / X.226 / ISO 8823</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../copp/api.html">API Reference</a><ul>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../copp/presentation.html">ISO Presentation</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../copp/utils.html">Protocol Utilities</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">COSP / X.225 / ISO 8237-1</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../cosp/api.html">API Reference</a><ul>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../cosp/tsdu.html">TSDU</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../cosp/spdu.html">SPDU Types</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../cosp/values.html">Parameter Values (PV)</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../cosp/session.html">ISO Session</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../cosp/utils.html">Protocol Utilities</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">COTP / X.224</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../cotp/api.html">API Reference</a><ul>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../cotp/structs.html">TPDU Types</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../cotp/connection.html">Connection</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">TPKT Protocol (RFC1006)</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../tpkt/usage.html">Using a TPKT Wrapper</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../tpkt/api.html">API Reference</a></li>
+</ul>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="lside-overlay js-menu" role="button" aria-label="Close left sidebar" aria-controls="lside" aria-expanded="false"></div>
+  <aside id="rside" class="sy-rside pb-3 w-64 shrink-0 order-last">
+    <button class="rside-close js-menu xl:hidden" aria-label="Close Table of Contents" type="button" aria-controls="rside" aria-expanded="false">
+      <i class="i-lucide close"></i>
+    </button>
+    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div class="localtoc"><h3>On this page</h3><ul>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.LN_Class"><code class="docutils literal notranslate"><span class="pre">LN_Class</span></code></a><ul>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.LN_Class.ANCR"><code class="docutils literal notranslate">ANCR</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.LN_Class.ARCO"><code class="docutils literal notranslate">ARCO</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.LN_Class.ATCC"><code class="docutils literal notranslate">ATCC</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.LN_Class.AVCO"><code class="docutils literal notranslate">AVCO</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.LN_Class.CALH"><code class="docutils literal notranslate">CALH</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.LN_Class.CCGR"><code class="docutils literal notranslate">CCGR</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.LN_Class.CILO"><code class="docutils literal notranslate">CILO</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.LN_Class.CPOW"><code class="docutils literal notranslate">CPOW</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.LN_Class.CSWI"><code class="docutils literal notranslate">CSWI</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.LN_Class.GAPC"><code class="docutils literal notranslate">GAPC</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.LN_Class.GGIO"><code class="docutils literal notranslate">GGIO</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.LN_Class.GSAL"><code class="docutils literal notranslate">GSAL</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.LN_Class.IARC"><code class="docutils literal notranslate">IARC</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.LN_Class.IHMI"><code class="docutils literal notranslate">IHMI</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.LN_Class.ITCI"><code class="docutils literal notranslate">ITCI</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.LN_Class.ITMI"><code class="docutils literal notranslate">ITMI</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.LN_Class.LLN0"><code class="docutils literal notranslate">LLN0</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.LN_Class.LPHD"><code class="docutils literal notranslate">LPHD</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.LN_Class.MDIF"><code class="docutils literal notranslate">MDIF</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.LN_Class.MHAI"><code class="docutils literal notranslate">MHAI</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.LN_Class.MHAN"><code class="docutils literal notranslate">MHAN</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.LN_Class.MMTR"><code class="docutils literal notranslate">MMTR</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.LN_Class.MMXN"><code class="docutils literal notranslate">MMXN</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.LN_Class.MMXU"><code class="docutils literal notranslate">MMXU</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.LN_Class.MSQI"><code class="docutils literal notranslate">MSQI</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.LN_Class.MSTA"><code class="docutils literal notranslate">MSTA</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.LN_Class.PDIF"><code class="docutils literal notranslate">PDIF</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.LN_Class.PDIR"><code class="docutils literal notranslate">PDIR</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.LN_Class.PDIS"><code class="docutils literal notranslate">PDIS</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.LN_Class.PDOP"><code class="docutils literal notranslate">PDOP</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.LN_Class.PDUP"><code class="docutils literal notranslate">PDUP</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.LN_Class.PFRC"><code class="docutils literal notranslate">PFRC</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.LN_Class.PHAR"><code class="docutils literal notranslate">PHAR</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.LN_Class.PHIZ"><code class="docutils literal notranslate">PHIZ</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.LN_Class.PIOC"><code class="docutils literal notranslate">PIOC</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.LN_Class.PMRI"><code class="docutils literal notranslate">PMRI</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.LN_Class.PMSS"><code class="docutils literal notranslate">PMSS</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.LN_Class.POPF"><code class="docutils literal notranslate">POPF</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.LN_Class.PPAM"><code class="docutils literal notranslate">PPAM</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.LN_Class.PSCH"><code class="docutils literal notranslate">PSCH</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.LN_Class.PSDE"><code class="docutils literal notranslate">PSDE</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.LN_Class.PTEF"><code class="docutils literal notranslate">PTEF</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.LN_Class.PTOC"><code class="docutils literal notranslate">PTOC</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.LN_Class.PTOF"><code class="docutils literal notranslate">PTOF</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.LN_Class.PTOV"><code class="docutils literal notranslate">PTOV</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.LN_Class.PTRC"><code class="docutils literal notranslate">PTRC</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.LN_Class.PTTR"><code class="docutils literal notranslate">PTTR</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.LN_Class.PTUC"><code class="docutils literal notranslate">PTUC</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.LN_Class.PTUF"><code class="docutils literal notranslate">PTUF</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.LN_Class.PTUV"><code class="docutils literal notranslate">PTUV</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.LN_Class.PUPF"><code class="docutils literal notranslate">PUPF</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.LN_Class.PVOC"><code class="docutils literal notranslate">PVOC</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.LN_Class.PVPH"><code class="docutils literal notranslate">PVPH</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.LN_Class.PZSU"><code class="docutils literal notranslate">PZSU</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.LN_Class.RADR"><code class="docutils literal notranslate">RADR</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.LN_Class.RBDR"><code class="docutils literal notranslate">RBDR</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.LN_Class.RBRF"><code class="docutils literal notranslate">RBRF</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.LN_Class.RDIR"><code class="docutils literal notranslate">RDIR</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.LN_Class.RDRE"><code class="docutils literal notranslate">RDRE</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.LN_Class.RDRS"><code class="docutils literal notranslate">RDRS</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.LN_Class.RFLO"><code class="docutils literal notranslate">RFLO</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.LN_Class.RPSB"><code class="docutils literal notranslate">RPSB</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.LN_Class.RREC"><code class="docutils literal notranslate">RREC</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.LN_Class.RSYN"><code class="docutils literal notranslate">RSYN</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.LN_Class.SARC"><code class="docutils literal notranslate">SARC</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.LN_Class.SIMG"><code class="docutils literal notranslate">SIMG</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.LN_Class.from_lname"><code class="docutils literal notranslate">from_lname()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.LN_Group"><code class="docutils literal notranslate"><span class="pre">LN_Group</span></code></a><ul>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.LN_Group.A"><code class="docutils literal notranslate">A</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.LN_Group.C"><code class="docutils literal notranslate">C</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.LN_Group.G"><code class="docutils literal notranslate">G</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.LN_Group.I"><code class="docutils literal notranslate">I</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.LN_Group.L"><code class="docutils literal notranslate">L</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.LN_Group.M"><code class="docutils literal notranslate">M</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.LN_Group.P"><code class="docutils literal notranslate">P</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.LN_Group.R"><code class="docutils literal notranslate">R</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.LN_Group.S"><code class="docutils literal notranslate">S</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.LN_Group.T"><code class="docutils literal notranslate">T</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.LN_Group.X"><code class="docutils literal notranslate">X</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.LN_Group.Y"><code class="docutils literal notranslate">Y</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.LN_Group.Z"><code class="docutils literal notranslate">Z</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.DATA_Class"><code class="docutils literal notranslate"><span class="pre">DATA_Class</span></code></a><ul>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.DATA_Class.ACD"><code class="docutils literal notranslate">ACD</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.DATA_Class.ACT"><code class="docutils literal notranslate">ACT</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.DATA_Class.APC"><code class="docutils literal notranslate">APC</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.DATA_Class.ASG"><code class="docutils literal notranslate">ASG</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.DATA_Class.BAC"><code class="docutils literal notranslate">BAC</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.DATA_Class.BCR"><code class="docutils literal notranslate">BCR</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.DATA_Class.BSC"><code class="docutils literal notranslate">BSC</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.DATA_Class.CMV"><code class="docutils literal notranslate">CMV</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.DATA_Class.CSD"><code class="docutils literal notranslate">CSD</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.DATA_Class.CSG"><code class="docutils literal notranslate">CSG</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.DATA_Class.CUG"><code class="docutils literal notranslate">CUG</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.DATA_Class.CURVE"><code class="docutils literal notranslate">CURVE</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.DATA_Class.DEL"><code class="docutils literal notranslate">DEL</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.DATA_Class.DPC"><code class="docutils literal notranslate">DPC</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.DATA_Class.DPL"><code class="docutils literal notranslate">DPL</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.DATA_Class.DPS"><code class="docutils literal notranslate">DPS</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.DATA_Class.ENC"><code class="docutils literal notranslate">ENC</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.DATA_Class.ENG"><code class="docutils literal notranslate">ENG</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.DATA_Class.ENS"><code class="docutils literal notranslate">ENS</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.DATA_Class.HDEL"><code class="docutils literal notranslate">HDEL</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.DATA_Class.HMV"><code class="docutils literal notranslate">HMV</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.DATA_Class.HST"><code class="docutils literal notranslate">HST</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.DATA_Class.HWYE"><code class="docutils literal notranslate">HWYE</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.DATA_Class.INC"><code class="docutils literal notranslate">INC</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.DATA_Class.ING"><code class="docutils literal notranslate">ING</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.DATA_Class.INS"><code class="docutils literal notranslate">INS</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.DATA_Class.ISC"><code class="docutils literal notranslate">ISC</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.DATA_Class.LPL"><code class="docutils literal notranslate">LPL</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.DATA_Class.MV"><code class="docutils literal notranslate">MV</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.DATA_Class.ORG"><code class="docutils literal notranslate">ORG</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.DATA_Class.SAV"><code class="docutils literal notranslate">SAV</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.DATA_Class.SEC"><code class="docutils literal notranslate">SEC</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.DATA_Class.SEQ"><code class="docutils literal notranslate">SEQ</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.DATA_Class.SPC"><code class="docutils literal notranslate">SPC</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.DATA_Class.SPG"><code class="docutils literal notranslate">SPG</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.DATA_Class.SPS"><code class="docutils literal notranslate">SPS</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.DATA_Class.TSG"><code class="docutils literal notranslate">TSG</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.DATA_Class.VSG"><code class="docutils literal notranslate">VSG</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.DATA_Class.VSS"><code class="docutils literal notranslate">VSS</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.DATA_Class.WYE"><code class="docutils literal notranslate">WYE</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.DATA_Class.from_name"><code class="docutils literal notranslate">from_name()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.FC"><code class="docutils literal notranslate"><span class="pre">FC</span></code></a><ul>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.FC.BL"><code class="docutils literal notranslate">BL</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.FC.BR"><code class="docutils literal notranslate">BR</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.FC.CF"><code class="docutils literal notranslate">CF</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.FC.CO"><code class="docutils literal notranslate">CO</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.FC.DC"><code class="docutils literal notranslate">DC</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.FC.EX"><code class="docutils literal notranslate">EX</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.FC.GO"><code class="docutils literal notranslate">GO</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.FC.GS"><code class="docutils literal notranslate">GS</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.FC.LG"><code class="docutils literal notranslate">LG</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.FC.MS"><code class="docutils literal notranslate">MS</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.FC.MX"><code class="docutils literal notranslate">MX</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.FC.OR"><code class="docutils literal notranslate">OR</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.FC.RP"><code class="docutils literal notranslate">RP</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.FC.SE"><code class="docutils literal notranslate">SE</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.FC.SG"><code class="docutils literal notranslate">SG</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.FC.SP"><code class="docutils literal notranslate">SP</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.FC.SR"><code class="docutils literal notranslate">SR</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.FC.ST"><code class="docutils literal notranslate">ST</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.FC.SV"><code class="docutils literal notranslate">SV</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.FC.US"><code class="docutils literal notranslate">US</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.classes.FC.XX"><code class="docutils literal notranslate">XX</span></code></a></li>
+</ul>
+</li>
+</ul>
+</div><a class="js-repo-stats repo-stats flex items-center" href="https://github.com/MatrixEditor/icspacket"
+  data-type="github" data-user="MatrixEditor" data-repo="icspacket">
+  <span class="w-8 flex items-center justify-around shrink-0 text-3xl">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </span>
+  <span class="flex-grow px-2 break-all">
+    <span style="font-size: small;">MatrixEditor/icspacket</span>
+    <span class="flex text-sm repo-stats-count">
+      <span class="flex items-center pr-3">
+        <iconify-icon icon="lucide:star"></iconify-icon>
+        <strong class="js-repo-stars ml-1">0</strong>
+      </span>
+      <span class="flex items-center">
+        <iconify-icon icon="lucide:git-fork"></iconify-icon>
+        <strong class="js-repo-forks ml-1">0</strong>
+      </span>
+    </span>
+  </span>
+</a><div class="edit-this-page">
+  <a href="https://github.com/MatrixEditor/icspacket/blob/main/docs/protocols/iec61850/api_data_classes.rst">Edit this page</a>
+</div></div>
+  </aside>
+  <div class="rside-overlay js-menu" role="button" aria-label="Close Table of Contents" aria-controls="rside" aria-expanded="false"></div>
+  <main class="sy-main w-full max-sm:max-w-full print:pt-6">
+<div class="sy-breadcrumbs" role="navigation">
+  <div class="sy-breadcrumbs-inner flex items-center">
+    <div class="md:hidden mr-3">
+      <button class="js-menu" aria-label="Menu" type="button" aria-controls="lside" aria-expanded="false">
+        <i class="i-lucide menu"></i>
+      </button>
+    </div>
+    <ol class="flex-1" itemscope itemtype="https://schema.org/BreadcrumbList"><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="../../index.html"><span itemprop="name">icspacket</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="1" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="api.html"><span itemprop="name">API Reference</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="2" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <strong itemprop="name">Data Classes</strong>
+        <meta itemprop="position" content="3" />
+      </li></ol>
+    <div class="xl:hidden ml-1">
+      <button class="js-menu" aria-label="Show table of contents" type="button" aria-controls="rside"
+        aria-expanded="false">
+        <i class="i-lucide outdent"></i>
+      </button>
+    </div>
+  </div>
+</div><div class="flex flex-col break-words justify-between">
+      <div class="min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
+        <article class="yue" role="main">
+          <section id="module-icspacket.proto.iec61850.classes">
+<span id="data-classes"></span><span id="iec61850-data-classes"></span><h1>Data Classes<a class="headerlink" href="#module-icspacket.proto.iec61850.classes" title="Link to this heading">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.LN_Class">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">icspacket.proto.iec61850.classes.</span></span><span class="sig-name descname"><span class="pre">LN_Class</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">values</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/icspacket/proto/iec61850/classes.html#LN_Class"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iec61850.classes.LN_Class" title="Link to this definition">¶</a></dt>
+<dd><p>Logical Node (LN) classes</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.LN_Class.ANCR">
+<span class="sig-name descname"><span class="pre">ANCR</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Neutral</span> <span class="pre">current</span> <span class="pre">regulator'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.LN_Class.ANCR" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.LN_Class.ARCO">
+<span class="sig-name descname"><span class="pre">ARCO</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Reactive</span> <span class="pre">power</span> <span class="pre">control'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.LN_Class.ARCO" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.LN_Class.ATCC">
+<span class="sig-name descname"><span class="pre">ATCC</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Automatic</span> <span class="pre">tap</span> <span class="pre">changer</span> <span class="pre">controller'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.LN_Class.ATCC" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.LN_Class.AVCO">
+<span class="sig-name descname"><span class="pre">AVCO</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Voltage</span> <span class="pre">control'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.LN_Class.AVCO" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.LN_Class.CALH">
+<span class="sig-name descname"><span class="pre">CALH</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Alarm</span> <span class="pre">handling'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.LN_Class.CALH" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.LN_Class.CCGR">
+<span class="sig-name descname"><span class="pre">CCGR</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Cooling</span> <span class="pre">group</span> <span class="pre">control'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.LN_Class.CCGR" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.LN_Class.CILO">
+<span class="sig-name descname"><span class="pre">CILO</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Interlocking'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.LN_Class.CILO" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.LN_Class.CPOW">
+<span class="sig-name descname"><span class="pre">CPOW</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Point-on-wave</span> <span class="pre">switching'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.LN_Class.CPOW" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.LN_Class.CSWI">
+<span class="sig-name descname"><span class="pre">CSWI</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Switch</span> <span class="pre">controller'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.LN_Class.CSWI" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.LN_Class.GAPC">
+<span class="sig-name descname"><span class="pre">GAPC</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Generic</span> <span class="pre">automatic</span> <span class="pre">process</span> <span class="pre">control'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.LN_Class.GAPC" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.LN_Class.GGIO">
+<span class="sig-name descname"><span class="pre">GGIO</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Generic</span> <span class="pre">process</span> <span class="pre">I/O'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.LN_Class.GGIO" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.LN_Class.GSAL">
+<span class="sig-name descname"><span class="pre">GSAL</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Generic</span> <span class="pre">security</span> <span class="pre">application'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.LN_Class.GSAL" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.LN_Class.IARC">
+<span class="sig-name descname"><span class="pre">IARC</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Archiving'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.LN_Class.IARC" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.LN_Class.IHMI">
+<span class="sig-name descname"><span class="pre">IHMI</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Human</span> <span class="pre">machine</span> <span class="pre">interface'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.LN_Class.IHMI" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.LN_Class.ITCI">
+<span class="sig-name descname"><span class="pre">ITCI</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Telecontrol</span> <span class="pre">interface'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.LN_Class.ITCI" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.LN_Class.ITMI">
+<span class="sig-name descname"><span class="pre">ITMI</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Telemonitoring</span> <span class="pre">interface'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.LN_Class.ITMI" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.LN_Class.LLN0">
+<span class="sig-name descname"><span class="pre">LLN0</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Logical</span> <span class="pre">node</span> <span class="pre">zero'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.LN_Class.LLN0" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.LN_Class.LPHD">
+<span class="sig-name descname"><span class="pre">LPHD</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Physical</span> <span class="pre">device</span> <span class="pre">information'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.LN_Class.LPHD" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.LN_Class.MDIF">
+<span class="sig-name descname"><span class="pre">MDIF</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Differential</span> <span class="pre">measurements'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.LN_Class.MDIF" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.LN_Class.MHAI">
+<span class="sig-name descname"><span class="pre">MHAI</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Harmonics</span> <span class="pre">or</span> <span class="pre">interharmonics'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.LN_Class.MHAI" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.LN_Class.MHAN">
+<span class="sig-name descname"><span class="pre">MHAN</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Non</span> <span class="pre">phase</span> <span class="pre">related</span> <span class="pre">harmonics</span> <span class="pre">or</span> <span class="pre">interharmonics'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.LN_Class.MHAN" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.LN_Class.MMTR">
+<span class="sig-name descname"><span class="pre">MMTR</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Metering'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.LN_Class.MMTR" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.LN_Class.MMXN">
+<span class="sig-name descname"><span class="pre">MMXN</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Non</span> <span class="pre">phase</span> <span class="pre">related</span> <span class="pre">Measurement'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.LN_Class.MMXN" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.LN_Class.MMXU">
+<span class="sig-name descname"><span class="pre">MMXU</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Measurement'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.LN_Class.MMXU" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.LN_Class.MSQI">
+<span class="sig-name descname"><span class="pre">MSQI</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Sequence</span> <span class="pre">and</span> <span class="pre">imbalance'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.LN_Class.MSQI" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.LN_Class.MSTA">
+<span class="sig-name descname"><span class="pre">MSTA</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Metering</span> <span class="pre">Statistics'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.LN_Class.MSTA" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.LN_Class.PDIF">
+<span class="sig-name descname"><span class="pre">PDIF</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Differential'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.LN_Class.PDIF" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.LN_Class.PDIR">
+<span class="sig-name descname"><span class="pre">PDIR</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Direction</span> <span class="pre">comparison'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.LN_Class.PDIR" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.LN_Class.PDIS">
+<span class="sig-name descname"><span class="pre">PDIS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Distance'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.LN_Class.PDIS" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.LN_Class.PDOP">
+<span class="sig-name descname"><span class="pre">PDOP</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Directional</span> <span class="pre">overpower'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.LN_Class.PDOP" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.LN_Class.PDUP">
+<span class="sig-name descname"><span class="pre">PDUP</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Directional</span> <span class="pre">underpower'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.LN_Class.PDUP" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.LN_Class.PFRC">
+<span class="sig-name descname"><span class="pre">PFRC</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Rate</span> <span class="pre">of</span> <span class="pre">change</span> <span class="pre">of</span> <span class="pre">frequency'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.LN_Class.PFRC" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.LN_Class.PHAR">
+<span class="sig-name descname"><span class="pre">PHAR</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Harmonic</span> <span class="pre">restraint'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.LN_Class.PHAR" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.LN_Class.PHIZ">
+<span class="sig-name descname"><span class="pre">PHIZ</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Ground</span> <span class="pre">detector'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.LN_Class.PHIZ" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.LN_Class.PIOC">
+<span class="sig-name descname"><span class="pre">PIOC</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Instantaneous</span> <span class="pre">overcurrent'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.LN_Class.PIOC" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.LN_Class.PMRI">
+<span class="sig-name descname"><span class="pre">PMRI</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Motor</span> <span class="pre">restart</span> <span class="pre">inhibition'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.LN_Class.PMRI" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.LN_Class.PMSS">
+<span class="sig-name descname"><span class="pre">PMSS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Motor</span> <span class="pre">starting</span> <span class="pre">time</span> <span class="pre">supervision'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.LN_Class.PMSS" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.LN_Class.POPF">
+<span class="sig-name descname"><span class="pre">POPF</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Over</span> <span class="pre">power</span> <span class="pre">factor'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.LN_Class.POPF" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.LN_Class.PPAM">
+<span class="sig-name descname"><span class="pre">PPAM</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Phase</span> <span class="pre">angle</span> <span class="pre">measuring'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.LN_Class.PPAM" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.LN_Class.PSCH">
+<span class="sig-name descname"><span class="pre">PSCH</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Protection</span> <span class="pre">scheme'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.LN_Class.PSCH" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.LN_Class.PSDE">
+<span class="sig-name descname"><span class="pre">PSDE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Sensitive</span> <span class="pre">directional</span> <span class="pre">earthfault'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.LN_Class.PSDE" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.LN_Class.PTEF">
+<span class="sig-name descname"><span class="pre">PTEF</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Transient</span> <span class="pre">earth</span> <span class="pre">fault'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.LN_Class.PTEF" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.LN_Class.PTOC">
+<span class="sig-name descname"><span class="pre">PTOC</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Time</span> <span class="pre">overcurrent'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.LN_Class.PTOC" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.LN_Class.PTOF">
+<span class="sig-name descname"><span class="pre">PTOF</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Overfrequency'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.LN_Class.PTOF" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.LN_Class.PTOV">
+<span class="sig-name descname"><span class="pre">PTOV</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Overvoltage'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.LN_Class.PTOV" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.LN_Class.PTRC">
+<span class="sig-name descname"><span class="pre">PTRC</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Protection</span> <span class="pre">trip</span> <span class="pre">conditioning'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.LN_Class.PTRC" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.LN_Class.PTTR">
+<span class="sig-name descname"><span class="pre">PTTR</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Thermal</span> <span class="pre">overload'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.LN_Class.PTTR" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.LN_Class.PTUC">
+<span class="sig-name descname"><span class="pre">PTUC</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Undercurrent'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.LN_Class.PTUC" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.LN_Class.PTUF">
+<span class="sig-name descname"><span class="pre">PTUF</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Underfrequency'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.LN_Class.PTUF" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.LN_Class.PTUV">
+<span class="sig-name descname"><span class="pre">PTUV</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Undervoltage'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.LN_Class.PTUV" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.LN_Class.PUPF">
+<span class="sig-name descname"><span class="pre">PUPF</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Underpower</span> <span class="pre">factor'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.LN_Class.PUPF" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.LN_Class.PVOC">
+<span class="sig-name descname"><span class="pre">PVOC</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Voltage</span> <span class="pre">controlled</span> <span class="pre">time</span> <span class="pre">overcurrent'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.LN_Class.PVOC" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.LN_Class.PVPH">
+<span class="sig-name descname"><span class="pre">PVPH</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Volts</span> <span class="pre">per</span> <span class="pre">Hz'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.LN_Class.PVPH" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.LN_Class.PZSU">
+<span class="sig-name descname"><span class="pre">PZSU</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Zero</span> <span class="pre">speed</span> <span class="pre">or</span> <span class="pre">underspeed'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.LN_Class.PZSU" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.LN_Class.RADR">
+<span class="sig-name descname"><span class="pre">RADR</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Disturbance</span> <span class="pre">recorder</span> <span class="pre">channel</span> <span class="pre">analogue'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.LN_Class.RADR" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.LN_Class.RBDR">
+<span class="sig-name descname"><span class="pre">RBDR</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Disturbance</span> <span class="pre">recorder</span> <span class="pre">channel</span> <span class="pre">binary'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.LN_Class.RBDR" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.LN_Class.RBRF">
+<span class="sig-name descname"><span class="pre">RBRF</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Breaker</span> <span class="pre">failure'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.LN_Class.RBRF" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.LN_Class.RDIR">
+<span class="sig-name descname"><span class="pre">RDIR</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Directional</span> <span class="pre">element'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.LN_Class.RDIR" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.LN_Class.RDRE">
+<span class="sig-name descname"><span class="pre">RDRE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Disturbance</span> <span class="pre">recorder</span> <span class="pre">function'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.LN_Class.RDRE" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.LN_Class.RDRS">
+<span class="sig-name descname"><span class="pre">RDRS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Disturbance</span> <span class="pre">record</span> <span class="pre">handling'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.LN_Class.RDRS" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.LN_Class.RFLO">
+<span class="sig-name descname"><span class="pre">RFLO</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Fault</span> <span class="pre">locator'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.LN_Class.RFLO" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.LN_Class.RPSB">
+<span class="sig-name descname"><span class="pre">RPSB</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Power</span> <span class="pre">swing</span> <span class="pre">detection/blocking'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.LN_Class.RPSB" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.LN_Class.RREC">
+<span class="sig-name descname"><span class="pre">RREC</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Autoreclosing'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.LN_Class.RREC" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.LN_Class.RSYN">
+<span class="sig-name descname"><span class="pre">RSYN</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Synchronism-check</span> <span class="pre">or</span> <span class="pre">synchronising'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.LN_Class.RSYN" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.LN_Class.SARC">
+<span class="sig-name descname"><span class="pre">SARC</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Monitoring</span> <span class="pre">and</span> <span class="pre">diagnostics</span> <span class="pre">for</span> <span class="pre">arcs'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.LN_Class.SARC" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.LN_Class.SIMG">
+<span class="sig-name descname"><span class="pre">SIMG</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Insulation</span> <span class="pre">medium</span> <span class="pre">supervision</span> <span class="pre">(gas)'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.LN_Class.SIMG" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.LN_Class.from_lname">
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_lname</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ln_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#icspacket.proto.iec61850.classes.LN_Class" title="icspacket.proto.iec61850.classes.LN_Class"><span class="pre">LN_Class</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="reference internal" href="../../_modules/icspacket/proto/iec61850/classes.html#LN_Class.from_lname"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iec61850.classes.LN_Class.from_lname" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.LN_Group">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">icspacket.proto.iec61850.classes.</span></span><span class="sig-name descname"><span class="pre">LN_Group</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">values</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/icspacket/proto/iec61850/classes.html#LN_Group"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iec61850.classes.LN_Group" title="Link to this definition">¶</a></dt>
+<dd><p>Logical Node (LN) groups</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.LN_Group.A">
+<span class="sig-name descname"><span class="pre">A</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Automatic</span> <span class="pre">Control'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.LN_Group.A" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.LN_Group.C">
+<span class="sig-name descname"><span class="pre">C</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Supervisory</span> <span class="pre">control'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.LN_Group.C" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.LN_Group.G">
+<span class="sig-name descname"><span class="pre">G</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Generic</span> <span class="pre">Function</span> <span class="pre">References'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.LN_Group.G" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.LN_Group.I">
+<span class="sig-name descname"><span class="pre">I</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Interfacing</span> <span class="pre">and</span> <span class="pre">Archiving'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.LN_Group.I" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.LN_Group.L">
+<span class="sig-name descname"><span class="pre">L</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'System</span> <span class="pre">Logical</span> <span class="pre">Nodes'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.LN_Group.L" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.LN_Group.M">
+<span class="sig-name descname"><span class="pre">M</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Metering</span> <span class="pre">and</span> <span class="pre">Measurement'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.LN_Group.M" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.LN_Group.P">
+<span class="sig-name descname"><span class="pre">P</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Protection</span> <span class="pre">Functions'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.LN_Group.P" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.LN_Group.R">
+<span class="sig-name descname"><span class="pre">R</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Protection</span> <span class="pre">Related</span> <span class="pre">Functions'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.LN_Group.R" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.LN_Group.S">
+<span class="sig-name descname"><span class="pre">S</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Sensors,</span> <span class="pre">Monitoring'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.LN_Group.S" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.LN_Group.T">
+<span class="sig-name descname"><span class="pre">T</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Instrument</span> <span class="pre">Transformer'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.LN_Group.T" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.LN_Group.X">
+<span class="sig-name descname"><span class="pre">X</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Switchgear'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.LN_Group.X" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.LN_Group.Y">
+<span class="sig-name descname"><span class="pre">Y</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Power</span> <span class="pre">Transformer</span> <span class="pre">and</span> <span class="pre">Related</span> <span class="pre">Functions'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.LN_Group.Y" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.LN_Group.Z">
+<span class="sig-name descname"><span class="pre">Z</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Further</span> <span class="pre">(power</span> <span class="pre">system)</span> <span class="pre">Equipment'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.LN_Group.Z" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.DATA_Class">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">icspacket.proto.iec61850.classes.</span></span><span class="sig-name descname"><span class="pre">DATA_Class</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">values</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/icspacket/proto/iec61850/classes.html#DATA_Class"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iec61850.classes.DATA_Class" title="Link to this definition">¶</a></dt>
+<dd><p>Common DATA classes</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.DATA_Class.ACD">
+<span class="sig-name descname"><span class="pre">ACD</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Directional</span> <span class="pre">protection</span> <span class="pre">activation</span> <span class="pre">information'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.DATA_Class.ACD" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.DATA_Class.ACT">
+<span class="sig-name descname"><span class="pre">ACT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Protection</span> <span class="pre">activation</span> <span class="pre">information'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.DATA_Class.ACT" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.DATA_Class.APC">
+<span class="sig-name descname"><span class="pre">APC</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Controllable</span> <span class="pre">analogue</span> <span class="pre">process</span> <span class="pre">value'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.DATA_Class.APC" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.DATA_Class.ASG">
+<span class="sig-name descname"><span class="pre">ASG</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Analogue</span> <span class="pre">setting'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.DATA_Class.ASG" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.DATA_Class.BAC">
+<span class="sig-name descname"><span class="pre">BAC</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Binary</span> <span class="pre">controlled</span> <span class="pre">analog</span> <span class="pre">process</span> <span class="pre">value'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.DATA_Class.BAC" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.DATA_Class.BCR">
+<span class="sig-name descname"><span class="pre">BCR</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Binary</span> <span class="pre">counter</span> <span class="pre">reading'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.DATA_Class.BCR" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.DATA_Class.BSC">
+<span class="sig-name descname"><span class="pre">BSC</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Binary</span> <span class="pre">controlled</span> <span class="pre">step</span> <span class="pre">position</span> <span class="pre">information'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.DATA_Class.BSC" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.DATA_Class.CMV">
+<span class="sig-name descname"><span class="pre">CMV</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Complex</span> <span class="pre">measured</span> <span class="pre">value'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.DATA_Class.CMV" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.DATA_Class.CSD">
+<span class="sig-name descname"><span class="pre">CSD</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Curve</span> <span class="pre">shape</span> <span class="pre">description'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.DATA_Class.CSD" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.DATA_Class.CSG">
+<span class="sig-name descname"><span class="pre">CSG</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Curve</span> <span class="pre">shape</span> <span class="pre">setting'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.DATA_Class.CSG" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.DATA_Class.CUG">
+<span class="sig-name descname"><span class="pre">CUG</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Currency</span> <span class="pre">setting</span> <span class="pre">group'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.DATA_Class.CUG" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.DATA_Class.CURVE">
+<span class="sig-name descname"><span class="pre">CURVE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Setting</span> <span class="pre">curve'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.DATA_Class.CURVE" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.DATA_Class.DEL">
+<span class="sig-name descname"><span class="pre">DEL</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Phase</span> <span class="pre">to</span> <span class="pre">phase</span> <span class="pre">related</span> <span class="pre">measured</span> <span class="pre">values</span> <span class="pre">of</span> <span class="pre">a</span> <span class="pre">three-phase</span> <span class="pre">system'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.DATA_Class.DEL" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.DATA_Class.DPC">
+<span class="sig-name descname"><span class="pre">DPC</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Controllable</span> <span class="pre">double</span> <span class="pre">point'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.DATA_Class.DPC" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.DATA_Class.DPL">
+<span class="sig-name descname"><span class="pre">DPL</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Device</span> <span class="pre">name</span> <span class="pre">plate'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.DATA_Class.DPL" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.DATA_Class.DPS">
+<span class="sig-name descname"><span class="pre">DPS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Double</span> <span class="pre">point</span> <span class="pre">status'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.DATA_Class.DPS" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.DATA_Class.ENC">
+<span class="sig-name descname"><span class="pre">ENC</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Controllable</span> <span class="pre">enumerated</span> <span class="pre">status'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.DATA_Class.ENC" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.DATA_Class.ENG">
+<span class="sig-name descname"><span class="pre">ENG</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Enumerated</span> <span class="pre">status</span> <span class="pre">setting'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.DATA_Class.ENG" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.DATA_Class.ENS">
+<span class="sig-name descname"><span class="pre">ENS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Enumerated</span> <span class="pre">status'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.DATA_Class.ENS" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.DATA_Class.HDEL">
+<span class="sig-name descname"><span class="pre">HDEL</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Harmonic</span> <span class="pre">value</span> <span class="pre">for</span> <span class="pre">DEL'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.DATA_Class.HDEL" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.DATA_Class.HMV">
+<span class="sig-name descname"><span class="pre">HMV</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Harmonic</span> <span class="pre">value'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.DATA_Class.HMV" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.DATA_Class.HST">
+<span class="sig-name descname"><span class="pre">HST</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Histogram'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.DATA_Class.HST" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.DATA_Class.HWYE">
+<span class="sig-name descname"><span class="pre">HWYE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Harmonic</span> <span class="pre">value</span> <span class="pre">for</span> <span class="pre">WYE'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.DATA_Class.HWYE" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.DATA_Class.INC">
+<span class="sig-name descname"><span class="pre">INC</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Controllable</span> <span class="pre">integer</span> <span class="pre">status'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.DATA_Class.INC" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.DATA_Class.ING">
+<span class="sig-name descname"><span class="pre">ING</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Integer</span> <span class="pre">status</span> <span class="pre">setting'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.DATA_Class.ING" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.DATA_Class.INS">
+<span class="sig-name descname"><span class="pre">INS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Integer</span> <span class="pre">status'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.DATA_Class.INS" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.DATA_Class.ISC">
+<span class="sig-name descname"><span class="pre">ISC</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Integer</span> <span class="pre">controlled</span> <span class="pre">step</span> <span class="pre">position</span> <span class="pre">information'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.DATA_Class.ISC" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.DATA_Class.LPL">
+<span class="sig-name descname"><span class="pre">LPL</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Logical</span> <span class="pre">node</span> <span class="pre">name</span> <span class="pre">plate'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.DATA_Class.LPL" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.DATA_Class.MV">
+<span class="sig-name descname"><span class="pre">MV</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Measured</span> <span class="pre">value'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.DATA_Class.MV" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.DATA_Class.ORG">
+<span class="sig-name descname"><span class="pre">ORG</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Object</span> <span class="pre">reference</span> <span class="pre">setting'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.DATA_Class.ORG" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.DATA_Class.SAV">
+<span class="sig-name descname"><span class="pre">SAV</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Sampled</span> <span class="pre">value'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.DATA_Class.SAV" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.DATA_Class.SEC">
+<span class="sig-name descname"><span class="pre">SEC</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Security</span> <span class="pre">violation</span> <span class="pre">counting'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.DATA_Class.SEC" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.DATA_Class.SEQ">
+<span class="sig-name descname"><span class="pre">SEQ</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Sequence'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.DATA_Class.SEQ" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.DATA_Class.SPC">
+<span class="sig-name descname"><span class="pre">SPC</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Controllable</span> <span class="pre">single</span> <span class="pre">point'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.DATA_Class.SPC" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.DATA_Class.SPG">
+<span class="sig-name descname"><span class="pre">SPG</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Single</span> <span class="pre">point</span> <span class="pre">setting'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.DATA_Class.SPG" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.DATA_Class.SPS">
+<span class="sig-name descname"><span class="pre">SPS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Single</span> <span class="pre">point</span> <span class="pre">status'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.DATA_Class.SPS" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.DATA_Class.TSG">
+<span class="sig-name descname"><span class="pre">TSG</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Time</span> <span class="pre">setting</span> <span class="pre">group'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.DATA_Class.TSG" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.DATA_Class.VSG">
+<span class="sig-name descname"><span class="pre">VSG</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Visible</span> <span class="pre">string</span> <span class="pre">setting'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.DATA_Class.VSG" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.DATA_Class.VSS">
+<span class="sig-name descname"><span class="pre">VSS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Visible</span> <span class="pre">string</span> <span class="pre">status</span> <span class="pre">'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.DATA_Class.VSS" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.DATA_Class.WYE">
+<span class="sig-name descname"><span class="pre">WYE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Phase</span> <span class="pre">to</span> <span class="pre">ground/neutral</span> <span class="pre">related</span> <span class="pre">measured</span> <span class="pre">values</span> <span class="pre">of</span> <span class="pre">a</span> <span class="pre">three-phase</span> <span class="pre">system'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.DATA_Class.WYE" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.DATA_Class.from_name">
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">datname</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="positional-only-separator o"><abbr title="Positional-only parameter separator (PEP 570)"><span class="pre">/</span></abbr></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#icspacket.proto.iec61850.classes.DATA_Class" title="icspacket.proto.iec61850.classes.DATA_Class"><span class="pre">DATA_Class</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="reference internal" href="../../_modules/icspacket/proto/iec61850/classes.html#DATA_Class.from_name"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iec61850.classes.DATA_Class.from_name" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.FC">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">icspacket.proto.iec61850.classes.</span></span><span class="sig-name descname"><span class="pre">FC</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">values</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/icspacket/proto/iec61850/classes.html#FC"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iec61850.classes.FC" title="Link to this definition">¶</a></dt>
+<dd><p>Functional Constraints</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.FC.BL">
+<span class="sig-name descname"><span class="pre">BL</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Blocking'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.FC.BL" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.FC.BR">
+<span class="sig-name descname"><span class="pre">BR</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Buffered</span> <span class="pre">report'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.FC.BR" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.FC.CF">
+<span class="sig-name descname"><span class="pre">CF</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Configuration'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.FC.CF" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.FC.CO">
+<span class="sig-name descname"><span class="pre">CO</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Control'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.FC.CO" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.FC.DC">
+<span class="sig-name descname"><span class="pre">DC</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Description'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.FC.DC" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.FC.EX">
+<span class="sig-name descname"><span class="pre">EX</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Extended</span> <span class="pre">definition</span> <span class="pre">(application</span> <span class="pre">name</span> <span class="pre">space)'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.FC.EX" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.FC.GO">
+<span class="sig-name descname"><span class="pre">GO</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Goose</span> <span class="pre">control'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.FC.GO" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.FC.GS">
+<span class="sig-name descname"><span class="pre">GS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Gsse</span> <span class="pre">control'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.FC.GS" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.FC.LG">
+<span class="sig-name descname"><span class="pre">LG</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Logging'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.FC.LG" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.FC.MS">
+<span class="sig-name descname"><span class="pre">MS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Multicast</span> <span class="pre">sampled</span> <span class="pre">value</span> <span class="pre">control'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.FC.MS" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.FC.MX">
+<span class="sig-name descname"><span class="pre">MX</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Measurands</span> <span class="pre">(analogue</span> <span class="pre">values)'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.FC.MX" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.FC.OR">
+<span class="sig-name descname"><span class="pre">OR</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Operate</span> <span class="pre">received'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.FC.OR" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.FC.RP">
+<span class="sig-name descname"><span class="pre">RP</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Unbuffered</span> <span class="pre">report'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.FC.RP" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.FC.SE">
+<span class="sig-name descname"><span class="pre">SE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Setting</span> <span class="pre">group</span> <span class="pre">editable'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.FC.SE" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.FC.SG">
+<span class="sig-name descname"><span class="pre">SG</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Setting</span> <span class="pre">group'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.FC.SG" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.FC.SP">
+<span class="sig-name descname"><span class="pre">SP</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Setting</span> <span class="pre">(outside</span> <span class="pre">setting</span> <span class="pre">group)'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.FC.SP" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.FC.SR">
+<span class="sig-name descname"><span class="pre">SR</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Service</span> <span class="pre">response'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.FC.SR" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.FC.ST">
+<span class="sig-name descname"><span class="pre">ST</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Status</span> <span class="pre">information'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.FC.ST" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.FC.SV">
+<span class="sig-name descname"><span class="pre">SV</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Substitution'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.FC.SV" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.FC.US">
+<span class="sig-name descname"><span class="pre">US</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Unicast</span> <span class="pre">sampled</span> <span class="pre">value</span> <span class="pre">control'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.FC.US" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.classes.FC.XX">
+<span class="sig-name descname"><span class="pre">XX</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'All'</span></em><a class="headerlink" href="#icspacket.proto.iec61850.classes.FC.XX" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+
+        </article><button class="back-to-top" type="button">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+  </svg>
+  <span>Back to top</span>
+</button><div class="navigation flex print:hidden"><div class="navigation-prev">
+    <a href="api.html">
+      <i class="i-lucide chevron-left"></i>
+      <div class="page-info">
+        <span>Previous</span><div class="title">API Reference</div></div>
+    </a>
+  </div><div class="navigation-next">
+    <a href="api_path.html">
+      <div class="page-info">
+        <span>Next</span>
+        <div class="title">Object / Data References</div>
+      </div>
+      <i class="i-lucide chevron-right"></i>
+    </a>
+  </div></div></div>
+    </div>
+  </main>
+</div>
+<footer class="sy-foot">
+  <div class="sy-foot-inner sy-container mx-auto">
+    <div class="sy-foot-reserved md:flex justify-between items-center">
+      <div class="sy-foot-copyright"><p>2025, MatrixEditor</p>
+  
+  <p>
+    Made with
+    
+    <a href="https://www.sphinx-doc.org/">Sphinx</a> and
+    
+    <a href="https://shibuya.lepture.com">Shibuya theme</a>.
+  </p>
+</div>
+      <div class="sy-foot-socials">
+<a href="https://github.com/MatrixEditor/icspacket" aria-label="GitHub">
+  <iconify-icon icon="simple-icons:github"></iconify-icon>
+</a></div>
+    </div>
+  </div>
+</footer>
+      <script src="../../_static/documentation_options.js?v=8fd3cfc3"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+      <script src="../../_static/shibuya.js?v=e730760c"></script></body>
+</html>

@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en" data-accent-color="lime" data-content_root="../../">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Object / Data References - icspacket 0.1.dev1+gdba28063c documentation</title><link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="IED Client" href="api_client.html" /><link rel="prev" title="Data Classes" href="api_data_classes.html" />
+      <link rel="canonical" href="https://matrixeditor.github.io/icspacket/protocols/iec61850/api_path.html" /><script>
+    function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
+    setColorMode(localStorage._theme||"dark");
+  </script><link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=397bb51e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/shibuya.css?v=d48c410d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link media="print" rel="stylesheet" type="text/css" href="../../_static/print.css?v=20ff2c19" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --sy-f-text: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+  --sy-f-heading: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+}
+</style>
+    <meta property="og:type" content="website"/>
+<meta property="og:url" content="https://matrixeditor.github.io/icspacket/protocols/iec61850/api_path.html"/>
+<meta property="og:title" content="Object / Data References"/>
+<meta name="twitter:card" content="summary"/>
+  </head>
+<body><div class="sy-head">
+  <div class="sy-head-blur"></div>
+  <div class="sy-head-inner sy-container mx-auto">
+    <a class="sy-head-brand" href="../../index.html">
+      
+      
+      <strong>icspacket</strong>
+    </a>
+    <div class="sy-head-nav" id="head-nav">
+      <nav class="sy-head-links"><ul>
+      <li class="link"><a class="js-menu" href="../../getting-started/protocols.html" id="nav-trigger-1" aria-controls="nav-children-1">
+            <span>Examples</span>
+            <i class="i-lucide chevron-down"></i>
+          </a>
+        <ul id="nav-children-1" aria-labelledby="nav-trigger-1"><li><a href="../mms/examples.html">
+                <span>MMS Utilities</span>
+                <small>Manufacturing Message Specification tools</small>
+              </a></li><li><a href="../dnp3/examples.html">
+                <span>DNP3 Tools</span>
+                <small>DNP3 utilities and tools</small>
+              </a></li><li><a href="iedmap.html">
+                <span>IED Enumeration Tool</span>
+                <small>Logical Device enumeration and more</small>
+              </a></li></ul>
+      </li></ul></nav>
+      <div class="sy-head-extra flex items-center print:hidden"><form class="searchbox flex items-center" action="../../search.html" method="get">
+  <input type="text" name="q" placeholder="Search" />
+  <kbd>/</kbd>
+</form><div class="sy-head-socials">
+  <a href="https://github.com/MatrixEditor/icspacket" aria-label="GitHub">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </a></div></div>
+    </div>
+    <div class="sy-head-actions flex items-center shrink-0 print:hidden"><button class="js-theme theme-switch flex items-center"
+data-aria-auto="Switch to light color mode"
+data-aria-light="Switch to dark color mode"
+data-aria-dark="Switch to auto color mode">
+<i class="i-lucide theme-icon"></i>
+</button><button class="md:hidden flex items-center js-menu" aria-label="Menu" type="button" aria-controls="head-nav" aria-expanded="false">
+        <div class="hamburger">
+          <span class="hamburger_1"></span>
+          <span class="hamburger_2 -translate-x-2"></span>
+          <span class="hamburger_3 -translate-x-1"></span>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>
+<div class="sy-page sy-container flex mx-auto">
+  <aside id="lside" class="sy-lside md:w-72 md:shrink-0 print:hidden">
+    <div class="sy-lside-inner md:sticky">
+      <div class="sy-scrollbar p-6"><div class="sidebar-links">
+  <ul>
+    <li><a class="icon-link" href="https://github.com/MatrixEditor/icspacket/discussions">
+  <span class="icon">
+    <svg viewBox="0 0 24 24" fill="none">
+      <path fill="var(--accent-9)" fill-rule="evenodd" clip-rule="evenodd" d="M11 5a6 6 0 0 0-4.687 9.746c.215.27.315.62.231.954l-.514 2.058a1 1 0 0 0 1.485 1.1l2.848-1.71c.174-.104.374-.15.576-.148H13a6 6 0 0 0 0-12h-2Z"/>
+      <circle fill="white" cx="12" cy="11" r="1"/>
+      <circle fill="white" cx="9" cy="11" r="1"/>
+      <circle fill="white" cx="15" cy="11" r="1"/>
+    </svg>
+  </span>
+  <span class="text">Discussion</span>
+</a></li>
+  </ul>
+</div>
+        <div class="globaltoc" data-expand-depth="2"><p class="caption" role="heading" aria-level="3"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../getting-started/installation.html">Installation</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../getting-started/protocols.html">Protocols Overview</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../getting-started/coreapi.html">Core API Reference</a></li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">DNP3 / IEEE 1815</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../dnp3/dnp3read.html">Reading Objects</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../dnp3/dnp3dump.html">Dumping Objects</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../dnp3/dnp3resolve.html">Resolve Link Addresses</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../dnp3/api.html">API Reference</a><ul>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../dnp3/api/link.html">Link Layer</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../dnp3/api/transport.html">Transport Layer</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../dnp3/api/application.html">Application Layer</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../dnp3/api/master.html">Master</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../dnp3/api/object_library.html">Object Library</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../dnp3/api/primitives.html">Primitive Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dnp3/api/coding.html">Encoding / Decoding</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dnp3/api/variations.html">Variations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dnp3/api/coding_utils.html">Object Utilities</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">IEC 61850</span></p>
+<ul class="current">
+<li class="toctree-l1 _expand"><a class="reference internal" href="iedmap.html">Enumerating IEDs</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="api.html">API Reference</a><ul class="current">
+<li class="toctree-l2 _expand"><a class="reference internal" href="api_data_classes.html">Data Classes</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Object / Data References</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="api_client.html">IED Client</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">MMS / ISO 9506</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../mms/demo_vars.html">Variable Target Format</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../mms/demo_vars.html#variableaccess-service-rwq">VariableAccess Service (rwq)</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../mms/demo_files.html">FileManagement Service</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../mms/api.html">API Reference</a><ul>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../mms/api_conn.html">MMS Connection</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../mms/api_data.html">Data Conversion</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../mms/api_utils.html">Protocol Utilities</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">ACSE / X.227</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../acse/api.html">API Reference</a></li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">COPP / X.226 / ISO 8823</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../copp/api.html">API Reference</a><ul>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../copp/presentation.html">ISO Presentation</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../copp/utils.html">Protocol Utilities</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">COSP / X.225 / ISO 8237-1</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../cosp/api.html">API Reference</a><ul>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../cosp/tsdu.html">TSDU</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../cosp/spdu.html">SPDU Types</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../cosp/values.html">Parameter Values (PV)</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../cosp/session.html">ISO Session</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../cosp/utils.html">Protocol Utilities</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">COTP / X.224</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../cotp/api.html">API Reference</a><ul>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../cotp/structs.html">TPDU Types</a></li>
+<li class="toctree-l2 _expand"><a class="reference internal" href="../cotp/connection.html">Connection</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">TPKT Protocol (RFC1006)</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../tpkt/usage.html">Using a TPKT Wrapper</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../tpkt/api.html">API Reference</a></li>
+</ul>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="lside-overlay js-menu" role="button" aria-label="Close left sidebar" aria-controls="lside" aria-expanded="false"></div>
+  <aside id="rside" class="sy-rside pb-3 w-64 shrink-0 order-last">
+    <button class="rside-close js-menu xl:hidden" aria-label="Close Table of Contents" type="button" aria-controls="rside" aria-expanded="false">
+      <i class="i-lucide close"></i>
+    </button>
+    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div class="localtoc"><h3>On this page</h3><ul>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.path.ObjectReference"><code class="docutils literal notranslate"><span class="pre">ObjectReference</span></code></a><ul>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.path.ObjectReference.ldname"><code class="docutils literal notranslate">ldname</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.path.ObjectReference.lnname"><code class="docutils literal notranslate">lnname</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.path.ObjectReference.lnclass"><code class="docutils literal notranslate">lnclass</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.path.ObjectReference.lngroup"><code class="docutils literal notranslate">lngroup</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.path.ObjectReference.parts"><code class="docutils literal notranslate">parts</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.path.ObjectReference.name"><code class="docutils literal notranslate">name()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.path.ObjectReference.from_mmsref"><code class="docutils literal notranslate">from_mmsref()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.path.ObjectReference.from_string"><code class="docutils literal notranslate">from_string()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.path.ObjectReference.mmsref"><code class="docutils literal notranslate">mmsref</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.path.ObjectReference.mms_name"><code class="docutils literal notranslate">mms_name</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.path.DataObjectReference"><code class="docutils literal notranslate"><span class="pre">DataObjectReference</span></code></a><ul>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.path.DataObjectReference.functional_constraint"><code class="docutils literal notranslate">functional_constraint</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.path.DataObjectReference.datname"><code class="docutils literal notranslate">datname</span></code></a></li>
+</ul>
+</li>
+</ul>
+</div><a class="js-repo-stats repo-stats flex items-center" href="https://github.com/MatrixEditor/icspacket"
+  data-type="github" data-user="MatrixEditor" data-repo="icspacket">
+  <span class="w-8 flex items-center justify-around shrink-0 text-3xl">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </span>
+  <span class="flex-grow px-2 break-all">
+    <span style="font-size: small;">MatrixEditor/icspacket</span>
+    <span class="flex text-sm repo-stats-count">
+      <span class="flex items-center pr-3">
+        <iconify-icon icon="lucide:star"></iconify-icon>
+        <strong class="js-repo-stars ml-1">0</strong>
+      </span>
+      <span class="flex items-center">
+        <iconify-icon icon="lucide:git-fork"></iconify-icon>
+        <strong class="js-repo-forks ml-1">0</strong>
+      </span>
+    </span>
+  </span>
+</a><div class="edit-this-page">
+  <a href="https://github.com/MatrixEditor/icspacket/blob/main/docs/protocols/iec61850/api_path.rst">Edit this page</a>
+</div></div>
+  </aside>
+  <div class="rside-overlay js-menu" role="button" aria-label="Close Table of Contents" aria-controls="rside" aria-expanded="false"></div>
+  <main class="sy-main w-full max-sm:max-w-full print:pt-6">
+<div class="sy-breadcrumbs" role="navigation">
+  <div class="sy-breadcrumbs-inner flex items-center">
+    <div class="md:hidden mr-3">
+      <button class="js-menu" aria-label="Menu" type="button" aria-controls="lside" aria-expanded="false">
+        <i class="i-lucide menu"></i>
+      </button>
+    </div>
+    <ol class="flex-1" itemscope itemtype="https://schema.org/BreadcrumbList"><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="../../index.html"><span itemprop="name">icspacket</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="1" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="api.html"><span itemprop="name">API Reference</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="2" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <strong itemprop="name">Object / Data References</strong>
+        <meta itemprop="position" content="3" />
+      </li></ol>
+    <div class="xl:hidden ml-1">
+      <button class="js-menu" aria-label="Show table of contents" type="button" aria-controls="rside"
+        aria-expanded="false">
+        <i class="i-lucide outdent"></i>
+      </button>
+    </div>
+  </div>
+</div><div class="flex flex-col break-words justify-between">
+      <div class="min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
+        <article class="yue" role="main">
+          <section id="module-icspacket.proto.iec61850.path">
+<span id="object-data-references"></span><span id="iec61850-api-path"></span><h1>Object / Data References<a class="headerlink" href="#module-icspacket.proto.iec61850.path" title="Link to this heading">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.path.ObjectReference">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">icspacket.proto.iec61850.path.</span></span><span class="sig-name descname"><span class="pre">ObjectReference</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logical_device</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="positional-only-separator o"><abbr title="Positional-only parameter separator (PEP 570)"><span class="pre">/</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">logical_node</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">names</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/icspacket/proto/iec61850/path.html#ObjectReference"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iec61850.path.ObjectReference" title="Link to this definition">¶</a></dt>
+<dd><p>IEC 61850 ACSI ObjectReference (IEC 61850-7-2 §5.5.3.3).</p>
+<p>An ObjectReference uniquely identifies instances in the ACSI class hierarchy
+(logical devices, logical nodes, data objects, sub-data objects, and data
+attributes). It is constructed by concatenating all instance names in the
+hierarchy.</p>
+<p><strong>IEC 61850 Representation</strong></p>
+<p>Format: <code class="docutils literal notranslate"><span class="pre">LDName/LNName.DoName.SubDoName.AttrName</span></code></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">/</span></code> separates the logical device name (LDName) from the logical node
+name (LNName).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.</span></code> separates deeper hierarchical levels (data objects, sub-data
+objects, attributes).</p></li>
+</ul>
+<p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="n">LD1</span><span class="o">/</span><span class="n">MMXU1</span><span class="o">.</span><span class="n">A</span><span class="o">.</span><span class="n">phsA</span><span class="o">.</span><span class="n">mag</span><span class="o">.</span><span class="n">f</span>
+</span></pre></div>
+</div>
+<p><em>MMS Representation*</em></p>
+<p>In MMS, ObjectReferences are encoded as a variable-length VisibleString:</p>
+<ul class="simple">
+<li><p>Maximum length: 129 octets</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.</span></code> (dot) separators are replaced with <code class="docutils literal notranslate"><span class="pre">$</span></code> (dollar).</p></li>
+<li><p>Example: <code class="docutils literal notranslate"><span class="pre">LD1/MMXU1.A.phsA</span></code> → <code class="docutils literal notranslate"><span class="pre">LD1/MMXU1$A$phsA</span></code></p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The MMS representation contains an extra <em>functional constraint</em> (FC)
+between a logical node and its data objects.</p>
+</div>
+<p>ObjectReferences can be built directly:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="gp">&gt;&gt;&gt; </span><span class="n">ObjectReference</span><span class="p">(</span><span class="s2">&quot;LD1&quot;</span><span class="p">)</span>
+</span><span data-line="2"><span class="go">&quot;LD1&quot;</span>
+</span></pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="gp">&gt;&gt;&gt; </span><span class="n">ObjectReference</span><span class="p">(</span><span class="s2">&quot;LD1&quot;</span><span class="p">,</span> <span class="s2">&quot;MMXU1&quot;</span><span class="p">,</span> <span class="s2">&quot;CO&quot;</span><span class="p">,</span> <span class="s2">&quot;phsA&quot;</span><span class="p">)</span>
+</span><span data-line="2"><span class="go">&quot;LD1/MMXU1.CO.phsA&quot;</span>
+</span></pre></div>
+</div>
+<p>Or parsed from existing references:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#icspacket.proto.iec61850.path.ObjectReference.from_string" title="icspacket.proto.iec61850.path.ObjectReference.from_string"><code class="xref py py-meth docutils literal notranslate"><span class="pre">from_string()</span></code></a> → parses IEC 61850 notation with <code class="docutils literal notranslate"><span class="pre">.</span></code> separators.</p></li>
+<li><p><a class="reference internal" href="#icspacket.proto.iec61850.path.ObjectReference.from_mmsref" title="icspacket.proto.iec61850.path.ObjectReference.from_mmsref"><code class="xref py py-meth docutils literal notranslate"><span class="pre">from_mmsref()</span></code></a> → parses MMS VisibleString with <code class="docutils literal notranslate"><span class="pre">$</span></code> separators.</p></li>
+</ul>
+<dl class="py property">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.path.ObjectReference.ldname">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ldname</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#icspacket.proto.iec61850.path.ObjectReference.ldname" title="Link to this definition">¶</a></dt>
+<dd><p>Return the logical device name (LDName).</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="gp">&gt;&gt;&gt; </span><span class="n">ref</span> <span class="o">=</span> <span class="n">ObjectReference</span><span class="p">(</span><span class="s2">&quot;LD1&quot;</span><span class="p">,</span> <span class="s2">&quot;MMXU1&quot;</span><span class="p">,</span> <span class="s2">&quot;A&quot;</span><span class="p">)</span>
+</span><span data-line="2"><span class="gp">&gt;&gt;&gt; </span><span class="n">ref</span><span class="o">.</span><span class="n">ldname</span>
+</span><span data-line="3"><span class="go">&#39;LD1&#39;</span>
+</span></pre></div>
+</div>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.path.ObjectReference.lnname">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">lnname</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#icspacket.proto.iec61850.path.ObjectReference.lnname" title="Link to this definition">¶</a></dt>
+<dd><p>Return the logical node name (LNName), or <code class="docutils literal notranslate"><span class="pre">None</span></code> if not present.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="gp">&gt;&gt;&gt; </span><span class="n">ref</span> <span class="o">=</span> <span class="n">ObjectReference</span><span class="p">(</span><span class="s2">&quot;LD1&quot;</span><span class="p">,</span> <span class="s2">&quot;MMXU1&quot;</span><span class="p">,</span> <span class="s2">&quot;A&quot;</span><span class="p">)</span>
+</span><span data-line="2"><span class="gp">&gt;&gt;&gt; </span><span class="n">ref</span><span class="o">.</span><span class="n">lnname</span>
+</span><span data-line="3"><span class="go">&#39;MMXU1&#39;</span>
+</span><span data-line="4"><span class="gp">&gt;&gt;&gt; </span><span class="n">ObjectReference</span><span class="p">(</span><span class="s2">&quot;LD1&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">lnname</span> <span class="ow">is</span> <span class="kc">None</span>
+</span><span data-line="5"><span class="go">True</span>
+</span></pre></div>
+</div>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.path.ObjectReference.lnclass">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">lnclass</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="api_data_classes.html#icspacket.proto.iec61850.classes.LN_Class" title="icspacket.proto.iec61850.classes.LN_Class"><span class="pre">LN_Class</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#icspacket.proto.iec61850.path.ObjectReference.lnclass" title="Link to this definition">¶</a></dt>
+<dd><p>Resolve the LN class from the LNName, if available.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="gp">&gt;&gt;&gt; </span><span class="n">ref</span> <span class="o">=</span> <span class="n">ObjectReference</span><span class="p">(</span><span class="s2">&quot;LD1&quot;</span><span class="p">,</span> <span class="s2">&quot;MMXU1&quot;</span><span class="p">)</span>
+</span><span data-line="2"><span class="gp">&gt;&gt;&gt; </span><span class="n">ref</span><span class="o">.</span><span class="n">lnclass</span>
+</span><span data-line="3"><span class="go">LN_Class.MMXU</span>
+</span></pre></div>
+</div>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.path.ObjectReference.lngroup">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">lngroup</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="api_data_classes.html#icspacket.proto.iec61850.classes.LN_Group" title="icspacket.proto.iec61850.classes.LN_Group"><span class="pre">LN_Group</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#icspacket.proto.iec61850.path.ObjectReference.lngroup" title="Link to this definition">¶</a></dt>
+<dd><p>Resolve the LN group from the first character of the LNName.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="gp">&gt;&gt;&gt; </span><span class="n">ref</span> <span class="o">=</span> <span class="n">ObjectReference</span><span class="p">(</span><span class="s2">&quot;LD1&quot;</span><span class="p">,</span> <span class="s2">&quot;MMXU1&quot;</span><span class="p">)</span>
+</span><span data-line="2"><span class="gp">&gt;&gt;&gt; </span><span class="n">ref</span><span class="o">.</span><span class="n">lngroup</span>
+</span><span data-line="3"><span class="go">LN_Group.M</span>
+</span></pre></div>
+</div>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.path.ObjectReference.parts">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">parts</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#icspacket.proto.iec61850.path.ObjectReference.parts" title="Link to this definition">¶</a></dt>
+<dd><p>Return the hierarchical components of the reference as a list.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="gp">&gt;&gt;&gt; </span><span class="n">ref</span> <span class="o">=</span> <span class="n">ObjectReference</span><span class="p">(</span><span class="s2">&quot;LD1&quot;</span><span class="p">,</span> <span class="s2">&quot;MMXU1&quot;</span><span class="p">,</span> <span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;phsA&quot;</span><span class="p">)</span>
+</span><span data-line="2"><span class="gp">&gt;&gt;&gt; </span><span class="n">ref</span><span class="o">.</span><span class="n">parts</span>
+</span><span data-line="3"><span class="go">[&#39;LD1&#39;, &#39;MMXU1&#39;, &#39;A&#39;, &#39;phsA&#39;]</span>
+</span></pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.path.ObjectReference.name">
+<span class="sig-name descname"><span class="pre">name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../../_modules/icspacket/proto/iec61850/path.html#ObjectReference.name"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iec61850.path.ObjectReference.name" title="Link to this definition">¶</a></dt>
+<dd><p>Return the name of the component at the given hierarchy index.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="gp">&gt;&gt;&gt; </span><span class="n">ref</span> <span class="o">=</span> <span class="n">ObjectReference</span><span class="p">(</span><span class="s2">&quot;LD1&quot;</span><span class="p">,</span> <span class="s2">&quot;MMXU1&quot;</span><span class="p">,</span> <span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;phsA&quot;</span><span class="p">)</span>
+</span><span data-line="2"><span class="gp">&gt;&gt;&gt; </span><span class="n">ref</span><span class="o">.</span><span class="n">name</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</span><span data-line="3"><span class="go">&#39;A&#39;</span>
+</span></pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.path.ObjectReference.from_mmsref">
+<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_mmsref</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">reference</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Self</span></span></span><a class="reference internal" href="../../_modules/icspacket/proto/iec61850/path.html#ObjectReference.from_mmsref"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iec61850.path.ObjectReference.from_mmsref" title="Link to this definition">¶</a></dt>
+<dd><p>Parse an ObjectReference from an MMS VisibleString reference.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="gp">&gt;&gt;&gt; </span><span class="n">ObjectReference</span><span class="o">.</span><span class="n">from_mmsref</span><span class="p">(</span><span class="s2">&quot;LD1/MMXU1$A$phsA&quot;</span><span class="p">)</span>
+</span><span data-line="2"><span class="go">&#39;LD1/MMXU1.A.phsA&#39;</span>
+</span></pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.path.ObjectReference.from_string">
+<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_string</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">reference</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Self</span></span></span><a class="reference internal" href="../../_modules/icspacket/proto/iec61850/path.html#ObjectReference.from_string"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iec61850.path.ObjectReference.from_string" title="Link to this definition">¶</a></dt>
+<dd><p>Parse an ObjectReference from an IEC 61850 style string.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="gp">&gt;&gt;&gt; </span><span class="n">ObjectReference</span><span class="o">.</span><span class="n">from_string</span><span class="p">(</span><span class="s2">&quot;LD1/MMXU1.A.phsA&quot;</span><span class="p">)</span>
+</span><span data-line="2"><span class="go">&#39;LD1/MMXU1.A.phsA&#39;</span>
+</span></pre></div>
+</div>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.path.ObjectReference.mmsref">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">mmsref</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#icspacket.proto.iec61850.path.ObjectReference.mmsref" title="Link to this definition">¶</a></dt>
+<dd><p>Return the MMS VisibleString form (with <code class="docutils literal notranslate"><span class="pre">$</span></code> separators).</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="gp">&gt;&gt;&gt; </span><span class="n">ref</span> <span class="o">=</span> <span class="n">ObjectReference</span><span class="p">(</span><span class="s2">&quot;LD1&quot;</span><span class="p">,</span> <span class="s2">&quot;MMXU1&quot;</span><span class="p">,</span> <span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;phsA&quot;</span><span class="p">)</span>
+</span><span data-line="2"><span class="gp">&gt;&gt;&gt; </span><span class="n">ref</span><span class="o">.</span><span class="n">mmsref</span>
+</span><span data-line="3"><span class="go">&#39;LD1/MMXU1$A$phsA&#39;</span>
+</span></pre></div>
+</div>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.path.ObjectReference.mms_name">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">mms_name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ObjectName</span></em><a class="headerlink" href="#icspacket.proto.iec61850.path.ObjectReference.mms_name" title="Link to this definition">¶</a></dt>
+<dd><p>Return the MMS ObjectName corresponding to this reference.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="gp">&gt;&gt;&gt; </span><span class="n">ref</span> <span class="o">=</span> <span class="n">ObjectReference</span><span class="p">(</span><span class="s2">&quot;LD1&quot;</span><span class="p">,</span> <span class="s2">&quot;MMXU1&quot;</span><span class="p">,</span> <span class="s2">&quot;A&quot;</span><span class="p">)</span>
+</span><span data-line="2"><span class="gp">&gt;&gt;&gt; </span><span class="n">ref</span><span class="o">.</span><span class="n">mms_name</span>
+</span><span data-line="3"><span class="go">ObjectName(domain=&#39;LD1&#39;, item=&#39;MMXU1$A&#39;)</span>
+</span></pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.path.DataObjectReference">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">icspacket.proto.iec61850.path.</span></span><span class="sig-name descname"><span class="pre">DataObjectReference</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logical_device</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="positional-only-separator o"><abbr title="Positional-only parameter separator (PEP 570)"><span class="pre">/</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">logical_node</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fc</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">names</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/icspacket/proto/iec61850/path.html#DataObjectReference"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iec61850.path.DataObjectReference" title="Link to this definition">¶</a></dt>
+<dd><p>Specialized ObjectReference for data objects with Functional Constraints.</p>
+<p>Format:</p>
+<p><code class="docutils literal notranslate"><span class="pre">&lt;LNVariableName&gt;$&lt;FC&gt;$&lt;LNDataObjectName&gt;[$&lt;SubDataObjectName&gt;...]</span></code></p>
+<p>Example (IEC 61850-7-2 §5.5.3.3):</p>
+<p><code class="docutils literal notranslate"><span class="pre">MMXU1$MX$A$phsA</span></code></p>
+<p>This maps into an ObjectReference hierarchy:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="gp">&gt;&gt;&gt; </span><span class="n">DataObjectReference</span><span class="p">(</span><span class="s2">&quot;LD1&quot;</span><span class="p">,</span> <span class="s2">&quot;MMXU1&quot;</span><span class="p">,</span> <span class="s2">&quot;MX&quot;</span><span class="p">,</span> <span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;phsA&quot;</span><span class="p">)</span>
+</span><span data-line="2"><span class="go">&#39;LD1/MMXU1.MX.A.phsA&#39;</span>
+</span></pre></div>
+</div>
+<dl class="py property">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.path.DataObjectReference.functional_constraint">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">functional_constraint</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="api_data_classes.html#icspacket.proto.iec61850.classes.FC" title="icspacket.proto.iec61850.classes.FC"><span class="pre">FC</span></a></em><a class="headerlink" href="#icspacket.proto.iec61850.path.DataObjectReference.functional_constraint" title="Link to this definition">¶</a></dt>
+<dd><p>Return the Functional Constraint (FC) of this DataObjectReference.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="gp">&gt;&gt;&gt; </span><span class="n">ref</span> <span class="o">=</span> <span class="n">DataObjectReference</span><span class="p">(</span><span class="s2">&quot;LD1&quot;</span><span class="p">,</span> <span class="s2">&quot;MMXU1&quot;</span><span class="p">,</span> <span class="s2">&quot;MX&quot;</span><span class="p">,</span> <span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;phsA&quot;</span><span class="p">)</span>
+</span><span data-line="2"><span class="gp">&gt;&gt;&gt; </span><span class="n">ref</span><span class="o">.</span><span class="n">functional_constraint</span>
+</span><span data-line="3"><span class="go">FC.MX</span>
+</span></pre></div>
+</div>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.path.DataObjectReference.datname">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">datname</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#icspacket.proto.iec61850.path.DataObjectReference.datname" title="Link to this definition">¶</a></dt>
+<dd><p>Return the data object name.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="gp">&gt;&gt;&gt; </span><span class="n">ref</span> <span class="o">=</span> <span class="n">DataObjectReference</span><span class="p">(</span><span class="s2">&quot;LD1&quot;</span><span class="p">,</span> <span class="s2">&quot;MMXU1&quot;</span><span class="p">,</span> <span class="s2">&quot;MX&quot;</span><span class="p">,</span> <span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;phsA&quot;</span><span class="p">)</span>
+</span><span data-line="2"><span class="gp">&gt;&gt;&gt; </span><span class="n">ref</span><span class="o">.</span><span class="n">datname</span>
+</span><span data-line="3"><span class="go">&#39;A&#39;</span>
+</span></pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+        </article><button class="back-to-top" type="button">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+  </svg>
+  <span>Back to top</span>
+</button><div class="navigation flex print:hidden"><div class="navigation-prev">
+    <a href="api_data_classes.html">
+      <i class="i-lucide chevron-left"></i>
+      <div class="page-info">
+        <span>Previous</span><div class="title">Data Classes</div></div>
+    </a>
+  </div><div class="navigation-next">
+    <a href="api_client.html">
+      <div class="page-info">
+        <span>Next</span>
+        <div class="title">IED Client</div>
+      </div>
+      <i class="i-lucide chevron-right"></i>
+    </a>
+  </div></div></div>
+    </div>
+  </main>
+</div>
+<footer class="sy-foot">
+  <div class="sy-foot-inner sy-container mx-auto">
+    <div class="sy-foot-reserved md:flex justify-between items-center">
+      <div class="sy-foot-copyright"><p>2025, MatrixEditor</p>
+  
+  <p>
+    Made with
+    
+    <a href="https://www.sphinx-doc.org/">Sphinx</a> and
+    
+    <a href="https://shibuya.lepture.com">Shibuya theme</a>.
+  </p>
+</div>
+      <div class="sy-foot-socials">
+<a href="https://github.com/MatrixEditor/icspacket" aria-label="GitHub">
+  <iconify-icon icon="simple-icons:github"></iconify-icon>
+</a></div>
+    </div>
+  </div>
+</footer>
+      <script src="../../_static/documentation_options.js?v=8fd3cfc3"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+      <script src="../../_static/shibuya.js?v=e730760c"></script></body>
+</html>
