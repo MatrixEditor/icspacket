@@ -10,8 +10,8 @@
 #include <Python.h>
 #include <py_application.h>
 
-typedef long _senum_t;
-typedef unsigned long _uenum_t;
+typedef long _asn1c_senum_t;
+typedef unsigned long _asn1c_uenum_t;
 
 #define PyCompat_ArgCheck(obj, ret) \
     if (!obj) {                     \
@@ -144,8 +144,8 @@ static inline int _PyCompatBytes_ToStringAndSize(PyObject *pObj, char **str,
 
     if (PyObject_GetBuffer(pObj, &view, PyBUF_FULL_RO) < 0) return -1;
 
-    if (*str) {
-        PyMem_Free(*str);
+    if ((*str) != NULL) {
+        PY_IMPL_FREE(*str);
         *str = NULL;
     }
     *size = view.len;
@@ -189,19 +189,16 @@ static inline int _PyCompatUnicode_AsUTF8(PyObject *pObj, char **str,
                                           Py_ssize_t *size) {
     PyCompatUnicode_Check(pObj, -1);
     if (*str) {
-        PyMem_Free(*str);
+        PY_IMPL_FREE(*str);
         *str = NULL;
     }
 
     *str = (char *)_PyCompatUnicode_AsUTF8AndSize(pObj, size);
-    if (!*str) {
-        return -1;
-    }
     return *str == NULL ? -1 : 0;
 }
 
 static inline PyObject *PyCompatEnum_FromSsize_t(PyObject *pEnumType,
-                                                 _senum_t value) {
+                                                 _asn1c_senum_t value) {
     PyObject *nValue = NULL, *nResult = NULL;
     PyCompat_ArgCheck(pEnumType, NULL);
 
@@ -215,7 +212,7 @@ end:
 }
 
 static inline PyObject *PyCompatEnum_FromSize_t(PyObject *pEnumType,
-                                                _uenum_t value) {
+                                                _asn1c_uenum_t value) {
     PyObject *nValue = NULL, *nResult = NULL;
     if ((nValue = PyLong_FromSize_t(value)) == NULL) {
         goto end;
@@ -226,7 +223,7 @@ end:
     return nResult;
 }
 
-static inline _senum_t PyCompatEnum_AsSsize_t(PyObject *pObj) {
+static inline _asn1c_senum_t PyCompatEnum_AsSsize_t(PyObject *pObj) {
     PyObject *nValue = NULL;
     if (PyLong_Check(pObj)) {
         return PyLong_AsSsize_t(pObj);
@@ -234,7 +231,7 @@ static inline _senum_t PyCompatEnum_AsSsize_t(PyObject *pObj) {
 
     nValue = PyObject_GetAttrString(pObj, "value");
     if (nValue != NULL) {
-        _senum_t result = PyLong_AsLong(nValue);
+        _asn1c_senum_t result = PyLong_AsLong(nValue);
         Py_XDECREF(nValue);
         return result;
     }
@@ -245,7 +242,7 @@ static inline _senum_t PyCompatEnum_AsSsize_t(PyObject *pObj) {
     return -1;
 }
 
-static inline _uenum_t PyCompatEnum_AsSize_t(PyObject *pObj) {
+static inline _asn1c_uenum_t PyCompatEnum_AsSize_t(PyObject *pObj) {
     PyObject *nValue = NULL;
     if (PyLong_Check(pObj)) {
         return PyLong_AsSize_t(pObj);
@@ -253,7 +250,7 @@ static inline _uenum_t PyCompatEnum_AsSize_t(PyObject *pObj) {
 
     nValue = PyObject_GetAttrString(pObj, "value");
     if (nValue != NULL) {
-        _uenum_t result = PyLong_AsSize_t(nValue);
+        _asn1c_uenum_t result = PyLong_AsSize_t(nValue);
         Py_XDECREF(nValue);
         return result;
     }
@@ -267,9 +264,9 @@ static inline _uenum_t PyCompatEnum_AsSize_t(PyObject *pObj) {
 static inline int PyCompatEnum_FromObject(PyObject *pObj, void *dst,
                                           int is_signed) {
     if (is_signed) {
-        *(_senum_t *)dst = PyCompatEnum_AsSsize_t(pObj);
+        *(_asn1c_senum_t *)dst = PyCompatEnum_AsSsize_t(pObj);
     } else {
-        *(_uenum_t *)dst = PyCompatEnum_AsSize_t(pObj);
+        *(_asn1c_uenum_t *)dst = PyCompatEnum_AsSize_t(pObj);
     }
     return PyErr_Occurred() != NULL ? -1 : 0;
 }
@@ -277,9 +274,9 @@ static inline int PyCompatEnum_FromObject(PyObject *pObj, void *dst,
 static inline PyObject *PyCompatEnum_AsObject(PyObject *pEnumType, void *src,
                                               int is_signed) {
     if (is_signed) {
-        return PyCompatEnum_FromSsize_t(pEnumType, *(_senum_t *)src);
+        return PyCompatEnum_FromSsize_t(pEnumType, *(_asn1c_senum_t *)src);
     } else {
-        return PyCompatEnum_FromSize_t(pEnumType, *(_uenum_t *)src);
+        return PyCompatEnum_FromSize_t(pEnumType, *(_asn1c_uenum_t *)src);
     }
 }
 
@@ -311,6 +308,11 @@ static inline PyObject *PyCompatAsnType_FromParent(PyTypeObject *type,
         return NULL;
     }
 
+    if (obj->ob_value != NULL) {
+        /* the value is uninitialized here, we can simply free it*/
+        PY_IMPL_FREE(obj->ob_value);
+        obj->ob_value = NULL;
+    }
     obj->ob_value = value;
     obj->ob_parent = Py_NewRef(parent);
     obj->s_valid = 1;

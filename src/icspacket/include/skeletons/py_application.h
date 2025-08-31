@@ -871,33 +871,21 @@ end:
         return __VA_ARGS__;                                           \
     }
 
-#define PY_IMPL_SEQ_REF_ATTR_TOPY(typeName, attrName, targetTypeName) \
-    static inline PyObject* PyAsn##typeName##__##attrName##_ToPython( \
-        typeName##_t* src, PyObject* parent) {                        \
-        void* target = (void*)&src->attrName;                         \
-        PyAsn##targetTypeName##Object* targetObj =                    \
-            PyCompatAsnType_New(targetTypeName);                      \
-        if (!targetObj) {                                             \
-            return NULL;                                              \
-        }                                                             \
-        targetObj->ob_value = (targetTypeName##_t*)target;            \
-        targetObj->ob_parent = Py_NewRef(parent);                     \
-        targetObj->s_valid = 1;                                       \
-        return (PyObject*)targetObj;                                  \
+#define PY_IMPL_SEQ_REF_ATTR_TOPY(typeName, attrName, targetTypeName)    \
+    static inline PyObject* PyAsn##typeName##__##attrName##_ToPython(    \
+        typeName##_t* src, PyObject* parent) {                           \
+        void* target = (void*)&src->attrName;                            \
+        return PyCompatAsnType_FromParent(&PyAsn##targetTypeName##_Type, \
+                                          parent, (void*)src);           \
     }
 
 #define PY_IMPL_SEQ_REF_ATTR_INDIRECT_TOPY(typeName, attrName, targetTypeName) \
     static inline PyObject* PyAsn##typeName##__##attrName##_ToPython(          \
         typeName##_t* src, PyObject* parent) {                                 \
         void* target = (void*)src->attrName;                                   \
-        PyAsn##targetTypeName##Object* targetObj = NULL;                       \
         if (target == NULL) Py_RETURN_NONE;                                    \
-        targetObj = PyCompatAsnType_New(targetTypeName);                       \
-        if (targetObj == NULL) return NULL;                                    \
-        targetObj->ob_value = (targetTypeName##_t*)target;                     \
-        targetObj->ob_parent = Py_NewRef(parent);                              \
-        targetObj->s_valid = 1;                                                \
-        return (PyObject*)targetObj;                                           \
+        return PyCompatAsnType_FromParent(&PyAsn##targetTypeName##_Type,       \
+                                          parent, (void*)src);                 \
     }
 
 #define PY_IMPL_SEQ_OPT_GETATTR(typeName, attrName)                       \

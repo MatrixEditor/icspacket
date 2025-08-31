@@ -4,7 +4,6 @@
 # https://www.sphinx-doc.org/en/master/usage/configuration.html
 import sys
 import pathlib
-import setuptools_scm
 
 from caterpillar import options
 
@@ -14,7 +13,7 @@ PROJECT_ROOT = pathlib.Path(__file__).parent.parent.parent
 # This option will enable easy documentation of struct classes
 options.set_struct_flags(options.S_REPLACE_TYPES)
 
-# Next, we can import out module and all rypes on the struct classes will be
+# Next, we can import out module and all types on the struct classes will be
 # replaced by their runtime types
 try:
     import icspacket
