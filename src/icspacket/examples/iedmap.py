@@ -55,6 +55,7 @@ class IED_Discover:
         self.datasets = []
         self.console = Console()
         self.with_values = args.values
+        self.no_path = args.no_path
         self.max_depth = args.maxdepth if args.maxdepth is not None else 100
         if args.node:
             self.nodes.append(args.node)
@@ -117,14 +118,14 @@ class IED_Discover:
             if "$" not in node:
                 label = str(node_ref.lnname)
                 ln_class = node_ref.lnclass
-                ln_group = node_ref.lngroup
                 if ln_class:
                     label = f"{label} ({ln_class.value})"
-                if ln_group:
-                    label = f"{label} - {ln_group.name}: {ln_group.value}"
 
-                label = label.ljust(100 - 8, ".")
-                subtree = tree.add(f"{label} {node_ref}")
+                if not self.no_path:
+                    label = label.ljust(100 - 8, ".")
+                    label = f"{label} {node_ref}"
+
+                subtree = tree.add(label)
                 trees[0] = subtree
                 continue
 
@@ -146,8 +147,11 @@ class IED_Discover:
                     if data_class:
                         label = f"{label}({data_class.value}) "
 
-                label = label.ljust(100 - (4 * (depth + 2)), ".")
-                text = Text(f"{label} {node_ref}")
+                if not self.no_path:
+                    label = label.ljust(100 - (4 * (depth + 2)), ".")
+                    label = f"{label} {node_ref}"
+
+                text = Text(label)
 
                 value = (
                     self.get_node_value(node_ref)

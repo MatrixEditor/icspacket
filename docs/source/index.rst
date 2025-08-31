@@ -45,6 +45,13 @@ and MacOS. Any other Python version is not officially supported::
     protocols/dnp3/api
 
 .. toctree::
+    :caption: IEC 61850
+    :hidden:
+
+    protocols/iec61850/iedmap
+    protocols/iec61850/api
+
+.. toctree::
     :caption: MMS / ISO 9506
     :hidden:
 

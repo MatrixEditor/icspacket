@@ -283,6 +283,6 @@ def add_mms_connection_options(parser: ArgumentParser) -> None:
     conn_group = parser.add_argument_group("Connection Options","Specify transport layer settings and target host information")
     conn_group.add_argument("-p", "--port", type=int, help="TCP port of the target MMS server (default: 102)", default=102)
     conn_group.add_argument("--max-tpdu-size", type=int, metavar="SIZE", help="Maximum TPDU size to negotiate during COTP connection", default=TPDU_Size.SIZE_1024)
-    conn_group.add_argument("--timeout", type=float, metavar="SEC", help="Timeout in seconds for transport-level operations (default: None)", default=None)
+    conn_group.add_argument("--timeout", type=float, metavar="SEC", help="Timeout in seconds for transport-level operations (default: 10s)", default=10.0)
     conn_group.add_argument("host", type=str, help="Target host (IP address or hostname) to establish MMS connection")
     # fmt: on

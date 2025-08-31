@@ -84,23 +84,16 @@ html_theme_options = {
                     "title": "MMS Utilities",
                     "url": "protocols/mms/examples",
                     "summary": "Manufacturing Message Specification tools",
-                    "children": [
-                        {
-                            "title": "MMS Client",
-                            "url": "examples/mms/client",
-                            "summary": "Interactive MMS client shell",
-                        },
-                        {
-                            "title": "MMS Utility",
-                            "url": "examples/mms/utility",
-                            "summary": "Utility commands for MMS peers",
-                        },
-                    ],
                 },
                 {
                     "title": "DNP3 Tools",
                     "url": "protocols/dnp3/examples",
                     "summary": "DNP3 utilities and tools",
+                },
+                {
+                    "title": "IED Enumeration Tool",
+                    "url": "protocols/iec61850/iedmap",
+                    "summary": "Logical Device enumeration and more",
                 }
             ],
         },

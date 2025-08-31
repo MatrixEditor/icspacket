@@ -17,6 +17,8 @@ import enum
 
 
 class LN_Class(enum.Enum):  # IEC61850 7-4
+    """Logical Node (LN) classes"""
+
     ANCR = "Neutral current regulator"  # 5.9.2 LN
     ARCO = "Reactive power control"  # 5.9.3 LN
     ATCC = "Automatic tap changer controller"  # 5.9.4 LN
@@ -93,6 +95,8 @@ class LN_Class(enum.Enum):  # IEC61850 7-4
 
 
 class LN_Group(enum.Enum):
+    """Logical Node (LN) groups"""
+
     # prefixed with G_
     A = "Automatic Control"
     C = "Supervisory control"
@@ -110,6 +114,8 @@ class LN_Group(enum.Enum):
 
 
 class DATA_Class(enum.Enum):
+    """Common DATA classes"""
+
     ACD = "Directional protection activation information"  # 7.3.7
     ACT = "Protection activation information"  # 7.3.6
     APC = "Controllable analogue process value"  # 7.5.8
@@ -160,7 +166,7 @@ class DATA_Class(enum.Enum):
 
 
 class FC(enum.Enum):  # Functional Constraint
-    """Functional Constraint"""
+    """Functional Constraints"""
 
     BL = "Blocking"
     BR = "Buffered report"

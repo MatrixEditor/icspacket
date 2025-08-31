@@ -695,7 +695,7 @@ class MMS_Connection(connection):
         >>> var = VariableAccessItem(name=ObjectName(vmd_specific="SetPoint"))
         >>> data = Data()
         >>> data.integer = 42
-        >>> err = mms_conn.write_variable(var, data)
+        >>> err = mms_conn.write_variable(data, variable)
         >>> print("Write successful" if err is None else f"Failed: {err}")
 
         .. versionchanged:: 0.2.2
@@ -780,7 +780,7 @@ class MMS_Connection(connection):
         self, name: ObjectName, /
     ) -> GetNamedVariableListAttributes_Response:
         """
-        .. versionadded:: 0.2.3
+        .. versionadded:: 0.2.2
         """
         request = GetNamedVariableListAttributes_Request(name)
         service = ConfirmedServiceRequest(getNamedVariableListAttributes=request)

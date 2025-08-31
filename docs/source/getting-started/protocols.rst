@@ -15,6 +15,7 @@ Protocols Overview
     acse
     mms
     dnp3
+    iec61850
 
 
 **Protocol references**
@@ -64,8 +65,14 @@ Protocols Overview
 
 
     .. grid-item-card:: :octicon:`zap` DNP3.0 (IEEE 1815)
-        :link: mms_index
+        :link: dnp3_index
         :link-type: ref
 
         Distributed Network Protocol 3.0.
+
+    .. grid-item-card:: :octicon:`pulse` IEC 61850
+        :link: iec61850_api_index
+        :link-type: ref
+
+        Intelligent electronic devices using IEC 61850
 

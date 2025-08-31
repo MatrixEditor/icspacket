@@ -104,8 +104,8 @@ class DNP3Reader:
         if apdu.iin is not None:
             if apdu.iin.no_func_code_support:
                 return logging.error(
-                    "Outstation does not support function code %s",
-                    FunctionCode.READ,
+                    "Outstation does not support function code %s for target",
+                    FunctionCode.READ.name,
                 )
 
         raw_objects = apdu.objects
