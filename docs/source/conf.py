@@ -26,7 +26,7 @@ except ImportError:
 project = "icspacket"
 copyright = "2025, MatrixEditor"
 author = "MatrixEditor"
-release = setuptools_scm.get_version(str(PROJECT_ROOT))
+release = icspacket.__version__
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
