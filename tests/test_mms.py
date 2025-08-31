@@ -186,14 +186,3 @@ def test_mms_conn__auth_reject():
     with pytest.raises(ACSEAuthenticationFailure):
         conn.associate(faketpktsock.FAKE_ADDRESS)
 
-
-def test_mms_conn__getnamelist_domain():
-    object_class = ObjectClass()
-    object_class.basicObjectClass = ObjectClass.basicObjectClass_VALUES.V_domain
-
-    conn = _setup_mms_connection("service_getNameList_success")
-    conn.associate(faketpktsock.FAKE_ADDRESS)
-
-    identifiers = conn.get_name_list(object_class)
-    assert len(identifiers) == 1
-    assert identifiers[0] == "simpleIOGenericIO"

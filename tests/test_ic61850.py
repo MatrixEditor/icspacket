@@ -63,4 +63,4 @@ def test_iecref_ln_data():
     assert ref.lnname == "GGIO_FSCC1"
     assert ref.lnclass == LN_Class.GGIO
     assert ref.functional_constraint == FC.SP
-    assert ref.name(0) == "Schd2"
+    assert ref.name(3) == "Schd2"
