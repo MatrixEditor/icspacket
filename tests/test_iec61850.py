@@ -14,7 +14,9 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
+from icspacket.proto.iec61850._iec61850 import IEC61850_Specific_Protocol
 from icspacket.proto.iec61850.classes import FC, LN_Class, LN_Group
+from icspacket.proto.iec61850.goose import PDU
 from icspacket.proto.iec61850.path import DataObjectReference, ObjectReference
 
 

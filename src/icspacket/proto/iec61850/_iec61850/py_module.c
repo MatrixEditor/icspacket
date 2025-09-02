@@ -19,6 +19,9 @@ PY_IMPL_MODULE_CLEAR(_iec61850,
 	PyAsnErrorReason_ModClear(m);
 	PyAsnIECGoosePdu_ModClear(m);
 	PyAsnUtcTime_ModClear(m);
+	PyAsnIEC61850_9_2_Specific_Protocol_ModClear(m);
+	PyAsnSavPdu_ModClear(m);
+	PyAsnASDU_ModClear(m);
 	PyAsnEXTERNAL_ModClear(m);
 	PyCompat_Clear();
 );
@@ -45,6 +48,9 @@ PY_IMPL_MODULE_INIT_BEGIN(_iec61850)
 	if (PyAsnErrorReason_ModSetupTypes() < 0) return NULL;
 	if (PyAsnIECGoosePdu_ModSetupTypes() < 0) return NULL;
 	if (PyAsnUtcTime_ModSetupTypes() < 0) return NULL;
+	if (PyAsnIEC61850_9_2_Specific_Protocol_ModSetupTypes() < 0) return NULL;
+	if (PyAsnSavPdu_ModSetupTypes() < 0) return NULL;
+	if (PyAsnASDU_ModSetupTypes() < 0) return NULL;
 	if (PyAsnEXTERNAL_ModSetupTypes() < 0) return NULL;
 
 	if((nModule = PyModule_Create(&PyAsnModule__iec61850)) == NULL) { return NULL; }
@@ -67,5 +73,8 @@ PY_IMPL_MODULE_INIT_BEGIN(_iec61850)
 	if (PyAsnErrorReason_ModInit(nModule) < 0) return NULL;
 	if (PyAsnIECGoosePdu_ModInit(nModule) < 0) return NULL;
 	if (PyAsnUtcTime_ModInit(nModule) < 0) return NULL;
+	if (PyAsnIEC61850_9_2_Specific_Protocol_ModInit(nModule) < 0) return NULL;
+	if (PyAsnSavPdu_ModInit(nModule) < 0) return NULL;
+	if (PyAsnASDU_ModInit(nModule) < 0) return NULL;
 	if (PyAsnEXTERNAL_ModInit(nModule) < 0) return NULL;
 PY_IMPL_MODULE_INIT_END;

@@ -22,6 +22,9 @@
 #include <ErrorReason_Py.h>
 #include <IECGoosePdu_Py.h>
 #include <UtcTime_Py.h>
+#include <IEC61850-9-2-Specific-Protocol_Py.h>
+#include <SavPdu_Py.h>
+#include <ASDU_Py.h>
 #include <EXTERNAL_Py.h>
 
 #ifdef __cplusplus

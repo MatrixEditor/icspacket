@@ -425,7 +425,7 @@ asn_TYPE_member_t asn_MBR_Data_1[] = {
 		},
 	{ ATF_NOFLAGS, 0, offsetof(struct Data, choice.utc_time),
 		(ASN_TAG_CLASS_CONTEXT | (17 << 2)),
-		+1,	/* EXPLICIT tag at current level */
+		-1,	/* IMPLICIT tag at current level */
 		&asn_DEF_UtcTime,
 		0,
 		{

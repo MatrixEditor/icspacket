@@ -27,7 +27,7 @@ Data ::= CHOICE {
     booleanArray	 [14] IMPLICIT BIT STRING,
     objId	 [15] IMPLICIT OBJECT IDENTIFIER,
     mMSString	 [16] IMPLICIT MMSString,
-    utc-time    [17] UtcTime
+    utc-time    [17] IMPLICIT UtcTime
 }
 
 MMSString ::= UTF8String
@@ -122,5 +122,31 @@ IECGoosePdu ::= SEQUENCE {
 }
 
 UtcTime ::= OCTET STRING
+
+-- IEC 61850-9-2 Definitions
+IEC61850-9-2-Specific-Protocol::= CHOICE {
+    savPdu      [APPLICATION 0] IMPLICIT SavPdu
+    -- ...
+}
+
+SavPdu ::= SEQUENCE {
+	noASDU	[0] IMPLICIT INTEGER(1..65535),
+    security [1] ANY OPTIONAL,
+	seqASDU	[2] IMPLICIT SEQUENCE OF ASDU
+}
+
+ASDU ::= SEQUENCE {
+	svID		[0] IMPLICIT VisibleString,
+	datSet		[1] IMPLICIT VisibleString OPTIONAL,
+	smpCnt		[2] IMPLICIT INTEGER(0..65535),
+	confRev		[3] IMPLICIT INTEGER(0..4294967295),
+	refrTm		[4] IMPLICIT UtcTime OPTIONAL,
+	smpSynch	[5] IMPLICIT INTEGER{none(0),local(1),global(2)} OPTIONAL,
+	smpRate		[6] IMPLICIT INTEGER(0..65535) OPTIONAL,
+	seqData		[7] IMPLICIT Data,
+	smpMod		[8] IMPLICIT INTEGER{samplesPerNormalPeriod(0),samplesPerSecond(1),secondsPerSample(2)} OPTIONAL,
+	gmidData	[9] IMPLICIT GmidData OPTIONAL
+	-- ...
+}
 
 END
