@@ -2,7 +2,7 @@
 <html lang="en" data-accent-color="lime" data-content_root="../../">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Data Conversion - icspacket 0.2.2 documentation</title><link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="Protocol Utilities" href="api_utils.html" /><link rel="prev" title="MMS Connection" href="api_conn.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Data Conversion - icspacket 0.1.dev1+ga80ef5a97 documentation</title><link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="Protocol Utilities" href="api_utils.html" /><link rel="prev" title="MMS Connection" href="api_conn.html" />
       <link rel="canonical" href="https://matrixeditor.github.io/icspacket/protocols/mms/api_data.html" /><script>
     function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
     setColorMode(localStorage._theme||"dark");
@@ -197,6 +197,18 @@ data-aria-dark="Switch to auto color mode">
 </li>
 <li><a class="reference internal" href="#icspacket.proto.mms.data.create_floating_point_value"><code class="docutils literal notranslate"><span class="pre">create_floating_point_value()</span></code></a></li>
 <li><a class="reference internal" href="#icspacket.proto.mms.data.get_floating_point_value"><code class="docutils literal notranslate"><span class="pre">get_floating_point_value()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.mms.data.Timestamp"><code class="docutils literal notranslate"><span class="pre">Timestamp</span></code></a><ul>
+<li><a class="reference internal" href="#icspacket.proto.mms.data.Timestamp.timeval"><code class="docutils literal notranslate">timeval</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.mms.data.Timestamp.fraction"><code class="docutils literal notranslate">fraction</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.mms.data.Timestamp.leap_second_known"><code class="docutils literal notranslate">leap_second_known</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.mms.data.Timestamp.clock_failure"><code class="docutils literal notranslate">clock_failure</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.mms.data.Timestamp.clock_not_synced"><code class="docutils literal notranslate">clock_not_synced</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.mms.data.Timestamp.accuracy"><code class="docutils literal notranslate">accuracy</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.mms.data.Timestamp.from_utc_time"><code class="docutils literal notranslate">from_utc_time()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.mms.data.Timestamp.seconds"><code class="docutils literal notranslate">seconds</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.mms.data.Timestamp.datetime"><code class="docutils literal notranslate">datetime</span></code></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#icspacket.proto.mms.data.FileHandle"><code class="docutils literal notranslate"><span class="pre">FileHandle</span></code></a></li>
 </ul>
 </div><a class="js-repo-stats repo-stats flex items-center" href="https://github.com/MatrixEditor/icspacket"
@@ -353,6 +365,100 @@ value or raw bytes.</p>
 </dd></dl>
 
 <dl class="py class">
+<dt class="sig sig-object py" id="icspacket.proto.mms.data.Timestamp">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">icspacket.proto.mms.data.</span></span><span class="sig-name descname"><span class="pre">Timestamp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">timeval</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bytes</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">b'\x00\x00\x00\x00'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fraction</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bytes</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">b'\x00\x00\x00'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">leap_second_known</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clock_failure</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clock_not_synced</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">accuracy</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/icspacket/proto/mms/data.html#Timestamp"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.mms.data.Timestamp" title="Link to this definition">¶</a></dt>
+<dd><p>Structured bitfield representation of a timestamp value.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.mms.data.Timestamp.timeval">
+<span class="sig-name descname"><span class="pre">timeval</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bytes</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">b'\x00\x00\x00\x00'</span></em><a class="headerlink" href="#icspacket.proto.mms.data.Timestamp.timeval" title="Link to this definition">¶</a></dt>
+<dd><p>4-byte unsigned integer representing the elapsed time in seconds.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.mms.data.Timestamp.fraction">
+<span class="sig-name descname"><span class="pre">fraction</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bytes</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">b'\x00\x00\x00'</span></em><a class="headerlink" href="#icspacket.proto.mms.data.Timestamp.fraction" title="Link to this definition">¶</a></dt>
+<dd><p>3-byte fractional component of the timestamp for sub-second precision.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.mms.data.Timestamp.leap_second_known">
+<span class="sig-name descname"><span class="pre">leap_second_known</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#icspacket.proto.mms.data.Timestamp.leap_second_known" title="Link to this definition">¶</a></dt>
+<dd><p>Indicates whether the occurrence of leap seconds is known.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.mms.data.Timestamp.clock_failure">
+<span class="sig-name descname"><span class="pre">clock_failure</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#icspacket.proto.mms.data.Timestamp.clock_failure" title="Link to this definition">¶</a></dt>
+<dd><p>Indicates whether a clock failure has been detected.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.mms.data.Timestamp.clock_not_synced">
+<span class="sig-name descname"><span class="pre">clock_not_synced</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#icspacket.proto.mms.data.Timestamp.clock_not_synced" title="Link to this definition">¶</a></dt>
+<dd><p>Indicates whether the clock is currently unsynchronized.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.mms.data.Timestamp.accuracy">
+<span class="sig-name descname"><span class="pre">accuracy</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></em><a class="headerlink" href="#icspacket.proto.mms.data.Timestamp.accuracy" title="Link to this definition">¶</a></dt>
+<dd><p>5-bit field encoding the accuracy of the timestamp.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.mms.data.Timestamp.from_utc_time">
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_utc_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">utc_time</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">UtcTime</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">bytes</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#icspacket.proto.mms.data.Timestamp" title="icspacket.proto.mms.data.Timestamp"><span class="pre">Timestamp</span></a></span></span><a class="reference internal" href="../../_modules/icspacket/proto/mms/data.html#Timestamp.from_utc_time"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.mms.data.Timestamp.from_utc_time" title="Link to this definition">¶</a></dt>
+<dd><p>Construct a <a class="reference internal" href="#icspacket.proto.mms.data.Timestamp" title="icspacket.proto.mms.data.Timestamp"><code class="xref py py-class docutils literal notranslate"><span class="pre">Timestamp</span></code></a> object from a UTC time value.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>utc_time</strong> (<em>UtcTime</em><em> | </em><em>bytes</em>) – Either a <code class="xref py py-class docutils literal notranslate"><span class="pre">UtcTime</span></code> instance or an 8-byte raw buffer
+containing the encoded UTC time.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A deserialized <a class="reference internal" href="#icspacket.proto.mms.data.Timestamp" title="icspacket.proto.mms.data.Timestamp"><code class="xref py py-class docutils literal notranslate"><span class="pre">Timestamp</span></code></a> instance.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#icspacket.proto.mms.data.Timestamp" title="icspacket.proto.mms.data.Timestamp">Timestamp</a></p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If the provided value does not have the expected 8-byte length.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="icspacket.proto.mms.data.Timestamp.seconds">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">seconds</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#icspacket.proto.mms.data.Timestamp.seconds" title="Link to this definition">¶</a></dt>
+<dd><p>Get the integral number of seconds stored in the timestamp.</p>
+<p>This property interprets the 4-byte <code class="docutils literal notranslate"><span class="pre">timeval</span></code> field as an
+unsigned 32-bit big-endian integer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The number of elapsed seconds.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="icspacket.proto.mms.data.Timestamp.datetime">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">datetime</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">datetime</span></em><a class="headerlink" href="#icspacket.proto.mms.data.Timestamp.datetime" title="Link to this definition">¶</a></dt>
+<dd><p>Get a <code class="xref py py-class docutils literal notranslate"><span class="pre">datetime.datetime</span></code> object representing the timestamp.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A <code class="xref py py-class docutils literal notranslate"><span class="pre">datetime.datetime</span></code> object representing the
+timestamp.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>datetime.datetime</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
 <dt class="sig sig-object py" id="icspacket.proto.mms.data.FileHandle">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">icspacket.proto.mms.data.</span></span><span class="sig-name descname"><span class="pre">FileHandle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">handle</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">attributes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">FileAttributes</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/icspacket/proto/mms/data.html#FileHandle"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.mms.data.FileHandle" title="Link to this definition">¶</a></dt>
 <dd><p>Simple representation of an open file handle</p>
@@ -403,7 +509,7 @@ value or raw bytes.</p>
     </div>
   </div>
 </footer>
-      <script src="../../_static/documentation_options.js?v=d27f7911"></script>
+      <script src="../../_static/documentation_options.js?v=a46bf5ba"></script>
       <script src="../../_static/doctools.js?v=9bcbadda"></script>
       <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
