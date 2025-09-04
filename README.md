@@ -41,7 +41,23 @@ too).
 pip install git+https://github.com/MatrixEditor/icspacket
 ```
 
+## Disclaimer
 
+This project is shared openly to help the community explore, learn, and advance
+research on industrial control systems, networking protocols, and related
+technologies. Our goal is to provide a resource that encourages experimentation,
+collaboration, and education.
+
+The material in this repository is **for research and learning only**. It is not
+intended for direct use in production systems or commercial deployments,
+especially within live industrial environments where safety and reliability are
+critical.
+
+If you decide to build on this work, we encourage you to adopt secure coding
+practices, apply a structured security development process, and consider how
+you’ll generate and track indicators of compromise in line with your specific
+goals. Together, we can strengthen the security and resilience of ICS
+technologies while keeping experimentation safe and responsible.
 
 ## License
 

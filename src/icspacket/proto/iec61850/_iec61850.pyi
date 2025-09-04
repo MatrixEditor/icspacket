@@ -444,6 +444,81 @@ class IECGoosePdu(_Asn1Type): # SEQUENCE
 class UtcTime(_Asn1BasicType[bytes]):
 	pass
 
+class IEC61850_9_2_Specific_Protocol(_Asn1Type): # CHOICE
+	class PRESENT(EXT_IntEnum):
+		PR_NOTHING = 0
+		PR_savPdu = 1
+
+	@property
+	def present(self) -> PRESENT: ...
+	savPdu: SavPdu | None
+	def __init__(
+		self, /, *,
+		savPdu: SavPdu = ...,
+	) -> None: ...
+
+class SavPdu(_Asn1Type): # SEQUENCE
+
+	class seqASDU_TYPE(_Asn1Type):
+		def __init__(self, values: EXT_Iterable[ASDU] | None = ...) -> None: ...
+		def __getitem__(self, index: int) -> ASDU: ...
+		def __setitem__(self, index: int, value: ASDU) -> None: ...
+		def add(self, value: ASDU) -> None: ...
+		def extend(self, values: EXT_Iterable[ASDU]) -> None: ...
+		def clear(self) -> None: ...
+		def __len__(self) -> int: ...
+		def __delitem__(self, index: int) -> None: ...
+
+	seqASDU: seqASDU_TYPE
+	noASDU: int
+	security: bytes | None
+	def __init__(
+		self, /, *,
+		noASDU: int = ...,
+		security: bytes = ...,
+		seqASDU: seqASDU_TYPE = ...,
+	) -> None: ...
+
+class ASDU(_Asn1Type): # SEQUENCE
+	svID: str
+	datSet: str | None
+	smpCnt: int
+	confRev: int
+	@property
+	def refrTm(self) -> UtcTime | None: ...
+	@refrTm.setter
+	def refrTm(self, value: UtcTime | bytes | None) -> None: ...
+
+	class smpSynch_VALUES(EXT_IntEnum):
+		V_none = 0
+		V_local = 1
+		V_global = 2
+
+	smpSynch: smpSynch_VALUES | None
+	smpRate: int | None
+	seqData: bytes
+
+	class smpMod_VALUES(EXT_IntEnum):
+		V_samplesPerNormalPeriod = 0
+		V_samplesPerSecond = 1
+		V_secondsPerSample = 2
+
+	smpMod: smpMod_VALUES | None
+	gmidData: bytes | None
+	def __init__(
+		self, /, *,
+		svID: str = ...,
+		datSet: str = ...,
+		smpCnt: int = ...,
+		confRev: int = ...,
+		refrTm: UtcTime = ...,
+		smpSynch: smpSynch_VALUES = ...,
+		smpRate: int = ...,
+		seqData: bytes = ...,
+		smpMod: smpMod_VALUES = ...,
+		gmidData: bytes = ...,
+	) -> None: ...
+
 class EXTERNAL(_Asn1Type): # SEQUENCE
 
 	class encoding_TYPE(_Asn1Type): # CHOICE

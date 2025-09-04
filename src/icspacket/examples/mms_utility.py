@@ -22,6 +22,7 @@
 #   - Variables: read, write, query info
 #   - Domain: list, and list variables
 #   - identify
+import datetime
 import pathlib
 import shlex
 import sys
@@ -43,6 +44,7 @@ from icspacket.proto.mms.asn1types import (
 from icspacket.proto.mms.connection import MMS_Connection
 from icspacket.proto.mms.exceptions import MMSConnectionError
 from icspacket.proto.mms.data import (
+    Timestamp,
     get_floating_point_value,
     create_floating_point_value,
 )
@@ -74,6 +76,10 @@ def data_to_str(data: Data) -> str | dict | list:
             return "[green]TRUE[/]" if data.boolean else "FALSE"
         case Data.PRESENT.PR_array:
             return [data_to_str(item) for item in data.array]
+        case Data.PRESENT.PR_utc_time:
+            ts = Timestamp.from_utc_time(data.utc_time)
+            dt = datetime.datetime.fromtimestamp(ts.seconds)
+            return dt.strftime("%Y-%m-%d %H:%M:%S")
         case Data.PRESENT.PR_structure:
             return {
                 item.present.name[3:].lower(): data_to_str(item)
@@ -299,9 +305,16 @@ def do_variable_list(args, conn: MMS_Connection):
             list_name_safe = object_name_to_string(variable_list_name).replace("$", ".")
             logging.debug("Reading %s from peer...", list_name_safe)
             with args.console.status("Awaiting access results..."):
-                results = conn.read_variables(list_name=variable_list_name, spec_in_result=True)
+                results = conn.read_variables(
+                    list_name=variable_list_name, spec_in_result=True
+                )
 
-            table = Table(title=list_name_safe, safe_box=True, expand=False, box=box.ASCII_DOUBLE_HEAD)
+            table = Table(
+                title=list_name_safe,
+                safe_box=True,
+                expand=False,
+                box=box.ASCII_DOUBLE_HEAD,
+            )
             table.add_column("Variable", justify="left")
             table.add_column("Value", justify="left")
             for object_name, result in zip(targets, results):
@@ -322,6 +335,7 @@ def do_variable_list(args, conn: MMS_Connection):
                     table.add_row(item, value, end_section=True)
 
             args.console.print(table)
+
 
 def cli_main():
     import argparse

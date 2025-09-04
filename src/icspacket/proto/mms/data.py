@@ -15,15 +15,26 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 # pyright: reportInvalidTypeForm=false, reportGeneralTypeIssues=false, reportAssignmentType=false
 from dataclasses import dataclass
+import datetime
 import enum
 
-from typing import Literal
-from caterpillar.fields import DEFAULT_OPTION, Bytes, double, float32, uint8
-from caterpillar.model import struct
+from typing import Any, Literal
+from caterpillar.fields import (
+    DEFAULT_OPTION,
+    Bytes,
+    double,
+    float32,
+    uint8,
+    uint64,
+)
+from caterpillar.model import bitfield, struct
+from caterpillar.options import S_ADD_BYTES
 from caterpillar.shortcuts import pack, unpack, BigEndian, F, this
 
-from icspacket.proto.mms._mms import FileAttributes
+from icspacket.proto.mms._mms import Data, FileAttributes, UtcTime
 from icspacket.proto.mms.asn1types import FloatingPoint
+
+_be_uint64 = BigEndian + uint64
 
 
 class IEEE754Type(enum.IntEnum):
@@ -120,12 +131,101 @@ def get_floating_point_value(fp: FloatingPoint | bytes) -> float:
     :raises TypeError: If the exponent width does not match a recognized IEEE
         754 type (``FLOAT32`` or ``FLOAT64``).
     """
-    value = fp.value if isinstance(fp, FloatingPoint) else fp
+    value = fp.value if not isinstance(fp, bytes) else fp
     unpacked = unpack(IEEE754PackedFloat, value)
     if isinstance(unpacked.value, bytes):
         raise TypeError(f"Unknown exponent width: {unpacked.exponent_width}")
 
     return unpacked.value
+
+
+@bitfield(order=BigEndian, options=[S_ADD_BYTES])
+class Timestamp:
+    """Structured bitfield representation of a timestamp value."""
+
+    timeval: Bytes(4) = bytes(4)
+    """4-byte unsigned integer representing the elapsed time in seconds."""
+
+    fraction: Bytes(3) = bytes(3)
+    """3-byte fractional component of the timestamp for sub-second precision."""
+
+    leap_second_known: 1 = False
+    """Indicates whether the occurrence of leap seconds is known."""
+
+    clock_failure: 1 = False
+    """Indicates whether a clock failure has been detected."""
+
+    clock_not_synced: 1 = False
+    """Indicates whether the clock is currently unsynchronized."""
+
+    accuracy: 5 = 0
+    """5-bit field encoding the accuracy of the timestamp."""
+
+    @staticmethod
+    def from_utc_time(utc_time: "UtcTime | bytes") -> "Timestamp":
+        """
+        Construct a :class:`Timestamp` object from a UTC time value.
+
+        :param utc_time:
+            Either a :class:`UtcTime` instance or an 8-byte raw buffer
+            containing the encoded UTC time.
+        :type utc_time: UtcTime | bytes
+        :return: A deserialized :class:`Timestamp` instance.
+        :rtype: Timestamp
+        :raises ValueError:
+            If the provided value does not have the expected 8-byte length.
+        """
+        value = utc_time.value if not isinstance(utc_time, bytes) else utc_time
+        if len(value) != 8:
+            raise ValueError(f"Invalid UTC time value: {value}")
+
+        return unpack(Timestamp, value)
+
+    @property
+    def seconds(self) -> int:
+        """
+        Get the integral number of seconds stored in the timestamp.
+
+        This property interprets the 4-byte ``timeval`` field as an
+        unsigned 32-bit big-endian integer.
+
+        :return: The number of elapsed seconds.
+        :rtype: int
+        """
+        data: bytes = self.timeval
+        return data[0] * (2**24) + data[1] * (2**16) + data[2] * (2**8) + data[3]
+
+    @seconds.setter
+    def seconds(self, value: int):
+        """
+        Set the integral number of seconds in the timestamp.
+
+        The provided integer value is encoded into the 4-byte ``timeval``
+        field using big-endian ordering. The fractional part is reset to
+        zero whenever this setter is invoked.
+
+        :param int value:
+            The number of elapsed seconds to encode into the timestamp.
+        """
+        data = bytearray(4)
+        data[0] = int((value / (2**24))) & 0xFF
+        data[1] = int((value / (2**16))) & 0xFF
+        data[2] = int((value / (2**8))) & 0xFF
+        data[3] = value & 0xFF
+
+        self.timeval = bytes(data)
+        self.fraction = bytes(3)
+
+    @property
+    def datetime(self) -> datetime.datetime:
+        """
+        Get a :class:`datetime.datetime` object representing the timestamp.
+
+        :return: A :class:`datetime.datetime` object representing the
+            timestamp.
+        :rtype: datetime.datetime
+        """
+        return datetime.datetime.fromtimestamp(self.seconds)
 
 
 @dataclass(frozen=True)
