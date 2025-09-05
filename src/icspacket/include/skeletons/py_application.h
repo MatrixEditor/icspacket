@@ -876,7 +876,7 @@ end:
         typeName##_t* src, PyObject* parent) {                           \
         void* target = (void*)&src->attrName;                            \
         return PyCompatAsnType_FromParent(&PyAsn##targetTypeName##_Type, \
-                                          parent, (void*)src);           \
+                                          parent, target);               \
     }
 
 #define PY_IMPL_SEQ_REF_ATTR_INDIRECT_TOPY(typeName, attrName, targetTypeName) \
@@ -885,7 +885,7 @@ end:
         void* target = (void*)src->attrName;                                   \
         if (target == NULL) Py_RETURN_NONE;                                    \
         return PyCompatAsnType_FromParent(&PyAsn##targetTypeName##_Type,       \
-                                          parent, (void*)src);                 \
+                                          parent, target);                     \
     }
 
 #define PY_IMPL_SEQ_OPT_GETATTR(typeName, attrName)                       \
