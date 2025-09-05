@@ -2,8 +2,8 @@
 <html lang="en" data-accent-color="lime" data-content_root="../../../../">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>icspacket.proto.dnp3.transport - icspacket 0.1.dev1+gbd7f00b6b documentation</title><link rel="index" title="Index" href="../../../../genindex.html" /><link rel="search" title="Search" href="../../../../search.html" />
-      <link rel="canonical" href="https://matrixeditor.github.io/icspacket/_modules/icspacket/proto/dnp3/transport.html" /><script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>icspacket.proto.iec61850.sv - icspacket 0.1.dev1+gbd7f00b6b documentation</title><link rel="index" title="Index" href="../../../../genindex.html" /><link rel="search" title="Search" href="../../../../search.html" />
+      <link rel="canonical" href="https://matrixeditor.github.io/icspacket/_modules/icspacket/proto/iec61850/sv.html" /><script>
     function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
     setColorMode(localStorage._theme||"dark");
   </script><link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=397bb51e" />
@@ -21,8 +21,8 @@
 }
 </style>
     <meta property="og:type" content="website"/>
-<meta property="og:url" content="https://matrixeditor.github.io/icspacket/_modules/icspacket/proto/dnp3/transport.html"/>
-<meta property="og:title" content="icspacket.proto.dnp3.transport"/>
+<meta property="og:url" content="https://matrixeditor.github.io/icspacket/_modules/icspacket/proto/iec61850/sv.html"/>
+<meta property="og:title" content="icspacket.proto.iec61850.sv"/>
 <meta name="twitter:card" content="summary"/>
   </head>
 <body><div class="sy-head">
@@ -228,7 +228,7 @@ data-aria-dark="Switch to auto color mode">
         <span>/</span>
         <meta itemprop="position" content="2" />
       </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-        <strong itemprop="name">icspacket.proto.dnp3.transport</strong>
+        <strong itemprop="name">icspacket.proto.iec61850.sv</strong>
         <meta itemprop="position" content="3" />
       </li></ol>
     <div class="xl:hidden ml-1">
@@ -241,7 +241,7 @@ data-aria-dark="Switch to auto color mode">
 </div><div class="flex flex-col break-words justify-between">
       <div class="min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
         <article class="yue" role="main">
-          <h1>Source code for icspacket.proto.dnp3.transport</h1><div class="highlight"><pre>
+          <h1>Source code for icspacket.proto.iec61850.sv</h1><div class="highlight"><pre>
 <span></span><span data-line="1"><span class="c1"># This file is part of icspacket.</span>
 </span><span data-line="2"><span class="c1"># Copyright (C) 2025-present  MatrixEditor @ github</span>
 </span><span data-line="3"><span class="c1">#</span>
@@ -257,73 +257,94 @@ data-aria-dark="Switch to auto color mode">
 </span><span data-line="13"><span class="c1">#</span>
 </span><span data-line="14"><span class="c1"># You should have received a copy of the GNU General Public License</span>
 </span><span data-line="15"><span class="c1"># along with this program.  If not, see &lt;https://www.gnu.org/licenses/&gt;.</span>
-</span><span data-line="16"><span class="c1"># pyright: reportGeneralTypeIssues=false, reportUninitializedInstanceVariable=false, reportInvalidTypeForm=false</span>
-</span><span data-line="17"><span class="kn">from</span><span class="w"> </span><span class="nn">caterpillar.fields</span><span class="w"> </span><span class="kn">import</span> <span class="n">Bytes</span>
-</span><span data-line="18"><span class="kn">from</span><span class="w"> </span><span class="nn">caterpillar.shortcuts</span><span class="w"> </span><span class="kn">import</span> <span class="n">opt</span><span class="p">,</span> <span class="n">bitfield</span>
-</span><span data-line="19">
-</span><span data-line="20"><span class="kn">from</span><span class="w"> </span><span class="nn">icspacket.proto.dnp3.application</span><span class="w"> </span><span class="kn">import</span> <span class="n">APDU</span>
-</span><span data-line="21">
-</span><span data-line="22"><span class="c1"># Maximum border number of a sequence number</span>
-</span><span data-line="23"><span class="n">TPDU_SEQUENCE_MAX</span> <span class="o">=</span> <span class="mi">64</span>
-</span><span data-line="24">
-</span><span data-line="25"><span class="n">TPDU_APPLICATION_MAX_LENGTH</span> <span class="o">=</span> <span class="mi">249</span>
-</span><span data-line="26">
-<div class="viewcode-block" id="TPDU">
-<a class="viewcode-back" href="../../../../protocols/dnp3/api/transport.html#icspacket.proto.dnp3.transport.TPDU">[docs]</a>
-</span><span data-line="27"><span class="nd">@bitfield</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="n">opt</span><span class="o">.</span><span class="n">S_ADD_BYTES</span><span class="p">])</span>
-</span><span data-line="28"><span class="k">class</span><span class="w"> </span><span class="nc">TPDU</span><span class="p">:</span>
-</span><span data-line="29"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span data-line="30"><span class="sd">    Transport Protocol Data Unit (TPDU) representation for DNP3.</span>
-</span><span data-line="31">
-</span><span data-line="32"><span class="sd">    This class implements the Transport Header defined in IEEE 1815</span>
-</span><span data-line="33"><span class="sd">    (DNP3 Specification), Section 8.2.1. The header is the first byte</span>
-</span><span data-line="34"><span class="sd">    of every transport segment and precedes the Application Layer data.</span>
-</span><span data-line="35">
-</span><span data-line="36"><span class="sd">    The transport header fields support proper sequencing, ordering,</span>
-</span><span data-line="37"><span class="sd">    and fragment reassembly for Application Layer messages.</span>
-</span><span data-line="38"><span class="sd">    &quot;&quot;&quot;</span>
-</span><span data-line="39">
-</span><span data-line="40">    <span class="c1"># fmt: off</span>
-</span><span data-line="41">    <span class="n">final_segment</span> <span class="p">:</span> <span class="mi">1</span> <span class="o">=</span> <span class="kc">False</span>
-</span><span data-line="42"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Indicates whether this is the final (last) transport segment.&quot;&quot;&quot;</span>
-</span><span data-line="43">
-</span><span data-line="44">    <span class="n">first_segment</span> <span class="p">:</span> <span class="mi">1</span> <span class="o">=</span> <span class="kc">False</span>
-</span><span data-line="45"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Indicates whether this is the first transport segment.&quot;&quot;&quot;</span>
-</span><span data-line="46">
-</span><span data-line="47">    <span class="n">sequence</span> <span class="p">:</span> <span class="mi">6</span> <span class="o">=</span> <span class="mi">0</span>
-</span><span data-line="48"><span class="w">    </span><span class="sd">&quot;&quot;&quot;6-bit sequence number for ordering transport segments.&quot;&quot;&quot;</span>
-</span><span data-line="49">
-</span><span data-line="50">    <span class="n">app_fragment</span> <span class="p">:</span> <span class="n">Bytes</span><span class="p">(</span><span class="o">...</span><span class="p">)</span> <span class="o">=</span> <span class="sa">b</span><span class="s2">&quot;&quot;</span>
-</span><span data-line="51"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span data-line="52"><span class="sd">    Application Layer fragment associated with this TPDU.</span>
-</span><span data-line="53">
-</span><span data-line="54"><span class="sd">    .. versionchanged:: 0.2.0</span>
-</span><span data-line="55"><span class="sd">        Changed type to ``bytes`` in order to support segmentation.</span>
-</span><span data-line="56"><span class="sd">    &quot;&quot;&quot;</span>
-</span><span data-line="57">    <span class="c1"># fmt: on</span>
-</span><span data-line="58">
-</span><span data-line="59">    <span class="nd">@property</span>
-</span><span data-line="60">    <span class="k">def</span><span class="w"> </span><span class="nf">real_sequence</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-</span><span data-line="61"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span data-line="62"><span class="sd">        Compute the normalized sequence number modulo 64.</span>
-</span><span data-line="63">
-</span><span data-line="64"><span class="sd">        This property ensures compliance with the rollover rule in</span>
-</span><span data-line="65"><span class="sd">        Section 8.2.1.3 of the DNP3 specification.</span>
+</span><span data-line="16"><span class="c1"># pyright: reportInvalidTypeForm=false, reportGeneralTypeIssues=false, reportAssignmentType=false</span>
+</span><span data-line="17"><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Callable</span>
+</span><span data-line="18">
+</span><span data-line="19"><span class="kn">from</span><span class="w"> </span><span class="nn">scapy.layers.l2</span><span class="w"> </span><span class="kn">import</span> <span class="n">Ether</span>
+</span><span data-line="20">
+</span><span data-line="21"><span class="kn">from</span><span class="w"> </span><span class="nn">icspacket.proto.iec61850._iec61850</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>  <span class="c1"># noqa</span>
+</span><span data-line="22"><span class="kn">from</span><span class="w"> </span><span class="nn">icspacket.proto.iec61850.goose</span><span class="w"> </span><span class="kn">import</span> <span class="n">PDU</span><span class="p">,</span> <span class="n">GOOSE_Client</span>
+</span><span data-line="23">
+</span><span data-line="24"><span class="c1">#: Type alias for the IEC 61850-9-2 Sampled Values ASN.1 protocol</span>
+</span><span data-line="25"><span class="c1">#: representation. This alias provides semantic clarity when working</span>
+</span><span data-line="26"><span class="c1">#: with decoded SV application PDUs.</span>
+</span><span data-line="27"><span class="n">SampledValues</span> <span class="o">=</span> <span class="n">IEC61850_9_2_Specific_Protocol</span>
+</span><span data-line="28">
+</span><span data-line="29"><span class="c1">#: EtherType used for IEC 61850-9-2 Sampled Values (SV) traffic.</span>
+</span><span data-line="30"><span class="c1">#: According to the IEC 61850 standard, SV frames are identified</span>
+</span><span data-line="31"><span class="c1">#: at the Ethernet layer with EtherType ``0x88BA``.</span>
+</span><span data-line="32"><span class="n">SV_ETHER_TYPE</span> <span class="o">=</span> <span class="mh">0x88BA</span>
+</span><span data-line="33">
+</span><span data-line="34">
+<div class="viewcode-block" id="SV_Client">
+<a class="viewcode-back" href="../../../../protocols/iec61850/api_sv.html#icspacket.proto.iec61850.sv.SV_Client">[docs]</a>
+</span><span data-line="35"><span class="k">class</span><span class="w"> </span><span class="nc">SV_Client</span><span class="p">(</span><span class="n">GOOSE_Client</span><span class="p">):</span>
+</span><span data-line="36"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="37"><span class="sd">    Observer and Publisher for IEC 61850-9-2 Sampled Values (SV) traffic.</span>
+</span><span data-line="38">
+</span><span data-line="39"><span class="sd">    This class is a protocol-specific specialization of</span>
+</span><span data-line="40"><span class="sd">    :class:`GOOSE_Client` that automatically binds to the EtherType</span>
+</span><span data-line="41"><span class="sd">    ``0x88BA`` used by **Sampled Values (SV)** frames. It reuses the</span>
+</span><span data-line="42"><span class="sd">    same underlying packet capture, filtering, and publishing</span>
+</span><span data-line="43"><span class="sd">    mechanisms provided by :class:`GOOSE_Client`, but targets SV</span>
+</span><span data-line="44"><span class="sd">    instead of GOOSE.</span>
+</span><span data-line="45">
+</span><span data-line="46"><span class="sd">    Core functionality:</span>
+</span><span data-line="47">
+</span><span data-line="48"><span class="sd">    - **Observation:** Capture and decode SV PDUs from one or more</span>
+</span><span data-line="49"><span class="sd">      interfaces, optionally with an application-provided callback.</span>
+</span><span data-line="50"><span class="sd">    - **Publishing:** Transmit SV PDUs on a given interface or across</span>
+</span><span data-line="51"><span class="sd">      multiple interfaces, with optional VLAN tagging support.</span>
+</span><span data-line="52"><span class="sd">    - **Compatibility:** Since SV reuses the same PDU decoding layer,</span>
+</span><span data-line="53"><span class="sd">      both online capture and offline PCAP file analysis are supported.</span>
+</span><span data-line="54">
+</span><span data-line="55"><span class="sd">    .. code-block:: python</span>
+</span><span data-line="56"><span class="sd">        :caption: Example</span>
+</span><span data-line="57">
+</span><span data-line="58"><span class="sd">        # Capture Sampled Values on eth1</span>
+</span><span data-line="59"><span class="sd">        with SV_Client(interfaces=[&quot;eth1&quot;]) as sv_client:</span>
+</span><span data-line="60"><span class="sd">            sv_pdu = sv_client.recv_next()</span>
+</span><span data-line="61"><span class="sd">            print(&quot;Received SV:&quot;, sv_pdu)</span>
+</span><span data-line="62">
+</span><span data-line="63"><span class="sd">        # Publish a new Sampled Value PDU</span>
+</span><span data-line="64"><span class="sd">        sv_client = SV_Client([&quot;eth1&quot;])</span>
+</span><span data-line="65"><span class="sd">        sv_client.publish(&quot;01:0c:cd:01:00:01&quot;, my_sv_apdu)</span>
 </span><span data-line="66">
-</span><span data-line="67"><span class="sd">        :return: Normalized sequence number (0-63).</span>
-</span><span data-line="68"><span class="sd">        :rtype: int</span>
-</span><span data-line="69"><span class="sd">        &quot;&quot;&quot;</span>
-</span><span data-line="70">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">sequence</span> <span class="o">%</span> <span class="n">TPDU_SEQUENCE_MAX</span>
-</span><span data-line="71">
-</span><span data-line="72">    <span class="nd">@property</span>
-</span><span data-line="73">    <span class="k">def</span><span class="w"> </span><span class="nf">apdu</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">APDU</span><span class="p">:</span>
-</span><span data-line="74"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span data-line="75"><span class="sd">        Parses the APDU contained in the TPDU.</span>
-</span><span data-line="76">
-</span><span data-line="77"><span class="sd">        .. versionadded:: 0.2.0</span>
-</span><span data-line="78"><span class="sd">        &quot;&quot;&quot;</span>
-</span><span data-line="79">        <span class="k">return</span> <span class="n">APDU</span><span class="o">.</span><span class="n">from_octets</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">app_fragment</span><span class="p">)</span></div>
+</span><span data-line="67"><span class="sd">    .. versionadded:: 0.2.3</span>
+</span><span data-line="68">
+</span><span data-line="69"><span class="sd">    :param interfaces:</span>
+</span><span data-line="70"><span class="sd">        List of interface names (e.g., ``[&quot;eth0&quot;, &quot;eth1&quot;]``) to capture</span>
+</span><span data-line="71"><span class="sd">        and/or publish Sampled Values on. If ``None``, the default system</span>
+</span><span data-line="72"><span class="sd">        capture interface is used.</span>
+</span><span data-line="73"><span class="sd">    :type interfaces: list[str] | None</span>
+</span><span data-line="74"><span class="sd">    :param callback:</span>
+</span><span data-line="75"><span class="sd">        Optional callback invoked for each received SV frame. The callback</span>
+</span><span data-line="76"><span class="sd">        receives the raw :class:`Ether` frame and the decoded :class:`PDU`.</span>
+</span><span data-line="77"><span class="sd">    :type callback: Callable[[Ether, PDU], None] | None</span>
+</span><span data-line="78"><span class="sd">    :param inputs:</span>
+</span><span data-line="79"><span class="sd">        Optional list of offline PCAP files to process instead of</span>
+</span><span data-line="80"><span class="sd">        live capture.</span>
+</span><span data-line="81"><span class="sd">    :type inputs: list[str] | None</span>
+</span><span data-line="82"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span data-line="83">
+</span><span data-line="84">    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+</span><span data-line="85">        <span class="bp">self</span><span class="p">,</span>
+</span><span data-line="86">        <span class="n">interfaces</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span data-line="87">        <span class="n">callback</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">Ether</span><span class="p">,</span> <span class="n">PDU</span><span class="p">],</span> <span class="kc">None</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span data-line="88">        <span class="n">inputs</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span data-line="89">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="90">        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">interfaces</span><span class="p">,</span> <span class="n">callback</span><span class="p">,</span> <span class="n">SV_ETHER_TYPE</span><span class="p">,</span> <span class="n">inputs</span><span class="p">)</span></div>
 
+</span><span data-line="91">
+</span><span data-line="92">
+</span><span data-line="93"><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>  <span class="c1"># noqa</span>
+</span><span data-line="94">    <span class="s2">&quot;SampledValues&quot;</span><span class="p">,</span>
+</span><span data-line="95">    <span class="s2">&quot;IEC61850_9_2_Specific_Protocol&quot;</span><span class="p">,</span>
+</span><span data-line="96">    <span class="s2">&quot;SavPdu&quot;</span><span class="p">,</span>
+</span><span data-line="97">    <span class="s2">&quot;ASDU&quot;</span><span class="p">,</span>
+</span><span data-line="98">    <span class="s2">&quot;SV_ETHER_TYPE&quot;</span><span class="p">,</span>
+</span><span data-line="99">    <span class="s2">&quot;SV_Client&quot;</span><span class="p">,</span>
+</span><span data-line="100"><span class="p">]</span>
 </span></pre></div>
         </article><button class="back-to-top" type="button">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">

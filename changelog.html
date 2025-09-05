@@ -2,8 +2,8 @@
 <html lang="en" data-accent-color="lime" data-content_root="./">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>icspacket 0.1.dev1+gbd7f00b6b documentation</title><link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Installation" href="getting-started/installation.html" />
-      <link rel="canonical" href="https://matrixeditor.github.io/icspacket/" /><script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Changelog - icspacket 0.1.dev1+gbd7f00b6b documentation</title><link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="prev" title="API Reference" href="protocols/tpkt/api.html" />
+      <link rel="canonical" href="https://matrixeditor.github.io/icspacket/changelog.html" /><script>
     function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
     setColorMode(localStorage._theme||"dark");
   </script><link rel="stylesheet" type="text/css" href="_static/pygments.css?v=397bb51e" />
@@ -21,14 +21,14 @@
 }
 </style>
     <meta property="og:type" content="website"/>
-<meta property="og:url" content="https://matrixeditor.github.io/icspacket/"/>
-<meta property="og:title" content="icspacket"/>
+<meta property="og:url" content="https://matrixeditor.github.io/icspacket/changelog.html"/>
+<meta property="og:title" content="Changelog"/>
 <meta name="twitter:card" content="summary"/>
   </head>
 <body><div class="sy-head">
   <div class="sy-head-blur"></div>
   <div class="sy-head-inner sy-container mx-auto">
-    <a class="sy-head-brand" href="#">
+    <a class="sy-head-brand" href="index.html">
       
       
       <strong>icspacket</strong>
@@ -49,7 +49,7 @@
                 <span>IED Enumeration Tool</span>
                 <small>Logical Device enumeration and more</small>
               </a></li></ul>
-      </li><li class="link"><a href="changelog.html">Changelog</a></li></ul></nav>
+      </li><li class="link"><a href="#">Changelog</a></li></ul></nav>
       <div class="sy-head-extra flex items-center print:hidden"><form class="searchbox flex items-center" action="search.html" method="get">
   <input type="text" name="q" placeholder="Search" />
   <kbd>/</kbd>
@@ -178,8 +178,8 @@ data-aria-dark="Switch to auto color mode">
 <li class="toctree-l1 _expand"><a class="reference internal" href="protocols/tpkt/api.html">API Reference</a></li>
 </ul>
 <p class="caption" role="heading" aria-level="3"><span class="caption-text">Development</span></p>
-<ul>
-<li class="toctree-l1 _expand"><a class="reference internal" href="changelog.html">Changelog</a></li>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Changelog</a></li>
 </ul>
         </div>
       </div>
@@ -191,9 +191,7 @@ data-aria-dark="Switch to auto color mode">
       <i class="i-lucide close"></i>
     </button>
     <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div class="localtoc"><h3>On this page</h3><ul>
-<li><a class="reference internal" href="#id1">Getting Started</a><ul>
-</ul>
-</li>
+<li><a class="reference internal" href="#v0-2-3-beta-develop">v0.2.3 <span class="sd-sphinx-override sd-badge sd-bg-info sd-bg-text-info">beta-develop</span></a></li>
 </ul>
 </div><a class="js-repo-stats repo-stats flex items-center" href="https://github.com/MatrixEditor/icspacket"
   data-type="github" data-user="MatrixEditor" data-repo="icspacket">
@@ -214,7 +212,7 @@ data-aria-dark="Switch to auto color mode">
     </span>
   </span>
 </a><div class="edit-this-page">
-  <a href="https://github.com/MatrixEditor/icspacket/blob/main/docs/index.rst">Edit this page</a>
+  <a href="https://github.com/MatrixEditor/icspacket/blob/main/docs/changelog.rst">Edit this page</a>
 </div></div>
   </aside>
   <div class="rside-overlay js-menu" role="button" aria-label="Close Table of Contents" aria-controls="rside" aria-expanded="false"></div>
@@ -227,8 +225,12 @@ data-aria-dark="Switch to auto color mode">
       </button>
     </div>
     <ol class="flex-1" itemscope itemtype="https://schema.org/BreadcrumbList"><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-        <a itemprop="item" href="#"><span itemprop="name">icspacket</span></a>
+        <a itemprop="item" href="index.html"><span itemprop="name">icspacket</span></a>
+        <span>/</span>
         <meta itemprop="position" content="1" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <strong itemprop="name">Changelog</strong>
+        <meta itemprop="position" content="2" />
       </li></ol>
     <div class="xl:hidden ml-1">
       <button class="js-menu" aria-label="Show table of contents" type="button" aria-controls="rside"
@@ -240,47 +242,17 @@ data-aria-dark="Switch to auto color mode">
 </div><div class="flex flex-col break-words justify-between">
       <div class="min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
         <article class="yue" role="main">
-          <section id="icspacket">
-<span id="icspacket-index"></span><h1>icspacket<a class="headerlink" href="#icspacket" title="Link to this heading">¶</a></h1>
-<p class="lead"><em>A collection of Python classes and tools to interact with industrial control
-systems using their protocols.</em></p>
-<div class="buttons docutils container">
-<p><a class="reference external" href="getting-started/installation.html">Getting Started</a>
-<a class="reference external" href="getting-started/protocols.html">Examples</a>
-<a class="reference external" href="https://github.com/MatrixEditor/icspacket">GitHub</a></p>
-</div>
-<p><em>Contents of this side are WIP</em></p>
-<section id="id1">
-<h2>Getting Started<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h2>
-<p>There are pre-built wheels on PyPI for Python 3.10 to 3.13 for Linux, Windows
-and MacOS. Any other Python version is not officially supported:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="n">pip</span> <span class="n">install</span> <span class="n">icspacket</span>
-</span></pre></div>
-</div>
-<div class="toctree-wrapper compound">
-</div>
-<div class="toctree-wrapper compound">
-</div>
-<div class="toctree-wrapper compound">
-</div>
-<div class="toctree-wrapper compound">
-</div>
-<div class="toctree-wrapper compound">
-</div>
-<div class="toctree-wrapper compound">
-</div>
-<div class="toctree-wrapper compound">
-</div>
-<div class="toctree-wrapper compound">
-</div>
-<div class="toctree-wrapper compound">
-</div>
-<div class="toctree-wrapper compound">
-<p class="caption" role="heading"><span class="caption-text">Development</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
+          <section id="changelog">
+<span id="id1"></span><h1>Changelog<a class="headerlink" href="#changelog" title="Link to this heading">¶</a></h1>
+<section id="v0-2-3-beta-develop">
+<span id="v0-2-3"></span><h2>v0.2.3 <span class="sd-sphinx-override sd-badge sd-bg-info sd-bg-text-info">beta-develop</span><a class="headerlink" href="#v0-2-3-beta-develop" title="Link to this heading">¶</a></h2>
+<p><strong>Added</strong></p>
+<ul class="simple">
+<li><p>New <a class="reference internal" href="protocols/iec61850/api_goose.html#icspacket.proto.iec61850.goose.GOOSE_Client" title="icspacket.proto.iec61850.goose.GOOSE_Client"><code class="xref py py-class docutils literal notranslate"><span class="pre">GOOSE_Client</span></code></a> and <a class="reference internal" href="protocols/iec61850/api_sv.html#icspacket.proto.iec61850.sv.SV_Client" title="icspacket.proto.iec61850.sv.SV_Client"><code class="xref py py-class docutils literal notranslate"><span class="pre">SV_Client</span></code></a></p></li>
+<li><p>New <a class="reference internal" href="protocols/mms/api_data.html#icspacket.proto.mms.data.Timestamp" title="icspacket.proto.mms.data.Timestamp"><code class="xref py py-class docutils literal notranslate"><span class="pre">Timestamp</span></code></a> to convert MMS UtcTime values into <code class="xref py py-class docutils literal notranslate"><span class="pre">datetime</span></code>
+objects.</p></li>
+<li><p>Example to receive published GOOSE messages: <code class="docutils literal notranslate"><span class="pre">gooseobserv.py</span></code></p></li>
 </ul>
-</div>
 </section>
 </section>
 
@@ -289,13 +261,11 @@ and MacOS. Any other Python version is not officially supported:</p>
     <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
   </svg>
   <span>Back to top</span>
-</button><div class="navigation flex print:hidden"><div class="navigation-next">
-    <a href="getting-started/installation.html">
+</button><div class="navigation flex print:hidden"><div class="navigation-prev">
+    <a href="protocols/tpkt/api.html">
+      <i class="i-lucide chevron-left"></i>
       <div class="page-info">
-        <span>Next</span>
-        <div class="title">Installation</div>
-      </div>
-      <i class="i-lucide chevron-right"></i>
+        <span>Previous</span><div class="title">API Reference</div></div>
     </a>
   </div></div></div>
     </div>

@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en" data-accent-color="lime" data-content_root="../../../../">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>icspacket.proto.iec61850.goose - icspacket 0.1.dev1+gbd7f00b6b documentation</title><link rel="index" title="Index" href="../../../../genindex.html" /><link rel="search" title="Search" href="../../../../search.html" />
+      <link rel="canonical" href="https://matrixeditor.github.io/icspacket/_modules/icspacket/proto/iec61850/goose.html" /><script>
+    function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
+    setColorMode(localStorage._theme||"dark");
+  </script><link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=397bb51e" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/shibuya.css?v=d48c410d" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link media="print" rel="stylesheet" type="text/css" href="../../../../_static/print.css?v=20ff2c19" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --sy-f-text: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+  --sy-f-heading: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+}
+</style>
+    <meta property="og:type" content="website"/>
+<meta property="og:url" content="https://matrixeditor.github.io/icspacket/_modules/icspacket/proto/iec61850/goose.html"/>
+<meta property="og:title" content="icspacket.proto.iec61850.goose"/>
+<meta name="twitter:card" content="summary"/>
+  </head>
+<body><div class="sy-head">
+  <div class="sy-head-blur"></div>
+  <div class="sy-head-inner sy-container mx-auto">
+    <a class="sy-head-brand" href="../../../../index.html">
+      
+      
+      <strong>icspacket</strong>
+    </a>
+    <div class="sy-head-nav" id="head-nav">
+      <nav class="sy-head-links"><ul>
+      <li class="link"><a class="js-menu" href="../../../../getting-started/protocols.html" id="nav-trigger-1" aria-controls="nav-children-1">
+            <span>Examples</span>
+            <i class="i-lucide chevron-down"></i>
+          </a>
+        <ul id="nav-children-1" aria-labelledby="nav-trigger-1"><li><a href="../../../../protocols/mms/examples.html">
+                <span>MMS Utilities</span>
+                <small>Manufacturing Message Specification tools</small>
+              </a></li><li><a href="../../../../protocols/dnp3/examples.html">
+                <span>DNP3 Tools</span>
+                <small>DNP3 utilities and tools</small>
+              </a></li><li><a href="../../../../protocols/iec61850/iedmap.html">
+                <span>IED Enumeration Tool</span>
+                <small>Logical Device enumeration and more</small>
+              </a></li></ul>
+      </li><li class="link"><a href="../../../../changelog.html">Changelog</a></li></ul></nav>
+      <div class="sy-head-extra flex items-center print:hidden"><form class="searchbox flex items-center" action="../../../../search.html" method="get">
+  <input type="text" name="q" placeholder="Search" />
+  <kbd>/</kbd>
+</form><div class="sy-head-socials">
+  <a href="https://github.com/MatrixEditor/icspacket" aria-label="GitHub">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </a></div></div>
+    </div>
+    <div class="sy-head-actions flex items-center shrink-0 print:hidden"><button class="js-theme theme-switch flex items-center"
+data-aria-auto="Switch to light color mode"
+data-aria-light="Switch to dark color mode"
+data-aria-dark="Switch to auto color mode">
+<i class="i-lucide theme-icon"></i>
+</button><button class="md:hidden flex items-center js-menu" aria-label="Menu" type="button" aria-controls="head-nav" aria-expanded="false">
+        <div class="hamburger">
+          <span class="hamburger_1"></span>
+          <span class="hamburger_2 -translate-x-2"></span>
+          <span class="hamburger_3 -translate-x-1"></span>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>
+<div class="sy-page sy-container flex mx-auto">
+  <aside id="lside" class="sy-lside md:w-72 md:shrink-0 print:hidden">
+    <div class="sy-lside-inner md:sticky">
+      <div class="sy-scrollbar p-6"><div class="sidebar-links">
+  <ul>
+    <li><a class="icon-link" href="https://github.com/MatrixEditor/icspacket/discussions">
+  <span class="icon">
+    <svg viewBox="0 0 24 24" fill="none">
+      <path fill="var(--accent-9)" fill-rule="evenodd" clip-rule="evenodd" d="M11 5a6 6 0 0 0-4.687 9.746c.215.27.315.62.231.954l-.514 2.058a1 1 0 0 0 1.485 1.1l2.848-1.71c.174-.104.374-.15.576-.148H13a6 6 0 0 0 0-12h-2Z"/>
+      <circle fill="white" cx="12" cy="11" r="1"/>
+      <circle fill="white" cx="9" cy="11" r="1"/>
+      <circle fill="white" cx="15" cy="11" r="1"/>
+    </svg>
+  </span>
+  <span class="text">Discussion</span>
+</a></li>
+  </ul>
+</div>
+        <div class="globaltoc" data-expand-depth="1"><p class="caption" role="heading" aria-level="3"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../getting-started/installation.html">Installation</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../getting-started/protocols.html">Protocols Overview</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../getting-started/coreapi.html">Core API Reference</a></li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">DNP3 / IEEE 1815</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../protocols/dnp3/dnp3read.html">Reading Objects</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../protocols/dnp3/dnp3dump.html">Dumping Objects</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../protocols/dnp3/dnp3resolve.html">Resolve Link Addresses</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../protocols/dnp3/api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../protocols/dnp3/api/link.html">Link Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../protocols/dnp3/api/transport.html">Transport Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../protocols/dnp3/api/application.html">Application Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../protocols/dnp3/api/master.html">Master</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../protocols/dnp3/api/object_library.html">Object Library</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../protocols/dnp3/api/primitives.html">Primitive Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../protocols/dnp3/api/coding.html">Encoding / Decoding</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../protocols/dnp3/api/variations.html">Variations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../protocols/dnp3/api/coding_utils.html">Object Utilities</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">IEC 61850</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../protocols/iec61850/iedmap.html">Enumerating IEDs</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../protocols/iec61850/api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../protocols/iec61850/api_data_classes.html">Data Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../protocols/iec61850/api_path.html">Object / Data References</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../protocols/iec61850/api_client.html">IED Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../protocols/iec61850/api_goose.html">GOOSE Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../protocols/iec61850/api_sv.html">SampledValues Client</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">MMS / ISO 9506</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../protocols/mms/demo_vars.html">Variable Target Format</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../protocols/mms/demo_vars.html#variableaccess-service-rwq">VariableAccess Service (rwq)</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../protocols/mms/demo_files.html">FileManagement Service</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../protocols/mms/api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../protocols/mms/api_conn.html">MMS Connection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../protocols/mms/api_data.html">Data Conversion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../protocols/mms/api_utils.html">Protocol Utilities</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">ACSE / X.227</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../protocols/acse/api.html">API Reference</a></li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">COPP / X.226 / ISO 8823</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../protocols/copp/api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../protocols/copp/presentation.html">ISO Presentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../protocols/copp/utils.html">Protocol Utilities</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">COSP / X.225 / ISO 8237-1</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../protocols/cosp/api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../protocols/cosp/tsdu.html">TSDU</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../protocols/cosp/spdu.html">SPDU Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../protocols/cosp/values.html">Parameter Values (PV)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../protocols/cosp/session.html">ISO Session</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../protocols/cosp/utils.html">Protocol Utilities</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">COTP / X.224</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../protocols/cotp/api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../protocols/cotp/structs.html">TPDU Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../protocols/cotp/connection.html">Connection</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">TPKT Protocol (RFC1006)</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../protocols/tpkt/usage.html">Using a TPKT Wrapper</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../protocols/tpkt/api.html">API Reference</a></li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../changelog.html">Changelog</a></li>
+</ul>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="lside-overlay js-menu" role="button" aria-label="Close left sidebar" aria-controls="lside" aria-expanded="false"></div>
+  <aside id="rside" class="sy-rside pb-3 w-64 shrink-0 order-last">
+    <button class="rside-close js-menu xl:hidden" aria-label="Close Table of Contents" type="button" aria-controls="rside" aria-expanded="false">
+      <i class="i-lucide close"></i>
+    </button>
+    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><a class="js-repo-stats repo-stats flex items-center" href="https://github.com/MatrixEditor/icspacket"
+  data-type="github" data-user="MatrixEditor" data-repo="icspacket">
+  <span class="w-8 flex items-center justify-around shrink-0 text-3xl">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </span>
+  <span class="flex-grow px-2 break-all">
+    <span style="font-size: small;">MatrixEditor/icspacket</span>
+    <span class="flex text-sm repo-stats-count">
+      <span class="flex items-center pr-3">
+        <iconify-icon icon="lucide:star"></iconify-icon>
+        <strong class="js-repo-stars ml-1">0</strong>
+      </span>
+      <span class="flex items-center">
+        <iconify-icon icon="lucide:git-fork"></iconify-icon>
+        <strong class="js-repo-forks ml-1">0</strong>
+      </span>
+    </span>
+  </span>
+</a></div>
+  </aside>
+  <div class="rside-overlay js-menu" role="button" aria-label="Close Table of Contents" aria-controls="rside" aria-expanded="false"></div>
+  <main class="sy-main w-full max-sm:max-w-full print:pt-6">
+<div class="sy-breadcrumbs" role="navigation">
+  <div class="sy-breadcrumbs-inner flex items-center">
+    <div class="md:hidden mr-3">
+      <button class="js-menu" aria-label="Menu" type="button" aria-controls="lside" aria-expanded="false">
+        <i class="i-lucide menu"></i>
+      </button>
+    </div>
+    <ol class="flex-1" itemscope itemtype="https://schema.org/BreadcrumbList"><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="../../../../index.html"><span itemprop="name">icspacket</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="1" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="../../../index.html"><span itemprop="name">Module code</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="2" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <strong itemprop="name">icspacket.proto.iec61850.goose</strong>
+        <meta itemprop="position" content="3" />
+      </li></ol>
+    <div class="xl:hidden ml-1">
+      <button class="js-menu" aria-label="Show table of contents" type="button" aria-controls="rside"
+        aria-expanded="false">
+        <i class="i-lucide outdent"></i>
+      </button>
+    </div>
+  </div>
+</div><div class="flex flex-col break-words justify-between">
+      <div class="min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
+        <article class="yue" role="main">
+          <h1>Source code for icspacket.proto.iec61850.goose</h1><div class="highlight"><pre>
+<span></span><span data-line="1"><span class="c1"># This file is part of icspacket.</span>
+</span><span data-line="2"><span class="c1"># Copyright (C) 2025-present  MatrixEditor @ github</span>
+</span><span data-line="3"><span class="c1">#</span>
+</span><span data-line="4"><span class="c1"># This program is free software: you can redistribute it and/or modify</span>
+</span><span data-line="5"><span class="c1"># it under the terms of the GNU General Public License as published by</span>
+</span><span data-line="6"><span class="c1"># the Free Software Foundation, either version 3 of the License, or</span>
+</span><span data-line="7"><span class="c1"># (at your option) any later version.</span>
+</span><span data-line="8"><span class="c1">#</span>
+</span><span data-line="9"><span class="c1"># This program is distributed in the hope that it will be useful,</span>
+</span><span data-line="10"><span class="c1"># but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+</span><span data-line="11"><span class="c1"># MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+</span><span data-line="12"><span class="c1"># GNU General Public License for more details.</span>
+</span><span data-line="13"><span class="c1">#</span>
+</span><span data-line="14"><span class="c1"># You should have received a copy of the GNU General Public License</span>
+</span><span data-line="15"><span class="c1"># along with this program.  If not, see &lt;https://www.gnu.org/licenses/&gt;.</span>
+</span><span data-line="16"><span class="c1"># pyright: reportInvalidTypeForm=false, reportGeneralTypeIssues=false, reportAssignmentType=false</span>
+</span><span data-line="17"><span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
+</span><span data-line="18">
+</span><span data-line="19"><span class="kn">from</span><span class="w"> </span><span class="nn">queue</span><span class="w"> </span><span class="kn">import</span> <span class="n">Queue</span>
+</span><span data-line="20"><span class="kn">from</span><span class="w"> </span><span class="nn">threading</span><span class="w"> </span><span class="kn">import</span> <span class="n">Event</span>
+</span><span data-line="21"><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">TypeVar</span>
+</span><span data-line="22">
+</span><span data-line="23"><span class="kn">from</span><span class="w"> </span><span class="nn">caterpillar.fields</span><span class="w"> </span><span class="kn">import</span> <span class="n">Bytes</span><span class="p">,</span> <span class="n">uint16</span>
+</span><span data-line="24"><span class="kn">from</span><span class="w"> </span><span class="nn">caterpillar.model</span><span class="w"> </span><span class="kn">import</span> <span class="n">pack</span><span class="p">,</span> <span class="n">unpack</span>
+</span><span data-line="25">
+</span><span data-line="26"><span class="kn">from</span><span class="w"> </span><span class="nn">caterpillar.shortcuts</span><span class="w"> </span><span class="kn">import</span> <span class="n">struct</span><span class="p">,</span> <span class="n">BigEndian</span><span class="p">,</span> <span class="n">this</span>
+</span><span data-line="27"><span class="kn">from</span><span class="w"> </span><span class="nn">scapy.arch</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_if_hwaddr</span>
+</span><span data-line="28"><span class="kn">from</span><span class="w"> </span><span class="nn">scapy.error</span><span class="w"> </span><span class="kn">import</span> <span class="n">Scapy_Exception</span>
+</span><span data-line="29"><span class="kn">from</span><span class="w"> </span><span class="nn">scapy.layers.l2</span><span class="w"> </span><span class="kn">import</span> <span class="n">Dot1Q</span><span class="p">,</span> <span class="n">Ether</span>
+</span><span data-line="30"><span class="kn">from</span><span class="w"> </span><span class="nn">scapy.packet</span><span class="w"> </span><span class="kn">import</span> <span class="n">Raw</span>
+</span><span data-line="31"><span class="kn">from</span><span class="w"> </span><span class="nn">scapy.sendrecv</span><span class="w"> </span><span class="kn">import</span> <span class="n">AsyncSniffer</span><span class="p">,</span> <span class="n">sendp</span><span class="p">,</span> <span class="n">sendpfast</span>
+</span><span data-line="32">
+</span><span data-line="33"><span class="kn">from</span><span class="w"> </span><span class="nn">icspacket.core.logger</span><span class="w"> </span><span class="kn">import</span> <span class="n">TRACE</span><span class="p">,</span> <span class="n">TRACE_PACKETS</span>
+</span><span data-line="34"><span class="kn">from</span><span class="w"> </span><span class="nn">icspacket.core.hexdump</span><span class="w"> </span><span class="kn">import</span> <span class="n">hexdump</span>
+</span><span data-line="35"><span class="kn">from</span><span class="w"> </span><span class="nn">icspacket.proto.iec61850._iec61850</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>  <span class="c1"># noqa</span>
+</span><span data-line="36">
+</span><span data-line="37"><span class="n">_T</span> <span class="o">=</span> <span class="n">TypeVar</span><span class="p">(</span><span class="s2">&quot;_T&quot;</span><span class="p">)</span>
+</span><span data-line="38">
+</span><span data-line="39"><span class="n">GOOSE_ETHER_TYPE</span> <span class="o">=</span> <span class="mh">0x88B8</span>
+</span><span data-line="40"><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="41"><span class="sd">EtherType value assigned to IEC 61850 GOOSE (Generic Object Oriented Substation</span>
+</span><span data-line="42"><span class="sd">Event)</span>
+</span><span data-line="43"><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="44">
+</span><span data-line="45"><span class="c1"># private</span>
+</span><span data-line="46"><span class="n">_DOT1Q_ETHER_TYPE</span> <span class="o">=</span> <span class="mh">0x8100</span>
+</span><span data-line="47">
+</span><span data-line="48">
+<div class="viewcode-block" id="PDU">
+<a class="viewcode-back" href="../../../../protocols/iec61850/api_goose.html#icspacket.proto.iec61850.goose.PDU">[docs]</a>
+</span><span data-line="49"><span class="nd">@struct</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="n">BigEndian</span><span class="p">)</span>
+</span><span data-line="50"><span class="k">class</span><span class="w"> </span><span class="nc">PDU</span><span class="p">:</span>
+</span><span data-line="51"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="52"><span class="sd">    Protocol Data Unit (PDU) representing the ISO/IEC 8802-3 frame structure</span>
+</span><span data-line="53"><span class="sd">    used for GSE management and GOOSE communication.</span>
+</span><span data-line="54">
+</span><span data-line="55"><span class="sd">    The PDU wraps the **Application Protocol Data Unit (APDU)** carried in an</span>
+</span><span data-line="56"><span class="sd">    Ethernet frame. The frame contains reserved fields in addition to the</span>
+</span><span data-line="57"><span class="sd">    application identifier and APDU payload.</span>
+</span><span data-line="58">
+</span><span data-line="59"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span data-line="60">
+</span><span data-line="61">    <span class="n">app_id</span><span class="p">:</span> <span class="n">uint16</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span data-line="62"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="63"><span class="sd">    Application identifier (AppID). This field uniquely identifies the</span>
+</span><span data-line="64"><span class="sd">    application instance for which the message is intended.</span>
+</span><span data-line="65"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span data-line="66">
+</span><span data-line="67">    <span class="n">length</span><span class="p">:</span> <span class="n">uint16</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span data-line="68"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="69"><span class="sd">    Total length of the PDU in bytes, including the 8-byte header (AppID,</span>
+</span><span data-line="70"><span class="sd">    Length, Reserved1, Reserved2).</span>
+</span><span data-line="71"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span data-line="72">
+</span><span data-line="73">    <span class="n">reserved1</span><span class="p">:</span> <span class="n">uint16</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span data-line="74">    <span class="n">reserved2</span><span class="p">:</span> <span class="n">uint16</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span data-line="75">
+</span><span data-line="76">    <span class="n">raw_apdu</span><span class="p">:</span> <span class="n">Bytes</span><span class="p">(</span><span class="n">this</span><span class="o">.</span><span class="n">length</span> <span class="o">-</span> <span class="mi">8</span><span class="p">)</span> <span class="o">=</span> <span class="sa">b</span><span class="s2">&quot;&quot;</span>
+</span><span data-line="77"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="78"><span class="sd">    Encoded APDU (Application Protocol Data Unit). This may contain ASN.1</span>
+</span><span data-line="79"><span class="sd">    BER-encoded payloads or raw bytes depending on context.</span>
+</span><span data-line="80"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span data-line="81">
+<div class="viewcode-block" id="PDU.build">
+<a class="viewcode-back" href="../../../../protocols/iec61850/api_goose.html#icspacket.proto.iec61850.goose.PDU.build">[docs]</a>
+</span><span data-line="82">    <span class="k">def</span><span class="w"> </span><span class="nf">build</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bytes</span><span class="p">:</span>
+</span><span data-line="83"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="84"><span class="sd">        Construct a serialized representation of the PDU.</span>
+</span><span data-line="85">
+</span><span data-line="86"><span class="sd">        If the ``raw_apdu`` field has a ``ber_encode()`` method, the APDU</span>
+</span><span data-line="87"><span class="sd">        is encoded before serialization. The length field is automatically</span>
+</span><span data-line="88"><span class="sd">        recalculated to include the header.</span>
+</span><span data-line="89">
+</span><span data-line="90"><span class="sd">        :return: A serialized PDU ready for transmission over Ethernet.</span>
+</span><span data-line="91"><span class="sd">        :rtype: bytes</span>
+</span><span data-line="92"><span class="sd">        :raises TypeError:</span>
+</span><span data-line="93"><span class="sd">            If ``raw_apdu`` is not a byte sequence after encoding.</span>
+</span><span data-line="94"><span class="sd">        &quot;&quot;&quot;</span>
+</span><span data-line="95">        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">raw_apdu</span><span class="p">,</span> <span class="s2">&quot;ber_encode&quot;</span><span class="p">):</span>
+</span><span data-line="96">            <span class="bp">self</span><span class="o">.</span><span class="n">raw_apdu</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">raw_apdu</span><span class="o">.</span><span class="n">ber_encode</span><span class="p">()</span>
+</span><span data-line="97">
+</span><span data-line="98">        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">raw_apdu</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">):</span>
+</span><span data-line="99">            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;apdu must be bytes&quot;</span><span class="p">)</span>
+</span><span data-line="100">
+</span><span data-line="101">        <span class="bp">self</span><span class="o">.</span><span class="n">length</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">raw_apdu</span><span class="p">)</span> <span class="o">+</span> <span class="mi">8</span>
+</span><span data-line="102">        <span class="k">return</span> <span class="n">pack</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
+
+</span><span data-line="103">
+<div class="viewcode-block" id="PDU.apdu">
+<a class="viewcode-back" href="../../../../protocols/iec61850/api_goose.html#icspacket.proto.iec61850.goose.PDU.apdu">[docs]</a>
+</span><span data-line="104">    <span class="k">def</span><span class="w"> </span><span class="nf">apdu</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">asn1_cls</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">_T</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">_T</span><span class="p">:</span>
+</span><span data-line="105"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="106"><span class="sd">        Decode the APDU portion of the PDU.</span>
+</span><span data-line="107">
+</span><span data-line="108"><span class="sd">        :param asn1_cls:</span>
+</span><span data-line="109"><span class="sd">            ASN.1 class type implementing a ``ber_decode()`` method.</span>
+</span><span data-line="110"><span class="sd">        :type asn1_cls: type</span>
+</span><span data-line="111"><span class="sd">        :return: Decoded APDU instance.</span>
+</span><span data-line="112"><span class="sd">        :rtype: _T</span>
+</span><span data-line="113"><span class="sd">        &quot;&quot;&quot;</span>
+</span><span data-line="114">        <span class="k">return</span> <span class="n">asn1_cls</span><span class="o">.</span><span class="n">ber_decode</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">raw_apdu</span><span class="p">)</span></div>
+
+</span><span data-line="115">
+<div class="viewcode-block" id="PDU.from_octets">
+<a class="viewcode-back" href="../../../../protocols/iec61850/api_goose.html#icspacket.proto.iec61850.goose.PDU.from_octets">[docs]</a>
+</span><span data-line="116">    <span class="nd">@staticmethod</span>
+</span><span data-line="117">    <span class="k">def</span><span class="w"> </span><span class="nf">from_octets</span><span class="p">(</span><span class="n">pctets</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;PDU&quot;</span><span class="p">:</span>
+</span><span data-line="118"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="119"><span class="sd">        Parse a serialized byte sequence into a :class:`PDU`.</span>
+</span><span data-line="120">
+</span><span data-line="121"><span class="sd">        :param bytes pctets:</span>
+</span><span data-line="122"><span class="sd">            Raw PDU bytes extracted from an Ethernet frame.</span>
+</span><span data-line="123"><span class="sd">        :return: A :class:`PDU` instance parsed from the octets.</span>
+</span><span data-line="124"><span class="sd">        :rtype: PDU</span>
+</span><span data-line="125"><span class="sd">        &quot;&quot;&quot;</span>
+</span><span data-line="126">        <span class="k">return</span> <span class="n">unpack</span><span class="p">(</span><span class="n">PDU</span><span class="p">,</span> <span class="n">pctets</span><span class="p">)</span></div>
+</div>
+
+</span><span data-line="127">
+</span><span data-line="128">
+<div class="viewcode-block" id="GOOSE_Client">
+<a class="viewcode-back" href="../../../../protocols/iec61850/api_goose.html#icspacket.proto.iec61850.goose.GOOSE_Client">[docs]</a>
+</span><span data-line="129"><span class="k">class</span><span class="w"> </span><span class="nc">GOOSE_Client</span><span class="p">:</span>
+</span><span data-line="130"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="131"><span class="sd">    Observer **and Publisher** for IEC 61850 GOOSE (Generic Object Oriented</span>
+</span><span data-line="132"><span class="sd">    Substation Event) messages.</span>
+</span><span data-line="133">
+</span><span data-line="134"><span class="sd">    This class provides a dual role:</span>
+</span><span data-line="135">
+</span><span data-line="136"><span class="sd">    1. **Observer** — It captures and filters incoming GOOSE PDUs</span>
+</span><span data-line="137"><span class="sd">       using **Scapy**&#39;s asynchronous sniffer. Incoming PDUs can be accessed</span>
+</span><span data-line="138"><span class="sd">       through a queue or by registering a callback.</span>
+</span><span data-line="139"><span class="sd">    2. **Publisher** — It constructs and transmits GOOSE PDUs over Ethernet,</span>
+</span><span data-line="140"><span class="sd">       supporting both raw PDUs and higher-level APDUs. VLAN tagging is</span>
+</span><span data-line="141"><span class="sd">       supported where required by the application environment.</span>
+</span><span data-line="142">
+</span><span data-line="143"><span class="sd">    Clients can be used as context managers to ensure proper startup and</span>
+</span><span data-line="144"><span class="sd">    teardown of the sniffer. For example:</span>
+</span><span data-line="145">
+</span><span data-line="146"><span class="sd">    .. code-block:: python</span>
+</span><span data-line="147">
+</span><span data-line="148"><span class="sd">        with GOOSE_Client(iface=&quot;eth0&quot;) as client:</span>
+</span><span data-line="149"><span class="sd">            # Capture one incoming PDU</span>
+</span><span data-line="150"><span class="sd">            incoming_pdu = client.recv_next()</span>
+</span><span data-line="151">
+</span><span data-line="152"><span class="sd">            # Publish a new PDU (simple echo)</span>
+</span><span data-line="153"><span class="sd">            client.publish_pdu(&quot;01:0c:cd:01:00:01&quot;, incoming_pdu)</span>
+</span><span data-line="154">
+</span><span data-line="155"><span class="sd">    .. note::</span>
+</span><span data-line="156"><span class="sd">        Publishing can be done **without** a sniffer running in the background,</span>
+</span><span data-line="157"><span class="sd">        i.e. the with statement can be ignored.</span>
+</span><span data-line="158">
+</span><span data-line="159"><span class="sd">    .. versionadded:: 0.2.3</span>
+</span><span data-line="160">
+</span><span data-line="161"><span class="sd">    :param iface:</span>
+</span><span data-line="162"><span class="sd">        Optional capture interface or list of interfaces to sniff on.</span>
+</span><span data-line="163"><span class="sd">        If multiple interfaces are provided, publishing requires</span>
+</span><span data-line="164"><span class="sd">        explicit configuration of ``iface`` or ``all_interfaces=True``.</span>
+</span><span data-line="165"><span class="sd">    :type iface: str | list[str] | None</span>
+</span><span data-line="166"><span class="sd">    :param callback:</span>
+</span><span data-line="167"><span class="sd">        Optional callback invoked for each received GOOSE frame.</span>
+</span><span data-line="168"><span class="sd">        The callback receives the raw :class:`Ether` frame and the decoded :class:`PDU`.</span>
+</span><span data-line="169"><span class="sd">    :type callback: Callable[[Ether, PDU], None] | None</span>
+</span><span data-line="170"><span class="sd">    :param ether_type:</span>
+</span><span data-line="171"><span class="sd">        EtherType filter for GOOSE traffic. Defaults to :data:`GOOSE_ETHER_TYPE`.</span>
+</span><span data-line="172"><span class="sd">    :type ether_type: int</span>
+</span><span data-line="173"><span class="sd">    :param inputs:</span>
+</span><span data-line="174"><span class="sd">        Optional list of input files (pcap) for offline analysis.</span>
+</span><span data-line="175"><span class="sd">    :type inputs: list[str] | None</span>
+</span><span data-line="176"><span class="sd">    :param app_id:</span>
+</span><span data-line="177"><span class="sd">        Default application identifier (AppID) to use when publishing.</span>
+</span><span data-line="178"><span class="sd">    :type app_id: int | None</span>
+</span><span data-line="179"><span class="sd">    :param vlan_id:</span>
+</span><span data-line="180"><span class="sd">        Default VLAN identifier to apply when publishing. If ``None``,</span>
+</span><span data-line="181"><span class="sd">        packets are sent without VLAN tagging unless overridden in the</span>
+</span><span data-line="182"><span class="sd">        publish call.</span>
+</span><span data-line="183"><span class="sd">    :type vlan_id: int | None</span>
+</span><span data-line="184"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span data-line="185">
+</span><span data-line="186">    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+</span><span data-line="187">        <span class="bp">self</span><span class="p">,</span>
+</span><span data-line="188">        <span class="n">iface</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span data-line="189">        <span class="n">callback</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">Ether</span><span class="p">,</span> <span class="n">PDU</span><span class="p">],</span> <span class="kc">None</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span data-line="190">        <span class="n">ether_type</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">GOOSE_ETHER_TYPE</span><span class="p">,</span>
+</span><span data-line="191">        <span class="n">inputs</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span data-line="192">        <span class="n">app_id</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span data-line="193">        <span class="n">vlan_id</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span data-line="194">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="195">        <span class="n">args</span> <span class="o">=</span> <span class="p">{</span>
+</span><span data-line="196">            <span class="s2">&quot;prn&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_process_pkt</span><span class="p">,</span>
+</span><span data-line="197">            <span class="s2">&quot;store&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+</span><span data-line="198">            <span class="s2">&quot;lfilter&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_filter_pkt</span><span class="p">,</span>
+</span><span data-line="199">        <span class="p">}</span>
+</span><span data-line="200">        <span class="k">if</span> <span class="n">iface</span><span class="p">:</span>
+</span><span data-line="201">            <span class="n">args</span><span class="p">[</span><span class="s2">&quot;iface&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">iface</span>
+</span><span data-line="202">        <span class="k">if</span> <span class="n">inputs</span><span class="p">:</span>
+</span><span data-line="203">            <span class="n">args</span><span class="p">[</span><span class="s2">&quot;offline&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">inputs</span>
+</span><span data-line="204">        <span class="bp">self</span><span class="o">.</span><span class="n">__sniffer</span> <span class="o">=</span> <span class="n">AsyncSniffer</span><span class="p">(</span><span class="o">**</span><span class="n">args</span><span class="p">)</span>
+</span><span data-line="205">        <span class="bp">self</span><span class="o">.</span><span class="n">__stop</span> <span class="o">=</span> <span class="n">Event</span><span class="p">()</span>
+</span><span data-line="206">        <span class="bp">self</span><span class="o">.</span><span class="n">__pkt_in</span> <span class="o">=</span> <span class="n">Queue</span><span class="p">()</span>
+</span><span data-line="207">        <span class="bp">self</span><span class="o">.</span><span class="n">__ether_type</span> <span class="o">=</span> <span class="n">ether_type</span>
+</span><span data-line="208">        <span class="bp">self</span><span class="o">.</span><span class="n">__iface</span> <span class="o">=</span> <span class="n">iface</span>
+</span><span data-line="209">
+</span><span data-line="210">        <span class="bp">self</span><span class="o">.</span><span class="n">app_id</span> <span class="o">=</span> <span class="n">app_id</span> <span class="ow">or</span> <span class="mi">0</span>
+</span><span data-line="211">        <span class="bp">self</span><span class="o">.</span><span class="n">vlan_id</span> <span class="o">=</span> <span class="n">vlan_id</span>
+</span><span data-line="212">        <span class="bp">self</span><span class="o">.</span><span class="n">callback</span> <span class="o">=</span> <span class="n">callback</span>
+</span><span data-line="213">        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+</span><span data-line="214">
+</span><span data-line="215">    <span class="k">def</span><span class="w"> </span><span class="fm">__enter__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;GOOSE_Client&quot;</span><span class="p">:</span>
+</span><span data-line="216">        <span class="k">return</span> <span class="bp">self</span>
+</span><span data-line="217">
+</span><span data-line="218">    <span class="k">def</span><span class="w"> </span><span class="fm">__exit__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exc_type</span><span class="p">,</span> <span class="n">exc_value</span><span class="p">,</span> <span class="n">traceback</span><span class="p">):</span>
+</span><span data-line="219">        <span class="bp">self</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+</span><span data-line="220">
+</span><span data-line="221">    <span class="nd">@property</span>
+</span><span data-line="222">    <span class="k">def</span><span class="w"> </span><span class="nf">pkt_in</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Queue</span><span class="p">[</span><span class="n">PDU</span><span class="p">]:</span>
+</span><span data-line="223"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="224"><span class="sd">        Queue of decoded PDUs captured by the observer.</span>
+</span><span data-line="225">
+</span><span data-line="226"><span class="sd">        :return: A thread-safe queue containing :class:`PDU` objects.</span>
+</span><span data-line="227"><span class="sd">        :rtype: Queue[PDU]</span>
+</span><span data-line="228"><span class="sd">        &quot;&quot;&quot;</span>
+</span><span data-line="229">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__pkt_in</span>
+</span><span data-line="230">
+</span><span data-line="231">    <span class="k">def</span><span class="w"> </span><span class="nf">_filter_pkt</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pkt</span><span class="p">:</span> <span class="n">Ether</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+</span><span data-line="232"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="233"><span class="sd">        Filter function applied to captured packets.</span>
+</span><span data-line="234">
+</span><span data-line="235"><span class="sd">        Matches packets carrying the configured EtherType, either directly</span>
+</span><span data-line="236"><span class="sd">        in the Ethernet header or within an IEEE 802.1Q VLAN tag.</span>
+</span><span data-line="237">
+</span><span data-line="238"><span class="sd">        :param Ether pkt:</span>
+</span><span data-line="239"><span class="sd">            The captured packet.</span>
+</span><span data-line="240"><span class="sd">        :return: ``True`` if the packet should be processed, ``False`` otherwise.</span>
+</span><span data-line="241"><span class="sd">        :rtype: bool</span>
+</span><span data-line="242"><span class="sd">        &quot;&quot;&quot;</span>
+</span><span data-line="243">        <span class="n">vlan_pkt</span> <span class="o">=</span> <span class="n">pkt</span><span class="o">.</span><span class="n">getlayer</span><span class="p">(</span><span class="n">Dot1Q</span><span class="p">)</span>
+</span><span data-line="244">        <span class="k">if</span> <span class="n">vlan_pkt</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">vlan_pkt</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">__ether_type</span><span class="p">:</span>
+</span><span data-line="245">            <span class="k">return</span> <span class="kc">True</span>
+</span><span data-line="246">
+</span><span data-line="247">        <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">pkt</span><span class="p">)</span> <span class="o">!=</span> <span class="n">Ether</span><span class="p">:</span>
+</span><span data-line="248">            <span class="k">return</span> <span class="kc">False</span>
+</span><span data-line="249">
+</span><span data-line="250">        <span class="k">return</span> <span class="n">pkt</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">__ether_type</span>
+</span><span data-line="251">
+</span><span data-line="252">    <span class="k">def</span><span class="w"> </span><span class="nf">_process_pkt</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pkt</span><span class="p">:</span> <span class="n">Ether</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="253"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="254"><span class="sd">        Process a packet that passed the filter.</span>
+</span><span data-line="255">
+</span><span data-line="256"><span class="sd">        Decodes the payload into a :class:`PDU`, logs trace information,</span>
+</span><span data-line="257"><span class="sd">        and invokes the configured callback (if any).</span>
+</span><span data-line="258">
+</span><span data-line="259"><span class="sd">        :param Ether pkt:</span>
+</span><span data-line="260"><span class="sd">            The captured Ethernet frame.</span>
+</span><span data-line="261"><span class="sd">        &quot;&quot;&quot;</span>
+</span><span data-line="262">        <span class="n">vlan_pkt</span> <span class="o">=</span> <span class="n">pkt</span><span class="o">.</span><span class="n">getlayer</span><span class="p">(</span><span class="n">Dot1Q</span><span class="p">)</span>
+</span><span data-line="263">        <span class="k">if</span> <span class="n">vlan_pkt</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="264">            <span class="n">payload</span> <span class="o">=</span> <span class="n">vlan_pkt</span><span class="o">.</span><span class="n">payload</span><span class="o">.</span><span class="n">load</span>
+</span><span data-line="265">            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">log</span><span class="p">(</span>
+</span><span data-line="266">                <span class="n">TRACE_PACKETS</span><span class="p">,</span>
+</span><span data-line="267">                <span class="s2">&quot;(VLAN </span><span class="si">%s</span><span class="s2">) 802.1Q from </span><span class="si">%s</span><span class="se">\n</span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span>
+</span><span data-line="268">                <span class="n">vlan_pkt</span><span class="o">.</span><span class="n">vlan</span><span class="p">,</span>
+</span><span data-line="269">                <span class="n">pkt</span><span class="o">.</span><span class="n">src</span><span class="p">,</span>
+</span><span data-line="270">                <span class="n">hexdump</span><span class="p">(</span><span class="n">payload</span><span class="p">),</span>
+</span><span data-line="271">            <span class="p">)</span>
+</span><span data-line="272">        <span class="k">else</span><span class="p">:</span>
+</span><span data-line="273">            <span class="n">payload</span> <span class="o">=</span> <span class="n">pkt</span><span class="o">.</span><span class="n">payload</span><span class="o">.</span><span class="n">load</span>
+</span><span data-line="274">            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">log</span><span class="p">(</span>
+</span><span data-line="275">                <span class="n">TRACE_PACKETS</span><span class="p">,</span>
+</span><span data-line="276">                <span class="s2">&quot;Raw framge from </span><span class="si">%s</span><span class="se">\n</span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span>
+</span><span data-line="277">                <span class="n">pkt</span><span class="o">.</span><span class="n">src</span><span class="p">,</span>
+</span><span data-line="278">                <span class="n">hexdump</span><span class="p">(</span><span class="n">payload</span><span class="p">),</span>
+</span><span data-line="279">            <span class="p">)</span>
+</span><span data-line="280">
+</span><span data-line="281">        <span class="k">try</span><span class="p">:</span>
+</span><span data-line="282">            <span class="n">pdu</span> <span class="o">=</span> <span class="n">PDU</span><span class="o">.</span><span class="n">from_octets</span><span class="p">(</span><span class="n">payload</span><span class="p">)</span>
+</span><span data-line="283">        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+</span><span data-line="284">            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">TRACE</span><span class="p">,</span> <span class="s2">&quot;Failed to parse IEC61850 PDU: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
+</span><span data-line="285">            <span class="k">return</span>
+</span><span data-line="286">
+</span><span data-line="287">        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">callback</span><span class="p">:</span>
+</span><span data-line="288">            <span class="k">try</span><span class="p">:</span>
+</span><span data-line="289">                <span class="bp">self</span><span class="o">.</span><span class="n">callback</span><span class="p">(</span><span class="n">pkt</span><span class="p">,</span> <span class="n">pdu</span><span class="p">)</span>
+</span><span data-line="290">            <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+</span><span data-line="291">                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">exception</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+</span><span data-line="292">        <span class="bp">self</span><span class="o">.</span><span class="n">__pkt_in</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="n">pdu</span><span class="p">)</span>
+</span><span data-line="293">
+<div class="viewcode-block" id="GOOSE_Client.start">
+<a class="viewcode-back" href="../../../../protocols/iec61850/api_goose.html#icspacket.proto.iec61850.goose.GOOSE_Client.start">[docs]</a>
+</span><span data-line="294">    <span class="k">def</span><span class="w"> </span><span class="nf">start</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="295"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="296"><span class="sd">        Start the observer and begin sniffing packets.</span>
+</span><span data-line="297">
+</span><span data-line="298"><span class="sd">        This resets the incoming PDU queue and clears the stop event.</span>
+</span><span data-line="299"><span class="sd">        &quot;&quot;&quot;</span>
+</span><span data-line="300">        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__sniffer</span><span class="o">.</span><span class="n">running</span><span class="p">:</span>
+</span><span data-line="301">            <span class="k">return</span>
+</span><span data-line="302">
+</span><span data-line="303">        <span class="bp">self</span><span class="o">.</span><span class="n">__stop</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+</span><span data-line="304">        <span class="bp">self</span><span class="o">.</span><span class="n">__sniffer</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+</span><span data-line="305">        <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">__pkt_in</span>
+</span><span data-line="306">        <span class="bp">self</span><span class="o">.</span><span class="n">__pkt_in</span> <span class="o">=</span> <span class="n">Queue</span><span class="p">()</span></div>
+
+</span><span data-line="307">
+<div class="viewcode-block" id="GOOSE_Client.stop">
+<a class="viewcode-back" href="../../../../protocols/iec61850/api_goose.html#icspacket.proto.iec61850.goose.GOOSE_Client.stop">[docs]</a>
+</span><span data-line="308">    <span class="k">def</span><span class="w"> </span><span class="nf">stop</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">join</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
+</span><span data-line="309"><span class="w">        </span><span class="sd">&quot;&quot;&quot;Stop the observer and terminate packet sniffing.</span>
+</span><span data-line="310">
+</span><span data-line="311"><span class="sd">        .. tip::</span>
+</span><span data-line="312"><span class="sd">            Use the ``join`` parameter to read out all remaining packets from PCAP</span>
+</span><span data-line="313"><span class="sd">            files if specified in the constructor.</span>
+</span><span data-line="314">
+</span><span data-line="315"><span class="sd">        :param bool join:</span>
+</span><span data-line="316"><span class="sd">            If ``True``, block until the sniffer thread terminates.</span>
+</span><span data-line="317"><span class="sd">        &quot;&quot;&quot;</span>
+</span><span data-line="318">        <span class="bp">self</span><span class="o">.</span><span class="n">__stop</span><span class="o">.</span><span class="n">set</span><span class="p">()</span>
+</span><span data-line="319">        <span class="k">try</span><span class="p">:</span>
+</span><span data-line="320">            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__sniffer</span><span class="o">.</span><span class="n">running</span><span class="p">:</span>
+</span><span data-line="321">                <span class="k">if</span> <span class="n">join</span><span class="p">:</span>
+</span><span data-line="322">                    <span class="bp">self</span><span class="o">.</span><span class="n">__sniffer</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
+</span><span data-line="323">                <span class="n">_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__sniffer</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+</span><span data-line="324">        <span class="k">except</span> <span class="n">Scapy_Exception</span><span class="p">:</span>
+</span><span data-line="325">            <span class="c1"># in case no packets were captured</span>
+</span><span data-line="326">            <span class="k">pass</span></div>
+
+</span><span data-line="327">
+<div class="viewcode-block" id="GOOSE_Client.listen_forever">
+<a class="viewcode-back" href="../../../../protocols/iec61850/api_goose.html#icspacket.proto.iec61850.goose.GOOSE_Client.listen_forever">[docs]</a>
+</span><span data-line="328">    <span class="k">def</span><span class="w"> </span><span class="nf">listen_forever</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="329"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="330"><span class="sd">        Continuously capture GOOSE packets until interrupted.</span>
+</span><span data-line="331">
+</span><span data-line="332"><span class="sd">        This method blocks the calling thread until ``stop()`` is invoked</span>
+</span><span data-line="333"><span class="sd">        or a keyboard interrupt is received.</span>
+</span><span data-line="334"><span class="sd">        &quot;&quot;&quot;</span>
+</span><span data-line="335">        <span class="c1"># ensures the sniffer is not running and clears __stop</span>
+</span><span data-line="336">        <span class="bp">self</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+</span><span data-line="337">        <span class="k">try</span><span class="p">:</span>
+</span><span data-line="338">            <span class="k">while</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">__stop</span><span class="o">.</span><span class="n">is_set</span><span class="p">():</span>
+</span><span data-line="339">                <span class="bp">self</span><span class="o">.</span><span class="n">__stop</span><span class="o">.</span><span class="n">wait</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</span><span data-line="340">        <span class="k">except</span> <span class="ne">KeyboardInterrupt</span><span class="p">:</span>
+</span><span data-line="341">            <span class="k">pass</span>
+</span><span data-line="342">        <span class="k">finally</span><span class="p">:</span>
+</span><span data-line="343">            <span class="bp">self</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span></div>
+
+</span><span data-line="344">
+<div class="viewcode-block" id="GOOSE_Client.recv_next">
+<a class="viewcode-back" href="../../../../protocols/iec61850/api_goose.html#icspacket.proto.iec61850.goose.GOOSE_Client.recv_next">[docs]</a>
+</span><span data-line="345">    <span class="k">def</span><span class="w"> </span><span class="nf">recv_next</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">PDU</span><span class="p">:</span>
+</span><span data-line="346"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="347"><span class="sd">        Retrieve the next decoded PDU from the capture queue.</span>
+</span><span data-line="348">
+</span><span data-line="349"><span class="sd">        :return: The next available :class:`PDU`.</span>
+</span><span data-line="350"><span class="sd">        :rtype: PDU</span>
+</span><span data-line="351"><span class="sd">        :raises ConnectionError:</span>
+</span><span data-line="352"><span class="sd">            If the sniffer is not currently running.</span>
+</span><span data-line="353"><span class="sd">        &quot;&quot;&quot;</span>
+</span><span data-line="354">        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">__sniffer</span><span class="o">.</span><span class="n">running</span><span class="p">:</span>
+</span><span data-line="355">            <span class="k">raise</span> <span class="ne">ConnectionError</span><span class="p">(</span><span class="s2">&quot;Sniffer is not running&quot;</span><span class="p">)</span>
+</span><span data-line="356">
+</span><span data-line="357">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">pkt_in</span><span class="o">.</span><span class="n">get</span><span class="p">()</span></div>
+
+</span><span data-line="358">
+<div class="viewcode-block" id="GOOSE_Client.publish_pdu">
+<a class="viewcode-back" href="../../../../protocols/iec61850/api_goose.html#icspacket.proto.iec61850.goose.GOOSE_Client.publish_pdu">[docs]</a>
+</span><span data-line="359">    <span class="k">def</span><span class="w"> </span><span class="nf">publish_pdu</span><span class="p">(</span>
+</span><span data-line="360">        <span class="bp">self</span><span class="p">,</span>
+</span><span data-line="361">        <span class="n">addr</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span data-line="362">        <span class="n">pdu</span><span class="p">:</span> <span class="n">PDU</span><span class="p">,</span>
+</span><span data-line="363">        <span class="n">vlan_id</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span data-line="364">        <span class="n">vlan_priority</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span data-line="365">        <span class="n">iface</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span data-line="366">        <span class="n">all_interfaces</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span data-line="367">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="368"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="369"><span class="sd">        Transmit a fully constructed :class:`PDU` to the given destination address.</span>
+</span><span data-line="370">
+</span><span data-line="371"><span class="sd">        This is the low-level publishing method. It requires the caller</span>
+</span><span data-line="372"><span class="sd">        to provide a complete :class:`PDU` object (including encoded APDU).</span>
+</span><span data-line="373"><span class="sd">        VLAN tagging and priority handling are supported.</span>
+</span><span data-line="374">
+</span><span data-line="375"><span class="sd">        :param str addr:</span>
+</span><span data-line="376"><span class="sd">            Destination MAC address for the frame (typically a GOOSE</span>
+</span><span data-line="377"><span class="sd">            multicast address).</span>
+</span><span data-line="378"><span class="sd">        :param PDU pdu:</span>
+</span><span data-line="379"><span class="sd">            The protocol data unit to serialize and publish.</span>
+</span><span data-line="380"><span class="sd">        :param vlan_id:</span>
+</span><span data-line="381"><span class="sd">            VLAN identifier to use for this transmission. If ``None``,</span>
+</span><span data-line="382"><span class="sd">            the instance&#39;s default VLAN ID is used. If still ``None``,</span>
+</span><span data-line="383"><span class="sd">            the frame is sent without VLAN tagging.</span>
+</span><span data-line="384"><span class="sd">        :type vlan_id: int | None</span>
+</span><span data-line="385"><span class="sd">        :param vlan_priority:</span>
+</span><span data-line="386"><span class="sd">            Optional VLAN priority code point (PCP) to apply. Ignored if</span>
+</span><span data-line="387"><span class="sd">            ``vlan_id`` is ``None``.</span>
+</span><span data-line="388"><span class="sd">        :type vlan_priority: int | None</span>
+</span><span data-line="389"><span class="sd">        :param iface:</span>
+</span><span data-line="390"><span class="sd">            Explicit interface to publish on. If not provided, the default</span>
+</span><span data-line="391"><span class="sd">            interface(s) configured in the client are used.</span>
+</span><span data-line="392"><span class="sd">        :type iface: str | None</span>
+</span><span data-line="393"><span class="sd">        :param bool all_interfaces:</span>
+</span><span data-line="394"><span class="sd">            If multiple interfaces were configured and this flag is ``True``,</span>
+</span><span data-line="395"><span class="sd">            the PDU is transmitted on all interfaces. If ``False`` and multiple</span>
+</span><span data-line="396"><span class="sd">            interfaces exist, an explicit ``iface`` must be given.</span>
+</span><span data-line="397"><span class="sd">        :raises ValueError:</span>
+</span><span data-line="398"><span class="sd">            If multiple interfaces are configured but no target interface</span>
+</span><span data-line="399"><span class="sd">            was specified and ``all_interfaces`` is ``False``.</span>
+</span><span data-line="400"><span class="sd">        &quot;&quot;&quot;</span>
+</span><span data-line="401">        <span class="n">vlan_id</span> <span class="o">=</span> <span class="n">vlan_id</span> <span class="k">if</span> <span class="n">vlan_id</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">vlan_id</span>
+</span><span data-line="402">        <span class="k">if</span> <span class="ow">not</span> <span class="n">iface</span><span class="p">:</span>
+</span><span data-line="403">            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__iface</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+</span><span data-line="404">                <span class="k">if</span> <span class="ow">not</span> <span class="n">all_interfaces</span><span class="p">:</span>
+</span><span data-line="405">                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+</span><span data-line="406">                        <span class="s2">&quot;iface must be specified if multiple interfaces are available&quot;</span>
+</span><span data-line="407">                    <span class="p">)</span>
+</span><span data-line="408">                <span class="n">target</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__iface</span>
+</span><span data-line="409">            <span class="k">else</span><span class="p">:</span>
+</span><span data-line="410">                <span class="n">target</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">__iface</span><span class="p">]</span>
+</span><span data-line="411">        <span class="k">else</span><span class="p">:</span>
+</span><span data-line="412">            <span class="n">target</span> <span class="o">=</span> <span class="p">[</span><span class="n">iface</span><span class="p">]</span>
+</span><span data-line="413">
+</span><span data-line="414">        <span class="k">for</span> <span class="n">iface</span> <span class="ow">in</span> <span class="n">target</span><span class="p">:</span>
+</span><span data-line="415">            <span class="n">mac_addr</span> <span class="o">=</span> <span class="n">get_if_hwaddr</span><span class="p">(</span><span class="n">iface</span><span class="p">)</span>
+</span><span data-line="416">            <span class="n">pkt</span> <span class="o">=</span> <span class="n">Ether</span><span class="p">(</span>
+</span><span data-line="417">                <span class="nb">type</span><span class="o">=</span><span class="n">_DOT1Q_ETHER_TYPE</span> <span class="k">if</span> <span class="n">vlan_id</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">__ether_type</span><span class="p">,</span>
+</span><span data-line="418">                <span class="n">dst</span><span class="o">=</span><span class="n">addr</span><span class="p">,</span>
+</span><span data-line="419">                <span class="n">src</span><span class="o">=</span><span class="n">mac_addr</span><span class="p">,</span>
+</span><span data-line="420">            <span class="p">)</span>
+</span><span data-line="421">            <span class="k">if</span> <span class="n">vlan_id</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="422">                <span class="n">pkt</span> <span class="o">=</span> <span class="n">pkt</span> <span class="o">/</span> <span class="n">Dot1Q</span><span class="p">(</span>
+</span><span data-line="423">                    <span class="n">vlan</span><span class="o">=</span><span class="n">vlan_id</span><span class="p">,</span>
+</span><span data-line="424">                    <span class="n">prio</span><span class="o">=</span><span class="n">vlan_priority</span> <span class="k">if</span> <span class="n">vlan_priority</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="mi">0</span><span class="p">,</span>
+</span><span data-line="425">                    <span class="nb">type</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">__ether_type</span><span class="p">,</span>
+</span><span data-line="426">                <span class="p">)</span>
+</span><span data-line="427">
+</span><span data-line="428">            <span class="n">pkt</span><span class="o">.</span><span class="n">add_payload</span><span class="p">(</span><span class="n">pdu</span><span class="o">.</span><span class="n">build</span><span class="p">())</span>
+</span><span data-line="429">            <span class="n">_</span> <span class="o">=</span> <span class="n">sendp</span><span class="p">(</span><span class="n">pkt</span><span class="p">,</span> <span class="n">iface</span><span class="o">=</span><span class="n">iface</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></div>
+
+</span><span data-line="430">
+<div class="viewcode-block" id="GOOSE_Client.publish">
+<a class="viewcode-back" href="../../../../protocols/iec61850/api_goose.html#icspacket.proto.iec61850.goose.GOOSE_Client.publish">[docs]</a>
+</span><span data-line="431">    <span class="k">def</span><span class="w"> </span><span class="nf">publish</span><span class="p">(</span>
+</span><span data-line="432">        <span class="bp">self</span><span class="p">,</span>
+</span><span data-line="433">        <span class="n">addr</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span data-line="434">        <span class="n">aodu</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
+</span><span data-line="435">        <span class="n">app_id</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span data-line="436">        <span class="n">vlan_id</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span data-line="437">        <span class="n">vlan_priority</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span data-line="438">        <span class="n">iface</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span data-line="439">        <span class="n">all_interfaces</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span data-line="440">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="441"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="442"><span class="sd">        Publish an APDU (Application Protocol Data Unit) directly as a GOOSE PDU.</span>
+</span><span data-line="443">
+</span><span data-line="444"><span class="sd">        This higher-level publishing method simplifies transmission by</span>
+</span><span data-line="445"><span class="sd">        constructing the PDU automatically from the given APDU. The</span>
+</span><span data-line="446"><span class="sd">        APDU may be a raw ASN.1 object (with a ``ber_encode()`` method)</span>
+</span><span data-line="447"><span class="sd">        or already-encoded bytes.</span>
+</span><span data-line="448">
+</span><span data-line="449"><span class="sd">        .. note::</span>
+</span><span data-line="450"><span class="sd">            This method automatically wraps the APDU in a :class:`PDU`</span>
+</span><span data-line="451"><span class="sd">            with the appropriate ``AppID``.</span>
+</span><span data-line="452">
+</span><span data-line="453"><span class="sd">        :param str addr:</span>
+</span><span data-line="454"><span class="sd">            Destination MAC address for the frame (typically a GOOSE</span>
+</span><span data-line="455"><span class="sd">            multicast address).</span>
+</span><span data-line="456"><span class="sd">        :param aodu:</span>
+</span><span data-line="457"><span class="sd">            The APDU to embed in the outgoing PDU. Can be an ASN.1 object</span>
+</span><span data-line="458"><span class="sd">            or raw bytes.</span>
+</span><span data-line="459"><span class="sd">        :type aodu: Any</span>
+</span><span data-line="460"><span class="sd">        :param app_id:</span>
+</span><span data-line="461"><span class="sd">            Application identifier to use. If ``None``, the default</span>
+</span><span data-line="462"><span class="sd">            ``app_id`` set on the client instance is applied.</span>
+</span><span data-line="463"><span class="sd">        :type app_id: int | None</span>
+</span><span data-line="464"><span class="sd">        :param vlan_id:</span>
+</span><span data-line="465"><span class="sd">            VLAN identifier to use for this transmission. Overrides the</span>
+</span><span data-line="466"><span class="sd">            instance default if provided.</span>
+</span><span data-line="467"><span class="sd">        :type vlan_id: int | None</span>
+</span><span data-line="468"><span class="sd">        :param vlan_priority:</span>
+</span><span data-line="469"><span class="sd">            Optional VLAN priority code point (PCP) to apply. Ignored if</span>
+</span><span data-line="470"><span class="sd">            ``vlan_id`` is ``None``.</span>
+</span><span data-line="471"><span class="sd">        :type vlan_priority: int | None</span>
+</span><span data-line="472"><span class="sd">        :param iface:</span>
+</span><span data-line="473"><span class="sd">            Explicit interface to publish on. If not provided, the default</span>
+</span><span data-line="474"><span class="sd">            interface(s) configured in the client are used.</span>
+</span><span data-line="475"><span class="sd">        :type iface: str | None</span>
+</span><span data-line="476"><span class="sd">        :param bool all_interfaces:</span>
+</span><span data-line="477"><span class="sd">            If multiple interfaces were configured and this flag is ``True``,</span>
+</span><span data-line="478"><span class="sd">            the PDU is transmitted on all interfaces. If ``False`` and multiple</span>
+</span><span data-line="479"><span class="sd">            interfaces exist, an explicit ``iface`` must be given.</span>
+</span><span data-line="480"><span class="sd">        &quot;&quot;&quot;</span>
+</span><span data-line="481">        <span class="n">app_id</span> <span class="o">=</span> <span class="n">app_id</span> <span class="k">if</span> <span class="n">app_id</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">app_id</span>
+</span><span data-line="482">        <span class="n">pdu</span> <span class="o">=</span> <span class="n">PDU</span><span class="p">(</span><span class="n">app_id</span><span class="o">=</span><span class="n">app_id</span><span class="p">,</span> <span class="n">raw_apdu</span><span class="o">=</span><span class="n">aodu</span><span class="p">)</span>
+</span><span data-line="483">        <span class="bp">self</span><span class="o">.</span><span class="n">publish_pdu</span><span class="p">(</span><span class="n">addr</span><span class="p">,</span> <span class="n">pdu</span><span class="p">,</span> <span class="n">vlan_id</span><span class="p">,</span> <span class="n">vlan_priority</span><span class="p">,</span> <span class="n">iface</span><span class="p">,</span> <span class="n">all_interfaces</span><span class="p">)</span></div>
+</div>
+
+</span><span data-line="484">
+</span><span data-line="485">
+</span><span data-line="486"><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>  <span class="c1"># noqa</span>
+</span><span data-line="487">    <span class="s2">&quot;GOOSE_ETHER_TYPE&quot;</span><span class="p">,</span>
+</span><span data-line="488">    <span class="s2">&quot;PDU&quot;</span><span class="p">,</span>
+</span><span data-line="489">    <span class="s2">&quot;GOOSE_Client&quot;</span><span class="p">,</span>
+</span><span data-line="490">    <span class="s2">&quot;Data&quot;</span><span class="p">,</span>
+</span><span data-line="491">    <span class="s2">&quot;MMSString&quot;</span><span class="p">,</span>
+</span><span data-line="492">    <span class="s2">&quot;FloatingPoint&quot;</span><span class="p">,</span>
+</span><span data-line="493">    <span class="s2">&quot;TimeOfDay&quot;</span><span class="p">,</span>
+</span><span data-line="494">    <span class="s2">&quot;IEC61850_Specific_Protocol&quot;</span><span class="p">,</span>
+</span><span data-line="495">    <span class="s2">&quot;GSEMngtPdu&quot;</span><span class="p">,</span>
+</span><span data-line="496">    <span class="s2">&quot;GSERequestResponse&quot;</span><span class="p">,</span>
+</span><span data-line="497">    <span class="s2">&quot;GSEMngtRequests&quot;</span><span class="p">,</span>
+</span><span data-line="498">    <span class="s2">&quot;GSEMngtResponses&quot;</span><span class="p">,</span>
+</span><span data-line="499">    <span class="s2">&quot;GetReferenceRequestPdu&quot;</span><span class="p">,</span>
+</span><span data-line="500">    <span class="s2">&quot;GetElementRequestPdu&quot;</span><span class="p">,</span>
+</span><span data-line="501">    <span class="s2">&quot;GSEMngtResponsePdu&quot;</span><span class="p">,</span>
+</span><span data-line="502">    <span class="s2">&quot;RequestResults&quot;</span><span class="p">,</span>
+</span><span data-line="503">    <span class="s2">&quot;GlbErrors&quot;</span><span class="p">,</span>
+</span><span data-line="504">    <span class="s2">&quot;ErrorReason&quot;</span><span class="p">,</span>
+</span><span data-line="505">    <span class="s2">&quot;IECGoosePdu&quot;</span><span class="p">,</span>
+</span><span data-line="506">    <span class="s2">&quot;UtcTime&quot;</span><span class="p">,</span>
+</span><span data-line="507"><span class="p">]</span>
+</span></pre></div>
+        </article><button class="back-to-top" type="button">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+  </svg>
+  <span>Back to top</span>
+</button><div class="navigation flex print:hidden"></div></div>
+    </div>
+  </main>
+</div>
+<footer class="sy-foot">
+  <div class="sy-foot-inner sy-container mx-auto">
+    <div class="sy-foot-reserved md:flex justify-between items-center">
+      <div class="sy-foot-copyright"><p>2025, MatrixEditor</p>
+  
+  <p>
+    Made with
+    
+    <a href="https://www.sphinx-doc.org/">Sphinx</a> and
+    
+    <a href="https://shibuya.lepture.com">Shibuya theme</a>.
+  </p>
+</div>
+      <div class="sy-foot-socials">
+<a href="https://github.com/MatrixEditor/icspacket" aria-label="GitHub">
+  <iconify-icon icon="simple-icons:github"></iconify-icon>
+</a></div>
+    </div>
+  </div>
+</footer>
+      <script src="../../../../_static/documentation_options.js?v=e2846c24"></script>
+      <script src="../../../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../../../_static/design-tabs.js?v=f930bc37"></script>
+      <script src="../../../../_static/shibuya.js?v=e730760c"></script></body>
+</html>
