@@ -52,10 +52,8 @@ class SV_Client(GOOSE_Client):
     - **Compatibility:** Since SV reuses the same PDU decoding layer,
       both online capture and offline PCAP file analysis are supported.
 
-    Example
-    -------
-
     .. code-block:: python
+        :caption: Example
 
         # Capture Sampled Values on eth1
         with SV_Client(interfaces=["eth1"]) as sv_client:
@@ -65,6 +63,8 @@ class SV_Client(GOOSE_Client):
         # Publish a new Sampled Value PDU
         sv_client = SV_Client(["eth1"])
         sv_client.publish("01:0c:cd:01:00:01", my_sv_apdu)
+
+    .. versionadded:: 0.2.3
 
     :param interfaces:
         List of interface names (e.g., ``["eth0", "eth1"]``) to capture

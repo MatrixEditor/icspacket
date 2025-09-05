@@ -9,3 +9,5 @@ API Reference
     api_data_classes
     api_path
     api_client
+    api_goose
+    api_sv

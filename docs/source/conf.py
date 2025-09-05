@@ -72,7 +72,7 @@ html_theme_options = {
     "color_mode": "dark",
     "github_url": "https://github.com/MatrixEditor/icspacket",
     "discussion_url": "https://github.com/MatrixEditor/icspacket/discussions",
-    "globaltoc_expand_depth": 2,
+    "globaltoc_expand_depth": 1,
     "toctree_maxdepth": 5,
     "nav_links": [
         {
@@ -96,5 +96,9 @@ html_theme_options = {
                 }
             ],
         },
+        {
+            "title": "Changelog",
+            "url": "changelog",
+        }
     ],
 }

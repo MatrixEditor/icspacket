@@ -141,7 +141,10 @@ def get_floating_point_value(fp: FloatingPoint | bytes) -> float:
 
 @bitfield(order=BigEndian, options=[S_ADD_BYTES])
 class Timestamp:
-    """Structured bitfield representation of a timestamp value."""
+    """Structured bitfield representation of a timestamp value.
+
+    .. versionadded:: 0.2.3
+    """
 
     timeval: Bytes(4) = bytes(4)
     """4-byte unsigned integer representing the elapsed time in seconds."""

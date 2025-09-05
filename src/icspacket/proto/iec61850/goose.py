@@ -156,6 +156,8 @@ class GOOSE_Client:
         Publishing can be done **without** a sniffer running in the background,
         i.e. the with statement can be ignored.
 
+    .. versionadded:: 0.2.3
+
     :param iface:
         Optional capture interface or list of interfaces to sniff on.
         If multiple interfaces are provided, publishing requires
