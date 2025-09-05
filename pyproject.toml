@@ -44,11 +44,12 @@ classifiers = [
 dependencies = [
   "caterpillar-py", # binary protocols
   "bitarray",       # asn1c-python extensions
+  "typing-extensions", # compatibility with 3.10
   # ---  dependencies for examples
   "rich",              # colored terminal output and logging
   "cmd2",              # advanced command shells (cmd 2.0)
-  "typing-extensions", # compatibility with 3.10
   "crcmod",            # dnp3 checksum algorithm
+  "scapy",             # GOOSE and SV send/recv
 ]
 
 [project.urls]
@@ -77,3 +78,4 @@ write_to = "src/icspacket/_version.py"
 "dnp3dump.py" = "icspacket.examples.dnp3dump:cli_main"
 "dnp3read.py" = "icspacket.examples.dnp3read:cli_main"
 "dnp3linkaddr.py" = "icspacket.examples.dnp3linkaddr:cli_main"
+"gooseobserv.py" = "icspacket.examples.gooseobserv:cli_main"

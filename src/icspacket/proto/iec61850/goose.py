@@ -239,11 +239,13 @@ class GOOSE_Client:
         :rtype: bool
         """
         vlan_pkt = pkt.getlayer(Dot1Q)
-        if vlan_pkt is not None and vlan_pkt.vlan == self.__ether_type:
+        if vlan_pkt is not None and vlan_pkt.type == self.__ether_type:
             return True
 
-        ether = pkt.getlayer(Ether)
-        return ether is not None and ether.type == self.__ether_type
+        if type(pkt) != Ether:
+            return False
+
+        return pkt.type == self.__ether_type
 
     def _process_pkt(self, pkt: Ether) -> None:
         """
