@@ -86,7 +86,7 @@ def data_to_str(data: Data) -> str | dict | list:
                 for item in data.structure
             }
         case Data.PRESENT.PR_visible_string:
-            return escape(data.visible_string or "")
+            return escape(data.visible_string or "<EMPTY>")
         case _:
             return escape(data.to_text().decode().strip())
 
