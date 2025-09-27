@@ -527,14 +527,14 @@ int PyAsnTypeDescription_ModInit(PyObject *mod) {
 	PY_IMPL_MOD_ASSIGN_OBJECT(TypeDescription_structure_ANON_6, components_TYPE, &PyAsnTypeDescription_components_ANON_8_Type);
 	PY_IMPL_MOD_ASSIGN_OBJECT(TypeDescription, structure_TYPE, &PyAsnTypeDescription_structure_ANON_6_Type);
 	PY_IMPL_MOD_ASSIGN_OBJECT(TypeDescription, floating_point_TYPE, &PyAsnTypeDescription_floating_point_ANON_16_Type);
-	PY_IMPL_NEW_ENUM(TypeDescription.PRESENT, PyAsnEnumTypeDescription_PRESENT_Type, -1, 
+	PY_IMPL_NEW_ENUM(TypeDescription.PRESENT, PyAsnEnumTypeDescription_PRESENT_Type, -1,
 		PY_IMPL_ENUM_VALUE(PR_NOTHING, TypeDescription_PR_NOTHING, 0);
 		PY_IMPL_ENUM_VALUE(PR_array, TypeDescription_PR_array, 1);
 		PY_IMPL_ENUM_VALUE(PR_structure, TypeDescription_PR_structure, 2);
 		PY_IMPL_ENUM_VALUE(PR_boolean, TypeDescription_PR_boolean, 3);
 		PY_IMPL_ENUM_VALUE(PR_bit_string, TypeDescription_PR_bit_string, 4);
 		PY_IMPL_ENUM_VALUE(PR_integer, TypeDescription_PR_integer, 5);
-		PY_IMPL_ENUM_VALUE(PR_Unsigned, TypeDescription_PR_unsigned, 6);
+		PY_IMPL_ENUM_VALUE(PR_unsigned, TypeDescription_PR_unsigned, 6);
 		PY_IMPL_ENUM_VALUE(PR_floating_point, TypeDescription_PR_floating_point, 7);
 		PY_IMPL_ENUM_VALUE(PR_octet_string, TypeDescription_PR_octet_string, 8);
 		PY_IMPL_ENUM_VALUE(PR_visible_string, TypeDescription_PR_visible_string, 9);

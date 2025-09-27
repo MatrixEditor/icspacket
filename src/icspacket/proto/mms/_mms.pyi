@@ -63,7 +63,7 @@ class _Asn1BitStrType(_Asn1Type):
 
 ### BEGIN GENERATED CODE ###
 class EMBEDDED_PDV(_Asn1Type): # SEQUENCE
-	
+
 	class identification_TYPE(_Asn1Type): # CHOICE
 		class PRESENT(EXT_IntEnum):
 			PR_NOTHING = 0
@@ -73,10 +73,10 @@ class EMBEDDED_PDV(_Asn1Type): # SEQUENCE
 			PR_context_negotiation = 4
 			PR_transfer_syntax = 5
 			PR_fixed = 6
-		
+
 		@property
 		def present(self) -> PRESENT: ...
-		
+
 		class syntaxes_TYPE(_Asn1Type): # SEQUENCE
 			abstract: str
 			transfer: str
@@ -85,9 +85,9 @@ class EMBEDDED_PDV(_Asn1Type): # SEQUENCE
 				abstract: str = ...,
 				transfer: str = ...,
 			) -> None: ...
-			
+
 		syntaxes: syntaxes_TYPE
-		
+
 		class context_negotiation_TYPE(_Asn1Type): # SEQUENCE
 			presentation_context_id: int
 			transfer_syntax: str
@@ -96,7 +96,7 @@ class EMBEDDED_PDV(_Asn1Type): # SEQUENCE
 				presentation_context_id: int = ...,
 				transfer_syntax: str = ...,
 			) -> None: ...
-			
+
 		context_negotiation: context_negotiation_TYPE
 		syntax: str | None
 		presentation_context_id: int | None
@@ -111,7 +111,7 @@ class EMBEDDED_PDV(_Asn1Type): # SEQUENCE
 			transfer_syntax: str = ...,
 			fixed: None = ...,
 		) -> None: ...
-		
+
 	identification: identification_TYPE
 	data_value: bytes
 	def __init__(
@@ -119,7 +119,7 @@ class EMBEDDED_PDV(_Asn1Type): # SEQUENCE
 		identification: identification_TYPE = ...,
 		data_value: bytes = ...,
 	) -> None: ...
-	
+
 class TimeOfDay(_Asn1BasicType[bytes]):
 	pass
 
@@ -150,10 +150,10 @@ class ObjectName(_Asn1Type): # CHOICE
 		PR_vmd_specific = 1
 		PR_domain_specific = 2
 		PR_aa_specific = 3
-	
+
 	@property
 	def present(self) -> PRESENT: ...
-	
+
 	class domain_specific_TYPE(_Asn1Type): # SEQUENCE
 		@property
 		def domainID(self) -> Identifier: ...
@@ -168,7 +168,7 @@ class ObjectName(_Asn1Type): # CHOICE
 			domainID: Identifier = ...,
 			itemID: Identifier = ...,
 		) -> None: ...
-		
+
 	domain_specific: domain_specific_TYPE
 	@property
 	def vmd_specific(self) -> Identifier | None: ...
@@ -184,16 +184,16 @@ class ObjectName(_Asn1Type): # CHOICE
 		domain_specific: domain_specific_TYPE = ...,
 		aa_specific: Identifier = ...,
 	) -> None: ...
-	
+
 class ObjectClass(_Asn1Type): # CHOICE
 	class PRESENT(EXT_IntEnum):
 		PR_NOTHING = 0
 		PR_basicObjectClass = 1
 		PR_csObjectClass = 2
-	
+
 	@property
 	def present(self) -> PRESENT: ...
-	
+
 	class basicObjectClass_VALUES(EXT_IntEnum):
 		V_namedVariable = 0
 		V_scatteredAccess = 1
@@ -209,20 +209,20 @@ class ObjectClass(_Asn1Type): # CHOICE
 		V_operatorStation = 11
 		V_dataExchange = 12
 		V_accessControlList = 13
-	
+
 	basicObjectClass: basicObjectClass_VALUES | None
-	
+
 	class csObjectClass_VALUES(EXT_IntEnum):
 		V_eventConditionList = 0
 		V_unitControl = 1
-	
+
 	csObjectClass: csObjectClass_VALUES | None
 	def __init__(
 		self, /, *,
 		basicObjectClass: basicObjectClass_VALUES = ...,
 		csObjectClass: csObjectClass_VALUES = ...,
 	) -> None: ...
-	
+
 class MMSString(_Asn1BasicType[str]):
 	pass
 
@@ -256,7 +256,7 @@ class MMSpdu(_Asn1Type): # CHOICE
 		PR_conclude_RequestPDU = 12
 		PR_conclude_ResponsePDU = 13
 		PR_conclude_ErrorPDU = 14
-	
+
 	@property
 	def present(self) -> PRESENT: ...
 	confirmed_RequestPDU: Confirmed_RequestPDU | None
@@ -296,9 +296,9 @@ class MMSpdu(_Asn1Type): # CHOICE
 		conclude_ResponsePDU: Conclude_ResponsePDU = ...,
 		conclude_ErrorPDU: Conclude_ErrorPDU = ...,
 	) -> None: ...
-	
+
 class Confirmed_RequestPDU(_Asn1Type): # SEQUENCE
-	
+
 	class listOfModifiers_TYPE(_Asn1Type):
 		def __init__(self, values: EXT_Iterable[Modifier] | None = ...) -> None: ...
 		def __getitem__(self, index: int) -> Modifier: ...
@@ -308,7 +308,7 @@ class Confirmed_RequestPDU(_Asn1Type): # SEQUENCE
 		def clear(self) -> None: ...
 		def __len__(self) -> int: ...
 		def __delitem__(self, index: int) -> None: ...
-	
+
 	listOfModifiers: listOfModifiers_TYPE | None
 	@property
 	def invokeID(self) -> Unsigned32: ...
@@ -323,7 +323,7 @@ class Confirmed_RequestPDU(_Asn1Type): # SEQUENCE
 		service: ConfirmedServiceRequest = ...,
 		service_ext: Request_Detail = ...,
 	) -> None: ...
-	
+
 class Confirmed_ErrorPDU(_Asn1Type): # SEQUENCE
 	@property
 	def invokeID(self) -> Unsigned32: ...
@@ -340,7 +340,7 @@ class Confirmed_ErrorPDU(_Asn1Type): # SEQUENCE
 		modifierPosition: Unsigned32 = ...,
 		serviceError: ServiceError = ...,
 	) -> None: ...
-	
+
 class ConfirmedServiceRequest(_Asn1Type): # CHOICE
 	class PRESENT(EXT_IntEnum):
 		PR_NOTHING = 0
@@ -430,7 +430,7 @@ class ConfirmedServiceRequest(_Asn1Type): # CHOICE
 		PR_reportAccessControlledObjects = 84
 		PR_deleteAccessControlList = 85
 		PR_changeAccessControl = 86
-	
+
 	@property
 	def present(self) -> PRESENT: ...
 	@property
@@ -614,7 +614,7 @@ class ConfirmedServiceRequest(_Asn1Type): # CHOICE
 		deleteAccessControlList: DeleteAccessControlList_Request = ...,
 		changeAccessControl: ChangeAccessControl_Request = ...,
 	) -> None: ...
-	
+
 class AdditionalService_Request(_Asn1Type): # CHOICE
 	class PRESENT(EXT_IntEnum):
 		PR_NOTHING = 0
@@ -641,7 +641,7 @@ class AdditionalService_Request(_Asn1Type): # CHOICE
 		PR_getECLAttributes = 21
 		PR_reportECLStatus = 22
 		PR_alterECLMonitoring = 23
-	
+
 	@property
 	def present(self) -> PRESENT: ...
 	@property
@@ -699,7 +699,7 @@ class AdditionalService_Request(_Asn1Type): # CHOICE
 		reportECLStatus: ReportEventConditionListStatus_Request = ...,
 		alterECLMonitoring: AlterEventConditionListMonitoring_Request = ...,
 	) -> None: ...
-	
+
 class Request_Detail(_Asn1Type): # CHOICE
 	class PRESENT(EXT_IntEnum):
 		PR_NOTHING = 0
@@ -711,7 +711,7 @@ class Request_Detail(_Asn1Type): # CHOICE
 		PR_alterEventConditionMonitoring = 6
 		PR_defineEventEnrollment = 7
 		PR_alterEventEnrollment = 8
-	
+
 	@property
 	def present(self) -> PRESENT: ...
 	otherRequests: None | None
@@ -736,7 +736,7 @@ class Request_Detail(_Asn1Type): # CHOICE
 		defineEventEnrollment: CS_DefineEventEnrollment_Request = ...,
 		alterEventEnrollment: CS_AlterEventEnrollment_Request = ...,
 	) -> None: ...
-	
+
 class Unconfirmed_PDU(_Asn1Type): # SEQUENCE
 	service: UnconfirmedService
 	service_ext: Unconfirmed_Detail | None
@@ -745,14 +745,14 @@ class Unconfirmed_PDU(_Asn1Type): # SEQUENCE
 		service: UnconfirmedService = ...,
 		service_ext: Unconfirmed_Detail = ...,
 	) -> None: ...
-	
+
 class UnconfirmedService(_Asn1Type): # CHOICE
 	class PRESENT(EXT_IntEnum):
 		PR_NOTHING = 0
 		PR_informationReport = 1
 		PR_unsolicitedStatus = 2
 		PR_eventNotification = 3
-	
+
 	@property
 	def present(self) -> PRESENT: ...
 	informationReport: InformationReport | None
@@ -764,13 +764,13 @@ class UnconfirmedService(_Asn1Type): # CHOICE
 		unsolicitedStatus: UnsolicitedStatus = ...,
 		eventNotification: EventNotification = ...,
 	) -> None: ...
-	
+
 class Unconfirmed_Detail(_Asn1Type): # CHOICE
 	class PRESENT(EXT_IntEnum):
 		PR_NOTHING = 0
 		PR_otherRequests = 1
 		PR_eventNotification = 2
-	
+
 	@property
 	def present(self) -> PRESENT: ...
 	otherRequests: None | None
@@ -780,7 +780,7 @@ class Unconfirmed_Detail(_Asn1Type): # CHOICE
 		otherRequests: None = ...,
 		eventNotification: CS_EventNotification = ...,
 	) -> None: ...
-	
+
 class Confirmed_ResponsePDU(_Asn1Type): # SEQUENCE
 	@property
 	def invokeID(self) -> Unsigned32: ...
@@ -794,7 +794,7 @@ class Confirmed_ResponsePDU(_Asn1Type): # SEQUENCE
 		service: ConfirmedServiceResponse = ...,
 		service_ext: Response_Detail = ...,
 	) -> None: ...
-	
+
 class ConfirmedServiceResponse(_Asn1Type): # CHOICE
 	class PRESENT(EXT_IntEnum):
 		PR_NOTHING = 0
@@ -884,7 +884,7 @@ class ConfirmedServiceResponse(_Asn1Type): # CHOICE
 		PR_reportAccessControlledObjects = 84
 		PR_deleteAccessControlList = 85
 		PR_changeAccessControl = 86
-	
+
 	@property
 	def present(self) -> PRESENT: ...
 	status: Status_Response | None
@@ -1182,7 +1182,7 @@ class ConfirmedServiceResponse(_Asn1Type): # CHOICE
 		deleteAccessControlList: DeleteAccessControlList_Response = ...,
 		changeAccessControl: ChangeAccessControl_Response = ...,
 	) -> None: ...
-	
+
 class AdditionalService_Response(_Asn1Type): # CHOICE
 	class PRESENT(EXT_IntEnum):
 		PR_NOTHING = 0
@@ -1209,7 +1209,7 @@ class AdditionalService_Response(_Asn1Type): # CHOICE
 		PR_getECLAttributes = 21
 		PR_reportECLStatus = 22
 		PR_alterECLMonitoring = 23
-	
+
 	@property
 	def present(self) -> PRESENT: ...
 	@property
@@ -1312,7 +1312,7 @@ class AdditionalService_Response(_Asn1Type): # CHOICE
 		reportECLStatus: ReportEventConditionListStatus_Response = ...,
 		alterECLMonitoring: AlterEventConditionListMonitoring_Response = ...,
 	) -> None: ...
-	
+
 class Response_Detail(_Asn1Type): # CHOICE
 	class PRESENT(EXT_IntEnum):
 		PR_NOTHING = 0
@@ -1320,7 +1320,7 @@ class Response_Detail(_Asn1Type): # CHOICE
 		PR_status = 2
 		PR_getProgramInvocationAttributes = 3
 		PR_getEventConditionAttributes = 4
-	
+
 	@property
 	def present(self) -> PRESENT: ...
 	otherRequests: None | None
@@ -1334,9 +1334,9 @@ class Response_Detail(_Asn1Type): # CHOICE
 		getProgramInvocationAttributes: CS_GetProgramInvocationAttributes_Response = ...,
 		getEventConditionAttributes: CS_GetEventConditionAttributes_Response = ...,
 	) -> None: ...
-	
+
 class ServiceError(_Asn1Type): # SEQUENCE
-	
+
 	class errorClass_TYPE(_Asn1Type): # CHOICE
 		class PRESENT(EXT_IntEnum):
 			PR_NOTHING = 0
@@ -1353,28 +1353,28 @@ class ServiceError(_Asn1Type): # SEQUENCE
 			PR_cancel = 11
 			PR_file = 12
 			PR_others = 13
-		
+
 		@property
 		def present(self) -> PRESENT: ...
-		
+
 		class vmd_state_VALUES(EXT_IntEnum):
 			V_other = 0
 			V_vmd_state_conflict = 1
 			V_vmd_operational_problem = 2
 			V_domain_transfer_problem = 3
 			V_state_machine_id_invalid = 4
-		
+
 		vmd_state: vmd_state_VALUES | None
-		
+
 		class application_reference_VALUES(EXT_IntEnum):
 			V_other = 0
 			V_application_unreachable = 1
 			V_connection_lost = 2
 			V_application_reference_invalid = 3
 			V_context_unsupported = 4
-		
+
 		application_reference: application_reference_VALUES | None
-		
+
 		class definition_VALUES(EXT_IntEnum):
 			V_other = 0
 			V_object_undefined = 1
@@ -1383,9 +1383,9 @@ class ServiceError(_Asn1Type): # SEQUENCE
 			V_type_inconsistent = 4
 			V_object_exists = 5
 			V_object_attribute_inconsistent = 6
-		
+
 		definition: definition_VALUES | None
-		
+
 		class resource_VALUES(EXT_IntEnum):
 			V_other = 0
 			V_memory_unavailable = 1
@@ -1393,9 +1393,9 @@ class ServiceError(_Asn1Type): # SEQUENCE
 			V_mass_storage_unavailable = 3
 			V_capability_unavailable = 4
 			V_capability_unknown = 5
-		
+
 		resource: resource_VALUES | None
-		
+
 		class service_VALUES(EXT_IntEnum):
 			V_other = 0
 			V_primitives_out_of_sequence = 1
@@ -1403,32 +1403,32 @@ class ServiceError(_Asn1Type): # SEQUENCE
 			V_pdu_size = 3
 			V_continuation_invalid = 4
 			V_object_constraint_conflict = 5
-		
+
 		service: service_VALUES | None
-		
+
 		class service_preempt_VALUES(EXT_IntEnum):
 			V_other = 0
 			V_timeout = 1
 			V_deadlock = 2
 			V_cancel = 3
-		
+
 		service_preempt: service_preempt_VALUES | None
-		
+
 		class time_resolution_VALUES(EXT_IntEnum):
 			V_other = 0
 			V_unsupportable_time_resolution = 1
-		
+
 		time_resolution: time_resolution_VALUES | None
-		
+
 		class access_VALUES(EXT_IntEnum):
 			V_other = 0
 			V_object_access_unsupported = 1
 			V_object_non_existent = 2
 			V_object_access_denied = 3
 			V_object_invalidated = 4
-		
+
 		access: access_VALUES | None
-		
+
 		class initiate_VALUES(EXT_IntEnum):
 			V_other = 0
 			V_max_services_outstanding_calling_insufficient = 3
@@ -1436,22 +1436,22 @@ class ServiceError(_Asn1Type): # SEQUENCE
 			V_service_CBB_insufficient = 5
 			V_parameter_CBB_insufficient = 6
 			V_nesting_level_insufficient = 7
-		
+
 		initiate: initiate_VALUES | None
-		
+
 		class conclude_VALUES(EXT_IntEnum):
 			V_other = 0
 			V_further_communication_required = 1
-		
+
 		conclude: conclude_VALUES | None
-		
+
 		class cancel_VALUES(EXT_IntEnum):
 			V_other = 0
 			V_invoke_id_unknown = 1
 			V_cancel_not_possible = 2
-		
+
 		cancel: cancel_VALUES | None
-		
+
 		class file_VALUES(EXT_IntEnum):
 			V_other = 0
 			V_filename_ambiguous = 1
@@ -1463,7 +1463,7 @@ class ServiceError(_Asn1Type): # SEQUENCE
 			V_file_non_existent = 7
 			V_duplicate_filename = 8
 			V_insufficient_space_in_filestore = 9
-		
+
 		file: file_VALUES | None
 		others: int | None
 		def __init__(
@@ -1482,9 +1482,9 @@ class ServiceError(_Asn1Type): # SEQUENCE
 			file: file_VALUES = ...,
 			others: int = ...,
 		) -> None: ...
-		
+
 	errorClass: errorClass_TYPE
-	
+
 	class serviceSpecificInfo_TYPE(_Asn1Type): # CHOICE
 		class PRESENT(EXT_IntEnum):
 			PR_NOTHING = 0
@@ -1500,7 +1500,7 @@ class ServiceError(_Asn1Type): # SEQUENCE
 			PR_fileRename = 10
 			PR_additionalService = 11
 			PR_changeAccessControl = 12
-		
+
 		@property
 		def present(self) -> PRESENT: ...
 		@property
@@ -1536,7 +1536,7 @@ class ServiceError(_Asn1Type): # SEQUENCE
 			additionalService: AdditionalService_Error = ...,
 			changeAccessControl: ChangeAccessControl_Error = ...,
 		) -> None: ...
-		
+
 	serviceSpecificInfo: serviceSpecificInfo_TYPE | None
 	additionalCode: int | None
 	additionalDescription: str | None
@@ -1547,7 +1547,7 @@ class ServiceError(_Asn1Type): # SEQUENCE
 		additionalDescription: str = ...,
 		serviceSpecificInfo: serviceSpecificInfo_TYPE = ...,
 	) -> None: ...
-	
+
 class AdditionalService_Error(_Asn1Type): # CHOICE
 	class PRESENT(EXT_IntEnum):
 		PR_NOTHING = 0
@@ -1559,7 +1559,7 @@ class AdditionalService_Error(_Asn1Type): # CHOICE
 		PR_stopUC = 6
 		PR_deleteUC = 7
 		PR_loadUCFromFile = 8
-	
+
 	@property
 	def present(self) -> PRESENT: ...
 	defineEcl: DefineEventConditionList_Error | None
@@ -1581,9 +1581,9 @@ class AdditionalService_Error(_Asn1Type): # CHOICE
 		deleteUC: DeleteUnitControl_Error = ...,
 		loadUCFromFile: LoadUnitControlFromFile_Error = ...,
 	) -> None: ...
-	
+
 class Initiate_RequestPDU(_Asn1Type): # SEQUENCE
-	
+
 	class initRequestDetail_TYPE(_Asn1Type): # SEQUENCE
 		@property
 		def proposedVersionNumber(self) -> Integer16: ...
@@ -1615,7 +1615,7 @@ class Initiate_RequestPDU(_Asn1Type): # SEQUENCE
 			additionalCbbSupportedCalling: AdditionalCBBOptions = ...,
 			privilegeClassIdentityCalling: str = ...,
 		) -> None: ...
-		
+
 	initRequestDetail: initRequestDetail_TYPE
 	@property
 	def localDetailCalling(self) -> Integer32 | None: ...
@@ -1641,9 +1641,9 @@ class Initiate_RequestPDU(_Asn1Type): # SEQUENCE
 		proposedDataStructureNestingLevel: Integer8 = ...,
 		initRequestDetail: initRequestDetail_TYPE = ...,
 	) -> None: ...
-	
+
 class Initiate_ResponsePDU(_Asn1Type): # SEQUENCE
-	
+
 	class initResponseDetail_TYPE(_Asn1Type): # SEQUENCE
 		@property
 		def negotiatedVersionNumber(self) -> Integer16: ...
@@ -1675,7 +1675,7 @@ class Initiate_ResponsePDU(_Asn1Type): # SEQUENCE
 			additionalCbbSupportedCalled: AdditionalCBBOptions = ...,
 			privilegeClassIdentityCalled: str = ...,
 		) -> None: ...
-		
+
 	initResponseDetail: initResponseDetail_TYPE
 	@property
 	def localDetailCalled(self) -> Integer32 | None: ...
@@ -1701,7 +1701,7 @@ class Initiate_ResponsePDU(_Asn1Type): # SEQUENCE
 		negotiatedDataStructureNestingLevel: Integer8 = ...,
 		initResponseDetail: initResponseDetail_TYPE = ...,
 	) -> None: ...
-	
+
 class Initiate_ErrorPDU(_Asn1BasicType[ServiceError]):
 	pass
 
@@ -1731,9 +1731,9 @@ class Cancel_ErrorPDU(_Asn1Type): # SEQUENCE
 		originalInvokeID: Unsigned32 = ...,
 		serviceError: ServiceError = ...,
 	) -> None: ...
-	
+
 class RejectPDU(_Asn1Type): # SEQUENCE
-	
+
 	class rejectReason_TYPE(_Asn1Type): # CHOICE
 		class PRESENT(EXT_IntEnum):
 			PR_NOTHING = 0
@@ -1748,10 +1748,10 @@ class RejectPDU(_Asn1Type): # SEQUENCE
 			PR_conclude_requestPDU = 9
 			PR_conclude_responsePDU = 10
 			PR_conclude_errorPDU = 11
-		
+
 		@property
 		def present(self) -> PRESENT: ...
-		
+
 		class confirmed_requestPDU_VALUES(EXT_IntEnum):
 			V_other = 0
 			V_unrecognized_service = 1
@@ -1762,9 +1762,9 @@ class RejectPDU(_Asn1Type): # SEQUENCE
 			V_max_serv_outstanding_exceeded = 6
 			V_max_recursion_exceeded = 8
 			V_value_out_of_range = 9
-		
+
 		confirmed_requestPDU: confirmed_requestPDU_VALUES | None
-		
+
 		class confirmed_responsePDU_VALUES(EXT_IntEnum):
 			V_other = 0
 			V_unrecognized_service = 1
@@ -1772,71 +1772,71 @@ class RejectPDU(_Asn1Type): # SEQUENCE
 			V_invalid_result = 3
 			V_max_recursion_exceeded = 5
 			V_value_out_of_range = 6
-		
+
 		confirmed_responsePDU: confirmed_responsePDU_VALUES | None
-		
+
 		class confirmed_errorPDU_VALUES(EXT_IntEnum):
 			V_other = 0
 			V_unrecognized_service = 1
 			V_invalid_invokeID = 2
 			V_invalid_serviceError = 3
 			V_value_out_of_range = 4
-		
+
 		confirmed_errorPDU: confirmed_errorPDU_VALUES | None
-		
+
 		class unconfirmedPDU_VALUES(EXT_IntEnum):
 			V_other = 0
 			V_unrecognized_service = 1
 			V_invalid_argument = 2
 			V_max_recursion_exceeded = 3
 			V_value_out_of_range = 4
-		
+
 		unconfirmedPDU: unconfirmedPDU_VALUES | None
-		
+
 		class pdu_error_VALUES(EXT_IntEnum):
 			V_unknown_pdu_type = 0
 			V_invalid_pdu = 1
 			V_illegal_acse_mapping = 2
-		
+
 		pdu_error: pdu_error_VALUES | None
-		
+
 		class cancel_requestPDU_VALUES(EXT_IntEnum):
 			V_other = 0
 			V_invalid_invokeID = 1
-		
+
 		cancel_requestPDU: cancel_requestPDU_VALUES | None
-		
+
 		class cancel_responsePDU_VALUES(EXT_IntEnum):
 			V_other = 0
 			V_invalid_invokeID = 1
-		
+
 		cancel_responsePDU: cancel_responsePDU_VALUES | None
-		
+
 		class cancel_errorPDU_VALUES(EXT_IntEnum):
 			V_other = 0
 			V_invalid_invokeID = 1
 			V_invalid_serviceError = 2
 			V_value_out_of_range = 3
-		
+
 		cancel_errorPDU: cancel_errorPDU_VALUES | None
-		
+
 		class conclude_requestPDU_VALUES(EXT_IntEnum):
 			V_other = 0
 			V_invalid_argument = 1
-		
+
 		conclude_requestPDU: conclude_requestPDU_VALUES | None
-		
+
 		class conclude_responsePDU_VALUES(EXT_IntEnum):
 			V_other = 0
 			V_invalid_result = 1
-		
+
 		conclude_responsePDU: conclude_responsePDU_VALUES | None
-		
+
 		class conclude_errorPDU_VALUES(EXT_IntEnum):
 			V_other = 0
 			V_invalid_serviceError = 1
 			V_value_out_of_range = 2
-		
+
 		conclude_errorPDU: conclude_errorPDU_VALUES | None
 		def __init__(
 			self, /, *,
@@ -1852,7 +1852,7 @@ class RejectPDU(_Asn1Type): # SEQUENCE
 			conclude_responsePDU: conclude_responsePDU_VALUES = ...,
 			conclude_errorPDU: conclude_errorPDU_VALUES = ...,
 		) -> None: ...
-		
+
 	rejectReason: rejectReason_TYPE
 	@property
 	def originalInvokeID(self) -> Unsigned32 | None: ...
@@ -1863,9 +1863,9 @@ class RejectPDU(_Asn1Type): # SEQUENCE
 		originalInvokeID: Unsigned32 = ...,
 		rejectReason: rejectReason_TYPE = ...,
 	) -> None: ...
-	
+
 class DefineAccessControlList_Request(_Asn1Type): # SEQUENCE
-	
+
 	class accessControlListElements_TYPE(_Asn1Type): # SEQUENCE
 		readAccessCondition: AccessCondition | None
 		storeAccessCondition: AccessCondition | None
@@ -1884,7 +1884,7 @@ class DefineAccessControlList_Request(_Asn1Type): # SEQUENCE
 			deleteAccessCondition: AccessCondition = ...,
 			editAccessCondition: AccessCondition = ...,
 		) -> None: ...
-		
+
 	accessControlListElements: accessControlListElements_TYPE
 	@property
 	def accessControlListName(self) -> Identifier: ...
@@ -1895,7 +1895,7 @@ class DefineAccessControlList_Request(_Asn1Type): # SEQUENCE
 		accessControlListName: Identifier = ...,
 		accessControlListElements: accessControlListElements_TYPE = ...,
 	) -> None: ...
-	
+
 class DefineAccessControlList_Response(_Asn1BasicType[None]):
 	pass
 
@@ -1905,10 +1905,10 @@ class GetAccessControlListAttributes_Request(_Asn1Type): # CHOICE
 		PR_accessControlListName = 1
 		PR_vMD = 2
 		PR_namedObject = 3
-	
+
 	@property
 	def present(self) -> PRESENT: ...
-	
+
 	class namedObject_TYPE(_Asn1Type): # SEQUENCE
 		objectClass: ObjectClass
 		objectName: ObjectName
@@ -1917,7 +1917,7 @@ class GetAccessControlListAttributes_Request(_Asn1Type): # CHOICE
 			objectClass: ObjectClass = ...,
 			objectName: ObjectName = ...,
 		) -> None: ...
-		
+
 	namedObject: namedObject_TYPE
 	@property
 	def accessControlListName(self) -> Identifier | None: ...
@@ -1930,9 +1930,9 @@ class GetAccessControlListAttributes_Request(_Asn1Type): # CHOICE
 		vMD: None = ...,
 		namedObject: namedObject_TYPE = ...,
 	) -> None: ...
-	
+
 class GetAccessControlListAttributes_Response(_Asn1Type): # SEQUENCE
-	
+
 	class accessControlListElements_TYPE(_Asn1Type): # SEQUENCE
 		readAccessCondition: AccessCondition | None
 		storeAccessCondition: AccessCondition | None
@@ -1951,11 +1951,11 @@ class GetAccessControlListAttributes_Response(_Asn1Type): # SEQUENCE
 			deleteAccessCondition: AccessCondition = ...,
 			editAccessCondition: AccessCondition = ...,
 		) -> None: ...
-		
+
 	accessControlListElements: accessControlListElements_TYPE
-	
+
 	class references_TYPE(_Asn1Type):
-		
+
 		class Member_TYPE(_Asn1Type): # SEQUENCE
 			objectClass: ObjectClass
 			objectCount: int
@@ -1964,7 +1964,7 @@ class GetAccessControlListAttributes_Response(_Asn1Type): # SEQUENCE
 				objectClass: ObjectClass = ...,
 				objectCount: int = ...,
 			) -> None: ...
-			
+
 		def __init__(self, values: EXT_Iterable[Member_TYPE] | None = ...) -> None: ...
 		def __getitem__(self, index: int) -> Member_TYPE: ...
 		def __setitem__(self, index: int, value: Member_TYPE) -> None: ...
@@ -1973,7 +1973,7 @@ class GetAccessControlListAttributes_Response(_Asn1Type): # SEQUENCE
 		def clear(self) -> None: ...
 		def __len__(self) -> int: ...
 		def __delitem__(self, index: int) -> None: ...
-	
+
 	references: references_TYPE
 	@property
 	def name(self) -> Identifier: ...
@@ -1992,7 +1992,7 @@ class GetAccessControlListAttributes_Response(_Asn1Type): # SEQUENCE
 		references: references_TYPE = ...,
 		accessControlList: Identifier = ...,
 	) -> None: ...
-	
+
 class ReportAccessControlledObjects_Request(_Asn1Type): # SEQUENCE
 	@property
 	def accessControlList(self) -> Identifier: ...
@@ -2006,9 +2006,9 @@ class ReportAccessControlledObjects_Request(_Asn1Type): # SEQUENCE
 		objectClass: ObjectClass = ...,
 		continueAfter: ObjectName = ...,
 	) -> None: ...
-	
+
 class ReportAccessControlledObjects_Response(_Asn1Type): # SEQUENCE
-	
+
 	class listOfNames_TYPE(_Asn1Type):
 		def __init__(self, values: EXT_Iterable[ObjectName] | None = ...) -> None: ...
 		def __getitem__(self, index: int) -> ObjectName: ...
@@ -2018,7 +2018,7 @@ class ReportAccessControlledObjects_Response(_Asn1Type): # SEQUENCE
 		def clear(self) -> None: ...
 		def __len__(self) -> int: ...
 		def __delitem__(self, index: int) -> None: ...
-	
+
 	listOfNames: listOfNames_TYPE
 	moreFollows: bool | None
 	def __init__(
@@ -2026,7 +2026,7 @@ class ReportAccessControlledObjects_Response(_Asn1Type): # SEQUENCE
 		listOfNames: listOfNames_TYPE = ...,
 		moreFollows: bool = ...,
 	) -> None: ...
-	
+
 class DeleteAccessControlList_Request(_Asn1BasicType[Identifier]):
 	pass
 
@@ -2034,18 +2034,18 @@ class DeleteAccessControlList_Response(_Asn1BasicType[None]):
 	pass
 
 class ChangeAccessControl_Request(_Asn1Type): # SEQUENCE
-	
+
 	class scopeOfChange_TYPE(_Asn1Type): # CHOICE
 		class PRESENT(EXT_IntEnum):
 			PR_NOTHING = 0
 			PR_vMDOnly = 1
 			PR_listOfObjects = 2
-		
+
 		@property
 		def present(self) -> PRESENT: ...
-		
+
 		class listOfObjects_TYPE(_Asn1Type): # SEQUENCE
-			
+
 			class objectScope_TYPE(_Asn1Type): # CHOICE
 				class PRESENT(EXT_IntEnum):
 					PR_NOTHING = 0
@@ -2053,10 +2053,10 @@ class ChangeAccessControl_Request(_Asn1Type): # SEQUENCE
 					PR_aa_specific = 2
 					PR_domain = 3
 					PR_vmd = 4
-				
+
 				@property
 				def present(self) -> PRESENT: ...
-				
+
 				class specific_TYPE(_Asn1Type):
 					def __init__(self, values: EXT_Iterable[ObjectName] | None = ...) -> None: ...
 					def __getitem__(self, index: int) -> ObjectName: ...
@@ -2066,7 +2066,7 @@ class ChangeAccessControl_Request(_Asn1Type): # SEQUENCE
 					def clear(self) -> None: ...
 					def __len__(self) -> int: ...
 					def __delitem__(self, index: int) -> None: ...
-				
+
 				specific: specific_TYPE
 				aa_specific: None | None
 				@property
@@ -2081,7 +2081,7 @@ class ChangeAccessControl_Request(_Asn1Type): # SEQUENCE
 					domain: Identifier = ...,
 					vmd: None = ...,
 				) -> None: ...
-				
+
 			objectScope: objectScope_TYPE
 			objectClass: ObjectClass
 			def __init__(
@@ -2089,7 +2089,7 @@ class ChangeAccessControl_Request(_Asn1Type): # SEQUENCE
 				objectClass: ObjectClass = ...,
 				objectScope: objectScope_TYPE = ...,
 			) -> None: ...
-			
+
 		listOfObjects: listOfObjects_TYPE
 		vMDOnly: None | None
 		def __init__(
@@ -2097,7 +2097,7 @@ class ChangeAccessControl_Request(_Asn1Type): # SEQUENCE
 			vMDOnly: None = ...,
 			listOfObjects: listOfObjects_TYPE = ...,
 		) -> None: ...
-		
+
 	scopeOfChange: scopeOfChange_TYPE
 	@property
 	def accessControlListName(self) -> Identifier: ...
@@ -2108,7 +2108,7 @@ class ChangeAccessControl_Request(_Asn1Type): # SEQUENCE
 		scopeOfChange: scopeOfChange_TYPE = ...,
 		accessControlListName: Identifier = ...,
 	) -> None: ...
-	
+
 class ChangeAccessControl_Response(_Asn1Type): # SEQUENCE
 	@property
 	def numberMatched(self) -> Unsigned32: ...
@@ -2123,31 +2123,31 @@ class ChangeAccessControl_Response(_Asn1Type): # SEQUENCE
 		numberMatched: Unsigned32 = ...,
 		numberChanged: Unsigned32 = ...,
 	) -> None: ...
-	
+
 class ChangeAccessControl_Error(_Asn1BasicType[Unsigned32]):
 	pass
 
 class StatusResponse(_Asn1Type): # SEQUENCE
-	
+
 	class vmdLogicalStatus_VALUES(EXT_IntEnum):
 		V_state_changes_allowed = 0
 		V_no_state_changes_allowed = 1
 		V_limited_services_permitted = 2
 		V_support_services_allowed = 3
-	
+
 	vmdLogicalStatus: vmdLogicalStatus_VALUES
-	
+
 	class vmdPhysicalStatus_VALUES(EXT_IntEnum):
 		V_operational = 0
 		V_partially_operational = 1
 		V_inoperable = 2
 		V_needs_commissioning = 3
-	
+
 	vmdPhysicalStatus: vmdPhysicalStatus_VALUES
-	
+
 	class localDetail_TYPE(_Asn1BitStrType):
 		pass
-	
+
 	@property
 	def localDetail(self) -> localDetail_TYPE | None: ...
 	@localDetail.setter
@@ -2158,24 +2158,24 @@ class StatusResponse(_Asn1Type): # SEQUENCE
 		vmdPhysicalStatus: vmdPhysicalStatus_VALUES = ...,
 		localDetail: localDetail_TYPE | EXT_bitarray | bytes = ...,
 	) -> None: ...
-	
+
 class CS_Status_Response(_Asn1Type): # CHOICE
 	class PRESENT(EXT_IntEnum):
 		PR_NOTHING = 0
 		PR_fullResponse = 1
 		PR_noExtraResponse = 2
-	
+
 	@property
 	def present(self) -> PRESENT: ...
-	
+
 	class fullResponse_TYPE(_Asn1Type): # SEQUENCE
-		
+
 		class selectedProgramInvocation_TYPE(_Asn1Type): # CHOICE
 			class PRESENT(EXT_IntEnum):
 				PR_NOTHING = 0
 				PR_programInvocation = 1
 				PR_noneSelected = 2
-			
+
 			@property
 			def present(self) -> PRESENT: ...
 			@property
@@ -2188,7 +2188,7 @@ class CS_Status_Response(_Asn1Type): # CHOICE
 				programInvocation: Identifier = ...,
 				noneSelected: None = ...,
 			) -> None: ...
-			
+
 		selectedProgramInvocation: selectedProgramInvocation_TYPE
 		@property
 		def operationState(self) -> OperationState: ...
@@ -2209,7 +2209,7 @@ class CS_Status_Response(_Asn1Type): # CHOICE
 			extendedStatusMask: ExtendedStatus = ...,
 			selectedProgramInvocation: selectedProgramInvocation_TYPE = ...,
 		) -> None: ...
-		
+
 	fullResponse: fullResponse_TYPE
 	noExtraResponse: None | None
 	def __init__(
@@ -2217,7 +2217,7 @@ class CS_Status_Response(_Asn1Type): # CHOICE
 		fullResponse: fullResponse_TYPE = ...,
 		noExtraResponse: None = ...,
 	) -> None: ...
-	
+
 class OperationState(_Asn1Type):
 	class VALUES(EXT_IntEnum):
 		V_idle = 0
@@ -2226,13 +2226,13 @@ class OperationState(_Asn1Type):
 		V_executing = 3
 		V_motion_paused = 4
 		V_manualInterventionRequired = 5
-	
+
 	@property
 	def value(self) -> OperationState.VALUES: ...
 	@value.setter
 	def value(self, value: OperationState.VALUES | int) -> None: ...
 	def __init__(self, value: VALUES = ...) -> None: ...
-	
+
 class ExtendedStatus(_Asn1BitStrType):
 	V_safetyInterlocksViolated: bool # bit 0
 	V_anyPhysicalResourcePowerOn: bool # bit 1
@@ -2250,14 +2250,14 @@ class UnsolicitedStatus(_Asn1BasicType[StatusResponse]):
 	pass
 
 class GetNameList_Request(_Asn1Type): # SEQUENCE
-	
+
 	class objectScope_TYPE(_Asn1Type): # CHOICE
 		class PRESENT(EXT_IntEnum):
 			PR_NOTHING = 0
 			PR_vmdSpecific = 1
 			PR_domainSpecific = 2
 			PR_aaSpecific = 3
-		
+
 		@property
 		def present(self) -> PRESENT: ...
 		vmdSpecific: None | None
@@ -2272,7 +2272,7 @@ class GetNameList_Request(_Asn1Type): # SEQUENCE
 			domainSpecific: Identifier = ...,
 			aaSpecific: None = ...,
 		) -> None: ...
-		
+
 	objectScope: objectScope_TYPE
 	objectClass: ObjectClass
 	@property
@@ -2285,9 +2285,9 @@ class GetNameList_Request(_Asn1Type): # SEQUENCE
 		objectScope: objectScope_TYPE = ...,
 		continueAfter: Identifier = ...,
 	) -> None: ...
-	
+
 class GetNameList_Response(_Asn1Type): # SEQUENCE
-	
+
 	class listOfIdentifier_TYPE(_Asn1Type):
 		def __init__(self, values: EXT_Iterable[Identifier] | None = ...) -> None: ...
 		def __getitem__(self, index: int) -> Identifier: ...
@@ -2297,7 +2297,7 @@ class GetNameList_Response(_Asn1Type): # SEQUENCE
 		def clear(self) -> None: ...
 		def __len__(self) -> int: ...
 		def __delitem__(self, index: int) -> None: ...
-	
+
 	listOfIdentifier: listOfIdentifier_TYPE
 	moreFollows: bool | None
 	def __init__(
@@ -2305,12 +2305,12 @@ class GetNameList_Response(_Asn1Type): # SEQUENCE
 		listOfIdentifier: listOfIdentifier_TYPE = ...,
 		moreFollows: bool = ...,
 	) -> None: ...
-	
+
 class Identify_Request(_Asn1BasicType[None]):
 	pass
 
 class Identify_Response(_Asn1Type): # SEQUENCE
-	
+
 	class listOfAbstractSyntaxes_TYPE(_Asn1Type):
 		def __init__(self, values: EXT_Iterable[str] | None = ...) -> None: ...
 		def __getitem__(self, index: int) -> str: ...
@@ -2320,7 +2320,7 @@ class Identify_Response(_Asn1Type): # SEQUENCE
 		def clear(self) -> None: ...
 		def __len__(self) -> int: ...
 		def __delitem__(self, index: int) -> None: ...
-	
+
 	listOfAbstractSyntaxes: listOfAbstractSyntaxes_TYPE | None
 	@property
 	def vendorName(self) -> MMSString: ...
@@ -2341,7 +2341,7 @@ class Identify_Response(_Asn1Type): # SEQUENCE
 		revision: MMSString = ...,
 		listOfAbstractSyntaxes: listOfAbstractSyntaxes_TYPE = ...,
 	) -> None: ...
-	
+
 class Rename_Request(_Asn1Type): # SEQUENCE
 	objectClass: ObjectClass
 	currentName: ObjectName
@@ -2355,7 +2355,7 @@ class Rename_Request(_Asn1Type): # SEQUENCE
 		currentName: ObjectName = ...,
 		newIdentifier: Identifier = ...,
 	) -> None: ...
-	
+
 class Rename_Response(_Asn1BasicType[None]):
 	pass
 
@@ -2368,9 +2368,9 @@ class GetCapabilityList_Request(_Asn1Type): # SEQUENCE
 		self, /, *,
 		continueAfter: MMSString = ...,
 	) -> None: ...
-	
+
 class GetCapabilityList_Response(_Asn1Type): # SEQUENCE
-	
+
 	class listOfCapabilities_TYPE(_Asn1Type):
 		def __init__(self, values: EXT_Iterable[MMSString] | None = ...) -> None: ...
 		def __getitem__(self, index: int) -> MMSString: ...
@@ -2380,7 +2380,7 @@ class GetCapabilityList_Response(_Asn1Type): # SEQUENCE
 		def clear(self) -> None: ...
 		def __len__(self) -> int: ...
 		def __delitem__(self, index: int) -> None: ...
-	
+
 	listOfCapabilities: listOfCapabilities_TYPE
 	moreFollows: bool | None
 	def __init__(
@@ -2388,7 +2388,7 @@ class GetCapabilityList_Response(_Asn1Type): # SEQUENCE
 		listOfCapabilities: listOfCapabilities_TYPE = ...,
 		moreFollows: bool = ...,
 	) -> None: ...
-	
+
 class VMDStop_Request(_Asn1BasicType[None]):
 	pass
 
@@ -2402,7 +2402,7 @@ class VMDReset_Response(_Asn1BasicType[StatusResponse]):
 	pass
 
 class InitiateDownloadSequence_Request(_Asn1Type): # SEQUENCE
-	
+
 	class listOfCapabilities_TYPE(_Asn1Type):
 		def __init__(self, values: EXT_Iterable[MMSString] | None = ...) -> None: ...
 		def __getitem__(self, index: int) -> MMSString: ...
@@ -2412,7 +2412,7 @@ class InitiateDownloadSequence_Request(_Asn1Type): # SEQUENCE
 		def clear(self) -> None: ...
 		def __len__(self) -> int: ...
 		def __delitem__(self, index: int) -> None: ...
-	
+
 	listOfCapabilities: listOfCapabilities_TYPE
 	@property
 	def domainName(self) -> Identifier: ...
@@ -2425,7 +2425,7 @@ class InitiateDownloadSequence_Request(_Asn1Type): # SEQUENCE
 		listOfCapabilities: listOfCapabilities_TYPE = ...,
 		sharable: bool = ...,
 	) -> None: ...
-	
+
 class InitiateDownloadSequence_Response(_Asn1BasicType[None]):
 	pass
 
@@ -2440,14 +2440,14 @@ class DownloadSegment_Response(_Asn1Type): # SEQUENCE
 		loadData: LoadData = ...,
 		moreFollows: bool = ...,
 	) -> None: ...
-	
+
 class LoadData(_Asn1Type): # CHOICE
 	class PRESENT(EXT_IntEnum):
 		PR_NOTHING = 0
 		PR_non_coded = 1
 		PR_coded = 2
 		PR_embedded = 3
-	
+
 	@property
 	def present(self) -> PRESENT: ...
 	non_coded: bytes | None
@@ -2459,7 +2459,7 @@ class LoadData(_Asn1Type): # CHOICE
 		coded: EXTERNAL = ...,
 		embedded: EMBEDDED_PDV = ...,
 	) -> None: ...
-	
+
 class TerminateDownloadSequence_Request(_Asn1Type): # SEQUENCE
 	@property
 	def domainName(self) -> Identifier: ...
@@ -2471,7 +2471,7 @@ class TerminateDownloadSequence_Request(_Asn1Type): # SEQUENCE
 		domainName: Identifier = ...,
 		discard: ServiceError = ...,
 	) -> None: ...
-	
+
 class TerminateDownloadSequence_Response(_Asn1BasicType[None]):
 	pass
 
@@ -2479,7 +2479,7 @@ class InitiateUploadSequence_Request(_Asn1BasicType[Identifier]):
 	pass
 
 class InitiateUploadSequence_Response(_Asn1Type): # SEQUENCE
-	
+
 	class listOfCapabilities_TYPE(_Asn1Type):
 		def __init__(self, values: EXT_Iterable[MMSString] | None = ...) -> None: ...
 		def __getitem__(self, index: int) -> MMSString: ...
@@ -2489,7 +2489,7 @@ class InitiateUploadSequence_Response(_Asn1Type): # SEQUENCE
 		def clear(self) -> None: ...
 		def __len__(self) -> int: ...
 		def __delitem__(self, index: int) -> None: ...
-	
+
 	listOfCapabilities: listOfCapabilities_TYPE
 	@property
 	def ulsmID(self) -> Integer32: ...
@@ -2500,7 +2500,7 @@ class InitiateUploadSequence_Response(_Asn1Type): # SEQUENCE
 		ulsmID: Integer32 = ...,
 		listOfCapabilities: listOfCapabilities_TYPE = ...,
 	) -> None: ...
-	
+
 class UploadSegment_Request(_Asn1BasicType[Integer32]):
 	pass
 
@@ -2512,7 +2512,7 @@ class UploadSegment_Response(_Asn1Type): # SEQUENCE
 		loadData: LoadData = ...,
 		moreFollows: bool = ...,
 	) -> None: ...
-	
+
 class TerminateUploadSequence_Request(_Asn1BasicType[Integer32]):
 	pass
 
@@ -2520,7 +2520,7 @@ class TerminateUploadSequence_Response(_Asn1BasicType[None]):
 	pass
 
 class RequestDomainDownload_Request(_Asn1Type): # SEQUENCE
-	
+
 	class listOfCapabilities_TYPE(_Asn1Type):
 		def __init__(self, values: EXT_Iterable[MMSString] | None = ...) -> None: ...
 		def __getitem__(self, index: int) -> MMSString: ...
@@ -2530,7 +2530,7 @@ class RequestDomainDownload_Request(_Asn1Type): # SEQUENCE
 		def clear(self) -> None: ...
 		def __len__(self) -> int: ...
 		def __delitem__(self, index: int) -> None: ...
-	
+
 	listOfCapabilities: listOfCapabilities_TYPE | None
 	@property
 	def domainName(self) -> Identifier: ...
@@ -2548,7 +2548,7 @@ class RequestDomainDownload_Request(_Asn1Type): # SEQUENCE
 		sharable: bool = ...,
 		fileName: FileName = ...,
 	) -> None: ...
-	
+
 class RequestDomainDownload_Response(_Asn1BasicType[None]):
 	pass
 
@@ -2566,12 +2566,12 @@ class RequestDomainUpload_Request(_Asn1Type): # SEQUENCE
 		domainName: Identifier = ...,
 		fileName: FileName = ...,
 	) -> None: ...
-	
+
 class RequestDomainUpload_Response(_Asn1BasicType[None]):
 	pass
 
 class LoadDomainContent_Request(_Asn1Type): # SEQUENCE
-	
+
 	class listOfCapabilities_TYPE(_Asn1Type):
 		def __init__(self, values: EXT_Iterable[MMSString] | None = ...) -> None: ...
 		def __getitem__(self, index: int) -> MMSString: ...
@@ -2581,7 +2581,7 @@ class LoadDomainContent_Request(_Asn1Type): # SEQUENCE
 		def clear(self) -> None: ...
 		def __len__(self) -> int: ...
 		def __delitem__(self, index: int) -> None: ...
-	
+
 	listOfCapabilities: listOfCapabilities_TYPE | None
 	@property
 	def domainName(self) -> Identifier: ...
@@ -2601,7 +2601,7 @@ class LoadDomainContent_Request(_Asn1Type): # SEQUENCE
 		fileName: FileName = ...,
 		thirdParty: ApplicationReference = ...,
 	) -> None: ...
-	
+
 class LoadDomainContent_Response(_Asn1BasicType[None]):
 	pass
 
@@ -2621,7 +2621,7 @@ class StoreDomainContent_Request(_Asn1Type): # SEQUENCE
 		fileName: FileName = ...,
 		thirdParty: ApplicationReference = ...,
 	) -> None: ...
-	
+
 class StoreDomainContent_Response(_Asn1BasicType[None]):
 	pass
 
@@ -2635,7 +2635,7 @@ class GetDomainAttributes_Request(_Asn1BasicType[Identifier]):
 	pass
 
 class GetDomainAttributes_Response(_Asn1Type): # SEQUENCE
-	
+
 	class listOfCapabilities_TYPE(_Asn1Type):
 		def __init__(self, values: EXT_Iterable[MMSString] | None = ...) -> None: ...
 		def __getitem__(self, index: int) -> MMSString: ...
@@ -2645,9 +2645,9 @@ class GetDomainAttributes_Response(_Asn1Type): # SEQUENCE
 		def clear(self) -> None: ...
 		def __len__(self) -> int: ...
 		def __delitem__(self, index: int) -> None: ...
-	
+
 	listOfCapabilities: listOfCapabilities_TYPE
-	
+
 	class listOfProgramInvocations_TYPE(_Asn1Type):
 		def __init__(self, values: EXT_Iterable[Identifier] | None = ...) -> None: ...
 		def __getitem__(self, index: int) -> Identifier: ...
@@ -2657,7 +2657,7 @@ class GetDomainAttributes_Response(_Asn1Type): # SEQUENCE
 		def clear(self) -> None: ...
 		def __len__(self) -> int: ...
 		def __delitem__(self, index: int) -> None: ...
-	
+
 	listOfProgramInvocations: listOfProgramInvocations_TYPE
 	@property
 	def state(self) -> DomainState: ...
@@ -2683,9 +2683,9 @@ class GetDomainAttributes_Response(_Asn1Type): # SEQUENCE
 		uploadInProgress: Integer8 = ...,
 		accessControlList: Identifier = ...,
 	) -> None: ...
-	
+
 class CreateProgramInvocation_Request(_Asn1Type): # SEQUENCE
-	
+
 	class listOfDomainNames_TYPE(_Asn1Type):
 		def __init__(self, values: EXT_Iterable[Identifier] | None = ...) -> None: ...
 		def __getitem__(self, index: int) -> Identifier: ...
@@ -2695,7 +2695,7 @@ class CreateProgramInvocation_Request(_Asn1Type): # SEQUENCE
 		def clear(self) -> None: ...
 		def __len__(self) -> int: ...
 		def __delitem__(self, index: int) -> None: ...
-	
+
 	listOfDomainNames: listOfDomainNames_TYPE
 	@property
 	def programInvocationName(self) -> Identifier: ...
@@ -2710,7 +2710,7 @@ class CreateProgramInvocation_Request(_Asn1Type): # SEQUENCE
 		reusable: bool = ...,
 		monitorType: bool = ...,
 	) -> None: ...
-	
+
 class CreateProgramInvocation_Response(_Asn1BasicType[None]):
 	pass
 
@@ -2719,13 +2719,13 @@ class CS_CreateProgramInvocation_Request(_Asn1Type):
 		V_normal = 0
 		V_controlling = 1
 		V_controlled = 2
-	
+
 	@property
 	def value(self) -> CS_CreateProgramInvocation_Request.VALUES: ...
 	@value.setter
 	def value(self, value: CS_CreateProgramInvocation_Request.VALUES | int) -> None: ...
 	def __init__(self, value: VALUES = ...) -> None: ...
-	
+
 class DeleteProgramInvocation_Request(_Asn1BasicType[Identifier]):
 	pass
 
@@ -2733,14 +2733,14 @@ class DeleteProgramInvocation_Response(_Asn1BasicType[None]):
 	pass
 
 class Start_Request(_Asn1Type): # SEQUENCE
-	
+
 	class executionArgument_TYPE(_Asn1Type): # CHOICE
 		class PRESENT(EXT_IntEnum):
 			PR_NOTHING = 0
 			PR_simpleString = 1
 			PR_encodedString = 2
 			PR_embeddedString = 3
-		
+
 		@property
 		def present(self) -> PRESENT: ...
 		@property
@@ -2755,7 +2755,7 @@ class Start_Request(_Asn1Type): # SEQUENCE
 			encodedString: EXTERNAL = ...,
 			embeddedString: EMBEDDED_PDV = ...,
 		) -> None: ...
-		
+
 	executionArgument: executionArgument_TYPE | None
 	@property
 	def programInvocationName(self) -> Identifier: ...
@@ -2766,7 +2766,7 @@ class Start_Request(_Asn1Type): # SEQUENCE
 		programInvocationName: Identifier = ...,
 		executionArgument: executionArgument_TYPE = ...,
 	) -> None: ...
-	
+
 class Start_Response(_Asn1BasicType[None]):
 	pass
 
@@ -2778,10 +2778,10 @@ class CS_Start_Request(_Asn1Type): # CHOICE
 		PR_NOTHING = 0
 		PR_normal = 1
 		PR_controlling = 2
-	
+
 	@property
 	def present(self) -> PRESENT: ...
-	
+
 	class controlling_TYPE(_Asn1Type): # SEQUENCE
 		startLocation: str | None
 		startCount: StartCount | None
@@ -2790,7 +2790,7 @@ class CS_Start_Request(_Asn1Type): # CHOICE
 			startLocation: str = ...,
 			startCount: StartCount = ...,
 		) -> None: ...
-		
+
 	controlling: controlling_TYPE
 	normal: None | None
 	def __init__(
@@ -2798,14 +2798,14 @@ class CS_Start_Request(_Asn1Type): # CHOICE
 		normal: None = ...,
 		controlling: controlling_TYPE = ...,
 	) -> None: ...
-	
+
 class StartCount(_Asn1Type): # CHOICE
 	class PRESENT(EXT_IntEnum):
 		PR_NOTHING = 0
 		PR_noLimit = 1
 		PR_cycleCount = 2
 		PR_stepCount = 3
-	
+
 	@property
 	def present(self) -> PRESENT: ...
 	noLimit: None | None
@@ -2817,7 +2817,7 @@ class StartCount(_Asn1Type): # CHOICE
 		cycleCount: int = ...,
 		stepCount: int = ...,
 	) -> None: ...
-	
+
 class Stop_Request(_Asn1Type): # SEQUENCE
 	@property
 	def programInvocationName(self) -> Identifier: ...
@@ -2827,7 +2827,7 @@ class Stop_Request(_Asn1Type): # SEQUENCE
 		self, /, *,
 		programInvocationName: Identifier = ...,
 	) -> None: ...
-	
+
 class Stop_Response(_Asn1BasicType[None]):
 	pass
 
@@ -2835,14 +2835,14 @@ class Stop_Error(_Asn1BasicType[ProgramInvocationState]):
 	pass
 
 class Resume_Request(_Asn1Type): # SEQUENCE
-	
+
 	class executionArgument_TYPE(_Asn1Type): # CHOICE
 		class PRESENT(EXT_IntEnum):
 			PR_NOTHING = 0
 			PR_simpleString = 1
 			PR_encodedString = 2
 			PR_enmbeddedString = 3
-		
+
 		@property
 		def present(self) -> PRESENT: ...
 		@property
@@ -2857,7 +2857,7 @@ class Resume_Request(_Asn1Type): # SEQUENCE
 			encodedString: EXTERNAL = ...,
 			enmbeddedString: EMBEDDED_PDV = ...,
 		) -> None: ...
-		
+
 	executionArgument: executionArgument_TYPE | None
 	@property
 	def programInvocationName(self) -> Identifier: ...
@@ -2868,7 +2868,7 @@ class Resume_Request(_Asn1Type): # SEQUENCE
 		programInvocationName: Identifier = ...,
 		executionArgument: executionArgument_TYPE = ...,
 	) -> None: ...
-	
+
 class Resume_Response(_Asn1BasicType[None]):
 	pass
 
@@ -2880,18 +2880,18 @@ class CS_Resume_Request(_Asn1Type): # CHOICE
 		PR_NOTHING = 0
 		PR_normal = 1
 		PR_controlling = 2
-	
+
 	@property
 	def present(self) -> PRESENT: ...
-	
+
 	class controlling_TYPE(_Asn1Type): # SEQUENCE
-		
+
 		class modeType_TYPE(_Asn1Type): # CHOICE
 			class PRESENT(EXT_IntEnum):
 				PR_NOTHING = 0
 				PR_continueMode = 1
 				PR_changeMode = 2
-			
+
 			@property
 			def present(self) -> PRESENT: ...
 			continueMode: None | None
@@ -2901,13 +2901,13 @@ class CS_Resume_Request(_Asn1Type): # CHOICE
 				continueMode: None = ...,
 				changeMode: StartCount = ...,
 			) -> None: ...
-			
+
 		modeType: modeType_TYPE
 		def __init__(
 			self, /, *,
 			modeType: modeType_TYPE = ...,
 		) -> None: ...
-		
+
 	controlling: controlling_TYPE
 	normal: None | None
 	def __init__(
@@ -2915,7 +2915,7 @@ class CS_Resume_Request(_Asn1Type): # CHOICE
 		normal: None = ...,
 		controlling: controlling_TYPE = ...,
 	) -> None: ...
-	
+
 class Reset_Request(_Asn1Type): # SEQUENCE
 	@property
 	def programInvocationName(self) -> Identifier: ...
@@ -2925,7 +2925,7 @@ class Reset_Request(_Asn1Type): # SEQUENCE
 		self, /, *,
 		programInvocationName: Identifier = ...,
 	) -> None: ...
-	
+
 class Reset_Response(_Asn1BasicType[None]):
 	pass
 
@@ -2941,7 +2941,7 @@ class Kill_Request(_Asn1Type): # SEQUENCE
 		self, /, *,
 		programInvocationName: Identifier = ...,
 	) -> None: ...
-	
+
 class Kill_Response(_Asn1BasicType[None]):
 	pass
 
@@ -2949,7 +2949,7 @@ class GetProgramInvocationAttributes_Request(_Asn1BasicType[Identifier]):
 	pass
 
 class GetProgramInvocationAttributes_Response(_Asn1Type): # SEQUENCE
-	
+
 	class listOfDomainNames_TYPE(_Asn1Type):
 		def __init__(self, values: EXT_Iterable[Identifier] | None = ...) -> None: ...
 		def __getitem__(self, index: int) -> Identifier: ...
@@ -2959,16 +2959,16 @@ class GetProgramInvocationAttributes_Response(_Asn1Type): # SEQUENCE
 		def clear(self) -> None: ...
 		def __len__(self) -> int: ...
 		def __delitem__(self, index: int) -> None: ...
-	
+
 	listOfDomainNames: listOfDomainNames_TYPE
-	
+
 	class executionArgument_TYPE(_Asn1Type): # CHOICE
 		class PRESENT(EXT_IntEnum):
 			PR_NOTHING = 0
 			PR_simpleString = 1
 			PR_encodedString = 2
 			PR_enmbeddedString = 3
-		
+
 		@property
 		def present(self) -> PRESENT: ...
 		@property
@@ -2983,7 +2983,7 @@ class GetProgramInvocationAttributes_Response(_Asn1Type): # SEQUENCE
 			encodedString: EXTERNAL = ...,
 			enmbeddedString: EMBEDDED_PDV = ...,
 		) -> None: ...
-		
+
 	executionArgument: executionArgument_TYPE
 	@property
 	def state(self) -> ProgramInvocationState: ...
@@ -3006,21 +3006,21 @@ class GetProgramInvocationAttributes_Response(_Asn1Type): # SEQUENCE
 		executionArgument: executionArgument_TYPE = ...,
 		accessControlList: Identifier = ...,
 	) -> None: ...
-	
+
 class CS_GetProgramInvocationAttributes_Response(_Asn1Type): # SEQUENCE
-	
+
 	class control_TYPE(_Asn1Type): # CHOICE
 		class PRESENT(EXT_IntEnum):
 			PR_NOTHING = 0
 			PR_controlling = 1
 			PR_controlled = 2
 			PR_normal = 3
-		
+
 		@property
 		def present(self) -> PRESENT: ...
-		
+
 		class controlling_TYPE(_Asn1Type): # SEQUENCE
-			
+
 			class controlledPI_TYPE(_Asn1Type):
 				def __init__(self, values: EXT_Iterable[Identifier] | None = ...) -> None: ...
 				def __getitem__(self, index: int) -> Identifier: ...
@@ -3030,16 +3030,16 @@ class CS_GetProgramInvocationAttributes_Response(_Asn1Type): # SEQUENCE
 				def clear(self) -> None: ...
 				def __len__(self) -> int: ...
 				def __delitem__(self, index: int) -> None: ...
-			
+
 			controlledPI: controlledPI_TYPE
-			
+
 			class runningMode_TYPE(_Asn1Type): # CHOICE
 				class PRESENT(EXT_IntEnum):
 					PR_NOTHING = 0
 					PR_freeRunning = 1
 					PR_cycleLimited = 2
 					PR_stepLimited = 3
-				
+
 				@property
 				def present(self) -> PRESENT: ...
 				freeRunning: None | None
@@ -3051,7 +3051,7 @@ class CS_GetProgramInvocationAttributes_Response(_Asn1Type): # SEQUENCE
 					cycleLimited: int = ...,
 					stepLimited: int = ...,
 				) -> None: ...
-				
+
 			runningMode: runningMode_TYPE
 			programLocation: str | None
 			def __init__(
@@ -3060,15 +3060,15 @@ class CS_GetProgramInvocationAttributes_Response(_Asn1Type): # SEQUENCE
 				programLocation: str = ...,
 				runningMode: runningMode_TYPE = ...,
 			) -> None: ...
-			
+
 		controlling: controlling_TYPE
-		
+
 		class controlled_TYPE(_Asn1Type): # CHOICE
 			class PRESENT(EXT_IntEnum):
 				PR_NOTHING = 0
 				PR_controllingPI = 1
 				PR_none = 2
-			
+
 			@property
 			def present(self) -> PRESENT: ...
 			@property
@@ -3081,7 +3081,7 @@ class CS_GetProgramInvocationAttributes_Response(_Asn1Type): # SEQUENCE
 				controllingPI: Identifier = ...,
 				none: None = ...,
 			) -> None: ...
-			
+
 		controlled: controlled_TYPE
 		normal: None | None
 		def __init__(
@@ -3090,7 +3090,7 @@ class CS_GetProgramInvocationAttributes_Response(_Asn1Type): # SEQUENCE
 			controlled: controlled_TYPE = ...,
 			normal: None = ...,
 		) -> None: ...
-		
+
 	control: control_TYPE
 	errorCode: int
 	def __init__(
@@ -3098,9 +3098,9 @@ class CS_GetProgramInvocationAttributes_Response(_Asn1Type): # SEQUENCE
 		errorCode: int = ...,
 		control: control_TYPE = ...,
 	) -> None: ...
-	
+
 class Select_Request(_Asn1Type): # SEQUENCE
-	
+
 	class controlled_TYPE(_Asn1Type):
 		def __init__(self, values: EXT_Iterable[Identifier] | None = ...) -> None: ...
 		def __getitem__(self, index: int) -> Identifier: ...
@@ -3110,7 +3110,7 @@ class Select_Request(_Asn1Type): # SEQUENCE
 		def clear(self) -> None: ...
 		def __len__(self) -> int: ...
 		def __delitem__(self, index: int) -> None: ...
-	
+
 	controlled: controlled_TYPE | None
 	@property
 	def controlling(self) -> Identifier | None: ...
@@ -3121,7 +3121,7 @@ class Select_Request(_Asn1Type): # SEQUENCE
 		controlling: Identifier = ...,
 		controlled: controlled_TYPE = ...,
 	) -> None: ...
-	
+
 class Select_Response(_Asn1BasicType[None]):
 	pass
 
@@ -3136,7 +3136,7 @@ class AlterProgramInvocationAttributes_Request(_Asn1Type): # SEQUENCE
 		programInvocation: Identifier = ...,
 		startCount: StartCount = ...,
 	) -> None: ...
-	
+
 class AlterProgramInvocationAttributes_Response(_Asn1BasicType[None]):
 	pass
 
@@ -3147,12 +3147,12 @@ class ControlElement(_Asn1Type): # CHOICE
 		PR_continueDomainDef = 2
 		PR_endDomainDef = 3
 		PR_piDefinition = 4
-	
+
 	@property
 	def present(self) -> PRESENT: ...
-	
+
 	class beginDomainDef_TYPE(_Asn1Type): # SEQUENCE
-		
+
 		class capabilities_TYPE(_Asn1Type):
 			def __init__(self, values: EXT_Iterable[MMSString] | None = ...) -> None: ...
 			def __getitem__(self, index: int) -> MMSString: ...
@@ -3162,7 +3162,7 @@ class ControlElement(_Asn1Type): # CHOICE
 			def clear(self) -> None: ...
 			def __len__(self) -> int: ...
 			def __delitem__(self, index: int) -> None: ...
-		
+
 		capabilities: capabilities_TYPE
 		@property
 		def domainName(self) -> Identifier: ...
@@ -3177,9 +3177,9 @@ class ControlElement(_Asn1Type): # CHOICE
 			sharable: bool = ...,
 			loadData: LoadData = ...,
 		) -> None: ...
-		
+
 	beginDomainDef: beginDomainDef_TYPE
-	
+
 	class continueDomainDef_TYPE(_Asn1Type): # SEQUENCE
 		@property
 		def domainName(self) -> Identifier: ...
@@ -3191,11 +3191,11 @@ class ControlElement(_Asn1Type): # CHOICE
 			domainName: Identifier = ...,
 			loadData: LoadData = ...,
 		) -> None: ...
-		
+
 	continueDomainDef: continueDomainDef_TYPE
-	
+
 	class piDefinition_TYPE(_Asn1Type): # SEQUENCE
-		
+
 		class listOfDomains_TYPE(_Asn1Type):
 			def __init__(self, values: EXT_Iterable[Identifier] | None = ...) -> None: ...
 			def __getitem__(self, index: int) -> Identifier: ...
@@ -3205,7 +3205,7 @@ class ControlElement(_Asn1Type): # CHOICE
 			def clear(self) -> None: ...
 			def __len__(self) -> int: ...
 			def __delitem__(self, index: int) -> None: ...
-		
+
 		listOfDomains: listOfDomains_TYPE
 		@property
 		def piName(self) -> Identifier: ...
@@ -3225,7 +3225,7 @@ class ControlElement(_Asn1Type): # CHOICE
 			monitorType: bool = ...,
 			pIState: ProgramInvocationState = ...,
 		) -> None: ...
-		
+
 	piDefinition: piDefinition_TYPE
 	@property
 	def endDomainDef(self) -> Identifier | None: ...
@@ -3238,7 +3238,7 @@ class ControlElement(_Asn1Type): # CHOICE
 		endDomainDef: Identifier = ...,
 		piDefinition: piDefinition_TYPE = ...,
 	) -> None: ...
-	
+
 class InitiateUnitControlLoad_Request(_Asn1BasicType[Identifier]):
 	pass
 
@@ -3250,7 +3250,7 @@ class InitiateUnitControl_Error(_Asn1Type): # CHOICE
 		PR_NOTHING = 0
 		PR_domain = 1
 		PR_programInvocation = 2
-	
+
 	@property
 	def present(self) -> PRESENT: ...
 	@property
@@ -3266,12 +3266,12 @@ class InitiateUnitControl_Error(_Asn1Type): # CHOICE
 		domain: Identifier = ...,
 		programInvocation: Identifier = ...,
 	) -> None: ...
-	
+
 class UnitControlLoadSegment_Request(_Asn1BasicType[Identifier]):
 	pass
 
 class UnitControlLoadSegment_Response(_Asn1Type): # SEQUENCE
-	
+
 	class controlElements_TYPE(_Asn1Type):
 		def __init__(self, values: EXT_Iterable[ControlElement] | None = ...) -> None: ...
 		def __getitem__(self, index: int) -> ControlElement: ...
@@ -3281,7 +3281,7 @@ class UnitControlLoadSegment_Response(_Asn1Type): # SEQUENCE
 		def clear(self) -> None: ...
 		def __len__(self) -> int: ...
 		def __delitem__(self, index: int) -> None: ...
-	
+
 	controlElements: controlElements_TYPE
 	moreFollows: bool | None
 	def __init__(
@@ -3289,16 +3289,16 @@ class UnitControlLoadSegment_Response(_Asn1Type): # SEQUENCE
 		controlElements: controlElements_TYPE = ...,
 		moreFollows: bool = ...,
 	) -> None: ...
-	
+
 class UnitControlUpload_Request(_Asn1Type): # SEQUENCE
-	
+
 	class continueAfter_TYPE(_Asn1Type): # CHOICE
 		class PRESENT(EXT_IntEnum):
 			PR_NOTHING = 0
 			PR_domain = 1
 			PR_ulsmID = 2
 			PR_programInvocation = 3
-		
+
 		@property
 		def present(self) -> PRESENT: ...
 		@property
@@ -3316,7 +3316,7 @@ class UnitControlUpload_Request(_Asn1Type): # SEQUENCE
 			ulsmID: int = ...,
 			programInvocation: Identifier = ...,
 		) -> None: ...
-		
+
 	continueAfter: continueAfter_TYPE | None
 	@property
 	def unitControlName(self) -> Identifier: ...
@@ -3327,9 +3327,9 @@ class UnitControlUpload_Request(_Asn1Type): # SEQUENCE
 		unitControlName: Identifier = ...,
 		continueAfter: continueAfter_TYPE = ...,
 	) -> None: ...
-	
+
 class UnitControlUpload_Response(_Asn1Type): # SEQUENCE
-	
+
 	class controlElements_TYPE(_Asn1Type):
 		def __init__(self, values: EXT_Iterable[ControlElement] | None = ...) -> None: ...
 		def __getitem__(self, index: int) -> ControlElement: ...
@@ -3339,16 +3339,16 @@ class UnitControlUpload_Response(_Asn1Type): # SEQUENCE
 		def clear(self) -> None: ...
 		def __len__(self) -> int: ...
 		def __delitem__(self, index: int) -> None: ...
-	
+
 	controlElements: controlElements_TYPE
-	
+
 	class nextElement_TYPE(_Asn1Type): # CHOICE
 		class PRESENT(EXT_IntEnum):
 			PR_NOTHING = 0
 			PR_domain = 1
 			PR_ulsmID = 2
 			PR_programInvocation = 3
-		
+
 		@property
 		def present(self) -> PRESENT: ...
 		@property
@@ -3366,23 +3366,23 @@ class UnitControlUpload_Response(_Asn1Type): # SEQUENCE
 			ulsmID: int = ...,
 			programInvocation: Identifier = ...,
 		) -> None: ...
-		
+
 	nextElement: nextElement_TYPE | None
 	def __init__(
 		self, /, *,
 		controlElements: controlElements_TYPE = ...,
 		nextElement: nextElement_TYPE = ...,
 	) -> None: ...
-	
+
 class StartUnitControl_Request(_Asn1Type): # SEQUENCE
-	
+
 	class executionArgument_TYPE(_Asn1Type): # CHOICE
 		class PRESENT(EXT_IntEnum):
 			PR_NOTHING = 0
 			PR_simpleString = 1
 			PR_encodedString = 2
 			PR_enmbeddedString = 3
-		
+
 		@property
 		def present(self) -> PRESENT: ...
 		@property
@@ -3397,7 +3397,7 @@ class StartUnitControl_Request(_Asn1Type): # SEQUENCE
 			encodedString: EXTERNAL = ...,
 			enmbeddedString: EMBEDDED_PDV = ...,
 		) -> None: ...
-		
+
 	executionArgument: executionArgument_TYPE | None
 	@property
 	def unitControlName(self) -> Identifier: ...
@@ -3408,7 +3408,7 @@ class StartUnitControl_Request(_Asn1Type): # SEQUENCE
 		unitControlName: Identifier = ...,
 		executionArgument: executionArgument_TYPE = ...,
 	) -> None: ...
-	
+
 class StartUnitControl_Response(_Asn1BasicType[None]):
 	pass
 
@@ -3426,7 +3426,7 @@ class StartUnitControl_Error(_Asn1Type): # SEQUENCE
 		programInvocationName: Identifier = ...,
 		programInvocationState: ProgramInvocationState = ...,
 	) -> None: ...
-	
+
 class StopUnitControl_Request(_Asn1BasicType[Identifier]):
 	pass
 
@@ -3447,9 +3447,9 @@ class StopUnitControl_Error(_Asn1Type): # SEQUENCE
 		programInvocationName: Identifier = ...,
 		programInvocationState: ProgramInvocationState = ...,
 	) -> None: ...
-	
+
 class CreateUnitControl_Request(_Asn1Type): # SEQUENCE
-	
+
 	class domains_TYPE(_Asn1Type):
 		def __init__(self, values: EXT_Iterable[Identifier] | None = ...) -> None: ...
 		def __getitem__(self, index: int) -> Identifier: ...
@@ -3459,9 +3459,9 @@ class CreateUnitControl_Request(_Asn1Type): # SEQUENCE
 		def clear(self) -> None: ...
 		def __len__(self) -> int: ...
 		def __delitem__(self, index: int) -> None: ...
-	
+
 	domains: domains_TYPE
-	
+
 	class programInvocations_TYPE(_Asn1Type):
 		def __init__(self, values: EXT_Iterable[Identifier] | None = ...) -> None: ...
 		def __getitem__(self, index: int) -> Identifier: ...
@@ -3471,7 +3471,7 @@ class CreateUnitControl_Request(_Asn1Type): # SEQUENCE
 		def clear(self) -> None: ...
 		def __len__(self) -> int: ...
 		def __delitem__(self, index: int) -> None: ...
-	
+
 	programInvocations: programInvocations_TYPE
 	@property
 	def unitControl(self) -> Identifier: ...
@@ -3483,12 +3483,12 @@ class CreateUnitControl_Request(_Asn1Type): # SEQUENCE
 		domains: domains_TYPE = ...,
 		programInvocations: programInvocations_TYPE = ...,
 	) -> None: ...
-	
+
 class CreateUnitControl_Response(_Asn1BasicType[None]):
 	pass
 
 class AddToUnitControl_Request(_Asn1Type): # SEQUENCE
-	
+
 	class domains_TYPE(_Asn1Type):
 		def __init__(self, values: EXT_Iterable[Identifier] | None = ...) -> None: ...
 		def __getitem__(self, index: int) -> Identifier: ...
@@ -3498,9 +3498,9 @@ class AddToUnitControl_Request(_Asn1Type): # SEQUENCE
 		def clear(self) -> None: ...
 		def __len__(self) -> int: ...
 		def __delitem__(self, index: int) -> None: ...
-	
+
 	domains: domains_TYPE
-	
+
 	class programInvocations_TYPE(_Asn1Type):
 		def __init__(self, values: EXT_Iterable[Identifier] | None = ...) -> None: ...
 		def __getitem__(self, index: int) -> Identifier: ...
@@ -3510,7 +3510,7 @@ class AddToUnitControl_Request(_Asn1Type): # SEQUENCE
 		def clear(self) -> None: ...
 		def __len__(self) -> int: ...
 		def __delitem__(self, index: int) -> None: ...
-	
+
 	programInvocations: programInvocations_TYPE
 	@property
 	def unitControl(self) -> Identifier: ...
@@ -3522,12 +3522,12 @@ class AddToUnitControl_Request(_Asn1Type): # SEQUENCE
 		domains: domains_TYPE = ...,
 		programInvocations: programInvocations_TYPE = ...,
 	) -> None: ...
-	
+
 class AddToUnitControl_Response(_Asn1BasicType[None]):
 	pass
 
 class RemoveFromUnitControl_Request(_Asn1Type): # SEQUENCE
-	
+
 	class domains_TYPE(_Asn1Type):
 		def __init__(self, values: EXT_Iterable[Identifier] | None = ...) -> None: ...
 		def __getitem__(self, index: int) -> Identifier: ...
@@ -3537,9 +3537,9 @@ class RemoveFromUnitControl_Request(_Asn1Type): # SEQUENCE
 		def clear(self) -> None: ...
 		def __len__(self) -> int: ...
 		def __delitem__(self, index: int) -> None: ...
-	
+
 	domains: domains_TYPE
-	
+
 	class programInvocations_TYPE(_Asn1Type):
 		def __init__(self, values: EXT_Iterable[Identifier] | None = ...) -> None: ...
 		def __getitem__(self, index: int) -> Identifier: ...
@@ -3549,7 +3549,7 @@ class RemoveFromUnitControl_Request(_Asn1Type): # SEQUENCE
 		def clear(self) -> None: ...
 		def __len__(self) -> int: ...
 		def __delitem__(self, index: int) -> None: ...
-	
+
 	programInvocations: programInvocations_TYPE
 	@property
 	def unitControl(self) -> Identifier: ...
@@ -3561,7 +3561,7 @@ class RemoveFromUnitControl_Request(_Asn1Type): # SEQUENCE
 		domains: domains_TYPE = ...,
 		programInvocations: programInvocations_TYPE = ...,
 	) -> None: ...
-	
+
 class RemoveFromUnitControl_Response(_Asn1BasicType[None]):
 	pass
 
@@ -3569,7 +3569,7 @@ class GetUnitControlAttributes_Request(_Asn1BasicType[Identifier]):
 	pass
 
 class GetUnitControlAttributes_Response(_Asn1Type): # SEQUENCE
-	
+
 	class domains_TYPE(_Asn1Type):
 		def __init__(self, values: EXT_Iterable[Identifier] | None = ...) -> None: ...
 		def __getitem__(self, index: int) -> Identifier: ...
@@ -3579,9 +3579,9 @@ class GetUnitControlAttributes_Response(_Asn1Type): # SEQUENCE
 		def clear(self) -> None: ...
 		def __len__(self) -> int: ...
 		def __delitem__(self, index: int) -> None: ...
-	
+
 	domains: domains_TYPE
-	
+
 	class programInvocations_TYPE(_Asn1Type):
 		def __init__(self, values: EXT_Iterable[Identifier] | None = ...) -> None: ...
 		def __getitem__(self, index: int) -> Identifier: ...
@@ -3591,14 +3591,14 @@ class GetUnitControlAttributes_Response(_Asn1Type): # SEQUENCE
 		def clear(self) -> None: ...
 		def __len__(self) -> int: ...
 		def __delitem__(self, index: int) -> None: ...
-	
+
 	programInvocations: programInvocations_TYPE
 	def __init__(
 		self, /, *,
 		domains: domains_TYPE = ...,
 		programInvocations: programInvocations_TYPE = ...,
 	) -> None: ...
-	
+
 class LoadUnitControlFromFile_Request(_Asn1Type): # SEQUENCE
 	@property
 	def unitControlName(self) -> Identifier: ...
@@ -3615,7 +3615,7 @@ class LoadUnitControlFromFile_Request(_Asn1Type): # SEQUENCE
 		fileName: FileName = ...,
 		thirdParty: ApplicationReference = ...,
 	) -> None: ...
-	
+
 class LoadUnitControlFromFile_Response(_Asn1BasicType[None]):
 	pass
 
@@ -3625,7 +3625,7 @@ class LoadUnitControlFromFile_Error(_Asn1Type): # CHOICE
 		PR_none = 1
 		PR_domain = 2
 		PR_programInvocation = 3
-	
+
 	@property
 	def present(self) -> PRESENT: ...
 	none: None | None
@@ -3643,7 +3643,7 @@ class LoadUnitControlFromFile_Error(_Asn1Type): # CHOICE
 		domain: Identifier = ...,
 		programInvocation: Identifier = ...,
 	) -> None: ...
-	
+
 class StoreUnitControlToFile_Request(_Asn1Type): # SEQUENCE
 	@property
 	def unitControlName(self) -> Identifier: ...
@@ -3660,7 +3660,7 @@ class StoreUnitControlToFile_Request(_Asn1Type): # SEQUENCE
 		fileName: FileName = ...,
 		thirdParty: ApplicationReference = ...,
 	) -> None: ...
-	
+
 class StoreUnitControlToFile_Response(_Asn1BasicType[None]):
 	pass
 
@@ -3675,7 +3675,7 @@ class DeleteUnitControl_Error(_Asn1Type): # CHOICE
 		PR_NOTHING = 0
 		PR_domain = 1
 		PR_programInvocation = 2
-	
+
 	@property
 	def present(self) -> PRESENT: ...
 	@property
@@ -3691,13 +3691,13 @@ class DeleteUnitControl_Error(_Asn1Type): # CHOICE
 		domain: Identifier = ...,
 		programInvocation: Identifier = ...,
 	) -> None: ...
-	
+
 class TypeSpecification(_Asn1Type): # CHOICE
 	class PRESENT(EXT_IntEnum):
 		PR_NOTHING = 0
 		PR_typeName = 1
 		PR_typeDescription = 2
-	
+
 	@property
 	def present(self) -> PRESENT: ...
 	typeName: ObjectName | None
@@ -3707,18 +3707,18 @@ class TypeSpecification(_Asn1Type): # CHOICE
 		typeName: ObjectName = ...,
 		typeDescription: TypeDescription = ...,
 	) -> None: ...
-	
+
 class AlternateAccess(_Asn1Type):
-	
+
 	class Member_TYPE(_Asn1Type): # CHOICE
 		class PRESENT(EXT_IntEnum):
 			PR_NOTHING = 0
 			PR_unnamed = 1
 			PR_named = 2
-		
+
 		@property
 		def present(self) -> PRESENT: ...
-		
+
 		class named_TYPE(_Asn1Type): # SEQUENCE
 			@property
 			def componentName(self) -> Identifier: ...
@@ -3730,7 +3730,7 @@ class AlternateAccess(_Asn1Type):
 				componentName: Identifier = ...,
 				access: AlternateAccessSelection = ...,
 			) -> None: ...
-			
+
 		named: named_TYPE
 		unnamed: AlternateAccessSelection | None
 		def __init__(
@@ -3738,7 +3738,7 @@ class AlternateAccess(_Asn1Type):
 			unnamed: AlternateAccessSelection = ...,
 			named: named_TYPE = ...,
 		) -> None: ...
-		
+
 	def __init__(self, values: EXT_Iterable[Member_TYPE] | None = ...) -> None: ...
 	def __getitem__(self, index: int) -> Member_TYPE: ...
 	def __setitem__(self, index: int, value: Member_TYPE) -> None: ...
@@ -3753,12 +3753,12 @@ class AlternateAccessSelection(_Asn1Type): # CHOICE
 		PR_NOTHING = 0
 		PR_selectAlternateAccess = 1
 		PR_selectAccess = 2
-	
+
 	@property
 	def present(self) -> PRESENT: ...
-	
+
 	class selectAlternateAccess_TYPE(_Asn1Type): # SEQUENCE
-		
+
 		class accessSelection_TYPE(_Asn1Type): # CHOICE
 			class PRESENT(EXT_IntEnum):
 				PR_NOTHING = 0
@@ -3766,10 +3766,10 @@ class AlternateAccessSelection(_Asn1Type): # CHOICE
 				PR_index = 2
 				PR_indexRange = 3
 				PR_allElements = 4
-			
+
 			@property
 			def present(self) -> PRESENT: ...
-			
+
 			class indexRange_TYPE(_Asn1Type): # SEQUENCE
 				@property
 				def lowIndex(self) -> Unsigned32: ...
@@ -3784,7 +3784,7 @@ class AlternateAccessSelection(_Asn1Type): # CHOICE
 					lowIndex: Unsigned32 = ...,
 					numberOfElements: Unsigned32 = ...,
 				) -> None: ...
-				
+
 			indexRange: indexRange_TYPE
 			@property
 			def component(self) -> Identifier | None: ...
@@ -3802,7 +3802,7 @@ class AlternateAccessSelection(_Asn1Type): # CHOICE
 				indexRange: indexRange_TYPE = ...,
 				allElements: None = ...,
 			) -> None: ...
-			
+
 		accessSelection: accessSelection_TYPE
 		@property
 		def alternateAccess(self) -> AlternateAccess | None: ...
@@ -3813,9 +3813,9 @@ class AlternateAccessSelection(_Asn1Type): # CHOICE
 			accessSelection: accessSelection_TYPE = ...,
 			alternateAccess: AlternateAccess = ...,
 		) -> None: ...
-		
+
 	selectAlternateAccess: selectAlternateAccess_TYPE
-	
+
 	class selectAccess_TYPE(_Asn1Type): # CHOICE
 		class PRESENT(EXT_IntEnum):
 			PR_NOTHING = 0
@@ -3823,10 +3823,10 @@ class AlternateAccessSelection(_Asn1Type): # CHOICE
 			PR_index = 2
 			PR_indexRange = 3
 			PR_allElements = 4
-		
+
 		@property
 		def present(self) -> PRESENT: ...
-		
+
 		class indexRange_TYPE(_Asn1Type): # SEQUENCE
 			@property
 			def lowIndex(self) -> Unsigned32: ...
@@ -3841,7 +3841,7 @@ class AlternateAccessSelection(_Asn1Type): # CHOICE
 				lowIndex: Unsigned32 = ...,
 				numberOfElements: Unsigned32 = ...,
 			) -> None: ...
-			
+
 		indexRange: indexRange_TYPE
 		@property
 		def component(self) -> Identifier | None: ...
@@ -3859,20 +3859,20 @@ class AlternateAccessSelection(_Asn1Type): # CHOICE
 			indexRange: indexRange_TYPE = ...,
 			allElements: None = ...,
 		) -> None: ...
-		
+
 	selectAccess: selectAccess_TYPE
 	def __init__(
 		self, /, *,
 		selectAlternateAccess: selectAlternateAccess_TYPE = ...,
 		selectAccess: selectAccess_TYPE = ...,
 	) -> None: ...
-	
+
 class AccessResult(_Asn1Type): # CHOICE
 	class PRESENT(EXT_IntEnum):
 		PR_NOTHING = 0
 		PR_failure = 1
 		PR_success = 2
-	
+
 	@property
 	def present(self) -> PRESENT: ...
 	@property
@@ -3885,7 +3885,7 @@ class AccessResult(_Asn1Type): # CHOICE
 		failure: DataAccessError = ...,
 		success: Data = ...,
 	) -> None: ...
-	
+
 class Data(_Asn1Type): # CHOICE
 	class PRESENT(EXT_IntEnum):
 		PR_NOTHING = 0
@@ -3894,7 +3894,7 @@ class Data(_Asn1Type): # CHOICE
 		PR_boolean = 3
 		PR_bit_string = 4
 		PR_integer = 5
-		PR_Unsigned = 6
+		PR_unsigned = 6
 		PR_floating_point = 7
 		PR_octet_string = 8
 		PR_visible_string = 9
@@ -3905,10 +3905,10 @@ class Data(_Asn1Type): # CHOICE
 		PR_objId = 14
 		PR_mMSString = 15
 		PR_utc_time = 16
-	
+
 	@property
 	def present(self) -> PRESENT: ...
-	
+
 	class array_TYPE(_Asn1Type):
 		def __init__(self, values: EXT_Iterable[Data] | None = ...) -> None: ...
 		def __getitem__(self, index: int) -> Data: ...
@@ -3918,9 +3918,9 @@ class Data(_Asn1Type): # CHOICE
 		def clear(self) -> None: ...
 		def __len__(self) -> int: ...
 		def __delitem__(self, index: int) -> None: ...
-	
+
 	array: array_TYPE
-	
+
 	class structure_TYPE(_Asn1Type):
 		def __init__(self, values: EXT_Iterable[Data] | None = ...) -> None: ...
 		def __getitem__(self, index: int) -> Data: ...
@@ -3930,13 +3930,13 @@ class Data(_Asn1Type): # CHOICE
 		def clear(self) -> None: ...
 		def __len__(self) -> int: ...
 		def __delitem__(self, index: int) -> None: ...
-	
+
 	structure: structure_TYPE
 	boolean: bool | None
-	
+
 	class bit_string_TYPE(_Asn1BitStrType):
 		pass
-	
+
 	@property
 	def bit_string(self) -> bit_string_TYPE | None: ...
 	@bit_string.setter
@@ -3955,10 +3955,10 @@ class Data(_Asn1Type): # CHOICE
 	@binary_time.setter
 	def binary_time(self, value: TimeOfDay | bytes | None) -> None: ...
 	bcd: int | None
-	
+
 	class booleanArray_TYPE(_Asn1BitStrType):
 		pass
-	
+
 	@property
 	def booleanArray(self) -> booleanArray_TYPE | None: ...
 	@booleanArray.setter
@@ -3991,7 +3991,7 @@ class Data(_Asn1Type): # CHOICE
 		mMSString: MMSString = ...,
 		utc_time: UtcTime = ...,
 	) -> None: ...
-	
+
 class UtcTime(_Asn1BasicType[bytes]):
 	pass
 
@@ -4012,24 +4012,24 @@ class DataAccessError(_Asn1Type):
 		V_object_access_unsupported = 9
 		V_object_non_existent = 10
 		V_object_value_invalid = 11
-	
+
 	@property
 	def value(self) -> DataAccessError.VALUES: ...
 	@value.setter
 	def value(self, value: DataAccessError.VALUES | int) -> None: ...
 	def __init__(self, value: VALUES = ...) -> None: ...
-	
+
 class VariableAccessSpecification(_Asn1Type): # CHOICE
 	class PRESENT(EXT_IntEnum):
 		PR_NOTHING = 0
 		PR_listOfVariable = 1
 		PR_variableListName = 2
-	
+
 	@property
 	def present(self) -> PRESENT: ...
-	
+
 	class listOfVariable_TYPE(_Asn1Type):
-		
+
 		class Member_TYPE(_Asn1Type): # SEQUENCE
 			variableSpecification: VariableSpecification
 			@property
@@ -4041,7 +4041,7 @@ class VariableAccessSpecification(_Asn1Type): # CHOICE
 				variableSpecification: VariableSpecification = ...,
 				alternateAccess: AlternateAccess = ...,
 			) -> None: ...
-			
+
 		def __init__(self, values: EXT_Iterable[Member_TYPE] | None = ...) -> None: ...
 		def __getitem__(self, index: int) -> Member_TYPE: ...
 		def __setitem__(self, index: int, value: Member_TYPE) -> None: ...
@@ -4050,7 +4050,7 @@ class VariableAccessSpecification(_Asn1Type): # CHOICE
 		def clear(self) -> None: ...
 		def __len__(self) -> int: ...
 		def __delitem__(self, index: int) -> None: ...
-	
+
 	listOfVariable: listOfVariable_TYPE
 	variableListName: ObjectName | None
 	def __init__(
@@ -4058,7 +4058,7 @@ class VariableAccessSpecification(_Asn1Type): # CHOICE
 		listOfVariable: listOfVariable_TYPE = ...,
 		variableListName: ObjectName = ...,
 	) -> None: ...
-	
+
 class VariableSpecification(_Asn1Type): # CHOICE
 	class PRESENT(EXT_IntEnum):
 		PR_NOTHING = 0
@@ -4067,10 +4067,10 @@ class VariableSpecification(_Asn1Type): # CHOICE
 		PR_variableDescription = 3
 		PR_scatteredAccessDescription = 4
 		PR_invalidated = 5
-	
+
 	@property
 	def present(self) -> PRESENT: ...
-	
+
 	class variableDescription_TYPE(_Asn1Type): # SEQUENCE
 		address: Address
 		typeSpecification: TypeSpecification
@@ -4079,7 +4079,7 @@ class VariableSpecification(_Asn1Type): # CHOICE
 			address: Address = ...,
 			typeSpecification: TypeSpecification = ...,
 		) -> None: ...
-		
+
 	variableDescription: variableDescription_TYPE
 	name: ObjectName | None
 	address: Address | None
@@ -4096,7 +4096,7 @@ class VariableSpecification(_Asn1Type): # CHOICE
 		scatteredAccessDescription: ScatteredAccessDescription = ...,
 		invalidated: None = ...,
 	) -> None: ...
-	
+
 class Read_Request(_Asn1Type): # SEQUENCE
 	specificationWithResult: bool | None
 	variableAccessSpecification: VariableAccessSpecification
@@ -4105,9 +4105,9 @@ class Read_Request(_Asn1Type): # SEQUENCE
 		specificationWithResult: bool = ...,
 		variableAccessSpecification: VariableAccessSpecification = ...,
 	) -> None: ...
-	
+
 class Read_Response(_Asn1Type): # SEQUENCE
-	
+
 	class listOfAccessResult_TYPE(_Asn1Type):
 		def __init__(self, values: EXT_Iterable[AccessResult] | None = ...) -> None: ...
 		def __getitem__(self, index: int) -> AccessResult: ...
@@ -4117,7 +4117,7 @@ class Read_Response(_Asn1Type): # SEQUENCE
 		def clear(self) -> None: ...
 		def __len__(self) -> int: ...
 		def __delitem__(self, index: int) -> None: ...
-	
+
 	listOfAccessResult: listOfAccessResult_TYPE
 	variableAccessSpecification: VariableAccessSpecification | None
 	def __init__(
@@ -4125,15 +4125,15 @@ class Read_Response(_Asn1Type): # SEQUENCE
 		variableAccessSpecification: VariableAccessSpecification = ...,
 		listOfAccessResult: listOfAccessResult_TYPE = ...,
 	) -> None: ...
-	
+
 class Write_Response(_Asn1Type):
-	
+
 	class Member_TYPE(_Asn1Type): # CHOICE
 		class PRESENT(EXT_IntEnum):
 			PR_NOTHING = 0
 			PR_failure = 1
 			PR_success = 2
-		
+
 		@property
 		def present(self) -> PRESENT: ...
 		@property
@@ -4146,7 +4146,7 @@ class Write_Response(_Asn1Type):
 			failure: DataAccessError = ...,
 			success: None = ...,
 		) -> None: ...
-		
+
 	def __init__(self, values: EXT_Iterable[Member_TYPE] | None = ...) -> None: ...
 	def __getitem__(self, index: int) -> Member_TYPE: ...
 	def __setitem__(self, index: int, value: Member_TYPE) -> None: ...
@@ -4157,7 +4157,7 @@ class Write_Response(_Asn1Type):
 	def __delitem__(self, index: int) -> None: ...
 
 class Write_Request(_Asn1Type): # SEQUENCE
-	
+
 	class listOfData_TYPE(_Asn1Type):
 		def __init__(self, values: EXT_Iterable[Data] | None = ...) -> None: ...
 		def __getitem__(self, index: int) -> Data: ...
@@ -4167,7 +4167,7 @@ class Write_Request(_Asn1Type): # SEQUENCE
 		def clear(self) -> None: ...
 		def __len__(self) -> int: ...
 		def __delitem__(self, index: int) -> None: ...
-	
+
 	listOfData: listOfData_TYPE
 	variableAccessSpecification: VariableAccessSpecification
 	def __init__(
@@ -4175,9 +4175,9 @@ class Write_Request(_Asn1Type): # SEQUENCE
 		variableAccessSpecification: VariableAccessSpecification = ...,
 		listOfData: listOfData_TYPE = ...,
 	) -> None: ...
-	
+
 class InformationReport(_Asn1Type): # SEQUENCE
-	
+
 	class listOfAccessResult_TYPE(_Asn1Type):
 		def __init__(self, values: EXT_Iterable[AccessResult] | None = ...) -> None: ...
 		def __getitem__(self, index: int) -> AccessResult: ...
@@ -4187,7 +4187,7 @@ class InformationReport(_Asn1Type): # SEQUENCE
 		def clear(self) -> None: ...
 		def __len__(self) -> int: ...
 		def __delitem__(self, index: int) -> None: ...
-	
+
 	listOfAccessResult: listOfAccessResult_TYPE
 	variableAccessSpecification: VariableAccessSpecification
 	def __init__(
@@ -4195,13 +4195,13 @@ class InformationReport(_Asn1Type): # SEQUENCE
 		variableAccessSpecification: VariableAccessSpecification = ...,
 		listOfAccessResult: listOfAccessResult_TYPE = ...,
 	) -> None: ...
-	
+
 class GetVariableAccessAttributes_Request(_Asn1Type): # CHOICE
 	class PRESENT(EXT_IntEnum):
 		PR_NOTHING = 0
 		PR_name = 1
 		PR_address = 2
-	
+
 	@property
 	def present(self) -> PRESENT: ...
 	name: ObjectName | None
@@ -4211,7 +4211,7 @@ class GetVariableAccessAttributes_Request(_Asn1Type): # CHOICE
 		name: ObjectName = ...,
 		address: Address = ...,
 	) -> None: ...
-	
+
 class GetVariableAccessAttributes_Response(_Asn1Type): # SEQUENCE
 	mmsDeletable: bool
 	address: Address | None
@@ -4229,7 +4229,7 @@ class GetVariableAccessAttributes_Response(_Asn1Type): # SEQUENCE
 		accessControlList: Identifier = ...,
 		meaning: str = ...,
 	) -> None: ...
-	
+
 class DefineNamedVariable_Request(_Asn1Type): # SEQUENCE
 	variableName: ObjectName
 	address: Address
@@ -4240,12 +4240,12 @@ class DefineNamedVariable_Request(_Asn1Type): # SEQUENCE
 		address: Address = ...,
 		typeSpecification: TypeSpecification = ...,
 	) -> None: ...
-	
+
 class DefineNamedVariable_Response(_Asn1BasicType[None]):
 	pass
 
 class DeleteVariableAccess_Request(_Asn1Type): # SEQUENCE
-	
+
 	class listOfName_TYPE(_Asn1Type):
 		def __init__(self, values: EXT_Iterable[ObjectName] | None = ...) -> None: ...
 		def __getitem__(self, index: int) -> ObjectName: ...
@@ -4255,15 +4255,15 @@ class DeleteVariableAccess_Request(_Asn1Type): # SEQUENCE
 		def clear(self) -> None: ...
 		def __len__(self) -> int: ...
 		def __delitem__(self, index: int) -> None: ...
-	
+
 	listOfName: listOfName_TYPE | None
-	
+
 	class scopeOfDelete_VALUES(EXT_IntEnum):
 		V_specific = 0
 		V_aa_specific = 1
 		V_domain = 2
 		V_vmd = 3
-	
+
 	scopeOfDelete: scopeOfDelete_VALUES | None
 	@property
 	def domainName(self) -> Identifier | None: ...
@@ -4275,7 +4275,7 @@ class DeleteVariableAccess_Request(_Asn1Type): # SEQUENCE
 		listOfName: listOfName_TYPE = ...,
 		domainName: Identifier = ...,
 	) -> None: ...
-	
+
 class DeleteVariableAccess_Response(_Asn1Type): # SEQUENCE
 	@property
 	def numberMatched(self) -> Unsigned32: ...
@@ -4290,14 +4290,14 @@ class DeleteVariableAccess_Response(_Asn1Type): # SEQUENCE
 		numberMatched: Unsigned32 = ...,
 		numberDeleted: Unsigned32 = ...,
 	) -> None: ...
-	
+
 class DeleteVariableAccess_Error(_Asn1BasicType[Unsigned32]):
 	pass
 
 class DefineNamedVariableList_Request(_Asn1Type): # SEQUENCE
-	
+
 	class listOfVariable_TYPE(_Asn1Type):
-		
+
 		class Member_TYPE(_Asn1Type): # SEQUENCE
 			variableSpecification: VariableSpecification
 			@property
@@ -4309,7 +4309,7 @@ class DefineNamedVariableList_Request(_Asn1Type): # SEQUENCE
 				variableSpecification: VariableSpecification = ...,
 				alternateAccess: AlternateAccess = ...,
 			) -> None: ...
-			
+
 		def __init__(self, values: EXT_Iterable[Member_TYPE] | None = ...) -> None: ...
 		def __getitem__(self, index: int) -> Member_TYPE: ...
 		def __setitem__(self, index: int, value: Member_TYPE) -> None: ...
@@ -4318,7 +4318,7 @@ class DefineNamedVariableList_Request(_Asn1Type): # SEQUENCE
 		def clear(self) -> None: ...
 		def __len__(self) -> int: ...
 		def __delitem__(self, index: int) -> None: ...
-	
+
 	listOfVariable: listOfVariable_TYPE
 	variableListName: ObjectName
 	def __init__(
@@ -4326,7 +4326,7 @@ class DefineNamedVariableList_Request(_Asn1Type): # SEQUENCE
 		variableListName: ObjectName = ...,
 		listOfVariable: listOfVariable_TYPE = ...,
 	) -> None: ...
-	
+
 class DefineNamedVariableList_Response(_Asn1BasicType[None]):
 	pass
 
@@ -4334,9 +4334,9 @@ class GetNamedVariableListAttributes_Request(_Asn1BasicType[ObjectName]):
 	pass
 
 class GetNamedVariableListAttributes_Response(_Asn1Type): # SEQUENCE
-	
+
 	class listOfVariable_TYPE(_Asn1Type):
-		
+
 		class Member_TYPE(_Asn1Type): # SEQUENCE
 			variableSpecification: VariableSpecification
 			@property
@@ -4348,7 +4348,7 @@ class GetNamedVariableListAttributes_Response(_Asn1Type): # SEQUENCE
 				variableSpecification: VariableSpecification = ...,
 				alternateAccess: AlternateAccess = ...,
 			) -> None: ...
-			
+
 		def __init__(self, values: EXT_Iterable[Member_TYPE] | None = ...) -> None: ...
 		def __getitem__(self, index: int) -> Member_TYPE: ...
 		def __setitem__(self, index: int, value: Member_TYPE) -> None: ...
@@ -4357,7 +4357,7 @@ class GetNamedVariableListAttributes_Response(_Asn1Type): # SEQUENCE
 		def clear(self) -> None: ...
 		def __len__(self) -> int: ...
 		def __delitem__(self, index: int) -> None: ...
-	
+
 	listOfVariable: listOfVariable_TYPE
 	mmsDeletable: bool
 	@property
@@ -4370,7 +4370,7 @@ class GetNamedVariableListAttributes_Response(_Asn1Type): # SEQUENCE
 		listOfVariable: listOfVariable_TYPE = ...,
 		accessControlList: Identifier = ...,
 	) -> None: ...
-	
+
 class DeleteNamedVariableList_Response(_Asn1Type): # SEQUENCE
 	@property
 	def numberMatched(self) -> Unsigned32: ...
@@ -4385,9 +4385,9 @@ class DeleteNamedVariableList_Response(_Asn1Type): # SEQUENCE
 		numberMatched: Unsigned32 = ...,
 		numberDeleted: Unsigned32 = ...,
 	) -> None: ...
-	
+
 class DeleteNamedVariableList_Request(_Asn1Type): # SEQUENCE
-	
+
 	class listOfVariableListName_TYPE(_Asn1Type):
 		def __init__(self, values: EXT_Iterable[ObjectName] | None = ...) -> None: ...
 		def __getitem__(self, index: int) -> ObjectName: ...
@@ -4397,15 +4397,15 @@ class DeleteNamedVariableList_Request(_Asn1Type): # SEQUENCE
 		def clear(self) -> None: ...
 		def __len__(self) -> int: ...
 		def __delitem__(self, index: int) -> None: ...
-	
+
 	listOfVariableListName: listOfVariableListName_TYPE | None
-	
+
 	class scopeOfDelete_VALUES(EXT_IntEnum):
 		V_specific = 0
 		V_aa_specific = 1
 		V_domain = 2
 		V_vmd = 3
-	
+
 	scopeOfDelete: scopeOfDelete_VALUES | None
 	@property
 	def domainName(self) -> Identifier | None: ...
@@ -4417,7 +4417,7 @@ class DeleteNamedVariableList_Request(_Asn1Type): # SEQUENCE
 		listOfVariableListName: listOfVariableListName_TYPE = ...,
 		domainName: Identifier = ...,
 	) -> None: ...
-	
+
 class DeleteNamedVariableList_Error(_Asn1BasicType[Unsigned32]):
 	pass
 
@@ -4429,7 +4429,7 @@ class DefineNamedType_Request(_Asn1Type): # SEQUENCE
 		typeName: ObjectName = ...,
 		typeSpecification: TypeSpecification = ...,
 	) -> None: ...
-	
+
 class DefineNamedType_Response(_Asn1BasicType[None]):
 	pass
 
@@ -4451,9 +4451,9 @@ class GetNamedTypeAttributes_Response(_Asn1Type): # SEQUENCE
 		accessControlList: Identifier = ...,
 		meaning: str = ...,
 	) -> None: ...
-	
+
 class DeleteNamedType_Request(_Asn1Type): # SEQUENCE
-	
+
 	class listOfTypeName_TYPE(_Asn1Type):
 		def __init__(self, values: EXT_Iterable[ObjectName] | None = ...) -> None: ...
 		def __getitem__(self, index: int) -> ObjectName: ...
@@ -4463,15 +4463,15 @@ class DeleteNamedType_Request(_Asn1Type): # SEQUENCE
 		def clear(self) -> None: ...
 		def __len__(self) -> int: ...
 		def __delitem__(self, index: int) -> None: ...
-	
+
 	listOfTypeName: listOfTypeName_TYPE | None
-	
+
 	class scopeOfDelete_VALUES(EXT_IntEnum):
 		V_specific = 0
 		V_aa_specific = 1
 		V_domain = 2
 		V_vmd = 3
-	
+
 	scopeOfDelete: scopeOfDelete_VALUES | None
 	@property
 	def domainName(self) -> Identifier | None: ...
@@ -4483,7 +4483,7 @@ class DeleteNamedType_Request(_Asn1Type): # SEQUENCE
 		listOfTypeName: listOfTypeName_TYPE = ...,
 		domainName: Identifier = ...,
 	) -> None: ...
-	
+
 class DeleteNamedType_Response(_Asn1Type): # SEQUENCE
 	@property
 	def numberMatched(self) -> Unsigned32: ...
@@ -4498,12 +4498,12 @@ class DeleteNamedType_Response(_Asn1Type): # SEQUENCE
 		numberMatched: Unsigned32 = ...,
 		numberDeleted: Unsigned32 = ...,
 	) -> None: ...
-	
+
 class DeleteNamedType_Error(_Asn1BasicType[Unsigned32]):
 	pass
 
 class ExchangeData_Request(_Asn1Type): # SEQUENCE
-	
+
 	class listOfRequestData_TYPE(_Asn1Type):
 		def __init__(self, values: EXT_Iterable[Data] | None = ...) -> None: ...
 		def __getitem__(self, index: int) -> Data: ...
@@ -4513,7 +4513,7 @@ class ExchangeData_Request(_Asn1Type): # SEQUENCE
 		def clear(self) -> None: ...
 		def __len__(self) -> int: ...
 		def __delitem__(self, index: int) -> None: ...
-	
+
 	listOfRequestData: listOfRequestData_TYPE
 	dataExchangeName: ObjectName
 	def __init__(
@@ -4521,9 +4521,9 @@ class ExchangeData_Request(_Asn1Type): # SEQUENCE
 		dataExchangeName: ObjectName = ...,
 		listOfRequestData: listOfRequestData_TYPE = ...,
 	) -> None: ...
-	
+
 class ExchangeData_Response(_Asn1Type): # SEQUENCE
-	
+
 	class listOfResponseData_TYPE(_Asn1Type):
 		def __init__(self, values: EXT_Iterable[Data] | None = ...) -> None: ...
 		def __getitem__(self, index: int) -> Data: ...
@@ -4533,18 +4533,18 @@ class ExchangeData_Response(_Asn1Type): # SEQUENCE
 		def clear(self) -> None: ...
 		def __len__(self) -> int: ...
 		def __delitem__(self, index: int) -> None: ...
-	
+
 	listOfResponseData: listOfResponseData_TYPE
 	def __init__(
 		self, /, *,
 		listOfResponseData: listOfResponseData_TYPE = ...,
 	) -> None: ...
-	
+
 class GetDataExchangeAttributes_Request(_Asn1BasicType[ObjectName]):
 	pass
 
 class GetDataExchangeAttributes_Response(_Asn1Type): # SEQUENCE
-	
+
 	class listOfRequestTypeDescriptions_TYPE(_Asn1Type):
 		def __init__(self, values: EXT_Iterable[TypeDescription] | None = ...) -> None: ...
 		def __getitem__(self, index: int) -> TypeDescription: ...
@@ -4554,9 +4554,9 @@ class GetDataExchangeAttributes_Response(_Asn1Type): # SEQUENCE
 		def clear(self) -> None: ...
 		def __len__(self) -> int: ...
 		def __delitem__(self, index: int) -> None: ...
-	
+
 	listOfRequestTypeDescriptions: listOfRequestTypeDescriptions_TYPE
-	
+
 	class listOfResponseTypeDescriptions_TYPE(_Asn1Type):
 		def __init__(self, values: EXT_Iterable[TypeDescription] | None = ...) -> None: ...
 		def __getitem__(self, index: int) -> TypeDescription: ...
@@ -4566,7 +4566,7 @@ class GetDataExchangeAttributes_Response(_Asn1Type): # SEQUENCE
 		def clear(self) -> None: ...
 		def __len__(self) -> int: ...
 		def __delitem__(self, index: int) -> None: ...
-	
+
 	listOfResponseTypeDescriptions: listOfResponseTypeDescriptions_TYPE
 	inUse: bool
 	@property
@@ -4585,7 +4585,7 @@ class GetDataExchangeAttributes_Response(_Asn1Type): # SEQUENCE
 		programInvocation: Identifier = ...,
 		accessControlList: Identifier = ...,
 	) -> None: ...
-	
+
 class TakeControl_Request(_Asn1Type): # SEQUENCE
 	semaphoreName: ObjectName
 	@property
@@ -4618,13 +4618,13 @@ class TakeControl_Request(_Asn1Type): # SEQUENCE
 		relinquishIfConnectionLost: bool = ...,
 		applicationToPreempt: ApplicationReference = ...,
 	) -> None: ...
-	
+
 class TakeControl_Response(_Asn1Type): # CHOICE
 	class PRESENT(EXT_IntEnum):
 		PR_NOTHING = 0
 		PR_noResult = 1
 		PR_namedToken = 2
-	
+
 	@property
 	def present(self) -> PRESENT: ...
 	noResult: None | None
@@ -4637,7 +4637,7 @@ class TakeControl_Response(_Asn1Type): # CHOICE
 		noResult: None = ...,
 		namedToken: Identifier = ...,
 	) -> None: ...
-	
+
 class RelinquishControl_Request(_Asn1Type): # SEQUENCE
 	semaphoreName: ObjectName
 	@property
@@ -4649,7 +4649,7 @@ class RelinquishControl_Request(_Asn1Type): # SEQUENCE
 		semaphoreName: ObjectName = ...,
 		namedToken: Identifier = ...,
 	) -> None: ...
-	
+
 class RelinquishControl_Response(_Asn1BasicType[None]):
 	pass
 
@@ -4664,7 +4664,7 @@ class DefineSemaphore_Request(_Asn1Type): # SEQUENCE
 		semaphoreName: ObjectName = ...,
 		numberOfTokens: Unsigned16 = ...,
 	) -> None: ...
-	
+
 class DefineSemaphore_Response(_Asn1BasicType[None]):
 	pass
 
@@ -4679,11 +4679,11 @@ class ReportSemaphoreStatus_Request(_Asn1BasicType[ObjectName]):
 
 class ReportSemaphoreStatus_Response(_Asn1Type): # SEQUENCE
 	mmsDeletable: bool
-	
+
 	class class__VALUES(EXT_IntEnum):
 		V_token = 0
 		V_pool = 1
-	
+
 	class_: class__VALUES
 	@property
 	def numberOfTokens(self) -> Unsigned16: ...
@@ -4710,7 +4710,7 @@ class ReportSemaphoreStatus_Response(_Asn1Type): # SEQUENCE
 		numberOfHungTokens: Unsigned16 = ...,
 		accessControlList: Identifier = ...,
 	) -> None: ...
-	
+
 class ReportPoolSemaphoreStatus_Request(_Asn1Type): # SEQUENCE
 	semaphoreName: ObjectName
 	@property
@@ -4722,18 +4722,18 @@ class ReportPoolSemaphoreStatus_Request(_Asn1Type): # SEQUENCE
 		semaphoreName: ObjectName = ...,
 		nameToStartAfter: Identifier = ...,
 	) -> None: ...
-	
+
 class ReportPoolSemaphoreStatus_Response(_Asn1Type): # SEQUENCE
-	
+
 	class listOfNamedTokens_TYPE(_Asn1Type):
-		
+
 		class Member_TYPE(_Asn1Type): # CHOICE
 			class PRESENT(EXT_IntEnum):
 				PR_NOTHING = 0
 				PR_freeNamedToken = 1
 				PR_ownedNamedToken = 2
 				PR_hungNamedToken = 3
-			
+
 			@property
 			def present(self) -> PRESENT: ...
 			@property
@@ -4754,7 +4754,7 @@ class ReportPoolSemaphoreStatus_Response(_Asn1Type): # SEQUENCE
 				ownedNamedToken: Identifier = ...,
 				hungNamedToken: Identifier = ...,
 			) -> None: ...
-			
+
 		def __init__(self, values: EXT_Iterable[Member_TYPE] | None = ...) -> None: ...
 		def __getitem__(self, index: int) -> Member_TYPE: ...
 		def __setitem__(self, index: int, value: Member_TYPE) -> None: ...
@@ -4763,7 +4763,7 @@ class ReportPoolSemaphoreStatus_Response(_Asn1Type): # SEQUENCE
 		def clear(self) -> None: ...
 		def __len__(self) -> int: ...
 		def __delitem__(self, index: int) -> None: ...
-	
+
 	listOfNamedTokens: listOfNamedTokens_TYPE
 	moreFollows: bool | None
 	def __init__(
@@ -4771,15 +4771,15 @@ class ReportPoolSemaphoreStatus_Response(_Asn1Type): # SEQUENCE
 		listOfNamedTokens: listOfNamedTokens_TYPE = ...,
 		moreFollows: bool = ...,
 	) -> None: ...
-	
+
 class ReportSemaphoreEntryStatus_Request(_Asn1Type): # SEQUENCE
 	semaphoreName: ObjectName
-	
+
 	class state_VALUES(EXT_IntEnum):
 		V_queued = 0
 		V_owner = 1
 		V_hung = 2
-	
+
 	state: state_VALUES
 	entryIDToStartAfter: bytes | None
 	def __init__(
@@ -4788,9 +4788,9 @@ class ReportSemaphoreEntryStatus_Request(_Asn1Type): # SEQUENCE
 		state: state_VALUES = ...,
 		entryIDToStartAfter: bytes = ...,
 	) -> None: ...
-	
+
 class ReportSemaphoreEntryStatus_Response(_Asn1Type): # SEQUENCE
-	
+
 	class listOfSemaphoreEntry_TYPE(_Asn1Type):
 		def __init__(self, values: EXT_Iterable[SemaphoreEntry] | None = ...) -> None: ...
 		def __getitem__(self, index: int) -> SemaphoreEntry: ...
@@ -4800,7 +4800,7 @@ class ReportSemaphoreEntryStatus_Response(_Asn1Type): # SEQUENCE
 		def clear(self) -> None: ...
 		def __len__(self) -> int: ...
 		def __delitem__(self, index: int) -> None: ...
-	
+
 	listOfSemaphoreEntry: listOfSemaphoreEntry_TYPE
 	moreFollows: bool | None
 	def __init__(
@@ -4808,14 +4808,14 @@ class ReportSemaphoreEntryStatus_Response(_Asn1Type): # SEQUENCE
 		listOfSemaphoreEntry: listOfSemaphoreEntry_TYPE = ...,
 		moreFollows: bool = ...,
 	) -> None: ...
-	
+
 class SemaphoreEntry(_Asn1Type): # SEQUENCE
 	entryID: bytes
-	
+
 	class entryClass_VALUES(EXT_IntEnum):
 		V_simple = 0
 		V_modifier = 1
-	
+
 	entryClass: entryClass_VALUES
 	applicationReference: ApplicationReference
 	@property
@@ -4843,7 +4843,7 @@ class SemaphoreEntry(_Asn1Type): # SEQUENCE
 		abortOnTimeOut: bool = ...,
 		relinquishIfConnectionLost: bool = ...,
 	) -> None: ...
-	
+
 class AttachToSemaphore(_Asn1Type): # SEQUENCE
 	semaphoreName: ObjectName
 	@property
@@ -4874,9 +4874,9 @@ class AttachToSemaphore(_Asn1Type): # SEQUENCE
 		abortOnTimeOut: bool = ...,
 		relinquishIfConnectionLost: bool = ...,
 	) -> None: ...
-	
+
 class Input_Request(_Asn1Type): # SEQUENCE
-	
+
 	class listOfPromptData_TYPE(_Asn1Type):
 		def __init__(self, values: EXT_Iterable[MMSString] | None = ...) -> None: ...
 		def __getitem__(self, index: int) -> MMSString: ...
@@ -4886,7 +4886,7 @@ class Input_Request(_Asn1Type): # SEQUENCE
 		def clear(self) -> None: ...
 		def __len__(self) -> int: ...
 		def __delitem__(self, index: int) -> None: ...
-	
+
 	listOfPromptData: listOfPromptData_TYPE | None
 	@property
 	def operatorStationName(self) -> Identifier: ...
@@ -4904,12 +4904,12 @@ class Input_Request(_Asn1Type): # SEQUENCE
 		listOfPromptData: listOfPromptData_TYPE = ...,
 		inputTimeOut: Unsigned32 = ...,
 	) -> None: ...
-	
+
 class Input_Response(_Asn1BasicType[MMSString]):
 	pass
 
 class Output_Request(_Asn1Type): # SEQUENCE
-	
+
 	class listOfOutputData_TYPE(_Asn1Type):
 		def __init__(self, values: EXT_Iterable[MMSString] | None = ...) -> None: ...
 		def __getitem__(self, index: int) -> MMSString: ...
@@ -4919,7 +4919,7 @@ class Output_Request(_Asn1Type): # SEQUENCE
 		def clear(self) -> None: ...
 		def __len__(self) -> int: ...
 		def __delitem__(self, index: int) -> None: ...
-	
+
 	listOfOutputData: listOfOutputData_TYPE
 	@property
 	def operatorStationName(self) -> Identifier: ...
@@ -4930,7 +4930,7 @@ class Output_Request(_Asn1Type): # SEQUENCE
 		operatorStationName: Identifier = ...,
 		listOfOutputData: listOfOutputData_TYPE = ...,
 	) -> None: ...
-	
+
 class Output_Response(_Asn1BasicType[None]):
 	pass
 
@@ -4945,23 +4945,23 @@ class TriggerEvent_Request(_Asn1Type): # SEQUENCE
 		eventConditionName: ObjectName = ...,
 		priority: Priority = ...,
 	) -> None: ...
-	
+
 class TriggerEvent_Response(_Asn1BasicType[None]):
 	pass
 
 class EventNotification(_Asn1Type): # SEQUENCE
-	
+
 	class actionResult_TYPE(_Asn1Type): # SEQUENCE
-		
+
 		class successOrFailure_TYPE(_Asn1Type): # CHOICE
 			class PRESENT(EXT_IntEnum):
 				PR_NOTHING = 0
 				PR_success = 1
 				PR_failure = 2
-			
+
 			@property
 			def present(self) -> PRESENT: ...
-			
+
 			class success_TYPE(_Asn1Type): # SEQUENCE
 				confirmedServiceResponse: ConfirmedServiceResponse
 				cs_Response_Detail: Response_Detail | None
@@ -4970,9 +4970,9 @@ class EventNotification(_Asn1Type): # SEQUENCE
 					confirmedServiceResponse: ConfirmedServiceResponse = ...,
 					cs_Response_Detail: Response_Detail = ...,
 				) -> None: ...
-				
+
 			success: success_TYPE
-			
+
 			class failure_TYPE(_Asn1Type): # SEQUENCE
 				@property
 				def modifierPosition(self) -> Unsigned32 | None: ...
@@ -4984,14 +4984,14 @@ class EventNotification(_Asn1Type): # SEQUENCE
 					modifierPosition: Unsigned32 = ...,
 					serviceError: ServiceError = ...,
 				) -> None: ...
-				
+
 			failure: failure_TYPE
 			def __init__(
 				self, /, *,
 				success: success_TYPE = ...,
 				failure: failure_TYPE = ...,
 			) -> None: ...
-			
+
 		successOrFailure: successOrFailure_TYPE
 		eventActionName: ObjectName
 		def __init__(
@@ -4999,7 +4999,7 @@ class EventNotification(_Asn1Type): # SEQUENCE
 			eventActionName: ObjectName = ...,
 			successOrFailure: successOrFailure_TYPE = ...,
 		) -> None: ...
-		
+
 	actionResult: actionResult_TYPE | None
 	eventEnrollmentName: ObjectName
 	eventConditionName: ObjectName
@@ -5028,14 +5028,14 @@ class EventNotification(_Asn1Type): # SEQUENCE
 		alarmAcknowledgmentRule: AlarmAckRule = ...,
 		actionResult: actionResult_TYPE = ...,
 	) -> None: ...
-	
+
 class CS_EventNotification(_Asn1Type): # CHOICE
 	class PRESENT(EXT_IntEnum):
 		PR_NOTHING = 0
 		PR_string = 1
 		PR_index = 2
 		PR_noEnhancement = 3
-	
+
 	@property
 	def present(self) -> PRESENT: ...
 	string: str | None
@@ -5047,7 +5047,7 @@ class CS_EventNotification(_Asn1Type): # CHOICE
 		index: int = ...,
 		noEnhancement: None = ...,
 	) -> None: ...
-	
+
 class AcknowledgeEventNotification_Request(_Asn1Type): # SEQUENCE
 	eventEnrollmentName: ObjectName
 	@property
@@ -5061,12 +5061,12 @@ class AcknowledgeEventNotification_Request(_Asn1Type): # SEQUENCE
 		acknowledgedState: EC_State = ...,
 		timeOfAcknowledgedTransition: EventTime = ...,
 	) -> None: ...
-	
+
 class AcknowledgeEventNotification_Response(_Asn1BasicType[None]):
 	pass
 
 class GetAlarmSummary_Request(_Asn1Type): # SEQUENCE
-	
+
 	class severityFilter_TYPE(_Asn1Type): # SEQUENCE
 		@property
 		def mostSevere(self) -> Unsigned8: ...
@@ -5081,16 +5081,16 @@ class GetAlarmSummary_Request(_Asn1Type): # SEQUENCE
 			mostSevere: Unsigned8 = ...,
 			leastSevere: Unsigned8 = ...,
 		) -> None: ...
-		
+
 	severityFilter: severityFilter_TYPE | None
 	enrollmentsOnly: bool | None
 	activeAlarmsOnly: bool | None
-	
+
 	class acknowledgementFilter_VALUES(EXT_IntEnum):
 		V_not_acked = 0
 		V_acked = 1
 		V_all = 2
-	
+
 	acknowledgementFilter: acknowledgementFilter_VALUES | None
 	continueAfter: ObjectName | None
 	def __init__(
@@ -5101,9 +5101,9 @@ class GetAlarmSummary_Request(_Asn1Type): # SEQUENCE
 		severityFilter: severityFilter_TYPE = ...,
 		continueAfter: ObjectName = ...,
 	) -> None: ...
-	
+
 class GetAlarmSummary_Response(_Asn1Type): # SEQUENCE
-	
+
 	class listOfAlarmSummary_TYPE(_Asn1Type):
 		def __init__(self, values: EXT_Iterable[AlarmSummary] | None = ...) -> None: ...
 		def __getitem__(self, index: int) -> AlarmSummary: ...
@@ -5113,7 +5113,7 @@ class GetAlarmSummary_Response(_Asn1Type): # SEQUENCE
 		def clear(self) -> None: ...
 		def __len__(self) -> int: ...
 		def __delitem__(self, index: int) -> None: ...
-	
+
 	listOfAlarmSummary: listOfAlarmSummary_TYPE
 	moreFollows: bool | None
 	def __init__(
@@ -5121,7 +5121,7 @@ class GetAlarmSummary_Response(_Asn1Type): # SEQUENCE
 		listOfAlarmSummary: listOfAlarmSummary_TYPE = ...,
 		moreFollows: bool = ...,
 	) -> None: ...
-	
+
 class AlarmSummary(_Asn1Type): # SEQUENCE
 	eventConditionName: ObjectName
 	@property
@@ -5132,13 +5132,13 @@ class AlarmSummary(_Asn1Type): # SEQUENCE
 	def currentState(self) -> EC_State: ...
 	@currentState.setter
 	def currentState(self, value: EC_State | int) -> None: ...
-	
+
 	class unacknowledgedState_VALUES(EXT_IntEnum):
 		V_none = 0
 		V_active = 1
 		V_idle = 2
 		V_both = 3
-	
+
 	unacknowledgedState: unacknowledgedState_VALUES
 	displayEnhancement: EN_Additional_Detail | None
 	timeOfLastTransitionToActive: EventTime | None
@@ -5153,14 +5153,14 @@ class AlarmSummary(_Asn1Type): # SEQUENCE
 		timeOfLastTransitionToActive: EventTime = ...,
 		timeOfLastTransitionToIdle: EventTime = ...,
 	) -> None: ...
-	
+
 class EN_Additional_Detail(_Asn1Type): # CHOICE
 	class PRESENT(EXT_IntEnum):
 		PR_NOTHING = 0
 		PR_string = 1
 		PR_index = 2
 		PR_noEnhancement = 3
-	
+
 	@property
 	def present(self) -> PRESENT: ...
 	string: str | None
@@ -5172,9 +5172,9 @@ class EN_Additional_Detail(_Asn1Type): # CHOICE
 		index: int = ...,
 		noEnhancement: None = ...,
 	) -> None: ...
-	
+
 class GetAlarmEnrollmentSummary_Request(_Asn1Type): # SEQUENCE
-	
+
 	class severityFilter_TYPE(_Asn1Type): # SEQUENCE
 		@property
 		def mostSevere(self) -> Unsigned8: ...
@@ -5189,16 +5189,16 @@ class GetAlarmEnrollmentSummary_Request(_Asn1Type): # SEQUENCE
 			mostSevere: Unsigned8 = ...,
 			leastSevere: Unsigned8 = ...,
 		) -> None: ...
-		
+
 	severityFilter: severityFilter_TYPE | None
 	enrollmentsOnly: bool | None
 	activeAlarmsOnly: bool | None
-	
+
 	class acknowledgementFilter_VALUES(EXT_IntEnum):
 		V_not_acked = 0
 		V_acked = 1
 		V_all = 2
-	
+
 	acknowledgementFilter: acknowledgementFilter_VALUES | None
 	continueAfter: ObjectName | None
 	def __init__(
@@ -5209,9 +5209,9 @@ class GetAlarmEnrollmentSummary_Request(_Asn1Type): # SEQUENCE
 		severityFilter: severityFilter_TYPE = ...,
 		continueAfter: ObjectName = ...,
 	) -> None: ...
-	
+
 class GetAlarmEnrollmentSummary_Response(_Asn1Type): # SEQUENCE
-	
+
 	class listOfAlarmEnrollmentSummary_TYPE(_Asn1Type):
 		def __init__(self, values: EXT_Iterable[AlarmEnrollmentSummary] | None = ...) -> None: ...
 		def __getitem__(self, index: int) -> AlarmEnrollmentSummary: ...
@@ -5221,7 +5221,7 @@ class GetAlarmEnrollmentSummary_Response(_Asn1Type): # SEQUENCE
 		def clear(self) -> None: ...
 		def __len__(self) -> int: ...
 		def __delitem__(self, index: int) -> None: ...
-	
+
 	listOfAlarmEnrollmentSummary: listOfAlarmEnrollmentSummary_TYPE
 	moreFollows: bool | None
 	def __init__(
@@ -5229,7 +5229,7 @@ class GetAlarmEnrollmentSummary_Response(_Asn1Type): # SEQUENCE
 		listOfAlarmEnrollmentSummary: listOfAlarmEnrollmentSummary_TYPE = ...,
 		moreFollows: bool = ...,
 	) -> None: ...
-	
+
 class AlarmEnrollmentSummary(_Asn1Type): # SEQUENCE
 	eventEnrollmentName: ObjectName
 	clientApplication: ApplicationReference | None
@@ -5270,7 +5270,7 @@ class AlarmEnrollmentSummary(_Asn1Type): # SEQUENCE
 		timeOfLastTransitionToIdle: EventTime = ...,
 		timeIdleAcknowledged: EventTime = ...,
 	) -> None: ...
-	
+
 class AttachToEventCondition(_Asn1Type): # SEQUENCE
 	eventEnrollmentName: ObjectName
 	eventConditionName: ObjectName
@@ -5289,7 +5289,7 @@ class AttachToEventCondition(_Asn1Type): # SEQUENCE
 		causingTransitions: Transitions = ...,
 		acceptableDelay: Unsigned32 = ...,
 	) -> None: ...
-	
+
 class DefineEventCondition_Request(_Asn1Type): # SEQUENCE
 	eventConditionName: ObjectName
 	@property
@@ -5320,7 +5320,7 @@ class DefineEventCondition_Request(_Asn1Type): # SEQUENCE
 		monitoredVariable: VariableSpecification = ...,
 		evaluationInterval: Unsigned32 = ...,
 	) -> None: ...
-	
+
 class DefineEventCondition_Response(_Asn1BasicType[None]):
 	pass
 
@@ -5330,7 +5330,7 @@ class CS_DefineEventCondition_Request(_Asn1Type): # CHOICE
 		PR_string = 1
 		PR_index = 2
 		PR_noEnhancement = 3
-	
+
 	@property
 	def present(self) -> PRESENT: ...
 	string: str | None
@@ -5342,7 +5342,7 @@ class CS_DefineEventCondition_Request(_Asn1Type): # CHOICE
 		index: int = ...,
 		noEnhancement: None = ...,
 	) -> None: ...
-	
+
 class DeleteEventCondition_Request(_Asn1Type): # CHOICE
 	class PRESENT(EXT_IntEnum):
 		PR_NOTHING = 0
@@ -5350,10 +5350,10 @@ class DeleteEventCondition_Request(_Asn1Type): # CHOICE
 		PR_aa_specific = 2
 		PR_domain = 3
 		PR_vmd = 4
-	
+
 	@property
 	def present(self) -> PRESENT: ...
-	
+
 	class specific_TYPE(_Asn1Type):
 		def __init__(self, values: EXT_Iterable[ObjectName] | None = ...) -> None: ...
 		def __getitem__(self, index: int) -> ObjectName: ...
@@ -5363,7 +5363,7 @@ class DeleteEventCondition_Request(_Asn1Type): # CHOICE
 		def clear(self) -> None: ...
 		def __len__(self) -> int: ...
 		def __delitem__(self, index: int) -> None: ...
-	
+
 	specific: specific_TYPE
 	aa_specific: None | None
 	@property
@@ -5378,7 +5378,7 @@ class DeleteEventCondition_Request(_Asn1Type): # CHOICE
 		domain: Identifier = ...,
 		vmd: None = ...,
 	) -> None: ...
-	
+
 class DeleteEventCondition_Response(_Asn1BasicType[Unsigned32]):
 	pass
 
@@ -5386,13 +5386,13 @@ class GetEventConditionAttributes_Request(_Asn1BasicType[ObjectName]):
 	pass
 
 class GetEventConditionAttributes_Response(_Asn1Type): # SEQUENCE
-	
+
 	class monitoredVariable_TYPE(_Asn1Type): # CHOICE
 		class PRESENT(EXT_IntEnum):
 			PR_NOTHING = 0
 			PR_variableReference = 1
 			PR_undefined = 2
-		
+
 		@property
 		def present(self) -> PRESENT: ...
 		variableReference: VariableSpecification | None
@@ -5402,7 +5402,7 @@ class GetEventConditionAttributes_Response(_Asn1Type): # SEQUENCE
 			variableReference: VariableSpecification = ...,
 			undefined: None = ...,
 		) -> None: ...
-		
+
 	monitoredVariable: monitoredVariable_TYPE | None
 	mmsDeletable: bool | None
 	@property
@@ -5437,15 +5437,15 @@ class GetEventConditionAttributes_Response(_Asn1Type): # SEQUENCE
 		evaluationInterval: Unsigned32 = ...,
 		accessControlList: Identifier = ...,
 	) -> None: ...
-	
+
 class CS_GetEventConditionAttributes_Response(_Asn1Type): # SEQUENCE
-	
+
 	class groupPriorityOverride_TYPE(_Asn1Type): # CHOICE
 		class PRESENT(EXT_IntEnum):
 			PR_NOTHING = 0
 			PR_priority = 1
 			PR_undefined = 2
-		
+
 		@property
 		def present(self) -> PRESENT: ...
 		@property
@@ -5458,9 +5458,9 @@ class CS_GetEventConditionAttributes_Response(_Asn1Type): # SEQUENCE
 			priority: Priority = ...,
 			undefined: None = ...,
 		) -> None: ...
-		
+
 	groupPriorityOverride: groupPriorityOverride_TYPE | None
-	
+
 	class listOfReferencingECL_TYPE(_Asn1Type):
 		def __init__(self, values: EXT_Iterable[ObjectName] | None = ...) -> None: ...
 		def __getitem__(self, index: int) -> ObjectName: ...
@@ -5470,16 +5470,16 @@ class CS_GetEventConditionAttributes_Response(_Asn1Type): # SEQUENCE
 		def clear(self) -> None: ...
 		def __len__(self) -> int: ...
 		def __delitem__(self, index: int) -> None: ...
-	
+
 	listOfReferencingECL: listOfReferencingECL_TYPE | None
-	
+
 	class displayEnhancement_TYPE(_Asn1Type): # CHOICE
 		class PRESENT(EXT_IntEnum):
 			PR_NOTHING = 0
 			PR_string = 1
 			PR_index = 2
 			PR_noEnhancement = 3
-		
+
 		@property
 		def present(self) -> PRESENT: ...
 		string: str | None
@@ -5491,7 +5491,7 @@ class CS_GetEventConditionAttributes_Response(_Asn1Type): # SEQUENCE
 			index: int = ...,
 			noEnhancement: None = ...,
 		) -> None: ...
-		
+
 	displayEnhancement: displayEnhancement_TYPE
 	def __init__(
 		self, /, *,
@@ -5499,7 +5499,7 @@ class CS_GetEventConditionAttributes_Response(_Asn1Type): # SEQUENCE
 		listOfReferencingECL: listOfReferencingECL_TYPE = ...,
 		displayEnhancement: displayEnhancement_TYPE = ...,
 	) -> None: ...
-	
+
 class ReportEventConditionStatus_Request(_Asn1BasicType[ObjectName]):
 	pass
 
@@ -5523,7 +5523,7 @@ class ReportEventConditionStatus_Response(_Asn1Type): # SEQUENCE
 		timeOfLastTransitionToActive: EventTime = ...,
 		timeOfLastTransitionToIdle: EventTime = ...,
 	) -> None: ...
-	
+
 class AlterEventConditionMonitoring_Request(_Asn1Type): # SEQUENCE
 	eventConditionName: ObjectName
 	enabled: bool | None
@@ -5544,19 +5544,19 @@ class AlterEventConditionMonitoring_Request(_Asn1Type): # SEQUENCE
 		alarmSummaryReports: bool = ...,
 		evaluationInterval: Unsigned32 = ...,
 	) -> None: ...
-	
+
 class AlterEventConditionMonitoring_Response(_Asn1BasicType[None]):
 	pass
 
 class CS_AlterEventConditionMonitoring_Request(_Asn1Type): # SEQUENCE
-	
+
 	class changeDisplay_TYPE(_Asn1Type): # CHOICE
 		class PRESENT(EXT_IntEnum):
 			PR_NOTHING = 0
 			PR_string = 1
 			PR_index = 2
 			PR_noEnhancement = 3
-		
+
 		@property
 		def present(self) -> PRESENT: ...
 		string: str | None
@@ -5568,15 +5568,15 @@ class CS_AlterEventConditionMonitoring_Request(_Asn1Type): # SEQUENCE
 			index: int = ...,
 			noEnhancement: None = ...,
 		) -> None: ...
-		
+
 	changeDisplay: changeDisplay_TYPE | None
 	def __init__(
 		self, /, *,
 		changeDisplay: changeDisplay_TYPE = ...,
 	) -> None: ...
-	
+
 class DefineEventAction_Request(_Asn1Type): # SEQUENCE
-	
+
 	class listOfModifier_TYPE(_Asn1Type):
 		def __init__(self, values: EXT_Iterable[Modifier] | None = ...) -> None: ...
 		def __getitem__(self, index: int) -> Modifier: ...
@@ -5586,7 +5586,7 @@ class DefineEventAction_Request(_Asn1Type): # SEQUENCE
 		def clear(self) -> None: ...
 		def __len__(self) -> int: ...
 		def __delitem__(self, index: int) -> None: ...
-	
+
 	listOfModifier: listOfModifier_TYPE | None
 	eventActionName: ObjectName
 	confirmedServiceRequest: ConfirmedServiceRequest | None
@@ -5598,7 +5598,7 @@ class DefineEventAction_Request(_Asn1Type): # SEQUENCE
 		confirmedServiceRequest: ConfirmedServiceRequest = ...,
 		cs_extension: Request_Detail = ...,
 	) -> None: ...
-	
+
 class DefineEventAction_Response(_Asn1BasicType[None]):
 	pass
 
@@ -5609,10 +5609,10 @@ class DeleteEventAction_Request(_Asn1Type): # CHOICE
 		PR_aa_specific = 2
 		PR_domain = 3
 		PR_vmd = 4
-	
+
 	@property
 	def present(self) -> PRESENT: ...
-	
+
 	class specific_TYPE(_Asn1Type):
 		def __init__(self, values: EXT_Iterable[ObjectName] | None = ...) -> None: ...
 		def __getitem__(self, index: int) -> ObjectName: ...
@@ -5622,7 +5622,7 @@ class DeleteEventAction_Request(_Asn1Type): # CHOICE
 		def clear(self) -> None: ...
 		def __len__(self) -> int: ...
 		def __delitem__(self, index: int) -> None: ...
-	
+
 	specific: specific_TYPE
 	aa_specific: None | None
 	@property
@@ -5637,7 +5637,7 @@ class DeleteEventAction_Request(_Asn1Type): # CHOICE
 		domain: Identifier = ...,
 		vmd: None = ...,
 	) -> None: ...
-	
+
 class DeleteEventAction_Response(_Asn1BasicType[Unsigned32]):
 	pass
 
@@ -5645,7 +5645,7 @@ class GetEventActionAttributes_Request(_Asn1BasicType[ObjectName]):
 	pass
 
 class GetEventActionAttributes_Response(_Asn1Type): # SEQUENCE
-	
+
 	class listOfModifier_TYPE(_Asn1Type):
 		def __init__(self, values: EXT_Iterable[Modifier] | None = ...) -> None: ...
 		def __getitem__(self, index: int) -> Modifier: ...
@@ -5655,7 +5655,7 @@ class GetEventActionAttributes_Response(_Asn1Type): # SEQUENCE
 		def clear(self) -> None: ...
 		def __len__(self) -> int: ...
 		def __delitem__(self, index: int) -> None: ...
-	
+
 	listOfModifier: listOfModifier_TYPE
 	mmsDeletable: bool | None
 	confirmedServiceRequest: ConfirmedServiceRequest
@@ -5672,7 +5672,7 @@ class GetEventActionAttributes_Response(_Asn1Type): # SEQUENCE
 		cs_extension: Request_Detail = ...,
 		accessControlList: Identifier = ...,
 	) -> None: ...
-	
+
 class ReportEventActionStatus_Request(_Asn1BasicType[ObjectName]):
 	pass
 
@@ -5701,7 +5701,7 @@ class DefineEventEnrollment_Request(_Asn1Type): # SEQUENCE
 		eventActionName: ObjectName = ...,
 		clientApplication: ApplicationReference = ...,
 	) -> None: ...
-	
+
 class DefineEventEnrollment_Response(_Asn1BasicType[None]):
 	pass
 
@@ -5714,7 +5714,7 @@ class CS_DefineEventEnrollment_Request(_Asn1Type): # CHOICE
 		PR_string = 1
 		PR_index = 2
 		PR_noEnhancement = 3
-	
+
 	@property
 	def present(self) -> PRESENT: ...
 	string: str | None
@@ -5726,17 +5726,17 @@ class CS_DefineEventEnrollment_Request(_Asn1Type): # CHOICE
 		index: int = ...,
 		noEnhancement: None = ...,
 	) -> None: ...
-	
+
 class DeleteEventEnrollment_Request(_Asn1Type): # CHOICE
 	class PRESENT(EXT_IntEnum):
 		PR_NOTHING = 0
 		PR_specific = 1
 		PR_ec = 2
 		PR_ea = 3
-	
+
 	@property
 	def present(self) -> PRESENT: ...
-	
+
 	class specific_TYPE(_Asn1Type):
 		def __init__(self, values: EXT_Iterable[ObjectName] | None = ...) -> None: ...
 		def __getitem__(self, index: int) -> ObjectName: ...
@@ -5746,7 +5746,7 @@ class DeleteEventEnrollment_Request(_Asn1Type): # CHOICE
 		def clear(self) -> None: ...
 		def __len__(self) -> int: ...
 		def __delitem__(self, index: int) -> None: ...
-	
+
 	specific: specific_TYPE
 	ec: ObjectName | None
 	ea: ObjectName | None
@@ -5756,12 +5756,12 @@ class DeleteEventEnrollment_Request(_Asn1Type): # CHOICE
 		ec: ObjectName = ...,
 		ea: ObjectName = ...,
 	) -> None: ...
-	
+
 class DeleteEventEnrollment_Response(_Asn1BasicType[Unsigned32]):
 	pass
 
 class GetEventEnrollmentAttributes_Request(_Asn1Type): # SEQUENCE
-	
+
 	class eventEnrollmentNames_TYPE(_Asn1Type):
 		def __init__(self, values: EXT_Iterable[ObjectName] | None = ...) -> None: ...
 		def __getitem__(self, index: int) -> ObjectName: ...
@@ -5771,15 +5771,15 @@ class GetEventEnrollmentAttributes_Request(_Asn1Type): # SEQUENCE
 		def clear(self) -> None: ...
 		def __len__(self) -> int: ...
 		def __delitem__(self, index: int) -> None: ...
-	
+
 	eventEnrollmentNames: eventEnrollmentNames_TYPE | None
-	
+
 	class scopeOfRequest_VALUES(EXT_IntEnum):
 		V_specific = 0
 		V_client = 1
 		V_ec = 2
 		V_ea = 3
-	
+
 	scopeOfRequest: scopeOfRequest_VALUES | None
 	clientApplication: ApplicationReference | None
 	eventConditionName: ObjectName | None
@@ -5794,9 +5794,9 @@ class GetEventEnrollmentAttributes_Request(_Asn1Type): # SEQUENCE
 		eventActionName: ObjectName = ...,
 		continueAfter: ObjectName = ...,
 	) -> None: ...
-	
+
 class GetEventEnrollmentAttributes_Response(_Asn1Type): # SEQUENCE
-	
+
 	class listOfEEAttributes_TYPE(_Asn1Type):
 		def __init__(self, values: EXT_Iterable[EEAttributes] | None = ...) -> None: ...
 		def __getitem__(self, index: int) -> EEAttributes: ...
@@ -5806,7 +5806,7 @@ class GetEventEnrollmentAttributes_Response(_Asn1Type): # SEQUENCE
 		def clear(self) -> None: ...
 		def __len__(self) -> int: ...
 		def __delitem__(self, index: int) -> None: ...
-	
+
 	listOfEEAttributes: listOfEEAttributes_TYPE
 	moreFollows: bool | None
 	def __init__(
@@ -5814,15 +5814,15 @@ class GetEventEnrollmentAttributes_Response(_Asn1Type): # SEQUENCE
 		listOfEEAttributes: listOfEEAttributes_TYPE = ...,
 		moreFollows: bool = ...,
 	) -> None: ...
-	
+
 class EEAttributes(_Asn1Type): # SEQUENCE
-	
+
 	class eventConditionName_TYPE(_Asn1Type): # CHOICE
 		class PRESENT(EXT_IntEnum):
 			PR_NOTHING = 0
 			PR_eventCondition = 1
 			PR_undefined = 2
-		
+
 		@property
 		def present(self) -> PRESENT: ...
 		eventCondition: ObjectName | None
@@ -5832,15 +5832,15 @@ class EEAttributes(_Asn1Type): # SEQUENCE
 			eventCondition: ObjectName = ...,
 			undefined: None = ...,
 		) -> None: ...
-		
+
 	eventConditionName: eventConditionName_TYPE
-	
+
 	class eventActionName_TYPE(_Asn1Type): # CHOICE
 		class PRESENT(EXT_IntEnum):
 			PR_NOTHING = 0
 			PR_eventAction = 1
 			PR_undefined = 2
-		
+
 		@property
 		def present(self) -> PRESENT: ...
 		eventAction: ObjectName | None
@@ -5850,16 +5850,16 @@ class EEAttributes(_Asn1Type): # SEQUENCE
 			eventAction: ObjectName = ...,
 			undefined: None = ...,
 		) -> None: ...
-		
+
 	eventActionName: eventActionName_TYPE | None
-	
+
 	class displayEnhancement_TYPE(_Asn1Type): # CHOICE
 		class PRESENT(EXT_IntEnum):
 			PR_NOTHING = 0
 			PR_string = 1
 			PR_index = 2
 			PR_noEnhancement = 3
-		
+
 		@property
 		def present(self) -> PRESENT: ...
 		string: str | None
@@ -5871,7 +5871,7 @@ class EEAttributes(_Asn1Type): # SEQUENCE
 			index: int = ...,
 			noEnhancement: None = ...,
 		) -> None: ...
-		
+
 	displayEnhancement: displayEnhancement_TYPE
 	eventEnrollmentName: ObjectName
 	clientApplication: ApplicationReference | None
@@ -5910,7 +5910,7 @@ class EEAttributes(_Asn1Type): # SEQUENCE
 		displayEnhancement: displayEnhancement_TYPE = ...,
 		accessControlList: Identifier = ...,
 	) -> None: ...
-	
+
 class ReportEventEnrollmentStatus_Request(_Asn1BasicType[ObjectName]):
 	pass
 
@@ -5940,7 +5940,7 @@ class ReportEventEnrollmentStatus_Response(_Asn1Type): # SEQUENCE
 		alarmAcknowledgmentRule: AlarmAckRule = ...,
 		currentState: EE_State = ...,
 	) -> None: ...
-	
+
 class AlterEventEnrollment_Request(_Asn1Type): # SEQUENCE
 	eventEnrollmentName: ObjectName
 	@property
@@ -5957,15 +5957,15 @@ class AlterEventEnrollment_Request(_Asn1Type): # SEQUENCE
 		eventConditionTransitions: Transitions = ...,
 		alarmAcknowledgmentRule: AlarmAckRule = ...,
 	) -> None: ...
-	
+
 class AlterEventEnrollment_Response(_Asn1Type): # SEQUENCE
-	
+
 	class currentState_TYPE(_Asn1Type): # CHOICE
 		class PRESENT(EXT_IntEnum):
 			PR_NOTHING = 0
 			PR_state = 1
 			PR_undefined = 2
-		
+
 		@property
 		def present(self) -> PRESENT: ...
 		@property
@@ -5978,7 +5978,7 @@ class AlterEventEnrollment_Response(_Asn1Type): # SEQUENCE
 			state: EE_State = ...,
 			undefined: None = ...,
 		) -> None: ...
-		
+
 	currentState: currentState_TYPE
 	transitionTime: EventTime
 	def __init__(
@@ -5986,16 +5986,16 @@ class AlterEventEnrollment_Response(_Asn1Type): # SEQUENCE
 		currentState: currentState_TYPE = ...,
 		transitionTime: EventTime = ...,
 	) -> None: ...
-	
+
 class CS_AlterEventEnrollment_Request(_Asn1Type): # SEQUENCE
-	
+
 	class changeDisplay_TYPE(_Asn1Type): # CHOICE
 		class PRESENT(EXT_IntEnum):
 			PR_NOTHING = 0
 			PR_string = 1
 			PR_index = 2
 			PR_noEnhancement = 3
-		
+
 		@property
 		def present(self) -> PRESENT: ...
 		string: str | None
@@ -6007,13 +6007,13 @@ class CS_AlterEventEnrollment_Request(_Asn1Type): # SEQUENCE
 			index: int = ...,
 			noEnhancement: None = ...,
 		) -> None: ...
-		
+
 	changeDisplay: changeDisplay_TYPE | None
 	def __init__(
 		self, /, *,
 		changeDisplay: changeDisplay_TYPE = ...,
 	) -> None: ...
-	
+
 class EE_State(_Asn1Type):
 	class VALUES(EXT_IntEnum):
 		V_disabled = 0
@@ -6025,15 +6025,15 @@ class EE_State(_Asn1Type):
 		V_idleAcked = 6
 		V_activeAcked = 7
 		V_undefined = 8
-	
+
 	@property
 	def value(self) -> EE_State.VALUES: ...
 	@value.setter
 	def value(self, value: EE_State.VALUES | int) -> None: ...
 	def __init__(self, value: VALUES = ...) -> None: ...
-	
+
 class DefineEventConditionList_Request(_Asn1Type): # SEQUENCE
-	
+
 	class listOfEventConditionName_TYPE(_Asn1Type):
 		def __init__(self, values: EXT_Iterable[ObjectName] | None = ...) -> None: ...
 		def __getitem__(self, index: int) -> ObjectName: ...
@@ -6043,9 +6043,9 @@ class DefineEventConditionList_Request(_Asn1Type): # SEQUENCE
 		def clear(self) -> None: ...
 		def __len__(self) -> int: ...
 		def __delitem__(self, index: int) -> None: ...
-	
+
 	listOfEventConditionName: listOfEventConditionName_TYPE
-	
+
 	class listOfEventConditionListName_TYPE(_Asn1Type):
 		def __init__(self, values: EXT_Iterable[ObjectName] | None = ...) -> None: ...
 		def __getitem__(self, index: int) -> ObjectName: ...
@@ -6055,7 +6055,7 @@ class DefineEventConditionList_Request(_Asn1Type): # SEQUENCE
 		def clear(self) -> None: ...
 		def __len__(self) -> int: ...
 		def __delitem__(self, index: int) -> None: ...
-	
+
 	listOfEventConditionListName: listOfEventConditionListName_TYPE | None
 	eventConditionListName: ObjectName
 	def __init__(
@@ -6064,7 +6064,7 @@ class DefineEventConditionList_Request(_Asn1Type): # SEQUENCE
 		listOfEventConditionName: listOfEventConditionName_TYPE = ...,
 		listOfEventConditionListName: listOfEventConditionListName_TYPE = ...,
 	) -> None: ...
-	
+
 class DefineEventConditionList_Response(_Asn1BasicType[None]):
 	pass
 
@@ -6078,7 +6078,7 @@ class DeleteEventConditionList_Response(_Asn1BasicType[None]):
 	pass
 
 class AddEventConditionListReference_Request(_Asn1Type): # SEQUENCE
-	
+
 	class listOfEventConditionName_TYPE(_Asn1Type):
 		def __init__(self, values: EXT_Iterable[ObjectName] | None = ...) -> None: ...
 		def __getitem__(self, index: int) -> ObjectName: ...
@@ -6088,9 +6088,9 @@ class AddEventConditionListReference_Request(_Asn1Type): # SEQUENCE
 		def clear(self) -> None: ...
 		def __len__(self) -> int: ...
 		def __delitem__(self, index: int) -> None: ...
-	
+
 	listOfEventConditionName: listOfEventConditionName_TYPE
-	
+
 	class listOfEventConditionListName_TYPE(_Asn1Type):
 		def __init__(self, values: EXT_Iterable[ObjectName] | None = ...) -> None: ...
 		def __getitem__(self, index: int) -> ObjectName: ...
@@ -6100,7 +6100,7 @@ class AddEventConditionListReference_Request(_Asn1Type): # SEQUENCE
 		def clear(self) -> None: ...
 		def __len__(self) -> int: ...
 		def __delitem__(self, index: int) -> None: ...
-	
+
 	listOfEventConditionListName: listOfEventConditionListName_TYPE | None
 	eventConditionListName: ObjectName
 	def __init__(
@@ -6109,7 +6109,7 @@ class AddEventConditionListReference_Request(_Asn1Type): # SEQUENCE
 		listOfEventConditionName: listOfEventConditionName_TYPE = ...,
 		listOfEventConditionListName: listOfEventConditionListName_TYPE = ...,
 	) -> None: ...
-	
+
 class AddEventConditionListReference_Response(_Asn1BasicType[None]):
 	pass
 
@@ -6117,7 +6117,7 @@ class AddEventConditionListReference_Error(_Asn1BasicType[ObjectName]):
 	pass
 
 class RemoveEventConditionListReference_Request(_Asn1Type): # SEQUENCE
-	
+
 	class listOfEventConditionName_TYPE(_Asn1Type):
 		def __init__(self, values: EXT_Iterable[ObjectName] | None = ...) -> None: ...
 		def __getitem__(self, index: int) -> ObjectName: ...
@@ -6127,9 +6127,9 @@ class RemoveEventConditionListReference_Request(_Asn1Type): # SEQUENCE
 		def clear(self) -> None: ...
 		def __len__(self) -> int: ...
 		def __delitem__(self, index: int) -> None: ...
-	
+
 	listOfEventConditionName: listOfEventConditionName_TYPE
-	
+
 	class listOfEventConditionListName_TYPE(_Asn1Type):
 		def __init__(self, values: EXT_Iterable[ObjectName] | None = ...) -> None: ...
 		def __getitem__(self, index: int) -> ObjectName: ...
@@ -6139,7 +6139,7 @@ class RemoveEventConditionListReference_Request(_Asn1Type): # SEQUENCE
 		def clear(self) -> None: ...
 		def __len__(self) -> int: ...
 		def __delitem__(self, index: int) -> None: ...
-	
+
 	listOfEventConditionListName: listOfEventConditionListName_TYPE
 	eventConditionListName: ObjectName
 	def __init__(
@@ -6148,7 +6148,7 @@ class RemoveEventConditionListReference_Request(_Asn1Type): # SEQUENCE
 		listOfEventConditionName: listOfEventConditionName_TYPE = ...,
 		listOfEventConditionListName: listOfEventConditionListName_TYPE = ...,
 	) -> None: ...
-	
+
 class RemoveEventConditionListReference_Response(_Asn1BasicType[None]):
 	pass
 
@@ -6157,7 +6157,7 @@ class RemoveEventConditionListReference_Error(_Asn1Type): # CHOICE
 		PR_NOTHING = 0
 		PR_eventCondition = 1
 		PR_eventConditionList = 2
-	
+
 	@property
 	def present(self) -> PRESENT: ...
 	eventCondition: ObjectName | None
@@ -6167,12 +6167,12 @@ class RemoveEventConditionListReference_Error(_Asn1Type): # CHOICE
 		eventCondition: ObjectName = ...,
 		eventConditionList: ObjectName = ...,
 	) -> None: ...
-	
+
 class GetEventConditionListAttributes_Request(_Asn1BasicType[ObjectName]):
 	pass
 
 class GetEventConditionListAttributes_Response(_Asn1Type): # SEQUENCE
-	
+
 	class listOfEventConditionName_TYPE(_Asn1Type):
 		def __init__(self, values: EXT_Iterable[ObjectName] | None = ...) -> None: ...
 		def __getitem__(self, index: int) -> ObjectName: ...
@@ -6182,9 +6182,9 @@ class GetEventConditionListAttributes_Response(_Asn1Type): # SEQUENCE
 		def clear(self) -> None: ...
 		def __len__(self) -> int: ...
 		def __delitem__(self, index: int) -> None: ...
-	
+
 	listOfEventConditionName: listOfEventConditionName_TYPE
-	
+
 	class listOfEventConditionListName_TYPE(_Asn1Type):
 		def __init__(self, values: EXT_Iterable[ObjectName] | None = ...) -> None: ...
 		def __getitem__(self, index: int) -> ObjectName: ...
@@ -6194,14 +6194,14 @@ class GetEventConditionListAttributes_Response(_Asn1Type): # SEQUENCE
 		def clear(self) -> None: ...
 		def __len__(self) -> int: ...
 		def __delitem__(self, index: int) -> None: ...
-	
+
 	listOfEventConditionListName: listOfEventConditionListName_TYPE | None
 	def __init__(
 		self, /, *,
 		listOfEventConditionName: listOfEventConditionName_TYPE = ...,
 		listOfEventConditionListName: listOfEventConditionListName_TYPE = ...,
 	) -> None: ...
-	
+
 class ReportEventConditionListStatus_Request(_Asn1Type): # SEQUENCE
 	eventConditionListName: ObjectName
 	@property
@@ -6213,9 +6213,9 @@ class ReportEventConditionListStatus_Request(_Asn1Type): # SEQUENCE
 		eventConditionListName: ObjectName = ...,
 		continueAfter: Identifier = ...,
 	) -> None: ...
-	
+
 class ReportEventConditionListStatus_Response(_Asn1Type): # SEQUENCE
-	
+
 	class listOfEventConditionStatus_TYPE(_Asn1Type):
 		def __init__(self, values: EXT_Iterable[EventConditionStatus] | None = ...) -> None: ...
 		def __getitem__(self, index: int) -> EventConditionStatus: ...
@@ -6225,7 +6225,7 @@ class ReportEventConditionListStatus_Response(_Asn1Type): # SEQUENCE
 		def clear(self) -> None: ...
 		def __len__(self) -> int: ...
 		def __delitem__(self, index: int) -> None: ...
-	
+
 	listOfEventConditionStatus: listOfEventConditionStatus_TYPE
 	moreFollows: bool | None
 	def __init__(
@@ -6233,7 +6233,7 @@ class ReportEventConditionListStatus_Response(_Asn1Type): # SEQUENCE
 		listOfEventConditionStatus: listOfEventConditionStatus_TYPE = ...,
 		moreFollows: bool = ...,
 	) -> None: ...
-	
+
 class EventConditionStatus(_Asn1Type): # SEQUENCE
 	eventConditionName: ObjectName
 	@property
@@ -6256,15 +6256,15 @@ class EventConditionStatus(_Asn1Type): # SEQUENCE
 		timeOfLastTransitionToActive: EventTime = ...,
 		timeOfLastTransitionToIdle: EventTime = ...,
 	) -> None: ...
-	
+
 class AlterEventConditionListMonitoring_Request(_Asn1Type): # SEQUENCE
-	
+
 	class priorityChange_TYPE(_Asn1Type): # CHOICE
 		class PRESENT(EXT_IntEnum):
 			PR_NOTHING = 0
 			PR_priorityValue = 1
 			PR_priorityReset = 2
-		
+
 		@property
 		def present(self) -> PRESENT: ...
 		priorityValue: int | None
@@ -6274,7 +6274,7 @@ class AlterEventConditionListMonitoring_Request(_Asn1Type): # SEQUENCE
 			priorityValue: int = ...,
 			priorityReset: None = ...,
 		) -> None: ...
-		
+
 	priorityChange: priorityChange_TYPE | None
 	eventConditionListName: ObjectName
 	enabled: bool
@@ -6284,18 +6284,18 @@ class AlterEventConditionListMonitoring_Request(_Asn1Type): # SEQUENCE
 		enabled: bool = ...,
 		priorityChange: priorityChange_TYPE = ...,
 	) -> None: ...
-	
+
 class AlterEventConditionListMonitoring_Response(_Asn1BasicType[None]):
 	pass
 
 class ReadJournal_Request(_Asn1Type): # SEQUENCE
-	
+
 	class rangeStartSpecification_TYPE(_Asn1Type): # CHOICE
 		class PRESENT(EXT_IntEnum):
 			PR_NOTHING = 0
 			PR_startingTime = 1
 			PR_startingEntry = 2
-		
+
 		@property
 		def present(self) -> PRESENT: ...
 		@property
@@ -6308,15 +6308,15 @@ class ReadJournal_Request(_Asn1Type): # SEQUENCE
 			startingTime: TimeOfDay = ...,
 			startingEntry: bytes = ...,
 		) -> None: ...
-		
+
 	rangeStartSpecification: rangeStartSpecification_TYPE | None
-	
+
 	class rangeStopSpecification_TYPE(_Asn1Type): # CHOICE
 		class PRESENT(EXT_IntEnum):
 			PR_NOTHING = 0
 			PR_endingTime = 1
 			PR_numberOfEntries = 2
-		
+
 		@property
 		def present(self) -> PRESENT: ...
 		@property
@@ -6332,9 +6332,9 @@ class ReadJournal_Request(_Asn1Type): # SEQUENCE
 			endingTime: TimeOfDay = ...,
 			numberOfEntries: Integer32 = ...,
 		) -> None: ...
-		
+
 	rangeStopSpecification: rangeStopSpecification_TYPE | None
-	
+
 	class listOfVariables_TYPE(_Asn1Type):
 		def __init__(self, values: EXT_Iterable[str] | None = ...) -> None: ...
 		def __getitem__(self, index: int) -> str: ...
@@ -6344,9 +6344,9 @@ class ReadJournal_Request(_Asn1Type): # SEQUENCE
 		def clear(self) -> None: ...
 		def __len__(self) -> int: ...
 		def __delitem__(self, index: int) -> None: ...
-	
+
 	listOfVariables: listOfVariables_TYPE | None
-	
+
 	class entryToStartAfter_TYPE(_Asn1Type): # SEQUENCE
 		@property
 		def timeSpecification(self) -> TimeOfDay: ...
@@ -6358,7 +6358,7 @@ class ReadJournal_Request(_Asn1Type): # SEQUENCE
 			timeSpecification: TimeOfDay = ...,
 			entrySpecification: bytes = ...,
 		) -> None: ...
-		
+
 	entryToStartAfter: entryToStartAfter_TYPE | None
 	journalName: ObjectName
 	def __init__(
@@ -6369,9 +6369,9 @@ class ReadJournal_Request(_Asn1Type): # SEQUENCE
 		listOfVariables: listOfVariables_TYPE = ...,
 		entryToStartAfter: entryToStartAfter_TYPE = ...,
 	) -> None: ...
-	
+
 class ReadJournal_Response(_Asn1Type): # SEQUENCE
-	
+
 	class listOfJournalEntry_TYPE(_Asn1Type):
 		def __init__(self, values: EXT_Iterable[JournalEntry] | None = ...) -> None: ...
 		def __getitem__(self, index: int) -> JournalEntry: ...
@@ -6381,7 +6381,7 @@ class ReadJournal_Response(_Asn1Type): # SEQUENCE
 		def clear(self) -> None: ...
 		def __len__(self) -> int: ...
 		def __delitem__(self, index: int) -> None: ...
-	
+
 	listOfJournalEntry: listOfJournalEntry_TYPE
 	moreFollows: bool | None
 	def __init__(
@@ -6389,7 +6389,7 @@ class ReadJournal_Response(_Asn1Type): # SEQUENCE
 		listOfJournalEntry: listOfJournalEntry_TYPE = ...,
 		moreFollows: bool = ...,
 	) -> None: ...
-	
+
 class JournalEntry(_Asn1Type): # SEQUENCE
 	entryIdentifier: bytes
 	originatingApplication: ApplicationReference
@@ -6400,9 +6400,9 @@ class JournalEntry(_Asn1Type): # SEQUENCE
 		originatingApplication: ApplicationReference = ...,
 		entryContent: EntryContent = ...,
 	) -> None: ...
-	
+
 class WriteJournal_Request(_Asn1Type): # SEQUENCE
-	
+
 	class listOfJournalEntry_TYPE(_Asn1Type):
 		def __init__(self, values: EXT_Iterable[EntryContent] | None = ...) -> None: ...
 		def __getitem__(self, index: int) -> EntryContent: ...
@@ -6412,7 +6412,7 @@ class WriteJournal_Request(_Asn1Type): # SEQUENCE
 		def clear(self) -> None: ...
 		def __len__(self) -> int: ...
 		def __delitem__(self, index: int) -> None: ...
-	
+
 	listOfJournalEntry: listOfJournalEntry_TYPE
 	journalName: ObjectName
 	def __init__(
@@ -6420,12 +6420,12 @@ class WriteJournal_Request(_Asn1Type): # SEQUENCE
 		journalName: ObjectName = ...,
 		listOfJournalEntry: listOfJournalEntry_TYPE = ...,
 	) -> None: ...
-	
+
 class WriteJournal_Response(_Asn1BasicType[None]):
 	pass
 
 class InitializeJournal_Request(_Asn1Type): # SEQUENCE
-	
+
 	class limitSpecification_TYPE(_Asn1Type): # SEQUENCE
 		@property
 		def limitingTime(self) -> TimeOfDay: ...
@@ -6437,7 +6437,7 @@ class InitializeJournal_Request(_Asn1Type): # SEQUENCE
 			limitingTime: TimeOfDay = ...,
 			limitingEntry: bytes = ...,
 		) -> None: ...
-		
+
 	limitSpecification: limitSpecification_TYPE | None
 	journalName: ObjectName
 	def __init__(
@@ -6445,7 +6445,7 @@ class InitializeJournal_Request(_Asn1Type): # SEQUENCE
 		journalName: ObjectName = ...,
 		limitSpecification: limitSpecification_TYPE = ...,
 	) -> None: ...
-	
+
 class InitializeJournal_Response(_Asn1BasicType[Unsigned32]):
 	pass
 
@@ -6468,14 +6468,14 @@ class ReportJournalStatus_Response(_Asn1Type): # SEQUENCE
 		mmsDeletable: bool = ...,
 		accessControlList: Identifier = ...,
 	) -> None: ...
-	
+
 class CreateJournal_Request(_Asn1Type): # SEQUENCE
 	journalName: ObjectName
 	def __init__(
 		self, /, *,
 		journalName: ObjectName = ...,
 	) -> None: ...
-	
+
 class CreateJournal_Response(_Asn1BasicType[None]):
 	pass
 
@@ -6485,23 +6485,23 @@ class DeleteJournal_Request(_Asn1Type): # SEQUENCE
 		self, /, *,
 		journalName: ObjectName = ...,
 	) -> None: ...
-	
+
 class DeleteJournal_Response(_Asn1BasicType[None]):
 	pass
 
 class EntryContent(_Asn1Type): # SEQUENCE
-	
+
 	class entryForm_TYPE(_Asn1Type): # CHOICE
 		class PRESENT(EXT_IntEnum):
 			PR_NOTHING = 0
 			PR_data = 1
 			PR_annotation = 2
-		
+
 		@property
 		def present(self) -> PRESENT: ...
-		
+
 		class data_TYPE(_Asn1Type): # SEQUENCE
-			
+
 			class event_TYPE(_Asn1Type): # SEQUENCE
 				eventConditionName: ObjectName
 				@property
@@ -6513,9 +6513,9 @@ class EntryContent(_Asn1Type): # SEQUENCE
 					eventConditionName: ObjectName = ...,
 					currentState: EC_State = ...,
 				) -> None: ...
-				
+
 			event: event_TYPE | None
-			
+
 			class listOfVariables_TYPE(_Asn1Type):
 				def __init__(self, values: EXT_Iterable[Journal_Variable] | None = ...) -> None: ...
 				def __getitem__(self, index: int) -> Journal_Variable: ...
@@ -6525,14 +6525,14 @@ class EntryContent(_Asn1Type): # SEQUENCE
 				def clear(self) -> None: ...
 				def __len__(self) -> int: ...
 				def __delitem__(self, index: int) -> None: ...
-			
+
 			listOfVariables: listOfVariables_TYPE | None
 			def __init__(
 				self, /, *,
 				event: event_TYPE = ...,
 				listOfVariables: listOfVariables_TYPE = ...,
 			) -> None: ...
-			
+
 		data: data_TYPE
 		@property
 		def annotation(self) -> MMSString | None: ...
@@ -6543,7 +6543,7 @@ class EntryContent(_Asn1Type): # SEQUENCE
 			data: data_TYPE = ...,
 			annotation: MMSString = ...,
 		) -> None: ...
-		
+
 	entryForm: entryForm_TYPE
 	@property
 	def occurrenceTime(self) -> TimeOfDay: ...
@@ -6554,7 +6554,7 @@ class EntryContent(_Asn1Type): # SEQUENCE
 		occurrenceTime: TimeOfDay = ...,
 		entryForm: entryForm_TYPE = ...,
 	) -> None: ...
-	
+
 class ApplicationReference(_Asn1Type): # SEQUENCE
 	ap_title: AP_title | None
 	@property
@@ -6573,7 +6573,7 @@ class ApplicationReference(_Asn1Type): # SEQUENCE
 		ae_qualifier: AE_qualifier = ...,
 		ae_invocation_id: AE_invocation_identifier = ...,
 	) -> None: ...
-	
+
 class ObtainFile_Request(_Asn1Type): # SEQUENCE
 	sourceFileServer: ApplicationReference | None
 	@property
@@ -6590,7 +6590,7 @@ class ObtainFile_Request(_Asn1Type): # SEQUENCE
 		sourceFile: FileName = ...,
 		destinationFile: FileName = ...,
 	) -> None: ...
-	
+
 class ObtainFile_Response(_Asn1BasicType[None]):
 	pass
 
@@ -6598,13 +6598,13 @@ class ObtainFile_Error(_Asn1Type):
 	class VALUES(EXT_IntEnum):
 		V_source_file = 0
 		V_destination_file = 1
-	
+
 	@property
 	def value(self) -> ObtainFile_Error.VALUES: ...
 	@value.setter
 	def value(self, value: ObtainFile_Error.VALUES | int) -> None: ...
 	def __init__(self, value: VALUES = ...) -> None: ...
-	
+
 class FileOpen_Request(_Asn1Type): # SEQUENCE
 	@property
 	def fileName(self) -> FileName: ...
@@ -6619,7 +6619,7 @@ class FileOpen_Request(_Asn1Type): # SEQUENCE
 		fileName: FileName = ...,
 		initialPosition: Unsigned32 = ...,
 	) -> None: ...
-	
+
 class FileOpen_Response(_Asn1Type): # SEQUENCE
 	@property
 	def frsmID(self) -> Integer32: ...
@@ -6631,7 +6631,7 @@ class FileOpen_Response(_Asn1Type): # SEQUENCE
 		frsmID: Integer32 = ...,
 		fileAttributes: FileAttributes = ...,
 	) -> None: ...
-	
+
 class FileRead_Request(_Asn1BasicType[Integer32]):
 	pass
 
@@ -6643,7 +6643,7 @@ class FileRead_Response(_Asn1Type): # SEQUENCE
 		fileData: bytes = ...,
 		moreFollows: bool = ...,
 	) -> None: ...
-	
+
 class FileRename_Request(_Asn1Type): # SEQUENCE
 	@property
 	def currentFileName(self) -> FileName: ...
@@ -6658,7 +6658,7 @@ class FileRename_Request(_Asn1Type): # SEQUENCE
 		currentFileName: FileName = ...,
 		newFileName: FileName = ...,
 	) -> None: ...
-	
+
 class FileRename_Response(_Asn1BasicType[None]):
 	pass
 
@@ -6666,13 +6666,13 @@ class FileRename_Error(_Asn1Type):
 	class VALUES(EXT_IntEnum):
 		V_source_file = 0
 		V_destination_file = 1
-	
+
 	@property
 	def value(self) -> FileRename_Error.VALUES: ...
 	@value.setter
 	def value(self, value: FileRename_Error.VALUES | int) -> None: ...
 	def __init__(self, value: VALUES = ...) -> None: ...
-	
+
 class FileDelete_Request(_Asn1BasicType[FileName]):
 	pass
 
@@ -6699,9 +6699,9 @@ class FileDirectory_Request(_Asn1Type): # SEQUENCE
 		fileSpecification: FileName = ...,
 		continueAfter: FileName = ...,
 	) -> None: ...
-	
+
 class FileDirectory_Response(_Asn1Type): # SEQUENCE
-	
+
 	class listOfDirectoryEntry_TYPE(_Asn1Type):
 		def __init__(self, values: EXT_Iterable[DirectoryEntry] | None = ...) -> None: ...
 		def __getitem__(self, index: int) -> DirectoryEntry: ...
@@ -6711,7 +6711,7 @@ class FileDirectory_Response(_Asn1Type): # SEQUENCE
 		def clear(self) -> None: ...
 		def __len__(self) -> int: ...
 		def __delitem__(self, index: int) -> None: ...
-	
+
 	listOfDirectoryEntry: listOfDirectoryEntry_TYPE
 	moreFollows: bool | None
 	def __init__(
@@ -6719,7 +6719,7 @@ class FileDirectory_Response(_Asn1Type): # SEQUENCE
 		listOfDirectoryEntry: listOfDirectoryEntry_TYPE = ...,
 		moreFollows: bool = ...,
 	) -> None: ...
-	
+
 class DirectoryEntry(_Asn1Type): # SEQUENCE
 	@property
 	def fileName(self) -> FileName: ...
@@ -6731,7 +6731,7 @@ class DirectoryEntry(_Asn1Type): # SEQUENCE
 		fileName: FileName = ...,
 		fileAttributes: FileAttributes = ...,
 	) -> None: ...
-	
+
 class FileAttributes(_Asn1Type): # SEQUENCE
 	@property
 	def sizeOfFile(self) -> Unsigned32: ...
@@ -6743,9 +6743,9 @@ class FileAttributes(_Asn1Type): # SEQUENCE
 		sizeOfFile: Unsigned32 = ...,
 		lastModified: bytes = ...,
 	) -> None: ...
-	
+
 class ScatteredAccessDescription(_Asn1Type):
-	
+
 	class Member_TYPE(_Asn1Type): # SEQUENCE
 		@property
 		def componentName(self) -> Identifier | None: ...
@@ -6762,7 +6762,7 @@ class ScatteredAccessDescription(_Asn1Type):
 			variableSpecification: VariableSpecification = ...,
 			alternateAccess: AlternateAccess = ...,
 		) -> None: ...
-		
+
 	def __init__(self, values: EXT_Iterable[Member_TYPE] | None = ...) -> None: ...
 	def __getitem__(self, index: int) -> Member_TYPE: ...
 	def __setitem__(self, index: int, value: Member_TYPE) -> None: ...
@@ -6783,7 +6783,7 @@ class DefineScatteredAccess_Request(_Asn1Type): # SEQUENCE
 		scatteredAccessName: ObjectName = ...,
 		scatteredAccessDescription: ScatteredAccessDescription = ...,
 	) -> None: ...
-	
+
 class DefineScatteredAccess_Response(_Asn1BasicType[None]):
 	pass
 
@@ -6806,13 +6806,13 @@ class GetScatteredAccessAttributes_Response(_Asn1Type): # SEQUENCE
 		scatteredAccessDescription: ScatteredAccessDescription = ...,
 		accessControlList: Identifier = ...,
 	) -> None: ...
-	
+
 class Modifier(_Asn1Type): # CHOICE
 	class PRESENT(EXT_IntEnum):
 		PR_NOTHING = 0
 		PR_eventModifier = 1
 		PR_semaphoreModifier = 2
-	
+
 	@property
 	def present(self) -> PRESENT: ...
 	eventModifier: AttachToEventCondition | None
@@ -6822,7 +6822,7 @@ class Modifier(_Asn1Type): # CHOICE
 		eventModifier: AttachToEventCondition = ...,
 		semaphoreModifier: AttachToSemaphore = ...,
 	) -> None: ...
-	
+
 class ModifierStep(_Asn1Type): # SEQUENCE
 	modifierID: int
 	modifier: Modifier
@@ -6831,7 +6831,7 @@ class ModifierStep(_Asn1Type): # SEQUENCE
 		modifierID: int = ...,
 		modifier: Modifier = ...,
 	) -> None: ...
-	
+
 class ServiceSupportOptions(_Asn1BitStrType):
 	V_status: bool # bit 0
 	V_getNameList: bool # bit 1
@@ -6988,16 +6988,16 @@ class AccessCondition(_Asn1Type): # CHOICE
 		PR_password = 4
 		PR_joint = 5
 		PR_alternate = 6
-	
+
 	@property
 	def present(self) -> PRESENT: ...
-	
+
 	class user_TYPE(_Asn1Type): # CHOICE
 		class PRESENT(EXT_IntEnum):
 			PR_NOTHING = 0
 			PR_association = 1
 			PR_none = 2
-		
+
 		@property
 		def present(self) -> PRESENT: ...
 		association: ApplicationReference | None
@@ -7007,9 +7007,9 @@ class AccessCondition(_Asn1Type): # CHOICE
 			association: ApplicationReference = ...,
 			none: None = ...,
 		) -> None: ...
-		
+
 	user: user_TYPE
-	
+
 	class joint_TYPE(_Asn1Type):
 		def __init__(self, values: EXT_Iterable[AccessCondition] | None = ...) -> None: ...
 		def __getitem__(self, index: int) -> AccessCondition: ...
@@ -7019,9 +7019,9 @@ class AccessCondition(_Asn1Type): # CHOICE
 		def clear(self) -> None: ...
 		def __len__(self) -> int: ...
 		def __delitem__(self, index: int) -> None: ...
-	
+
 	joint: joint_TYPE
-	
+
 	class alternate_TYPE(_Asn1Type):
 		def __init__(self, values: EXT_Iterable[AccessCondition] | None = ...) -> None: ...
 		def __getitem__(self, index: int) -> AccessCondition: ...
@@ -7031,7 +7031,7 @@ class AccessCondition(_Asn1Type): # CHOICE
 		def clear(self) -> None: ...
 		def __len__(self) -> int: ...
 		def __delitem__(self, index: int) -> None: ...
-	
+
 	alternate: alternate_TYPE
 	never: None | None
 	@property
@@ -7048,7 +7048,7 @@ class AccessCondition(_Asn1Type): # CHOICE
 		joint: joint_TYPE = ...,
 		alternate: alternate_TYPE = ...,
 	) -> None: ...
-	
+
 class DomainState(_Asn1Type):
 	class VALUES(EXT_IntEnum):
 		V_non_existent = 0
@@ -7066,13 +7066,13 @@ class DomainState(_Asn1Type):
 		V_d7 = 13
 		V_d8 = 14
 		V_d9 = 15
-	
+
 	@property
 	def value(self) -> DomainState.VALUES: ...
 	@value.setter
 	def value(self, value: DomainState.VALUES | int) -> None: ...
 	def __init__(self, value: VALUES = ...) -> None: ...
-	
+
 class ProgramInvocationState(_Asn1Type):
 	class VALUES(EXT_IntEnum):
 		V_non_existent = 0
@@ -7084,13 +7084,13 @@ class ProgramInvocationState(_Asn1Type):
 		V_stopping = 6
 		V_resuming = 7
 		V_resetting = 8
-	
+
 	@property
 	def value(self) -> ProgramInvocationState.VALUES: ...
 	@value.setter
 	def value(self, value: ProgramInvocationState.VALUES | int) -> None: ...
 	def __init__(self, value: VALUES = ...) -> None: ...
-	
+
 class TypeDescription(_Asn1Type): # CHOICE
 	class PRESENT(EXT_IntEnum):
 		PR_NOTHING = 0
@@ -7099,7 +7099,7 @@ class TypeDescription(_Asn1Type): # CHOICE
 		PR_boolean = 3
 		PR_bit_string = 4
 		PR_integer = 5
-		PR_Unsigned = 6
+		PR_unsigned = 6
 		PR_floating_point = 7
 		PR_octet_string = 8
 		PR_visible_string = 9
@@ -7109,10 +7109,10 @@ class TypeDescription(_Asn1Type): # CHOICE
 		PR_objId = 13
 		PR_mMSString = 14
 		PR_utc_time = 15
-	
+
 	@property
 	def present(self) -> PRESENT: ...
-	
+
 	class array_TYPE(_Asn1Type): # SEQUENCE
 		packed: bool | None
 		@property
@@ -7126,13 +7126,13 @@ class TypeDescription(_Asn1Type): # CHOICE
 			numberOfElements: Unsigned32 = ...,
 			elementType: TypeSpecification = ...,
 		) -> None: ...
-		
+
 	array: array_TYPE
-	
+
 	class structure_TYPE(_Asn1Type): # SEQUENCE
-		
+
 		class components_TYPE(_Asn1Type):
-			
+
 			class Member_TYPE(_Asn1Type): # SEQUENCE
 				@property
 				def componentName(self) -> Identifier | None: ...
@@ -7144,7 +7144,7 @@ class TypeDescription(_Asn1Type): # CHOICE
 					componentName: Identifier = ...,
 					componentType: TypeSpecification = ...,
 				) -> None: ...
-				
+
 			def __init__(self, values: EXT_Iterable[Member_TYPE] | None = ...) -> None: ...
 			def __getitem__(self, index: int) -> Member_TYPE: ...
 			def __setitem__(self, index: int, value: Member_TYPE) -> None: ...
@@ -7153,7 +7153,7 @@ class TypeDescription(_Asn1Type): # CHOICE
 			def clear(self) -> None: ...
 			def __len__(self) -> int: ...
 			def __delitem__(self, index: int) -> None: ...
-		
+
 		components: components_TYPE
 		packed: bool | None
 		def __init__(
@@ -7161,9 +7161,9 @@ class TypeDescription(_Asn1Type): # CHOICE
 			packed: bool = ...,
 			components: components_TYPE = ...,
 		) -> None: ...
-		
+
 	structure: structure_TYPE
-	
+
 	class floating_point_TYPE(_Asn1Type): # SEQUENCE
 		@property
 		def format_width(self) -> Unsigned8: ...
@@ -7178,7 +7178,7 @@ class TypeDescription(_Asn1Type): # CHOICE
 			format_width: Unsigned8 = ...,
 			exponent_width: Unsigned8 = ...,
 		) -> None: ...
-		
+
 	floating_point: floating_point_TYPE
 	boolean: None | None
 	@property
@@ -7234,14 +7234,14 @@ class TypeDescription(_Asn1Type): # CHOICE
 		mMSString: Integer32 = ...,
 		utc_time: UtcTime = ...,
 	) -> None: ...
-	
+
 class Address(_Asn1Type): # CHOICE
 	class PRESENT(EXT_IntEnum):
 		PR_NOTHING = 0
 		PR_numericAddress = 1
 		PR_symbolicAddress = 2
 		PR_unconstrainedAddress = 3
-	
+
 	@property
 	def present(self) -> PRESENT: ...
 	@property
@@ -7259,7 +7259,7 @@ class Address(_Asn1Type): # CHOICE
 		symbolicAddress: MMSString = ...,
 		unconstrainedAddress: bytes = ...,
 	) -> None: ...
-	
+
 class Priority(_Asn1BasicType[int]):
 	pass
 
@@ -7272,7 +7272,7 @@ class EventTime(_Asn1Type): # CHOICE
 		PR_timeOfDay = 1
 		PR_timeSequenceIdentifier = 2
 		PR_undefined = 3
-	
+
 	@property
 	def present(self) -> PRESENT: ...
 	@property
@@ -7290,32 +7290,32 @@ class EventTime(_Asn1Type): # CHOICE
 		timeSequenceIdentifier: Unsigned32 = ...,
 		undefined: None = ...,
 	) -> None: ...
-	
+
 class EC_State(_Asn1Type):
 	class VALUES(EXT_IntEnum):
 		V_disabled = 0
 		V_idle = 1
 		V_active = 2
-	
+
 	@property
 	def value(self) -> EC_State.VALUES: ...
 	@value.setter
 	def value(self, value: EC_State.VALUES | int) -> None: ...
 	def __init__(self, value: VALUES = ...) -> None: ...
-	
+
 class AlarmAckRule(_Asn1Type):
 	class VALUES(EXT_IntEnum):
 		V_none = 0
 		V_simple = 1
 		V_ack_active = 2
 		V_ack_all = 3
-	
+
 	@property
 	def value(self) -> AlarmAckRule.VALUES: ...
 	@value.setter
 	def value(self, value: AlarmAckRule.VALUES | int) -> None: ...
 	def __init__(self, value: VALUES = ...) -> None: ...
-	
+
 class Transitions(_Asn1BitStrType):
 	V_idle_to_disabled: bool # bit 0
 	V_active_to_disabled: bool # bit 1
@@ -7330,35 +7330,35 @@ class EC_Class(_Asn1Type):
 	class VALUES(EXT_IntEnum):
 		V_network_triggered = 0
 		V_monitored = 1
-	
+
 	@property
 	def value(self) -> EC_Class.VALUES: ...
 	@value.setter
 	def value(self, value: EC_Class.VALUES | int) -> None: ...
 	def __init__(self, value: VALUES = ...) -> None: ...
-	
+
 class EE_Class(_Asn1Type):
 	class VALUES(EXT_IntEnum):
 		V_modifier = 0
 		V_notification = 1
-	
+
 	@property
 	def value(self) -> EE_Class.VALUES: ...
 	@value.setter
 	def value(self, value: EE_Class.VALUES | int) -> None: ...
 	def __init__(self, value: VALUES = ...) -> None: ...
-	
+
 class EE_Duration(_Asn1Type):
 	class VALUES(EXT_IntEnum):
 		V_current = 0
 		V_permanent = 1
-	
+
 	@property
 	def value(self) -> EE_Duration.VALUES: ...
 	@value.setter
 	def value(self, value: EE_Duration.VALUES | int) -> None: ...
 	def __init__(self, value: VALUES = ...) -> None: ...
-	
+
 class Journal_Variable(_Asn1Type): # SEQUENCE
 	@property
 	def variableTag(self) -> MMS255String: ...
@@ -7370,12 +7370,12 @@ class Journal_Variable(_Asn1Type): # SEQUENCE
 		variableTag: MMS255String = ...,
 		valueSpecification: Data = ...,
 	) -> None: ...
-	
+
 class Name(_Asn1Type): # CHOICE
 	class PRESENT(EXT_IntEnum):
 		PR_NOTHING = 0
 		PR_rdnSequence = 1
-	
+
 	@property
 	def present(self) -> PRESENT: ...
 	@property
@@ -7386,7 +7386,7 @@ class Name(_Asn1Type): # CHOICE
 		self, /, *,
 		rdnSequence: RDNSequence = ...,
 	) -> None: ...
-	
+
 class DomainName(_Asn1BasicType[str]):
 	pass
 
@@ -7418,7 +7418,7 @@ class AttributeTypeAndValue(_Asn1Type): # SEQUENCE
 		type: str = ...,
 		value: bytes = ...,
 	) -> None: ...
-	
+
 class ACSE_apdu(_Asn1Type): # CHOICE
 	class PRESENT(EXT_IntEnum):
 		PR_NOTHING = 0
@@ -7427,7 +7427,7 @@ class ACSE_apdu(_Asn1Type): # CHOICE
 		PR_rlrq = 3
 		PR_rlre = 4
 		PR_abrt = 5
-	
+
 	@property
 	def present(self) -> PRESENT: ...
 	aarq: AARQ_apdu | None
@@ -7443,12 +7443,12 @@ class ACSE_apdu(_Asn1Type): # CHOICE
 		rlre: RLRE_apdu = ...,
 		abrt: ABRT_apdu = ...,
 	) -> None: ...
-	
+
 class AARQ_apdu(_Asn1Type): # SEQUENCE
-	
+
 	class protocol_version_TYPE(_Asn1BitStrType):
 		V_version1: bool # bit 0
-	
+
 	@property
 	def protocol_version(self) -> protocol_version_TYPE | None: ...
 	@protocol_version.setter
@@ -7517,12 +7517,12 @@ class AARQ_apdu(_Asn1Type): # SEQUENCE
 		implementation_information: Implementation_data = ...,
 		user_information: Association_information = ...,
 	) -> None: ...
-	
+
 class AARE_apdu(_Asn1Type): # SEQUENCE
-	
+
 	class protocol_version_TYPE(_Asn1BitStrType):
 		V_version1: bool # bit 0
-	
+
 	@property
 	def protocol_version(self) -> protocol_version_TYPE | None: ...
 	@protocol_version.setter
@@ -7584,7 +7584,7 @@ class AARE_apdu(_Asn1Type): # SEQUENCE
 		implementation_information: Implementation_data = ...,
 		user_information: Association_information = ...,
 	) -> None: ...
-	
+
 class RLRQ_apdu(_Asn1Type): # SEQUENCE
 	@property
 	def reason(self) -> Release_request_reason | None: ...
@@ -7599,7 +7599,7 @@ class RLRQ_apdu(_Asn1Type): # SEQUENCE
 		reason: Release_request_reason = ...,
 		user_information: Association_information = ...,
 	) -> None: ...
-	
+
 class RLRE_apdu(_Asn1Type): # SEQUENCE
 	@property
 	def reason(self) -> Release_response_reason | None: ...
@@ -7614,7 +7614,7 @@ class RLRE_apdu(_Asn1Type): # SEQUENCE
 		reason: Release_response_reason = ...,
 		user_information: Association_information = ...,
 	) -> None: ...
-	
+
 class ABRT_apdu(_Asn1Type): # SEQUENCE
 	@property
 	def abort_source(self) -> ABRT_source: ...
@@ -7631,7 +7631,7 @@ class ABRT_apdu(_Asn1Type): # SEQUENCE
 		abort_diagnostic: ABRT_diagnostic = ...,
 		user_information: Association_information = ...,
 	) -> None: ...
-	
+
 class ABRT_diagnostic(_Asn1Type):
 	class VALUES(EXT_IntEnum):
 		V_no_reason_given = 1
@@ -7640,24 +7640,24 @@ class ABRT_diagnostic(_Asn1Type):
 		V_authentication_mechanism_name_required = 4
 		V_authentication_failure = 5
 		V_authentication_required = 6
-	
+
 	@property
 	def value(self) -> ABRT_diagnostic.VALUES: ...
 	@value.setter
 	def value(self, value: ABRT_diagnostic.VALUES | int) -> None: ...
 	def __init__(self, value: VALUES = ...) -> None: ...
-	
+
 class ABRT_source(_Asn1Type):
 	class VALUES(EXT_IntEnum):
 		V_acse_service_user = 0
 		V_acse_service_provider = 1
-	
+
 	@property
 	def value(self) -> ABRT_source.VALUES: ...
 	@value.setter
 	def value(self, value: ABRT_source.VALUES | int) -> None: ...
 	def __init__(self, value: VALUES = ...) -> None: ...
-	
+
 class ACSE_requirements(_Asn1BitStrType):
 	V_authentication: bool # bit 0
 	V_application_context_negotiation: bool # bit 1
@@ -7681,7 +7681,7 @@ class AP_title(_Asn1Type): # CHOICE
 		PR_NOTHING = 0
 		PR_ap_title_form1 = 1
 		PR_ap_title_form2 = 2
-	
+
 	@property
 	def present(self) -> PRESENT: ...
 	ap_title_form1: AP_title_form1 | None
@@ -7694,13 +7694,13 @@ class AP_title(_Asn1Type): # CHOICE
 		ap_title_form1: AP_title_form1 = ...,
 		ap_title_form2: AP_title_form2 = ...,
 	) -> None: ...
-	
+
 class AE_qualifier(_Asn1Type): # CHOICE
 	class PRESENT(EXT_IntEnum):
 		PR_NOTHING = 0
 		PR_ae_qualifier_form1 = 1
 		PR_ae_qualifier_form2 = 2
-	
+
 	@property
 	def present(self) -> PRESENT: ...
 	ae_qualifier_form1: AE_qualifier_form1 | None
@@ -7713,7 +7713,7 @@ class AE_qualifier(_Asn1Type): # CHOICE
 		ae_qualifier_form1: AE_qualifier_form1 = ...,
 		ae_qualifier_form2: AE_qualifier_form2 = ...,
 	) -> None: ...
-	
+
 class AP_title_form1(_Asn1BasicType[Name]):
 	pass
 
@@ -7731,7 +7731,7 @@ class AE_title(_Asn1Type): # CHOICE
 		PR_NOTHING = 0
 		PR_ae_title_form1 = 1
 		PR_ae_title_form2 = 2
-	
+
 	@property
 	def present(self) -> PRESENT: ...
 	ae_title_form1: AE_title_form1 | None
@@ -7744,7 +7744,7 @@ class AE_title(_Asn1Type): # CHOICE
 		ae_title_form1: AE_title_form1 = ...,
 		ae_title_form2: AE_title_form2 = ...,
 	) -> None: ...
-	
+
 class AE_title_form1(_Asn1BasicType[Name]):
 	pass
 
@@ -7762,22 +7762,22 @@ class Associate_result(_Asn1Type):
 		V_accepted = 0
 		V_rejected_permanent = 1
 		V_rejected_transient = 2
-	
+
 	@property
 	def value(self) -> Associate_result.VALUES: ...
 	@value.setter
 	def value(self, value: Associate_result.VALUES | int) -> None: ...
 	def __init__(self, value: VALUES = ...) -> None: ...
-	
+
 class Associate_source_diagnostic(_Asn1Type): # CHOICE
 	class PRESENT(EXT_IntEnum):
 		PR_NOTHING = 0
 		PR_acse_service_user = 1
 		PR_acse_service_provider = 2
-	
+
 	@property
 	def present(self) -> PRESENT: ...
-	
+
 	class acse_service_user_VALUES(EXT_IntEnum):
 		V_null = 0
 		V_no_reason_given = 1
@@ -7794,21 +7794,21 @@ class Associate_source_diagnostic(_Asn1Type): # CHOICE
 		V_authentication_mechanism_name_required = 12
 		V_authentication_failure = 13
 		V_authentication_required = 14
-	
+
 	acse_service_user: acse_service_user_VALUES | None
-	
+
 	class acse_service_provider_VALUES(EXT_IntEnum):
 		V_null = 0
 		V_no_reason_given = 1
 		V_no_common_acse_version = 2
-	
+
 	acse_service_provider: acse_service_provider_VALUES | None
 	def __init__(
 		self, /, *,
 		acse_service_user: acse_service_user_VALUES = ...,
 		acse_service_provider: acse_service_provider_VALUES = ...,
 	) -> None: ...
-	
+
 class Association_information(_Asn1Type):
 	def __init__(self, values: EXT_Iterable[EXTERNAL] | None = ...) -> None: ...
 	def __getitem__(self, index: int) -> EXTERNAL: ...
@@ -7826,10 +7826,10 @@ class Authentication_value(_Asn1Type): # CHOICE
 		PR_bitstring = 2
 		PR_external = 3
 		PR_other = 4
-	
+
 	@property
 	def present(self) -> PRESENT: ...
-	
+
 	class other_TYPE(_Asn1Type): # SEQUENCE
 		@property
 		def other_mechanism_name(self) -> Mechanism_name: ...
@@ -7841,13 +7841,13 @@ class Authentication_value(_Asn1Type): # CHOICE
 			other_mechanism_name: Mechanism_name = ...,
 			other_mechanism_value: bytes = ...,
 		) -> None: ...
-		
+
 	other: other_TYPE
 	charstring: str | None
-	
+
 	class bitstring_TYPE(_Asn1BitStrType):
 		pass
-	
+
 	@property
 	def bitstring(self) -> bitstring_TYPE | None: ...
 	@bitstring.setter
@@ -7860,7 +7860,7 @@ class Authentication_value(_Asn1Type): # CHOICE
 		external: EXTERNAL = ...,
 		other: other_TYPE = ...,
 	) -> None: ...
-	
+
 class Implementation_data(_Asn1BasicType[str]):
 	pass
 
@@ -7872,42 +7872,42 @@ class Release_request_reason(_Asn1Type):
 		V_normal = 0
 		V_urgent = 1
 		V_user_defined = 30
-	
+
 	@property
 	def value(self) -> Release_request_reason.VALUES: ...
 	@value.setter
 	def value(self, value: Release_request_reason.VALUES | int) -> None: ...
 	def __init__(self, value: VALUES = ...) -> None: ...
-	
+
 class Release_response_reason(_Asn1Type):
 	class VALUES(EXT_IntEnum):
 		V_normal = 0
 		V_not_finished = 1
 		V_user_defined = 30
-	
+
 	@property
 	def value(self) -> Release_response_reason.VALUES: ...
 	@value.setter
 	def value(self, value: Release_response_reason.VALUES | int) -> None: ...
 	def __init__(self, value: VALUES = ...) -> None: ...
-	
+
 class EXTERNAL(_Asn1Type): # SEQUENCE
-	
+
 	class encoding_TYPE(_Asn1Type): # CHOICE
 		class PRESENT(EXT_IntEnum):
 			PR_NOTHING = 0
 			PR_single_ASN1_type = 1
 			PR_octet_aligned = 2
 			PR_arbitrary = 3
-		
+
 		@property
 		def present(self) -> PRESENT: ...
 		single_ASN1_type: bytes | None
 		octet_aligned: bytes | None
-		
+
 		class arbitrary_TYPE(_Asn1BitStrType):
 			pass
-		
+
 		@property
 		def arbitrary(self) -> arbitrary_TYPE | None: ...
 		@arbitrary.setter
@@ -7918,7 +7918,7 @@ class EXTERNAL(_Asn1Type): # SEQUENCE
 			octet_aligned: bytes = ...,
 			arbitrary: arbitrary_TYPE | EXT_bitarray | bytes = ...,
 		) -> None: ...
-		
+
 	encoding: encoding_TYPE
 	direct_reference: str | None
 	indirect_reference: int | None
@@ -7930,5 +7930,5 @@ class EXTERNAL(_Asn1Type): # SEQUENCE
 		data_value_descriptor: str = ...,
 		encoding: encoding_TYPE = ...,
 	) -> None: ...
-	
+
 ### END GENERATED CODE ###

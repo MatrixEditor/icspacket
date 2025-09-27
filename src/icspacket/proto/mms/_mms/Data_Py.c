@@ -454,14 +454,14 @@ int PyAsnData_ModInit(PyObject *mod) {
 	PY_IMPL_MOD_ASSIGN_OBJECT(Data, structure_TYPE, &PyAsnData_structure_ANON_4_Type);
 	PY_IMPL_MOD_ASSIGN_OBJECT(Data, bit_string_TYPE, &PyAsnData_bit_string_Type);
 	PY_IMPL_MOD_ASSIGN_OBJECT(Data, booleanArray_TYPE, &PyAsnData_booleanArray_Type);
-	PY_IMPL_NEW_ENUM(Data.PRESENT, PyAsnEnumData_PRESENT_Type, -1, 
+	PY_IMPL_NEW_ENUM(Data.PRESENT, PyAsnEnumData_PRESENT_Type, -1,
 		PY_IMPL_ENUM_VALUE(PR_NOTHING, Data_PR_NOTHING, 0);
 		PY_IMPL_ENUM_VALUE(PR_array, Data_PR_array, 1);
 		PY_IMPL_ENUM_VALUE(PR_structure, Data_PR_structure, 2);
 		PY_IMPL_ENUM_VALUE(PR_boolean, Data_PR_boolean, 3);
 		PY_IMPL_ENUM_VALUE(PR_bit_string, Data_PR_bit_string, 4);
 		PY_IMPL_ENUM_VALUE(PR_integer, Data_PR_integer, 5);
-		PY_IMPL_ENUM_VALUE(PR_Unsigned, Data_PR_unsigned, 6);
+		PY_IMPL_ENUM_VALUE(PR_unsigned, Data_PR_unsigned, 6);
 		PY_IMPL_ENUM_VALUE(PR_floating_point, Data_PR_floating_point, 7);
 		PY_IMPL_ENUM_VALUE(PR_octet_string, Data_PR_octet_string, 8);
 		PY_IMPL_ENUM_VALUE(PR_visible_string, Data_PR_visible_string, 9);

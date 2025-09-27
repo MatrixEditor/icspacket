@@ -68,7 +68,7 @@ class Data(_Asn1Type): # CHOICE
 		PR_boolean = 3
 		PR_bit_string = 4
 		PR_integer = 5
-		PR_Unsigned = 6
+		PR_unsigned = 6
 		PR_floating_point = 7
 		PR_octet_string = 8
 		PR_visible_string = 9
