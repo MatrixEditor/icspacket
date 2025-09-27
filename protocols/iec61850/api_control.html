@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en" data-accent-color="lime" data-content_root="../../">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Control / Operation - icspacket 0.1.dev1+g53b33844c documentation</title><link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="IED Client" href="api_client.html" /><link rel="prev" title="Object / Data References" href="api_path.html" />
+      <link rel="canonical" href="https://matrixeditor.github.io/icspacket/protocols/iec61850/api_control.html" /><script>
+    function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
+    setColorMode(localStorage._theme||"dark");
+  </script><link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b1a1f93b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/shibuya.css?v=bb284d7b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link media="print" rel="stylesheet" type="text/css" href="../../_static/print.css?v=20ff2c19" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --sy-f-text: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+  --sy-f-heading: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+}
+</style>
+    <meta property="og:type" content="website"/>
+<meta property="og:url" content="https://matrixeditor.github.io/icspacket/protocols/iec61850/api_control.html"/>
+<meta property="og:title" content="Control / Operation"/>
+<meta name="twitter:card" content="summary"/>
+  </head>
+<body><div class="sy-head">
+  <div class="sy-head-blur"></div>
+  <div class="sy-head-inner sy-container mx-auto">
+    <a class="sy-head-brand" href="../../index.html">
+      
+      
+      <strong>icspacket</strong>
+    </a>
+    <div class="sy-head-nav" id="head-nav">
+      <nav class="sy-head-links"><ul>
+      <li class="link"><a class="js-menu" href="../../getting-started/protocols.html" id="nav-trigger-1" aria-controls="nav-children-1">
+            <span>Examples</span>
+            <i class="i-lucide chevron-down"></i>
+          </a>
+        <ul id="nav-children-1" aria-labelledby="nav-trigger-1"><li><a href="../mms/examples.html">
+                <span>MMS Utilities</span>
+                <small>Manufacturing Message Specification tools</small>
+              </a></li><li><a href="../dnp3/examples.html">
+                <span>DNP3 Tools</span>
+                <small>DNP3 utilities and tools</small>
+              </a></li><li><a href="iedmap.html">
+                <span>IED Enumeration Tool</span>
+                <small>Logical Device enumeration and more</small>
+              </a></li></ul>
+      </li><li class="link"><a href="../../changelog.html">Changelog</a></li></ul></nav>
+      <div class="sy-head-extra flex items-center print:hidden"><form class="searchbox flex items-center" action="../../search.html" method="get">
+  <input type="text" name="q" placeholder="Search" />
+  <kbd>/</kbd>
+</form><div class="sy-head-socials">
+  <a href="https://github.com/MatrixEditor/icspacket" aria-label="GitHub">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </a></div></div>
+    </div>
+    <div class="sy-head-actions flex items-center shrink-0 print:hidden"><button class="js-theme theme-switch flex items-center"
+data-aria-auto="Switch to light color mode"
+data-aria-light="Switch to dark color mode"
+data-aria-dark="Switch to auto color mode">
+<i class="i-lucide theme-icon"></i>
+</button><button class="md:hidden flex items-center js-menu" aria-label="Menu" type="button" aria-controls="head-nav" aria-expanded="false">
+        <div class="hamburger">
+          <span class="hamburger_1"></span>
+          <span class="hamburger_2"></span>
+          <span class="hamburger_3"></span>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>
+<div class="sy-page sy-container flex mx-auto">
+  <aside id="lside" class="sy-lside md:w-72 md:shrink-0 print:hidden">
+    <div class="sy-lside-inner md:sticky">
+      <div class="sy-scrollbar p-6"><div class="sidebar-links">
+  <ul>
+    <li><a class="icon-link" href="https://github.com/MatrixEditor/icspacket/discussions">
+  <span class="icon">
+    <svg viewBox="0 0 24 24" fill="none">
+      <path fill="var(--accent-9)" fill-rule="evenodd" clip-rule="evenodd" d="M11 5a6 6 0 0 0-4.687 9.746c.215.27.315.62.231.954l-.514 2.058a1 1 0 0 0 1.485 1.1l2.848-1.71c.174-.104.374-.15.576-.148H13a6 6 0 0 0 0-12h-2Z"/>
+      <circle fill="white" cx="12" cy="11" r="1"/>
+      <circle fill="white" cx="9" cy="11" r="1"/>
+      <circle fill="white" cx="15" cy="11" r="1"/>
+    </svg>
+  </span>
+  <span class="text">Discussion</span>
+</a></li>
+  </ul>
+</div>
+        <div class="globaltoc" data-expand-depth="1"><p class="caption" role="heading" aria-level="3"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../getting-started/installation.html">Installation</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../getting-started/protocols.html">Protocols Overview</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../getting-started/coreapi.html">Core API Reference</a></li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">DNP3 / IEEE 1815</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../dnp3/dnp3read.html">Reading Objects</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../dnp3/dnp3dump.html">Dumping Objects</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../dnp3/dnp3resolve.html">Resolve Link Addresses</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../dnp3/api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../dnp3/api/link.html">Link Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dnp3/api/transport.html">Transport Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dnp3/api/application.html">Application Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dnp3/api/master.html">Master</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dnp3/api/object_library.html">Object Library</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../dnp3/api/primitives.html">Primitive Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dnp3/api/coding.html">Encoding / Decoding</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dnp3/api/variations.html">Variations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dnp3/api/coding_utils.html">Object Utilities</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">IEC 61850</span></p>
+<ul class="current">
+<li class="toctree-l1 _expand"><a class="reference internal" href="iedmap.html">Enumerating IEDs</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="iedctrl.html">Operating on IEDs</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="api.html">API Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="api_data_classes.html">Data Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api_path.html">Object / Data References</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Control / Operation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api_client.html">IED Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api_goose.html">GOOSE Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api_sv.html">SampledValues Client</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">MMS / ISO 9506</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../mms/demo_vars.html">Variable Target Format</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../mms/demo_vars.html#variableaccess-service-rwq">VariableAccess Service (rwq)</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../mms/demo_files.html">FileManagement Service</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../mms/api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../mms/api_conn.html">MMS Connection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mms/api_data.html">Data Conversion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mms/api_utils.html">Protocol Utilities</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">ACSE / X.227</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../acse/api.html">API Reference</a></li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">COPP / X.226 / ISO 8823</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../copp/api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../copp/presentation.html">ISO Presentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../copp/utils.html">Protocol Utilities</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">COSP / X.225 / ISO 8237-1</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../cosp/api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../cosp/tsdu.html">TSDU</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cosp/spdu.html">SPDU Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cosp/values.html">Parameter Values (PV)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cosp/session.html">ISO Session</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cosp/utils.html">Protocol Utilities</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">COTP / X.224</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../cotp/api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../cotp/structs.html">TPDU Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cotp/connection.html">Connection</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">TPKT Protocol (RFC1006)</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../tpkt/usage.html">Using a TPKT Wrapper</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../tpkt/api.html">API Reference</a></li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../changelog.html">Changelog</a></li>
+</ul>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="lside-overlay js-menu" role="button" aria-label="Close left sidebar" aria-controls="lside" aria-expanded="false"></div>
+  <aside id="rside" class="sy-rside pb-3 w-64 shrink-0 order-last">
+    <button class="rside-close js-menu xl:hidden" aria-label="Close Table of Contents" type="button" aria-controls="rside" aria-expanded="false">
+      <i class="i-lucide close"></i>
+    </button>
+    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div class="localtoc"><h3>On this page</h3><ul>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.control.ControlError"><code class="docutils literal notranslate"><span class="pre">ControlError</span></code></a><ul>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.control.ControlError.NO_ERROR"><code class="docutils literal notranslate">NO_ERROR</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.control.ControlError.UNKNOWN"><code class="docutils literal notranslate">UNKNOWN</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.control.ControlError.TIMEOUT"><code class="docutils literal notranslate">TIMEOUT</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.control.ControlError.OPERATOR_TEST_FAIL"><code class="docutils literal notranslate">OPERATOR_TEST_FAIL</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.control.Cause"><code class="docutils literal notranslate"><span class="pre">Cause</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.control.LastApplError"><code class="docutils literal notranslate"><span class="pre">LastApplError</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.control.ControlObject"><code class="docutils literal notranslate"><span class="pre">ControlObject</span></code></a><ul>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.control.ControlObject.origin_cat"><code class="docutils literal notranslate">origin_cat</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.control.ControlObject.origin_ident"><code class="docutils literal notranslate">origin_ident</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.control.ControlObject.ctl_num"><code class="docutils literal notranslate">ctl_num</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.control.ControlObject.test"><code class="docutils literal notranslate">test</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.control.ControlObject.interlock_check"><code class="docutils literal notranslate">interlock_check</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.control.ControlObject.synchro_check"><code class="docutils literal notranslate">synchro_check</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.control.ControlObject.ctrl_object_ref"><code class="docutils literal notranslate">ctrl_object_ref</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.control.ControlObject.has_time_activated_oper"><code class="docutils literal notranslate">has_time_activated_oper</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.control.ControlObject.has_ctl_num"><code class="docutils literal notranslate">has_ctl_num</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.control.ControlObject.model"><code class="docutils literal notranslate">model</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.control.ControlObject.origin"><code class="docutils literal notranslate">origin()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.control.ControlObject.get_operate_data"><code class="docutils literal notranslate">get_operate_data()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.control.ControlObject.T"><code class="docutils literal notranslate">T</span></code></a></li>
+</ul>
+</li>
+</ul>
+</div><a class="js-repo-stats repo-stats flex items-center" href="https://github.com/MatrixEditor/icspacket"
+  data-type="github" data-user="MatrixEditor" data-repo="icspacket">
+  <span class="w-8 flex items-center justify-around shrink-0 text-3xl">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </span>
+  <span class="flex-grow px-2 break-all">
+    <span style="font-size: small;">MatrixEditor/icspacket</span>
+    <span class="flex text-sm repo-stats-count">
+      <span class="flex items-center pr-3">
+        <iconify-icon icon="lucide:star"></iconify-icon>
+        <strong class="js-repo-stars ml-1">0</strong>
+      </span>
+      <span class="flex items-center">
+        <iconify-icon icon="lucide:git-fork"></iconify-icon>
+        <strong class="js-repo-forks ml-1">0</strong>
+      </span>
+    </span>
+  </span>
+</a><div class="edit-this-page">
+  <a href="https://github.com/MatrixEditor/icspacket/blob/main/docs/protocols/iec61850/api_control.rst">Edit this page</a>
+</div></div>
+  </aside>
+  <div class="rside-overlay js-menu" role="button" aria-label="Close Table of Contents" aria-controls="rside" aria-expanded="false"></div>
+  <main class="sy-main w-full max-sm:max-w-full print:pt-6">
+<div class="sy-breadcrumbs" role="navigation">
+  <div class="sy-breadcrumbs-inner flex items-center">
+    <div class="md:hidden mr-3">
+      <button class="js-menu" aria-label="Menu" type="button" aria-controls="lside" aria-expanded="false">
+        <i class="i-lucide menu"></i>
+      </button>
+    </div>
+    <ol class="flex-1" itemscope itemtype="https://schema.org/BreadcrumbList"><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="../../index.html"><span itemprop="name">icspacket</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="1" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="api.html"><span itemprop="name">API Reference</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="2" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <strong itemprop="name">Control / Operation</strong>
+        <meta itemprop="position" content="3" />
+      </li></ol>
+    <div class="xl:hidden ml-1">
+      <button class="js-menu" aria-label="Show table of contents" type="button" aria-controls="rside"
+        aria-expanded="false">
+        <i class="i-lucide outdent"></i>
+      </button>
+    </div>
+  </div>
+</div><div class="flex flex-col break-words justify-between">
+      <div class="min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
+        <article class="yue" role="main">
+          <section id="module-icspacket.proto.iec61850.control">
+<span id="control-operation"></span><span id="iec61850-api-control"></span><h1>Control / Operation<a class="headerlink" href="#module-icspacket.proto.iec61850.control" title="Link to this heading">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.control.ControlError">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">icspacket.proto.iec61850.control.</span></span><span class="sig-name descname"><span class="pre">ControlError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">values</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/icspacket/proto/iec61850/control.html#ControlError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iec61850.control.ControlError" title="Link to this definition">¶</a></dt>
+<dd><p>Control error codes for IEC 61850 control operations.</p>
+<p>These values indicate the error category for a failed
+control request or response.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.2.4.</span></p>
+</div>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.control.ControlError.NO_ERROR">
+<span class="sig-name descname"><span class="pre">NO_ERROR</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></em><a class="headerlink" href="#icspacket.proto.iec61850.control.ControlError.NO_ERROR" title="Link to this definition">¶</a></dt>
+<dd><p>No error occurred during control execution.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.control.ControlError.UNKNOWN">
+<span class="sig-name descname"><span class="pre">UNKNOWN</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#icspacket.proto.iec61850.control.ControlError.UNKNOWN" title="Link to this definition">¶</a></dt>
+<dd><p>An unknown error occurred.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.control.ControlError.TIMEOUT">
+<span class="sig-name descname"><span class="pre">TIMEOUT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2</span></em><a class="headerlink" href="#icspacket.proto.iec61850.control.ControlError.TIMEOUT" title="Link to this definition">¶</a></dt>
+<dd><p>The control operation timed out.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.control.ControlError.OPERATOR_TEST_FAIL">
+<span class="sig-name descname"><span class="pre">OPERATOR_TEST_FAIL</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">3</span></em><a class="headerlink" href="#icspacket.proto.iec61850.control.ControlError.OPERATOR_TEST_FAIL" title="Link to this definition">¶</a></dt>
+<dd><p>The operation failed during an operator test.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.control.Cause">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">icspacket.proto.iec61850.control.</span></span><span class="sig-name descname"><span class="pre">Cause</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">values</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/icspacket/proto/iec61850/control.html#Cause"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iec61850.control.Cause" title="Link to this definition">¶</a></dt>
+<dd><p>Detailed causes for IEC 61850 control operation responses.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.2.4.</span></p>
+</div>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.control.LastApplError">
+<em class="property"><span class="k"><span class="pre">exception</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">icspacket.proto.iec61850.control.</span></span><span class="sig-name descname"><span class="pre">LastApplError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ctrl_obj</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">error</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#icspacket.proto.iec61850.control.ControlError" title="icspacket.proto.iec61850.control.ControlError"><span class="pre">ControlError</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">ctlnum</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cause</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#icspacket.proto.iec61850.control.Cause" title="icspacket.proto.iec61850.control.Cause"><span class="pre">Cause</span></a></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">object</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/icspacket/proto/iec61850/control.html#LastApplError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iec61850.control.LastApplError" title="Link to this definition">¶</a></dt>
+<dd><p>Exception representing the <em>LastApplError</em> diagnostic
+from IEC 61850 control services.</p>
+<p>Raised when a control service returns an error response
+containing both a control error and a cause.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.2.4.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ctrl_obj</strong> (<em>str</em>) – The control object reference string.</p></li>
+<li><p><strong>error</strong> (<a class="reference internal" href="#icspacket.proto.iec61850.control.ControlError" title="icspacket.proto.iec61850.control.ControlError"><em>ControlError</em></a>) – The control error category.</p></li>
+<li><p><strong>ctlnum</strong> (<em>int</em>) – The control number associated with the request.</p></li>
+<li><p><strong>cause</strong> (<a class="reference internal" href="#icspacket.proto.iec61850.control.Cause" title="icspacket.proto.iec61850.control.Cause"><em>Cause</em></a>) – Detailed cause of the error.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.control.ControlObject">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">icspacket.proto.iec61850.control.</span></span><span class="sig-name descname"><span class="pre">ControlObject</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ref</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api_path.html#icspacket.proto.iec61850.path.ObjectReference" title="icspacket.proto.iec61850.path.ObjectReference"><span class="pre">ObjectReference</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">spec</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">TypeDescription</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api_data_classes.html#icspacket.proto.iec61850.classes.ControlModel" title="icspacket.proto.iec61850.classes.ControlModel"><span class="pre">ControlModel</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/icspacket/proto/iec61850/control.html#ControlObject"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iec61850.control.ControlObject" title="Link to this definition">¶</a></dt>
+<dd><p>Represents an IEC 61850 control object reference.</p>
+<p>Provides access to control object properties, origin parameters,
+and the ability to generate operate data structures for issuing
+control commands.</p>
+<p>Implements context manager protocol for safe usage in
+connection-based operations.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.2.4.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ref</strong> (<a class="reference internal" href="api_path.html#icspacket.proto.iec61850.path.ObjectReference" title="icspacket.proto.iec61850.path.ObjectReference"><em>ObjectReference</em></a>) – The object reference for the control point.</p></li>
+<li><p><strong>spec</strong> (<em>TypeDescription</em>) – ASN.1 type description of the control object.</p></li>
+<li><p><strong>model</strong> (<a class="reference internal" href="api_data_classes.html#icspacket.proto.iec61850.classes.ControlModel" title="icspacket.proto.iec61850.classes.ControlModel"><em>ControlModel</em></a>) – Control model (e.g., <code class="docutils literal notranslate"><span class="pre">DIRECT_NORMAL</span></code> or <code class="docutils literal notranslate"><span class="pre">SBO_ENHANCED</span></code>).</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.control.ControlObject.origin_cat">
+<span class="sig-name descname"><span class="pre">origin_cat</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#icspacket.proto.iec61850.control.ControlObject.origin_cat" title="Link to this definition">¶</a></dt>
+<dd><p>Origin category (integer identifier of the source).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.control.ControlObject.origin_ident">
+<span class="sig-name descname"><span class="pre">origin_ident</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bytes</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#icspacket.proto.iec61850.control.ControlObject.origin_ident" title="Link to this definition">¶</a></dt>
+<dd><p>Origin identifier (client or system identifier).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.control.ControlObject.ctl_num">
+<span class="sig-name descname"><span class="pre">ctl_num</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#icspacket.proto.iec61850.control.ControlObject.ctl_num" title="Link to this definition">¶</a></dt>
+<dd><p>Control number for tracking SBO and direct operations.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.control.ControlObject.test">
+<span class="sig-name descname"><span class="pre">test</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#icspacket.proto.iec61850.control.ControlObject.test" title="Link to this definition">¶</a></dt>
+<dd><p>Test flag indicating test vs. normal operation.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.control.ControlObject.interlock_check">
+<span class="sig-name descname"><span class="pre">interlock_check</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#icspacket.proto.iec61850.control.ControlObject.interlock_check" title="Link to this definition">¶</a></dt>
+<dd><p>Enable or disable interlock condition checking.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.control.ControlObject.synchro_check">
+<span class="sig-name descname"><span class="pre">synchro_check</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#icspacket.proto.iec61850.control.ControlObject.synchro_check" title="Link to this definition">¶</a></dt>
+<dd><p>Enable or disable synchrocheck condition checking.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.control.ControlObject.ctrl_object_ref">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ctrl_object_ref</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="api_path.html#icspacket.proto.iec61850.path.ObjectReference" title="icspacket.proto.iec61850.path.ObjectReference"><span class="pre">ObjectReference</span></a></em><a class="headerlink" href="#icspacket.proto.iec61850.control.ControlObject.ctrl_object_ref" title="Link to this definition">¶</a></dt>
+<dd><p>Reference to the underlying control object node.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.control.ControlObject.has_time_activated_oper">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">has_time_activated_oper</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#icspacket.proto.iec61850.control.ControlObject.has_time_activated_oper" title="Link to this definition">¶</a></dt>
+<dd><p>Whether this control object supports time-activated operate requests.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.control.ControlObject.has_ctl_num">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">has_ctl_num</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#icspacket.proto.iec61850.control.ControlObject.has_ctl_num" title="Link to this definition">¶</a></dt>
+<dd><p>Whether this control object includes a control number field.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.control.ControlObject.model">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">model</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="api_data_classes.html#icspacket.proto.iec61850.classes.ControlModel" title="icspacket.proto.iec61850.classes.ControlModel"><span class="pre">ControlModel</span></a></em><a class="headerlink" href="#icspacket.proto.iec61850.control.ControlObject.model" title="Link to this definition">¶</a></dt>
+<dd><p>Return the configured control model for this object.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.control.ControlObject.origin">
+<span class="sig-name descname"><span class="pre">origin</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">bytes</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../../_modules/icspacket/proto/iec61850/control.html#ControlObject.origin"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iec61850.control.ControlObject.origin" title="Link to this definition">¶</a></dt>
+<dd><p>Return the <em>origin</em> structure as defined in IEC 61850-7-2.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Origin information consisting of category and identifier.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>list[dict[str, int | bytes]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.control.ControlObject.get_operate_data">
+<span class="sig-name descname"><span class="pre">get_operate_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ctl_val</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">oper_time</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../mms/api_data.html#icspacket.proto.mms.data.Timestamp" title="icspacket.proto.mms.data.Timestamp"><span class="pre">Timestamp</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">check</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Data</span></span></span><a class="reference internal" href="../../_modules/icspacket/proto/iec61850/control.html#ControlObject.get_operate_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iec61850.control.ControlObject.get_operate_data" title="Link to this definition">¶</a></dt>
+<dd><p>Construct an MMS <em>Data</em> structure representing an operate request.</p>
+<p>The resulting structure includes mandatory control fields such as
+<code class="docutils literal notranslate"><span class="pre">ctlVal</span></code>, <code class="docutils literal notranslate"><span class="pre">T</span></code>, <code class="docutils literal notranslate"><span class="pre">origin</span></code>, and optionally <code class="docutils literal notranslate"><span class="pre">operTm</span></code>, <code class="docutils literal notranslate"><span class="pre">ctlNum</span></code>,
+<code class="docutils literal notranslate"><span class="pre">Test</span></code>, and <code class="docutils literal notranslate"><span class="pre">Check</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ctl_val</strong> (<em>Any</em>) – The control value to apply.</p></li>
+<li><p><strong>oper_time</strong> (<a class="reference internal" href="../mms/api_data.html#icspacket.proto.mms.data.Timestamp" title="icspacket.proto.mms.data.Timestamp"><em>Timestamp</em></a><em> | </em><em>None</em>) – Optional timestamp for time-activated control.</p></li>
+<li><p><strong>check</strong> (<em>bool</em>) – Whether to include interlock and synchrocheck parameters.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>ASN.1 encoded <code class="xref py py-class docutils literal notranslate"><span class="pre">Data</span></code> structure for the operate request.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="api_goose.html#icspacket.proto.iec61850.goose.Data" title="icspacket.proto.iec61850.goose.Data">Data</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.control.ControlObject.T">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">T</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="../mms/api_data.html#icspacket.proto.mms.data.Timestamp" title="icspacket.proto.mms.data.Timestamp"><span class="pre">Timestamp</span></a></em><a class="headerlink" href="#icspacket.proto.iec61850.control.ControlObject.T" title="Link to this definition">¶</a></dt>
+<dd><p>Return the current control timestamp (<em>T</em>).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Timestamp of the control request.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="../mms/api_data.html#icspacket.proto.mms.data.Timestamp" title="icspacket.proto.mms.data.Timestamp">Timestamp</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+        </article><button class="back-to-top" type="button">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+  </svg>
+  <span>Back to top</span>
+</button><div class="navigation flex print:hidden"><div class="navigation-prev">
+    <a href="api_path.html">
+      <i class="i-lucide chevron-left"></i>
+      <div class="page-info">
+        <span>Previous</span><div class="title">Object / Data References</div></div>
+    </a>
+  </div><div class="navigation-next">
+    <a href="api_client.html">
+      <div class="page-info">
+        <span>Next</span>
+        <div class="title">IED Client</div>
+      </div>
+      <i class="i-lucide chevron-right"></i>
+    </a>
+  </div></div></div>
+    </div>
+  </main>
+</div>
+<footer class="sy-foot">
+  <div class="sy-foot-inner sy-container mx-auto">
+    <div class="sy-foot-reserved md:flex justify-between items-center">
+      <div class="sy-foot-copyright"><p>2025, MatrixEditor</p>
+  
+  <p>
+    Made with
+    
+    <a href="https://www.sphinx-doc.org/">Sphinx</a> and
+    
+    <a href="https://shibuya.lepture.com">Shibuya theme</a>.
+  </p>
+</div>
+      <div class="sy-foot-socials">
+<a href="https://github.com/MatrixEditor/icspacket" aria-label="GitHub">
+  <iconify-icon icon="simple-icons:github"></iconify-icon>
+</a></div>
+    </div>
+  </div>
+</footer>
+      <script src="../../_static/documentation_options.js?v=ed1c4872"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+      <script src="../../_static/shibuya.js?v=e730760c"></script></body>
+</html>

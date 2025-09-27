@@ -2,12 +2,12 @@
 <html lang="en" data-accent-color="lime" data-content_root="../../../../">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>icspacket.proto.iec61850.classes - icspacket 0.2.3 documentation</title><link rel="index" title="Index" href="../../../../genindex.html" /><link rel="search" title="Search" href="../../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>icspacket.proto.iec61850.classes - icspacket 0.1.dev1+g53b33844c documentation</title><link rel="index" title="Index" href="../../../../genindex.html" /><link rel="search" title="Search" href="../../../../search.html" />
       <link rel="canonical" href="https://matrixeditor.github.io/icspacket/_modules/icspacket/proto/iec61850/classes.html" /><script>
     function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
     setColorMode(localStorage._theme||"dark");
-  </script><link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=397bb51e" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/shibuya.css?v=d48c410d" />
+  </script><link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=b1a1f93b" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/shibuya.css?v=bb284d7b" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link media="print" rel="stylesheet" type="text/css" href="../../../../_static/print.css?v=20ff2c19" />
@@ -66,8 +66,8 @@ data-aria-dark="Switch to auto color mode">
 </button><button class="md:hidden flex items-center js-menu" aria-label="Menu" type="button" aria-controls="head-nav" aria-expanded="false">
         <div class="hamburger">
           <span class="hamburger_1"></span>
-          <span class="hamburger_2 -translate-x-2"></span>
-          <span class="hamburger_3 -translate-x-1"></span>
+          <span class="hamburger_2"></span>
+          <span class="hamburger_3"></span>
         </div>
       </button>
     </div>
@@ -120,9 +120,11 @@ data-aria-dark="Switch to auto color mode">
 <p class="caption" role="heading" aria-level="3"><span class="caption-text">IEC 61850</span></p>
 <ul>
 <li class="toctree-l1 _expand"><a class="reference internal" href="../../../../protocols/iec61850/iedmap.html">Enumerating IEDs</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../protocols/iec61850/iedctrl.html">Operating on IEDs</a></li>
 <li class="toctree-l1 _expand"><a class="reference internal" href="../../../../protocols/iec61850/api.html">API Reference</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../../protocols/iec61850/api_data_classes.html">Data Classes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../protocols/iec61850/api_path.html">Object / Data References</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../protocols/iec61850/api_control.html">Control / Operation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../protocols/iec61850/api_client.html">IED Client</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../protocols/iec61850/api_goose.html">GOOSE Client</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../protocols/iec61850/api_sv.html">SampledValues Client</a></li>
@@ -451,6 +453,37 @@ data-aria-dark="Switch to auto color mode">
 </span><span data-line="190">    <span class="n">US</span> <span class="o">=</span> <span class="s2">&quot;Unicast sampled value control&quot;</span>
 </span><span data-line="191">    <span class="n">XX</span> <span class="o">=</span> <span class="s2">&quot;All&quot;</span></div>
 
+</span><span data-line="192">
+</span><span data-line="193">
+<div class="viewcode-block" id="ControlModel">
+<a class="viewcode-back" href="../../../../protocols/iec61850/api_data_classes.html#icspacket.proto.iec61850.classes.ControlModel">[docs]</a>
+</span><span data-line="194"><span class="k">class</span><span class="w"> </span><span class="nc">ControlModel</span><span class="p">(</span><span class="n">enum</span><span class="o">.</span><span class="n">IntEnum</span><span class="p">):</span>
+</span><span data-line="195"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="196"><span class="sd">    IEC 61850 control models for logical nodes and control blocks.</span>
+</span><span data-line="197">
+</span><span data-line="198"><span class="sd">    These values define the operational semantics of control actions</span>
+</span><span data-line="199"><span class="sd">    such as status-only operation, direct control, or &quot;select-before-operate&quot;</span>
+</span><span data-line="200"><span class="sd">    (SBO) modes. They are used to configure how client applications interact</span>
+</span><span data-line="201"><span class="sd">    with controllable data objects.</span>
+</span><span data-line="202">
+</span><span data-line="203"><span class="sd">    .. versionadded:: 0.2.4</span>
+</span><span data-line="204"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span data-line="205">
+</span><span data-line="206">    <span class="n">STATUS_ONLY</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span data-line="207"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Status-only mode.&quot;&quot;&quot;</span>
+</span><span data-line="208">
+</span><span data-line="209">    <span class="n">DIRECT_NORMAL</span> <span class="o">=</span> <span class="mi">1</span>
+</span><span data-line="210"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Direct-control with normal security.&quot;&quot;&quot;</span>
+</span><span data-line="211">
+</span><span data-line="212">    <span class="n">SBO_NORMAL</span> <span class="o">=</span> <span class="mi">2</span>
+</span><span data-line="213"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Select-Before-Operate (SBO) with normal security.&quot;&quot;&quot;</span>
+</span><span data-line="214">
+</span><span data-line="215">    <span class="n">DIRECT_ENHANCED</span> <span class="o">=</span> <span class="mi">3</span>
+</span><span data-line="216"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Direct-control with enhanced security.&quot;&quot;&quot;</span>
+</span><span data-line="217">
+</span><span data-line="218">    <span class="n">SBO_ENHANCED</span> <span class="o">=</span> <span class="mi">4</span>
+</span><span data-line="219"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Select-Before-Operate with enhanced security.&quot;&quot;&quot;</span></div>
+
 </span></pre></div>
         </article><button class="back-to-top" type="button">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -481,7 +514,7 @@ data-aria-dark="Switch to auto color mode">
     </div>
   </div>
 </footer>
-      <script src="../../../../_static/documentation_options.js?v=b6b0a955"></script>
+      <script src="../../../../_static/documentation_options.js?v=ed1c4872"></script>
       <script src="../../../../_static/doctools.js?v=9bcbadda"></script>
       <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>

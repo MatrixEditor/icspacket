@@ -2,12 +2,12 @@
 <html lang="en" data-accent-color="lime" data-content_root="../../../../">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>icspacket.proto.mms.data - icspacket 0.2.3 documentation</title><link rel="index" title="Index" href="../../../../genindex.html" /><link rel="search" title="Search" href="../../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>icspacket.proto.mms.data - icspacket 0.1.dev1+g53b33844c documentation</title><link rel="index" title="Index" href="../../../../genindex.html" /><link rel="search" title="Search" href="../../../../search.html" />
       <link rel="canonical" href="https://matrixeditor.github.io/icspacket/_modules/icspacket/proto/mms/data.html" /><script>
     function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
     setColorMode(localStorage._theme||"dark");
-  </script><link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=397bb51e" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/shibuya.css?v=d48c410d" />
+  </script><link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=b1a1f93b" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/shibuya.css?v=bb284d7b" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link media="print" rel="stylesheet" type="text/css" href="../../../../_static/print.css?v=20ff2c19" />
@@ -66,8 +66,8 @@ data-aria-dark="Switch to auto color mode">
 </button><button class="md:hidden flex items-center js-menu" aria-label="Menu" type="button" aria-controls="head-nav" aria-expanded="false">
         <div class="hamburger">
           <span class="hamburger_1"></span>
-          <span class="hamburger_2 -translate-x-2"></span>
-          <span class="hamburger_3 -translate-x-1"></span>
+          <span class="hamburger_2"></span>
+          <span class="hamburger_3"></span>
         </div>
       </button>
     </div>
@@ -120,9 +120,11 @@ data-aria-dark="Switch to auto color mode">
 <p class="caption" role="heading" aria-level="3"><span class="caption-text">IEC 61850</span></p>
 <ul>
 <li class="toctree-l1 _expand"><a class="reference internal" href="../../../../protocols/iec61850/iedmap.html">Enumerating IEDs</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../protocols/iec61850/iedctrl.html">Operating on IEDs</a></li>
 <li class="toctree-l1 _expand"><a class="reference internal" href="../../../../protocols/iec61850/api.html">API Reference</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../../protocols/iec61850/api_data_classes.html">Data Classes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../protocols/iec61850/api_path.html">Object / Data References</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../protocols/iec61850/api_control.html">Control / Operation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../protocols/iec61850/api_client.html">IED Client</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../protocols/iec61850/api_goose.html">GOOSE Client</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../protocols/iec61850/api_sv.html">SampledValues Client</a></li>
@@ -480,28 +482,341 @@ data-aria-dark="Switch to auto color mode">
 </span><span data-line="219">        <span class="bp">self</span><span class="o">.</span><span class="n">timeval</span> <span class="o">=</span> <span class="nb">bytes</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 </span><span data-line="220">        <span class="bp">self</span><span class="o">.</span><span class="n">fraction</span> <span class="o">=</span> <span class="nb">bytes</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 </span><span data-line="221">
-</span><span data-line="222">    <span class="nd">@property</span>
-</span><span data-line="223">    <span class="k">def</span><span class="w"> </span><span class="nf">datetime</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">:</span>
+<div class="viewcode-block" id="Timestamp.from_datetime">
+<a class="viewcode-back" href="../../../../protocols/mms/api_data.html#icspacket.proto.mms.data.Timestamp.from_datetime">[docs]</a>
+</span><span data-line="222">    <span class="nd">@staticmethod</span>
+</span><span data-line="223">    <span class="k">def</span><span class="w"> </span><span class="nf">from_datetime</span><span class="p">(</span><span class="n">dt</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Timestamp&quot;</span><span class="p">:</span>
 </span><span data-line="224"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span data-line="225"><span class="sd">        Get a :class:`datetime.datetime` object representing the timestamp.</span>
+</span><span data-line="225"><span class="sd">        Construct a :class:`Timestamp` from a Python :class:`datetime.datetime`.</span>
 </span><span data-line="226">
-</span><span data-line="227"><span class="sd">        :return: A :class:`datetime.datetime` object representing the</span>
-</span><span data-line="228"><span class="sd">            timestamp.</span>
-</span><span data-line="229"><span class="sd">        :rtype: datetime.datetime</span>
-</span><span data-line="230"><span class="sd">        &quot;&quot;&quot;</span>
-</span><span data-line="231">        <span class="k">return</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">fromtimestamp</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">seconds</span><span class="p">)</span></div>
-
-</span><span data-line="232">
+</span><span data-line="227"><span class="sd">        The supplied datetime object is converted to a UNIX timestamp</span>
+</span><span data-line="228"><span class="sd">        (seconds since epoch), which is then used to populate the</span>
+</span><span data-line="229"><span class="sd">        internal ``seconds`` field of the :class:`Timestamp`.</span>
+</span><span data-line="230">
+</span><span data-line="231"><span class="sd">        Example</span>
+</span><span data-line="232"><span class="sd">        -------</span>
 </span><span data-line="233">
+</span><span data-line="234"><span class="sd">        .. code-block:: python</span>
+</span><span data-line="235">
+</span><span data-line="236"><span class="sd">            ts = Timestamp.from_datetime(datetime.datetime.utcnow())</span>
+</span><span data-line="237"><span class="sd">            print(ts.seconds)</span>
+</span><span data-line="238">
+</span><span data-line="239"><span class="sd">        :param dt:</span>
+</span><span data-line="240"><span class="sd">            A datetime instance to convert into a MMS Timestamp.</span>
+</span><span data-line="241"><span class="sd">        :type dt: datetime.datetime</span>
+</span><span data-line="242"><span class="sd">        :return:</span>
+</span><span data-line="243"><span class="sd">            A newly constructed :class:`Timestamp` instance.</span>
+</span><span data-line="244"><span class="sd">        :rtype: Timestamp</span>
+</span><span data-line="245">
+</span><span data-line="246"><span class="sd">        .. versionadded:: 0.2.4</span>
+</span><span data-line="247"><span class="sd">        &quot;&quot;&quot;</span>
+</span><span data-line="248">        <span class="n">ts</span> <span class="o">=</span> <span class="n">Timestamp</span><span class="p">()</span>
+</span><span data-line="249">        <span class="n">ts</span><span class="o">.</span><span class="n">seconds</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">dt</span><span class="o">.</span><span class="n">timestamp</span><span class="p">())</span>
+</span><span data-line="250">        <span class="k">return</span> <span class="n">ts</span></div>
+
+</span><span data-line="251">
+</span><span data-line="252">    <span class="nd">@property</span>
+</span><span data-line="253">    <span class="k">def</span><span class="w"> </span><span class="nf">datetime</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">:</span>
+</span><span data-line="254"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="255"><span class="sd">        Get a :class:`datetime.datetime` object representing the timestamp.</span>
+</span><span data-line="256">
+</span><span data-line="257"><span class="sd">        :return: A :class:`datetime.datetime` object representing the</span>
+</span><span data-line="258"><span class="sd">            timestamp.</span>
+</span><span data-line="259"><span class="sd">        :rtype: datetime.datetime</span>
+</span><span data-line="260"><span class="sd">        &quot;&quot;&quot;</span>
+</span><span data-line="261">        <span class="k">return</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">fromtimestamp</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">seconds</span><span class="p">)</span></div>
+
+</span><span data-line="262">
+</span><span data-line="263">
 <div class="viewcode-block" id="FileHandle">
 <a class="viewcode-back" href="../../../../protocols/mms/api_data.html#icspacket.proto.mms.data.FileHandle">[docs]</a>
-</span><span data-line="234"><span class="nd">@dataclass</span><span class="p">(</span><span class="n">frozen</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</span><span data-line="235"><span class="k">class</span><span class="w"> </span><span class="nc">FileHandle</span><span class="p">:</span>
-</span><span data-line="236"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Simple representation of an open file handle&quot;&quot;&quot;</span>
-</span><span data-line="237">
-</span><span data-line="238">    <span class="n">handle</span><span class="p">:</span> <span class="nb">int</span>
-</span><span data-line="239">    <span class="n">attributes</span><span class="p">:</span> <span class="n">FileAttributes</span></div>
+</span><span data-line="264"><span class="nd">@dataclass</span><span class="p">(</span><span class="n">frozen</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span data-line="265"><span class="k">class</span><span class="w"> </span><span class="nc">FileHandle</span><span class="p">:</span>
+</span><span data-line="266"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Simple representation of an open file handle&quot;&quot;&quot;</span>
+</span><span data-line="267">
+</span><span data-line="268">    <span class="n">handle</span><span class="p">:</span> <span class="nb">int</span>
+</span><span data-line="269">    <span class="n">attributes</span><span class="p">:</span> <span class="n">FileAttributes</span></div>
 
+</span><span data-line="270">
+</span><span data-line="271">
+<div class="viewcode-block" id="array2data">
+<a class="viewcode-back" href="../../../../protocols/mms/api_data.html#icspacket.proto.mms.data.array2data">[docs]</a>
+</span><span data-line="272"><span class="k">def</span><span class="w"> </span><span class="nf">array2data</span><span class="p">(</span><span class="n">obj</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">dict</span><span class="p">],</span> <span class="n">data</span><span class="p">:</span> <span class="n">Data</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="273"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="274"><span class="sd">    Convert a Python list of dicts into a MMS ``Data.array`` representation.</span>
+</span><span data-line="275">
+</span><span data-line="276"><span class="sd">    :param obj:</span>
+</span><span data-line="277"><span class="sd">        A list of dict objects, each convertible into :class:`Data`</span>
+</span><span data-line="278"><span class="sd">        using :func:`from_dict`.</span>
+</span><span data-line="279"><span class="sd">    :type obj: list[dict]</span>
+</span><span data-line="280"><span class="sd">    :param data:</span>
+</span><span data-line="281"><span class="sd">        Target :class:`Data` object to populate.</span>
+</span><span data-line="282"><span class="sd">    :type data: Data</span>
+</span><span data-line="283">
+</span><span data-line="284"><span class="sd">    .. versionadded:: 0.2.4</span>
+</span><span data-line="285"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span data-line="286">    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+</span><span data-line="287">        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Invalid array value: </span><span class="si">{</span><span class="n">obj</span><span class="si">!r}</span><span class="s2"> - expected list&quot;</span><span class="p">)</span>
+</span><span data-line="288">
+</span><span data-line="289">    <span class="n">data</span><span class="o">.</span><span class="n">array</span> <span class="o">=</span> <span class="n">Data</span><span class="o">.</span><span class="n">array_TYPE</span><span class="p">([</span><span class="n">from_dict</span><span class="p">(</span><span class="n">item</span><span class="p">)</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">obj</span><span class="p">])</span></div>
+
+</span><span data-line="290">
+</span><span data-line="291">
+<div class="viewcode-block" id="struct2data">
+<a class="viewcode-back" href="../../../../protocols/mms/api_data.html#icspacket.proto.mms.data.struct2data">[docs]</a>
+</span><span data-line="292"><span class="k">def</span><span class="w"> </span><span class="nf">struct2data</span><span class="p">(</span><span class="n">obj</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">dict</span><span class="p">],</span> <span class="n">data</span><span class="p">:</span> <span class="n">Data</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="293"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="294"><span class="sd">    Convert a Python list of dicts into a MMS ``Data.structure`` representation.</span>
+</span><span data-line="295">
+</span><span data-line="296"><span class="sd">    Each dict is transformed into a :class:`Data` element using</span>
+</span><span data-line="297"><span class="sd">    :func:`from_dict`.</span>
+</span><span data-line="298">
+</span><span data-line="299"><span class="sd">    .. versionadded:: 0.2.4</span>
+</span><span data-line="300"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span data-line="301">    <span class="n">structure</span> <span class="o">=</span> <span class="n">Data</span><span class="o">.</span><span class="n">structure_TYPE</span><span class="p">()</span>
+</span><span data-line="302">    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">obj</span><span class="p">:</span>
+</span><span data-line="303">        <span class="n">item_data</span> <span class="o">=</span> <span class="n">from_dict</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+</span><span data-line="304">        <span class="n">structure</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">item_data</span><span class="p">)</span>
+</span><span data-line="305">    <span class="n">data</span><span class="o">.</span><span class="n">structure</span> <span class="o">=</span> <span class="n">structure</span></div>
+
+</span><span data-line="306">
+</span><span data-line="307">
+<div class="viewcode-block" id="boolean2data">
+<a class="viewcode-back" href="../../../../protocols/mms/api_data.html#icspacket.proto.mms.data.boolean2data">[docs]</a>
+</span><span data-line="308"><span class="k">def</span><span class="w"> </span><span class="nf">boolean2data</span><span class="p">(</span><span class="n">obj</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="nb">str</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">Data</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="309"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="310"><span class="sd">    Convert a Python boolean or truthy string into MMS ``Data.boolean``.</span>
+</span><span data-line="311">
+</span><span data-line="312"><span class="sd">    Recognized truthy values include ``True``, ``1``, ``&quot;true&quot;``,</span>
+</span><span data-line="313"><span class="sd">    ``&quot;True&quot;``, ``&quot;On&quot;``, and ``&quot;on&quot;``.</span>
+</span><span data-line="314">
+</span><span data-line="315"><span class="sd">    .. versionadded:: 0.2.4</span>
+</span><span data-line="316"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span data-line="317">    <span class="n">data</span><span class="o">.</span><span class="n">boolean</span> <span class="o">=</span> <span class="n">obj</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="s2">&quot;true&quot;</span><span class="p">,</span> <span class="s2">&quot;True&quot;</span><span class="p">,</span> <span class="s2">&quot;On&quot;</span><span class="p">,</span> <span class="s2">&quot;on&quot;</span><span class="p">)</span></div>
+
+</span><span data-line="318">
+</span><span data-line="319">
+<div class="viewcode-block" id="bit_string2data">
+<a class="viewcode-back" href="../../../../protocols/mms/api_data.html#icspacket.proto.mms.data.bit_string2data">[docs]</a>
+</span><span data-line="320"><span class="k">def</span><span class="w"> </span><span class="nf">bit_string2data</span><span class="p">(</span>
+</span><span data-line="321">    <span class="n">obj</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">bool</span><span class="p">]</span> <span class="o">|</span> <span class="nb">bytes</span> <span class="o">|</span> <span class="n">Data</span><span class="o">.</span><span class="n">bit_string_TYPE</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">Data</span>
+</span><span data-line="322"><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="323"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="324"><span class="sd">    Convert a dict, bytes, or bit_string_TYPE into MMS ``Data.bit_string``.</span>
+</span><span data-line="325">
+</span><span data-line="326"><span class="sd">    :param obj:</span>
+</span><span data-line="327"><span class="sd">        - If a ``dict[int, bool]``, the keys represent bit positions</span>
+</span><span data-line="328"><span class="sd">          (1-based) and the values indicate whether the bit is set.</span>
+</span><span data-line="329"><span class="sd">        - If ``bytes`` or ``bit_string_TYPE``, directly assigned.</span>
+</span><span data-line="330"><span class="sd">    :type obj: dict[int, bool] | bytes | Data.bit_string_TYPE</span>
+</span><span data-line="331"><span class="sd">    :param data:</span>
+</span><span data-line="332"><span class="sd">        Target :class:`Data` object to populate.</span>
+</span><span data-line="333"><span class="sd">    :type data: Data</span>
+</span><span data-line="334">
+</span><span data-line="335"><span class="sd">    .. versionadded:: 0.2.4</span>
+</span><span data-line="336"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span data-line="337">    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+</span><span data-line="338">        <span class="n">size</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+</span><span data-line="339">        <span class="n">value</span> <span class="o">=</span> <span class="n">Data</span><span class="o">.</span><span class="n">bit_string_TYPE</span><span class="p">(</span><span class="n">size</span><span class="p">)</span>
+</span><span data-line="340">        <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">is_set</span> <span class="ow">in</span> <span class="n">obj</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+</span><span data-line="341">            <span class="n">value</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">is_set</span><span class="p">)</span>
+</span><span data-line="342">    <span class="k">else</span><span class="p">:</span>
+</span><span data-line="343">        <span class="n">value</span> <span class="o">=</span> <span class="n">obj</span>
+</span><span data-line="344">    <span class="n">data</span><span class="o">.</span><span class="n">bit_string</span> <span class="o">=</span> <span class="n">value</span></div>
+
+</span><span data-line="345">
+</span><span data-line="346">
+<div class="viewcode-block" id="int2data">
+<a class="viewcode-back" href="../../../../protocols/mms/api_data.html#icspacket.proto.mms.data.int2data">[docs]</a>
+</span><span data-line="347"><span class="k">def</span><span class="w"> </span><span class="nf">int2data</span><span class="p">(</span><span class="n">obj</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">Data</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="348"><span class="w">    </span><span class="sd">&quot;&quot;&quot;.. versionadded:: 0.2.4&quot;&quot;&quot;</span>
+</span><span data-line="349">    <span class="n">data</span><span class="o">.</span><span class="n">integer</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span></div>
+
+</span><span data-line="350">
+</span><span data-line="351">
+<div class="viewcode-block" id="uint2data">
+<a class="viewcode-back" href="../../../../protocols/mms/api_data.html#icspacket.proto.mms.data.uint2data">[docs]</a>
+</span><span data-line="352"><span class="k">def</span><span class="w"> </span><span class="nf">uint2data</span><span class="p">(</span><span class="n">obj</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">Data</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="353"><span class="w">    </span><span class="sd">&quot;&quot;&quot;.. versionadded:: 0.2.4&quot;&quot;&quot;</span>
+</span><span data-line="354">    <span class="k">if</span> <span class="n">obj</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+</span><span data-line="355">        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Invalid unsigned integer value: </span><span class="si">{</span><span class="n">obj</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span data-line="356">
+</span><span data-line="357">    <span class="n">data</span><span class="o">.</span><span class="n">unsigned</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span></div>
+
+</span><span data-line="358">
+</span><span data-line="359">
+<div class="viewcode-block" id="float2data">
+<a class="viewcode-back" href="../../../../protocols/mms/api_data.html#icspacket.proto.mms.data.float2data">[docs]</a>
+</span><span data-line="360"><span class="k">def</span><span class="w"> </span><span class="nf">float2data</span><span class="p">(</span><span class="n">obj</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">Data</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="361"><span class="w">    </span><span class="sd">&quot;&quot;&quot;.. versionadded:: 0.2.4&quot;&quot;&quot;</span>
+</span><span data-line="362">    <span class="n">data</span><span class="o">.</span><span class="n">floating_point</span> <span class="o">=</span> <span class="n">create_floating_point_value</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span></div>
+
+</span><span data-line="363">
+</span><span data-line="364">
+<div class="viewcode-block" id="bytes2data">
+<a class="viewcode-back" href="../../../../protocols/mms/api_data.html#icspacket.proto.mms.data.bytes2data">[docs]</a>
+</span><span data-line="365"><span class="k">def</span><span class="w"> </span><span class="nf">bytes2data</span><span class="p">(</span><span class="n">obj</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">Data</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="366"><span class="w">    </span><span class="sd">&quot;&quot;&quot;.. versionadded:: 0.2.4&quot;&quot;&quot;</span>
+</span><span data-line="367">    <span class="n">data</span><span class="o">.</span><span class="n">octet_string</span> <span class="o">=</span> <span class="nb">bytes</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span></div>
+
+</span><span data-line="368">
+</span><span data-line="369">
+<div class="viewcode-block" id="visible_string2data">
+<a class="viewcode-back" href="../../../../protocols/mms/api_data.html#icspacket.proto.mms.data.visible_string2data">[docs]</a>
+</span><span data-line="370"><span class="k">def</span><span class="w"> </span><span class="nf">visible_string2data</span><span class="p">(</span><span class="n">obj</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">Data</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="371"><span class="w">    </span><span class="sd">&quot;&quot;&quot;.. versionadded:: 0.2.4&quot;&quot;&quot;</span>
+</span><span data-line="372">    <span class="n">data</span><span class="o">.</span><span class="n">visible_string</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span></div>
+
+</span><span data-line="373">
+</span><span data-line="374">
+<div class="viewcode-block" id="time2data">
+<a class="viewcode-back" href="../../../../protocols/mms/api_data.html#icspacket.proto.mms.data.time2data">[docs]</a>
+</span><span data-line="375"><span class="k">def</span><span class="w"> </span><span class="nf">time2data</span><span class="p">(</span><span class="n">obj</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">Data</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="376"><span class="w">    </span><span class="sd">&quot;&quot;&quot;.. versionadded:: 0.2.4&quot;&quot;&quot;</span>
+</span><span data-line="377">    <span class="n">data</span><span class="o">.</span><span class="n">generalized_time</span> <span class="o">=</span> <span class="nb">bytes</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span></div>
+
+</span><span data-line="378">
+</span><span data-line="379">
+<div class="viewcode-block" id="bintime2data">
+<a class="viewcode-back" href="../../../../protocols/mms/api_data.html#icspacket.proto.mms.data.bintime2data">[docs]</a>
+</span><span data-line="380"><span class="k">def</span><span class="w"> </span><span class="nf">bintime2data</span><span class="p">(</span><span class="n">obj</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">Data</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="381"><span class="w">    </span><span class="sd">&quot;&quot;&quot;.. versionadded:: 0.2.4&quot;&quot;&quot;</span>
+</span><span data-line="382">    <span class="n">data</span><span class="o">.</span><span class="n">bintime</span> <span class="o">=</span> <span class="nb">bytes</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span></div>
+
+</span><span data-line="383">
+</span><span data-line="384">
+<div class="viewcode-block" id="utctime2data">
+<a class="viewcode-back" href="../../../../protocols/mms/api_data.html#icspacket.proto.mms.data.utctime2data">[docs]</a>
+</span><span data-line="385"><span class="k">def</span><span class="w"> </span><span class="nf">utctime2data</span><span class="p">(</span><span class="n">obj</span><span class="p">:</span> <span class="nb">bytes</span> <span class="o">|</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">Data</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="386"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="387"><span class="sd">    Convert a UTC time value into MMS ``Data.utc_time``.</span>
+</span><span data-line="388">
+</span><span data-line="389"><span class="sd">    Accepts either raw bytes or a Python :class:`datetime.datetime`.</span>
+</span><span data-line="390"><span class="sd">    If a datetime is provided, it is converted using</span>
+</span><span data-line="391"><span class="sd">    :func:`Timestamp.from_datetime`.</span>
+</span><span data-line="392">
+</span><span data-line="393"><span class="sd">    .. versionadded:: 0.2.4</span>
+</span><span data-line="394"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span data-line="395">    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">):</span>
+</span><span data-line="396">        <span class="n">obj</span> <span class="o">=</span> <span class="n">Timestamp</span><span class="o">.</span><span class="n">from_datetime</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
+</span><span data-line="397">    <span class="n">data</span><span class="o">.</span><span class="n">utc_time</span> <span class="o">=</span> <span class="nb">bytes</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span></div>
+
+</span><span data-line="398">
+</span><span data-line="399">
+<div class="viewcode-block" id="bcd2data">
+<a class="viewcode-back" href="../../../../protocols/mms/api_data.html#icspacket.proto.mms.data.bcd2data">[docs]</a>
+</span><span data-line="400"><span class="k">def</span><span class="w"> </span><span class="nf">bcd2data</span><span class="p">(</span><span class="n">obj</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">Data</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="401"><span class="w">    </span><span class="sd">&quot;&quot;&quot;.. versionadded:: 0.2.4&quot;&quot;&quot;</span>
+</span><span data-line="402">    <span class="n">data</span><span class="o">.</span><span class="n">bcd</span> <span class="o">=</span> <span class="n">obj</span></div>
+
+</span><span data-line="403">
+</span><span data-line="404">
+<div class="viewcode-block" id="boolean_array2data">
+<a class="viewcode-back" href="../../../../protocols/mms/api_data.html#icspacket.proto.mms.data.boolean_array2data">[docs]</a>
+</span><span data-line="405"><span class="k">def</span><span class="w"> </span><span class="nf">boolean_array2data</span><span class="p">(</span><span class="n">obj</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">bool</span><span class="p">],</span> <span class="n">data</span><span class="p">:</span> <span class="n">Data</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="406"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="407"><span class="sd">    Convert a Python list of booleans into MMS ``Data.booleanArray``.</span>
+</span><span data-line="408">
+</span><span data-line="409"><span class="sd">    :param obj:</span>
+</span><span data-line="410"><span class="sd">        Sequence of boolean values. Each element is mapped to an</span>
+</span><span data-line="411"><span class="sd">        index in the MMS ``booleanArray``.</span>
+</span><span data-line="412"><span class="sd">    :type obj: list[bool]</span>
+</span><span data-line="413">
+</span><span data-line="414"><span class="sd">    .. versionadded:: 0.2.4</span>
+</span><span data-line="415"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span data-line="416">    <span class="n">value</span> <span class="o">=</span> <span class="n">Data</span><span class="o">.</span><span class="n">booleanArray_TYPE</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">obj</span><span class="p">))</span>
+</span><span data-line="417">    <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">is_set</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">obj</span><span class="p">):</span>
+</span><span data-line="418">        <span class="n">value</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="nb">bool</span><span class="p">(</span><span class="n">is_set</span><span class="p">))</span>
+</span><span data-line="419">    <span class="n">data</span><span class="o">.</span><span class="n">booleanArray</span> <span class="o">=</span> <span class="n">value</span></div>
+
+</span><span data-line="420">
+</span><span data-line="421">
+<div class="viewcode-block" id="obj_id2data">
+<a class="viewcode-back" href="../../../../protocols/mms/api_data.html#icspacket.proto.mms.data.obj_id2data">[docs]</a>
+</span><span data-line="422"><span class="k">def</span><span class="w"> </span><span class="nf">obj_id2data</span><span class="p">(</span><span class="n">obj</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">Data</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="423"><span class="w">    </span><span class="sd">&quot;&quot;&quot;.. versionadded:: 0.2.4&quot;&quot;&quot;</span>
+</span><span data-line="424">    <span class="n">data</span><span class="o">.</span><span class="n">objId</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span></div>
+
+</span><span data-line="425">
+</span><span data-line="426">
+<div class="viewcode-block" id="mms_string2data">
+<a class="viewcode-back" href="../../../../protocols/mms/api_data.html#icspacket.proto.mms.data.mms_string2data">[docs]</a>
+</span><span data-line="427"><span class="k">def</span><span class="w"> </span><span class="nf">mms_string2data</span><span class="p">(</span><span class="n">obj</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">Data</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="428"><span class="w">    </span><span class="sd">&quot;&quot;&quot;.. versionadded:: 0.2.4&quot;&quot;&quot;</span>
+</span><span data-line="429">    <span class="n">data</span><span class="o">.</span><span class="n">mMSString</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span></div>
+
+</span><span data-line="430">
+</span><span data-line="431">
+<div class="viewcode-block" id="from_dict">
+<a class="viewcode-back" href="../../../../protocols/mms/api_data.html#icspacket.proto.mms.data.from_dict">[docs]</a>
+</span><span data-line="432"><span class="k">def</span><span class="w"> </span><span class="nf">from_dict</span><span class="p">(</span><span class="n">obj</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Data</span><span class="p">:</span>
+</span><span data-line="433"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="434"><span class="sd">    Construct a :class:`Data` object from a Python dictionary.</span>
+</span><span data-line="435">
+</span><span data-line="436"><span class="sd">    This is a high-level factory function that simplifies the creation</span>
+</span><span data-line="437"><span class="sd">    of MMS ``Data`` instances from JSON-like structures. Keys in the</span>
+</span><span data-line="438"><span class="sd">    dictionary correspond to MMS ``Data.PRESENT`` discriminators</span>
+</span><span data-line="439"><span class="sd">    (e.g., ``&quot;integer&quot;``, ``&quot;boolean&quot;``, ``&quot;array&quot;``). Values are</span>
+</span><span data-line="440"><span class="sd">    converted using type-specific converters registered in</span>
+</span><span data-line="441"><span class="sd">    :data:`_DATA_CONVERT`.</span>
+</span><span data-line="442">
+</span><span data-line="443"><span class="sd">    Example</span>
+</span><span data-line="444"><span class="sd">    -------</span>
+</span><span data-line="445">
+</span><span data-line="446"><span class="sd">    .. code-block:: python</span>
+</span><span data-line="447">
+</span><span data-line="448"><span class="sd">        payload = {</span>
+</span><span data-line="449"><span class="sd">            &quot;integer&quot;: 42,</span>
+</span><span data-line="450"><span class="sd">            &quot;visible_string&quot;: &quot;hello&quot;,</span>
+</span><span data-line="451"><span class="sd">            &quot;boolean&quot;: True,</span>
+</span><span data-line="452"><span class="sd">            &quot;array&quot;: [</span>
+</span><span data-line="453"><span class="sd">                {&quot;integer&quot;: 1},</span>
+</span><span data-line="454"><span class="sd">                {&quot;integer&quot;: 2},</span>
+</span><span data-line="455"><span class="sd">            ],</span>
+</span><span data-line="456"><span class="sd">        }</span>
+</span><span data-line="457">
+</span><span data-line="458"><span class="sd">        data = from_dict(payload)</span>
+</span><span data-line="459">
+</span><span data-line="460"><span class="sd">    The above produces a :class:`Data` object equivalent to one that</span>
+</span><span data-line="461"><span class="sd">    would have been constructed manually.</span>
+</span><span data-line="462">
+</span><span data-line="463"><span class="sd">    :param obj:</span>
+</span><span data-line="464"><span class="sd">        Dictionary mapping field names (without the ``PR_`` prefix)</span>
+</span><span data-line="465"><span class="sd">        to Python values convertible into MMS ``Data`` elements.</span>
+</span><span data-line="466"><span class="sd">    :type obj: dict[str, Any]</span>
+</span><span data-line="467"><span class="sd">    :return:</span>
+</span><span data-line="468"><span class="sd">        A fully constructed :class:`Data` instance.</span>
+</span><span data-line="469"><span class="sd">    :rtype: Data</span>
+</span><span data-line="470">
+</span><span data-line="471"><span class="sd">    .. versionadded:: 0.2.4</span>
+</span><span data-line="472"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span data-line="473">    <span class="n">data</span> <span class="o">=</span> <span class="n">Data</span><span class="p">()</span>
+</span><span data-line="474">    <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">obj</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+</span><span data-line="475">        <span class="n">present</span> <span class="o">=</span> <span class="n">Data</span><span class="o">.</span><span class="n">PRESENT</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;PR_</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">]</span>
+</span><span data-line="476">        <span class="n">converter</span> <span class="o">=</span> <span class="n">_DATA_CONVERT</span><span class="p">[</span><span class="n">present</span><span class="p">]</span>
+</span><span data-line="477">        <span class="n">converter</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+</span><span data-line="478">    <span class="k">return</span> <span class="n">data</span></div>
+
+</span><span data-line="479">
+</span><span data-line="480">
+</span><span data-line="481"><span class="n">_DATA_CONVERT</span> <span class="o">=</span> <span class="p">{</span>
+</span><span data-line="482">    <span class="n">Data</span><span class="o">.</span><span class="n">PRESENT</span><span class="o">.</span><span class="n">PR_array</span><span class="p">:</span> <span class="n">array2data</span><span class="p">,</span>
+</span><span data-line="483">    <span class="n">Data</span><span class="o">.</span><span class="n">PRESENT</span><span class="o">.</span><span class="n">PR_structure</span><span class="p">:</span> <span class="n">struct2data</span><span class="p">,</span>
+</span><span data-line="484">    <span class="n">Data</span><span class="o">.</span><span class="n">PRESENT</span><span class="o">.</span><span class="n">PR_boolean</span><span class="p">:</span> <span class="n">boolean2data</span><span class="p">,</span>
+</span><span data-line="485">    <span class="n">Data</span><span class="o">.</span><span class="n">PRESENT</span><span class="o">.</span><span class="n">PR_bit_string</span><span class="p">:</span> <span class="n">bit_string2data</span><span class="p">,</span>
+</span><span data-line="486">    <span class="n">Data</span><span class="o">.</span><span class="n">PRESENT</span><span class="o">.</span><span class="n">PR_integer</span><span class="p">:</span> <span class="n">int2data</span><span class="p">,</span>
+</span><span data-line="487">    <span class="n">Data</span><span class="o">.</span><span class="n">PRESENT</span><span class="o">.</span><span class="n">PR_unsigned</span><span class="p">:</span> <span class="n">uint2data</span><span class="p">,</span>
+</span><span data-line="488">    <span class="n">Data</span><span class="o">.</span><span class="n">PRESENT</span><span class="o">.</span><span class="n">PR_floating_point</span><span class="p">:</span> <span class="n">float2data</span><span class="p">,</span>
+</span><span data-line="489">    <span class="n">Data</span><span class="o">.</span><span class="n">PRESENT</span><span class="o">.</span><span class="n">PR_octet_string</span><span class="p">:</span> <span class="n">bytes2data</span><span class="p">,</span>
+</span><span data-line="490">    <span class="n">Data</span><span class="o">.</span><span class="n">PRESENT</span><span class="o">.</span><span class="n">PR_visible_string</span><span class="p">:</span> <span class="n">visible_string2data</span><span class="p">,</span>
+</span><span data-line="491">    <span class="n">Data</span><span class="o">.</span><span class="n">PRESENT</span><span class="o">.</span><span class="n">PR_generalized_time</span><span class="p">:</span> <span class="n">time2data</span><span class="p">,</span>
+</span><span data-line="492">    <span class="n">Data</span><span class="o">.</span><span class="n">PRESENT</span><span class="o">.</span><span class="n">PR_binary_time</span><span class="p">:</span> <span class="n">bintime2data</span><span class="p">,</span>
+</span><span data-line="493">    <span class="n">Data</span><span class="o">.</span><span class="n">PRESENT</span><span class="o">.</span><span class="n">PR_bcd</span><span class="p">:</span> <span class="n">bcd2data</span><span class="p">,</span>
+</span><span data-line="494">    <span class="n">Data</span><span class="o">.</span><span class="n">PRESENT</span><span class="o">.</span><span class="n">PR_booleanArray</span><span class="p">:</span> <span class="n">boolean_array2data</span><span class="p">,</span>
+</span><span data-line="495">    <span class="n">Data</span><span class="o">.</span><span class="n">PRESENT</span><span class="o">.</span><span class="n">PR_objId</span><span class="p">:</span> <span class="n">obj_id2data</span><span class="p">,</span>
+</span><span data-line="496">    <span class="n">Data</span><span class="o">.</span><span class="n">PRESENT</span><span class="o">.</span><span class="n">PR_mMSString</span><span class="p">:</span> <span class="n">mms_string2data</span><span class="p">,</span>
+</span><span data-line="497">    <span class="n">Data</span><span class="o">.</span><span class="n">PRESENT</span><span class="o">.</span><span class="n">PR_utc_time</span><span class="p">:</span> <span class="n">utctime2data</span><span class="p">,</span>
+</span><span data-line="498"><span class="p">}</span>
 </span></pre></div>
         </article><button class="back-to-top" type="button">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -532,7 +847,7 @@ data-aria-dark="Switch to auto color mode">
     </div>
   </div>
 </footer>
-      <script src="../../../../_static/documentation_options.js?v=b6b0a955"></script>
+      <script src="../../../../_static/documentation_options.js?v=ed1c4872"></script>
       <script src="../../../../_static/doctools.js?v=9bcbadda"></script>
       <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>

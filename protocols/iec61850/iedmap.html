@@ -2,12 +2,12 @@
 <html lang="en" data-accent-color="lime" data-content_root="../../">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Enumerating IEDs - icspacket 0.2.3 documentation</title><link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="API Reference" href="api.html" /><link rel="prev" title="Object Utilities" href="../dnp3/api/coding_utils.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Enumerating IEDs - icspacket 0.1.dev1+g53b33844c documentation</title><link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="Operating on IEDs" href="iedctrl.html" /><link rel="prev" title="Object Utilities" href="../dnp3/api/coding_utils.html" />
       <link rel="canonical" href="https://matrixeditor.github.io/icspacket/protocols/iec61850/iedmap.html" /><script>
     function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
     setColorMode(localStorage._theme||"dark");
-  </script><link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=397bb51e" />
-    <link rel="stylesheet" type="text/css" href="../../_static/shibuya.css?v=d48c410d" />
+  </script><link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b1a1f93b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/shibuya.css?v=bb284d7b" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link media="print" rel="stylesheet" type="text/css" href="../../_static/print.css?v=20ff2c19" />
@@ -66,8 +66,8 @@ data-aria-dark="Switch to auto color mode">
 </button><button class="md:hidden flex items-center js-menu" aria-label="Menu" type="button" aria-controls="head-nav" aria-expanded="false">
         <div class="hamburger">
           <span class="hamburger_1"></span>
-          <span class="hamburger_2 -translate-x-2"></span>
-          <span class="hamburger_3 -translate-x-1"></span>
+          <span class="hamburger_2"></span>
+          <span class="hamburger_3"></span>
         </div>
       </button>
     </div>
@@ -120,9 +120,11 @@ data-aria-dark="Switch to auto color mode">
 <p class="caption" role="heading" aria-level="3"><span class="caption-text">IEC 61850</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Enumerating IEDs</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="iedctrl.html">Operating on IEDs</a></li>
 <li class="toctree-l1 _expand"><a class="reference internal" href="api.html">API Reference</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="api_data_classes.html">Data Classes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api_path.html">Object / Data References</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api_control.html">Control / Operation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api_client.html">IED Client</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api_goose.html">GOOSE Client</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api_sv.html">SampledValues Client</a></li>
@@ -267,7 +269,7 @@ can be displayed in either structured or flat form.</p>
 </section>
 <section id="usage">
 <h2>Usage<a class="headerlink" href="#usage" title="Link to this heading">¶</a></h2>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span data-line="1">iedmap<span class="w"> </span><span class="o">[</span>OPTIONS<span class="o">]</span><span class="w"> </span>&lt;host&gt;<span class="w"> </span><span class="o">[</span>-p<span class="w"> </span>&lt;port&gt;<span class="o">]</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span data-line="1">iedmap.py<span class="w"> </span><span class="o">[</span>OPTIONS<span class="o">]</span><span class="w"> </span>&lt;host&gt;<span class="w"> </span><span class="o">[</span>-p<span class="w"> </span>&lt;port&gt;<span class="o">]</span>
 </span></pre></div>
 </div>
 <p>Where <code class="docutils literal notranslate"><span class="pre">&lt;host&gt;</span></code> specifies the IED (IP address or hostname), and <code class="docutils literal notranslate"><span class="pre">port</span></code>
@@ -338,10 +340,10 @@ DataAttribute values.</p>
         <span>Previous</span><div class="title">Object Utilities</div></div>
     </a>
   </div><div class="navigation-next">
-    <a href="api.html">
+    <a href="iedctrl.html">
       <div class="page-info">
         <span>Next</span>
-        <div class="title">API Reference</div>
+        <div class="title">Operating on IEDs</div>
       </div>
       <i class="i-lucide chevron-right"></i>
     </a>
@@ -369,7 +371,7 @@ DataAttribute values.</p>
     </div>
   </div>
 </footer>
-      <script src="../../_static/documentation_options.js?v=b6b0a955"></script>
+      <script src="../../_static/documentation_options.js?v=ed1c4872"></script>
       <script src="../../_static/doctools.js?v=9bcbadda"></script>
       <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>

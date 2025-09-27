@@ -2,12 +2,12 @@
 <html lang="en" data-accent-color="lime" data-content_root="../../">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Object / Data References - icspacket 0.2.3 documentation</title><link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="IED Client" href="api_client.html" /><link rel="prev" title="Data Classes" href="api_data_classes.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Object / Data References - icspacket 0.1.dev1+g53b33844c documentation</title><link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="Control / Operation" href="api_control.html" /><link rel="prev" title="Data Classes" href="api_data_classes.html" />
       <link rel="canonical" href="https://matrixeditor.github.io/icspacket/protocols/iec61850/api_path.html" /><script>
     function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
     setColorMode(localStorage._theme||"dark");
-  </script><link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=397bb51e" />
-    <link rel="stylesheet" type="text/css" href="../../_static/shibuya.css?v=d48c410d" />
+  </script><link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b1a1f93b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/shibuya.css?v=bb284d7b" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link media="print" rel="stylesheet" type="text/css" href="../../_static/print.css?v=20ff2c19" />
@@ -66,8 +66,8 @@ data-aria-dark="Switch to auto color mode">
 </button><button class="md:hidden flex items-center js-menu" aria-label="Menu" type="button" aria-controls="head-nav" aria-expanded="false">
         <div class="hamburger">
           <span class="hamburger_1"></span>
-          <span class="hamburger_2 -translate-x-2"></span>
-          <span class="hamburger_3 -translate-x-1"></span>
+          <span class="hamburger_2"></span>
+          <span class="hamburger_3"></span>
         </div>
       </button>
     </div>
@@ -120,9 +120,11 @@ data-aria-dark="Switch to auto color mode">
 <p class="caption" role="heading" aria-level="3"><span class="caption-text">IEC 61850</span></p>
 <ul class="current">
 <li class="toctree-l1 _expand"><a class="reference internal" href="iedmap.html">Enumerating IEDs</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="iedctrl.html">Operating on IEDs</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="api.html">API Reference</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="api_data_classes.html">Data Classes</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Object / Data References</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api_control.html">Control / Operation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api_client.html">IED Client</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api_goose.html">GOOSE Client</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api_sv.html">SampledValues Client</a></li>
@@ -207,6 +209,7 @@ data-aria-dark="Switch to auto color mode">
 <li><a class="reference internal" href="#icspacket.proto.iec61850.path.DataObjectReference"><code class="docutils literal notranslate"><span class="pre">DataObjectReference</span></code></a><ul>
 <li><a class="reference internal" href="#icspacket.proto.iec61850.path.DataObjectReference.functional_constraint"><code class="docutils literal notranslate">functional_constraint</span></code></a></li>
 <li><a class="reference internal" href="#icspacket.proto.iec61850.path.DataObjectReference.datname"><code class="docutils literal notranslate">datname</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.path.DataObjectReference.change_fc"><code class="docutils literal notranslate">change_fc()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -458,6 +461,36 @@ between a logical node and its data objects.</p>
 </div>
 </dd></dl>
 
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.path.DataObjectReference.change_fc">
+<span class="sig-name descname"><span class="pre">change_fc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">new_fc</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api_data_classes.html#icspacket.proto.iec61850.classes.FC" title="icspacket.proto.iec61850.classes.FC"><span class="pre">FC</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#icspacket.proto.iec61850.path.DataObjectReference" title="icspacket.proto.iec61850.path.DataObjectReference"><span class="pre">DataObjectReference</span></a></span></span><a class="reference internal" href="../../_modules/icspacket/proto/iec61850/path.html#DataObjectReference.change_fc"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iec61850.path.DataObjectReference.change_fc" title="Link to this definition">¶</a></dt>
+<dd><p>Create a new <a class="reference internal" href="#icspacket.proto.iec61850.path.DataObjectReference" title="icspacket.proto.iec61850.path.DataObjectReference"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataObjectReference</span></code></a> with a different
+functional constraint (FC).</p>
+<p>This method is useful when the same logical node or data object
+needs to be addressed under a different constraint, such as
+switching from <code class="docutils literal notranslate"><span class="pre">ST</span></code> (status) to <code class="docutils literal notranslate"><span class="pre">MX</span></code> (measurand).</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.2.4.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>new_fc</strong> – The functional constraint to substitute into the reference.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A new <a class="reference internal" href="#icspacket.proto.iec61850.path.DataObjectReference" title="icspacket.proto.iec61850.path.DataObjectReference"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataObjectReference</span></code></a> instance with the updated FC.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#icspacket.proto.iec61850.path.DataObjectReference" title="icspacket.proto.iec61850.path.DataObjectReference">DataObjectReference</a></p>
+</dd>
+</dl>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="gp">&gt;&gt;&gt; </span><span class="n">dor</span> <span class="o">=</span> <span class="n">DataObjectReference</span><span class="p">(</span><span class="s2">&quot;LD1&quot;</span><span class="p">,</span> <span class="s2">&quot;LLN0&quot;</span><span class="p">,</span> <span class="s2">&quot;ST&quot;</span><span class="p">,</span> <span class="s2">&quot;Mod&quot;</span><span class="p">,</span> <span class="s2">&quot;stVal&quot;</span><span class="p">)</span>
+</span><span data-line="2"><span class="gp">&gt;&gt;&gt; </span><span class="n">dor_fc_mx</span> <span class="o">=</span> <span class="n">dor</span><span class="o">.</span><span class="n">change_fc</span><span class="p">(</span><span class="n">FC</span><span class="o">.</span><span class="n">MX</span><span class="p">)</span>
+</span><span data-line="3"><span class="gp">&gt;&gt;&gt; </span><span class="nb">str</span><span class="p">(</span><span class="n">dor_fc_mx</span><span class="p">)</span>
+</span><span data-line="4"><span class="go">&#39;LD1/LLN0.MX.Mod.stVal&#39;</span>
+</span></pre></div>
+</div>
+</dd></dl>
+
 </dd></dl>
 
 </section>
@@ -474,10 +507,10 @@ between a logical node and its data objects.</p>
         <span>Previous</span><div class="title">Data Classes</div></div>
     </a>
   </div><div class="navigation-next">
-    <a href="api_client.html">
+    <a href="api_control.html">
       <div class="page-info">
         <span>Next</span>
-        <div class="title">IED Client</div>
+        <div class="title">Control / Operation</div>
       </div>
       <i class="i-lucide chevron-right"></i>
     </a>
@@ -505,7 +538,7 @@ between a logical node and its data objects.</p>
     </div>
   </div>
 </footer>
-      <script src="../../_static/documentation_options.js?v=b6b0a955"></script>
+      <script src="../../_static/documentation_options.js?v=ed1c4872"></script>
       <script src="../../_static/doctools.js?v=9bcbadda"></script>
       <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>

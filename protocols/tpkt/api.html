@@ -2,12 +2,12 @@
 <html lang="en" data-accent-color="lime" data-content_root="../../">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>API Reference - icspacket 0.2.3 documentation</title><link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="Changelog" href="../../changelog.html" /><link rel="prev" title="Using a TPKT Wrapper" href="usage.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>API Reference - icspacket 0.1.dev1+g53b33844c documentation</title><link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="Changelog" href="../../changelog.html" /><link rel="prev" title="Using a TPKT Wrapper" href="usage.html" />
       <link rel="canonical" href="https://matrixeditor.github.io/icspacket/protocols/tpkt/api.html" /><script>
     function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
     setColorMode(localStorage._theme||"dark");
-  </script><link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=397bb51e" />
-    <link rel="stylesheet" type="text/css" href="../../_static/shibuya.css?v=d48c410d" />
+  </script><link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b1a1f93b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/shibuya.css?v=bb284d7b" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link media="print" rel="stylesheet" type="text/css" href="../../_static/print.css?v=20ff2c19" />
@@ -66,8 +66,8 @@ data-aria-dark="Switch to auto color mode">
 </button><button class="md:hidden flex items-center js-menu" aria-label="Menu" type="button" aria-controls="head-nav" aria-expanded="false">
         <div class="hamburger">
           <span class="hamburger_1"></span>
-          <span class="hamburger_2 -translate-x-2"></span>
-          <span class="hamburger_3 -translate-x-1"></span>
+          <span class="hamburger_2"></span>
+          <span class="hamburger_3"></span>
         </div>
       </button>
     </div>
@@ -120,9 +120,11 @@ data-aria-dark="Switch to auto color mode">
 <p class="caption" role="heading" aria-level="3"><span class="caption-text">IEC 61850</span></p>
 <ul>
 <li class="toctree-l1 _expand"><a class="reference internal" href="../iec61850/iedmap.html">Enumerating IEDs</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../iec61850/iedctrl.html">Operating on IEDs</a></li>
 <li class="toctree-l1 _expand"><a class="reference internal" href="../iec61850/api.html">API Reference</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../iec61850/api_data_classes.html">Data Classes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../iec61850/api_path.html">Object / Data References</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iec61850/api_control.html">Control / Operation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../iec61850/api_client.html">IED Client</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../iec61850/api_goose.html">GOOSE Client</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../iec61850/api_sv.html">SampledValues Client</a></li>
@@ -201,6 +203,7 @@ data-aria-dark="Switch to auto color mode">
 </ul>
 </li>
 <li><a class="reference internal" href="#icspacket.proto.tpkt.tpktsock"><code class="docutils literal notranslate"><span class="pre">tpktsock</span></code></a><ul>
+<li><a class="reference internal" href="#icspacket.proto.tpkt.tpktsock.in_queue"><code class="docutils literal notranslate">in_queue</span></code></a></li>
 <li><a class="reference internal" href="#icspacket.proto.tpkt.tpktsock.unpack_tpkt"><code class="docutils literal notranslate">unpack_tpkt()</span></code></a></li>
 <li><a class="reference internal" href="#icspacket.proto.tpkt.tpktsock.recv"><code class="docutils literal notranslate">recv()</span></code></a></li>
 <li><a class="reference internal" href="#icspacket.proto.tpkt.tpktsock.recvfrom"><code class="docutils literal notranslate">recvfrom()</span></code></a></li>
@@ -333,23 +336,35 @@ byte sequence suitable for transmission over TCP.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="icspacket.proto.tpkt.tpktsock">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">icspacket.proto.tpkt.</span></span><span class="sig-name descname"><span class="pre">tpktsock</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">family</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">proto</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fileno</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/icspacket/proto/tpkt.html#tpktsock"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.tpkt.tpktsock" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">icspacket.proto.tpkt.</span></span><span class="sig-name descname"><span class="pre">tpktsock</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">family</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">proto</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fileno</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/icspacket/proto/tpkt.html#tpktsock"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.tpkt.tpktsock" title="Link to this definition">¶</a></dt>
 <dd><p>Socket wrapper that transparently applies TPKT encapsulation.</p>
-<p>This class extends <code class="xref py py-class docutils literal notranslate"><span class="pre">socket.socket</span></code> to automatically prepend and
-parse TPKT headers when sending and receiving data, in compliance with
-[RFC 1006].</p>
+<p>This class extends <code class="xref py py-class docutils literal notranslate"><span class="pre">socket.socket</span></code> to provide automatic
+encoding and decoding of <strong>ISO 8073 (TPKT)</strong> headers for
+connection-oriented transport protocols. Applications can use
+<a class="reference internal" href="#icspacket.proto.tpkt.tpktsock" title="icspacket.proto.tpkt.tpktsock"><code class="xref py py-class docutils literal notranslate"><span class="pre">tpktsock</span></code></a> as a drop-in replacement for raw sockets when
+working with TPKT-based communication.</p>
+<p><strong>Enhancements since 0.2.4:</strong></p>
 <ul class="simple">
-<li><p>All <code class="docutils literal notranslate"><span class="pre">send*</span></code> methods encapsulate user data into a TPKT before writing
-to the underlying TCP stream.</p></li>
-<li><p>All <code class="docutils literal notranslate"><span class="pre">recv*</span></code> methods strip the TPKT header and return only the TPDU.</p></li>
-<li><p>If multiple TPKTs arrive in a single TCP segment, only the first one is
-returned; subsequent packets are discarded with a warning.</p></li>
+<li><p>An internal <code class="xref py py-class docutils literal notranslate"><span class="pre">queue.Queue</span></code> (<code class="docutils literal notranslate"><span class="pre">in_queue</span></code>) is now used to
+buffer partially received or multiple consecutive TPKT PDUs.</p></li>
+<li><p>Improved handling of cases where more than one PDU arrives
+in a single TCP segment. Excess packets are queued for later
+retrieval.</p></li>
+<li><p>Extended validation ensures incomplete headers are safely
+discarded and logged.</p></li>
 </ul>
-<p><strong>Limitations:</strong></p>
-<ul class="simple">
-<li><p>This implementation assumes each <code class="docutils literal notranslate"><span class="pre">recv</span></code> call delivers a complete TPKT.</p></li>
-<li><p>Unexpected length mismatches raise <code class="xref py py-class docutils literal notranslate"><span class="pre">ValueError</span></code>.</p></li>
-</ul>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 0.2.4: </span>Added internal buffering and support for multiple PDUs per TCP segment.</p>
+</div>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.tpkt.tpktsock.in_queue">
+<span class="sig-name descname"><span class="pre">in_queue</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Queue</span><span class="p"><span class="pre">[</span></span><span class="pre">bytes</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#icspacket.proto.tpkt.tpktsock.in_queue" title="Link to this definition">¶</a></dt>
+<dd><p>Internal queue for buffered TPKT PDUs awaiting delivery.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.2.4.</span></p>
+</div>
+</dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="icspacket.proto.tpkt.tpktsock.unpack_tpkt">
 <span class="sig-name descname"><span class="pre">unpack_tpkt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">octets</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bytes</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bytes</span></span></span><a class="reference internal" href="../../_modules/icspacket/proto/tpkt.html#tpktsock.unpack_tpkt"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.tpkt.tpktsock.unpack_tpkt" title="Link to this definition">¶</a></dt>
@@ -370,21 +385,33 @@ returned; subsequent packets are discarded with a warning.</p></li>
 <dl class="py method">
 <dt class="sig sig-object py" id="icspacket.proto.tpkt.tpktsock.recv">
 <span class="sig-name descname"><span class="pre">recv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bufsize</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flags</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="positional-only-separator o"><abbr title="Positional-only parameter separator (PEP 570)"><span class="pre">/</span></abbr></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bytes</span></span></span><a class="reference internal" href="../../_modules/icspacket/proto/tpkt.html#tpktsock.recv"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.tpkt.tpktsock.recv" title="Link to this definition">¶</a></dt>
-<dd><p>Receive a TPKT packet and return the TPDU.</p>
+<dd><p>Receive a TPKT-encapsulated payload.</p>
+<p>If multiple PDUs are present in a single TCP segment, the
+first is returned immediately and subsequent ones are stored
+in <a class="reference internal" href="#icspacket.proto.tpkt.tpktsock.in_queue" title="icspacket.proto.tpkt.tpktsock.in_queue"><code class="xref py py-attr docutils literal notranslate"><span class="pre">in_queue</span></code></a> for later retrieval.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>bufsize</strong> (<em>int</em>) – Maximum number of bytes to receive.</p></li>
-<li><p><strong>flags</strong> (<em>int</em><em>, </em><em>optional</em>) – Optional socket flags.</p></li>
+<li><p><strong>bufsize</strong> (<em>int</em>) – Maximum number of bytes to read from the socket.</p></li>
+<li><p><strong>flags</strong> (<em>int</em>) – Optional flags passed through to the underlying
+<code class="xref py py-func docutils literal notranslate"><span class="pre">socket.socket.recv()</span></code>.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>The decoded TPDU bytes.</p>
+<dd class="field-even"><p>The payload of a single decoded TPKT PDU.</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>bytes</p>
 </dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If the received header length is inconsistent with the
+actual payload size.</p>
+</dd>
 </dl>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 0.2.4: </span>Now returns buffered PDUs if available and supports
+handling multiple PDUs per TCP segment.</p>
+</div>
 </dd></dl>
 
 <dl class="py method">
@@ -510,7 +537,7 @@ returned; subsequent packets are discarded with a warning.</p></li>
     </div>
   </div>
 </footer>
-      <script src="../../_static/documentation_options.js?v=b6b0a955"></script>
+      <script src="../../_static/documentation_options.js?v=ed1c4872"></script>
       <script src="../../_static/doctools.js?v=9bcbadda"></script>
       <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>

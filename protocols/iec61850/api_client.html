@@ -2,12 +2,12 @@
 <html lang="en" data-accent-color="lime" data-content_root="../../">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>IED Client - icspacket 0.2.3 documentation</title><link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="GOOSE Client" href="api_goose.html" /><link rel="prev" title="Object / Data References" href="api_path.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>IED Client - icspacket 0.1.dev1+g53b33844c documentation</title><link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="GOOSE Client" href="api_goose.html" /><link rel="prev" title="Control / Operation" href="api_control.html" />
       <link rel="canonical" href="https://matrixeditor.github.io/icspacket/protocols/iec61850/api_client.html" /><script>
     function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
     setColorMode(localStorage._theme||"dark");
-  </script><link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=397bb51e" />
-    <link rel="stylesheet" type="text/css" href="../../_static/shibuya.css?v=d48c410d" />
+  </script><link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b1a1f93b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/shibuya.css?v=bb284d7b" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link media="print" rel="stylesheet" type="text/css" href="../../_static/print.css?v=20ff2c19" />
@@ -66,8 +66,8 @@ data-aria-dark="Switch to auto color mode">
 </button><button class="md:hidden flex items-center js-menu" aria-label="Menu" type="button" aria-controls="head-nav" aria-expanded="false">
         <div class="hamburger">
           <span class="hamburger_1"></span>
-          <span class="hamburger_2 -translate-x-2"></span>
-          <span class="hamburger_3 -translate-x-1"></span>
+          <span class="hamburger_2"></span>
+          <span class="hamburger_3"></span>
         </div>
       </button>
     </div>
@@ -120,9 +120,11 @@ data-aria-dark="Switch to auto color mode">
 <p class="caption" role="heading" aria-level="3"><span class="caption-text">IEC 61850</span></p>
 <ul class="current">
 <li class="toctree-l1 _expand"><a class="reference internal" href="iedmap.html">Enumerating IEDs</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="iedctrl.html">Operating on IEDs</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="api.html">API Reference</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="api_data_classes.html">Data Classes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api_path.html">Object / Data References</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api_control.html">Control / Operation</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">IED Client</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api_goose.html">GOOSE Client</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api_sv.html">SampledValues Client</a></li>
@@ -208,6 +210,7 @@ data-aria-dark="Switch to auto color mode">
 </li>
 <li><a class="reference internal" href="#icspacket.proto.iec61850.client.IED_Client"><code class="docutils literal notranslate"><span class="pre">IED_Client</span></code></a><ul>
 <li><a class="reference internal" href="#icspacket.proto.iec61850.client.IED_Client.mms_conn"><code class="docutils literal notranslate">mms_conn</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.client.IED_Client.register_unconfirmed_cb"><code class="docutils literal notranslate">register_unconfirmed_cb()</span></code></a></li>
 <li><a class="reference internal" href="#icspacket.proto.iec61850.client.IED_Client.associate"><code class="docutils literal notranslate">associate()</span></code></a></li>
 <li><a class="reference internal" href="#icspacket.proto.iec61850.client.IED_Client.release"><code class="docutils literal notranslate">release()</span></code></a></li>
 <li><a class="reference internal" href="#icspacket.proto.iec61850.client.IED_Client.get_server_directory"><code class="docutils literal notranslate">get_server_directory()</span></code></a></li>
@@ -222,6 +225,12 @@ data-aria-dark="Switch to auto color mode">
 <li><a class="reference internal" href="#icspacket.proto.iec61850.client.IED_Client.get_dataset_values"><code class="docutils literal notranslate">get_dataset_values()</span></code></a></li>
 <li><a class="reference internal" href="#icspacket.proto.iec61850.client.IED_Client.set_dataset_values"><code class="docutils literal notranslate">set_dataset_values()</span></code></a></li>
 <li><a class="reference internal" href="#icspacket.proto.iec61850.client.IED_Client.get_dataset_directory"><code class="docutils literal notranslate">get_dataset_directory()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.client.IED_Client.control"><code class="docutils literal notranslate">control()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.client.IED_Client.select"><code class="docutils literal notranslate">select()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.client.IED_Client.select_with_value"><code class="docutils literal notranslate">select_with_value()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.client.IED_Client.operate"><code class="docutils literal notranslate">operate()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.client.IED_Client.cancel"><code class="docutils literal notranslate">cancel()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.client.IED_Client.await_command_termination"><code class="docutils literal notranslate">await_command_termination()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -278,13 +287,9 @@ data-aria-dark="Switch to auto color mode">
 </div><div class="flex flex-col break-words justify-between">
       <div class="min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
         <article class="yue" role="main">
-          <section id="ied-client">
-<span id="iec61850-api-client"></span><h1>IED Client<a class="headerlink" href="#ied-client" title="Link to this heading">¶</a></h1>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Operation related commands are not implemented yet.</p>
-</div>
-<dl class="py class" id="module-icspacket.proto.iec61850.client">
+          <section id="module-icspacket.proto.iec61850.client">
+<span id="ied-client"></span><span id="iec61850-api-client"></span><h1>IED Client<a class="headerlink" href="#module-icspacket.proto.iec61850.client" title="Link to this heading">¶</a></h1>
+<dl class="py class">
 <dt class="sig sig-object py" id="icspacket.proto.iec61850.client.ACSI_Class">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">icspacket.proto.iec61850.client.</span></span><span class="sig-name descname"><span class="pre">ACSI_Class</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">values</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/icspacket/proto/iec61850/client.html#ACSI_Class"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iec61850.client.ACSI_Class" title="Link to this definition">¶</a></dt>
 <dd><p>Enumeration of ACSI class models as per IEC 61850.</p>
@@ -378,6 +383,12 @@ to a remote MMS peer.</p>
 </span><span data-line="4"><span class="gp">... </span>        <span class="nb">print</span><span class="p">(</span><span class="n">dev</span><span class="p">)</span>
 </span></pre></div>
 </div>
+<p>Additional support for control objects and operations is provided:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">IED_Client</span><span class="p">((</span><span class="s2">&quot;127.0.0.1&quot;</span><span class="p">,</span> <span class="mi">102</span><span class="p">))</span> <span class="k">as</span> <span class="n">client</span><span class="p">:</span>
+</span><span data-line="2"><span class="gp">... </span>    <span class="n">co</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get_control_object</span><span class="p">(</span><span class="n">node_ref</span><span class="p">)</span>
+</span><span data-line="3"><span class="gp">... </span>    <span class="n">client</span><span class="o">.</span><span class="n">operate</span><span class="p">(</span><span class="n">co</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span> <span class="c1"># direct control</span>
+</span></pre></div>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -386,6 +397,9 @@ to a remote MMS peer.</p>
 </ul>
 </dd>
 </dl>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 0.2.4: </span>Added support for control objects/operations.</p>
+</div>
 <dl class="py property">
 <dt class="sig sig-object py" id="icspacket.proto.iec61850.client.IED_Client.mms_conn">
 <em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">mms_conn</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="../mms/api_conn.html#icspacket.proto.mms.connection.MMS_Connection" title="icspacket.proto.mms.connection.MMS_Connection"><span class="pre">MMS_Connection</span></a></em><a class="headerlink" href="#icspacket.proto.iec61850.client.IED_Client.mms_conn" title="Link to this definition">¶</a></dt>
@@ -399,6 +413,17 @@ to a remote MMS peer.</p>
 </dd>
 <dt class="field-odd">Raises<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference internal" href="../../getting-started/coreapi.html#icspacket.core.connection.ConnectionNotEstablished" title="icspacket.core.connection.ConnectionNotEstablished"><strong>ConnectionNotEstablished</strong></a> – If no MMS connection is available.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.client.IED_Client.register_unconfirmed_cb">
+<span class="sig-name descname"><span class="pre">register_unconfirmed_cb</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cb</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../mms/api_conn.html#icspacket.proto.mms.connection.MMS_Connection" title="icspacket.proto.mms.connection.MMS_Connection"><span class="pre">MMS_Connection</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">UnconfirmedService</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">None</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../../_modules/icspacket/proto/iec61850/client.html#IED_Client.register_unconfirmed_cb"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iec61850.client.IED_Client.register_unconfirmed_cb" title="Link to this definition">¶</a></dt>
+<dd><p>Register a callback for unconfirmed MMS services.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>cb</strong> (<em>UnconfirmedServiceCallback</em>) – The callback to register.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -651,6 +676,154 @@ to a remote MMS peer.</p>
 </dl>
 </dd></dl>
 
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.client.IED_Client.control">
+<span class="sig-name descname"><span class="pre">control</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api_path.html#icspacket.proto.iec61850.path.DataObjectReference" title="icspacket.proto.iec61850.path.DataObjectReference"><span class="pre">DataObjectReference</span></a></span></em>, <em class="sig-param"><span class="positional-only-separator o"><abbr title="Positional-only parameter separator (PEP 570)"><span class="pre">/</span></abbr></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="api_control.html#icspacket.proto.iec61850.control.ControlObject" title="icspacket.proto.iec61850.control.ControlObject"><span class="pre">ControlObject</span></a></span></span><a class="reference internal" href="../../_modules/icspacket/proto/iec61850/client.html#IED_Client.control"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iec61850.client.IED_Client.control" title="Link to this definition">¶</a></dt>
+<dd><p>Retrieve a <cite>ControlObject</cite> for the given data object reference.</p>
+<p>This method reads the <code class="docutils literal notranslate"><span class="pre">ctlModel</span></code> attribute of the target and
+uses the associated type description to construct a <cite>ControlObject</cite>.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.2.4.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>target</strong> (<a class="reference internal" href="api_path.html#icspacket.proto.iec61850.path.DataObjectReference" title="icspacket.proto.iec61850.path.DataObjectReference"><em>DataObjectReference</em></a>) – Data object reference to the control object.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Initialized control object instance.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="api_control.html#icspacket.proto.iec61850.control.ControlObject" title="icspacket.proto.iec61850.control.ControlObject">ControlObject</a></p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="../../getting-started/coreapi.html#icspacket.core.connection.ConnectionError" title="icspacket.core.connection.ConnectionError"><strong>ConnectionError</strong></a> – If retrieving the control model fails.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.client.IED_Client.select">
+<span class="sig-name descname"><span class="pre">select</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">co</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api_control.html#icspacket.proto.iec61850.control.ControlObject" title="icspacket.proto.iec61850.control.ControlObject"><span class="pre">ControlObject</span></a></span></em>, <em class="sig-param"><span class="positional-only-separator o"><abbr title="Positional-only parameter separator (PEP 570)"><span class="pre">/</span></abbr></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataAccessError</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="reference internal" href="../../_modules/icspacket/proto/iec61850/client.html#IED_Client.select"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iec61850.client.IED_Client.select" title="Link to this definition">¶</a></dt>
+<dd><p>Perform the Select (SBO) operation on a control object.</p>
+<p>This method only works with <cite>ControlObject</cite> instances using
+the <code class="docutils literal notranslate"><span class="pre">SBO_NORMAL</span></code> model. It reads the <code class="docutils literal notranslate"><span class="pre">SBO</span></code> attribute to perform
+the selection.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.2.4.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>co</strong> (<a class="reference internal" href="api_control.html#icspacket.proto.iec61850.control.ControlObject" title="icspacket.proto.iec61850.control.ControlObject"><em>ControlObject</em></a>) – Control object to select.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Access error if selection fails, or None on success.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>DataAccessError | None</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If the control object does not use <code class="docutils literal notranslate"><span class="pre">SBO_NORMAL</span></code>.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.client.IED_Client.select_with_value">
+<span class="sig-name descname"><span class="pre">select_with_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">co</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api_control.html#icspacket.proto.iec61850.control.ControlObject" title="icspacket.proto.iec61850.control.ControlObject"><span class="pre">ControlObject</span></a></span></em>, <em class="sig-param"><span class="positional-only-separator o"><abbr title="Positional-only parameter separator (PEP 570)"><span class="pre">/</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">ctl_val</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">oper_time</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../mms/api_data.html#icspacket.proto.mms.data.Timestamp" title="icspacket.proto.mms.data.Timestamp"><span class="pre">Timestamp</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataAccessError</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="reference internal" href="../../_modules/icspacket/proto/iec61850/client.html#IED_Client.select_with_value"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iec61850.client.IED_Client.select_with_value" title="Link to this definition">¶</a></dt>
+<dd><p>Perform the SelectWithValue operation (SBOw) for an enhanced control object.</p>
+<p>Only supported for <cite>ControlObject</cite> instances with the
+<code class="docutils literal notranslate"><span class="pre">SBO_ENHANCED</span></code> model. Writes the provided <cite>ctl_val</cite> and optional
+operation timestamp to the <code class="docutils literal notranslate"><span class="pre">SBOw</span></code> attribute.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.2.4.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>co</strong> (<a class="reference internal" href="api_control.html#icspacket.proto.iec61850.control.ControlObject" title="icspacket.proto.iec61850.control.ControlObject"><em>ControlObject</em></a>) – Control object to select with value.</p></li>
+<li><p><strong>ctl_val</strong> (<em>Any</em>) – Control value to write.</p></li>
+<li><p><strong>oper_time</strong> (<a class="reference internal" href="../mms/api_data.html#icspacket.proto.mms.data.Timestamp" title="icspacket.proto.mms.data.Timestamp"><em>Timestamp</em></a><em> | </em><em>None</em>) – Optional timestamp for the operation.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Access error if selection fails, or None on success.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>DataAccessError | None</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>ValueError</strong> – If the control object does not use <code class="docutils literal notranslate"><span class="pre">SBO_ENHANCED</span></code>.</p></li>
+<li><p><strong>MMSServiceError</strong> – If the MMS write operation fails.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.client.IED_Client.operate">
+<span class="sig-name descname"><span class="pre">operate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">co</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api_control.html#icspacket.proto.iec61850.control.ControlObject" title="icspacket.proto.iec61850.control.ControlObject"><span class="pre">ControlObject</span></a></span></em>, <em class="sig-param"><span class="positional-only-separator o"><abbr title="Positional-only parameter separator (PEP 570)"><span class="pre">/</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">ctl_val</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">oper_time</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../mms/api_data.html#icspacket.proto.mms.data.Timestamp" title="icspacket.proto.mms.data.Timestamp"><span class="pre">Timestamp</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/icspacket/proto/iec61850/client.html#IED_Client.operate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iec61850.client.IED_Client.operate" title="Link to this definition">¶</a></dt>
+<dd><p>Execute a control operation on a <cite>ControlObject</cite>.</p>
+<p>Writes the provided control value to the <code class="docutils literal notranslate"><span class="pre">Oper</span></code> attribute. Supports
+all models of control objects.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.2.4.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>co</strong> (<a class="reference internal" href="api_control.html#icspacket.proto.iec61850.control.ControlObject" title="icspacket.proto.iec61850.control.ControlObject"><em>ControlObject</em></a>) – Control object to operate.</p></li>
+<li><p><strong>ctl_val</strong> (<em>Any</em>) – Control value to write.</p></li>
+<li><p><strong>oper_time</strong> (<a class="reference internal" href="../mms/api_data.html#icspacket.proto.mms.data.Timestamp" title="icspacket.proto.mms.data.Timestamp"><em>Timestamp</em></a><em> | </em><em>None</em>) – Optional timestamp for the operation.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>MMSServiceError</strong> – If the MMS write operation fails.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.client.IED_Client.cancel">
+<span class="sig-name descname"><span class="pre">cancel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">co</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api_control.html#icspacket.proto.iec61850.control.ControlObject" title="icspacket.proto.iec61850.control.ControlObject"><span class="pre">ControlObject</span></a></span></em>, <em class="sig-param"><span class="positional-only-separator o"><abbr title="Positional-only parameter separator (PEP 570)"><span class="pre">/</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">ctl_val</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">oper_time</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../mms/api_data.html#icspacket.proto.mms.data.Timestamp" title="icspacket.proto.mms.data.Timestamp"><span class="pre">Timestamp</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/icspacket/proto/iec61850/client.html#IED_Client.cancel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iec61850.client.IED_Client.cancel" title="Link to this definition">¶</a></dt>
+<dd><p>Cancel a previously issued control operation.</p>
+<p>Writes the control value to the <code class="docutils literal notranslate"><span class="pre">Cancel</span></code> attribute without
+performing interlock or synchrocheck.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.2.4.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>co</strong> (<a class="reference internal" href="api_control.html#icspacket.proto.iec61850.control.ControlObject" title="icspacket.proto.iec61850.control.ControlObject"><em>ControlObject</em></a>) – Control object to cancel.</p></li>
+<li><p><strong>ctl_val</strong> (<em>Any</em>) – Control value for cancellation.</p></li>
+<li><p><strong>oper_time</strong> (<a class="reference internal" href="../mms/api_data.html#icspacket.proto.mms.data.Timestamp" title="icspacket.proto.mms.data.Timestamp"><em>Timestamp</em></a><em> | </em><em>None</em>) – Optional timestamp for the cancellation.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>MMSServiceError</strong> – If the MMS write operation fails.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.client.IED_Client.await_command_termination">
+<span class="sig-name descname"><span class="pre">await_command_termination</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">InformationReport</span></span></span><a class="reference internal" href="../../_modules/icspacket/proto/iec61850/client.html#IED_Client.await_command_termination"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iec61850.client.IED_Client.await_command_termination" title="Link to this definition">¶</a></dt>
+<dd><p>Block until a control command terminates and an unconfirmed report is received.</p>
+<p>Continuously reads unconfirmed PDUs until an <code class="docutils literal notranslate"><span class="pre">InformationReport</span></code> is received.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.2.4.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The unconfirmed MMS InformationReport containing the control result.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>InformationReport</p>
+</dd>
+</dl>
+</dd></dl>
+
 </dd></dl>
 
 </section>
@@ -661,10 +834,10 @@ to a remote MMS peer.</p>
   </svg>
   <span>Back to top</span>
 </button><div class="navigation flex print:hidden"><div class="navigation-prev">
-    <a href="api_path.html">
+    <a href="api_control.html">
       <i class="i-lucide chevron-left"></i>
       <div class="page-info">
-        <span>Previous</span><div class="title">Object / Data References</div></div>
+        <span>Previous</span><div class="title">Control / Operation</div></div>
     </a>
   </div><div class="navigation-next">
     <a href="api_goose.html">
@@ -698,7 +871,7 @@ to a remote MMS peer.</p>
     </div>
   </div>
 </footer>
-      <script src="../../_static/documentation_options.js?v=b6b0a955"></script>
+      <script src="../../_static/documentation_options.js?v=ed1c4872"></script>
       <script src="../../_static/doctools.js?v=9bcbadda"></script>
       <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
