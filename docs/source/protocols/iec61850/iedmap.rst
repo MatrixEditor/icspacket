@@ -31,7 +31,7 @@ Usage
 
 .. code-block:: bash
 
-    iedmap [OPTIONS] <host> [-p <port>]
+    iedmap.py [OPTIONS] <host> [-p <port>]
 
 Where ``<host>`` specifies the IED (IP address or hostname), and ``port``
 (default 102) is the MMS communication port.

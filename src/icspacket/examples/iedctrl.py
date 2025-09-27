@@ -45,11 +45,12 @@ def cli2data(value: str) -> Any | None:
                 doc = json.load(fp)
         else:
             doc = json.loads(value)
-            if "value" in doc:
-                doc = doc["value"]
     except json.JSONDecodeError as e:
         logging.error(f"Invalid JSON value format: {value!r} - {e}")
         return None
+
+    if isinstance(doc, dict) and "value" in doc:
+        doc = doc["value"]
     return doc
 
 
@@ -64,7 +65,7 @@ def cli_main():
     group = parser.add_argument_group("Target Options")
     group.add_argument("-t", "--target", metavar="[LDName/]LNName.[FC].DataName", default=None, help=(
         "Target data node to control. If missing the logical device (LDName), the service will first be \n"
-        "queried for the default logical node (LNName) and then the data node (DataName) will be used. \n"
+        "queried for the default logical device and then the data node (DataName) will be used. \n"
         "Functional Constrains (FC) is optional as this will always be the CO (Control)."
     ), required=True)
     group.add_argument("--check", action="store_true", help="Queries the value after successful operation.")

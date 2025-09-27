@@ -53,6 +53,7 @@ and MacOS. Any other Python version is not officially supported::
     :hidden:
 
     protocols/iec61850/iedmap
+    protocols/iec61850/iedctrl
     protocols/iec61850/api
 
 .. toctree::

@@ -8,6 +8,7 @@ API Reference
 
     api_data_classes
     api_path
+    api_control
     api_client
     api_goose
     api_sv
