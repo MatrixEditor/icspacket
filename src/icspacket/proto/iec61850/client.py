@@ -14,17 +14,34 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 import enum
+from typing_extensions import Any
 
 from icspacket.core.connection import ConnectionNotEstablished
-from icspacket.proto.iec61850.path import ObjectReference
+from icspacket.proto.iec61850.classes import FC, ControlModel
+from icspacket.proto.iec61850.control import (
+    Cause,
+    ControlError,
+    ControlObject,
+    LastApplError,
+)
+from icspacket.proto.iec61850.path import DataObjectReference, ObjectReference
 from icspacket.proto.mms._mms import (
     AccessResult,
     Data,
     DataAccessError,
     DirectoryEntry,
     GetVariableAccessAttributes_Response,
+    InformationReport,
+    MMSpdu,
+    UnconfirmedService,
 )
-from icspacket.proto.mms.connection import MMS_Connection
+from icspacket.proto.mms.connection import (
+    MMS_Connection,
+    UnconfirmedServiceCallback,
+    UnconfirmedServiceHandler,
+)
+from icspacket.proto.mms.data import Timestamp
+from icspacket.proto.mms.exceptions import MMSServiceError
 from icspacket.proto.mms.util import (
     BasicObjectClassType,
     NamedVariableSpecificationItem,
@@ -88,10 +105,19 @@ class IED_Client:
     ...     for dev in devices:
     ...         print(dev)
 
+    Additional support for control objects and operations is provided:
+
+    >>> with IED_Client(("127.0.0.1", 102)) as client:
+    ...     co = client.get_control_object(node_ref)
+    ...     client.operate(co, True) # direct control
+
     :param address: Optional IP/port tuple for automatic association.
     :type address: tuple[str, int] | None
     :param conn: Pre-established MMS connection, if available.
     :type conn: MMS_Connection | None
+
+    .. versionchanged:: 0.2.4
+        Added support for control objects/operations.
     """
 
     def __init__(
@@ -100,6 +126,13 @@ class IED_Client:
         conn: MMS_Connection | None = None,
     ) -> None:
         self.__conn = conn
+        if self.__conn:
+            self.__conn.unconfirmed_cb.append(
+                UnconfirmedServiceHandler(
+                    UnconfirmedService.PRESENT.PR_informationReport,
+                    self._handle_unconfirmed_pdu,
+                )
+            )
         if address:
             self.associate(address)
 
@@ -118,6 +151,19 @@ class IED_Client:
 
         return self.__conn
 
+    def register_unconfirmed_cb(self, cb: UnconfirmedServiceCallback) -> None:
+        """
+        Register a callback for unconfirmed MMS services.
+
+        :param cb: The callback to register.
+        :type cb: UnconfirmedServiceCallback
+        """
+        self.mms_conn.unconfirmed_cb.append(
+            UnconfirmedServiceHandler(
+                UnconfirmedService.PRESENT.PR_informationReport, cb
+            )
+        )
+
     def associate(self, address: tuple[str, int] | None = None) -> None:
         """
         Establish an association with a remote MMS server.
@@ -127,6 +173,12 @@ class IED_Client:
         """
         if not self.__conn:
             self.__conn = MMS_Connection()
+            self.__conn.unconfirmed_cb.append(
+                UnconfirmedServiceHandler(
+                    UnconfirmedService.PRESENT.PR_informationReport,
+                    self._handle_unconfirmed_pdu,
+                )
+            )
 
         if self.mms_conn.is_valid():
             return
@@ -406,3 +458,223 @@ class IED_Client:
         return list(
             self.mms_conn.variable_list_attributes(datref.mms_name).listOfVariable
         )
+
+    # ---------------------------------------------------------------------- #
+    # 20 Control class model
+    # ---------------------------------------------------------------------- #
+    def control(self, target: DataObjectReference, /) -> ControlObject:
+        """
+        Retrieve a `ControlObject` for the given data object reference.
+
+        This method reads the ``ctlModel`` attribute of the target and
+        uses the associated type description to construct a `ControlObject`.
+
+        .. versionadded:: 0.2.4
+
+        :param target: Data object reference to the control object.
+        :type target: DataObjectReference
+        :return: Initialized control object instance.
+        :rtype: ControlObject
+        :raises ConnectionError: If retrieving the control model fails.
+        """
+        cf_target = target.change_fc(FC.CF)
+        model_result = self.get_data_values(cf_target / "ctlModel")
+        if model_result.failure:
+            raise ConnectionError("Failed to get control model")
+
+        model = ControlModel(model_result.success.integer or 0)
+        spec_result = self.get_data_definition(target)
+        return ControlObject(target, spec_result.typeDescription, model)
+
+    # Here, object references are made to the named variable on which to operate
+    # on. The CO_CtrlObjectRef is defined as:
+    #   - <LDname>/<LNname>$CO$<DOname>
+    def select(self, co: ControlObject, /) -> DataAccessError | None:
+        """
+        Perform the Select (SBO) operation on a control object.
+
+        This method only works with `ControlObject` instances using
+        the ``SBO_NORMAL`` model. It reads the ``SBO`` attribute to perform
+        the selection.
+
+        .. versionadded:: 0.2.4
+
+        :param co: Control object to select.
+        :type co: ControlObject
+        :return: Access error if selection fails, or None on success.
+        :rtype: DataAccessError | None
+        :raises ValueError: If the control object does not use ``SBO_NORMAL``.
+        """
+        if co.model != ControlModel.SBO_NORMAL:
+            raise ValueError("ControlObject without SBO model cannot be selected!")
+
+        sel_object_ref = co.ctrl_object_ref / "SBO"
+        result = self.get_data_values(sel_object_ref)
+        error = result.failure
+        access_data = result.success
+        if access_data is not None:
+            if access_data.present == Data.PRESENT.PR_visible_string:
+                if not bool(access_data.visible_string):
+                    error = DataAccessError(
+                        DataAccessError.VALUES.V_object_non_existent
+                    )
+        return error
+
+    def select_with_value(
+        self,
+        co: ControlObject,
+        /,
+        ctl_val: Any,
+        oper_time: Timestamp | None = None,
+    ) -> DataAccessError | None:
+        """
+        Perform the SelectWithValue operation (SBOw) for an enhanced control object.
+
+        Only supported for `ControlObject` instances with the
+        ``SBO_ENHANCED`` model. Writes the provided `ctl_val` and optional
+        operation timestamp to the ``SBOw`` attribute.
+
+        .. versionadded:: 0.2.4
+
+        :param co: Control object to select with value.
+        :type co: ControlObject
+        :param ctl_val: Control value to write.
+        :type ctl_val: Any
+        :param oper_time: Optional timestamp for the operation.
+        :type oper_time: Timestamp | None
+        :return: Access error if selection fails, or None on success.
+        :rtype: DataAccessError | None
+        :raises ValueError: If the control object does not use ``SBO_ENHANCED``.
+        :raises MMSServiceError: If the MMS write operation fails.
+        """
+        if co.model != ControlModel.SBO_ENHANCED:
+            raise ValueError("ControlObject without SBO model cannot be selected!")
+
+        sel_object_ref = co.ctrl_object_ref / "SBOw"
+        data = co.get_operate_data(ctl_val, oper_time)
+        try:
+            return self.set_data_values(sel_object_ref, data)
+        except MMSServiceError as error:
+            mmspdu = error.response
+            if mmspdu:
+                self._handle_control_error(mmspdu)
+            raise error
+
+    def operate(
+        self, co: ControlObject, /, ctl_val: Any, oper_time: Timestamp | None = None
+    ):
+        """
+        Execute a control operation on a `ControlObject`.
+
+        Writes the provided control value to the ``Oper`` attribute. Supports
+        all models of control objects.
+
+        .. versionadded:: 0.2.4
+
+        :param co: Control object to operate.
+        :type co: ControlObject
+        :param ctl_val: Control value to write.
+        :type ctl_val: Any
+        :param oper_time: Optional timestamp for the operation.
+        :type oper_time: Timestamp | None
+        :raises MMSServiceError: If the MMS write operation fails.
+        """
+        ref = co.ctrl_object_ref / "Oper"
+        data = co.get_operate_data(ctl_val, oper_time)
+        try:
+            return self.set_data_values(ref, data)
+        except MMSServiceError as error:
+            mmspdu = error.response
+            if mmspdu:
+                self._handle_control_error(mmspdu)
+            raise error
+
+    def cancel(
+        self, co: ControlObject, /, ctl_val: Any, oper_time: Timestamp | None = None
+    ):
+        """
+        Cancel a previously issued control operation.
+
+        Writes the control value to the ``Cancel`` attribute without
+        performing interlock or synchrocheck.
+
+        .. versionadded:: 0.2.4
+
+        :param co: Control object to cancel.
+        :type co: ControlObject
+        :param ctl_val: Control value for cancellation.
+        :type ctl_val: Any
+        :param oper_time: Optional timestamp for the cancellation.
+        :type oper_time: Timestamp | None
+        :raises MMSServiceError: If the MMS write operation fails.
+        """
+        ref = co.ctrl_object_ref / "Cancel"
+        data = co.get_operate_data(ctl_val, oper_time, check=False)
+        try:
+            return self.set_data_values(ref, data)
+        except MMSServiceError as error:
+            mmspdu = error.response
+            if mmspdu:
+                self._handle_control_error(mmspdu)
+            raise error
+
+    def await_command_termination(self, /) -> InformationReport:
+        """
+        Block until a control command terminates and an unconfirmed report is received.
+
+        Continuously reads unconfirmed PDUs until an ``InformationReport`` is received.
+
+        .. versionadded:: 0.2.4
+
+        :return: The unconfirmed MMS InformationReport containing the control result.
+        :rtype: InformationReport
+        """
+        report = None
+        while report is None:
+            pdu: MMSpdu = self.mms_conn.presentation.recv_encoded_data()
+            self._handle_control_error(pdu)
+            if pdu.present != MMSpdu.PRESENT.PR_unconfirmed_PDU:
+                continue
+
+            service = pdu.unconfirmed_PDU.service
+            report = service.informationReport
+        return report
+
+    # 20.11 AdditionalCauseDiagnosis in negative control service responses
+    def _handle_control_error(self, mmspdu: MMSpdu, /):
+        try:
+            if mmspdu.present != MMSpdu.PRESENT.PR_unconfirmed_PDU:
+                return
+
+            pdu = mmspdu.unconfirmed_PDU
+            self._handle_unconfirmed_pdu(self.mms_conn, pdu.service)
+        except AttributeError:
+            pass
+
+    def _handle_unconfirmed_pdu(
+        self, conn: MMS_Connection, service: UnconfirmedService
+    ):
+        try:
+            if service.present != UnconfirmedService.PRESENT.PR_informationReport:
+                return
+
+            report = service.informationReport
+            spec = report.variableAccessSpecification.listOfVariable[0]
+            if spec.variableSpecification.name.vmd_specific.value != "LastApplError":
+                return
+
+            appl_error = report.listOfAccessResult[0].success.structure
+            ctrl_obj = appl_error[0].visible_string
+            error = ControlError(appl_error[1].integer)
+            # origin ignored
+            ctl_num = appl_error[3].unsigned
+            cause = Cause(appl_error[4].integer)
+            raise LastApplError(
+                ctrl_obj,
+                error,
+                ctl_num,
+                cause,
+                f"Failed to control {ctrl_obj} with error: {error.name}, cause: {cause.name}",
+            )
+        except AttributeError:
+            pass

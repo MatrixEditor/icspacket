@@ -189,3 +189,31 @@ class FC(enum.Enum):  # Functional Constraint
     SV = "Substitution"
     US = "Unicast sampled value control"
     XX = "All"
+
+
+class ControlModel(enum.IntEnum):
+    """
+    IEC 61850 control models for logical nodes and control blocks.
+
+    These values define the operational semantics of control actions
+    such as status-only operation, direct control, or "select-before-operate"
+    (SBO) modes. They are used to configure how client applications interact
+    with controllable data objects.
+
+    .. versionadded:: 0.2.4
+    """
+
+    STATUS_ONLY = 0
+    """Status-only mode."""
+
+    DIRECT_NORMAL = 1
+    """Direct-control with normal security."""
+
+    SBO_NORMAL = 2
+    """Select-Before-Operate (SBO) with normal security."""
+
+    DIRECT_ENHANCED = 3
+    """Direct-control with enhanced security."""
+
+    SBO_ENHANCED = 4
+    """Select-Before-Operate with enhanced security."""

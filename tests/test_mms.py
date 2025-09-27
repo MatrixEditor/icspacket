@@ -13,13 +13,14 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
+import datetime
 import pytest
 
 from icspacket.proto.cotp.connection import COTP_Connection
+from icspacket.proto.mms._mms import Data
 from icspacket.proto.mms.asn1types import (
     GetNameList_Request,
     MMSpdu,
-    ObjectClass,
     ParameterSupportOptions,
     ServiceSupportOptions,
 )
@@ -27,8 +28,10 @@ from icspacket.proto.mms.acse import ACSEAuthenticationFailure, PasswordAuth
 from icspacket.proto.mms.connection import MMS_Connection
 from icspacket.proto.mms.data import (
     IEEE754Type,
+    Timestamp,
     create_floating_point_value,
     get_floating_point_value,
+    from_dict,
 )
 from icspacket.proto.mms.asn1types import Initiate_RequestPDU
 from icspacket.proto.mms.util import new_initiate_request
@@ -58,6 +61,27 @@ def test_create_float64_value():
 def test_get_float64_value():
     fp = create_floating_point_value(1.0, IEEE754Type.FLOAT64)
     assert get_floating_point_value(fp) == 1.0
+
+
+def test_timestamp():
+    now = datetime.datetime.now()
+    ts = Timestamp.from_datetime(now)
+    # conversion removes milliseconds for now
+    assert now != ts.datetime
+    assert int(now.timestamp()) == ts.datetime.timestamp()
+
+
+def test_build_data_object():
+    data = from_dict({"integer": 1})
+    assert data.present == Data.PRESENT.PR_integer
+    assert data.integer == 1
+
+    data = from_dict({"unsigned": 1})
+    assert data.present == Data.PRESENT.PR_unsigned
+    assert data.unsigned == 1
+
+    with pytest.raises(KeyError):
+        from_dict({"unknown": 1})
 
 
 # ---------------------------------------------------------------------------
@@ -185,4 +209,3 @@ def test_mms_conn__auth_reject():
     conn.association.authenticator = PasswordAuth("abc2", "1.2.3", 1)
     with pytest.raises(ACSEAuthenticationFailure):
         conn.associate(faketpktsock.FAKE_ADDRESS)
-

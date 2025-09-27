@@ -238,6 +238,22 @@ class ObjectReference:
     def __eq__(self, other: object) -> bool:
         return isinstance(other, ObjectReference) and self.mmsref == other.mmsref
 
+    def __setitem__(self, key, value):
+        """
+        Replace a component of the internal object reference.
+
+        This allows mutation of the reference parts list, enabling
+        direct modification of individual reference elements by index.
+
+        .. versionadded:: 0.2.4
+
+        :param key: Index of the part to be replaced.
+        :type key: int
+        :param value: The new string value for the specified part.
+        :type value: str
+        """
+        self.__parts[key] = value
+
 
 class DataObjectReference(ObjectReference):
     """
@@ -283,3 +299,29 @@ class DataObjectReference(ObjectReference):
         'A'
         """
         return self.parts[3]
+
+    def change_fc(self, new_fc: FC) -> "DataObjectReference":
+        """
+        Create a new :class:`DataObjectReference` with a different
+        functional constraint (FC).
+
+        This method is useful when the same logical node or data object
+        needs to be addressed under a different constraint, such as
+        switching from ``ST`` (status) to ``MX`` (measurand).
+
+        .. versionadded:: 0.2.4
+
+        :param new_fc:
+            The functional constraint to substitute into the reference.
+        :return:
+            A new :class:`DataObjectReference` instance with the updated FC.
+        :rtype: DataObjectReference
+
+        >>> dor = DataObjectReference("LD1", "LLN0", "ST", "Mod", "stVal")
+        >>> dor_fc_mx = dor.change_fc(FC.MX)
+        >>> str(dor_fc_mx)
+        'LD1/LLN0.MX.Mod.stVal'
+        """
+        return DataObjectReference(
+            self.ldname, self.lnname, new_fc.name, *self.parts[3:]
+        )
