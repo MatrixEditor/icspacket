@@ -101,7 +101,7 @@ PY_IMPL_SEQ_FROMPY(EntryContent_data_ANON_4, asn_DEF_EntryContent.elements[1].ty
 PY_IMPL_SEQ_INIT(EntryContent_data_ANON_4);
 PY_IMPL_SEQ_ANON_ATTR_FROMPY(EntryContent_entryForm_ANON_3, data, &src->choice.data, EntryContent_data_ANON_4);
 PY_IMPL_SEQ_ANON_ATTR_TOPY(EntryContent_entryForm_ANON_3, data, &src->choice.data, EntryContent_data_ANON_4);
-PY_IMPL_CHOICE_GENERIC_SETATTR(EntryContent_entryForm_ANON_3, EntryContent__entryForm, data, data, *asn_DEF_EntryContent.elements[1].type->elements[0].type);
+PY_IMPL_CHOICE_GENERIC_SETATTR(EntryContent_entryForm_ANON_3, EntryContent__entryForm, data, data, asn_DEF_EntryContent);
 PY_IMPL_CHOICE_GETATTR(EntryContent_entryForm_ANON_3, EntryContent__entryForm, data, data);
 PY_IMPL_CHOICE_ATTR_FROMPY(EntryContent_entryForm_ANON_3, EntryContent__entryForm, annotation, annotation,PyAsnMMSString_FromPython(value, &dst->choice.annotation));
 PY_IMPL_CHOICE_ATTR_TOPY(EntryContent_entryForm_ANON_3, annotation, PyCompatAsnType_FromParent(&PyAsnMMSString_Type, parent,  (void *)&src->choice.annotation));

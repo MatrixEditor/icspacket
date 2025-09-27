@@ -41,7 +41,7 @@ PY_IMPL_SEQ_FROMPY(Authentication_value_other_ANON_5, asn_DEF_Authentication_val
 PY_IMPL_SEQ_INIT(Authentication_value_other_ANON_5);
 PY_IMPL_SEQ_ANON_ATTR_FROMPY(Authentication_value, other, &src->choice.other, Authentication_value_other_ANON_5);
 PY_IMPL_SEQ_ANON_ATTR_TOPY(Authentication_value, other, &src->choice.other, Authentication_value_other_ANON_5);
-PY_IMPL_CHOICE_GENERIC_SETATTR(Authentication_value, Authentication_value, other, other, *asn_DEF_Authentication_value.elements[3].type);
+PY_IMPL_CHOICE_GENERIC_SETATTR(Authentication_value, Authentication_value, other, other, asn_DEF_Authentication_value);
 PY_IMPL_CHOICE_GETATTR(Authentication_value, Authentication_value, other, other);
 PY_IMPL_CHOICE_ATTR_FROMPY(Authentication_value, Authentication_value, charstring, charstring,PyCompatUnicode_AsUTF8(value, &dst->choice.charstring.buf, &dst->choice.charstring.size));
 PY_IMPL_CHOICE_ATTR_TOPY(Authentication_value, charstring, PyCompatUnicode_FromStringAndSize(src->choice.charstring.buf, src->choice.charstring.size));

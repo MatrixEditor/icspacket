@@ -42,7 +42,7 @@ PY_IMPL_SEQ_FROMPY(EventNotification_success_ANON_12, asn_DEF_EventNotification.
 PY_IMPL_SEQ_INIT(EventNotification_success_ANON_12);
 PY_IMPL_SEQ_ANON_ATTR_FROMPY(EventNotification_successOrFailure_ANON_11, success, &src->choice.success, EventNotification_success_ANON_12);
 PY_IMPL_SEQ_ANON_ATTR_TOPY(EventNotification_successOrFailure_ANON_11, success, &src->choice.success, EventNotification_success_ANON_12);
-PY_IMPL_CHOICE_GENERIC_SETATTR(EventNotification_successOrFailure_ANON_11, EventNotification__actionResult__successOrFailure, success, success, *asn_DEF_EventNotification.elements[7].type->elements[1].type->elements[0].type);
+PY_IMPL_CHOICE_GENERIC_SETATTR(EventNotification_successOrFailure_ANON_11, EventNotification__actionResult__successOrFailure, success, success, asn_DEF_EventNotification);
 PY_IMPL_CHOICE_GETATTR(EventNotification_successOrFailure_ANON_11, EventNotification__actionResult__successOrFailure, success, success);
 PY_IMPL_SEQ_ATTR_GENERIC_FREE(EventNotification_failure_ANON_15, modifierPosition);
 PY_IMPL_SEQ_ATTR_GENERIC_NEW(EventNotification_failure_ANON_15, modifierPosition, Unsigned32_t);
@@ -80,7 +80,7 @@ PY_IMPL_SEQ_FROMPY(EventNotification_failure_ANON_15, asn_DEF_EventNotification.
 PY_IMPL_SEQ_INIT(EventNotification_failure_ANON_15);
 PY_IMPL_SEQ_ANON_ATTR_FROMPY(EventNotification_successOrFailure_ANON_11, failure, &src->choice.failure, EventNotification_failure_ANON_15);
 PY_IMPL_SEQ_ANON_ATTR_TOPY(EventNotification_successOrFailure_ANON_11, failure, &src->choice.failure, EventNotification_failure_ANON_15);
-PY_IMPL_CHOICE_GENERIC_SETATTR(EventNotification_successOrFailure_ANON_11, EventNotification__actionResult__successOrFailure, failure, failure, *asn_DEF_EventNotification.elements[7].type->elements[1].type->elements[1].type);
+PY_IMPL_CHOICE_GENERIC_SETATTR(EventNotification_successOrFailure_ANON_11, EventNotification__actionResult__successOrFailure, failure, failure, asn_DEF_EventNotification);
 PY_IMPL_CHOICE_GETATTR(EventNotification_successOrFailure_ANON_11, EventNotification__actionResult__successOrFailure, failure, failure);
 PY_IMPL_CHECK_CONSTRAINTS(EventNotification_successOrFailure_ANON_11, asn_DEF_EventNotification.elements[7].type->elements[1].type);
 PY_IMPL_ENCODE(EventNotification_successOrFailure_ANON_11, asn_DEF_EventNotification.elements[7].type->elements[1].type);

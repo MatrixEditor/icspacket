@@ -269,8 +269,8 @@ asn_TYPE_member_t asn_MBR_ASDU_1[] = {
 		},
 	{ ATF_NOFLAGS, 0, offsetof(struct ASDU, seqData),
 		(ASN_TAG_CLASS_CONTEXT | (7 << 2)),
-		-1,	/* IMPLICIT tag at current level */
-		&asn_DEF_OCTET_STRING,
+		+1,	/* EXPLICIT tag at current level */
+		&asn_DEF_Data,
 		0,
 		{
 #if !defined(ASN_DISABLE_OER_SUPPORT)
@@ -287,7 +287,7 @@ asn_TYPE_member_t asn_MBR_ASDU_1[] = {
 		0, 0, /* No default value */
 		"seqData"
 		},
-	{ ATF_POINTER, 2, offsetof(struct ASDU, smpMod),
+	{ ATF_POINTER, 1, offsetof(struct ASDU, smpMod),
 		(ASN_TAG_CLASS_CONTEXT | (8 << 2)),
 		-1,	/* IMPLICIT tag at current level */
 		&asn_DEF_NativeInteger,
@@ -307,28 +307,8 @@ asn_TYPE_member_t asn_MBR_ASDU_1[] = {
 		0, 0, /* No default value */
 		"smpMod"
 		},
-	{ ATF_POINTER, 1, offsetof(struct ASDU, gmidData),
-		(ASN_TAG_CLASS_CONTEXT | (9 << 2)),
-		-1,	/* IMPLICIT tag at current level */
-		&asn_DEF_OCTET_STRING,
-		0,
-		{
-#if !defined(ASN_DISABLE_OER_SUPPORT)
-			0,
-#endif  /* !defined(ASN_DISABLE_OER_SUPPORT) */
-#if !defined(ASN_DISABLE_UPER_SUPPORT) || !defined(ASN_DISABLE_APER_SUPPORT)
-			0,
-#endif  /* !defined(ASN_DISABLE_UPER_SUPPORT) || !defined(ASN_DISABLE_APER_SUPPORT) */
-#if !defined(ASN_DISABLE_JER_SUPPORT)
-			0,
-#endif  /* !defined(ASN_DISABLE_JER_SUPPORT) */
-			0
-		},
-		0, 0, /* No default value */
-		"gmidData"
-		},
 };
-static const int asn_MAP_ASDU_oms_1[] = { 1, 4, 5, 6, 8, 9 };
+static const int asn_MAP_ASDU_oms_1[] = { 1, 4, 5, 6, 8 };
 static const ber_tlv_tag_t asn_DEF_ASDU_tags_1[] = {
 	(ASN_TAG_CLASS_UNIVERSAL | (16 << 2))
 };
@@ -341,16 +321,15 @@ static const asn_TYPE_tag2member_t asn_MAP_ASDU_tag2el_1[] = {
     { (ASN_TAG_CLASS_CONTEXT | (5 << 2)), 5, 0, 0 }, /* smpSynch */
     { (ASN_TAG_CLASS_CONTEXT | (6 << 2)), 6, 0, 0 }, /* smpRate */
     { (ASN_TAG_CLASS_CONTEXT | (7 << 2)), 7, 0, 0 }, /* seqData */
-    { (ASN_TAG_CLASS_CONTEXT | (8 << 2)), 8, 0, 0 }, /* smpMod */
-    { (ASN_TAG_CLASS_CONTEXT | (9 << 2)), 9, 0, 0 } /* gmidData */
+    { (ASN_TAG_CLASS_CONTEXT | (8 << 2)), 8, 0, 0 } /* smpMod */
 };
 asn_SEQUENCE_specifics_t asn_SPC_ASDU_specs_1 = {
 	sizeof(struct ASDU),
 	offsetof(struct ASDU, _asn_ctx),
 	asn_MAP_ASDU_tag2el_1,
-	10,	/* Count of tags in the map */
+	9,	/* Count of tags in the map */
 	asn_MAP_ASDU_oms_1,	/* Optional members */
-	6, 0,	/* Root/Additions */
+	5, 0,	/* Root/Additions */
 	-1,	/* First extension addition */
 };
 asn_TYPE_descriptor_t asn_DEF_ASDU = {
@@ -376,7 +355,7 @@ asn_TYPE_descriptor_t asn_DEF_ASDU = {
 		SEQUENCE_constraint
 	},
 	asn_MBR_ASDU_1,
-	10,	/* Elements count */
+	9,	/* Elements count */
 	&asn_SPC_ASDU_specs_1	/* Additional specs */
 };
 

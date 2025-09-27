@@ -42,7 +42,7 @@ PY_IMPL_SEQ_FROMPY(AlternateAccess_named_ANON_4, asn_DEF_AlternateAccess.element
 PY_IMPL_SEQ_INIT(AlternateAccess_named_ANON_4);
 PY_IMPL_SEQ_ANON_ATTR_FROMPY(AlternateAccess_Member_ANON_2, named, &src->choice.named, AlternateAccess_named_ANON_4);
 PY_IMPL_SEQ_ANON_ATTR_TOPY(AlternateAccess_Member_ANON_2, named, &src->choice.named, AlternateAccess_named_ANON_4);
-PY_IMPL_CHOICE_GENERIC_SETATTR(AlternateAccess_Member_ANON_2, AlternateAccess__Member, named, named, *asn_DEF_AlternateAccess.elements[0].type->elements[1].type);
+PY_IMPL_CHOICE_GENERIC_SETATTR(AlternateAccess_Member_ANON_2, AlternateAccess__Member, named, named, asn_DEF_AlternateAccess);
 PY_IMPL_CHOICE_GETATTR(AlternateAccess_Member_ANON_2, AlternateAccess__Member, named, named);
 PY_IMPL_CHOICE_ATTR_FROMPY(AlternateAccess_Member_ANON_2, AlternateAccess__Member, unnamed, unnamed,PyAsnAlternateAccessSelection_FromPython(value, dst->choice.unnamed));
 PY_IMPL_CHOICE_ATTR_TOPY(AlternateAccess_Member_ANON_2, unnamed, PyCompatAsnType_FromParent(&PyAsnAlternateAccessSelection_Type, parent,  (void *)src->choice.unnamed));

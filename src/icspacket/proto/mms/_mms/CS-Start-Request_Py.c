@@ -44,7 +44,7 @@ PY_IMPL_SEQ_FROMPY(CS_Start_Request_controlling_ANON_3, asn_DEF_CS_Start_Request
 PY_IMPL_SEQ_INIT(CS_Start_Request_controlling_ANON_3);
 PY_IMPL_SEQ_ANON_ATTR_FROMPY(CS_Start_Request, controlling, &src->choice.controlling, CS_Start_Request_controlling_ANON_3);
 PY_IMPL_SEQ_ANON_ATTR_TOPY(CS_Start_Request, controlling, &src->choice.controlling, CS_Start_Request_controlling_ANON_3);
-PY_IMPL_CHOICE_GENERIC_SETATTR(CS_Start_Request, CS_Start_Request, controlling, controlling, *asn_DEF_CS_Start_Request.elements[1].type);
+PY_IMPL_CHOICE_GENERIC_SETATTR(CS_Start_Request, CS_Start_Request, controlling, controlling, asn_DEF_CS_Start_Request);
 PY_IMPL_CHOICE_GETATTR(CS_Start_Request, CS_Start_Request, controlling, controlling);
 PY_IMPL_CHOICE_ATTR_FROMPY(CS_Start_Request, CS_Start_Request, normal, normal, PyCompatNull_FromObject(value, &dst->choice.normal));
 PY_IMPL_CHOICE_ATTR_TOPY(CS_Start_Request, normal, Py_None);

@@ -47,7 +47,7 @@ PY_IMPL_SEQ_FROMPY(TypeDescription_array_ANON_2, asn_DEF_TypeDescription.element
 PY_IMPL_SEQ_INIT(TypeDescription_array_ANON_2);
 PY_IMPL_SEQ_ANON_ATTR_FROMPY(TypeDescription, array, &src->choice.array, TypeDescription_array_ANON_2);
 PY_IMPL_SEQ_ANON_ATTR_TOPY(TypeDescription, array, &src->choice.array, TypeDescription_array_ANON_2);
-PY_IMPL_CHOICE_GENERIC_SETATTR(TypeDescription, TypeDescription, array, array, *asn_DEF_TypeDescription.elements[0].type);
+PY_IMPL_CHOICE_GENERIC_SETATTR(TypeDescription, TypeDescription, array, array, asn_DEF_TypeDescription);
 PY_IMPL_CHOICE_GETATTR(TypeDescription, TypeDescription, array, array);
 PY_IMPL_SEQ_ATTR_GENERIC_FREE(TypeDescription_Member_ANON_9, componentName);
 PY_IMPL_SEQ_ATTR_GENERIC_NEW(TypeDescription_Member_ANON_9, componentName, Identifier_t);
@@ -148,7 +148,7 @@ PY_IMPL_SEQ_FROMPY(TypeDescription_structure_ANON_6, asn_DEF_TypeDescription.ele
 PY_IMPL_SEQ_INIT(TypeDescription_structure_ANON_6);
 PY_IMPL_SEQ_ANON_ATTR_FROMPY(TypeDescription, structure, &src->choice.structure, TypeDescription_structure_ANON_6);
 PY_IMPL_SEQ_ANON_ATTR_TOPY(TypeDescription, structure, &src->choice.structure, TypeDescription_structure_ANON_6);
-PY_IMPL_CHOICE_GENERIC_SETATTR(TypeDescription, TypeDescription, structure, structure, *asn_DEF_TypeDescription.elements[1].type);
+PY_IMPL_CHOICE_GENERIC_SETATTR(TypeDescription, TypeDescription, structure, structure, asn_DEF_TypeDescription);
 PY_IMPL_CHOICE_GETATTR(TypeDescription, TypeDescription, structure, structure);
 PY_IMPL_SEQ_ATTR_FROMPY(TypeDescription_floating_point_ANON_16, format_width, PyAsnUnsigned8_FromPython(value, (Unsigned8_t *)target));
 PY_IMPL_SEQ_REF_ATTR_TOPY(TypeDescription_floating_point_ANON_16, format_width, Unsigned8);
@@ -184,7 +184,7 @@ PY_IMPL_SEQ_FROMPY(TypeDescription_floating_point_ANON_16, asn_DEF_TypeDescripti
 PY_IMPL_SEQ_INIT(TypeDescription_floating_point_ANON_16);
 PY_IMPL_SEQ_ANON_ATTR_FROMPY(TypeDescription, floating_point, &src->choice.floating_point, TypeDescription_floating_point_ANON_16);
 PY_IMPL_SEQ_ANON_ATTR_TOPY(TypeDescription, floating_point, &src->choice.floating_point, TypeDescription_floating_point_ANON_16);
-PY_IMPL_CHOICE_GENERIC_SETATTR(TypeDescription, TypeDescription, floating_point, floating_point, *asn_DEF_TypeDescription.elements[6].type);
+PY_IMPL_CHOICE_GENERIC_SETATTR(TypeDescription, TypeDescription, floating_point, floating_point, asn_DEF_TypeDescription);
 PY_IMPL_CHOICE_GETATTR(TypeDescription, TypeDescription, floating_point, floating_point);
 PY_IMPL_CHOICE_ATTR_FROMPY(TypeDescription, TypeDescription, boolean, boolean, PyCompatNull_FromObject(value, &dst->choice.boolean));
 PY_IMPL_CHOICE_ATTR_TOPY(TypeDescription, boolean, Py_None);

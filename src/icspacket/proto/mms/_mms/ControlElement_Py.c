@@ -81,7 +81,7 @@ PY_IMPL_SEQ_FROMPY(ControlElement_beginDomainDef_ANON_2, asn_DEF_ControlElement.
 PY_IMPL_SEQ_INIT(ControlElement_beginDomainDef_ANON_2);
 PY_IMPL_SEQ_ANON_ATTR_FROMPY(ControlElement, beginDomainDef, &src->choice.beginDomainDef, ControlElement_beginDomainDef_ANON_2);
 PY_IMPL_SEQ_ANON_ATTR_TOPY(ControlElement, beginDomainDef, &src->choice.beginDomainDef, ControlElement_beginDomainDef_ANON_2);
-PY_IMPL_CHOICE_GENERIC_SETATTR(ControlElement, ControlElement, beginDomainDef, beginDomainDef, *asn_DEF_ControlElement.elements[0].type);
+PY_IMPL_CHOICE_GENERIC_SETATTR(ControlElement, ControlElement, beginDomainDef, beginDomainDef, asn_DEF_ControlElement);
 PY_IMPL_CHOICE_GETATTR(ControlElement, ControlElement, beginDomainDef, beginDomainDef);
 PY_IMPL_SEQ_ATTR_FROMPY(ControlElement_continueDomainDef_ANON_8, domainName, PyAsnIdentifier_FromPython(value, (Identifier_t *)target));
 PY_IMPL_SEQ_REF_ATTR_TOPY(ControlElement_continueDomainDef_ANON_8, domainName, Identifier);
@@ -117,7 +117,7 @@ PY_IMPL_SEQ_FROMPY(ControlElement_continueDomainDef_ANON_8, asn_DEF_ControlEleme
 PY_IMPL_SEQ_INIT(ControlElement_continueDomainDef_ANON_8);
 PY_IMPL_SEQ_ANON_ATTR_FROMPY(ControlElement, continueDomainDef, &src->choice.continueDomainDef, ControlElement_continueDomainDef_ANON_8);
 PY_IMPL_SEQ_ANON_ATTR_TOPY(ControlElement, continueDomainDef, &src->choice.continueDomainDef, ControlElement_continueDomainDef_ANON_8);
-PY_IMPL_CHOICE_GENERIC_SETATTR(ControlElement, ControlElement, continueDomainDef, continueDomainDef, *asn_DEF_ControlElement.elements[1].type);
+PY_IMPL_CHOICE_GENERIC_SETATTR(ControlElement, ControlElement, continueDomainDef, continueDomainDef, asn_DEF_ControlElement);
 PY_IMPL_CHOICE_GETATTR(ControlElement, ControlElement, continueDomainDef, continueDomainDef);
 PY_IMPL_SEQ_OF_ITEM_TOPY(ControlElement_listOfDomains_ANON_14, Identifier_t, PyAsnIdentifier_ToPython((Identifier_t *)src, parent));
 PY_IMPL_SEQ_OF_ITEM_FROMPY(ControlElement_listOfDomains_ANON_14, Identifier_t, PyAsnIdentifier_FromPython(value, (Identifier_t *)target));
@@ -203,7 +203,7 @@ PY_IMPL_SEQ_FROMPY(ControlElement_piDefinition_ANON_12, asn_DEF_ControlElement.e
 PY_IMPL_SEQ_INIT(ControlElement_piDefinition_ANON_12);
 PY_IMPL_SEQ_ANON_ATTR_FROMPY(ControlElement, piDefinition, &src->choice.piDefinition, ControlElement_piDefinition_ANON_12);
 PY_IMPL_SEQ_ANON_ATTR_TOPY(ControlElement, piDefinition, &src->choice.piDefinition, ControlElement_piDefinition_ANON_12);
-PY_IMPL_CHOICE_GENERIC_SETATTR(ControlElement, ControlElement, piDefinition, piDefinition, *asn_DEF_ControlElement.elements[3].type);
+PY_IMPL_CHOICE_GENERIC_SETATTR(ControlElement, ControlElement, piDefinition, piDefinition, asn_DEF_ControlElement);
 PY_IMPL_CHOICE_GETATTR(ControlElement, ControlElement, piDefinition, piDefinition);
 PY_IMPL_CHOICE_ATTR_FROMPY(ControlElement, ControlElement, endDomainDef, endDomainDef,PyAsnIdentifier_FromPython(value, &dst->choice.endDomainDef));
 PY_IMPL_CHOICE_ATTR_TOPY(ControlElement, endDomainDef, PyCompatAsnType_FromParent(&PyAsnIdentifier_Type, parent,  (void *)&src->choice.endDomainDef));

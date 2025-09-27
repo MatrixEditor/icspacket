@@ -13,7 +13,7 @@
 #include <VisibleString.h>
 #include <NativeInteger.h>
 #include <UtcTime.h>
-#include <OCTET_STRING.h>
+#include <Data.h>
 #include <constr_SEQUENCE.h>
 
 #ifdef __cplusplus
@@ -41,9 +41,8 @@ typedef struct ASDU {
 	UtcTime_t *refrTm; /* OPTIONAL */
 	long *smpSynch; /* OPTIONAL */
 	long *smpRate; /* OPTIONAL */
-	OCTET_STRING_t seqData;
+	Data_t seqData;
 	long *smpMod; /* OPTIONAL */
-	OCTET_STRING_t *gmidData; /* OPTIONAL */
 	
 	/* Context for parsing across buffer boundaries */
 	asn_struct_ctx_t _asn_ctx;
@@ -53,7 +52,7 @@ typedef struct ASDU {
 /* extern asn_TYPE_descriptor_t asn_DEF_confRev_5;	// (Use -fall-defs-global to expose) */
 extern asn_TYPE_descriptor_t asn_DEF_ASDU;
 extern asn_SEQUENCE_specifics_t asn_SPC_ASDU_specs_1;
-extern asn_TYPE_member_t asn_MBR_ASDU_1[10];
+extern asn_TYPE_member_t asn_MBR_ASDU_1[9];
 
 #ifdef __cplusplus
 }

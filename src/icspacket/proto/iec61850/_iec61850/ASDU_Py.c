@@ -4,7 +4,6 @@
  */
 
 #include <ASDU_Py.h>
-#include <asn_codecs_prim.h>
 
 /* class implementation */
 PY_IMPL_SEQ_ATTR_FROMPY(ASDU, svID, PyCompatUnicode_AsUTF8(value, &((OCTET_STRING_t *)(target))->buf, &((OCTET_STRING_t *)(target))->size));
@@ -44,8 +43,8 @@ PY_IMPL_SEQ_ATTR_INDIRECT_FROMPY(ASDU, smpRate, PyCompatLong_FromObject(value, t
 PY_IMPL_SEQ_ATTR_INDIRECT_TOPY(ASDU, smpRate, PyCompatLong_AsObject(target, 1));
 PY_IMPL_SEQ_OPT_GETATTR(ASDU, smpRate);
 PY_IMPL_SEQ_OPT_SETATTR(ASDU, smpRate);
-PY_IMPL_SEQ_ATTR_FROMPY(ASDU, seqData, PyCompatBytes_ToStringAndSize(value, &((ASN__PRIMITIVE_TYPE_t *)target)->buf, &((ASN__PRIMITIVE_TYPE_t *)target)->size));
-PY_IMPL_SEQ_ATTR_TOPY(ASDU, seqData, PyCompatBytes_FromStringAndSize(((ASN__PRIMITIVE_TYPE_t *)target)->buf, ((ASN__PRIMITIVE_TYPE_t *)target)->size));
+PY_IMPL_SEQ_ATTR_FROMPY(ASDU, seqData, PyAsnData_FromPython(value, (Data_t *)target));
+PY_IMPL_SEQ_REF_ATTR_TOPY(ASDU, seqData, Data);
 PY_IMPL_SEQ_GETATTR(ASDU, seqData);
 PY_IMPL_SEQ_SETATTR(ASDU, seqData);
 PY_IMPL_SEQ_ATTR_GENERIC_FREE(ASDU, smpMod);
@@ -55,12 +54,6 @@ PY_IMPL_SEQ_ATTR_INDIRECT_FROMPY(ASDU, smpMod, PyCompatEnum_FromObject(value, ta
 PY_IMPL_SEQ_ATTR_INDIRECT_TOPY(ASDU, smpMod, PyCompatEnum_AsObject(PyAsnEnumASDU_smpMod_Type, target, 0));
 PY_IMPL_SEQ_OPT_GETATTR(ASDU, smpMod);
 PY_IMPL_SEQ_OPT_SETATTR(ASDU, smpMod);
-PY_IMPL_SEQ_ATTR_GENERIC_FREE(ASDU, gmidData);
-PY_IMPL_SEQ_ATTR_GENERIC_NEW(ASDU, gmidData, OCTET_STRING_t);
-PY_IMPL_SEQ_ATTR_INDIRECT_FROMPY(ASDU, gmidData, PyCompatBytes_ToStringAndSize(value, &((ASN__PRIMITIVE_TYPE_t *)target)->buf, &((ASN__PRIMITIVE_TYPE_t *)target)->size));
-PY_IMPL_SEQ_ATTR_INDIRECT_TOPY(ASDU, gmidData, PyCompatBytes_FromStringAndSize(((ASN__PRIMITIVE_TYPE_t *)target)->buf, ((ASN__PRIMITIVE_TYPE_t *)target)->size));
-PY_IMPL_SEQ_OPT_GETATTR(ASDU, gmidData);
-PY_IMPL_SEQ_OPT_SETATTR(ASDU, gmidData);
 PY_IMPL_GENERIC_DEALLOC(ASDU);
 PY_IMPL_GENERIC_CHECK_CONSTRAINTS(ASDU);
 PY_IMPL_GENERIC_ENCODE(ASDU);
@@ -90,7 +83,6 @@ PY_IMPL_SEQ_FROMPY(ASDU, &asn_DEF_ASDU,
 	PY_IMPL_SEQ_INIT_ATTR(ASDU, smpRate, smpRate);
 	PY_IMPL_SEQ_INIT_ATTR(ASDU, seqData, seqData);
 	PY_IMPL_SEQ_INIT_ATTR(ASDU, smpMod, smpMod);
-	PY_IMPL_SEQ_INIT_ATTR(ASDU, gmidData, gmidData);
 );
 PY_IMPL_SEQ_INIT(ASDU);
 
@@ -105,7 +97,6 @@ static PyGetSetDef PyAsnASDU_getset[] = {
 	PY_IMPL_GETSET_ITEM_INTERNAL(ASDU, smpRate, smpRate),
 	PY_IMPL_GETSET_ITEM_INTERNAL(ASDU, seqData, seqData),
 	PY_IMPL_GETSET_ITEM_INTERNAL(ASDU, smpMod, smpMod),
-	PY_IMPL_GETSET_ITEM_INTERNAL(ASDU, gmidData, gmidData),
 	{NULL, NULL, NULL, NULL, NULL} /* sentinel */
 };
 

@@ -40,7 +40,7 @@ PY_IMPL_SEQ_FROMPY(VariableSpecification_variableDescription_ANON_4, asn_DEF_Var
 PY_IMPL_SEQ_INIT(VariableSpecification_variableDescription_ANON_4);
 PY_IMPL_SEQ_ANON_ATTR_FROMPY(VariableSpecification, variableDescription, &src->choice.variableDescription, VariableSpecification_variableDescription_ANON_4);
 PY_IMPL_SEQ_ANON_ATTR_TOPY(VariableSpecification, variableDescription, &src->choice.variableDescription, VariableSpecification_variableDescription_ANON_4);
-PY_IMPL_CHOICE_GENERIC_SETATTR(VariableSpecification, VariableSpecification, variableDescription, variableDescription, *asn_DEF_VariableSpecification.elements[2].type);
+PY_IMPL_CHOICE_GENERIC_SETATTR(VariableSpecification, VariableSpecification, variableDescription, variableDescription, asn_DEF_VariableSpecification);
 PY_IMPL_CHOICE_GETATTR(VariableSpecification, VariableSpecification, variableDescription, variableDescription);
 PY_IMPL_CHOICE_ATTR_FROMPY(VariableSpecification, VariableSpecification, name, name,PyAsnObjectName_FromPython(value, &dst->choice.name));
 PY_IMPL_CHOICE_ATTR_TOPY(VariableSpecification, name, PyCompatAsnType_FromParent(&PyAsnObjectName_Type, parent,  (void *)&src->choice.name));

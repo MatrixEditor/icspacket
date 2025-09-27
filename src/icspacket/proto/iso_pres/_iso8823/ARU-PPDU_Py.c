@@ -44,7 +44,7 @@ PY_IMPL_SEQ_FROMPY(ARU_PPDU_normal_mode_parameters_ANON_2, asn_DEF_ARU_PPDU.elem
 PY_IMPL_SEQ_INIT(ARU_PPDU_normal_mode_parameters_ANON_2);
 PY_IMPL_SEQ_ANON_ATTR_FROMPY(ARU_PPDU, normal_mode_parameters, &src->choice.normal_mode_parameters, ARU_PPDU_normal_mode_parameters_ANON_2);
 PY_IMPL_SEQ_ANON_ATTR_TOPY(ARU_PPDU, normal_mode_parameters, &src->choice.normal_mode_parameters, ARU_PPDU_normal_mode_parameters_ANON_2);
-PY_IMPL_CHOICE_GENERIC_SETATTR(ARU_PPDU, ARU_PPDU, normal_mode_parameters, normal_mode_parameters, *asn_DEF_ARU_PPDU.elements[0].type);
+PY_IMPL_CHOICE_GENERIC_SETATTR(ARU_PPDU, ARU_PPDU, normal_mode_parameters, normal_mode_parameters, asn_DEF_ARU_PPDU);
 PY_IMPL_CHOICE_GETATTR(ARU_PPDU, ARU_PPDU, normal_mode_parameters, normal_mode_parameters);
 PY_IMPL_GENERIC_DEALLOC(ARU_PPDU);
 PY_IMPL_GENERIC_CHECK_CONSTRAINTS(ARU_PPDU);

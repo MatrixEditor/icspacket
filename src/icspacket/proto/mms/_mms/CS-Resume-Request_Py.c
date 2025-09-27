@@ -69,7 +69,7 @@ PY_IMPL_SEQ_FROMPY(CS_Resume_Request_controlling_ANON_3, asn_DEF_CS_Resume_Reque
 PY_IMPL_SEQ_INIT(CS_Resume_Request_controlling_ANON_3);
 PY_IMPL_SEQ_ANON_ATTR_FROMPY(CS_Resume_Request, controlling, &src->choice.controlling, CS_Resume_Request_controlling_ANON_3);
 PY_IMPL_SEQ_ANON_ATTR_TOPY(CS_Resume_Request, controlling, &src->choice.controlling, CS_Resume_Request_controlling_ANON_3);
-PY_IMPL_CHOICE_GENERIC_SETATTR(CS_Resume_Request, CS_Resume_Request, controlling, controlling, *asn_DEF_CS_Resume_Request.elements[1].type);
+PY_IMPL_CHOICE_GENERIC_SETATTR(CS_Resume_Request, CS_Resume_Request, controlling, controlling, asn_DEF_CS_Resume_Request);
 PY_IMPL_CHOICE_GETATTR(CS_Resume_Request, CS_Resume_Request, controlling, controlling);
 PY_IMPL_CHOICE_ATTR_FROMPY(CS_Resume_Request, CS_Resume_Request, normal, normal, PyCompatNull_FromObject(value, &dst->choice.normal));
 PY_IMPL_CHOICE_ATTR_TOPY(CS_Resume_Request, normal, Py_None);

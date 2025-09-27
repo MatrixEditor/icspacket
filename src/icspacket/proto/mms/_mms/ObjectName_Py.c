@@ -40,7 +40,7 @@ PY_IMPL_SEQ_FROMPY(ObjectName_domain_specific_ANON_3, asn_DEF_ObjectName.element
 PY_IMPL_SEQ_INIT(ObjectName_domain_specific_ANON_3);
 PY_IMPL_SEQ_ANON_ATTR_FROMPY(ObjectName, domain_specific, &src->choice.domain_specific, ObjectName_domain_specific_ANON_3);
 PY_IMPL_SEQ_ANON_ATTR_TOPY(ObjectName, domain_specific, &src->choice.domain_specific, ObjectName_domain_specific_ANON_3);
-PY_IMPL_CHOICE_GENERIC_SETATTR(ObjectName, ObjectName, domain_specific, domain_specific, *asn_DEF_ObjectName.elements[1].type);
+PY_IMPL_CHOICE_GENERIC_SETATTR(ObjectName, ObjectName, domain_specific, domain_specific, asn_DEF_ObjectName);
 PY_IMPL_CHOICE_GETATTR(ObjectName, ObjectName, domain_specific, domain_specific);
 PY_IMPL_CHOICE_ATTR_FROMPY(ObjectName, ObjectName, vmd_specific, vmd_specific,PyAsnIdentifier_FromPython(value, &dst->choice.vmd_specific));
 PY_IMPL_CHOICE_ATTR_TOPY(ObjectName, vmd_specific, PyCompatAsnType_FromParent(&PyAsnIdentifier_Type, parent,  (void *)&src->choice.vmd_specific));

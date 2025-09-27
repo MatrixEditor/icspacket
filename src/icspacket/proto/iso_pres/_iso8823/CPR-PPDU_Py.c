@@ -72,7 +72,7 @@ PY_IMPL_SEQ_FROMPY(CPR_PPDU_normal_mode_parameters_ANON_2, asn_DEF_CPR_PPDU.elem
 PY_IMPL_SEQ_INIT(CPR_PPDU_normal_mode_parameters_ANON_2);
 PY_IMPL_SEQ_ANON_ATTR_FROMPY(CPR_PPDU, normal_mode_parameters, &src->choice.normal_mode_parameters, CPR_PPDU_normal_mode_parameters_ANON_2);
 PY_IMPL_SEQ_ANON_ATTR_TOPY(CPR_PPDU, normal_mode_parameters, &src->choice.normal_mode_parameters, CPR_PPDU_normal_mode_parameters_ANON_2);
-PY_IMPL_CHOICE_GENERIC_SETATTR(CPR_PPDU, CPR_PPDU, normal_mode_parameters, normal_mode_parameters, *asn_DEF_CPR_PPDU.elements[0].type);
+PY_IMPL_CHOICE_GENERIC_SETATTR(CPR_PPDU, CPR_PPDU, normal_mode_parameters, normal_mode_parameters, asn_DEF_CPR_PPDU);
 PY_IMPL_CHOICE_GETATTR(CPR_PPDU, CPR_PPDU, normal_mode_parameters, normal_mode_parameters);
 PY_IMPL_GENERIC_DEALLOC(CPR_PPDU);
 PY_IMPL_GENERIC_CHECK_CONSTRAINTS(CPR_PPDU);

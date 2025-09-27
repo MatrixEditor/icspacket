@@ -187,7 +187,7 @@ class IED_Discover:
                 text.append(f"{get_floating_point_value(data.floating_point)}")
             case Data.PRESENT.PR_integer:
                 text.append(str(data.integer))
-            case Data.PRESENT.PR_Unsigned:
+            case Data.PRESENT.PR_unsigned:
                 text.append(str(data.unsigned))
             case Data.PRESENT.PR_visible_string:
                 text.append(escape(repr(data.visible_string or "<EMPTY>")))

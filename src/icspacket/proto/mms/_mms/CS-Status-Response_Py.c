@@ -86,7 +86,7 @@ PY_IMPL_SEQ_FROMPY(CS_Status_Response_fullResponse_ANON_2, asn_DEF_CS_Status_Res
 PY_IMPL_SEQ_INIT(CS_Status_Response_fullResponse_ANON_2);
 PY_IMPL_SEQ_ANON_ATTR_FROMPY(CS_Status_Response, fullResponse, &src->choice.fullResponse, CS_Status_Response_fullResponse_ANON_2);
 PY_IMPL_SEQ_ANON_ATTR_TOPY(CS_Status_Response, fullResponse, &src->choice.fullResponse, CS_Status_Response_fullResponse_ANON_2);
-PY_IMPL_CHOICE_GENERIC_SETATTR(CS_Status_Response, CS_Status_Response, fullResponse, fullResponse, *asn_DEF_CS_Status_Response.elements[0].type);
+PY_IMPL_CHOICE_GENERIC_SETATTR(CS_Status_Response, CS_Status_Response, fullResponse, fullResponse, asn_DEF_CS_Status_Response);
 PY_IMPL_CHOICE_GETATTR(CS_Status_Response, CS_Status_Response, fullResponse, fullResponse);
 PY_IMPL_CHOICE_ATTR_FROMPY(CS_Status_Response, CS_Status_Response, noExtraResponse, noExtraResponse, PyCompatNull_FromObject(value, &dst->choice.noExtraResponse));
 PY_IMPL_CHOICE_ATTR_TOPY(CS_Status_Response, noExtraResponse, Py_None);

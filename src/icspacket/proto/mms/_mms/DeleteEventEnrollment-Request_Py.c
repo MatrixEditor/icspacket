@@ -33,7 +33,7 @@ PY_IMPL_ENCODE_JER(DeleteEventEnrollment_Request_specific_ANON_2);
 PY_IMPL_GENERIC_IS_VALID(DeleteEventEnrollment_Request_specific_ANON_2);
 PY_IMPL_SEQ_ANON_ATTR_FROMPY(DeleteEventEnrollment_Request, specific, &src->choice.specific, DeleteEventEnrollment_Request_specific_ANON_2);
 PY_IMPL_SEQ_ANON_ATTR_TOPY(DeleteEventEnrollment_Request, specific, &src->choice.specific, DeleteEventEnrollment_Request_specific_ANON_2);
-PY_IMPL_CHOICE_GENERIC_SETATTR(DeleteEventEnrollment_Request, DeleteEventEnrollment_Request, specific, specific, *asn_DEF_DeleteEventEnrollment_Request.elements[0].type);
+PY_IMPL_CHOICE_GENERIC_SETATTR(DeleteEventEnrollment_Request, DeleteEventEnrollment_Request, specific, specific, asn_DEF_DeleteEventEnrollment_Request);
 PY_IMPL_CHOICE_GETATTR(DeleteEventEnrollment_Request, DeleteEventEnrollment_Request, specific, specific);
 PY_IMPL_SEQ_OF_LEN(DeleteEventEnrollment_Request_specific_ANON_2);
 PY_IMPL_SEQ_OF_GETITEM(DeleteEventEnrollment_Request_specific_ANON_2);

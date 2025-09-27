@@ -41,7 +41,7 @@ PY_IMPL_SEQ_FROMPY(EMBEDDED_PDV_syntaxes_ANON_3, asn_DEF_EMBEDDED_PDV.elements[0
 PY_IMPL_SEQ_INIT(EMBEDDED_PDV_syntaxes_ANON_3);
 PY_IMPL_SEQ_ANON_ATTR_FROMPY(EMBEDDED_PDV_identification_ANON_2, syntaxes, &src->choice.syntaxes, EMBEDDED_PDV_syntaxes_ANON_3);
 PY_IMPL_SEQ_ANON_ATTR_TOPY(EMBEDDED_PDV_identification_ANON_2, syntaxes, &src->choice.syntaxes, EMBEDDED_PDV_syntaxes_ANON_3);
-PY_IMPL_CHOICE_GENERIC_SETATTR(EMBEDDED_PDV_identification_ANON_2, EMBEDDED_PDV__identification, syntaxes, syntaxes, *asn_DEF_EMBEDDED_PDV.elements[0].type->elements[0].type);
+PY_IMPL_CHOICE_GENERIC_SETATTR(EMBEDDED_PDV_identification_ANON_2, EMBEDDED_PDV__identification, syntaxes, syntaxes, asn_DEF_EMBEDDED_PDV);
 PY_IMPL_CHOICE_GETATTR(EMBEDDED_PDV_identification_ANON_2, EMBEDDED_PDV__identification, syntaxes, syntaxes);
 PY_IMPL_SEQ_ATTR_FROMPY(EMBEDDED_PDV_context_negotiation_ANON_8, presentation_context_id, PyCompatLong_FromObject(value, target, 1));
 PY_IMPL_SEQ_ATTR_TOPY(EMBEDDED_PDV_context_negotiation_ANON_8, presentation_context_id, PyCompatLong_AsObject(target, 1));
@@ -77,7 +77,7 @@ PY_IMPL_SEQ_FROMPY(EMBEDDED_PDV_context_negotiation_ANON_8, asn_DEF_EMBEDDED_PDV
 PY_IMPL_SEQ_INIT(EMBEDDED_PDV_context_negotiation_ANON_8);
 PY_IMPL_SEQ_ANON_ATTR_FROMPY(EMBEDDED_PDV_identification_ANON_2, context_negotiation, &src->choice.context_negotiation, EMBEDDED_PDV_context_negotiation_ANON_8);
 PY_IMPL_SEQ_ANON_ATTR_TOPY(EMBEDDED_PDV_identification_ANON_2, context_negotiation, &src->choice.context_negotiation, EMBEDDED_PDV_context_negotiation_ANON_8);
-PY_IMPL_CHOICE_GENERIC_SETATTR(EMBEDDED_PDV_identification_ANON_2, EMBEDDED_PDV__identification, context_negotiation, context_negotiation, *asn_DEF_EMBEDDED_PDV.elements[0].type->elements[3].type);
+PY_IMPL_CHOICE_GENERIC_SETATTR(EMBEDDED_PDV_identification_ANON_2, EMBEDDED_PDV__identification, context_negotiation, context_negotiation, asn_DEF_EMBEDDED_PDV);
 PY_IMPL_CHOICE_GETATTR(EMBEDDED_PDV_identification_ANON_2, EMBEDDED_PDV__identification, context_negotiation, context_negotiation);
 PY_IMPL_CHOICE_ATTR_FROMPY(EMBEDDED_PDV_identification_ANON_2, EMBEDDED_PDV__identification, syntax, syntax,PyCompatOID_FromUnicode(value, &dst->choice.syntax));
 PY_IMPL_CHOICE_ATTR_TOPY(EMBEDDED_PDV_identification_ANON_2, syntax, PyCompatOID_AsUTF8String(&src->choice.syntax));
