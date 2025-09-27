@@ -219,6 +219,36 @@ class Timestamp:
         self.timeval = bytes(data)
         self.fraction = bytes(3)
 
+    @staticmethod
+    def from_datetime(dt: datetime.datetime) -> "Timestamp":
+        """
+        Construct a :class:`Timestamp` from a Python :class:`datetime.datetime`.
+
+        The supplied datetime object is converted to a UNIX timestamp
+        (seconds since epoch), which is then used to populate the
+        internal ``seconds`` field of the :class:`Timestamp`.
+
+        Example
+        -------
+
+        .. code-block:: python
+
+            ts = Timestamp.from_datetime(datetime.datetime.utcnow())
+            print(ts.seconds)
+
+        :param dt:
+            A datetime instance to convert into a MMS Timestamp.
+        :type dt: datetime.datetime
+        :return:
+            A newly constructed :class:`Timestamp` instance.
+        :rtype: Timestamp
+
+        .. versionadded:: 0.2.4
+        """
+        ts = Timestamp()
+        ts.seconds = int(dt.timestamp())
+        return ts
+
     @property
     def datetime(self) -> datetime.datetime:
         """
@@ -237,3 +267,232 @@ class FileHandle:
 
     handle: int
     attributes: FileAttributes
+
+
+def array2data(obj: list[dict], data: Data) -> None:
+    """
+    Convert a Python list of dicts into a MMS ``Data.array`` representation.
+
+    :param obj:
+        A list of dict objects, each convertible into :class:`Data`
+        using :func:`from_dict`.
+    :type obj: list[dict]
+    :param data:
+        Target :class:`Data` object to populate.
+    :type data: Data
+
+    .. versionadded:: 0.2.4
+    """
+    if not isinstance(obj, list):
+        raise TypeError(f"Invalid array value: {obj!r} - expected list")
+
+    data.array = Data.array_TYPE([from_dict(item) for item in obj])
+
+
+def struct2data(obj: list[dict], data: Data) -> None:
+    """
+    Convert a Python list of dicts into a MMS ``Data.structure`` representation.
+
+    Each dict is transformed into a :class:`Data` element using
+    :func:`from_dict`.
+
+    .. versionadded:: 0.2.4
+    """
+    structure = Data.structure_TYPE()
+    for item in obj:
+        item_data = from_dict(item)
+        structure.add(item_data)
+    data.structure = structure
+
+
+def boolean2data(obj: bool | str, data: Data) -> None:
+    """
+    Convert a Python boolean or truthy string into MMS ``Data.boolean``.
+
+    Recognized truthy values include ``True``, ``1``, ``"true"``,
+    ``"True"``, ``"On"``, and ``"on"``.
+
+    .. versionadded:: 0.2.4
+    """
+    data.boolean = obj in (1, True, "true", "True", "On", "on")
+
+
+def bit_string2data(
+    obj: dict[int, bool] | bytes | Data.bit_string_TYPE, data: Data
+) -> None:
+    """
+    Convert a dict, bytes, or bit_string_TYPE into MMS ``Data.bit_string``.
+
+    :param obj:
+        - If a ``dict[int, bool]``, the keys represent bit positions
+          (1-based) and the values indicate whether the bit is set.
+        - If ``bytes`` or ``bit_string_TYPE``, directly assigned.
+    :type obj: dict[int, bool] | bytes | Data.bit_string_TYPE
+    :param data:
+        Target :class:`Data` object to populate.
+    :type data: Data
+
+    .. versionadded:: 0.2.4
+    """
+    if isinstance(obj, dict):
+        size = max(obj.keys())
+        value = Data.bit_string_TYPE(size)
+        for index, is_set in obj.items():
+            value.set(index, is_set)
+    else:
+        value = obj
+    data.bit_string = value
+
+
+def int2data(obj: int, data: Data) -> None:
+    """.. versionadded:: 0.2.4"""
+    data.integer = int(obj)
+
+
+def uint2data(obj: int, data: Data) -> None:
+    """.. versionadded:: 0.2.4"""
+    if obj < 0:
+        raise ValueError(f"Invalid unsigned integer value: {obj}")
+
+    data.unsigned = int(obj)
+
+
+def float2data(obj: float, data: Data) -> None:
+    """.. versionadded:: 0.2.4"""
+    data.floating_point = create_floating_point_value(obj)
+
+
+def bytes2data(obj: bytes, data: Data) -> None:
+    """.. versionadded:: 0.2.4"""
+    data.octet_string = bytes(obj)
+
+
+def visible_string2data(obj: str, data: Data) -> None:
+    """.. versionadded:: 0.2.4"""
+    data.visible_string = str(obj)
+
+
+def time2data(obj: bytes, data: Data) -> None:
+    """.. versionadded:: 0.2.4"""
+    data.generalized_time = bytes(obj)
+
+
+def bintime2data(obj: bytes, data: Data) -> None:
+    """.. versionadded:: 0.2.4"""
+    data.bintime = bytes(obj)
+
+
+def utctime2data(obj: bytes | datetime.datetime, data: Data) -> None:
+    """
+    Convert a UTC time value into MMS ``Data.utc_time``.
+
+    Accepts either raw bytes or a Python :class:`datetime.datetime`.
+    If a datetime is provided, it is converted using
+    :func:`Timestamp.from_datetime`.
+
+    .. versionadded:: 0.2.4
+    """
+    if isinstance(obj, datetime.datetime):
+        obj = Timestamp.from_datetime(obj)
+    data.utc_time = bytes(obj)
+
+
+def bcd2data(obj: int, data: Data) -> None:
+    """.. versionadded:: 0.2.4"""
+    data.bcd = obj
+
+
+def boolean_array2data(obj: list[bool], data: Data) -> None:
+    """
+    Convert a Python list of booleans into MMS ``Data.booleanArray``.
+
+    :param obj:
+        Sequence of boolean values. Each element is mapped to an
+        index in the MMS ``booleanArray``.
+    :type obj: list[bool]
+
+    .. versionadded:: 0.2.4
+    """
+    value = Data.booleanArray_TYPE(len(obj))
+    for index, is_set in enumerate(obj):
+        value.set(index, bool(is_set))
+    data.booleanArray = value
+
+
+def obj_id2data(obj: str, data: Data) -> None:
+    """.. versionadded:: 0.2.4"""
+    data.objId = str(obj)
+
+
+def mms_string2data(obj: str, data: Data) -> None:
+    """.. versionadded:: 0.2.4"""
+    data.mMSString = str(obj)
+
+
+def from_dict(obj: dict[str, Any]) -> Data:
+    """
+    Construct a :class:`Data` object from a Python dictionary.
+
+    This is a high-level factory function that simplifies the creation
+    of MMS ``Data`` instances from JSON-like structures. Keys in the
+    dictionary correspond to MMS ``Data.PRESENT`` discriminators
+    (e.g., ``"integer"``, ``"boolean"``, ``"array"``). Values are
+    converted using type-specific converters registered in
+    :data:`_DATA_CONVERT`.
+
+    Example
+    -------
+
+    .. code-block:: python
+
+        payload = {
+            "integer": 42,
+            "visible_string": "hello",
+            "boolean": True,
+            "array": [
+                {"integer": 1},
+                {"integer": 2},
+            ],
+        }
+
+        data = from_dict(payload)
+
+    The above produces a :class:`Data` object equivalent to one that
+    would have been constructed manually.
+
+    :param obj:
+        Dictionary mapping field names (without the ``PR_`` prefix)
+        to Python values convertible into MMS ``Data`` elements.
+    :type obj: dict[str, Any]
+    :return:
+        A fully constructed :class:`Data` instance.
+    :rtype: Data
+
+    .. versionadded:: 0.2.4
+    """
+    data = Data()
+    for key, value in obj.items():
+        present = Data.PRESENT[f"PR_{key}"]
+        converter = _DATA_CONVERT[present]
+        converter(value, data)
+    return data
+
+
+_DATA_CONVERT = {
+    Data.PRESENT.PR_array: array2data,
+    Data.PRESENT.PR_structure: struct2data,
+    Data.PRESENT.PR_boolean: boolean2data,
+    Data.PRESENT.PR_bit_string: bit_string2data,
+    Data.PRESENT.PR_integer: int2data,
+    Data.PRESENT.PR_unsigned: uint2data,
+    Data.PRESENT.PR_floating_point: float2data,
+    Data.PRESENT.PR_octet_string: bytes2data,
+    Data.PRESENT.PR_visible_string: visible_string2data,
+    Data.PRESENT.PR_generalized_time: time2data,
+    Data.PRESENT.PR_binary_time: bintime2data,
+    Data.PRESENT.PR_bcd: bcd2data,
+    Data.PRESENT.PR_booleanArray: boolean_array2data,
+    Data.PRESENT.PR_objId: obj_id2data,
+    Data.PRESENT.PR_mMSString: mms_string2data,
+    Data.PRESENT.PR_utc_time: utctime2data,
+}

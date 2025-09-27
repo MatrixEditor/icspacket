@@ -13,14 +13,18 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
 import logging
 
-from typing_extensions import override
+from collections.abc import Iterable
+from typing_extensions import Callable, override
 
 from icspacket.core.connection import connection
 from icspacket.proto.mms._mms import (
     GetNamedVariableListAttributes_Request,
     GetNamedVariableListAttributes_Response,
+    Unconfirmed_PDU,
+    UnconfirmedService,
 )
 from icspacket.proto.tpkt import tpktsock
 from icspacket.proto.cotp.connection import COTP_Connection
@@ -62,7 +66,6 @@ from icspacket.proto.mms.asn1types import (
     GetNameList_Request,
     GetVariableAccessAttributes_Request,
     GetVariableAccessAttributes_Response,
-    Identifier,
     Identify_Request,
     Initiate_RequestPDU,
     MMSpdu,
@@ -74,7 +77,6 @@ from icspacket.proto.mms.asn1types import (
     ServiceError,
     Status_Request,
     StatusResponse,
-    VariableAccessSpecification,
     VMDReset_Request,
     VMDStop_Request,
     Write_Request,
@@ -96,6 +98,109 @@ from icspacket.proto.mms.exceptions import (
 )
 
 logger = logging.getLogger(__name__)
+
+
+UnconfirmedServiceCallback = Callable[["MMS_Connection", UnconfirmedService], None]
+"""
+Type alias for callbacks that process unconfirmed MMS service elements.
+
+:param conn: Active MMS connection instance.
+:type conn: MMS_Connection
+:param service: The unconfirmed MMS service payload.
+:type service: UnconfirmedService
+
+.. versionadded:: 0.2.4
+"""
+
+UnconfirmedPDUCallback = Callable[["MMS_Connection", Unconfirmed_PDU], None]
+"""
+Type alias for callbacks that process full unconfirmed MMS PDUs.
+
+:param conn: Active MMS connection instance.
+:type conn: MMS_Connection
+:param pdu: The unconfirmed MMS PDU as received from the remote peer.
+:type pdu: Unconfirmed_PDU
+
+.. versionadded:: 0.2.4
+"""
+
+
+class UnconfirmedServiceHandler:
+    """
+    Utility class for dispatching unconfirmed MMS service elements.
+
+    Instances of this handler can be registered to react to specific
+    unconfirmed MMS services. It acts as a callable object that can be
+    directly invoked with an :class:`Unconfirmed_PDU`.
+
+    .. code-block:: python
+        :caption: Example
+
+        def on_status(conn, service):
+            print("Received status report:", service)
+
+        handler = UnconfirmedServiceHandler(
+            UnconfirmedService.PRESENT.PR_XXX,
+            func=on_status
+        )
+
+        # later inside MMS_Connection
+        handler(conn, unconfirmed_pdu)
+
+    :param service:
+        The :class:`UnconfirmedService.PRESENT` discriminator that this
+        handler should filter on.
+    :type service: UnconfirmedService.PRESENT
+    :param func:
+        Optional callback invoked when a matching unconfirmed service is received.
+    :type func: UnconfirmedServiceCallback | None
+
+    .. versionadded:: 0.2.4
+    """
+
+    def __init__(
+        self,
+        service: UnconfirmedService.PRESENT,
+        func: UnconfirmedServiceCallback | None = None,
+    ) -> None:
+        self.target_service = service
+        self.func = func
+
+    def on_pdu(self, conn: "MMS_Connection", service: UnconfirmedService) -> None:
+        """
+        Dispatch a matching unconfirmed service to the configured callback.
+
+        :param conn:
+            Active MMS connection instance.
+        :type conn: MMS_Connection
+        :param service:
+            The unconfirmed MMS service element matching the target type.
+        :type service: UnconfirmedService
+
+        .. versionadded:: 0.2.4
+        """
+        if self.func:
+            self.func(conn, service)
+
+    def __call__(self, conn: "MMS_Connection", pdu: Unconfirmed_PDU) -> None:
+        """
+        Make this handler instance directly callable with an unconfirmed PDU.
+
+        If the PDU contains the configured service type, the internal
+        :meth:`on_pdu` method is invoked.
+
+        :param conn:
+            Active MMS connection instance.
+        :type conn: MMS_Connection
+        :param pdu:
+            An unconfirmed MMS PDU as received from the peer.
+        :type pdu: Unconfirmed_PDU
+
+        .. versionadded:: 0.2.4
+        """
+        service = pdu.service
+        if service and service.present == self.target_service:
+            self.on_pdu(conn, service)
 
 
 class MMS_Connection(connection):
@@ -152,6 +257,15 @@ class MMS_Connection(connection):
     :type presentation_config: ISO_PresentationSettings | None
     :param auth: Optional ACSE :class:`Authenticator` instance for authentication handling.
     :type auth: Authenticator | None
+    :param unconfirmed_cb:
+            Callback or iterable of callbacks that will be invoked whenever
+            an unconfirmed PDU is received from the peer. Each callback
+            must conform to :data:`UnconfirmedPDUCallback`.
+    :type unconfirmed_cb: UnconfirmedPDUCallback | Iterable[UnconfirmedPDUCallback] | None
+
+        .. versionchanged:: 0.2.4
+           Added the ``unconfirmed_cb`` parameter for registering unconfirmed
+           PDU callbacks.
     """
 
     def __init__(
@@ -160,6 +274,9 @@ class MMS_Connection(connection):
         session_config: ISO_SessionSettings | None = None,
         presentation_config: ISO_PresentationSettings | None = None,
         auth: Authenticator | None = None,
+        unconfirmed_cb: UnconfirmedPDUCallback
+        | Iterable[UnconfirmedPDUCallback]
+        | None = None,
     ):
         # First, initialize the connection class and invalidate this connection
         super().__init__()
@@ -183,6 +300,13 @@ class MMS_Connection(connection):
         )
         self._connected = self.presentation.is_connected()
         self.__invoke_id = 1
+        self.__unconfirmed_cb = []
+        if unconfirmed_cb:
+            self.__unconfirmed_cb = (
+                [unconfirmed_cb]
+                if not isinstance(unconfirmed_cb, Iterable)
+                else list(unconfirmed_cb)
+            )
 
     # ---------------------------------------------------------------------- #
     # Properties
@@ -250,6 +374,22 @@ class MMS_Connection(connection):
         :rtype: int
         """
         return self.__invoke_id
+
+    @property
+    def unconfirmed_cb(self) -> list[UnconfirmedPDUCallback]:
+        """
+        List of registered unconfirmed PDU callbacks.
+
+        Each callback is invoked in registration order whenever an
+        :class:`Unconfirmed_PDU` is received.
+
+        :return:
+            List of registered callback callables.
+        :rtype: list[UnconfirmedPDUCallback]
+
+        .. versionadded:: 0.2.4
+        """
+        return self.__unconfirmed_cb
 
     # ---------------------------------------------------------------------- #
     # MMS Connection Operations
@@ -415,9 +555,15 @@ class MMS_Connection(connection):
         :rtype: MMSpdu
         :raises TypeError: If the received data is not an MMS PDU.
         """
-        pdu = self.presentation.recv_encoded_data()
-        if not isinstance(pdu, MMSpdu):
-            raise TypeError(f"Received invalid MMS data: {type(pdu)}")
+        pdu = None
+        while pdu is None:
+            pdu = self.presentation.recv_encoded_data()
+            if not isinstance(pdu, MMSpdu):
+                raise TypeError(f"Received invalid MMS data: {type(pdu)}")
+
+            if pdu.present == MMSpdu.PRESENT.PR_unconfirmed_PDU:
+                self._handle_unconfirmed_pdu(pdu.unconfirmed_PDU)
+                pdu = None
         return pdu
 
     # ---------------------------------------------------------------------------
@@ -719,7 +865,7 @@ class MMS_Connection(connection):
         if response is not None:
             write_results = response.write
             # this automatically returns None on success
-            return write_results[0].failure.value
+            return write_results[0].failure
 
     def variable_attributes(
         self, *, name: ObjectName | None = None, address: Address | None = None
@@ -1065,9 +1211,29 @@ class MMS_Connection(connection):
         if error is not None:
             raise error
 
+        if response.present != MMSpdu.PRESENT.PR_confirmed_ResponsePDU:
+            raise MMSServiceError(
+                f"Received unexpected MMS response: {response.present!r}",
+                response=response,
+            )
+
         return response.confirmed_ResponsePDU.service
 
     # --- private ugly code
+    def _handle_unconfirmed_pdu(self, pdu: Unconfirmed_PDU) -> None:
+        """
+        Internal helper that dispatches unconfirmed PDUs to all
+        registered callbacks.
+
+        :param pdu:
+            The unconfirmed PDU to process.
+        :type pdu: Unconfirmed_PDU
+
+        .. versionadded:: 0.2.4
+        """
+        for handler in self.__unconfirmed_cb:
+            handler(self, pdu)
+
     def _error_from_service_response(
         self,
         request: ConfirmedServiceRequest,
@@ -1094,7 +1260,8 @@ class MMS_Connection(connection):
                 case _:
                     return MMSServiceError(
                         f"Failed service request of type: {request.present!r} with "
-                        + f"reason: {reason.confirmed_requestPDU}"
+                        + f"reason: {reason.confirmed_requestPDU}",
+                        response=response,
                     )
 
         if response.present != MMSpdu.PRESENT.PR_confirmed_ResponsePDU:
@@ -1103,25 +1270,29 @@ class MMS_Connection(connection):
 
             return MMSServiceError(
                 f"Received invalid MMS response: {response.present!r} - "
-                + f"expected response for {request.present!r}"
+                + f"expected response for {request.present!r}",
+                response=response,
             )
 
         pdu = response.confirmed_ResponsePDU
         if not pdu:
             return MMSServiceError(
-                f"Failed service request of type: {request.present!r} (empty response)"
+                f"Failed service request of type: {request.present!r} (empty response)",
+                response=response,
             )
 
         if pdu.invokeID.value != self.invoke_id:
             return MMSServiceError(
                 f"Response invokeID ({pdu.invokeID}) does not match "
-                + f"request invokeID ({self.invoke_id})"
+                + f"request invokeID ({self.invoke_id})",
+                response=response,
             )
 
         if pdu.service.present != request.present:
             return MMSServiceError(
                 f"Response service type ({pdu.service.present!r}) does not match "
-                + f"request service type ({request.present!r})"
+                + f"request service type ({request.present!r})",
+                response=response,
             )
 
         return None

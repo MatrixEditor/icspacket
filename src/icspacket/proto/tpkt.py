@@ -16,6 +16,8 @@
 # pyright: reportInvalidTypeForm=false
 import socket
 import logging
+import queue
+
 from typing_extensions import override
 
 from caterpillar.shortcuts import pack, struct, BigEndian, this, unpack
@@ -88,25 +90,54 @@ class TPKT:
         self.length = len(self.tpdu) + 4
         return pack(self, TPKT)
 
+#: Convenience constant for decoding 16-bit unsigned integers in
+#: big-endian byte order. Used internally for parsing TPKT headers.
+#:
+#: .. versionadded:: 0.2.4
+_U16_BE = BigEndian + uint16
+
 
 class tpktsock(socket.socket):
     """Socket wrapper that transparently applies TPKT encapsulation.
 
-    This class extends :class:`socket.socket` to automatically prepend and
-    parse TPKT headers when sending and receiving data, in compliance with
-    [RFC 1006].
+    This class extends :class:`socket.socket` to provide automatic
+    encoding and decoding of **ISO 8073 (TPKT)** headers for
+    connection-oriented transport protocols. Applications can use
+    :class:`tpktsock` as a drop-in replacement for raw sockets when
+    working with TPKT-based communication.
 
-    - All ``send*`` methods encapsulate user data into a TPKT before writing
-      to the underlying TCP stream.
-    - All ``recv*`` methods strip the TPKT header and return only the TPDU.
-    - If multiple TPKTs arrive in a single TCP segment, only the first one is
-      returned; subsequent packets are discarded with a warning.
+    **Enhancements since 0.2.4:**
 
-    **Limitations:**
+    - An internal :class:`queue.Queue` (``in_queue``) is now used to
+      buffer partially received or multiple consecutive TPKT PDUs.
+    - Improved handling of cases where more than one PDU arrives
+      in a single TCP segment. Excess packets are queued for later
+      retrieval.
+    - Extended validation ensures incomplete headers are safely
+      discarded and logged.
 
-    - This implementation assumes each ``recv`` call delivers a complete TPKT.
-    - Unexpected length mismatches raise :class:`ValueError`.
+    .. versionchanged:: 0.2.4
+       Added internal buffering and support for multiple PDUs per TCP segment.
     """
+
+    #: Internal queue for buffered TPKT PDUs awaiting delivery.
+    #:
+    #: .. versionadded:: 0.2.4
+    in_queue: queue.Queue[bytes]
+
+    def __init__(
+        self,
+        family: int = -1,
+        type: int = -1,
+        proto: int = -1,
+        fileno: int | None = None,
+    ) -> None:
+        super().__init__(family, type, proto, fileno)
+        self.in_queue = queue.Queue()
+
+    def __del__(self):
+        if not self.in_queue.empty():
+            logger.warning("Leaking %d TPKTs", self.in_queue.qsize())
 
     def unpack_tpkt(self, octets: bytes) -> bytes:
         """Unpack a TPKT-encapsulated buffer.
@@ -132,17 +163,69 @@ class tpktsock(socket.socket):
 
     @override
     def recv(self, bufsize: int, flags: int = 0, /) -> bytes:
-        """Receive a TPKT packet and return the TPDU.
-
-        :param bufsize: Maximum number of bytes to receive.
-        :type bufsize: int
-        :param flags: Optional socket flags.
-        :type flags: int, optional
-        :return: The decoded TPDU bytes.
-        :rtype: bytes
         """
+        Receive a TPKT-encapsulated payload.
+
+        If multiple PDUs are present in a single TCP segment, the
+        first is returned immediately and subsequent ones are stored
+        in :attr:`in_queue` for later retrieval.
+
+        :param bufsize:
+            Maximum number of bytes to read from the socket.
+        :type bufsize: int
+        :param flags:
+            Optional flags passed through to the underlying
+            :func:`socket.socket.recv`.
+        :type flags: int
+        :return:
+            The payload of a single decoded TPKT PDU.
+        :rtype: bytes
+
+        :raises ValueError:
+            If the received header length is inconsistent with the
+            actual payload size.
+
+        .. versionchanged:: 0.2.4
+           Now returns buffered PDUs if available and supports
+           handling multiple PDUs per TCP segment.
+        """
+        if not self.in_queue.empty():
+            return self.in_queue.get()
+
         data = super().recv(bufsize, flags)
-        return self.unpack_tpkt(data)
+        if not data:
+            return b""
+
+        logger.log(TRACE, "Received %d bytes from socket", len(data))
+        tpkt = TPKT.from_octets(data)
+        self.in_queue.put(tpkt.tpdu)
+        logger.log(TRACE, "Header complete (message size = %d)", len(tpkt.tpdu))
+
+        if tpkt.length < len(data):
+            logger.log(TRACE, "Received more than one TPKT")
+            remaining = data[tpkt.length :]
+            if len(remaining) < 4:
+                logger.warning(
+                    "Received more than one TPKT: %s < %s. Second packet will be discarded",
+                    tpkt.length,
+                    len(data),
+                )
+                return self.in_queue.get()
+
+            actual_size = unpack(_U16_BE, remaining[2:])
+            size = actual_size - len(remaining)
+            if size <= 0:
+                next_pkt = super().recv(size, flags)
+            else:
+                next_pkt = b""
+
+            tpkt = TPKT.from_octets(remaining + next_pkt)
+            self.in_queue.put(tpkt.tpdu)
+            logger.log(
+                TRACE, "Header complete (2nd message size = %d)", len(tpkt.tpdu)
+            )
+
+        return self.recv(bufsize, flags)
 
     @override
     def recvfrom(self, bufsize: int, flags: int = 0, /) -> tuple[bytes, tuple]:

@@ -13,6 +13,7 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
+from icspacket.proto.mms._mms import MMSpdu
 from icspacket.proto.mms.asn1types import ServiceError
 
 
@@ -66,7 +67,14 @@ class MMSServiceError(ConnectionError):
 
     Typically raised when an MMS primitive is received that cannot be
     handled by the local MMS-user.
+
+    .. versionchanged:: 0.2.4
+        Added `response` attribute
     """
+
+    def __init__(self, *args: object, response: MMSpdu | None = None) -> None:
+        super().__init__(*args)
+        self.response = response
 
 
 class MMSUnknownServiceError(MMSServiceError):
