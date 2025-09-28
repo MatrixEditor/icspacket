@@ -2,7 +2,7 @@
 <html lang="en" data-accent-color="lime" data-content_root="../../">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>MMS Connection - icspacket 0.1.dev1+g53b33844c documentation</title><link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="Data Conversion" href="api_data.html" /><link rel="prev" title="API Reference" href="api.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>MMS Connection - icspacket 0.1.dev1+g1bd6af09a documentation</title><link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="Data Conversion" href="api_data.html" /><link rel="prev" title="API Reference" href="api.html" />
       <link rel="canonical" href="https://matrixeditor.github.io/icspacket/protocols/mms/api_conn.html" /><script>
     function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
     setColorMode(localStorage._theme||"dark");
@@ -223,6 +223,8 @@ data-aria-dark="Switch to auto color mode">
 <li><a class="reference internal" href="#icspacket.proto.mms.connection.MMS_Connection.write_variable"><code class="docutils literal notranslate">write_variable()</span></code></a></li>
 <li><a class="reference internal" href="#icspacket.proto.mms.connection.MMS_Connection.variable_attributes"><code class="docutils literal notranslate">variable_attributes()</span></code></a></li>
 <li><a class="reference internal" href="#icspacket.proto.mms.connection.MMS_Connection.variable_list_attributes"><code class="docutils literal notranslate">variable_list_attributes()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.mms.connection.MMS_Connection.obtain_file"><code class="docutils literal notranslate">obtain_file()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.mms.connection.MMS_Connection.file_transfer"><code class="docutils literal notranslate">file_transfer()</span></code></a></li>
 <li><a class="reference internal" href="#icspacket.proto.mms.connection.MMS_Connection.file_open"><code class="docutils literal notranslate">file_open()</span></code></a></li>
 <li><a class="reference internal" href="#icspacket.proto.mms.connection.MMS_Connection.file_read_chunk"><code class="docutils literal notranslate">file_read_chunk()</span></code></a></li>
 <li><a class="reference internal" href="#icspacket.proto.mms.connection.MMS_Connection.file_read"><code class="docutils literal notranslate">file_read()</span></code></a></li>
@@ -886,6 +888,54 @@ or if both are given at the same time.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.mms.connection.MMS_Connection.obtain_file">
+<span class="sig-name descname"><span class="pre">obtain_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">destination</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">remote</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ApplicationReference</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../../_modules/icspacket/proto/mms/connection.html#MMS_Connection.obtain_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.mms.connection.MMS_Connection.obtain_file" title="Link to this definition">¶</a></dt>
+<dd><p>Perform the MMS <span class="xref std std-term">ObtainFile</span> service to transfer a file
+between the client and a remote MMS server.</p>
+<p>The ObtainFile service may be used by an MMS client to instruct an
+MMS server to obtain a specified file from a file server. Depending
+on the usage, this can either be a request to <em>pull</em> a file from
+a remote source or to <em>serve</em> a local file to the requesting MMS
+peer.</p>
+<p>The method implements the complete reques-response sequence defined
+in IEC 61850 Annex C, including <code class="docutils literal notranslate"><span class="pre">FileOpen</span></code>, <code class="docutils literal notranslate"><span class="pre">FileRead</span></code>, <code class="docutils literal notranslate"><span class="pre">FileClose</span></code>,
+and the final <code class="docutils literal notranslate"><span class="pre">ObtainFile</span></code> confirmation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>source</strong> (<em>str</em><em> | </em><em>Path</em>) – Path to the source file. If <code class="docutils literal notranslate"><span class="pre">remote</span></code> is provided, this denotes the
+file path to be retrieved from the remote server. Otherwise, this
+must point to a local file which will be transferred.</p></li>
+<li><p><strong>destination</strong> (<em>str</em><em> | </em><em>Path</em>) – Path where the file should be stored on the remote server.
+For local serving, this is the name advertised to the requesting peer.</p></li>
+<li><p><strong>remote</strong> (<em>ApplicationReference</em><em> | </em><em>None</em>) – Optional reference to an external application server from which
+the file should be obtained. If <code class="docutils literal notranslate"><span class="pre">None</span></code>, this MMS connection
+instance will act as the file source.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>MMSServiceError</strong> – If the MMS server responds with an unexpected PDU type or an error
+occurs during the transfer sequence.</p></li>
+<li><p><strong>OSError</strong> – If the local file system access fails (e.g., file not found or
+permission denied).</p></li>
+</ul>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.2.4.</span></p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.mms.connection.MMS_Connection.file_transfer">
+<span class="sig-name descname"><span class="pre">file_transfer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">destination</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">remote</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ApplicationReference</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#icspacket.proto.mms.connection.MMS_Connection.file_transfer" title="Link to this definition">¶</a></dt>
+<dd><div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.2.4.</span></p>
+</div>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="icspacket.proto.mms.connection.MMS_Connection.file_open">
 <span class="sig-name descname"><span class="pre">file_open</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">FileName</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="api_data.html#icspacket.proto.mms.data.FileHandle" title="icspacket.proto.mms.data.FileHandle"><span class="pre">FileHandle</span></a></span></span><a class="reference internal" href="../../_modules/icspacket/proto/mms/connection.html#MMS_Connection.file_open"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.mms.connection.MMS_Connection.file_open" title="Link to this definition">¶</a></dt>
 <dd><p>D.3 FileOpen Service</p>
@@ -1187,7 +1237,7 @@ service-specific result (e.g. a <code class="xref py py-class docutils literal n
     </div>
   </div>
 </footer>
-      <script src="../../_static/documentation_options.js?v=ed1c4872"></script>
+      <script src="../../_static/documentation_options.js?v=137524f2"></script>
       <script src="../../_static/doctools.js?v=9bcbadda"></script>
       <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>

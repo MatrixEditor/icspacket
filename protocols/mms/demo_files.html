@@ -2,7 +2,7 @@
 <html lang="en" data-accent-color="lime" data-content_root="../../">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>FileManagement Service - icspacket 0.1.dev1+g53b33844c documentation</title><link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="API Reference" href="api.html" /><link rel="prev" title="Variable Target Format" href="demo_vars.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>FileManagement Service - icspacket 0.1.dev1+g1bd6af09a documentation</title><link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="API Reference" href="api.html" /><link rel="prev" title="Variable Target Format" href="demo_vars.html" />
       <link rel="canonical" href="https://matrixeditor.github.io/icspacket/protocols/mms/demo_files.html" /><script>
     function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
     setColorMode(localStorage._theme||"dark");
@@ -197,6 +197,7 @@ data-aria-dark="Switch to auto color mode">
 <li><a class="reference internal" href="#changing-directories-cd">Changing Directories (<code class="docutils literal notranslate"><span class="pre">cd</span></code>)</a></li>
 <li><a class="reference internal" href="#local-vs-remote-directory-listings">Local vs Remote Directory Listings</a></li>
 <li><a class="reference internal" href="#downloading-files-get">Downloading Files (<code class="docutils literal notranslate"><span class="pre">get</span></code>)</a></li>
+<li><a class="reference internal" href="#uploading-files-put">Uploading Files (<code class="docutils literal notranslate"><span class="pre">put</span></code>)</a></li>
 <li><a class="reference internal" href="#deleting-files-del">Deleting Files (<code class="docutils literal notranslate"><span class="pre">del</span></code>)</a></li>
 </ul>
 </div><a class="js-repo-stats repo-stats flex items-center" href="https://github.com/MatrixEditor/icspacket"
@@ -274,6 +275,23 @@ specifying them <strong>after</strong> the host argument. For instance:</p>
 </span></pre></div>
 </div>
 </div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>To view the help message for each implemented command, use <code class="docutils literal notranslate"><span class="pre">--help</span></code>
+together with the command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span data-line="1">mmsclient.py<span class="w"> </span>--help<span class="w"> </span>ls
+</span><span data-line="2">Usage:<span class="w"> </span>ls<span class="w"> </span><span class="o">[</span>-h<span class="o">]</span><span class="w"> </span><span class="o">[</span>-l<span class="o">]</span><span class="w"> </span><span class="o">[</span>-a<span class="o">]</span><span class="w"> </span><span class="o">[</span>directory<span class="o">]</span>
+</span><span data-line="3">
+</span><span data-line="4">positional<span class="w"> </span>arguments:
+</span><span data-line="5">directory<span class="w">   </span>Remote<span class="w"> </span>directory<span class="w"> </span>to<span class="w"> </span>list<span class="w"> </span><span class="o">(</span>defaults<span class="w"> </span>to<span class="w"> </span>current<span class="w"> </span>remote<span class="w"> </span>directory<span class="o">)</span>
+</span><span data-line="6">
+</span><span data-line="7">optional<span class="w"> </span>arguments:
+</span><span data-line="8">-h,<span class="w"> </span>--help<span class="w">  </span>show<span class="w"> </span>this<span class="w"> </span><span class="nb">help</span><span class="w"> </span>message<span class="w"> </span>and<span class="w"> </span><span class="nb">exit</span>
+</span><span data-line="9">-l<span class="w">          </span>Print<span class="w"> </span>output<span class="w"> </span>as<span class="w"> </span>a<span class="w"> </span>list<span class="w"> </span><span class="o">(</span>table<span class="o">)</span><span class="w"> </span>instead<span class="w"> </span>of<span class="w"> </span>filenames<span class="w"> </span>only
+</span><span data-line="10">-a,<span class="w"> </span>--all<span class="w">   </span>List<span class="w"> </span>all<span class="w"> </span>files,<span class="w"> </span>including<span class="w"> </span>ones<span class="w"> </span><span class="k">in</span><span class="w"> </span>subdirectories
+</span></pre></div>
+</div>
+</div>
 <section id="listing-files-ls">
 <h2>Listing Files (<code class="docutils literal notranslate"><span class="pre">ls</span></code>)<a class="headerlink" href="#listing-files-ls" title="Link to this heading">¶</a></h2>
 <p>Use the <code class="code docutils literal notranslate"><span class="pre">ls</span></code> command to list files in the current or a specified
@@ -325,6 +343,16 @@ standard output instead of saving. (hexdump)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">--unsafe</span></code> <svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-arrow-right" viewBox="0 0 16 16" aria-hidden="true"><path d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06Z"></path></svg> Print out the file content directly.</p></li>
 </ul>
 <img alt="../../_images/mms-file-get.png" src="../../_images/mms-file-get.png" />
+</section>
+<section id="uploading-files-put">
+<h2>Uploading Files (<code class="docutils literal notranslate"><span class="pre">put</span></code>)<a class="headerlink" href="#uploading-files-put" title="Link to this heading">¶</a></h2>
+<p>The <code class="code docutils literal notranslate"><span class="pre">put</span></code> command transfers a local file to the remote MMS peer.</p>
+<p>Arguments:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">local_name</span></code> <svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-arrow-right" viewBox="0 0 16 16" aria-hidden="true"><path d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06Z"></path></svg> The local file name to transfer.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">remote_name</span></code> <svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-arrow-right" viewBox="0 0 16 16" aria-hidden="true"><path d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06Z"></path></svg> The file name on the remote MMS peer (optional).</p></li>
+</ul>
+<img alt="../../_images/mms-file-put.png" src="../../_images/mms-file-put.png" />
 </section>
 <section id="deleting-files-del">
 <h2>Deleting Files (<code class="docutils literal notranslate"><span class="pre">del</span></code>)<a class="headerlink" href="#deleting-files-del" title="Link to this heading">¶</a></h2>
@@ -380,7 +408,7 @@ standard output instead of saving. (hexdump)</p></li>
     </div>
   </div>
 </footer>
-      <script src="../../_static/documentation_options.js?v=ed1c4872"></script>
+      <script src="../../_static/documentation_options.js?v=137524f2"></script>
       <script src="../../_static/doctools.js?v=9bcbadda"></script>
       <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
