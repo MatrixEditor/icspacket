@@ -56,8 +56,7 @@ critical.
 If you decide to build on this work, we encourage you to adopt secure coding
 practices, apply a structured security development process, and consider how
 you’ll generate and track indicators of compromise in line with your specific
-goals. Together, we can strengthen the security and resilience of ICS
-technologies while keeping experimentation safe and responsible.
+goals.
 
 ## License
 

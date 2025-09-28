@@ -54,6 +54,19 @@ def cli2data(value: str) -> Any | None:
     return doc
 
 
+def parse_origin(origin: str) -> tuple[int, bytes]:
+    if ":" not in origin:
+        logging.warning(f"Invalid origin format: {origin!r}")
+        return 0, bytes()
+
+    cat, id = origin.split(":")
+    try:
+        ident = bytes.fromhex(id)
+    except ValueError:
+        ident = id.encode()
+    return int(cat), ident
+
+
 def cli_main():
     from icspacket import __version__
 
@@ -78,6 +91,13 @@ def cli_main():
     )
     group.add_argument("--toggle", action="store_true", help="Toggle the value of the specified variable (queries first and assumes boolean).")
 
+    group = parser.add_argument_group("Control Options")
+    group.add_argument("--origin", metavar="CAT:ID", default=None, help=(
+        "The origin of the control request. \n"
+        "If not specified the default origin will be used."
+    ))
+    group.add_argument("--synchro-check", action="store_true", help="Enables synchro check for the control request.")
+    group.add_argument("--interlock-check", action="store_true", help="Enables interlock check for the control request.")
     # fmt: on
     add_mms_connection_options(parser)
     add_logging_options(parser)
@@ -140,6 +160,13 @@ def cli_main():
         )
         sys.exit(1)
 
+    if args.synchro_check:
+        co.synchro_check = True
+    if args.interlock_check:
+        co.interlock_check = True
+    if args.origin:
+        co.origin_cat, co.origin_ident = parse_origin(args.origin)
+
     if args.toggle:
         logging.debug("Toggle: Requesting current value for node...")
         value = client.get_data_values(ref / "Oper" / "ctlVal")
@@ -196,10 +223,10 @@ def cli_main():
                     _ = client.await_command_termination()
     except LastApplError as e:
         logging.error(
-            "Failed to operate on node %s: error: %s, cause: %s",
+            "Failed to operate on node %s: [bold red]%s[/], cause: [red]%s",
             parts[-1],
-            repr(e.error),
-            repr(e.cause),
+            e.error.name,
+            e.cause.name,
         )
     except ConnectionError as e:
         logging.error(

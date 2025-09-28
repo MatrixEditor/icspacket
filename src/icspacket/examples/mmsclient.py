@@ -14,6 +14,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 # pyright: reportUnusedCallResult=false, reportGeneralTypeIssues=false
+import datetime
 import logging
 import sys
 import pathlib
@@ -29,7 +30,6 @@ from rich.table import Table
 
 from icspacket.core.connection import ConnectionClosedError
 from icspacket.core import hexdump
-from icspacket.proto.cotp.structs import TPDU_Size
 from icspacket.proto.mms._mms import FileName, ServiceError
 from icspacket.proto.mms.connection import MMS_Connection
 from icspacket.proto.mms.exceptions import MMSConnectionError, MMSUnknownServiceError
@@ -202,8 +202,16 @@ class MMSClient(cmd2.Cmd):
                     raw_path = "".join(list(entry.fileName))
                     path = pathlib.Path(raw_path.removeprefix(str(remote_dir) + "/"))
                     # TODO: parse time
+                    try:
+                        mtime = str(
+                            datetime.datetime.strptime(
+                                entry.fileAttributes.lastModified, "%Y%m%d%H%M%S.%fZ"
+                            )
+                        )
+                    except ValueError as e:
+                        mtime = "N/A"
                     table.add_row(
-                        str(path), str(entry.fileAttributes.sizeOfFile), "N/A"
+                        str(path), str(entry.fileAttributes.sizeOfFile), mtime
                     )
                 console.print(table)
             else:
@@ -310,6 +318,29 @@ class MMSClient(cmd2.Cmd):
                 error, service_error, f"Could not delete file {str(remote_file_path)!r}"
             )
 
+    put_parser = cmd2.Cmd2ArgumentParser(add_help=True)
+    put_parser.add_argument("local_name", type=str, help="Local file name")
+    put_parser.add_argument(
+        "remote_name", type=str, nargs="?", help="Optional remote file name"
+    )
+
+    @cmd2.with_argparser(put_parser)
+    def do_put(self, args) -> None:
+        """Upload a file to the remote MMS server."""
+        local_file_path = pathlib.Path(args.local_name)
+        if not args.remote_name:
+            args.remote_name = local_file_path.name
+
+        logging.info("Uploading '%s' to '%s'", local_file_path, args.remote_name)
+        try:
+            with local_file_path.open("rb") as local_fp:
+                self.conn.file_transfer(local_file_path, args.remote_name)
+        except MMSConnectionError as error:
+            service_error = error.error
+            self._handle_file_service_error(
+                error, service_error, f"Could not upload file {str(local_file_path)!r}"
+            )
+
     @override
     def pexcept(self, msg: Any, *, end: str = "\n", apply_style: bool = True) -> None:
         match msg:
@@ -328,15 +359,52 @@ def cli_main():
     from icspacket import __version__
     from icspacket.core import logger
 
+    class _HelpAction(argparse.Action):
+        def __init__(
+            self,
+            option_strings,
+            dest=argparse.SUPPRESS,
+            default=argparse.SUPPRESS,
+            help=None,
+        ):
+            super(_HelpAction, self).__init__(
+                option_strings=option_strings,
+                dest=dest,
+                default=default,
+                nargs="?",
+                help=help,
+            )
+
+        def __call__(self, parser, namespace, values, option_string=None):
+            if not values:
+                parser.print_help()
+            else:
+                parser_name = f"{values}_parser"
+                if hasattr(MMSClient, parser_name):
+                    getattr(MMSClient, parser_name).print_help()
+                else:
+                    parser.error(f"no such command: {values}")
+            parser.exit()
+
     parser = argparse.ArgumentParser(
         usage="%(prog)s [options] host [command [args...]]",
+        add_help=False,
     )
+    # parser.register("action", "cmd2_help", Cmd2Action)
     parser.add_argument(
         "-i",
         "--interactive",
         action="store_true",
         help="Continue in interactive mode acter executing the first command (only if given)",
         default=False,
+    )
+    parser.add_argument(
+        "-h",
+        "--help",
+        action=_HelpAction,
+        help="Show this help message and exit. Optionally: show help for command",
+        default=None,
+        dest="help",
     )
     add_mms_connection_options(parser)
     add_logging_options(parser)

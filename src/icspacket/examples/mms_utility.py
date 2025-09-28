@@ -73,7 +73,7 @@ def data_to_str(data: Data) -> str | dict | list:
         case Data.PRESENT.PR_bit_string | Data.PRESENT.PR_booleanArray:
             return data.bit_string.value.to01(sep=" ") if data.bit_string else "<EMPTY>"
         case Data.PRESENT.PR_boolean:
-            return "[green]TRUE[/]" if data.boolean else "FALSE"
+            return "[green]True[/]" if data.boolean else "[red]False[/]"
         case Data.PRESENT.PR_array:
             return [data_to_str(item) for item in data.array]
         case Data.PRESENT.PR_utc_time:

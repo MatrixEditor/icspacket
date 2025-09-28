@@ -14,15 +14,25 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
+import datetime
 import logging
 
 from collections.abc import Iterable
+import os
+from pathlib import Path
+import random
 from typing_extensions import Callable, override
 
 from icspacket.core.connection import connection
 from icspacket.proto.mms._mms import (
+    ApplicationReference,
+    Confirmed_ResponsePDU,
+    FileClose_Response,
+    FileOpen_Response,
+    FileRead_Response,
     GetNamedVariableListAttributes_Request,
     GetNamedVariableListAttributes_Response,
+    ObtainFile_Request,
     Unconfirmed_PDU,
     UnconfirmedService,
 )
@@ -932,6 +942,166 @@ class MMS_Connection(connection):
         service = ConfirmedServiceRequest(getNamedVariableListAttributes=request)
         response = self.service_request(service)
         return response.getNamedVariableListAttributes
+
+    # ---------------------------------------------------------------------------
+    # Annex C - File Access service
+    # ---------------------------------------------------------------------------
+    def obtain_file(
+        self,
+        source: str | Path,
+        destination: str | Path,
+        remote: ApplicationReference | None = None,
+    ) -> None:
+        """
+        Perform the MMS :term:`ObtainFile` service to transfer a file
+        between the client and a remote MMS server.
+
+        The ObtainFile service may be used by an MMS client to instruct an
+        MMS server to obtain a specified file from a file server. Depending
+        on the usage, this can either be a request to *pull* a file from
+        a remote source or to *serve* a local file to the requesting MMS
+        peer.
+
+        The method implements the complete reques-response sequence defined
+        in IEC 61850 Annex C, including ``FileOpen``, ``FileRead``, ``FileClose``,
+        and the final ``ObtainFile`` confirmation.
+
+        :param source:
+            Path to the source file. If ``remote`` is provided, this denotes the
+            file path to be retrieved from the remote server. Otherwise, this
+            must point to a local file which will be transferred.
+        :type source: str | Path
+
+        :param destination:
+            Path where the file should be stored on the remote server.
+            For local serving, this is the name advertised to the requesting peer.
+        :type destination: str | Path
+
+        :param remote:
+            Optional reference to an external application server from which
+            the file should be obtained. If ``None``, this MMS connection
+            instance will act as the file source.
+        :type remote: ApplicationReference | None
+
+        :raises MMSServiceError:
+            If the MMS server responds with an unexpected PDU type or an error
+            occurs during the transfer sequence.
+
+        :raises OSError:
+            If the local file system access fails (e.g., file not found or
+            permission denied).
+
+        .. versionadded:: 0.2.4
+        """
+        request = ObtainFile_Request(
+            sourceFile=FileName([os.path.basename(str(source))]),
+            destinationFile=FileName([str(destination)]),
+        )
+        if remote:
+            request.sourceFileServer = remote
+
+        obtain_service = ConfirmedServiceRequest(obtainFile=request)
+        pdu = Confirmed_RequestPDU()
+        pdu.invokeID = self.next_invoke_id
+        pdu.service = obtain_service
+
+        self.send_mms_data(MMSpdu(confirmed_RequestPDU=pdu))
+        response = self.recv_mms_data()
+        error = self._error_from_service_response(
+            obtain_service, response, need_response=remote is not None
+        )
+        if error is not None:
+            raise error
+
+        if remote:
+            return
+
+        if response.present != MMSpdu.PRESENT.PR_confirmed_RequestPDU:
+            raise MMSServiceError(
+                f"Failed ObtainFile request with unexpected response: {response.present!r} - Expected FileOpen"
+            )
+
+        service = response.confirmed_RequestPDU.service
+        if service.present != ConfirmedServiceRequest.PRESENT.PR_fileOpen:
+            raise MMSServiceError(
+                f"Failed ObtainFile request with unexpected response: {service.present!r} - Expected FileOpen"
+            )
+
+        invoke_id = response.confirmed_RequestPDU.invokeID.value
+        # We simply generate a new handle
+        handle = random.randint(0, 0xFFFF)
+        pdu = ConfirmedServiceResponse()
+
+        source_path = Path(source)
+        source_stat = source_path.stat()
+        mtime = datetime.datetime.fromtimestamp(source_stat.st_mtime)
+
+        file_open = FileOpen_Response(frsmID=handle)
+        file_open.fileAttributes.sizeOfFile = source_stat.st_size
+        file_open.fileAttributes.lastModified = mtime.strftime("%Y%m%d%H%M%S.%fZ")
+        pdu.fileOpen = file_open
+
+        response = Confirmed_ResponsePDU()
+        response.invokeID = invoke_id
+        response.service = pdu
+        self.send_mms_data(MMSpdu(confirmed_ResponsePDU=response))
+
+        read_req = self.recv_mms_data()
+        if read_req.present != MMSpdu.PRESENT.PR_confirmed_RequestPDU:
+            raise MMSServiceError(
+                f"Failed ObtainFile request with unexpected response: {read_req.present!r} - Expected FileRead"
+            )
+
+        request = read_req.confirmed_RequestPDU
+        if request.service.present != ConfirmedServiceRequest.PRESENT.PR_fileRead:
+            raise MMSServiceError(
+                f"Failed ObtainFile request with unexpected response: {request.service.present!r} - Expected FileRead"
+            )
+
+        invoke_id = request.invokeID.value
+        pdu = ConfirmedServiceResponse()
+
+        file_read = FileRead_Response()
+        file_read.fileData = source_path.read_bytes()
+        file_read.moreFollows = False
+
+        pdu.fileRead = file_read
+        response = Confirmed_ResponsePDU()
+        response.invokeID = invoke_id
+        response.service = pdu
+        self.send_mms_data(MMSpdu(confirmed_ResponsePDU=response))
+
+        # expect fileClose and obtainFile response
+        close_req = self.recv_mms_data()
+        if close_req.present != MMSpdu.PRESENT.PR_confirmed_RequestPDU:
+            raise MMSServiceError(
+                f"Failed ObtainFile request with unexpected response: {close_req.present!r} - Expected FileClose"
+            )
+
+        close_req = close_req.confirmed_RequestPDU
+        if close_req.service.present != ConfirmedServiceRequest.PRESENT.PR_fileClose:
+            raise MMSServiceError(
+                f"Failed ObtainFile request with unexpected response: {close_req.service.present!r} - Expected FileClose"
+            )
+
+        invoke_id = close_req.invokeID.value
+        pdu = ConfirmedServiceResponse()
+        pdu.fileClose = FileClose_Response(value=None)
+        response = Confirmed_ResponsePDU()
+        response.invokeID = invoke_id
+        response.service = pdu
+        self.send_mms_data(MMSpdu(confirmed_ResponsePDU=response))
+
+        obtain_response = self.recv_mms_data()
+        error = self._error_from_service_response(obtain_service, obtain_response, True)
+        if error is not None:
+            raise error
+
+    # alias to match file_XXX naming convention
+    file_transfer = obtain_file
+    """
+    .. versionadded:: 0.2.4
+    """
 
     # ---------------------------------------------------------------------------
     # Annex D - File Management
