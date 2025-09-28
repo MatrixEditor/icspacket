@@ -20,25 +20,11 @@ Examples
 
 Operate a control object with a specific value:
 
-.. code-block::
-
-    iedctrl.py -t 'simpleIOGenericIO/GGIO1.SPCSO3' --value true --check 127.0.0.1
-    [I] Associating MMS environment with peer 127.0.0.1:102...
-    [I] Control model for node: DIRECT_ENHANCED
-    [I] Value will be changed to: True
-    [I] Successfully completed operation on SPCSO3!
-    Current value: TRUE
+.. image:: _images/iedctrl-operw.png
 
 Toggle a boolean control object:
 
-.. code-block::
-
-    iedctrl.py -t 'simpleIOGenericIO/GGIO1.SPCSO4' --toggle --check 127.0.0.1
-    [I] Associating MMS environment with peer 127.0.0.1:102...
-    [I] Control model for node: SBO_ENHANCED
-    [I] Value will be changed from FALSE -> TRUE
-    [I] Successfully completed operation on SPCSO4!
-    Current value: TRUE
+.. image:: _images/iedctrl-opertoggle.png
 
 Notes
 -----

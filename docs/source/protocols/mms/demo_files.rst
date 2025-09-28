@@ -35,6 +35,25 @@ You will be dropped into an interactive shell similar to this:
         mmsclient.py <host> ls
 
 
+.. tip::
+
+    To view the help message for each implemented command, use ``--help``
+    together with the command:
+
+    .. code-block:: bash
+
+        mmsclient.py --help ls
+        Usage: ls [-h] [-l] [-a] [directory]
+
+        positional arguments:
+        directory   Remote directory to list (defaults to current remote directory)
+
+        optional arguments:
+        -h, --help  show this help message and exit
+        -l          Print output as a list (table) instead of filenames only
+        -a, --all   List all files, including ones in subdirectories
+
+
 Listing Files (``ls``)
 ----------------------
 
@@ -98,6 +117,19 @@ Arguments:
 - ``--unsafe`` :octicon:`arrow-right` Print out the file content directly.
 
 .. image:: _images/mms-file-get.png
+
+
+Uploading Files (``put``)
+---------------------------
+
+The :code:`put` command transfers a local file to the remote MMS peer.
+
+Arguments:
+
+- ``local_name`` :octicon:`arrow-right` The local file name to transfer.
+- ``remote_name`` :octicon:`arrow-right` The file name on the remote MMS peer (optional).
+
+.. image:: _images/mms-file-put.png
 
 
 Deleting Files (``del``)

@@ -4,6 +4,18 @@
 Changelog
 =========
 
+
+.. _v0.2.4:
+
+v0.2.4 :bdg-info:`beta-develop`
+----------------------------------
+
+**Added**
+
+- Example to control IEDs: ``iedctrl.py``
+- Add ``put`` command to ``mmsclient.py`` to transfer files to a MMS remote server
+- Add implementation to control IEDs
+
 .. _v0.2.3:
 
 v0.2.3 :bdg-info:`beta-develop`

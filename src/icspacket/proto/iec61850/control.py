@@ -249,7 +249,7 @@ class ControlObject:
             }
         ]
         if self.has_time_activated_oper:
-            ts = oper_time or Timestamp.from_datetime(datetime.datetime.now())
+            ts = oper_time or bytes(8)
             # operTm = <CO_CtrlObjectRef>$Oper$operTm
             items.append({"utc_time": bytes(ts)})
 

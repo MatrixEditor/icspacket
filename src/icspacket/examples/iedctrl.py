@@ -188,12 +188,12 @@ def cli_main():
                 logging.debug("Direct Control Nodel: Writing value...")
                 error = client.operate(co, ctl_val=args.var_value)
                 if error:
-                    logging.error("Failed to start opertation: %s", error.value)
+                    logging.error("Failed to start opertation: %s", repr(error.value))
                     sys.exit(1)
 
             case ControlModel.DIRECT_ENHANCED:
                 if error := client.operate(co, ctl_val=args.var_value):
-                    logging.error("Failed to start opertation: %s", error.value)
+                    logging.error("Failed to start opertation: %s", repr(error.value))
                     sys.exit(1)
 
                 with args.console.status("Waiting for operation to complete..."):
@@ -202,21 +202,21 @@ def cli_main():
             case ControlModel.SBO_NORMAL:
                 logging.debug("Selecting node before operation (SBO)...")
                 if error := client.select(co):
-                    logging.error("Failed to select node: %s", error.value)
+                    logging.error("Failed to select node: %s", repr(error.value))
                     sys.exit(1)
 
                 if error := client.operate(co, ctl_val=args.var_value):
-                    logging.error("Failed to start opertation: %s", error.value)
+                    logging.error("Failed to start opertation: %s", repr(error.value))
                     sys.exit(1)
 
             case ControlModel.SBO_ENHANCED:
                 logging.debug("Selecting node with value before operation (SBOw)...")
                 if error := client.select_with_value(co, ctl_val=args.var_value):
-                    logging.error("Failed to select node: %s", error.value)
+                    logging.error("Failed to select node: %s", repr(error.value))
                     sys.exit(1)
 
                 if error := client.operate(co, ctl_val=args.var_value):
-                    logging.error("Failed to start opertation: %s", error.value)
+                    logging.error("Failed to start opertation: %s", repr(error.value))
                     sys.exit(1)
 
                 with args.console.status("Waiting for operation to complete..."):
