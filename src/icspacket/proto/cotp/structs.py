@@ -13,13 +13,9 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
-# 1pyright: reportInvalidTypeForm=false, reportGeneralTypeIssues=false, reportAssignmentType=false
-
 
 # [ITU X.224] - Open Systems Interconnection – Connection-mode protocol
 # specifications
-
-from typing_extensions import overload
 import enum
 
 from typing import Any
@@ -41,7 +37,7 @@ from caterpillar.fields import (
     uint16,
     ENUM_STRICT,
 )
-from caterpillar.types import int1_t, uint8_t, uint16_t, uint32_t
+from caterpillar.types import uint8_t, uint16_t
 from caterpillar.abc import _ContextLike
 
 

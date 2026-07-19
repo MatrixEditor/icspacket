@@ -13,15 +13,15 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
-# pyright: reportInvalidTypeForm=false
 import socket
 import logging
 import queue
 
 from typing_extensions import override
 
-from caterpillar.shortcuts import pack, struct, BigEndian, this, unpack
-from caterpillar.fields import Bytes, uint8, uint16
+from caterpillar.shortcuts import struct, BigEndian, this
+from caterpillar.py import StructDefMixin, Bytes, uint16, f, StructException
+from caterpillar.types import uint8_t, uint16_t
 
 from icspacket.core.logger import TRACE
 
@@ -31,7 +31,7 @@ logger = logging.getLogger(__name__)
 
 # [RFC 1006] - ISO Transport Service on top of the TCP
 @struct(order=BigEndian)
-class TPKT:
+class TPKT(StructDefMixin):
     """TPKT header structure as defined in [RFC 1006] section 6.
 
     This class models the ISO transport service packetization layer on top
@@ -39,19 +39,19 @@ class TPKT:
     """
 
     # fmt: off
-    vrsn        : uint8                              = 3
+    vrsn        : uint8_t                                 = 3
     """
     Version number of the TPKT protocol. This value is fixed to ``3``. If any
     other value is received, the packet should be considered invalid.
     """
 
-    reserved    : uint8                              = 0
+    reserved    : uint8_t                                 = 0
     """Reserved for future use"""
 
-    length      : uint16                             = 0
+    length      : uint16_t                                = 0
     """Total length of the TPKT in octets, including the 4-byte header."""
 
-    tpdu        : Bytes(this.length - 4)       = b""
+    tpdu        : f[bytes, Bytes(this.length - 4)] = b""
     """
     The encapsulated TPDU bytes. The size is determined by ``length - 4``.
     """
@@ -68,13 +68,10 @@ class TPKT:
         :return: Parsed TPKT instance.
         :rtype: TPKT
         """
-        obj = unpack(TPKT, octets)
-        if obj.length != len(obj.tpdu) + 4:
-            raise ValueError(
-                f"Invalid length: expected {obj.length}, got {len(obj.tpdu) + 4}. "
-                + "This error could indicate a buffer size being too small."
-            )
-        return obj
+        try:
+            return TPKT.from_bytes(octets)
+        except StructException as exc:
+            raise ValueError("Insufficient buffer for TPKT length") from exc
 
     def build(self) -> bytes:
         """Serialize the TPKT into its octet representation.
@@ -88,7 +85,7 @@ class TPKT:
         # contains the length of entire packet in octets, including
         # packet-header
         self.length = len(self.tpdu) + 4
-        return pack(self, TPKT)
+        return self.to_bytes()
 
 #: Convenience constant for decoding 16-bit unsigned integers in
 #: big-endian byte order. Used internally for parsing TPKT headers.
@@ -212,7 +209,7 @@ class tpktsock(socket.socket):
                 )
                 return self.in_queue.get()
 
-            actual_size = unpack(_U16_BE, remaining[2:])
+            actual_size = _U16_BE.from_bytes(remaining[2:])
             size = actual_size - len(remaining)
             if size <= 0:
                 next_pkt = super().recv(size, flags)
@@ -221,9 +218,7 @@ class tpktsock(socket.socket):
 
             tpkt = TPKT.from_octets(remaining + next_pkt)
             self.in_queue.put(tpkt.tpdu)
-            logger.log(
-                TRACE, "Header complete (2nd message size = %d)", len(tpkt.tpdu)
-            )
+            logger.log(TRACE, "Header complete (2nd message size = %d)", len(tpkt.tpdu))
 
         return self.recv(bufsize, flags)
 
