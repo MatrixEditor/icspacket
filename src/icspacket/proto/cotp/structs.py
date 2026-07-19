@@ -383,7 +383,7 @@ class Parameter(StructDefMixin):
     """
 
     # fmt: off
-    type_id : f[Parameter_Code | int, Enum(Parameter_Code, uint8) | ENUM_STRICT]                           = 0
+    type_id : f[Parameter_Code, Enum(Parameter_Code, uint8) | ENUM_STRICT] = 0
     """The parameter code"""
 
     # Simple TLV structure with dynamic parsing behabior
