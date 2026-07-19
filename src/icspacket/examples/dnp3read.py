@@ -149,7 +149,7 @@ def cli_main():
         40            Analog Output Status
         87            Data Set
         101           Binary-Coded Dec imal Integer
-        102           Unsigned Integer—8-bit
+        102           Unsigned Integer-8-bit
         110           Octet String
         121           Security Statistics
     """

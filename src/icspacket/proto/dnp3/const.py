@@ -94,7 +94,7 @@ class FunctionCode(enum.IntEnum):
     """Outstation performs a partial reset of the device."""
 
     INITIALIZE_DATA = 15
-    """Obsolete — not to be used in new designs."""
+    """Obsolete - not to be used in new designs."""
 
     INITIALIZE_APPL = 16
     """Outstation places applications into ready-to-run state."""
@@ -106,7 +106,7 @@ class FunctionCode(enum.IntEnum):
     """Outstation stops the specified applications."""
 
     SAVE_CONFIG = 19
-    """Deprecated — saving of configuration (do not use in new designs)."""
+    """Deprecated - saving of configuration (do not use in new designs)."""
 
     ENABLE_UNSOLICITED = 20
     """Outstation enables unsolicited responses for specified points."""

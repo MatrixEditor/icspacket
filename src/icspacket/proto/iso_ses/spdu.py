@@ -561,7 +561,7 @@ class SPDU:
         self.__user_information = value
 
     @staticmethod
-    def from_octets(octets: bytes, category: SPDU_Category | None = None):
+    def from_octets(octets: bytes, category: SPDU_Category | None = None) -> "SPDU":
         """
         Deserialize an SPDU from `octets` and extract user-info if applicable.
 

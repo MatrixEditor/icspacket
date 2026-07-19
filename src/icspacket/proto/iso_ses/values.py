@@ -19,17 +19,17 @@
 # Common Parameter Values (PV)
 
 import enum
-from caterpillar.byteorder import BigEndian
-from caterpillar.fields import uint32
+
 from caterpillar.model import EnumFactory
-from caterpillar.shortcuts import bitfield
+from caterpillar.py import bitfield, f, uint32, BigEndian
+from caterpillar.types import int6_t, int1_t, int3_t, int7_t
 
 
 # ---------------------------------------------------------------------------
-# PI Codes — parameter identifiers for commonly used PVs
+# PI Codes - parameter identifiers for commonly used PVs
 # ---------------------------------------------------------------------------
 class PI_Code(enum.IntEnum):
-    """Common **Parameter Identifier** (PI) codes — X.225 8.3
+    """Common **Parameter Identifier** (PI) codes - X.225 8.3
 
     .. note::
 
@@ -79,19 +79,19 @@ class PI_Code(enum.IntEnum):
 
 @bitfield
 class PV_VersionNumber:
-    """Version Number PV — X.225
+    """Version Number PV - X.225
 
     Indicates which protocol versions are **proposed** for use over this session
     connection.
     """
 
     # fmt: off
-    reserved: 6 = 0
+    reserved: int6_t = 0
 
-    version2 : 1 = True
+    version2 : f[bool, 1] = True
     """True if **Protocol Version 2** is proposed."""
 
-    version1 : 1 = False
+    version1 : f[bool, 1] = False
     """True if **Protocol Version 1** is proposed."""
     # fmt: on
 
@@ -104,10 +104,10 @@ class PV_TokenSettingPairType(enum.IntEnum):
 
     Each token position is indicated using a 2-bit value:
 
-    - 0 — Token initially with the initiator
-    - 1 — Token initially with the responder
-    - 2 — Token location decided by the SS-user ("user's choice")
-    - 3 — Reserved
+    - 0 - Token initially with the initiator
+    - 1 - Token initially with the responder
+    - 2 - Token location decided by the SS-user ("user's choice")
+    - 3 - Reserved
 
     """
 
@@ -119,22 +119,22 @@ class PV_TokenSettingPairType(enum.IntEnum):
 
 @bitfield
 class PV_TokenSetting:
-    """Token Setting Item PV — X.225
+    """Token Setting Item PV - X.225
 
     If present, indicates the **initial position** of the protocol's tokens.
     """
 
     # fmt: off
-    release: (2, EnumFactory(PV_TokenSettingPairType))  = PV_TokenSettingPairType.INITIATOR
+    release: f[PV_TokenSettingPairType, (2, EnumFactory(PV_TokenSettingPairType))]  = PV_TokenSettingPairType.INITIATOR
     """Initial position of the **release token**."""
 
-    activity: (2, EnumFactory(PV_TokenSettingPairType)) = PV_TokenSettingPairType.INITIATOR
+    activity: f[PV_TokenSettingPairType, (2, EnumFactory(PV_TokenSettingPairType))] = PV_TokenSettingPairType.INITIATOR
     """Initial position of the **activity token**."""
 
-    sync: (2, EnumFactory(PV_TokenSettingPairType))     = PV_TokenSettingPairType.INITIATOR
+    sync: f[PV_TokenSettingPairType, (2, EnumFactory(PV_TokenSettingPairType))]     = PV_TokenSettingPairType.INITIATOR
     """Initial position of the **synchronization token**."""
 
-    data: (2, EnumFactory(PV_TokenSettingPairType))     = PV_TokenSettingPairType.INITIATOR
+    data: f[PV_TokenSettingPairType, (2, EnumFactory(PV_TokenSettingPairType))]     = PV_TokenSettingPairType.INITIATOR
     """Initial position of the **data token**."""
     # fmt: on
 
@@ -144,26 +144,56 @@ class PV_TokenSetting:
 # ---------------------------------------------------------------------------
 @bitfield
 class PV_TokenItem:
-    """Token Item PV — X.225
+    """Token Item PV - X.225
 
     Indicates which tokens are **requested** by the called SS-user.
     """
 
-    _reserved_1: 1 = 0
-    release_token: 1 = False
+    _reserved_1: int1_t = 0
+    release_token: f[bool, 1] = False
     """Request for the **release token**."""
 
-    _reserved_2: 1 = 0
-    activity_token: 1 = False
+    _reserved_2: int1_t = 0
+    activity_token: f[bool, 1] = False
     """Request for the **activity token**."""
 
-    _reserved_3: 1 = 0
-    sync_minor_token: 1 = False
+    _reserved_3: int1_t = 0
+    sync_minor_token: f[bool, 1] = False
     """Request for the **minor sync token**."""
 
-    _reserved_4: 1 = 0
-    data_token: 1 = False
+    _reserved_4: int1_t = 0
+    data_token: f[bool, 1] = False
     """Request for the **data token**."""
+
+
+# ---------------------------------------------------------------------------
+# PV: Transport Disconnect
+# ---------------------------------------------------------------------------
+@bitfield
+class PV_TransportDisconnect:
+    """Transport Disconnect PV - X.225.
+
+    Indicates whether the transport connection is released or retained, and
+    carries the abort reason bits used by the ABORT SPDU.
+    """
+
+    # fmt: off
+    _reserved: f[int, 3] = 0
+    implementation_restriction: f[bool, 1] = False
+    no_reason: f[bool, 1] = False
+
+    protocol_error: f[bool, 1] = False
+    """Protocol error"""
+
+    user_abort: f[bool, 1] = False
+    """User abort"""
+
+    release_transport: f[bool, 1] = True
+    """transport connection is released"""
+
+    keep_transport: f[bool, 1] = False
+    """transport connection is kept"""
+    # fmt: on
 
 
 # ---------------------------------------------------------------------------
@@ -171,49 +201,49 @@ class PV_TokenItem:
 # ---------------------------------------------------------------------------
 @bitfield(order=BigEndian)  # because of 16 bits in spec layout
 class PV_SessionRequirements:
-    """Session Requirements PV — X.225
+    """Session Requirements PV - X.225
 
     Indicates the functional units proposed by the **calling SS-user**.
     """
 
-    _reserved: 3 = 0
-    data_separation: 1 = False
+    _reserved: int3_t = 0
+    data_separation: f[bool, 1] = False
     """Functional unit: Data separation"""
 
-    symmetric_sync: 1 = False
+    symmetric_sync: f[bool, 1] = False
     """Functional unit: Symmetric synchronization"""
 
-    typed: 1 = False
+    typed: f[bool, 1] = False
     """Functional unit: Typed data"""
 
-    exceptions: 1 = False
+    exceptions: f[bool, 1] = False
     """Functional unit: Exceptions"""
 
-    capability_data_exchange: 1 = False
+    capability_data_exchange: f[bool, 1] = False
     """Functional unit: Capability data exchange"""
 
-    negotiated_release: 1 = False
+    negotiated_release: f[bool, 1] = False
     """Functional unit: Negotiated release"""
 
-    activity_management: 1 = False
+    activity_management: f[bool, 1] = False
     """Functional unit: Activity management"""
 
-    resync: 1 = False
+    resync: f[bool, 1] = False
     """Functional unit: Resynchronization"""
 
-    major_sync: 1 = False
+    major_sync: f[bool, 1] = False
     """Functional unit: Major synchronization"""
 
-    minor_sync: 1 = False
+    minor_sync: f[bool, 1] = False
     """Functional unit: Minor synchronization"""
 
-    expedited: 1 = False
+    expedited: f[bool, 1] = False
     """Functional unit: Expedited data"""
 
-    duplex: 1 = False
+    duplex: f[bool, 1] = False
     """Functional unit: Full-duplex"""
 
-    half_duplex: 1 = False
+    half_duplex: f[bool, 1] = False
     """Functional unit: Half-duplex"""
 
 
@@ -222,16 +252,16 @@ class PV_SessionRequirements:
 # ---------------------------------------------------------------------------
 @bitfield
 class PV_EnclosureItem:
-    """Enclosure Item PV — X.225
+    """Enclosure Item PV - X.225
 
     Indicates whether this SPDU is the **start** and/or **end** of an SSDU.
     """
 
-    _reserved: 6 = 0
-    end: 1 = False
+    _reserved: int6_t = 0
+    end: f[bool, 1] = False
     """True if this SPDU is the **end** of the SSDU."""
 
-    start: 1 = False
+    start: f[bool, 1] = False
     """True if this SPDU is the **start** of the SSDU."""
 
 
@@ -240,13 +270,13 @@ class PV_EnclosureItem:
 # ---------------------------------------------------------------------------
 @bitfield
 class PV_ProtocolOptions:
-    """Protocol Options PV — X.225 §8.3.19
+    """Protocol Options PV - X.225 §8.3.19
 
     Indicates whether the initiator can receive **extended concatenated SPDUs**.
     """
 
-    _reserved: 7 = 0
-    extended: 1 = False
+    _reserved: int7_t = 0
+    extended: f[bool, 1] = False
     """True if extended concatenated SPDUs are supported."""
 
 
@@ -258,6 +288,7 @@ PV_TYPES = {
     PI_Code.ENCLOSUREITEM: PV_EnclosureItem,
     PI_Code.TOKEN_ITEM: PV_TokenItem,
     PI_Code.PROTOCOL_OPTIONS: PV_ProtocolOptions,
+    PI_Code.TRANSPORT_DISCONNECT: PV_TransportDisconnect,
 }
 """Mapping from PI codes to their associated **Parameter Value** types.
 

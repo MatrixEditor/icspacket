@@ -24,7 +24,7 @@ The tool currently uses two approaches:
 
 .. note::
 
-   Some outstations poll at different intervals — typically between **5 and 60 seconds**.
+   Some outstations poll at different intervals - typically between **5 and 60 seconds**.
    You may need to wait for up to a full cycle before receiving a ``REQUEST_LINK_STATUS`` frame.
    Be patient, especially when relying solely on the passive listening method.
 

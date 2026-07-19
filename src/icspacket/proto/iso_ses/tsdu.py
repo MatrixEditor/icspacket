@@ -33,7 +33,7 @@ Concatenation rules are defined in §6.3.7:
     concatenated with one or more Category 2 SPDUs.
 - **Category 1** SPDUs are always mapped one-to-one to a TSDU (no
     concatenation).
-- **Category 2** SPDUs are never mapped one-to-one — they appear only after
+- **Category 2** SPDUs are never mapped one-to-one - they appear only after
     a Category 0 SPDU in the same TSDU.
 
 .. seealso::
@@ -42,7 +42,7 @@ Concatenation rules are defined in §6.3.7:
     - §8.1 TSDU structure
     - §8.2 SPDU structure
 """
-
+from typing_extensions import override
 from collections.abc import Iterator
 from caterpillar.model import unpack
 
@@ -50,7 +50,7 @@ from icspacket.proto.iso_ses.spdu import LI, SPDU, SPDU_Category, SPDU_Codes, LI
 
 
 class TSDU:
-    """TSDU container for one or more concatenated SPDUs — X.225 §8.1
+    """TSDU container for one or more concatenated SPDUs - X.225 §8.1
 
     Usage:
 
@@ -59,8 +59,9 @@ class TSDU:
     """
 
     def __init__(self) -> None:
-        self.__spdus = []
+        self.__spdus: list[SPDU] = []
 
+    @override
     def __repr__(self) -> str:
         return f"TSDU(spdus={self.spdus})"
 

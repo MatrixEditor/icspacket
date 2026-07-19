@@ -27,9 +27,12 @@ from icspacket.proto.iso_ses.values import (
     PV_ProtocolOptions,
     PV_SessionRequirements,
     PV_VersionNumber,
+    PV_TransportDisconnect,
 )
 
 DEFAULT_S_SEL = bytes.fromhex("0001")
+CONNECT_USER_DATA_MAX = 512
+SPDU_NORMAL_USER_DATA_MAX = 65528
 
 def build_connect_spdu(
     *,
@@ -82,7 +85,14 @@ def build_connect_spdu(
        ``extra_parameters`` to remain forward-compatible.
     """
     if not requirements:
-        requirements = PV_SessionRequirements()
+        # out default session requirements
+        requirements = PV_SessionRequirements(
+            half_duplex=True,
+            minor_sync=True,
+            activity_management=True,
+            capability_data_exchange=True,
+            exceptions=True,
+        )
 
     spdu = SPDU(SPDU_Codes.CONNECT_SPDU)
     accept_item = spdu.add_parameter(PGI_Code.ACCEPT_ITEM, [])
@@ -108,7 +118,10 @@ def build_connect_spdu(
 
     # user data
     if user_data:
-        _ = spdu.add_parameter(PGI_Code.USER_DATA, user_data)
+        if version2 and len(user_data) > CONNECT_USER_DATA_MAX:
+            _ = spdu.add_parameter(PGI_Code.EXTENDED_USER_DATA, user_data)
+        else:
+            _ = spdu.add_parameter(PGI_Code.USER_DATA, user_data)
 
     if extra_parameters:
         spdu.parameters.extend(extra_parameters)
@@ -163,6 +176,53 @@ def build_finish_spdu(
     :rtype: SPDU
     """
     spdu = SPDU(SPDU_Codes.FINISH_SPDU)
+    if user_data:
+        _ = spdu.add_parameter(PGI_Code.USER_DATA, user_data)
+    if extra_parameters:
+        spdu.parameters.extend(extra_parameters)
+    return spdu
+
+
+def build_abort_spdu(
+    *,
+    user_data: bytes | None = None,
+    release_transport: bool = True,
+    user_abort: bool | None = None,
+    protocol_error: bool = False,
+    no_reason: bool = False,
+    implementation_restriction: bool = False,
+    extra_parameters: Iterable[Px_Unit] | None = None,
+) -> SPDU:
+    """
+    Construct an ``ABORT SPDU`` for user-initiated abnormal release.
+
+    :param user_data: Optional user data to include in the SPDU.
+    :type user_data: bytes | None
+    :param extra_parameters: Additional parameters to extend SPDU contents.
+    :type extra_parameters: Iterable[Px_Unit] | None
+    :return: A fully constructed abort SPDU.
+    :rtype: SPDU
+    """
+    if user_abort is None:
+        user_abort = user_data is not None
+
+    if user_data is not None and not user_abort:
+        raise ValueError("ABORT user data requires the user-abort reason bit")
+
+    if user_data is not None and len(user_data) > SPDU_NORMAL_USER_DATA_MAX:
+        raise ValueError("ABORT user data is too large for one normal-flow SPDU")
+
+    spdu = SPDU(SPDU_Codes.ABORT_SPDU)
+    _ = spdu.add_parameter(
+        PI_Code.TRANSPORT_DISCONNECT,
+        PV_TransportDisconnect(
+            release_transport=release_transport,
+            user_abort=user_abort,
+            protocol_error=protocol_error,
+            no_reason=no_reason,
+            implementation_restriction=implementation_restriction,
+        ),
+    )
     if user_data:
         _ = spdu.add_parameter(PGI_Code.USER_DATA, user_data)
     if extra_parameters:
