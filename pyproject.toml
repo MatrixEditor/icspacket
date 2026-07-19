@@ -45,6 +45,9 @@ dependencies = [
   "caterpillar-py", # binary protocols
   "bitarray",       # asn1c-python extensions
   "typing-extensions", # compatibility with 3.10
+  # --- protocol family integrations (see TOOLS.md)
+  "pymodbus>=3.8.6",   # Modbus (TCP/RTU) client support (device_id= API)
+  "asyncua>=1.1",      # OPC-UA client support
   # ---  dependencies for examples
   "rich",              # colored terminal output and logging
   "cmd2",              # advanced command shells (cmd 2.0)
@@ -70,6 +73,11 @@ sdist.include = ["src/icspacket/_version.py"]
 [tool.setuptools_scm]
 write_to = "src/icspacket/_version.py"
 
+[dependency-groups]
+dev = [
+    "pytest>=9.1.1",
+]
+
 # --- example scripts
 [project.scripts]
 "mms_utility.py" = "icspacket.examples.mms_utility:cli_main"
@@ -80,3 +88,6 @@ write_to = "src/icspacket/_version.py"
 "dnp3read.py" = "icspacket.examples.dnp3read:cli_main"
 "dnp3linkaddr.py" = "icspacket.examples.dnp3linkaddr:cli_main"
 "gooseobserv.py" = "icspacket.examples.gooseobserv:cli_main"
+"modbusclient.py" = "icspacket.examples.modbusclient:cli_main"
+"cipclient.py" = "icspacket.examples.cipclient:cli_main"
+"opcuaclient.py" = "icspacket.examples.opcuaclient:cli_main"
