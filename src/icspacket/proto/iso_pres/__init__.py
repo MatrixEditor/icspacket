@@ -14,6 +14,6 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 """
-[ITU-T X.226 / ISO 8823] - Connection-oriented Presentation Protocol (COPP)
-===========================================================================
+See ITU-T X.226 / ISO 8823 - Connection-oriented Presentation Protocol (COPP)
+=============================================================================
 """
