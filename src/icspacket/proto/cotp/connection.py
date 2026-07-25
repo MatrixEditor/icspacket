@@ -15,10 +15,9 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 import logging
 import socket
-
-from typing_extensions import override
 from collections.abc import Iterable
 
+from typing_extensions import override
 
 from icspacket.core.connection import ConnectionClosedError, ConnectionError, connection
 from icspacket.core.logger import TRACE
@@ -26,6 +25,7 @@ from icspacket.proto.cotp.structs import (
     TPDU,
     Parameter,
     Parameter_Code,
+    TPDU_Class,
     TPDU_ConnectionConfirm,
     TPDU_ConnectionRequest,
     TPDU_Data,
@@ -33,9 +33,8 @@ from icspacket.proto.cotp.structs import (
     TPDU_DisconnectRequest,
     TPDU_Error,
     TPDU_Size,
+    _TPDULike,
     parse_tpdu,
-    TPDU_Class,
-    _TPDULike,  # noqa
 )
 from icspacket.proto.tpkt import tpktsock
 
@@ -52,10 +51,6 @@ _CLASS0_ALLOWED_CR_CC_PARAMS = {
     Parameter_Code.TPDU_SIZE,
     Parameter_Code.MAX_TPDU_SIZE,
 }
-
-
-def _tpdu_size_to_octets(size: TPDU_Size) -> int:
-    return 1 << size.value
 
 
 def _parameter_values(parameters: Iterable[Parameter]) -> dict[Parameter_Code, object]:
@@ -152,7 +147,7 @@ class COTP_Connection(connection):
         self.__dst_ref = 0
         self.__class = protocol_class
         self.__requested_tpdu_size = max_tpdu_size
-        self.__tpdu_size = _tpdu_size_to_octets(max_tpdu_size)
+        self.__tpdu_size = 1 << max_tpdu_size.value
 
         # public (modifiable) members
         self.src_tsap: bytes = bytes.fromhex(src_tsap)
@@ -204,11 +199,12 @@ class COTP_Connection(connection):
             # already connected, ignore
             return
 
+        self.__src_ref = tpdu_cr.src_ref
         try:
             self.sock.connect(address)
-            self._connected = True
+            self._connected: bool = True
             logger.log(TRACE, "Connected to %s", address)
-        except socket.error as e:
+        except OSError as e:
             raise ConnectionRefusedError from e
 
         self.send_tpdu(tpdu_cr)
@@ -229,7 +225,7 @@ class COTP_Connection(connection):
             )
 
         self._apply_connection_confirm(tpdu, tpdu_cr)
-        self._valid = True
+        self._valid: bool = True
 
     @override
     def close(self) -> None:
@@ -292,13 +288,6 @@ class COTP_Connection(connection):
         tpdu_cc: TPDU_ConnectionConfirm,
         tpdu_cr: TPDU_ConnectionRequest,
     ) -> None:
-        if tpdu_cc.dst_ref != self.__src_ref:
-            self._close_transport()
-            raise ConnectionError(
-                "Received invalid CC TPDU destination reference: "
-                + f"{tpdu_cc.dst_ref}, expected {self.__src_ref}"
-            )
-
         cc_parameters = _parameter_values(tpdu_cc.parameters)
         cr_parameters = _parameter_values(tpdu_cr.parameters)
         self.__tpdu_size = self._negotiate_tpdu_size(cc_parameters, cr_parameters)
@@ -311,6 +300,17 @@ class COTP_Connection(connection):
         cr_parameters: dict[Parameter_Code, object],
     ) -> int:
         if Parameter_Code.MAX_TPDU_SIZE in cc_parameters:
+            if Parameter_Code.MAX_TPDU_SIZE not in cr_parameters:
+                self._close_transport()
+                raise ConnectionError(
+                    "CC TPDU included preferred maximum TPDU size that was not requested"
+                )
+            if Parameter_Code.TPDU_SIZE in cc_parameters:
+                self._close_transport()
+                raise ConnectionError(
+                    "CC TPDU cannot include both selected TPDU size mechanisms"
+                )
+
             selected_size = _decode_preferred_tpdu_size(
                 cc_parameters[Parameter_Code.MAX_TPDU_SIZE]
             )
@@ -340,7 +340,9 @@ class COTP_Connection(connection):
             )
         if selected_size > _CLASS0_MAX_TPDU_SIZE:
             self._close_transport()
-            raise ConnectionError("Class 0 selected TPDU size cannot exceed 2048 octets")
+            raise ConnectionError(
+                "Class 0 selected TPDU size cannot exceed 2048 octets"
+            )
         return selected_size
 
     def _propagate_errors(self, tpdu: TPDU) -> None:
@@ -380,7 +382,7 @@ class COTP_Connection(connection):
         except BrokenPipeError:
             raise ConnectionClosedError("Connection closed")
 
-    def receive_tpdu(self):
+    def receive_tpdu(self) -> TPDU:
         """
         Receive and parse a TPDU from the transport connection.
 
@@ -472,10 +474,11 @@ class COTP_Connection(connection):
                 raise ConnectionError(
                     f"Expected DT TPDU, got TPDU with code={tpdu.tpdu_code}"
                 )
-            if self.protocol_class == TPDU_Class.CLASS0:
-                if tpdu.code_arg != 0 or tpdu.tpdu_nr != 0:
-                    self._close_transport()
-                    raise ConnectionError("Received invalid class 0 DT TPDU")
+            if self.protocol_class == TPDU_Class.CLASS0 and (
+                tpdu.code_arg != 0 or tpdu.tpdu_nr != 0
+            ):
+                self._close_transport()
+                raise ConnectionError("Received invalid class 0 DT TPDU")
 
             parts.append(tpdu.user_data)
             if tpdu.is_last:
