@@ -14,8 +14,12 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 """
-[ITU-T X.224] - Connection-oriented Transport Protocol (COTP)
-=============================================================
+See ITU-T X.224 - Connection-oriented Transport Protocol (COTP)
+===============================================================
 
 *TDDO*
 """
+
+from .connection import COTP_Connection
+
+__all__ = ["COTP_Connection"]

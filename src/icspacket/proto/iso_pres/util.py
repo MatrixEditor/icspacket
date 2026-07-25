@@ -14,7 +14,10 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 from typing import Any
+
 from icspacket.proto.iso_pres.iso8823 import (
+    Called_presentation_selector,
+    Calling_presentation_selector,
     CP_type,
     Fully_encoded_data,
     Mode_selector,
@@ -23,9 +26,46 @@ from icspacket.proto.iso_pres.iso8823 import (
     Presentation_requirements,
     Protocol_version,
     User_data,
-    Called_presentation_selector,
-    Calling_presentation_selector,
 )
+
+
+def _asn1_value(value: Any) -> Any:
+    return value.value if hasattr(value, "value") else value
+
+
+def presentation_context_id(item: PresentaionContextItem) -> int:
+    """Return the integer presentation context identifier for a context item."""
+    return int(_asn1_value(item.presentation_context_identifier))
+
+
+def presentation_context_transfer_syntaxes(item: PresentaionContextItem) -> list[str]:
+    """Return transfer syntax object identifiers from a context item."""
+    return [str(_asn1_value(syntax)) for syntax in item.transfer_syntax_name_list]
+
+
+def validate_presentation_context_items(
+    pres_context_items: list[PresentaionContextItem],
+) -> None:
+    """Validate client-side CP presentation context definition items."""
+    seen: set[int] = set()
+    for item in pres_context_items:
+        context_id = presentation_context_id(item)
+        if context_id <= 0:
+            raise ValueError("Presentation context identifier must be positive")
+
+        if context_id % 2 == 0:
+            raise ValueError(
+                "Client presentation context identifiers in CP must be odd"
+            )
+
+        if context_id in seen:
+            raise ValueError(f"Duplicate presentation context id {context_id}")
+        seen.add(context_id)
+
+        if not presentation_context_transfer_syntaxes(item):
+            raise ValueError(
+                f"Presentation context id {context_id} has no transfer syntaxes"
+            )
 
 
 def build_connect_ppdu(
@@ -101,17 +141,43 @@ def build_connect_ppdu(
             calling_presentation_selector
         )
 
-    if pres_context_items:
-        parameters.presentation_context_definition_list = pres_context_items
+    context_items = list(pres_context_items or [])
+    if context_items:
+        validate_presentation_context_items(context_items)
+        parameters.presentation_context_definition_list = context_items
 
     if not requirements:
         requirements = Presentation_requirements()
 
     parameters.presentation_requirements = requirements
 
-    parameters.user_data = build_user_data(
-        user_data, presentation_context_id=pres_context_id or 1
-    )
+    if context_items:
+        context_by_id = {presentation_context_id(item): item for item in context_items}
+        user_context_id = (
+            pres_context_id
+            if pres_context_id is not None
+            else presentation_context_id(context_items[0])
+        )
+        if user_context_id not in context_by_id:
+            raise ValueError(
+                f"User data references unknown presentation context id {user_context_id}"
+            )
+
+        transfer_syntax_name = None
+        transfer_syntaxes = presentation_context_transfer_syntaxes(
+            context_by_id[user_context_id]
+        )
+        if len(transfer_syntaxes) > 1:
+            transfer_syntax_name = transfer_syntaxes[0]
+
+        parameters.user_data = build_user_data(
+            user_data,
+            presentation_context_id=user_context_id,
+            transfer_syntax_name=transfer_syntax_name,
+        )
+    else:
+        parameters.user_data = build_x410_user_data(user_data)
+
     ppdu.normal_mode_parameters = parameters
     return ppdu
 
@@ -119,6 +185,7 @@ def build_connect_ppdu(
 def build_user_data(
     user_data: bytes,
     presentation_context_id: int,
+    transfer_syntax_name: str | None = None,
 ) -> User_data:
     """
     Build a ``User_data`` structure wrapping raw ASN.1 data.
@@ -133,6 +200,13 @@ def build_user_data(
                                     context under which the payload
                                     is interpreted.
     :type presentation_context_id: int
+    :param transfer_syntax_name: Name of the transfer syntax to record in the
+                                 PDV list entry. It is optional in general,
+                                 but this library still supplies it, according to X.226,
+                                 whenever the referenced context originally offered more
+                                 than one transfer syntax for a CP's user data, so the
+                                 decoder knows which one was actually chosen.
+    :type transfer_syntax_name: str | None
     :return: A ``User_data`` element containing fully encoded data.
     :rtype: User_data
 
@@ -141,14 +215,33 @@ def build_user_data(
        If multiple PDVs or different encodings (octet-aligned,
        arbitrary) are needed, the construction must be extended.
     """
+    if presentation_context_id <= 0:
+        raise ValueError("Presentation context identifier must be positive")
+
     pdv_list = PDV_list()
     pdv_list.presentation_context_identifier.value = presentation_context_id
+    if transfer_syntax_name is not None:
+        pdv_list.transfer_syntax_name = transfer_syntax_name
     pdv_list.presentation_data_values.single_ASN1_type = user_data
 
     data = User_data()
     fully_encoded_data = Fully_encoded_data()
     fully_encoded_data.add(pdv_list)
     data.fully_encoded_data = fully_encoded_data
+    return data
+
+
+def build_x410_user_data(user_data: bytes) -> User_data:
+    """
+    Build X.410-1984 mode user data.
+
+    Used for ACSE APCI exchanged in X.410-1984 mode, a mode that has no
+    concept of presentation context identifiers; the payload is therefore
+    stored as plain "simply encoded data" instead of being wrapped in a
+    PDV-list like :func:`build_user_data` does.
+    """
+    data = User_data()
+    data.simply_encoded_data = user_data
     return data
 
 

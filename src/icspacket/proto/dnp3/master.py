@@ -709,7 +709,7 @@ class DNP3_Master:
     This class provides the master-side interface of the DNP3 protocol stack,
     built on top of the transport and link layers. It manages request/response
     exchanges with an outstation, schedules tasks, and assigns application
-    sequence numbers. The master does not implement actual application logic —
+    sequence numbers. The master does not implement actual application logic -
     instead, it delegates handling to user-defined :class:`DNP3_Task` objects.
 
     This implementation supports:

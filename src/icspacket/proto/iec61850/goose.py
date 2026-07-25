@@ -133,10 +133,10 @@ class GOOSE_Client:
 
     This class provides a dual role:
 
-    1. **Observer** — It captures and filters incoming GOOSE PDUs
+    1. **Observer** - It captures and filters incoming GOOSE PDUs
        using **Scapy**'s asynchronous sniffer. Incoming PDUs can be accessed
        through a queue or by registering a callback.
-    2. **Publisher** — It constructs and transmits GOOSE PDUs over Ethernet,
+    2. **Publisher** - It constructs and transmits GOOSE PDUs over Ethernet,
        supporting both raw PDUs and higher-level APDUs. VLAN tagging is
        supported where required by the application environment.
 

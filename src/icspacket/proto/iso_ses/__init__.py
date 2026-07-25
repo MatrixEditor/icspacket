@@ -14,9 +14,8 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 """
-[ITU-T X.225 / ISO 8327-1] - Connection-oriented Session Protocol (COSP)
-========================================================================
+ITU-T X.225 / ISO 8327-1 - Connection-oriented Session Protocol (COSP)
 
 This module implements low-level parsing/packing for **Session Protocol Data Units (SPDUs)**
-and **Transport Session Data Units (TSDUs)** as defined in X.225.
+and **Transport Session Data Units (TSDUs)** according to X.225.
 """

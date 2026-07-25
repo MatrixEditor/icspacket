@@ -26,7 +26,7 @@ jobs:
         name: Build wheels
         env:
           # cibuildwheel will build wheel once and test it for each CPython version
-          CIBW_BUILD: "cp312-* cp313-* cp311-* cp310-*"
+          CIBW_BUILD: "cp312-* cp313-* cp311-* cp310-* cp314-*"
           # musllinux is not supported since musl does not export _timezone
           CIBW_SKIP: "*musllinux*"
           CIBW_BUILD_VERBOSITY: 1

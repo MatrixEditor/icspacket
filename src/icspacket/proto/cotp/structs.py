@@ -13,20 +13,22 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
-# pyright: reportInvalidTypeForm=false, reportGeneralTypeIssues=false, reportAssignmentType=false
+# 1pyright: reportInvalidTypeForm=false, reportGeneralTypeIssues=false, reportAssignmentType=false
 
 
-# [ITU X.224] - Open Systems Interconnection – Connection-mode protocol
+# See ITU X.224 - Open Systems Interconnection – Connection-mode protocol
 # specifications
-
-from collections.abc import Iterable
 import enum
 
+from typing import Any
+from collections.abc import Iterable
+
 from caterpillar.context import CTX_OBJECT
-from caterpillar.model import bitfield, EnumFactory, struct
+from caterpillar.model import Invisible, bitfield, EnumFactory, struct
 from caterpillar.options import S_ADD_BYTES
+from caterpillar.py import StructDefMixin
 from caterpillar.shared import Action
-from caterpillar.shortcuts import F, BigEndian, opt, pack, this, unpack
+from caterpillar.shortcuts import F, BigEndian, opt, pack, this, unpack, f
 from caterpillar.fields import (
     DEFAULT_OPTION,
     Bytes,
@@ -37,24 +39,22 @@ from caterpillar.fields import (
     uint16,
     ENUM_STRICT,
 )
+from caterpillar.types import uint8_t, uint16_t
+from caterpillar.abc import _ContextLike
 
 
 def checksum(tpdu_data: Iterable[int], checksum_off: int):
     """
     Compute the checksum for a TPDU according to Annex D.3 of X.224.
 
-    The algorithm iterates through each octet, maintaining two
-    accumulators ``C0`` and ``C1``. After processing, the two checksum
-    octets ``X`` and ``Y`` are computed based on the position of the
-    checksum parameter and the total TPDU length.
+    Two running accumulators, ``C0`` and ``C1``, are folded over every
+    octet of ``tpdu_data`` in order (each octet updates ``C0``, and the
+    updated ``C0`` is then folded into ``C1``). Their final values are
+    combined with the total octet count ``L`` and the checksum's offset
+    ``n`` to derive the pair of result octets:
 
-    **Algorithm (Annex D.3):**
-      1. Initialize ``C0 = 0`` and ``C1 = 0``.
-      2. For each octet in the TPDU, add its value to ``C0`` and then
-         add the new ``C0`` to ``C1``.
-      3. Compute the checksum values:
-         - ``X = (-C1 + (L - n) * C0) mod 256``
-         - ``Y = (C1 - (L - n + 1) * C0) mod 256``
+    - ``X = (-C1 + (L - n) * C0) mod 256``
+    - ``Y = (C1 - (L - n + 1) * C0) mod 256``
 
     :param tpdu_data: Sequence of TPDU octets.
     :type tpdu_data: Iterable[int]
@@ -64,21 +64,18 @@ def checksum(tpdu_data: Iterable[int], checksum_off: int):
     :rtype: bytes
     """
 
-    # is the length of the complete TPDU;
+    # total octet count and offset of the checksum field within it
     octets = list(tpdu_data)
     L = len(octets)
     n = checksum_off
 
-    # D.3.2 Initialize C0 and C1 to zero.
     c0 = c1 = 0
-    # D.3.3 Process each octet sequentially from i = 1 to L by:
+    # running sum: fold each octet into C0, then fold C0 into C1
     for byte in tpdu_data:
-        # a) adding the value of the octet to C0; then
         c0 = (c0 + byte) & 0xFF
-        # b) adding the value of C0 to C1.
         c1 = (c0 + c1) & 0xFF
 
-    # Calculate X and Y
+    # derive the two result octets from the final accumulator state
     x = (-c1 + (L - n) * c0) & 0xFF
     y = (c1 - (L - n + 1) * c0) & 0xFF
     return bytes([x, y])
@@ -106,11 +103,14 @@ def verify_checksum(tpdu_data: bytes, checksum_off: int) -> bool:
 
 
 class TPDU_Code(enum.IntEnum):
-    """13.2.2.2 TPDU code"""
+    """Per-type identifier occupying the upper nibble of a TPDU's
+    :attr:`~TPDU.code` octet; selects which TPDU subclass and fixed
+    header layout a decoder should use for the remaining bytes.
+    """
 
     ED = 0x01  # Expected Data
     EA = 0x02  # Expedited data acknowledgement
-    RJ = 0x03  # Reject
+    RJ = 0x05  # Reject
     AK = 0x06  # Data acknowledgement
     ER = 0x07  # Error
     DR = 0x08  # Disconnect request
@@ -121,98 +121,110 @@ class TPDU_Code(enum.IntEnum):
 
 
 class TPDU_Class(enum.IntEnum):
-    """7. Protocol classes"""
+    """Transport protocol classes (clause 7 of X.224), assigned to the
+    ``class_id`` of a :class:`TPDU_ClassOption` to pick which connection,
+    flow-control, and recovery features a transport connection uses.
+    """
 
     CLASS0 = 0
-    """8. Simple class (Class 0)
+    """Class 0 - simple class.
 
-    Class 0 provides only the functions needed for connection establishment with
-    negotiation, data transfer with segmenting and protocol error reporting.
+    Covers connection establishment (with negotiation), segmented data
+    transfer, and reporting of protocol errors.
     """
 
     CLASS1 = 1
-    """9. Basic error recovery class (Class 1)
+    """Class 1 - basic error recovery class.
 
-    Class 1 provides transport connections with flow control based on the
-    network service provided flow control, error recovery, expedited data
-    transfer, disconnection, and also the ability to support consecutive
-    transport connections on a network connection.
+    Provides flow control tied to the underlying network connection's
+    own flow control, together with error recovery, expedited data
+    transfer, an explicit disconnect procedure, and the ability to run
+    consecutive transport connections over a single network connection.
     """
 
     CLASS2 = 2
-    """10. Multiplexing class (Class 2)
+    """Class 2 - multiplexing class.
 
-    Class 2 provides transport connections with or without individual flow
-    control; no error detection or error recovery is provided.
+    Supports transport connections with flow control being optional
+    (used or not, per connection); it offers neither error detection
+    nor error recovery.
     """
 
     CLASS3 = 3
-    """11. Error recovery and multiplexing class
+    """Class 3 - error recovery and multiplexing class.
 
-    Class 3 provides the functionality of class 2 (with use of explicit flow
-    control) plus the ability to recover after a failure signalled by the
-    Network Layer without involving the TS-user.
+    Everything class 2 offers, but always with explicit flow control,
+    plus recovery from a failure reported by the Network Layer that is
+    handled internally, without involving the TS-user.
     """
 
     CLASS4 = 4
-    """12. Error detection and recovery class (Class 4)
+    """Class 4 - error detection and recovery class.
 
-    Class 4 provides the functionality of class 3, plus the ability to detect
-    and recover from lost, duplicated, or out of sequence TPDUs without
-    involving the TS-user.
+    Everything class 3 offers, plus detection and recovery from lost,
+    duplicated, or out-of-sequence TPDUs, again handled internally
+    without involving the TS-user.
     """
 
 
 class TPDU_DisconnectReason(enum.IntEnum):
-    """Defines the reason for disconnecting the transport connection."""
+    """Reason codes carried by a DR-TPDU to explain why the transport
+    connection is being released."""
 
     __struct__ = uint8
 
     NORMAL = 128 + 0
-    """Normal disconnect initiated by session entity."""
+    """The session entity requested this disconnect under normal
+    conditions."""
 
     REMOTE_CONGEST = 128 + 1
-    """Remote transport entity congestion at connect request time."""
+    """The remote transport entity was congested at the time the
+    connection was requested."""
 
     NEGO_FAILED = 128 + 2
-    """Connection negotiation failed [i.e. proposed class(es) not supported]."""
+    """Class negotiation failed, i.e. none of the proposed protocol
+    class(es) could be supported."""
 
     DUPLICATE_SOURCE = 128 + 3
-    """Duplicate source reference detected for the same pair of NSAPs."""
+    """This source reference was already in use for the same pair of
+    NSAPs."""
 
     MISMATCHED_REFERENCES = 128 + 4
-    """Mismatched references."""
+    """The connection's reference values did not match."""
 
     PROTOCOL_ERROR = 128 + 5
-    """Protocol error."""
+    """A protocol error was detected."""
 
     REF_OVERFLOW = 128 + 7
-    """Reference overflow."""
+    """The connection reference has overflowed."""
 
     CONN_REFUSED = 128 + 8
-    """Connection request refused on this network connection."""
+    """The connection request was refused over this network
+    connection."""
 
     INVALID_LENGTH = 128 + 10
-    """Header or parameter length invalid."""
+    """The header length, or a parameter's length, was invalid."""
 
     # available for all classes
     UNSPECIFIED = 0
-    """Reason not specified."""
+    """No specific reason was given."""
 
     TSAP_CONGESTION = 1
-    """Congestion at TSAP."""
+    """The destination TSAP was congested."""
 
     ENTITIY_NOT_ATTACHED = 2
-    """Session entity not attached to TSAP."""
+    """No session entity is attached to that TSAP."""
 
     UNKNOWN_ADDRESS = 3
-    """Address unknown."""
+    """The destination address was not recognized."""
 
 
 class TPDU_Size(enum.IntEnum):
     """
-    Defines the proposed maximum TPDU size (in octets including the header) to
-    be used over the requested transport connection
+    Maximum TPDU size (header included, in octets) proposed for use over
+    the requested transport connection. Each value is the base-2
+    logarithm of the octet count it represents, as carried in the
+    TPDU-SIZE parameter.
     """
 
     # fmt: off
@@ -227,88 +239,95 @@ class TPDU_Size(enum.IntEnum):
 
 
 class TPDU_RejectCause(enum.IntEnum):
-    """Cause of rejection of a connection request"""
+    """Why a connection request was rejected."""
 
     __struct__ = uint8
 
     UNSPECIFIED = 0
-    """Cause not specified"""
+    """No cause was given."""
 
     INVALID_PARAMETER_CODE = 1
-    """Invalid parameter code"""
+    """A parameter code was not recognized."""
 
     INVALID_PDU_TYPE = 2
-    """Invalid PDU type"""
+    """The PDU type was not recognized."""
 
     INVALID_PARAMETER_VALUE = 3
-    """Invalid parameter value"""
+    """A parameter carried a value that is not valid."""
 
 
 @bitfield(options=[opt.S_ADD_BYTES])
 class TPDU_AdditionalOptions:
-    """Additional option selection (not used if class 0 is the preferred
-    class)"""
+    """Bit flags for the ADDITIONAL OPTION SELECTION parameter; irrelevant
+    whenever class 0 is the preferred class."""
 
     # fmt: off
-    unused                 : 1 = False
-    non_blocking           : 1 = False
-    """Use of non-blocking expedited data in class 4"""
+    unused                 : f[bool, 1] = False
+    non_blocking           : f[bool, 1] = False
+    """When set, class 4 uses non-blocking expedited data."""
 
-    use_request_ack        : 1 = False
-    """Use of request acknowledgement in class 1, 3, 4"""
+    use_request_ack        : f[bool, 1] = False
+    """When set, classes 1, 3 and 4 use the request-acknowledgement
+    option."""
 
-    use_selective_ack      : 1 = False
-    """Use of selective acknowledgement in class 4"""
+    use_selective_ack      : f[bool, 1] = False
+    """When set, class 4 uses selective acknowledgement."""
 
-    speed_up               : 1 = False
-    """Use of network expedited in class 1"""
+    speed_up               : f[bool, 1] = False
+    """When set, class 1 makes use of the network service's expedited
+    delivery."""
 
-    use_receipt_info       : 1 = False
+    use_receipt_info       : f[bool, 1] = False
     """
-    - True: Use of receipt confirmation in class 1
-    - False: Use of explicit AK variant in class 1
+    Chooses, for class 1, between receipt confirmation (``True``) and
+    the explicit AK variant (``False``).
     """
 
-    use_checksum_16bit     : 1 = False
-    """16-bit checksum defined in 6.17 shall be used in class 4"""
+    use_checksum_16bit     : f[bool, 1] = False
+    """When set, class 4 uses the 16-bit checksum defined in clause 6.17."""
 
-    use_transport_speed_up : 1 = True
-    """Use of transport expedited data transfer service"""
+    use_transport_speed_up : f[bool, 1] = True
+    """When set, the transport-expedited data transfer service is used."""
     # fmt: on
 
 
 @struct(order=BigEndian, options=[S_ADD_BYTES])
 class TPDU_TransitDelay:
-    """Transit delay (not used if class 0 is the preferred class)"""
+    """TRANSIT DELAY parameter values, one target/maximum pair per
+    direction; unused whenever class 0 is the preferred class."""
 
     # fmt: off
-    calling_target_value        : uint16    = 0
-    """target value, calling-called user direction;"""
+    calling_target_value        : uint16_t    = 0
+    """Target transit delay from the calling to the called user."""
 
-    calling_maximum_acceptable  : uint16    = 0
-    """maximum acceptable, calling-called user direction;"""
+    calling_maximum_acceptable  : uint16_t    = 0
+    """Largest transit delay still acceptable from the calling to the
+    called user."""
 
-    called_target_value         : uint16    = 0
-    """target value, called-calling user direction;"""
+    called_target_value         : uint16_t    = 0
+    """Target transit delay from the called to the calling user."""
 
-    called_maximum_acceptable   : uint16    = 0
-    """maximum acceptable, called-calling user direction;"""
+    called_maximum_acceptable   : uint16_t    = 0
+    """Largest transit delay still acceptable from the called to the
+    calling user."""
     # fmt: on
 
 
 @struct(options=[S_ADD_BYTES])
 class TPDU_ResidualErrorRate:
-    """Residual error rate (not used if class 0 is the preferred class)"""
+    """RESIDUAL ERROR RATE parameter values; unused whenever class 0 is
+    the preferred class."""
 
     # fmt: off
-    target_value          : uint8   = 0
-    """target value, power of 10;"""
+    target_value          : uint8_t   = 0
+    """Target residual error rate, expressed as a power of 10."""
 
-    minimum_acceptable    : uint8   = 0
-    """minimum acceptable, power of 10;"""
+    minimum_acceptable    : uint8_t   = 0
+    """Smallest residual error rate still acceptable, expressed as a
+    power of 10."""
 
-    tsdu_size_of_interest : uint8   = 0
-    """TSDU size of interest, expressed as a power of 2."""
+    tsdu_size_of_interest : uint8_t   = 0
+    """TSDU size this error rate applies to, expressed as a power of 2."""
     # fmt: on
 
 
@@ -321,8 +340,8 @@ class Parameter_Code(enum.IntEnum):
     __struct__ = uint8
 
     # fmt: off
-    CALLED_T_SELECTOR   = 0b11000001  # Transport-Selector (T-selector) called or Invalid TPDU
-    CALLING_T_SELECTOR  = 0b11000010  # Transport-Selector (T-selector) calling
+    CALLING_T_SELECTOR  = 0b11000001  # Transport-Selector (T-selector) calling
+    CALLED_T_SELECTOR   = 0b11000010  # Transport-Selector (T-selector) called/responding or Invalid TPDU
     TPDU_SIZE           = 0b11000000  # TPDU size
     MAX_TPDU_SIZE       = 0b11110000  # Preferred maximum TPDU size
     VERSION             = 0b11000100  # Version number
@@ -359,8 +378,8 @@ TPDU_PARAM_TYPES = {
     Parameter_Code.INACTIVITY          : uint32,
     Parameter_Code.SUBSEQUENCE_NUM     : uint16,
     Parameter_Code.CHECKSUM            : TPDU_Checksum,
-    # Parameter_Code.CALLED_T_SELECTOR   : uint16,
-    # Parameter_Code.CALLING_T_SELECTOR  : uint16,
+    # Parameter_Code.CALLED_T_SELECTOR   : uint16_t,
+    # Parameter_Code.CALLING_T_SELECTOR  : uint16_t,
 
     # all other options will use raw bytes
     DEFAULT_OPTION                     : Bytes(...),
@@ -369,30 +388,31 @@ TPDU_PARAM_TYPES = {
 
 
 @struct(options=[S_ADD_BYTES])
-class Parameter:
-    """13.2.3 Variable part
+class Parameter(StructDefMixin):
+    """A single TLV-encoded entry from a TPDU's variable part (X.224,
+    §13.2.3).
 
-    The variable part is used to define less frequently used parameters. If the
-    variable part is present, it shall contain one or more parameters.
+    Each :class:`TPDU` subclass that defines a ``parameters`` field
+    stores a list of these; the variable part only exists at all when
+    at least one such parameter needs to be carried.
     """
 
     # fmt: off
-    type_id : Enum(Parameter_Code, uint8) | ENUM_STRICT                           = 0
+    type_id : f[Parameter_Code, Enum(Parameter_Code, uint8) | ENUM_STRICT] = 0
     """The parameter code"""
 
     # Simple TLV structure with dynamic parsing behabior
-    value   : Prefixed(uint8, F(this.type_id) >> TPDU_PARAM_TYPES) = b""
-    """
-    The parameter length indication indicates the length, in octets, of the
-    parameter value field.
+    value   : f[Any, Prefixed(uint8, F(this.type_id) >> TPDU_PARAM_TYPES)] = b""
+    """Parameter payload, length-prefixed by a single length octet.
 
-    The parameter value field contains the value of the parameter identified in
-    the parameter code field.
+    The concrete type stored here is looked up from
+    :data:`TPDU_PARAM_TYPES` based on ``type_id``, so this field decodes
+    to whatever representation is appropriate for that parameter code.
     """
 
     # --- Verification
     @staticmethod
-    def _verify_parameter(context) -> None:
+    def _verify_parameter(context: _ContextLike) -> None:
         # Since we're using a greedy length by default on the value, we can't be
         # sure if the parameter is valid or not. This action resolbes that
         # issue.
@@ -400,7 +420,7 @@ class Parameter:
         if parameter.type_id == 0 and not parameter.value:
             raise ValueError("Invalid parameter")
 
-    _verify: Action(unpack=_verify_parameter)
+    _verify: f[None, Action(unpack=_verify_parameter)] = Invisible()
     # fmt: on
 
 
@@ -410,19 +430,20 @@ class TPDU:
 
     # fmt: off
 
-    li   : uint8     = 0
-    """13.2.1 Length indicator field
+    li   : uint8_t     = 0
+    """Header length indicator, in octets.
 
-    The length indicated shall be the header length in octets including
-    parameters, but excluding the length indicator field and user data, if any.
-    The value 255 (1111 1111) is reserved for possible extensions.
+    Counts the fixed and variable parts of the header - i.e. everything
+    after this field up to (but not including) the user data - which is
+    the same quantity :meth:`build` derives from :attr:`fixed_size` plus
+    the packed variable part's length. The value 255 (1111 1111) is set
+    aside by the standard for a future length-indicator extension.
     """
 
-    code : uint8     = 0
-    """13.2.2.2 TPDU code
-
-    This field contains the TPDU code. It is used to define the structure of the
-    remaining header.
+    code : uint8_t     = 0
+    """Raw TPDU code octet, combining :attr:`tpdu_code` (upper nibble)
+    and :attr:`code_arg` (lower nibble); together they identify which
+    kind of TPDU this is and how the rest of the header is laid out.
     """
     # fmt: on
 
@@ -572,15 +593,14 @@ class TPDU:
         >>> pdu.build(add_checksum=True)
         b'\\n\\xe0\\x00\\x00\\x00\\x00\\x00\\xc3\\x02|\\xd5'
         >>> parsed = TPDU_ConnectionRequest.from_octets(_)
-        TPDU_ConnectionRequest(li=10, code=224,...parameters=[Parameter(type_id=<Parameter_Code.CHECKSUM: 195>, value=b'|\\xd5')])
+        TPDU_ConnectionRequest(li=10, code=224,...parameters=[Parameter(type_id=<Parameter_Code.CHECKSUM: int1_t95>, value=b'|\\xd5')])
 
         :param add_checksum: Whether to generate and insert a checksum
                              parameter during the build process.
         :return: Byte string representing the complete TPDU.
         """
         fixed_size = self.fixed_size
-        # D.3.1 Set up the complete TPDU with the value of the checksum
-        # parameter field set to zero.
+        # zero out the checksum parameter before computing over the whole TPDU
         if add_checksum:
             self.set_checksum(bytes(2))
 
@@ -612,92 +632,82 @@ class TPDU:
 
 @bitfield(options=[S_ADD_BYTES])
 class TPDU_ClassOption:
-    """CLASS OPTION
+    """CLASS OPTION octet, as carried by CR/CC-TPDUs.
 
-    Defines the preferred transport protocol class to be operated over the
-    requested transport connection.
+    Packs the preferred/selected transport protocol class (``class_id``)
+    for this connection alongside the ``extended_formats`` and
+    ``explicit_flow_control`` switches, with two reserved bits in
+    between.
     """
 
     # fmt: off
-    class_id              : (4, EnumFactory(TPDU_Class)) = TPDU_Class.CLASS0
-    reserved              :  2                           = 0
-    extended_formats      :  1                           = False
-    explicit_flow_control :  1                           = False
+    class_id              : f[TPDU_Class | int, (4, EnumFactory(TPDU_Class))] = TPDU_Class.CLASS0
+    reserved              : f[int, 2]                                          = 0
+    extended_formats      : f[bool, 1]                                         = False
+    explicit_flow_control : f[bool, 1]                                         = False
     # fmt: on
 
 
 TPDU_VariablePart = Parameter[...]
-"""13.2.3 Variable part
-
-The variable part is used to define less frequently used parameters. If the
-variable part is present, it shall contain one or more parameters.
+"""Packing helper for a TPDU's variable part (X.224, §13.2.3): an
+open-ended sequence of zero or more :class:`Parameter` entries, back to
+back until the bytes run out.
 """
 
 TPDU_UserData = Bytes(...)
-"""13.2.4 Data field
-
-This field contains transparent user data
+"""Packing helper for a TPDU's user-data field (X.224, §13.2.4): the
+remaining bytes are copied through as-is, with no further structure
+imposed.
 """
 
 
 @struct(order=BigEndian)
 class TPDU_ConnectionRequest(TPDU):
-    """13.3 Connection Request (CR) TPDU"""
+    """Connection Request (CR) TPDU (X.224, §13.3), sent to open a new
+    transport connection and propose the parameters it should use.
+    """
 
     TPDU_FIXED_SIZE = 6
 
     # fmt: off
-    dst_ref: uint16 = 0
-    """c) DST-REF - Set to zero."""
+    dst_ref: uint16_t = 0
+    """Destination reference - always zero on a CR-TPDU."""
 
-    src_ref: uint16 = 0
-    """d) SRC-REF
-
-    Reference selected by the transport entity initiating the CR-TPDU to
-    identify the requested transport connection.
+    src_ref: uint16_t = 0
+    """Source reference chosen by this (initiating) transport entity to
+    identify the connection being requested.
     """
 
     class_opt: TPDU_ClassOption = None
-    """e) CLASS OPTION
-
-    Bits 8 to 5 of octet 7 define the preferred transport protocol class to be
-    operated over the requested transport connection. The CR-TPDU contains the
-    first choice of class in the fixed part. Second and subsequent choices are
-    listed in the variable part if required.
+    """First-choice class option for this connection (bits 8-5 of octet
+    7). Any further class choices the initiator wants to offer as
+    alternatives go into the variable part instead.
     """
 
-    parameters: Bytes(this.li - 6) & TPDU_VariablePart = None
-    """13.3.4 Variable part
+    parameters: f[list[Parameter], Bytes(this.li - 6) & TPDU_VariablePart] = None
+    """Optional parameters that may accompany a CR-TPDU (X.224, §13.3.4).
 
-    The following parameters are permitted in the variable part:
-
-    - a) Transport-Selector (T-selector)
-    - b) TPDU size
-    - c) Preferred maximum TPDU size
-    - d) Version number (not used if class 0 is the preferred class)
-    - e) Protection parameters (not used is class 0 is the preferred class)
-    - f) Checksum (used only if class 4 is the preferred class)
-    - h) Alternative protocol class(es) (not used if class 0 is the preferred
-         class or when operating over CLNS) Parameter code:
-    - i) Acknowledgement time (used only if class 4 is the preferred class)
-    - j) Throughput (not used if class 0 is the preferred class)
-    - k) Residual error rate (not used if class 0 is the preferred class)
-    - l) Priority (not used if class 0 is the preferred class)
-    - m) Transit delay (not used if class 0 is the preferred class)
-    - n) Reassignment time (not used if class 0 or 2 is the preferred class; if
-         class 4 is preferred and class 3 is an alternate, it may be used)
-    - o) Inactivity timer (used only if class 4 is the preferred or selected
-         class)
+    Transport-Selector, TPDU size, and preferred maximum TPDU size may be
+    present regardless of class. Version number, protection parameters,
+    and alternative protocol class(es) only matter once a class other
+    than 0 is proposed - alternative classes are additionally never used
+    when running over CLNS. Throughput, residual error rate, priority,
+    and transit delay are likewise skipped whenever class 0 is
+    preferred. Checksum and acknowledgement time only make sense when
+    class 4 is the preferred class. Reassignment time is omitted when
+    class 0 or 2 is preferred, but remains available when class 4 is
+    preferred with class 3 offered as an alternate. The inactivity timer
+    applies once class 4 is either preferred or selected.
     """
 
-    user_data: TPDU_UserData = None
-    """
-    No user data are permitted in class 0, and are optional in other classes.
+    user_data: f[bytes, TPDU_UserData] = None
+    """User data accompanying the request; class 0 must leave this
+    empty, while every other class may optionally include some.
     """
     # fmt: on
 
     def __post_init__(self) -> None:
-        self.tpdu_code = TPDU_Code.CR
+        self.tpdu_code: TPDU_Code = TPDU_Code.CR
         self.class_opt = self.class_opt or TPDU_ClassOption()
         self.parameters = self.parameters or []
         self.user_data = self.user_data or b""
@@ -705,44 +715,41 @@ class TPDU_ConnectionRequest(TPDU):
 
 @struct(order=BigEndian)
 class TPDU_ConnectionConfirm(TPDU):
-    """13.4Connection Confirm (CC) TPDU"""
+    """Connection Confirm (CC) TPDU (X.224, §13.4), returned in reply to
+    a CR-TPDU to accept the connection and settle on its final
+    parameters.
+    """
 
     TPDU_FIXED_SIZE = 6
 
     # fmt: off
-    dst_ref    : uint16                                 = 0
-    """c) DST-REF
-
-    Reference identifying the requested transport connection at the remote
-    transport entity.
+    dst_ref    : uint16_t                                 = 0
+    """Destination reference - identifies, from the remote transport
+    entity's point of view, which requested connection this CC-TPDU
+    confirms.
     """
 
-    src_ref    : uint16                                 = 0
-    """d) SRC-REF
-
-    Reference selected by the transport entity initiating the CC-TPDU to
-    identify the confirmed transport connection.
+    src_ref    : uint16_t                                 = 0
+    """Source reference chosen by this (responding) transport entity to
+    identify the now-confirmed connection.
     """
 
     class_opt  : TPDU_ClassOption                       = None
-    """e) CLASS OPTION
-
-    Defines the selected transport protocol class and option to be operated over
-    the accepted transport connection.
+    """Class and option finally selected, from the CR-TPDU's offered
+    choices, for this now-accepted connection.
     """
 
-    parameters : Bytes(this.li - 6) & TPDU_VariablePart = None
+    parameters : f[list[Parameter], Bytes(this.li - 6) & TPDU_VariablePart] = None
     """Same as in :class:`TPDU_ConnectionRequest`"""
 
-    user_data  : TPDU_UserData                          = b""
-    """13.4.5 User Data
-
-    No user data are permitted in class 0, and are optional in the other classes.
+    user_data  : f[bytes, TPDU_UserData]                          = b""
+    """User data returned with the confirmation (X.224, §13.4.5); empty
+    for class 0, optional for every other class.
     """
     # fmt: on
 
     def __post_init__(self):
-        self.tpdu_code = TPDU_Code.CC
+        self.tpdu_code: TPDU_Code = TPDU_Code.CC
         self.class_opt = self.class_opt or TPDU_ClassOption()
         self.parameters = self.parameters or []
         self.user_data = self.user_data or b""
@@ -750,114 +757,107 @@ class TPDU_ConnectionConfirm(TPDU):
 
 @struct(order=BigEndian)
 class TPDU_DisconnectRequest(TPDU):
-    """13.5 Disconnect Request (DR) TPDU
-
-    The DR-TPDU is used to terminate a transport connection. It may carry
-    parameters and optional user data.
+    """Disconnect Request (DR) TPDU (X.224, §13.5): initiates release of
+    a transport connection, optionally carrying parameters and user data
+    explaining why.
     """
 
     TPDU_FIXED_SIZE = 6
 
     # fmt: off
-    dst_ref: uint16 = 0
-    """Destination reference — identifies the transport connection to be
+    dst_ref: uint16_t = 0
+    """Destination reference - identifies the transport connection to be
     released."""
 
-    src_ref: uint16 = 0
-    """Source reference — identifies the transport connection from the sender's
+    src_ref: uint16_t = 0
+    """Source reference - identifies the transport connection from the sender's
     perspective."""
 
-    reason: TPDU_DisconnectReason = 0
-    """Reason code for disconnection (X.224 §13.5.4)."""
+    reason: f[TPDU_DisconnectReason | int, Enum(TPDU_DisconnectReason, uint8)] = 0
+    """Reason code for disconnection (See X.224, §13.5.4)."""
 
-    parameters: Bytes(this.li - 6) & TPDU_VariablePart = None
-    """Optional parameters (variable part)
-
-    Allowed parameters:
-
-    - a) Additional information
-    - b) Checksum
+    parameters: f[list[Parameter], Bytes(this.li - 6) & TPDU_VariablePart] = None
+    """Optional variable-part parameters; only additional information
+    and checksum may appear here.
     """
 
-    user_data: TPDU_UserData = None
-    """Optional user data — must not exceed 64 octets."""
+    user_data: f[bytes, TPDU_UserData] = None
+    """Optional explanatory user data, limited to 64 octets."""
     # fmt: on
 
     def __post_init__(self):
         self.parameters = self.parameters or []
         self.user_data = self.user_data or b""
-        self.tpdu_code = TPDU_Code.DR
+        self.tpdu_code: TPDU_Code = TPDU_Code.DR
 
 
 @struct(order=BigEndian)
 class TPDU_DisconnectConfirm(TPDU):
-    """3.6 Disconnect Confirm (DC) TPDU
-
-    The DC-TPDU is sent in response to a DR-TPDU to confirm the disconnection
-    of a transport connection.
+    """Disconnect Confirm (DC) TPDU (X.224, §13.6): the reply to a
+    DR-TPDU acknowledging that the connection has been released.
     """
 
     TPDU_FIXED_SIZE = 5
 
     # fmt: off
-    dst_ref: uint16 = 0
-    """Destination reference — identifies the transport connection being
+    dst_ref: uint16_t = 0
+    """Destination reference - identifies the transport connection being
     confirmed as disconnected."""
 
-    src_ref: uint16 = 0
-    """Source reference — identifies the transport connection from the sender's
+    src_ref: uint16_t = 0
+    """Source reference - identifies the transport connection from the sender's
     perspective."""
 
-    parameters: Bytes(this.li - 5) & TPDU_VariablePart = None
+    parameters: f[list[Parameter], Bytes(this.li - 5) & TPDU_VariablePart] = None
     """Only checksum is allowed as a parameter"""
     # fmt: on
 
     def __post_init__(self):
         self.parameters = self.parameters or []
-        self.tpdu_code = TPDU_Code.DC
+        self.tpdu_code: TPDU_Code = TPDU_Code.DC
 
 
 @bitfield
 class TPDU_Number:
-    eot: 1 = False
-    """d) EOT
+    eot: f[bool, 1] = False
+    """End-of-TSDU marker.
 
-    When set to ONE, it indicates that the current DT-TPDU is the last data unit
-    of a complete DT-TPDU sequence (end of TSDU).
+    Set to ``1`` on the final DT-TPDU of a segmented TSDU so the
+    receiver knows the sequence is complete; ``0`` on every DT-TPDU
+    before it.
     """
 
-    value: 7 = 0
-    """e) TPDU-NR
+    value: f[int, 7] = 0
+    """Send sequence number for this TPDU.
 
-    TPDU send sequence number (zero in class 0). May take any value in class 2
-    without explicit flow control. TPDU-NR is bits 7 to 1 of octet 3 for
-    classes 0 and 1, bits 7 to 1 of octet 5 for classes 2, 3 and 4.
+    Always zero in class 0, and unconstrained in class 2 when explicit
+    flow control is not used. Packed into bits 7-1 of octet 3 for
+    classes 0 and 1, or bits 7-1 of octet 5 for classes 2, 3 and 4.
     """
 
 
 @struct(order=BigEndian)
 class TPDU_Data(TPDU):
-    """13.7 Data (DT) TPDU
-
-    The DA-TPDU is used to transfer data over a transport connection. It may
-    carry parameters and optional user data.
+    """Data (DT) TPDU (X.224, §13.7): the workhorse PDU that carries
+    application data across an established transport connection, plus
+    any parameters needed alongside it.
     """
 
     TPDU_FIXED_SIZE = 2
 
     # fmt: off
     nr: TPDU_Number = None
-    """e) TPDU-NR"""
+    """Sequence number and end-of-TSDU marker for this DT-TPDU."""
 
-    user_data: TPDU_UserData = b""
-    """This field contains data of the TSDU being transmitted."""
+    user_data: f[bytes, TPDU_UserData] = b""
+    """The actual TSDU payload data being carried by this TPDU."""
     # fmt: on
 
     def __post_init__(self):
         if not isinstance(self.nr, TPDU_Number):
             self.nr = TPDU_Number()
         self.user_data = self.user_data or b""
-        self.tpdu_code = TPDU_Code.DT
+        self.tpdu_code: TPDU_Code = TPDU_Code.DT
 
     @property
     def tpdu_nr(self) -> int:
@@ -870,97 +870,91 @@ class TPDU_Data(TPDU):
 
 @struct(order=BigEndian)
 class TPDU_ExpeditedData(TPDU):
-    """13.8 Expedited Data (ED) TPDU
-
-    The ED-TPDU is used to send expedited (urgent) data across the transport
-    connection.
+    """Expedited Data (ED) TPDU (X.224, §13.8): carries urgent data that
+    should bypass normal flow control on its way across the connection.
     """
 
     TPDU_FIXED_SIZE = 4
 
-    dst_ref: uint16 = 0
-    """Destination reference — identifies the transport connection to which the
+    dst_ref: uint16_t = 0
+    """Destination reference - identifies the transport connection to which the
     expedited data belongs."""
 
     ed_nr: TPDU_Number = None
-    """Sequence number for expedited data (X.224 §13.8.4)."""
+    """Sequence number for expedited data (See X.224, §13.8.4)."""
 
-    parameters: Bytes(this.li - 4) & TPDU_VariablePart = None
+    parameters: f[list[Parameter], Bytes(this.li - 4) & TPDU_VariablePart] = None
     """Only checksum is allowed as a parameter"""
 
-    user_data: TPDU_UserData = None
-    """The expedited data payload — must not exceed the maximum allowed for
-    expedited service."""
+    user_data: f[bytes, TPDU_UserData] = None
+    """Expedited payload data, bounded by whatever maximum size the
+    expedited service allows.
+    """
 
     def __post_init__(self):
         self.user_data = self.user_data or b""
         if not isinstance(self.ed_nr, TPDU_Number):
             self.ed_nr = TPDU_Number()
         self.parameters = self.parameters or []
-        self.tpdu_code = TPDU_Code.ED
+        self.tpdu_code: TPDU_Code = TPDU_Code.ED
 
 
 @struct(order=BigEndian)
 class TPDU_DataAcknowledgement(TPDU):
-    """13.9 Data Acknowledgement (AK) TPDU
-
-    The AK-TPDU acknowledges receipt of data and communicates flow control
-    information.
+    """Data Acknowledgement (AK) TPDU (X.224, §13.9): acknowledges data
+    received so far and reports flow-control state back to the sender.
     """
 
     TPDU_FIXED_SIZE = 6
 
-    dst_ref: uint16 = 0
-    """Destination reference — identifies the transport connection."""
+    dst_ref: uint16_t = 0
+    """Destination reference - identifies the transport connection."""
 
     next_nr: TPDU_Number = None
-    """Next expected TPDU sequence number."""
+    """Sequence number of the next DT-TPDU this side expects to
+    receive."""
 
-    credit: uint16 = 0
-    """Flow control credit — number of TPDUs the sender is prepared to receive."""
+    credit: uint16_t = 0
+    """Flow-control credit: how many further TPDUs the sender of this
+    AK-TPDU is currently willing to accept."""
 
-    parameters: Bytes(this.li - 6) & TPDU_VariablePart = None
-    """Optional parameters allowed in AK-TPDU:
-
-    - a) Checksum
-    - b) Subsequence number when optionally used under the conditions defined in
-         class 4.
-    - c) Flow control confirmation when optionally used under the conditions
-         defined in class 4.
-    - d) Selective acknowledgement parameters when optionally used, under
-         conditions defined in class 4.
+    parameters: f[list[Parameter], Bytes(this.li - 6) & TPDU_VariablePart] = None
+    """Optional parameters an AK-TPDU may carry (X.224, §13.9): a
+    checksum, and, only where class 4 permits it, a subsequence number,
+    flow-control confirmation, and/or selective-acknowledgement
+    parameters.
     """
     # fmt: on
 
     def __post_init__(self):
         self.parameters = self.parameters or []
-        self.tpdu_code = TPDU_Code.AK
+        self.tpdu_code: TPDU_Code = TPDU_Code.AK
         if not isinstance(self.next_nr, TPDU_Number):
             self.next_nr = TPDU_Number()
 
 
 @struct(order=BigEndian)
 class TPDU_ExpeditedDataAcknowledgement(TPDU):
-    """13.10 Expedited Data Acknowledgement (EA) TPDU
-
-    The EA-TPDU is used to acknowledge receipt of expedited data (ED TPDUs).
+    """Expedited Data Acknowledgement (EA) TPDU (X.224, §13.10):
+    acknowledges receipt of a specific ED-TPDU.
     """
 
     TPDU_FIXED_SIZE = 4
 
     # fmt: off
-    dst_ref: uint16 = 0
-    """Destination reference — identifies the transport connection."""
+    dst_ref: uint16_t = 0
+    """Destination reference - identifies the transport connection."""
 
     ed_nr: TPDU_Number = None
-    """Expedited data sequence number being acknowledged."""
+    """Sequence number of the ED-TPDU that this acknowledgement
+    confirms."""
 
-    parameters: Bytes(this.li - 4) & TPDU_VariablePart = None
+    parameters: f[list[Parameter], Bytes(this.li - 4) & TPDU_VariablePart] = None
     """Only checksum is allowed as a parameter"""
     # fmt: on
 
     def __post_init__(self):
-        self.tpdu_code = TPDU_Code.EA
+        self.tpdu_code: TPDU_Code = TPDU_Code.EA
         self.parameters = self.parameters or []
         if not isinstance(self.ed_nr, TPDU_Number):
             self.ed_nr = TPDU_Number()
@@ -968,24 +962,24 @@ class TPDU_ExpeditedDataAcknowledgement(TPDU):
 
 @struct(order=BigEndian)
 class TPDU_Reject(TPDU):
-    """13.11 Reject (RJ) TPDU
-
-    The RJ-TPDU requests retransmission of certain TPDUs due to detected errors.
+    """Reject (RJ) TPDU (X.224, §13.11): tells the peer that TPDU(s) it
+    sent were rejected and need to be retransmitted.
     """
 
     TPDU_FIXED_SIZE = 5
 
-    dst_ref: uint16 = 0
-    """Destination reference — identifies the transport connection."""
+    dst_ref: uint16_t = 0
+    """Destination reference - identifies the transport connection."""
 
-    y_nr: uint16 = 0
-    """Next expected TPDU sequence number (Y(R))."""
+    y_nr: uint16_t = 0
+    """Sequence number of the next TPDU this side still expects, i.e.
+    Y(R)."""
 
     def __post_init__(self):
-        self.tpdu_code = TPDU_Code.RJ
+        self.tpdu_code: TPDU_Code = TPDU_Code.RJ
 
 
-# Reject cause codes for ER (X.224 §13.12.3)
+# Reject cause codes for ER (See X.224, §13.12.3)
 class ER_RejectCause(enum.IntEnum):
     __struct__ = uint8
     REASON_NOT_SPECIFIED = 0x00
@@ -996,30 +990,25 @@ class ER_RejectCause(enum.IntEnum):
 
 @struct(order=BigEndian)
 class TPDU_Error(TPDU):
-    """13.12 TPDU error (ER) TPDU
-
-    No user data.
+    """TPDU Error (ER) TPDU (X.224, §13.12): reports a protocol error
+    detected in a received TPDU; it never carries user data.
     """
 
     TPDU_FIXED_SIZE = 4
 
     # fmt: off
-    dst_ref: uint16 = 0
-    """Destination reference (see §13.4.3)."""
+    dst_ref: uint16_t = 0
+    """Destination reference (See §13.4.3)."""
 
-    reject_cause: ER_RejectCause = ER_RejectCause.REASON_NOT_SPECIFIED
-    """Reject cause (§13.12.3)."""
+    reject_cause: f[ER_RejectCause | int, Enum(ER_RejectCause, uint8)] = ER_RejectCause.REASON_NOT_SPECIFIED
+    """Reject cause (See §13.12.3)."""
 
-    parameters: Bytes(this.li - 4) & TPDU_VariablePart = None
-    """Optional parameters:
-
-    - a) Invalid TPDU
-    - b) Checksum
-    """
+    parameters: f[list[Parameter], Bytes(this.li - 4) & TPDU_VariablePart] = None
+    """Optional parameters: an "Invalid TPDU" entry and/or a checksum."""
     # fmt: on
 
     def __post_init__(self):
-        self.tpdu_code = TPDU_Code.ER
+        self.tpdu_code: TPDU_Code = TPDU_Code.ER
         self.parameters = self.parameters or []
 
 
@@ -1077,6 +1066,18 @@ def parse_tpdu(octets: bytes) -> _TPDULike:
     if len(octets) < 2:
         raise ValueError("TPDU must have at least 2 octets")
 
+    li = octets[0]
+    if li == 0xFF:
+        raise ValueError("Reserved TPDU length indicator")
+    if li >= len(octets):
+        raise ValueError(f"Invalid TPDU length indicator: li={li}, total={len(octets)}")
+
     tpdu_base = TPDU.from_octets(octets)
     tpdu_type = TPDU_TYPES.get(tpdu_base.tpdu_code, TPDU)
+    fixed_size = getattr(tpdu_type, "TPDU_FIXED_SIZE", 1)
+    if li < fixed_size:
+        raise ValueError(
+            "TPDU fixed part cannot be contained within header: "
+            + f"li={li}, fixed_size={fixed_size}"
+        )
     return tpdu_type.from_octets(octets)

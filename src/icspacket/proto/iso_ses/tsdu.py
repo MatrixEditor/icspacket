@@ -17,24 +17,24 @@
 TSDU (Transport Service Data Unit) Handling
 -------------------------------------------
 
-This module implements parsing and building logic for **TSDUs** as defined in
+This module implements parsing and building logic for **TSDUs** according to
 §8.1 of the X.225 specification.
 
-A TSDU is the *unit of data* exchanged between the session layer and the
-transport layer. It may contain:
+Every hand-off between the session layer and the transport layer travels as
+one TSDU, which - depending on what is being sent - may be built from:
 
 - One SPDU mapped directly to a TSDU (Category 1)
 - Multiple SPDUs concatenated (Category 0 + Category 2, or multiple Category 2s)
 - In special cases, only a Category 0 SPDU
 
-Concatenation rules are defined in §6.3.7:
+Concatenation rules (See §6.3.7):
 
-- **Category 0** SPDUs may be mapped one-to-one onto a TSDU *or*
-    concatenated with one or more Category 2 SPDUs.
-- **Category 1** SPDUs are always mapped one-to-one to a TSDU (no
-    concatenation).
-- **Category 2** SPDUs are never mapped one-to-one — they appear only after
-    a Category 0 SPDU in the same TSDU.
+- **Category 0**: fine either as a lone TSDU or as the lead-in for one or
+    more Category 2 SPDUs concatenated onto it.
+- **Category 1**: always fills a whole TSDU by itself; never concatenated
+    with anything else.
+- **Category 2**: never forms a TSDU on its own - it only ever shows up
+    tacked onto a preceding Category 0 SPDU within the same TSDU.
 
 .. seealso::
 
@@ -45,12 +45,19 @@ Concatenation rules are defined in §6.3.7:
 
 from collections.abc import Iterator
 from caterpillar.model import unpack
+from typing_extensions import override
 
-from icspacket.proto.iso_ses.spdu import LI, SPDU, SPDU_Category, SPDU_Codes, LI_Extended
+from icspacket.proto.iso_ses.spdu import (
+    LI,
+    SPDU,
+    SPDU_Category,
+    SPDU_Codes,
+    LI_Extended,
+)
 
 
 class TSDU:
-    """TSDU container for one or more concatenated SPDUs — X.225 §8.1
+    """TSDU container for one or more concatenated SPDUs. (See X.225, §8.1)
 
     Usage:
 
@@ -58,9 +65,10 @@ class TSDU:
     >>> tsdu.build()                    # Encode back to raw bytes
     """
 
-    def __init__(self) -> None:
-        self.__spdus = []
+    def __init__(self, *spdus: SPDU) -> None:
+        self.__spdus: list[SPDU] = list(spdus)
 
+    @override
     def __repr__(self) -> str:
         return f"TSDU(spdus={self.spdus})"
 
@@ -94,7 +102,7 @@ class TSDU:
         return self.__spdus
 
     @staticmethod
-    def from_octets(octets: bytes):
+    def from_octets(octets: bytes) -> "TSDU":
         """Decode a raw TSDU from its octet representation.
 
         :param octets: The raw TSDU data as received from the transport layer.
