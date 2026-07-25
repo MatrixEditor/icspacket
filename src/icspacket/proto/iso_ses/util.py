@@ -60,8 +60,7 @@ def build_connect_spdu(
                      Defaults to ``True``.
     :type version2: bool
     :param requirements: Session requirements parameter block.
-                         If omitted, defaults to an empty
-                         ``PV_SessionRequirements`` instance.
+                         If omitted, defaults to the client's duplex proposal.
     :type requirements: PV_SessionRequirements | None
     :param called_ses_sel: Selector of the called session entity.
                            Used for identifying the target service access point.
@@ -84,15 +83,9 @@ def build_connect_spdu(
        or session layer QoS). These can be injected via
        ``extra_parameters`` to remain forward-compatible.
     """
-    if not requirements:
+    if requirements is None:
         # out default session requirements
-        requirements = PV_SessionRequirements(
-            half_duplex=True,
-            minor_sync=True,
-            activity_management=True,
-            capability_data_exchange=True,
-            exceptions=True,
-        )
+        requirements = PV_SessionRequirements.default()
 
     spdu = SPDU(SPDU_Codes.CONNECT_SPDU)
     accept_item = spdu.add_parameter(PGI_Code.ACCEPT_ITEM, [])
