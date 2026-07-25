@@ -13,20 +13,21 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
-# pyright: reportGeneralTypeIssues=false, reportUninitializedInstanceVariable=false, reportInvalidTypeForm=false
 """
 This module implements parsing and serialization of **DNP3 Application Layer
-objects** as defined in section *4.2.2.7 Object Headers* of the DNP3
-specification.
+objects** according to section *4.2.2.7 Object Headers* of the DNP3
+Specification.
 
-In DNP3, object headers describe data structures that cannot be conveyed
-through the application header alone. Each object header specifies:
+Object headers carry information that a bare application header cannot
+express. This library models each header as four pieces:
 
-- **Group**: The type of data (e.g., binary inputs, analog outputs).
-- **Variation**: The representation of the data (e.g., packed, 16-bit, 32-bit).
-- **Qualifier fields**: Indicate how many objects follow and what range or
-  prefixing mechanism is applied.
-- **Objects**: The actual data values.
+- **Group**: which data category is being carried (binary inputs, analog
+  outputs, etc.).
+- **Variation**: which on-the-wire layout was chosen for that data (packed,
+  16-bit, 32-bit, etc.).
+- **Qualifier fields**: how many objects to expect next, and which
+  range/prefixing scheme locates them.
+- **Objects**: the decoded values themselves.
 
 Example: Class0123 Request
 --------------------------
@@ -50,9 +51,8 @@ import io
 import dataclasses
 from typing import Any
 
-from caterpillar.fields import Pass, uint8
-from caterpillar.model import EnumFactory, pack_into
-from caterpillar.shortcuts import bitfield, unpack
+from caterpillar.py import Pass, uint8, EnumFactory, pack_into, bitfield, f, unpack
+from caterpillar.types import uint8_t
 
 from icspacket.proto.dnp3.const import (
     APDU_PREFIX_TYPES,
@@ -64,39 +64,39 @@ from icspacket.proto.dnp3.objects.variations import get_variation
 
 
 # /4.2.2.7 Object headers
-# object headers and objects provide supplementary information as required when
-# the application header alone cannot convey the complete message.
+# This bitfield is the fixed-size preamble that tags a batch of DNP3 objects
+# with the addressing/type information the application header can't carry
+# by itself.
 @bitfield
 class ObjectHeader:
     """Represents a **DNP3 Object Header**.
 
-    Object headers provide additional context about a set of objects
-    transmitted in the Application Layer. They define the group, variation,
-    and addressing/range information for associated data objects.
+    Each instance pins down the group and variation that the following
+    objects belong to, along with the qualifier fields describing how many
+    objects to expect and how they are addressed or prefixed.
     """
 
     # fmt: off
     #: /4.2.2.7.1 Object group
-    #: The object group specifies what data type or values are included in a
-    #: master request or in an outstation response.
-    group           : uint8
+    #: Identifies the data category the following objects belong to, whether
+    #: this header is part of a master request or an outstation response.
+    group: uint8_t
 
     #: /4.2.2.7.2 Object variation
-    #: Specifies the data format of DNP3 objects. The object group and object variation
-    #: together uniquely specify the structure of a DNP3 object and the type of data that
-    #: it references.
-    variation       : uint8
+    #: Selects the on-the-wire layout for objects in this group. This
+    #: library uses the (group, variation) pair to look up the matching
+    #: struct definition and decode the data accordingly.
+    variation: uint8_t
 
     # 4.2.2.7.3 Qualifier and range fields
-    reserved        : (1, int)                             = 0
+    reserved: f[int, 1] = 0
     #: /4.2.2.7.3.2 Object prefix code
-    #: Specifies what, if any, prefix value appears before each of the DNP3
-    #: objects that follow the object header. Prefixes are either an index number
-    #: or an object size.
-    obj_prefix      : (3, EnumFactory(ObjectPrefixCode))   = ObjectPrefixCode.NONE
+    #: Selects whether each following object is preceded by a small value
+    #: (an index or a size) and, if so, which kind.
+    obj_prefix: f[ObjectPrefixCode | int, (3, EnumFactory(ObjectPrefixCode))] = ObjectPrefixCode.NONE
 
     #: /4.2.2.7.3.3 Range specifier codes
-    range_spec      : (4, EnumFactory(RangeSpecifierCode)) = RangeSpecifierCode.NONE
+    range_spec: f[RangeSpecifierCode | int, (4, EnumFactory(RangeSpecifierCode))] = RangeSpecifierCode.NONE
     # fmt: on
 
 
@@ -130,7 +130,7 @@ class DNP3ObjectVariations(list[DNP3Object]):
     >>> v.add(DNP3ObjectG2V1(state=1))
     """
 
-    range_type: RangeSpecifierCode
+    range_type: RangeSpecifierCode | int | None
     """
     Indicates the range encoding used for this variation (count or start/end).
     """
@@ -141,14 +141,14 @@ class DNP3ObjectVariations(list[DNP3Object]):
     an integer count, or ``None`` if not specified.
     """
 
-    prefix_type: ObjectPrefixCode | None
+    prefix_type: ObjectPrefixCode | int | None
     """
     Prefix encoding used for the objects (e.g., none, 1-byte, 2-byte index).
     """
 
     def __init__(self) -> None:
         super().__init__()
-        self.range_type = RangeSpecifierCode.NONE
+        self.range_type = None
         self.range = None
         self.prefix_type = None
 
@@ -165,11 +165,16 @@ class DNP3ObjectVariations(list[DNP3Object]):
         if self.range is not None:
             return self.range
 
+        if self.range_type is None or self.range_type == RangeSpecifierCode.NONE:
+            return None
+
         if int(self.range_type) >= 7:
             return len(self)
 
-        if self.range_type != RangeSpecifierCode.NONE:
-            return (self[0].index, self[-1].index)
+        if len(self) == 0:
+            return None
+
+        return (self[0].index, self[-1].index)
 
     def add(
         self, value: Any, /, prefix: int | None = None, index: int | None = None
@@ -205,7 +210,7 @@ class DNP3Objects(dict[int, dict[int, DNP3ObjectVariations | None]]):
 
     def get_variation(
         self, group: int, variation: int, /
-    ) -> DNP3ObjectVariations | None:
+    ) -> DNP3ObjectVariations:
         """
         Retrieve or create a variation container for the given group/variation.
 
@@ -241,8 +246,8 @@ def unpack_objects(object_data: bytes) -> DNP3Objects:
     objects = DNP3Objects()
     # /4.2.2.1 General fragment structure
     while stream.tell() < len(object_data):
-        # one or more sets of object headers and possibly DNP3 objects are
-        # included after the application header
+        # Keep decoding (header, objects) pairs back-to-back until the
+        # buffer runs out; a single fragment may carry any number of them.
         header = unpack(ObjectHeader, stream)
         target_range = unpack(
             APDU_RANGE_TYPES.get(header.range_spec, Pass),
@@ -264,8 +269,8 @@ def unpack_objects(object_data: bytes) -> DNP3Objects:
                 pass
 
         # /4.2.2.7.3.2 Object prefix code
-        # It specifies what, if any, prefix value appears before each of the
-        # DNP3 objects that follow the object header.
+        # Resolve the per-object prefix type so each object below can be
+        # preceded by its index/size value while it is read from the stream.
         prefix_ty = APDU_PREFIX_TYPES.get(header.obj_prefix, Pass)
         target_variant = get_variation(header.group, header.variation)
         if not target_variant:
@@ -275,7 +280,9 @@ def unpack_objects(object_data: bytes) -> DNP3Objects:
 
         variation_instance = objects.get_variation(header.group, header.variation)
         variation_instance.range_type = header.range_spec
-        variation_instance.range = target_range
+        variation_instance.range = (
+            target_range  # pyright: ignore[reportAttributeAccessIssue]
+        )
         variation_instance.prefix_type = header.obj_prefix
         for index in range(start, stop):
             prefix = unpack(prefix_ty, stream, as_field=True)
@@ -325,8 +332,6 @@ def pack_objects(
     """
     if prefix_type is None:
         prefix_type = ObjectPrefixCode.NONE
-    if range_type is None:
-        range_type = RangeSpecifierCode.NONE
 
     stream = io.BytesIO()
     for group_id, variations in objects.items():
@@ -340,38 +345,58 @@ def pack_objects(
                     )
 
                 if isinstance(instances, list):
-                    num_objects = len(objects)
+                    num_objects = len(instances)
 
-                if instances.range_type is None:
-                    if range_type == RangeSpecifierCode.NONE and num_objects > 0:
-                        # automatically use a simple range specifier
-                        if num_objects > 255:
-                            range_type = RangeSpecifierCode.COUNT_32
-                        else:
-                            range_type = RangeSpecifierCode.COUNT_8
-                    instances.range_type = range_type
+                selected_range_type = (
+                    instances.range_type
+                    if instances.range_type is not None
+                    else range_type
+                )
+                if selected_range_type is None:
+                    if num_objects == 0:
+                        selected_range_type = RangeSpecifierCode.NONE
+                    elif num_objects <= 0xFF:
+                        selected_range_type = RangeSpecifierCode.COUNT_8
+                    elif num_objects <= 0xFFFF:
+                        selected_range_type = RangeSpecifierCode.COUNT_16
+                    else:
+                        selected_range_type = RangeSpecifierCode.COUNT_32
 
-                if instances.prefix_type is None:
-                    instances.prefix_type = prefix_type
+                selected_prefix_type = (
+                    instances.prefix_type
+                    if instances.prefix_type is not None
+                    else prefix_type
+                )
+
+                if instances.range is not None:
+                    selected_range = instances.range
+                elif selected_range_type == RangeSpecifierCode.NONE:
+                    selected_range = None
+                elif int(selected_range_type) >= 7:
+                    selected_range = num_objects
+                elif num_objects > 0:
+                    selected_range = (instances[0].index, instances[-1].index)
+                else:
+                    selected_range = None
 
                 header = ObjectHeader(
                     group=group_id,
                     variation=variation_id,
-                    obj_prefix=instances.prefix_type,
-                    range_spec=instances.range_type,
+                    obj_prefix=selected_prefix_type,
+                    range_spec=selected_range_type,
                 )
 
                 pack_into(header, stream)
-                pack_into(
-                    instances.get_range(),
+                pack_into(  # pyright: ignore[reportCallIssue]
+                    selected_range,
                     stream,
-                    APDU_RANGE_TYPES.get(instances.range_type, Pass),
+                    APDU_RANGE_TYPES.get(selected_range_type, Pass),
                 )
                 for object in instances if isinstance(instances, list) else [instances]:
-                    pack_into(
+                    pack_into(  # pyright: ignore[reportCallIssue]
                         object.prefix,
                         stream,
-                        APDU_PREFIX_TYPES.get(instances.prefix_type, Pass),
+                        APDU_PREFIX_TYPES.get(selected_prefix_type, Pass),
                     )
                     if variation.is_packed:
                         value = [v.instance for v in instances]

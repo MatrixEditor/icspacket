@@ -17,17 +17,17 @@
 """
 Primitive data types and bit string representations used in the DNP3 object library.
 
-This module defines the canonical mappings between DNP3's primitive object
-types and Python equivalents (e.g., UINT8, INT32, FLT32). It also includes
-implementations for bit string objects (BSTRn, DBSTRn) as described in
-section 11.3.3 of the DNP3 specification.
+This module maps DNP3's primitive object types onto their Python equivalents
+(e.g., UINT8, INT32, FLT32). It also implements the two bit-string codecs
+used elsewhere in this package, BSTRn and DBSTRn, according to DNP3 Specification,
+Section 11.3.3.
 
-Two kinds of bit string encodings are implemented:
+Two flavors of bit string are covered here:
 
-- **BSTRn**: Packed bit strings, where each bit represents a boolean value.
-- **DBSTRn**: Double-bit strings, where each pair of bits encodes a
-  double-bit state (used, for example, to represent binary inputs with
-  intermediate states).
+- **BSTRn**: a plain packed bit string -- one bit per boolean flag.
+- **DBSTRn**: a packed string of 2-bit values, letting each entry hold one
+  of four states instead of a simple on/off (useful, for instance, for
+  binary inputs that support an intermediate state).
 
 .. note::
 
@@ -37,13 +37,15 @@ Two kinds of bit string encodings are implemented:
 
 # 11.3 Primitive data types
 import datetime
-from io import BytesIO, StringIO
 import math
+from io import BytesIO, StringIO
+
 import bitarray
-from caterpillar.byteorder import LittleEndian
+from caterpillar.abc import _ContextLike
 from caterpillar.context import CTX_STREAM
-from caterpillar.fields import (
+from caterpillar.py import (
     Bytes,
+    LittleEndian,
     String,
     Transformer,
     UInt,
@@ -52,13 +54,13 @@ from caterpillar.fields import (
     int16,
     int32,
     singleton,
+    uint8,
     uint16,
     uint24,
     uint32,
-    uint8,
 )
 from caterpillar.shortcuts import G
-
+from typing_extensions import override
 
 UINT8 = uint8
 """8-bit unsigned integer."""
@@ -93,21 +95,20 @@ FLT64 = float64
 
 @singleton
 class DNP3TIME(Transformer):
-    """48-bit DNP3 timestamp type.
+    """Codec for DNP3's 48-bit millisecond timestamp field.
 
-    This type represents a DNP3-compliant timestamp using a 48-bit unsigned
-    integer. The timestamp is encoded as the number of **milliseconds since
-    the Unix epoch (1970-01-01 00:00:00 UTC)**.
-
-    It provides automatic conversion between the raw integer form and a
-    :class:`datetime.datetime` object when decoding, while encoding supports
-    either integer millisecond values or datetime objects.
+    On the wire, this value is an unsigned 48-bit count of milliseconds
+    elapsed since the Unix epoch (1970-01-01 00:00:00 UTC). Decoding turns
+    that count into a :class:`datetime.datetime` object, while encoding
+    accepts either a raw millisecond integer or a
+    :class:`datetime.datetime` instance.
     """
 
     def __init__(self) -> None:
         super().__init__(LittleEndian + UInt(48))
 
-    def decode(self, parsed: int, context) -> datetime.datetime | int:
+    @override
+    def decode(self, parsed: int, context: _ContextLike) -> datetime.datetime | int:
         """Decode a 48-bit integer timestamp into a datetime object.
 
         :param parsed: The parsed integer value representing milliseconds
@@ -124,7 +125,8 @@ class DNP3TIME(Transformer):
         except ValueError:
             return parsed
 
-    def encode(self, obj: int | datetime.datetime, context) -> int:
+    @override
+    def encode(self, obj: int | datetime.datetime, context: _ContextLike) -> int:
         """Encode a datetime object or integer into a 48-bit millisecond value.
 
         :param obj: The timestamp to encode, either as a datetime or an integer
@@ -141,14 +143,11 @@ class DNP3TIME(Transformer):
 
 
 class BCD(Transformer):
-    """Binary-coded decimal (BCD) type.
+    """Binary-coded decimal (BCD) codec, named BCDn for an n-digit value.
 
-    Implements DNP3 section 11.3.6: *Binary-coded decimal values use the notation
-    BCDn, where ``n`` represents the number of BCD characters. For example,
-    ``BCD8`` requires 8 BCD characters.*
-
-    Each BCD character is stored in 4 bits (a nibble). Two characters are packed
-    into a single byte in little-endian order.
+    For instance, a ``BCD8`` field holds 8 decimal digits, according to DNP3
+    Specification, Section 11.3.6. Each digit occupies a 4-bit nibble, and
+    this codec packs two digits into every byte in little-endian order.
     """
 
     def __init__(self, count: int) -> None:
@@ -162,9 +161,10 @@ class BCD(Transformer):
         :rtype: str
         """
         # Each BCD character requires 4 bits
-        super().__init__(Bytes(count / 2))
+        super().__init__(Bytes(count // 2))
 
-    def decode(self, parsed: bytes, context) -> str:
+    @override
+    def decode(self, parsed: bytes, context: _ContextLike) -> str:
         """Encode a string of decimal digits into BCD bytes.
 
         :param obj: The decimal string to encode. A '-' character may be used
@@ -187,7 +187,8 @@ class BCD(Transformer):
             _ = string.write(str(low_number))
         return string.getvalue()
 
-    def encode(self, obj: str, context) -> bytes:
+    @override
+    def encode(self, obj: str, context: _ContextLike) -> bytes:
         packed = BytesIO()
         for i in range(0, len(obj), 2):
             low_number_str = obj[i]
@@ -203,16 +204,13 @@ class BCD(Transformer):
 
 
 class BSTRn:
-    """Packed bit string (BSTRn) representation.
+    """Codec for a DNP3 packed bit string (BSTRn), one bit per flag.
 
-    This class implements the parsing and serialization of packed bit
-    strings used in DNP3 objects. Each bit encodes a boolean value,
-    with the least significant bit occupying the lowest bit position
-    in a field.
-
-    For example, a 10-bit bit string will be encoded into 2 octets.
-    When unpacked, it is represented as a :class:`bitarray.bitarray`
-    with little-endian ordering.
+    Bit 0 -- the field's least-significant bit -- holds the first flag,
+    with later flags packed upward from there; the field is always padded
+    out to whole octets, so for example 10 flags occupy 2 octets on the
+    wire. This codec exposes the decoded value as a little-endian
+    :class:`bitarray.bitarray`.
     """
 
     def count(self, obj: bitarray.bitarray) -> int:
@@ -225,7 +223,7 @@ class BSTRn:
         """
         return len(obj)
 
-    def __size__(self, context) -> int:
+    def __size__(self, context: _ContextLike) -> int:
         """Compute the number of octets required to represent the bit string.
 
         :param context: Serialization context containing range information.
@@ -252,22 +250,22 @@ class BSTRn:
         """
         return bitarray.bitarray()
 
-    def __unpack__(self, context):
-        """Unpack a packed bit string from the stream.
+    def __unpack__(self, context: _ContextLike) -> list[int]:
+        """Read a packed bit string from the stream and expand it to a list.
 
-        The least significant bit of the string is placed at the
-        lowest position within the field.
+        Element 0 of the returned list corresponds to the field's
+        least-significant bit.
 
         :param context: Serialization context containing the input stream.
         :type context: dict
         :return: A list of unpacked bit values (0 or 1).
         :rtype: list[int]
         """
-        obj = context[CTX_STREAM].read(self.__size__(context))
+        obj: bytes = context[CTX_STREAM].read(self.__size__(context))
         packed_values = bitarray.bitarray(obj, endian="little")
         return packed_values.tolist()
 
-    def __pack__(self, obj: bitarray.bitarray | bytes | list[int], context) -> None:
+    def __pack__(self, obj: bitarray.bitarray | bytes | list[int], context: _ContextLike) -> None:
         """Pack a bit string into the stream.
 
         :param obj: The bit string to pack. Can be a :class:`bitarray.bitarray`,
@@ -290,22 +288,21 @@ class BSTRn:
 
 
 class DBSTRn:
-    """Double-bit string (DBSTRn) representation.
+    """Codec for a DNP3 double-bit string (DBSTRn), 2 bits per value.
 
-    This class implements parsing and serialization of double-bit
-    strings, where each pair of bits encodes a state. For example:
+    Every value in the string occupies 2 bits, giving four possible
+    readings:
 
     - ``00`` → intermediate or indeterminate state
     - ``01`` → determined OFF
     - ``10`` → determined ON
     - ``11`` → reserved
 
-    Each octet encodes four double-bit values.
-
-    Internally, unpacked values are represented as lists of integers.
+    Four such values fit in each octet, and this codec keeps the unpacked
+    form as a plain list of integers.
     """
 
-    def __size__(self, context) -> int:
+    def __size__(self, context: _ContextLike) -> int:
         """Compute the number of octets required to represent the double-bit string.
 
         :param context: Serialization context containing range information.
@@ -356,7 +353,7 @@ class DBSTRn:
             int(packed_values[i : i + 2], 2) for i in range(0, len(packed_values), 2)
         ]
 
-    def __pack__(self, obj: list[int] | bitarray.bitarray | bytes, context) -> None:
+    def __pack__(self, obj: list[int] | bitarray.bitarray | bytes, context: _ContextLike) -> None:
         """Pack a double-bit string into the stream.
 
         :param obj: The double-bit string to pack. Can be a list of integers,
