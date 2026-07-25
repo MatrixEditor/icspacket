@@ -13,23 +13,16 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
-# pyright: reportInvalidTypeForm=false, reportGeneralTypeIssues=false, reportAssignmentType=false
-from dataclasses import dataclass
 import datetime
 import enum
-
+from dataclasses import dataclass
 from typing import Any, Literal
-from caterpillar.fields import (
-    DEFAULT_OPTION,
-    Bytes,
-    double,
-    float32,
-    uint8,
-    uint64,
-)
+
 from caterpillar.model import bitfield, struct
 from caterpillar.options import S_ADD_BYTES
-from caterpillar.shortcuts import pack, unpack, BigEndian, F, this
+from caterpillar.py import DEFAULT_OPTION, Bytes, double, f, float32, uint8, uint64
+from caterpillar.shortcuts import BigEndian, F, pack, this, unpack
+from caterpillar.types import int1_t, int5_t
 
 from icspacket.proto.mms._mms import Data, FileAttributes, UtcTime
 from icspacket.proto.mms.asn1types import FloatingPoint
@@ -39,20 +32,21 @@ _be_uint64 = BigEndian + uint64
 
 class IEEE754Type(enum.IntEnum):
     """
-    Enumeration representing supported IEEE 754 floating-point formats.
+    Discriminator byte read by :class:`IEEE754PackedFloat` to pick the codec
+    used for the value bytes that follow it.
 
-    The enumeration values encode the bit-width of the **exponent field**
-    used in the floating-point representation. This width determines
-    whether the format corresponds to a 32-bit or 64-bit IEEE 754 float.
+    Single- and double-precision IEEE 754 floats differ in how many bits
+    their exponent occupies, so this enum simply stores that bit count and
+    uses it to tell the two layouts apart.
     """
 
     __struct__ = uint8
 
     FLOAT32 = 8
-    """ Single-precision floating-point type (8-bit exponent width)."""
+    """Single-precision layout, identified by its 8-bit exponent field."""
 
     FLOAT64 = 11
-    """Double-precision floating-point type (11-bit exponent width)."""
+    """Double-precision layout, identified by its 11-bit exponent field."""
 
 
 #: Mapping between IEEE754 exponent widths and their corresponding
@@ -69,24 +63,25 @@ _IEEE754_TYPES = {
 @struct
 class IEEE754PackedFloat:
     """
-    Structured representation of a floating-point value encoded in IEEE 754
-    format.
+    Wire format of an MMS ``FloatingPoint`` value: a leading
+    :class:`IEEE754Type` tag followed by the value itself.
 
-    This structure encapsulates both the **exponent width** (to distinguish
-    between 32-bit and 64-bit IEEE 754 floating-point values) and the
-    associated binary-encoded value.
+    Packing and unpacking this struct is how :func:`create_floating_point_value`
+    and :func:`get_floating_point_value` convert between plain Python floats
+    and the tagged byte string MMS transports as ``FloatingPoint``.
     """
 
     exponent_width: IEEE754Type = IEEE754Type.FLOAT32
     """
-    The exponent width that determines the floating-point format (either
-    ``FLOAT32`` or ``FLOAT64``). Defaults to ``FLOAT32``.
+    Tag selecting the codec applied to :attr:`value` (``FLOAT32`` or
+    ``FLOAT64``); defaults to ``FLOAT32`` when left unset.
     """
 
-    value: F(this.exponent_width) >> _IEEE754_TYPES = 0
+    value: f[float | bytes, F(this.exponent_width) >> _IEEE754_TYPES] = 0
     """
-    The floating-point value encoded according to the specified exponent width.
-    If the width is not recognized, the raw bytes are stored instead.
+    The float itself, packed or unpacked using the codec chosen by
+    :attr:`exponent_width`. Falls back to a raw byte string when the tag
+    does not match a recognized codec.
     """
 
 
@@ -141,28 +136,35 @@ def get_floating_point_value(fp: FloatingPoint | bytes) -> float:
 
 @bitfield(order=BigEndian, options=[S_ADD_BYTES])
 class Timestamp:
-    """Structured bitfield representation of a timestamp value.
+    """Field-level view over a packed 8-byte MMS UTC timestamp.
+
+    Splits the raw value carried by a :class:`UtcTime` into a whole-seconds
+    counter, a sub-second fraction, three one-bit status flags, and an
+    accuracy indicator, so each part can be read or set directly instead of
+    manipulating raw bytes. Build an instance with
+    :meth:`from_utc_time`/:meth:`from_datetime` and read it back as plain
+    Python values through :attr:`seconds`/:attr:`datetime`.
 
     .. versionadded:: 0.2.3
     """
 
-    timeval: Bytes(4) = bytes(4)
-    """4-byte unsigned integer representing the elapsed time in seconds."""
+    timeval: f[bytes, Bytes(4)] = bytes(4)
+    """Elapsed seconds, packed as an unsigned big-endian value across these 4 bytes; see :attr:`seconds` for reading/writing it as a Python int."""
 
-    fraction: Bytes(3) = bytes(3)
-    """3-byte fractional component of the timestamp for sub-second precision."""
+    fraction: f[bytes, Bytes(3)] = bytes(3)
+    """Sub-second remainder of the timestamp, held as 3 raw bytes."""
 
-    leap_second_known: 1 = False
-    """Indicates whether the occurrence of leap seconds is known."""
+    leap_second_known: int1_t = False
+    """Set when this timestamp's leap-second status is known rather than undefined."""
 
-    clock_failure: 1 = False
-    """Indicates whether a clock failure has been detected."""
+    clock_failure: int1_t = False
+    """Set when the source clock is reporting a failure."""
 
-    clock_not_synced: 1 = False
-    """Indicates whether the clock is currently unsynchronized."""
+    clock_not_synced: int1_t = False
+    """Set when the source clock has not (yet) synchronized to a reference."""
 
-    accuracy: 5 = 0
-    """5-bit field encoding the accuracy of the timestamp."""
+    accuracy: int5_t = 0
+    """5-bit value carrying the timestamp's accuracy indicator."""
 
     @staticmethod
     def from_utc_time(utc_time: "UtcTime | bytes") -> "Timestamp":
@@ -211,9 +213,9 @@ class Timestamp:
             The number of elapsed seconds to encode into the timestamp.
         """
         data = bytearray(4)
-        data[0] = int((value / (2**24))) & 0xFF
-        data[1] = int((value / (2**16))) & 0xFF
-        data[2] = int((value / (2**8))) & 0xFF
+        data[0] = int(value / (2**24)) & 0xFF
+        data[1] = int(value / (2**16)) & 0xFF
+        data[2] = int(value / (2**8)) & 0xFF
         data[3] = value & 0xFF
 
         self.timeval = bytes(data)

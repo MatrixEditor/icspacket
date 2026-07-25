@@ -64,7 +64,7 @@ def new_initiate_request(
     Build a new MMS ``Initiate-RequestPDU``.
 
     This utility simplifies construction of the Initiate Service
-    defined in **ISO 9506-1, §8.2**.
+    according to **ISO 9506-1, §8.2**.
 
     :param local_detail_calling: Local detail identifier of the calling
         MMS-user's implementation. If not provided, defaults to the
@@ -107,9 +107,9 @@ def new_initiate_request(
     pdu.proposedMaxServOutstandingCalling = max_serv_outstanding_calling
 
     if data_nesting_depth is not None:
-        # in 8.2.1.1.4:
-        # Absence of this parameter shall indicate an unlimited number of
-        # nesting levels.
+        # 8.2.1.1.4: leaving this field unset is how an unlimited nesting
+        # depth is requested, so it is only assigned once a concrete limit
+        # has been given.
         pdu.proposedDataStructureNestingLevel = data_nesting_depth
 
     details = Initiate_RequestPDU.initRequestDetail_TYPE()
