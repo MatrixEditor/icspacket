@@ -14,7 +14,8 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 import enum
-from typing_extensions import Any
+
+from typing_extensions import Any, Self
 
 from icspacket.core.connection import ConnectionNotEstablished
 from icspacket.proto.iec61850.classes import FC, ControlModel
@@ -34,13 +35,14 @@ from icspacket.proto.mms._mms import (
     InformationReport,
     MMSpdu,
     UnconfirmedService,
+    VariableAccessSpecification,
 )
 from icspacket.proto.mms.connection import (
     MMS_Connection,
     UnconfirmedServiceCallback,
     UnconfirmedServiceHandler,
 )
-from icspacket.proto.mms.data import Timestamp
+from icspacket.proto.mms.data import Timestamp, bit_string2data
 from icspacket.proto.mms.exceptions import MMSServiceError
 from icspacket.proto.mms.util import (
     BasicObjectClassType,
@@ -53,7 +55,7 @@ from icspacket.proto.mms.util import (
 
 class ACSI_Class(enum.Enum):
     """
-    Enumeration of ACSI class models as per IEC 61850.
+    Enumeration of ACSI class models according to IEC 61850.
 
     Each entry defines a mapping from the abstract ACSI model into the
     concrete MMS object class that is used for encoding.
@@ -192,7 +194,7 @@ class IED_Client:
         if self.mms_conn.is_valid():
             self.mms_conn.release()
 
-    def __enter__(self) -> "IED_Client":
+    def __enter__(self) -> Self:
         return self
 
     def __exit__(self, exc_type, exc_value, traceback):
@@ -259,11 +261,10 @@ class IED_Client:
         return [
             ObjectReference.from_mmsref(f"{ld_name}/{entry}")
             for entry in entries
-            # The NamedVariable objects returned may contain more objects than
-            # solely logical nodes.Therefore, the MMS ObjectName will need to be
-            # filtered by the application using the MMS  GetNameList-Request on
-            # the client side based upon the naming standards within this
-            # document (e.g. a NamedVariable that has no ‘$’ character).
+            # GetNameList can return more than just logical-node entries, so
+            # only names without a '$' separator are kept here - anything
+            # containing '$' addresses a deeper object (data/attribute)
+            # rather than a logical node itself.
             if "$" not in entry
         ]
 
@@ -292,8 +293,8 @@ class IED_Client:
         >>> client.get_logical_node_directory(ln)
         ["LD1/MMXU1.A.phsA", "LD1/MMXU1.A.phsB"]
         """
-        # The scope of the request shall be the scope of the LogicalNode
-        # (typically within the scope of a particular domain).
+        # Logical nodes live inside a single domain, so the lookup is scoped
+        # to that domain (the logical device) rather than the whole server.
         match acsi_class:
             case ACSI_Class.DATA_SET:
                 # maps to NamedVariableList
@@ -351,7 +352,8 @@ class IED_Client:
         :returns: Access result for the object.
         :rtype: AccessResult
         """
-        # The ACSI GetDataValues service shall be mapped to the MMS read service.
+        # GetDataValues has no dedicated MMS service of its own, so it is
+        # implemented as a plain MMS Read.
         return self.get_all_data_values(datref)
 
     def set_data_values(
@@ -372,7 +374,8 @@ class IED_Client:
         :returns: Error code if write fails, otherwise None.
         :rtype: DataAccessError | None
         """
-        # T he ACSI SetDataValues service shall be mapped to the MMS Write service.
+        # SetDataValues has no direct MMS equivalent of its own; it is
+        # realized as an MMS Write.
         # same as in get_all_data_values
         access = VariableAccessItem()
         access.variableSpecification.name = datref.mms_name
@@ -391,11 +394,12 @@ class IED_Client:
         :returns: Variable access attributes.
         :rtype: GetVariableAccessAttributes_Response
         """
-        # The ACSI GetDataDirectory service shall be mapped to the MMS
+        # GetDataDirectory is realized through the MMS
         # GetVariableAccessAttributes service.
         return self.mms_conn.variable_attributes(name=datref.mms_name)
 
-    # This service shall be the same as GetDataDirectory
+    # GetDataDefinition behaves identically to GetDataDirectory, so we alias
+    # it directly.
     get_data_definition = get_data_directory
 
     # ---------------------------------------------------------------------- #
@@ -412,11 +416,12 @@ class IED_Client:
         :returns: List of access results for each element.
         :rtype: list[AccessResult]
         """
-        # The ACSI GetDataSetValues service shall be mapped to the MMS read
-        # service.
+        # GetDataSetValues reuses the MMS read service, requesting the
+        # dataset's members by its list name.
         access = VariableAccessItem()
         access.variableSpecification.name = datref.mms_name
-        # specificationWithResult: Shall be TRUE
+        # Ask the server to echo back each item's specification together
+        # with its value.
         return self.mms_conn.read_variables(
             list_name=datref.mms_name, spec_in_result=True
         )
@@ -436,8 +441,8 @@ class IED_Client:
         :returns: Error code if write fails, otherwise None.
         :rtype: DataAccessError | None
         """
-        # The ACSI SetDataSetValues service shall be mapped to the MMS write
-        # service.
+        # SetDataSetValues reuses the MMS write service, targeting the
+        # dataset's members by its list name.
         access = VariableAccessItem()
         access.variableSpecification.name = datref.mms_name
         return self.mms_conn.write_variable(values, list_name=datref.mms_name)
@@ -458,6 +463,138 @@ class IED_Client:
         return list(
             self.mms_conn.variable_list_attributes(datref.mms_name).listOfVariable
         )
+
+    def create_dataset(
+        self,
+        datref: ObjectReference,
+        members: list[ObjectReference | DataObjectReference],
+        /,
+    ) -> None:
+        """
+        Dynamically create a **data set**.
+
+        Maps ACSI CreateDataSet :octicon:`arrow-right` MMS
+        DefineNamedVariableList.
+
+        .. versionadded:: 0.3.0
+
+        :param datref: DataSet reference to create.
+        :type datref: ObjectReference
+        :param members: References of the DataObjects/DataAttributes to
+            include in the data set.
+        :type members: list[ObjectReference | DataObjectReference]
+        :raises MMSServiceError: If the peer rejects the creation request
+            (e.g. the name already exists or the server does not support
+            dynamic data set creation).
+        """
+        # CreateDataSet has no bespoke MMS counterpart; it is realized via
+        # MMS DefineNamedVariableList instead.
+        self.mms_conn.define_named_variable_list(
+            datref.mms_name, (member.mms_name for member in members)
+        )
+
+    def delete_dataset(self, datref: ObjectReference, /) -> bool:
+        """
+        Dynamically delete a **data set**.
+
+        Maps ACSI DeleteDataSet :octicon:`arrow-right` MMS
+        DeleteNamedVariableList.
+
+        .. versionadded:: 0.3.0
+
+        :param datref: DataSet reference to delete.
+        :type datref: ObjectReference
+        :returns: True if the data set was deleted, False otherwise.
+        :rtype: bool
+        """
+        _, deleted = self.mms_conn.delete_named_variable_list([datref.mms_name])
+        return deleted > 0
+
+    # ---------------------------------------------------------------------- #
+    # 17 Report class model (BRCB/URCB)
+    # ---------------------------------------------------------------------- #
+    def enable_reporting(
+        self,
+        rcb_ref: ObjectReference,
+        /,
+        *,
+        dataset: ObjectReference | str | None = None,
+        rpt_id: str | None = None,
+        trg_ops: dict[int, bool] | bytes | None = None,
+        integrity_period: int | None = None,
+        general_interrogation: bool = False,
+    ) -> None:
+        """
+        Configure and enable a **Report Control Block** (BRCB/URCB).
+
+        Maps ACSI Report ``SetRCBValues`` (per attribute) followed by a
+        ``RptEna=True`` write :octicon:`arrow-right` MMS Write.
+
+        Only the most frequently needed configuration attributes are handled
+        here (``DatSet``, ``RptID``, ``TrgOps``, ``IntgPd``). Regardless of
+        which of those are set, ``RptEna`` is always written last,
+        according to IEC 61850-8-1, so that the block is fully configured
+        before the server starts reporting from it. When
+        ``general_interrogation`` is requested, ``GI=True`` is written as a
+        final step once reporting has been enabled.
+
+        .. versionadded:: 0.3.0
+
+        :param rcb_ref: Reference to the report control block, e.g.
+            ``LLN0.RP.EventsRCB01``.
+        :type rcb_ref: ObjectReference
+        :param dataset: Data set reference to attach to the RCB.
+        :type dataset: ObjectReference | str | None
+        :param rpt_id: Report identifier to configure.
+        :type rpt_id: str | None
+        :param trg_ops: Trigger conditions bit string, e.g.
+            ``{1: True, 4: True}`` for data-change and integrity.
+        :type trg_ops: dict[int, bool] | bytes | None
+        :param integrity_period: Integrity period in milliseconds.
+        :type integrity_period: int | None
+        :param general_interrogation: If True, trigger a general
+            interrogation after enabling reporting.
+        :type general_interrogation: bool
+        :raises MMSServiceError: If a configuration write is rejected by
+            the peer.
+        """
+        if dataset is not None:
+            value = Data(visible_string=str(dataset))
+            self.set_data_values(rcb_ref / "DatSet", value)
+
+        if rpt_id is not None:
+            self.set_data_values(rcb_ref / "RptID", Data(visible_string=rpt_id))
+
+        if trg_ops is not None:
+            data = Data()
+            bit_string2data(trg_ops, data)
+            self.set_data_values(rcb_ref / "TrgOps", data)
+
+        if integrity_period is not None:
+            self.set_data_values(
+                rcb_ref / "IntgPd", Data(unsigned=int(integrity_period))
+            )
+
+        # RptEna must be written last: it commits the RCB configuration and
+        # starts reporting.
+        self.set_data_values(rcb_ref / "RptEna", Data(boolean=True))
+
+        if general_interrogation:
+            self.set_data_values(rcb_ref / "GI", Data(boolean=True))
+
+    def disable_reporting(self, rcb_ref: ObjectReference, /) -> None:
+        """
+        Disable a previously enabled **Report Control Block**.
+
+        Maps ACSI Report ``SetRCBValues`` (``RptEna=False``)
+        :octicon:`arrow-right` MMS Write.
+
+        .. versionadded:: 0.3.0
+
+        :param rcb_ref: Reference to the report control block.
+        :type rcb_ref: ObjectReference
+        """
+        self.set_data_values(rcb_ref / "RptEna", Data(boolean=False))
 
     # ---------------------------------------------------------------------- #
     # 20 Control class model
@@ -486,8 +623,8 @@ class IED_Client:
         spec_result = self.get_data_definition(target)
         return ControlObject(target, spec_result.typeDescription, model)
 
-    # Here, object references are made to the named variable on which to operate
-    # on. The CO_CtrlObjectRef is defined as:
+    # Control methods below address the named variable the operation
+    # targets, built from the CO_CtrlObjectRef naming pattern:
     #   - <LDname>/<LNname>$CO$<DOname>
     def select(self, co: ControlObject, /) -> DataAccessError | None:
         """
@@ -659,7 +796,14 @@ class IED_Client:
                 return
 
             report = service.informationReport
-            spec = report.variableAccessSpecification.listOfVariable[0]
+            access_spec = report.variableAccessSpecification
+            # Only listOfVariable-based reports (used for command termination
+            # LastApplError) are relevant here; DatSet-based RCB reports use
+            # variableListName and have no listOfVariable to inspect.
+            if access_spec.present != VariableAccessSpecification.PRESENT.PR_listOfVariable:
+                return
+
+            spec = access_spec.listOfVariable[0]
             if spec.variableSpecification.name.vmd_specific.value != "LastApplError":
                 return
 

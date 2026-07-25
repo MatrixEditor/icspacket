@@ -14,11 +14,11 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 # pyright: reportInvalidTypeForm=false, reportGeneralTypeIssues=false, reportAssignmentType=false
-from typing import Callable
+from collections.abc import Callable
 
 from scapy.layers.l2 import Ether
 
-from icspacket.proto.iec61850._iec61850 import *  # noqa
+from icspacket.proto.iec61850._iec61850 import *
 from icspacket.proto.iec61850.goose import PDU, GOOSE_Client
 
 #: Type alias for the IEC 61850-9-2 Sampled Values ASN.1 protocol
@@ -27,8 +27,8 @@ from icspacket.proto.iec61850.goose import PDU, GOOSE_Client
 SampledValues = IEC61850_9_2_Specific_Protocol
 
 #: EtherType used for IEC 61850-9-2 Sampled Values (SV) traffic.
-#: According to the IEC 61850 standard, SV frames are identified
-#: at the Ethernet layer with EtherType ``0x88BA``.
+#: The observer/publisher below filters and tags frames using this value
+#: (``0x88BA``) so SV traffic is told apart from GOOSE at the Ethernet layer.
 SV_ETHER_TYPE = 0x88BA
 
 

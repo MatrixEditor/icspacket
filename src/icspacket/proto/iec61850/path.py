@@ -22,37 +22,38 @@ from icspacket.proto.mms.util import domain_object_name
 
 class ObjectReference:
     """
-    IEC 61850 ACSI ObjectReference (IEC 61850-7-2 §5.5.3.3).
+    IEC 61850 ACSI ObjectReference (See IEC 61850-7-2, §5.5.3.3).
 
-    An ObjectReference uniquely identifies instances in the ACSI class hierarchy
-    (logical devices, logical nodes, data objects, sub-data objects, and data
-    attributes). It is constructed by concatenating all instance names in the
-    hierarchy.
+    In this library, an ObjectReference is the in-memory path through the
+    ACSI class hierarchy: a chain of instance names - logical device,
+    logical node, data object, optional sub-data objects, and finally a
+    data attribute - joined together so that one call can address an object
+    no matter how deep it sits in that hierarchy.
 
     **IEC 61850 Representation**
 
     Format: ``LDName/LNName.DoName.SubDoName.AttrName``
 
-    - ``/`` separates the logical device name (LDName) from the logical node
-      name (LNName).
-    - ``.`` separates deeper hierarchical levels (data objects, sub-data
-      objects, attributes).
+    - ``/`` marks the boundary between the logical device name (LDName) and
+      the logical node name (LNName).
+    - ``.`` chains together everything deeper than the logical node (data
+      objects, sub-data objects, and attributes).
 
     Example::
 
         LD1/MMXU1.A.phsA.mag.f
 
-    *MMS Representation**
+    **MMS Representation**
 
-    In MMS, ObjectReferences are encoded as a variable-length VisibleString:
+    On the wire, the same reference is carried as a VisibleString of
+    variable length (capped at 129 octets), with every ``.`` rewritten as
+    ``$``:
 
-    - Maximum length: 129 octets
-    - ``.`` (dot) separators are replaced with ``$`` (dollar).
     - Example: ``LD1/MMXU1.A.phsA`` → ``LD1/MMXU1$A$phsA``
 
     .. note::
-        The MMS representation contains an extra *functional constraint* (FC)
-        between a logical node and its data objects.
+        The MMS form inserts one extra segment - the *functional constraint*
+        (FC) - between a logical node and its data objects.
 
     ObjectReferences can be built directly:
 
@@ -172,7 +173,7 @@ class ObjectReference:
         """
         if not self.lnname:
             return self.ldname
-        ln_ref = "/".join([self.ldname, self.lnname])
+        ln_ref = f"{self.ldname}/{self.lnname}"
         return ".".join([ln_ref] + self.__parts[2:])
 
     @override
@@ -238,7 +239,7 @@ class ObjectReference:
     def __eq__(self, other: object) -> bool:
         return isinstance(other, ObjectReference) and self.mmsref == other.mmsref
 
-    def __setitem__(self, key, value):
+    def __setitem__(self, key: int, value: str):
         """
         Replace a component of the internal object reference.
 
@@ -257,13 +258,14 @@ class ObjectReference:
 
 class DataObjectReference(ObjectReference):
     """
-    Specialized ObjectReference for data objects with Functional Constraints.
+    An :class:`ObjectReference` for a data object, with the applicable
+    Functional Constraint folded into the path.
 
     Format:
 
     ``<LNVariableName>$<FC>$<LNDataObjectName>[$<SubDataObjectName>...]``
 
-    Example (IEC 61850-7-2 §5.5.3.3):
+    Example (See IEC 61850-7-2, §5.5.3.3):
 
     ``MMXU1$MX$A$phsA``
 

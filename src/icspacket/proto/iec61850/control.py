@@ -15,7 +15,9 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 import datetime
 import enum
+
 from typing_extensions import Any, override
+
 from icspacket.proto.iec61850.classes import ControlModel
 from icspacket.proto.iec61850.path import ObjectReference
 from icspacket.proto.mms._mms import Data, TypeDescription
@@ -24,27 +26,29 @@ from icspacket.proto.mms.data import Timestamp, from_dict
 
 class ControlError(enum.IntEnum):
     """
-    Control error codes for IEC 61850 control operations.
+    Outcome code the client decodes from the ``error`` field of a
+    ``LastApplError`` diagnostic for an IEC 61850 control request.
 
-    These values indicate the error category for a failed
-    control request or response.
+    Together with a :class:`Cause`, this tells the caller in what way a
+    control request or response failed.
 
     .. versionadded:: 0.2.4
     """
 
     NO_ERROR = 0
-    """No error occurred during control execution."""
+    """Indicates the control command completed without error."""
     UNKNOWN = 1
-    """An unknown error occurred."""
+    """Indicates the failure reason could not be classified further."""
     TIMEOUT = 2
-    """The control operation timed out."""
+    """Indicates the control operation did not complete in time."""
     OPERATOR_TEST_FAIL = 3
-    """The operation failed during an operator test."""
+    """Indicates the control operation failed while running as an operator test."""
 
 
 class Cause(enum.IntEnum):
     """
-    Detailed causes for IEC 61850 control operation responses.
+    Fine-grained reason the client decodes from the ``cause`` field of a
+    ``LastApplError`` diagnostic, alongside a :class:`ControlError`.
 
     .. versionadded:: 0.2.4
     """
@@ -108,10 +112,10 @@ class LastApplError(ConnectionError):
         *args: object,
     ) -> None:
         super().__init__(*args)
-        self.ctrl_obj = ctrl_obj
-        self.error = error
-        self.ctlnum = ctlnum
-        self.cause = cause
+        self.ctrl_obj: str = ctrl_obj
+        self.error: ControlError = error
+        self.ctlnum: int = ctlnum
+        self.cause: Cause = cause
 
 
 class ControlObject:
@@ -136,18 +140,24 @@ class ControlObject:
     """
 
     origin_cat: int
-    """Origin category (integer identifier of the source)."""
+    """Numeric code for the source category, sent to the server as part of
+    the origin block."""
     origin_ident: bytes | None
-    """Origin identifier (client or system identifier)."""
+    """Byte-string naming or identifying the initiating client/system, sent
+    together with ``origin_cat``."""
     ctl_num: int
-    """Control number for tracking SBO and direct operations."""
+    """Running counter that tracks SBO and direct control operations;
+    advanced automatically for direct-operate models."""
 
     test: bool
-    """Test flag indicating test vs. normal operation."""
+    """Marks whether the server should treat this command as a test rather
+    than a normal operation."""
     interlock_check: bool
-    """Enable or disable interlock condition checking."""
+    """Controls whether the interlock check is applied when the command
+    executes."""
     synchro_check: bool
-    """Enable or disable synchrocheck condition checking."""
+    """Controls whether the synchrocheck condition is applied when the
+    command executes."""
 
     def __init__(
         self, ref: ObjectReference, spec: TypeDescription, model: ControlModel
@@ -209,9 +219,21 @@ class ControlObject:
         """Return the configured control model for this object."""
         return self.__model
 
+    @property
+    def ctl_val_type(self) -> str | None:
+        """
+        Return the ASN.1 *Data* CHOICE alternative name expected for
+        ``ctlVal`` (e.g. ``"boolean"``, ``"integer"``, ``"visible_string"``),
+        or ``None`` if the control object has no ``Oper.ctlVal`` attribute.
+        """
+        if self.__ctl_val_type is None:
+            return None
+        return self.__ctl_val_type.componentType.typeDescription.present.name[3:]
+
     def origin(self) -> list[dict[str, int | bytes]]:
         """
-        Return the *origin* structure as defined in IEC 61850-7-2.
+        Build the *origin* structure according to IEC 61850-7-2, used by
+        :meth:`get_operate_data` when assembling a control request.
 
         :return: Origin information consisting of category and identifier.
         :rtype: list[dict[str, int | bytes]]
@@ -225,11 +247,13 @@ class ControlObject:
         self, ctl_val: Any, oper_time: Timestamp | None = None, check=True
     ) -> Data:
         """
-        Construct an MMS *Data* structure representing an operate request.
+        Assemble the MMS ``Data`` payload written to a control object's
+        ``Oper`` attribute to carry out an operate request.
 
-        The resulting structure includes mandatory control fields such as
-        ``ctlVal``, ``T``, ``origin``, and optionally ``operTm``, ``ctlNum``,
-        ``Test``, and ``Check``.
+        The value supplied in ``ctl_val`` is combined with a fresh ``T``
+        timestamp and the ``origin`` block; depending on this control
+        object's capabilities and the ``check`` flag, ``operTm``, ``ctlNum``,
+        ``Test``, and/or ``Check`` are folded in as well.
 
         :param ctl_val: The control value to apply.
         :type ctl_val: Any
