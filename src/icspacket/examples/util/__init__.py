@@ -13,12 +13,15 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
+# pyright: reportUnusedCallResult=false
 """\
 Support code for icspacket's examples
 """
 
+import argparse
 
-def add_logging_options(parser):
+
+def add_logging_options(parser: argparse.ArgumentParser):
     # fmt: off
     # ------------------------------------------------------------------------
     # Logging options

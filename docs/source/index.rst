@@ -64,6 +64,13 @@ and MacOS. Any other Python version is not officially supported::
     protocols/mms/demo_files
     protocols/mms/api
 
+.. toctree::
+    :caption: IEC 60870-5-104
+    :hidden:
+
+    protocols/iec104/iec104read
+    protocols/iec104/examples
+    protocols/iec104/api
 
 .. toctree::
     :caption: ACSE / X.227

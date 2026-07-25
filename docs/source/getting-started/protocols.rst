@@ -15,6 +15,7 @@ Protocols Overview
     acse
     mms
     dnp3
+    iec104
     iec61850
 
 
@@ -75,4 +76,10 @@ Protocols Overview
         :link-type: ref
 
         Intelligent electronic devices using IEC 61850
+
+    .. grid-item-card:: :octicon:`meter` IEC 60870-5-104
+        :link: iec104_index
+        :link-type: ref
+
+        Telecontrol/SCADA protocol for power system automation.
 
