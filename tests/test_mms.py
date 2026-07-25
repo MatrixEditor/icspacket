@@ -188,7 +188,7 @@ def test_mms_conn__acse_associate():
 def test_mms_conn__acse_release():
     conn = _setup_mms_connection("acse_release_success")
     conn.associate(faketpktsock.FAKE_ADDRESS)
-    conn.release()
+    conn.release(graceful=False)
 
 
 def test_mms_conn__reject_service_request():

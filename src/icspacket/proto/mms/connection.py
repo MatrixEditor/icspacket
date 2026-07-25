@@ -16,17 +16,30 @@
 
 import datetime
 import logging
-
-from collections.abc import Iterable
 import os
-from pathlib import Path
 import random
-from typing_extensions import Callable, override
+from collections.abc import Callable, Iterable
+from pathlib import Path
+
+from typing_extensions import override
 
 from icspacket.core.connection import connection
+from icspacket.proto.cotp.connection import COTP_Connection
+from icspacket.proto.iso_pres.presentation import (
+    ISO_Presentation,
+    ISO_PresentationSettings,
+)
+from icspacket.proto.iso_ses.session import ISO_Session, ISO_SessionSettings
+from icspacket.proto.mms import (
+    MMS_ABSTRACT_SYNTAX_NAME,
+    MMS_CONTEXT_NAME,
+    MMS_PRESENTATION_CONTEXT_ID,
+)
 from icspacket.proto.mms._mms import (
     ApplicationReference,
     Confirmed_ResponsePDU,
+    DefineNamedVariableList_Request,
+    DeleteNamedVariableList_Request,
     FileClose_Response,
     FileOpen_Response,
     FileRead_Response,
@@ -36,17 +49,9 @@ from icspacket.proto.mms._mms import (
     Unconfirmed_PDU,
     UnconfirmedService,
 )
-from icspacket.proto.tpkt import tpktsock
-from icspacket.proto.cotp.connection import COTP_Connection
-from icspacket.proto.iso_ses.session import ISO_Session, ISO_SessionSettings
-from icspacket.proto.iso_pres.presentation import (
-    ISO_Presentation,
-    ISO_PresentationSettings,
-)
-from icspacket.proto.mms import (
-    MMS_ABSTRACT_SYNTAX_NAME,
-    MMS_CONTEXT_NAME,
-    MMS_PRESENTATION_CONTEXT_ID,
+from icspacket.proto.mms.acse import (
+    Association,
+    Authenticator,
 )
 from icspacket.proto.mms.asn1types import (
     ABRT_source,
@@ -92,20 +97,17 @@ from icspacket.proto.mms.asn1types import (
     Write_Request,
 )
 from icspacket.proto.mms.data import FileHandle
-from icspacket.proto.mms.util import (
-    ObjectScope,
-    VariableAccessItem,
-    new_initiate_request,
-)
-from icspacket.proto.mms.acse import (
-    Association,
-    Authenticator,
-)
 from icspacket.proto.mms.exceptions import (
     MMSConnectionError,
     MMSServiceError,
     MMSUnknownServiceError,
 )
+from icspacket.proto.mms.util import (
+    ObjectScope,
+    VariableAccessItem,
+    new_initiate_request,
+)
+from icspacket.proto.tpkt import tpktsock
 
 logger = logging.getLogger(__name__)
 
@@ -173,8 +175,8 @@ class UnconfirmedServiceHandler:
         service: UnconfirmedService.PRESENT,
         func: UnconfirmedServiceCallback | None = None,
     ) -> None:
-        self.target_service = service
-        self.func = func
+        self.target_service: UnconfirmedService.PRESENT = service
+        self.func: UnconfirmedServiceCallback | None = func
 
     def on_pdu(self, conn: "MMS_Connection", service: UnconfirmedService) -> None:
         """
@@ -308,9 +310,9 @@ class MMS_Connection(connection):
             asn1_cls=MMSpdu,
             authenticator=auth,
         )
-        self._connected = self.presentation.is_connected()
+        self._connected: bool = self.presentation.is_connected()
         self.__invoke_id = 1
-        self.__unconfirmed_cb = []
+        self.__unconfirmed_cb: list[UnconfirmedPDUCallback] = []
         if unconfirmed_cb:
             self.__unconfirmed_cb = (
                 [unconfirmed_cb]
@@ -425,12 +427,12 @@ class MMS_Connection(connection):
         address: tuple[str, int] | None = None,
         request: Initiate_RequestPDU | None = None,
     ) -> None:
-        """6.9.1 M-ASSOCIATE Service (ISO 9506-1).
+        """M-ASSOCIATE Service (See ISO 9506-1, 6.9.1).
 
-        Establishes an MMS association with a peer MMS-user.
-
-        This method performs the ACSE and MMS-level handshake by sending an
-        Initiate Request PDU and validating the Initiate Response PDU.
+        Drives this connection through the ACSE/MMS handshake needed to bind
+        to a remote MMS-user: an Initiate Request PDU is sent and the
+        matching Initiate Response PDU is checked before the connection is
+        marked usable.
 
         :param address: Optional peer address (host, port). If provided,
             a transport connection is established first.
@@ -471,11 +473,13 @@ class MMS_Connection(connection):
     def release(
         self,
         reason: Release_request_reason.VALUES | None = None,
-        graceful: bool = False,
+        graceful: bool = True,
     ) -> None:
-        """6.9.2 M-RELEASE Service (ISO 9506-1).
+        """M-RELEASE Service (See ISO 9506-1, 6.9.2).
 
-        Terminate the association in an orderly manner.
+        Winds the association down through the ACSE release handshake so
+        that both peers shut down in a coordinated fashion instead of the
+        connection simply being dropped.
 
         :param reason: Optional release reason.
         :type reason: Release_request_reason.VALUES | None
@@ -490,10 +494,10 @@ class MMS_Connection(connection):
         self._valid = False
 
     def abort(self, source: ABRT_source.VALUES | None = None) -> None:
-        """6.9.4 M-U-ABORT Service (ISO 9506-1).
+        """M-U-ABORT Service (See ISO 9506-1, 6.9.4).
 
-        Abruptly terminate the association without completing an orderly
-        release handshake.
+        Tears the association down immediately, skipping the negotiated
+        shutdown handshake that :meth:`release` performs.
 
         :param source: Optional abort source identifier.
         :type source: ABRT_source.VALUES | None
@@ -586,13 +590,14 @@ class MMS_Connection(connection):
     ]:
         """10.3 Status Service
 
-        The *Status* service is used by an MMS client to determine the
-        general condition or health of a VMD (Virtual Manufacturing Device).
+        Runs a lightweight health check against the remote VMD (Virtual
+        Manufacturing Device), reporting back its logical and physical
+        status.
 
         :param ex_derivation: If ``True``, requests an *extended derivation*
                               of the status response. This influences how the
                               server derives the logical and physical VMD status
-                              (see ISO 9506-1, 10.3.1.1.1).
+                              (See ISO 9506-1, 10.3.1.1.1).
         :type ex_derivation: bool
 
         :returns: A tuple ``(logical_status, physical_status)``, where:
@@ -611,8 +616,8 @@ class MMS_Connection(connection):
         """
         request = Status_Request()
         # 10.3.1.1.1 Extended Derivation
-        # This parameter, of type boolean, shall indicate which method is to be
-        # used to derive the Status response.
+        # Forwards the caller's chosen derivation method to the peer: True
+        # for the extended derivation, False for the normal one.
         request.value = ex_derivation
 
         service = ConfirmedServiceRequest(status=request)
@@ -627,9 +632,9 @@ class MMS_Connection(connection):
     ) -> list[str]:
         """10.5 GetNameList Service
 
-        The *GetNameList* service requests the list (or a subset) of object
-        names defined at the VMD. The server may return the list in segments
-        if it is too long to fit in a single response.
+        Retrieves the names of objects of a given class defined at the VMD,
+        automatically issuing follow-up requests if the server splits a long
+        result across several responses.
 
         :param object_class: The class of objects for which names are requested.
             For example: ``ObjectClass.namelist.domain``.
@@ -650,12 +655,11 @@ class MMS_Connection(connection):
         """
         identifiers = []
         request = GetNameList_Request()
-        # This parameter shall specify the object class of the object name to be
-        # returned by the responding MMS-user.
+        # Selects which class of object names the peer should enumerate.
         request.objectClass = object_class
 
-        # This parameter shall indicate the scope of the object name list to be
-        # returned.
+        # Narrows the enumeration to the given scope; falls back to a
+        # VMD-wide search when the caller does not specify one.
         if scope is None:
             scope = GetNameList_Request.objectScope_TYPE()
             scope.vmdSpecific = None
@@ -671,10 +675,9 @@ class MMS_Connection(connection):
         more_follows = name_list.moreFollows
         while more_follows:
             # 10.5.1.2.2 More Follows
-            # This parameter, of type boolean, shall indicate whether additional
-            # GetNameList requests are necessary to retrieve all of the
-            # requested information. If true, more requests are necessary (if
-            # the MMS client wishes to retrieve more data).
+            # Server-set flag meaning the identifier list was truncated;
+            # keep asking for continuations, resuming after the last
+            # identifier seen so far, until it comes back false.
             request.continueAfter = identifiers[-1]
             service = ConfirmedServiceRequest(getNameList=request)
             response = self.service_request(service)
@@ -687,11 +690,11 @@ class MMS_Connection(connection):
     def identify(self) -> tuple[str, str, str]:
         """10.6 Identify Service
 
-        The *Identify* service retrieves the vendor, model, and revision
-        information of the remote MMS VMD.
+        Queries the remote VMD for basic self-description data: the vendor
+        that built it, its model designation, and its revision string.
 
         :returns: A tuple ``(vendor_name, model_name, revision)`` with all
-            fields mandatory as per ISO 9506-2.
+            fields mandatory according to ISO 9506-2.
         :rtype: tuple[str, str, str]
 
         >>> vendor, model, revision = mms_conn.identify()
@@ -710,9 +713,10 @@ class MMS_Connection(connection):
     def get_capabilities(self) -> list[str]:
         """10.8 GetCapabilityList Service
 
-        The *GetCapabilityList* service requests the list of services or
-        features supported by the remote MMS server. Like *GetNameList*,
-        the response may be segmented and require multiple follow-up requests.
+        Asks the remote MMS server which optional services or features it
+        supports, transparently issuing follow-up requests - the same way
+        :meth:`get_name_list` does - if the answer does not fit in a single
+        response.
 
         :returns: A list of capability strings supported by the server.
         :rtype: list[str]
@@ -731,9 +735,9 @@ class MMS_Connection(connection):
         capabilities.extend(list(response.getCapabilityList.listOfCapabilities))
         more_follows = response.getCapabilityList.moreFollows
         while more_follows:
-            # This parameter, of type boolean, shall indicate whether additional
-            # GetCapabilityList requests are necessary to retrieve more of the
-            # requested information.
+            # Server-set flag meaning the capability list was truncated;
+            # resume after the last entry collected so far until this
+            # comes back false.
             service.getCapabilityList.continueAfter = capabilities[-1]
             response = self.service_request(service)
 
@@ -811,9 +815,8 @@ class MMS_Connection(connection):
 
         request = Read_Request()
         # 14.6.1.1.1 Specification With Result
-        # This boolean parameter shall indicate whether (true) or not (false) the
-        # Variable Access Specification parameter is requested in the Result(+)
-        # parameter of the response primitive, if issued.
+        # Passes through the caller's choice of whether the server should
+        # echo the variable-access specification back in its response.
         request.specificationWithResult = spec_in_result
         if list_name is None:
             request.variableAccessSpecification.listOfVariable = list(variables)
@@ -944,6 +947,82 @@ class MMS_Connection(connection):
         return response.getNamedVariableListAttributes
 
     # ---------------------------------------------------------------------------
+    # 14.11 DefineNamedVariableList / 14.12 DeleteNamedVariableList service
+    # ---------------------------------------------------------------------------
+    def define_named_variable_list(
+        self, name: ObjectName, variables: Iterable[ObjectName], /
+    ) -> None:
+        """14.11 DefineNamedVariableList Service
+
+        Create a new named variable list (used by IEC 61850 to implement
+        ACSI ``CreateDataSet``) referencing an existing set of variables.
+
+        :param name: Object name to assign to the new variable list.
+        :type name: ObjectName
+        :param variables: Object names of the variables to include.
+        :type variables: Iterable[ObjectName]
+        :raises MMSServiceError: If the peer rejects the request (e.g. the
+            list already exists or a referenced variable does not exist).
+
+        .. versionadded:: 0.3.0
+        """
+        request = DefineNamedVariableList_Request()
+        request.variableListName = name
+        for variable in variables:
+            member = DefineNamedVariableList_Request.listOfVariable_TYPE.Member_TYPE()
+            member.variableSpecification.name = variable
+            request.listOfVariable.add(member)
+
+        service = ConfirmedServiceRequest(defineNamedVariableList=request)
+        _ = self.service_request(service)
+
+    def delete_named_variable_list(
+        self,
+        names: Iterable[ObjectName] | None = None,
+        /,
+        *,
+        scope: DeleteNamedVariableList_Request.scopeOfDelete_VALUES
+        | None = None,
+        domain: str | None = None,
+    ) -> tuple[int, int]:
+        """14.12 DeleteNamedVariableList Service
+
+        Delete one or more named variable lists (used by IEC 61850 to
+        implement ACSI ``DeleteDataSet``).
+
+        :param names: Object names of the variable list(s) to delete. May
+            be omitted when ``scope`` selects an implicit set (e.g. all
+            variable lists in a domain).
+        :type names: Iterable[ObjectName] | None
+        :param scope: Deletion scope (``specific``, ``aa-specific``,
+            ``domain`` or ``vmd``). Defaults to ``specific`` when ``names``
+            is given.
+        :type scope: DeleteNamedVariableList_Request.scopeOfDelete_VALUES | None
+        :param domain: Domain name, required when ``scope`` is ``domain``.
+        :type domain: str | None
+        :returns: Tuple of ``(numberMatched, numberDeleted)``.
+        :rtype: tuple[int, int]
+
+        .. versionadded:: 0.3.0
+        """
+        request = DeleteNamedVariableList_Request()
+        if names is not None:
+            request.listOfVariableListName = list(names)
+        if scope is not None:
+            request.scopeOfDelete = scope
+        elif names is not None:
+            request.scopeOfDelete = (
+                DeleteNamedVariableList_Request.scopeOfDelete_VALUES.V_specific
+            )
+        if domain is not None:
+            request.domainName = domain
+
+        service = ConfirmedServiceRequest(deleteNamedVariableList=request)
+        response = self.service_request(service)
+        result = response.deleteNamedVariableList
+        return int(result.numberMatched.value), int(result.numberDeleted.value)
+
+    # ---------------------------------------------------------------------------
     # Annex C - File Access service
     # ---------------------------------------------------------------------------
     def obtain_file(
@@ -953,18 +1032,18 @@ class MMS_Connection(connection):
         remote: ApplicationReference | None = None,
     ) -> None:
         """
-        Perform the MMS :term:`ObtainFile` service to transfer a file
-        between the client and a remote MMS server.
+        Drive an :term:`ObtainFile` exchange that moves a file between this
+        client and a remote MMS server.
 
-        The ObtainFile service may be used by an MMS client to instruct an
-        MMS server to obtain a specified file from a file server. Depending
-        on the usage, this can either be a request to *pull* a file from
-        a remote source or to *serve* a local file to the requesting MMS
-        peer.
+        Depending on whether ``remote`` is given, this call either asks the
+        peer to *pull* a file from another file server on this client's
+        behalf, or *serves* a local file to the peer requesting it - in the
+        latter case this method itself plays the FileOpen/FileRead/FileClose
+        responder role.
 
-        The method implements the complete reques-response sequence defined
-        in IEC 61850 Annex C, including ``FileOpen``, ``FileRead``, ``FileClose``,
-        and the final ``ObtainFile`` confirmation.
+        The full request-response sequence - ``FileOpen``, ``FileRead``,
+        ``FileClose``, and the final ``ObtainFile`` confirmation - is driven
+        internally according to IEC 61850 Annex C.
 
         :param source:
             Path to the source file. If ``remote`` is provided, this denotes the
@@ -1256,11 +1335,9 @@ class MMS_Connection(connection):
         """
         request = FileDirectory_Request()
         # D.8.1.1.1 File Specification
-        # This optional parameter, of type FileName, shall, when present,
-        # identify a file or group of files in the MMS server's virtual
-        # filestore whose attributes are desired. Omission of this parameter
-        # shall indicate that the attributes of an implementation defined
-        # default group of files are being requested.
+        # When given, narrows the listing to the matching file(s); leaving
+        # it unset falls back to the server's own implementation-defined
+        # default set of entries.
         if name is not None:
             request.fileSpecification = name
         else:
@@ -1284,7 +1361,7 @@ class MMS_Connection(connection):
         self, request: AdditionalService_Request
     ) -> AdditionalService_Response:
         """
-        Issues an MMS **Additional Service** request (ISO 9506-1:1990, Clause 19).
+        Issues an MMS **Additional Service** request (See ISO 9506-1:1990, Clause 19).
 
         This is a specialized helper that wraps an
         :class:`~AdditionalService_Request` in a
