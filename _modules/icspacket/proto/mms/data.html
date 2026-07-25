@@ -2,7 +2,7 @@
 <html lang="en" data-accent-color="lime" data-content_root="../../../../">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>icspacket.proto.mms.data - icspacket 0.1.dev1+ga30386068 documentation</title><link rel="index" title="Index" href="../../../../genindex.html" /><link rel="search" title="Search" href="../../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>icspacket.proto.mms.data - icspacket 0.1.dev1+g19d351426 documentation</title><link rel="index" title="Index" href="../../../../genindex.html" /><link rel="search" title="Search" href="../../../../search.html" />
       <link rel="canonical" href="https://matrixeditor.github.io/icspacket/_modules/icspacket/proto/mms/data.html" /><script>
     function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
     setColorMode(localStorage._theme||"dark");
@@ -260,564 +260,566 @@ data-aria-dark="Switch to auto color mode">
 </span><span data-line="13"><span class="c1">#</span>
 </span><span data-line="14"><span class="c1"># You should have received a copy of the GNU General Public License</span>
 </span><span data-line="15"><span class="c1"># along with this program.  If not, see &lt;https://www.gnu.org/licenses/&gt;.</span>
-</span><span data-line="16"><span class="c1"># pyright: reportInvalidTypeForm=false, reportGeneralTypeIssues=false, reportAssignmentType=false</span>
-</span><span data-line="17"><span class="kn">from</span><span class="w"> </span><span class="nn">dataclasses</span><span class="w"> </span><span class="kn">import</span> <span class="n">dataclass</span>
-</span><span data-line="18"><span class="kn">import</span><span class="w"> </span><span class="nn">datetime</span>
-</span><span data-line="19"><span class="kn">import</span><span class="w"> </span><span class="nn">enum</span>
+</span><span data-line="16"><span class="kn">import</span><span class="w"> </span><span class="nn">datetime</span>
+</span><span data-line="17"><span class="kn">import</span><span class="w"> </span><span class="nn">enum</span>
+</span><span data-line="18"><span class="kn">from</span><span class="w"> </span><span class="nn">dataclasses</span><span class="w"> </span><span class="kn">import</span> <span class="n">dataclass</span>
+</span><span data-line="19"><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Literal</span>
 </span><span data-line="20">
-</span><span data-line="21"><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Literal</span>
-</span><span data-line="22"><span class="kn">from</span><span class="w"> </span><span class="nn">caterpillar.fields</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
-</span><span data-line="23">    <span class="n">DEFAULT_OPTION</span><span class="p">,</span>
-</span><span data-line="24">    <span class="n">Bytes</span><span class="p">,</span>
-</span><span data-line="25">    <span class="n">double</span><span class="p">,</span>
-</span><span data-line="26">    <span class="n">float32</span><span class="p">,</span>
-</span><span data-line="27">    <span class="n">uint8</span><span class="p">,</span>
-</span><span data-line="28">    <span class="n">uint64</span><span class="p">,</span>
-</span><span data-line="29"><span class="p">)</span>
-</span><span data-line="30"><span class="kn">from</span><span class="w"> </span><span class="nn">caterpillar.model</span><span class="w"> </span><span class="kn">import</span> <span class="n">bitfield</span><span class="p">,</span> <span class="n">struct</span>
-</span><span data-line="31"><span class="kn">from</span><span class="w"> </span><span class="nn">caterpillar.options</span><span class="w"> </span><span class="kn">import</span> <span class="n">S_ADD_BYTES</span>
-</span><span data-line="32"><span class="kn">from</span><span class="w"> </span><span class="nn">caterpillar.shortcuts</span><span class="w"> </span><span class="kn">import</span> <span class="n">pack</span><span class="p">,</span> <span class="n">unpack</span><span class="p">,</span> <span class="n">BigEndian</span><span class="p">,</span> <span class="n">F</span><span class="p">,</span> <span class="n">this</span>
-</span><span data-line="33">
-</span><span data-line="34"><span class="kn">from</span><span class="w"> </span><span class="nn">icspacket.proto.mms._mms</span><span class="w"> </span><span class="kn">import</span> <span class="n">Data</span><span class="p">,</span> <span class="n">FileAttributes</span><span class="p">,</span> <span class="n">UtcTime</span>
-</span><span data-line="35"><span class="kn">from</span><span class="w"> </span><span class="nn">icspacket.proto.mms.asn1types</span><span class="w"> </span><span class="kn">import</span> <span class="n">FloatingPoint</span>
-</span><span data-line="36">
-</span><span data-line="37"><span class="n">_be_uint64</span> <span class="o">=</span> <span class="n">BigEndian</span> <span class="o">+</span> <span class="n">uint64</span>
-</span><span data-line="38">
-</span><span data-line="39">
+</span><span data-line="21"><span class="kn">from</span><span class="w"> </span><span class="nn">caterpillar.model</span><span class="w"> </span><span class="kn">import</span> <span class="n">bitfield</span><span class="p">,</span> <span class="n">struct</span>
+</span><span data-line="22"><span class="kn">from</span><span class="w"> </span><span class="nn">caterpillar.options</span><span class="w"> </span><span class="kn">import</span> <span class="n">S_ADD_BYTES</span>
+</span><span data-line="23"><span class="kn">from</span><span class="w"> </span><span class="nn">caterpillar.py</span><span class="w"> </span><span class="kn">import</span> <span class="n">DEFAULT_OPTION</span><span class="p">,</span> <span class="n">Bytes</span><span class="p">,</span> <span class="n">double</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">float32</span><span class="p">,</span> <span class="n">uint8</span><span class="p">,</span> <span class="n">uint64</span>
+</span><span data-line="24"><span class="kn">from</span><span class="w"> </span><span class="nn">caterpillar.shortcuts</span><span class="w"> </span><span class="kn">import</span> <span class="n">BigEndian</span><span class="p">,</span> <span class="n">F</span><span class="p">,</span> <span class="n">pack</span><span class="p">,</span> <span class="n">this</span><span class="p">,</span> <span class="n">unpack</span>
+</span><span data-line="25"><span class="kn">from</span><span class="w"> </span><span class="nn">caterpillar.types</span><span class="w"> </span><span class="kn">import</span> <span class="n">int1_t</span><span class="p">,</span> <span class="n">int5_t</span>
+</span><span data-line="26">
+</span><span data-line="27"><span class="kn">from</span><span class="w"> </span><span class="nn">icspacket.proto.mms._mms</span><span class="w"> </span><span class="kn">import</span> <span class="n">Data</span><span class="p">,</span> <span class="n">FileAttributes</span><span class="p">,</span> <span class="n">UtcTime</span>
+</span><span data-line="28"><span class="kn">from</span><span class="w"> </span><span class="nn">icspacket.proto.mms.asn1types</span><span class="w"> </span><span class="kn">import</span> <span class="n">FloatingPoint</span>
+</span><span data-line="29">
+</span><span data-line="30"><span class="n">_be_uint64</span> <span class="o">=</span> <span class="n">BigEndian</span> <span class="o">+</span> <span class="n">uint64</span>
+</span><span data-line="31">
+</span><span data-line="32">
 <div class="viewcode-block" id="IEEE754Type">
 <a class="viewcode-back" href="../../../../protocols/mms/api_data.html#icspacket.proto.mms.data.IEEE754Type">[docs]</a>
-</span><span data-line="40"><span class="k">class</span><span class="w"> </span><span class="nc">IEEE754Type</span><span class="p">(</span><span class="n">enum</span><span class="o">.</span><span class="n">IntEnum</span><span class="p">):</span>
-</span><span data-line="41"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span data-line="42"><span class="sd">    Enumeration representing supported IEEE 754 floating-point formats.</span>
-</span><span data-line="43">
-</span><span data-line="44"><span class="sd">    The enumeration values encode the bit-width of the **exponent field**</span>
-</span><span data-line="45"><span class="sd">    used in the floating-point representation. This width determines</span>
-</span><span data-line="46"><span class="sd">    whether the format corresponds to a 32-bit or 64-bit IEEE 754 float.</span>
-</span><span data-line="47"><span class="sd">    &quot;&quot;&quot;</span>
-</span><span data-line="48">
-</span><span data-line="49">    <span class="n">__struct__</span> <span class="o">=</span> <span class="n">uint8</span>
-</span><span data-line="50">
-</span><span data-line="51">    <span class="n">FLOAT32</span> <span class="o">=</span> <span class="mi">8</span>
-</span><span data-line="52"><span class="w">    </span><span class="sd">&quot;&quot;&quot; Single-precision floating-point type (8-bit exponent width).&quot;&quot;&quot;</span>
-</span><span data-line="53">
-</span><span data-line="54">    <span class="n">FLOAT64</span> <span class="o">=</span> <span class="mi">11</span>
-</span><span data-line="55"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Double-precision floating-point type (11-bit exponent width).&quot;&quot;&quot;</span></div>
+</span><span data-line="33"><span class="k">class</span><span class="w"> </span><span class="nc">IEEE754Type</span><span class="p">(</span><span class="n">enum</span><span class="o">.</span><span class="n">IntEnum</span><span class="p">):</span>
+</span><span data-line="34"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="35"><span class="sd">    Discriminator byte read by :class:`IEEE754PackedFloat` to pick the codec</span>
+</span><span data-line="36"><span class="sd">    used for the value bytes that follow it.</span>
+</span><span data-line="37">
+</span><span data-line="38"><span class="sd">    Single- and double-precision IEEE 754 floats differ in how many bits</span>
+</span><span data-line="39"><span class="sd">    their exponent occupies, so this enum simply stores that bit count and</span>
+</span><span data-line="40"><span class="sd">    uses it to tell the two layouts apart.</span>
+</span><span data-line="41"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span data-line="42">
+</span><span data-line="43">    <span class="n">__struct__</span> <span class="o">=</span> <span class="n">uint8</span>
+</span><span data-line="44">
+</span><span data-line="45">    <span class="n">FLOAT32</span> <span class="o">=</span> <span class="mi">8</span>
+</span><span data-line="46"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Single-precision layout, identified by its 8-bit exponent field.&quot;&quot;&quot;</span>
+</span><span data-line="47">
+</span><span data-line="48">    <span class="n">FLOAT64</span> <span class="o">=</span> <span class="mi">11</span>
+</span><span data-line="49"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Double-precision layout, identified by its 11-bit exponent field.&quot;&quot;&quot;</span></div>
 
-</span><span data-line="56">
-</span><span data-line="57">
-</span><span data-line="58"><span class="c1">#: Mapping between IEEE754 exponent widths and their corresponding</span>
-</span><span data-line="59"><span class="c1">#: serialization/deserialization strategies.</span>
-</span><span data-line="60"><span class="c1">#: If no matching type is found, a byte sequence fallback is used.</span>
-</span><span data-line="61"><span class="n">_IEEE754_TYPES</span> <span class="o">=</span> <span class="p">{</span>
-</span><span data-line="62">    <span class="n">IEEE754Type</span><span class="o">.</span><span class="n">FLOAT32</span><span class="p">:</span> <span class="n">BigEndian</span> <span class="o">+</span> <span class="n">float32</span><span class="p">,</span>
-</span><span data-line="63">    <span class="n">IEEE754Type</span><span class="o">.</span><span class="n">FLOAT64</span><span class="p">:</span> <span class="n">BigEndian</span> <span class="o">+</span> <span class="n">double</span><span class="p">,</span>
-</span><span data-line="64">    <span class="c1"># Fallback mechanism: default to raw byte representation</span>
-</span><span data-line="65">    <span class="n">DEFAULT_OPTION</span><span class="p">:</span> <span class="n">Bytes</span><span class="p">(</span><span class="o">...</span><span class="p">),</span>
-</span><span data-line="66"><span class="p">}</span>
-</span><span data-line="67">
-</span><span data-line="68">
+</span><span data-line="50">
+</span><span data-line="51">
+</span><span data-line="52"><span class="c1">#: Mapping between IEEE754 exponent widths and their corresponding</span>
+</span><span data-line="53"><span class="c1">#: serialization/deserialization strategies.</span>
+</span><span data-line="54"><span class="c1">#: If no matching type is found, a byte sequence fallback is used.</span>
+</span><span data-line="55"><span class="n">_IEEE754_TYPES</span> <span class="o">=</span> <span class="p">{</span>
+</span><span data-line="56">    <span class="n">IEEE754Type</span><span class="o">.</span><span class="n">FLOAT32</span><span class="p">:</span> <span class="n">BigEndian</span> <span class="o">+</span> <span class="n">float32</span><span class="p">,</span>
+</span><span data-line="57">    <span class="n">IEEE754Type</span><span class="o">.</span><span class="n">FLOAT64</span><span class="p">:</span> <span class="n">BigEndian</span> <span class="o">+</span> <span class="n">double</span><span class="p">,</span>
+</span><span data-line="58">    <span class="c1"># Fallback mechanism: default to raw byte representation</span>
+</span><span data-line="59">    <span class="n">DEFAULT_OPTION</span><span class="p">:</span> <span class="n">Bytes</span><span class="p">(</span><span class="o">...</span><span class="p">),</span>
+</span><span data-line="60"><span class="p">}</span>
+</span><span data-line="61">
+</span><span data-line="62">
 <div class="viewcode-block" id="IEEE754PackedFloat">
 <a class="viewcode-back" href="../../../../protocols/mms/api_data.html#icspacket.proto.mms.data.IEEE754PackedFloat">[docs]</a>
-</span><span data-line="69"><span class="nd">@struct</span>
-</span><span data-line="70"><span class="k">class</span><span class="w"> </span><span class="nc">IEEE754PackedFloat</span><span class="p">:</span>
-</span><span data-line="71"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span data-line="72"><span class="sd">    Structured representation of a floating-point value encoded in IEEE 754</span>
-</span><span data-line="73"><span class="sd">    format.</span>
-</span><span data-line="74">
-</span><span data-line="75"><span class="sd">    This structure encapsulates both the **exponent width** (to distinguish</span>
-</span><span data-line="76"><span class="sd">    between 32-bit and 64-bit IEEE 754 floating-point values) and the</span>
-</span><span data-line="77"><span class="sd">    associated binary-encoded value.</span>
+</span><span data-line="63"><span class="nd">@struct</span>
+</span><span data-line="64"><span class="k">class</span><span class="w"> </span><span class="nc">IEEE754PackedFloat</span><span class="p">:</span>
+</span><span data-line="65"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="66"><span class="sd">    Wire format of an MMS ``FloatingPoint`` value: a leading</span>
+</span><span data-line="67"><span class="sd">    :class:`IEEE754Type` tag followed by the value itself.</span>
+</span><span data-line="68">
+</span><span data-line="69"><span class="sd">    Packing and unpacking this struct is how :func:`create_floating_point_value`</span>
+</span><span data-line="70"><span class="sd">    and :func:`get_floating_point_value` convert between plain Python floats</span>
+</span><span data-line="71"><span class="sd">    and the tagged byte string MMS transports as ``FloatingPoint``.</span>
+</span><span data-line="72"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span data-line="73">
+</span><span data-line="74">    <span class="n">exponent_width</span><span class="p">:</span> <span class="n">IEEE754Type</span> <span class="o">=</span> <span class="n">IEEE754Type</span><span class="o">.</span><span class="n">FLOAT32</span>
+</span><span data-line="75"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="76"><span class="sd">    Tag selecting the codec applied to :attr:`value` (``FLOAT32`` or</span>
+</span><span data-line="77"><span class="sd">    ``FLOAT64``); defaults to ``FLOAT32`` when left unset.</span>
 </span><span data-line="78"><span class="sd">    &quot;&quot;&quot;</span>
 </span><span data-line="79">
-</span><span data-line="80">    <span class="n">exponent_width</span><span class="p">:</span> <span class="n">IEEE754Type</span> <span class="o">=</span> <span class="n">IEEE754Type</span><span class="o">.</span><span class="n">FLOAT32</span>
+</span><span data-line="80">    <span class="n">value</span><span class="p">:</span> <span class="n">f</span><span class="p">[</span><span class="nb">float</span> <span class="o">|</span> <span class="nb">bytes</span><span class="p">,</span> <span class="n">F</span><span class="p">(</span><span class="n">this</span><span class="o">.</span><span class="n">exponent_width</span><span class="p">)</span> <span class="o">&gt;&gt;</span> <span class="n">_IEEE754_TYPES</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
 </span><span data-line="81"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span data-line="82"><span class="sd">    The exponent width that determines the floating-point format (either</span>
-</span><span data-line="83"><span class="sd">    ``FLOAT32`` or ``FLOAT64``). Defaults to ``FLOAT32``.</span>
-</span><span data-line="84"><span class="sd">    &quot;&quot;&quot;</span>
-</span><span data-line="85">
-</span><span data-line="86">    <span class="n">value</span><span class="p">:</span> <span class="n">F</span><span class="p">(</span><span class="n">this</span><span class="o">.</span><span class="n">exponent_width</span><span class="p">)</span> <span class="o">&gt;&gt;</span> <span class="n">_IEEE754_TYPES</span> <span class="o">=</span> <span class="mi">0</span>
-</span><span data-line="87"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span data-line="88"><span class="sd">    The floating-point value encoded according to the specified exponent width.</span>
-</span><span data-line="89"><span class="sd">    If the width is not recognized, the raw bytes are stored instead.</span>
-</span><span data-line="90"><span class="sd">    &quot;&quot;&quot;</span></div>
+</span><span data-line="82"><span class="sd">    The float itself, packed or unpacked using the codec chosen by</span>
+</span><span data-line="83"><span class="sd">    :attr:`exponent_width`. Falls back to a raw byte string when the tag</span>
+</span><span data-line="84"><span class="sd">    does not match a recognized codec.</span>
+</span><span data-line="85"><span class="sd">    &quot;&quot;&quot;</span></div>
 
-</span><span data-line="91">
-</span><span data-line="92">
+</span><span data-line="86">
+</span><span data-line="87">
 <div class="viewcode-block" id="create_floating_point_value">
 <a class="viewcode-back" href="../../../../protocols/mms/api_data.html#icspacket.proto.mms.data.create_floating_point_value">[docs]</a>
-</span><span data-line="93"><span class="k">def</span><span class="w"> </span><span class="nf">create_floating_point_value</span><span class="p">(</span>
-</span><span data-line="94">    <span class="n">value</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">exp_width</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">11</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
-</span><span data-line="95"><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">FloatingPoint</span><span class="p">:</span>
-</span><span data-line="96"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Create a packed IEEE 754 floating-point representation.</span>
-</span><span data-line="97">
-</span><span data-line="98"><span class="sd">    This function encodes a Python ``float`` into a binary representation</span>
-</span><span data-line="99"><span class="sd">    according to the IEEE 754 standard. The precision of the representation</span>
-</span><span data-line="100"><span class="sd">    is determined by the chosen exponent width.</span>
-</span><span data-line="101">
-</span><span data-line="102"><span class="sd">    :param value: The Python floating-point value to be encoded.</span>
-</span><span data-line="103"><span class="sd">    :type value: float</span>
-</span><span data-line="104"><span class="sd">    :param exp_width: he exponent width specifying the IEEE 754 format, defaults</span>
-</span><span data-line="105"><span class="sd">        to None</span>
-</span><span data-line="106"><span class="sd">    :type exp_width: Literal[8, 11] | None, optional</span>
-</span><span data-line="107"><span class="sd">    :return:  A wrapped binary representation of the floating-point value</span>
-</span><span data-line="108"><span class="sd">         encoded in the specified IEEE 754 format.</span>
-</span><span data-line="109"><span class="sd">    :rtype: FloatingPoint</span>
-</span><span data-line="110"><span class="sd">    &quot;&quot;&quot;</span>
-</span><span data-line="111">    <span class="n">packed_value</span> <span class="o">=</span> <span class="n">IEEE754PackedFloat</span><span class="p">(</span><span class="n">exp_width</span> <span class="ow">or</span> <span class="n">IEEE754Type</span><span class="o">.</span><span class="n">FLOAT32</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
-</span><span data-line="112">    <span class="n">data</span> <span class="o">=</span> <span class="n">pack</span><span class="p">(</span><span class="n">packed_value</span><span class="p">)</span>
-</span><span data-line="113">    <span class="k">return</span> <span class="n">FloatingPoint</span><span class="p">(</span><span class="n">data</span><span class="p">)</span></div>
+</span><span data-line="88"><span class="k">def</span><span class="w"> </span><span class="nf">create_floating_point_value</span><span class="p">(</span>
+</span><span data-line="89">    <span class="n">value</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">exp_width</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">11</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+</span><span data-line="90"><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">FloatingPoint</span><span class="p">:</span>
+</span><span data-line="91"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Create a packed IEEE 754 floating-point representation.</span>
+</span><span data-line="92">
+</span><span data-line="93"><span class="sd">    This function encodes a Python ``float`` into a binary representation</span>
+</span><span data-line="94"><span class="sd">    according to the IEEE 754 standard. The precision of the representation</span>
+</span><span data-line="95"><span class="sd">    is determined by the chosen exponent width.</span>
+</span><span data-line="96">
+</span><span data-line="97"><span class="sd">    :param value: The Python floating-point value to be encoded.</span>
+</span><span data-line="98"><span class="sd">    :type value: float</span>
+</span><span data-line="99"><span class="sd">    :param exp_width: he exponent width specifying the IEEE 754 format, defaults</span>
+</span><span data-line="100"><span class="sd">        to None</span>
+</span><span data-line="101"><span class="sd">    :type exp_width: Literal[8, 11] | None, optional</span>
+</span><span data-line="102"><span class="sd">    :return:  A wrapped binary representation of the floating-point value</span>
+</span><span data-line="103"><span class="sd">         encoded in the specified IEEE 754 format.</span>
+</span><span data-line="104"><span class="sd">    :rtype: FloatingPoint</span>
+</span><span data-line="105"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span data-line="106">    <span class="n">packed_value</span> <span class="o">=</span> <span class="n">IEEE754PackedFloat</span><span class="p">(</span><span class="n">exp_width</span> <span class="ow">or</span> <span class="n">IEEE754Type</span><span class="o">.</span><span class="n">FLOAT32</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+</span><span data-line="107">    <span class="n">data</span> <span class="o">=</span> <span class="n">pack</span><span class="p">(</span><span class="n">packed_value</span><span class="p">)</span>
+</span><span data-line="108">    <span class="k">return</span> <span class="n">FloatingPoint</span><span class="p">(</span><span class="n">data</span><span class="p">)</span></div>
 
-</span><span data-line="114">
-</span><span data-line="115">
+</span><span data-line="109">
+</span><span data-line="110">
 <div class="viewcode-block" id="get_floating_point_value">
 <a class="viewcode-back" href="../../../../protocols/mms/api_data.html#icspacket.proto.mms.data.get_floating_point_value">[docs]</a>
-</span><span data-line="116"><span class="k">def</span><span class="w"> </span><span class="nf">get_floating_point_value</span><span class="p">(</span><span class="n">fp</span><span class="p">:</span> <span class="n">FloatingPoint</span> <span class="o">|</span> <span class="nb">bytes</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
-</span><span data-line="117"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span data-line="118"><span class="sd">    Decode a packed IEEE 754 floating-point value into a Python float.</span>
-</span><span data-line="119">
-</span><span data-line="120"><span class="sd">    Example:</span>
-</span><span data-line="121">
-</span><span data-line="122"><span class="sd">    &gt;&gt;&gt; fp = FloatingPoint(b&#39;\\x08Cb\\x00\\x00&#39;)</span>
-</span><span data-line="123"><span class="sd">    &gt;&gt;&gt; get_floating_point_value(fp)</span>
-</span><span data-line="124"><span class="sd">    226.0</span>
-</span><span data-line="125">
-</span><span data-line="126"><span class="sd">    :param fp: A :class:`FloatingPoint` object containing the encoded IEEE 754</span>
-</span><span data-line="127"><span class="sd">        value or raw bytes.</span>
-</span><span data-line="128"><span class="sd">    :type fp: FloatingPoint</span>
-</span><span data-line="129"><span class="sd">    :return: The decoded Python floating-point value.</span>
-</span><span data-line="130"><span class="sd">    :rtype: float</span>
-</span><span data-line="131"><span class="sd">    :raises TypeError: If the exponent width does not match a recognized IEEE</span>
-</span><span data-line="132"><span class="sd">        754 type (``FLOAT32`` or ``FLOAT64``).</span>
-</span><span data-line="133"><span class="sd">    &quot;&quot;&quot;</span>
-</span><span data-line="134">    <span class="n">value</span> <span class="o">=</span> <span class="n">fp</span><span class="o">.</span><span class="n">value</span> <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">)</span> <span class="k">else</span> <span class="n">fp</span>
-</span><span data-line="135">    <span class="n">unpacked</span> <span class="o">=</span> <span class="n">unpack</span><span class="p">(</span><span class="n">IEEE754PackedFloat</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
-</span><span data-line="136">    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">unpacked</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">):</span>
-</span><span data-line="137">        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unknown exponent width: </span><span class="si">{</span><span class="n">unpacked</span><span class="o">.</span><span class="n">exponent_width</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</span><span data-line="138">
-</span><span data-line="139">    <span class="k">return</span> <span class="n">unpacked</span><span class="o">.</span><span class="n">value</span></div>
+</span><span data-line="111"><span class="k">def</span><span class="w"> </span><span class="nf">get_floating_point_value</span><span class="p">(</span><span class="n">fp</span><span class="p">:</span> <span class="n">FloatingPoint</span> <span class="o">|</span> <span class="nb">bytes</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+</span><span data-line="112"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="113"><span class="sd">    Decode a packed IEEE 754 floating-point value into a Python float.</span>
+</span><span data-line="114">
+</span><span data-line="115"><span class="sd">    Example:</span>
+</span><span data-line="116">
+</span><span data-line="117"><span class="sd">    &gt;&gt;&gt; fp = FloatingPoint(b&#39;\\x08Cb\\x00\\x00&#39;)</span>
+</span><span data-line="118"><span class="sd">    &gt;&gt;&gt; get_floating_point_value(fp)</span>
+</span><span data-line="119"><span class="sd">    226.0</span>
+</span><span data-line="120">
+</span><span data-line="121"><span class="sd">    :param fp: A :class:`FloatingPoint` object containing the encoded IEEE 754</span>
+</span><span data-line="122"><span class="sd">        value or raw bytes.</span>
+</span><span data-line="123"><span class="sd">    :type fp: FloatingPoint</span>
+</span><span data-line="124"><span class="sd">    :return: The decoded Python floating-point value.</span>
+</span><span data-line="125"><span class="sd">    :rtype: float</span>
+</span><span data-line="126"><span class="sd">    :raises TypeError: If the exponent width does not match a recognized IEEE</span>
+</span><span data-line="127"><span class="sd">        754 type (``FLOAT32`` or ``FLOAT64``).</span>
+</span><span data-line="128"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span data-line="129">    <span class="n">value</span> <span class="o">=</span> <span class="n">fp</span><span class="o">.</span><span class="n">value</span> <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">)</span> <span class="k">else</span> <span class="n">fp</span>
+</span><span data-line="130">    <span class="n">unpacked</span> <span class="o">=</span> <span class="n">unpack</span><span class="p">(</span><span class="n">IEEE754PackedFloat</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+</span><span data-line="131">    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">unpacked</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">):</span>
+</span><span data-line="132">        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unknown exponent width: </span><span class="si">{</span><span class="n">unpacked</span><span class="o">.</span><span class="n">exponent_width</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span data-line="133">
+</span><span data-line="134">    <span class="k">return</span> <span class="n">unpacked</span><span class="o">.</span><span class="n">value</span></div>
 
-</span><span data-line="140">
-</span><span data-line="141">
+</span><span data-line="135">
+</span><span data-line="136">
 <div class="viewcode-block" id="Timestamp">
 <a class="viewcode-back" href="../../../../protocols/mms/api_data.html#icspacket.proto.mms.data.Timestamp">[docs]</a>
-</span><span data-line="142"><span class="nd">@bitfield</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="n">BigEndian</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="n">S_ADD_BYTES</span><span class="p">])</span>
-</span><span data-line="143"><span class="k">class</span><span class="w"> </span><span class="nc">Timestamp</span><span class="p">:</span>
-</span><span data-line="144"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Structured bitfield representation of a timestamp value.</span>
-</span><span data-line="145">
-</span><span data-line="146"><span class="sd">    .. versionadded:: 0.2.3</span>
-</span><span data-line="147"><span class="sd">    &quot;&quot;&quot;</span>
-</span><span data-line="148">
-</span><span data-line="149">    <span class="n">timeval</span><span class="p">:</span> <span class="n">Bytes</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="o">=</span> <span class="nb">bytes</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
-</span><span data-line="150"><span class="w">    </span><span class="sd">&quot;&quot;&quot;4-byte unsigned integer representing the elapsed time in seconds.&quot;&quot;&quot;</span>
-</span><span data-line="151">
-</span><span data-line="152">    <span class="n">fraction</span><span class="p">:</span> <span class="n">Bytes</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">=</span> <span class="nb">bytes</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
-</span><span data-line="153"><span class="w">    </span><span class="sd">&quot;&quot;&quot;3-byte fractional component of the timestamp for sub-second precision.&quot;&quot;&quot;</span>
-</span><span data-line="154">
-</span><span data-line="155">    <span class="n">leap_second_known</span><span class="p">:</span> <span class="mi">1</span> <span class="o">=</span> <span class="kc">False</span>
-</span><span data-line="156"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Indicates whether the occurrence of leap seconds is known.&quot;&quot;&quot;</span>
-</span><span data-line="157">
-</span><span data-line="158">    <span class="n">clock_failure</span><span class="p">:</span> <span class="mi">1</span> <span class="o">=</span> <span class="kc">False</span>
-</span><span data-line="159"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Indicates whether a clock failure has been detected.&quot;&quot;&quot;</span>
-</span><span data-line="160">
-</span><span data-line="161">    <span class="n">clock_not_synced</span><span class="p">:</span> <span class="mi">1</span> <span class="o">=</span> <span class="kc">False</span>
-</span><span data-line="162"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Indicates whether the clock is currently unsynchronized.&quot;&quot;&quot;</span>
-</span><span data-line="163">
-</span><span data-line="164">    <span class="n">accuracy</span><span class="p">:</span> <span class="mi">5</span> <span class="o">=</span> <span class="mi">0</span>
-</span><span data-line="165"><span class="w">    </span><span class="sd">&quot;&quot;&quot;5-bit field encoding the accuracy of the timestamp.&quot;&quot;&quot;</span>
-</span><span data-line="166">
+</span><span data-line="137"><span class="nd">@bitfield</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="n">BigEndian</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="n">S_ADD_BYTES</span><span class="p">])</span>
+</span><span data-line="138"><span class="k">class</span><span class="w"> </span><span class="nc">Timestamp</span><span class="p">:</span>
+</span><span data-line="139"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Field-level view over a packed 8-byte MMS UTC timestamp.</span>
+</span><span data-line="140">
+</span><span data-line="141"><span class="sd">    Splits the raw value carried by a :class:`UtcTime` into a whole-seconds</span>
+</span><span data-line="142"><span class="sd">    counter, a sub-second fraction, three one-bit status flags, and an</span>
+</span><span data-line="143"><span class="sd">    accuracy indicator, so each part can be read or set directly instead of</span>
+</span><span data-line="144"><span class="sd">    manipulating raw bytes. Build an instance with</span>
+</span><span data-line="145"><span class="sd">    :meth:`from_utc_time`/:meth:`from_datetime` and read it back as plain</span>
+</span><span data-line="146"><span class="sd">    Python values through :attr:`seconds`/:attr:`datetime`.</span>
+</span><span data-line="147">
+</span><span data-line="148"><span class="sd">    .. versionadded:: 0.2.3</span>
+</span><span data-line="149"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span data-line="150">
+</span><span data-line="151">    <span class="n">timeval</span><span class="p">:</span> <span class="n">f</span><span class="p">[</span><span class="nb">bytes</span><span class="p">,</span> <span class="n">Bytes</span><span class="p">(</span><span class="mi">4</span><span class="p">)]</span> <span class="o">=</span> <span class="nb">bytes</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+</span><span data-line="152"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Elapsed seconds, packed as an unsigned big-endian value across these 4 bytes; see :attr:`seconds` for reading/writing it as a Python int.&quot;&quot;&quot;</span>
+</span><span data-line="153">
+</span><span data-line="154">    <span class="n">fraction</span><span class="p">:</span> <span class="n">f</span><span class="p">[</span><span class="nb">bytes</span><span class="p">,</span> <span class="n">Bytes</span><span class="p">(</span><span class="mi">3</span><span class="p">)]</span> <span class="o">=</span> <span class="nb">bytes</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</span><span data-line="155"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Sub-second remainder of the timestamp, held as 3 raw bytes.&quot;&quot;&quot;</span>
+</span><span data-line="156">
+</span><span data-line="157">    <span class="n">leap_second_known</span><span class="p">:</span> <span class="n">int1_t</span> <span class="o">=</span> <span class="kc">False</span>
+</span><span data-line="158"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Set when this timestamp&#39;s leap-second status is known rather than undefined.&quot;&quot;&quot;</span>
+</span><span data-line="159">
+</span><span data-line="160">    <span class="n">clock_failure</span><span class="p">:</span> <span class="n">int1_t</span> <span class="o">=</span> <span class="kc">False</span>
+</span><span data-line="161"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Set when the source clock is reporting a failure.&quot;&quot;&quot;</span>
+</span><span data-line="162">
+</span><span data-line="163">    <span class="n">clock_not_synced</span><span class="p">:</span> <span class="n">int1_t</span> <span class="o">=</span> <span class="kc">False</span>
+</span><span data-line="164"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Set when the source clock has not (yet) synchronized to a reference.&quot;&quot;&quot;</span>
+</span><span data-line="165">
+</span><span data-line="166">    <span class="n">accuracy</span><span class="p">:</span> <span class="n">int5_t</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span data-line="167"><span class="w">    </span><span class="sd">&quot;&quot;&quot;5-bit value carrying the timestamp&#39;s accuracy indicator.&quot;&quot;&quot;</span>
+</span><span data-line="168">
 <div class="viewcode-block" id="Timestamp.from_utc_time">
 <a class="viewcode-back" href="../../../../protocols/mms/api_data.html#icspacket.proto.mms.data.Timestamp.from_utc_time">[docs]</a>
-</span><span data-line="167">    <span class="nd">@staticmethod</span>
-</span><span data-line="168">    <span class="k">def</span><span class="w"> </span><span class="nf">from_utc_time</span><span class="p">(</span><span class="n">utc_time</span><span class="p">:</span> <span class="s2">&quot;UtcTime | bytes&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Timestamp&quot;</span><span class="p">:</span>
-</span><span data-line="169"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span data-line="170"><span class="sd">        Construct a :class:`Timestamp` object from a UTC time value.</span>
-</span><span data-line="171">
-</span><span data-line="172"><span class="sd">        :param utc_time:</span>
-</span><span data-line="173"><span class="sd">            Either a :class:`UtcTime` instance or an 8-byte raw buffer</span>
-</span><span data-line="174"><span class="sd">            containing the encoded UTC time.</span>
-</span><span data-line="175"><span class="sd">        :type utc_time: UtcTime | bytes</span>
-</span><span data-line="176"><span class="sd">        :return: A deserialized :class:`Timestamp` instance.</span>
-</span><span data-line="177"><span class="sd">        :rtype: Timestamp</span>
-</span><span data-line="178"><span class="sd">        :raises ValueError:</span>
-</span><span data-line="179"><span class="sd">            If the provided value does not have the expected 8-byte length.</span>
-</span><span data-line="180"><span class="sd">        &quot;&quot;&quot;</span>
-</span><span data-line="181">        <span class="n">value</span> <span class="o">=</span> <span class="n">utc_time</span><span class="o">.</span><span class="n">value</span> <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">utc_time</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">)</span> <span class="k">else</span> <span class="n">utc_time</span>
-</span><span data-line="182">        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">8</span><span class="p">:</span>
-</span><span data-line="183">            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Invalid UTC time value: </span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</span><span data-line="184">
-</span><span data-line="185">        <span class="k">return</span> <span class="n">unpack</span><span class="p">(</span><span class="n">Timestamp</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span></div>
-
+</span><span data-line="169">    <span class="nd">@staticmethod</span>
+</span><span data-line="170">    <span class="k">def</span><span class="w"> </span><span class="nf">from_utc_time</span><span class="p">(</span><span class="n">utc_time</span><span class="p">:</span> <span class="s2">&quot;UtcTime | bytes&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Timestamp&quot;</span><span class="p">:</span>
+</span><span data-line="171"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="172"><span class="sd">        Construct a :class:`Timestamp` object from a UTC time value.</span>
+</span><span data-line="173">
+</span><span data-line="174"><span class="sd">        :param utc_time:</span>
+</span><span data-line="175"><span class="sd">            Either a :class:`UtcTime` instance or an 8-byte raw buffer</span>
+</span><span data-line="176"><span class="sd">            containing the encoded UTC time.</span>
+</span><span data-line="177"><span class="sd">        :type utc_time: UtcTime | bytes</span>
+</span><span data-line="178"><span class="sd">        :return: A deserialized :class:`Timestamp` instance.</span>
+</span><span data-line="179"><span class="sd">        :rtype: Timestamp</span>
+</span><span data-line="180"><span class="sd">        :raises ValueError:</span>
+</span><span data-line="181"><span class="sd">            If the provided value does not have the expected 8-byte length.</span>
+</span><span data-line="182"><span class="sd">        &quot;&quot;&quot;</span>
+</span><span data-line="183">        <span class="n">value</span> <span class="o">=</span> <span class="n">utc_time</span><span class="o">.</span><span class="n">value</span> <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">utc_time</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">)</span> <span class="k">else</span> <span class="n">utc_time</span>
+</span><span data-line="184">        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">8</span><span class="p">:</span>
+</span><span data-line="185">            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Invalid UTC time value: </span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </span><span data-line="186">
-</span><span data-line="187">    <span class="nd">@property</span>
-</span><span data-line="188">    <span class="k">def</span><span class="w"> </span><span class="nf">seconds</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-</span><span data-line="189"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span data-line="190"><span class="sd">        Get the integral number of seconds stored in the timestamp.</span>
-</span><span data-line="191">
-</span><span data-line="192"><span class="sd">        This property interprets the 4-byte ``timeval`` field as an</span>
-</span><span data-line="193"><span class="sd">        unsigned 32-bit big-endian integer.</span>
-</span><span data-line="194">
-</span><span data-line="195"><span class="sd">        :return: The number of elapsed seconds.</span>
-</span><span data-line="196"><span class="sd">        :rtype: int</span>
-</span><span data-line="197"><span class="sd">        &quot;&quot;&quot;</span>
-</span><span data-line="198">        <span class="n">data</span><span class="p">:</span> <span class="nb">bytes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeval</span>
-</span><span data-line="199">        <span class="k">return</span> <span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="mi">2</span><span class="o">**</span><span class="mi">24</span><span class="p">)</span> <span class="o">+</span> <span class="n">data</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="mi">2</span><span class="o">**</span><span class="mi">16</span><span class="p">)</span> <span class="o">+</span> <span class="n">data</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="mi">2</span><span class="o">**</span><span class="mi">8</span><span class="p">)</span> <span class="o">+</span> <span class="n">data</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
-</span><span data-line="200">
-</span><span data-line="201">    <span class="nd">@seconds</span><span class="o">.</span><span class="n">setter</span>
-</span><span data-line="202">    <span class="k">def</span><span class="w"> </span><span class="nf">seconds</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
-</span><span data-line="203"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span data-line="204"><span class="sd">        Set the integral number of seconds in the timestamp.</span>
-</span><span data-line="205">
-</span><span data-line="206"><span class="sd">        The provided integer value is encoded into the 4-byte ``timeval``</span>
-</span><span data-line="207"><span class="sd">        field using big-endian ordering. The fractional part is reset to</span>
-</span><span data-line="208"><span class="sd">        zero whenever this setter is invoked.</span>
-</span><span data-line="209">
-</span><span data-line="210"><span class="sd">        :param int value:</span>
-</span><span data-line="211"><span class="sd">            The number of elapsed seconds to encode into the timestamp.</span>
-</span><span data-line="212"><span class="sd">        &quot;&quot;&quot;</span>
-</span><span data-line="213">        <span class="n">data</span> <span class="o">=</span> <span class="nb">bytearray</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
-</span><span data-line="214">        <span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="nb">int</span><span class="p">((</span><span class="n">value</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span><span class="o">**</span><span class="mi">24</span><span class="p">)))</span> <span class="o">&amp;</span> <span class="mh">0xFF</span>
-</span><span data-line="215">        <span class="n">data</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="nb">int</span><span class="p">((</span><span class="n">value</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span><span class="o">**</span><span class="mi">16</span><span class="p">)))</span> <span class="o">&amp;</span> <span class="mh">0xFF</span>
-</span><span data-line="216">        <span class="n">data</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="nb">int</span><span class="p">((</span><span class="n">value</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span><span class="o">**</span><span class="mi">8</span><span class="p">)))</span> <span class="o">&amp;</span> <span class="mh">0xFF</span>
-</span><span data-line="217">        <span class="n">data</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span> <span class="o">&amp;</span> <span class="mh">0xFF</span>
-</span><span data-line="218">
-</span><span data-line="219">        <span class="bp">self</span><span class="o">.</span><span class="n">timeval</span> <span class="o">=</span> <span class="nb">bytes</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-</span><span data-line="220">        <span class="bp">self</span><span class="o">.</span><span class="n">fraction</span> <span class="o">=</span> <span class="nb">bytes</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
-</span><span data-line="221">
+</span><span data-line="187">        <span class="k">return</span> <span class="n">unpack</span><span class="p">(</span><span class="n">Timestamp</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span></div>
+
+</span><span data-line="188">
+</span><span data-line="189">    <span class="nd">@property</span>
+</span><span data-line="190">    <span class="k">def</span><span class="w"> </span><span class="nf">seconds</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+</span><span data-line="191"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="192"><span class="sd">        Get the integral number of seconds stored in the timestamp.</span>
+</span><span data-line="193">
+</span><span data-line="194"><span class="sd">        This property interprets the 4-byte ``timeval`` field as an</span>
+</span><span data-line="195"><span class="sd">        unsigned 32-bit big-endian integer.</span>
+</span><span data-line="196">
+</span><span data-line="197"><span class="sd">        :return: The number of elapsed seconds.</span>
+</span><span data-line="198"><span class="sd">        :rtype: int</span>
+</span><span data-line="199"><span class="sd">        &quot;&quot;&quot;</span>
+</span><span data-line="200">        <span class="n">data</span><span class="p">:</span> <span class="nb">bytes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeval</span>
+</span><span data-line="201">        <span class="k">return</span> <span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="mi">2</span><span class="o">**</span><span class="mi">24</span><span class="p">)</span> <span class="o">+</span> <span class="n">data</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="mi">2</span><span class="o">**</span><span class="mi">16</span><span class="p">)</span> <span class="o">+</span> <span class="n">data</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="mi">2</span><span class="o">**</span><span class="mi">8</span><span class="p">)</span> <span class="o">+</span> <span class="n">data</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+</span><span data-line="202">
+</span><span data-line="203">    <span class="nd">@seconds</span><span class="o">.</span><span class="n">setter</span>
+</span><span data-line="204">    <span class="k">def</span><span class="w"> </span><span class="nf">seconds</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+</span><span data-line="205"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="206"><span class="sd">        Set the integral number of seconds in the timestamp.</span>
+</span><span data-line="207">
+</span><span data-line="208"><span class="sd">        The provided integer value is encoded into the 4-byte ``timeval``</span>
+</span><span data-line="209"><span class="sd">        field using big-endian ordering. The fractional part is reset to</span>
+</span><span data-line="210"><span class="sd">        zero whenever this setter is invoked.</span>
+</span><span data-line="211">
+</span><span data-line="212"><span class="sd">        :param int value:</span>
+</span><span data-line="213"><span class="sd">            The number of elapsed seconds to encode into the timestamp.</span>
+</span><span data-line="214"><span class="sd">        &quot;&quot;&quot;</span>
+</span><span data-line="215">        <span class="n">data</span> <span class="o">=</span> <span class="nb">bytearray</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+</span><span data-line="216">        <span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">value</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span><span class="o">**</span><span class="mi">24</span><span class="p">))</span> <span class="o">&amp;</span> <span class="mh">0xFF</span>
+</span><span data-line="217">        <span class="n">data</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">value</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span><span class="o">**</span><span class="mi">16</span><span class="p">))</span> <span class="o">&amp;</span> <span class="mh">0xFF</span>
+</span><span data-line="218">        <span class="n">data</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">value</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span><span class="o">**</span><span class="mi">8</span><span class="p">))</span> <span class="o">&amp;</span> <span class="mh">0xFF</span>
+</span><span data-line="219">        <span class="n">data</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span> <span class="o">&amp;</span> <span class="mh">0xFF</span>
+</span><span data-line="220">
+</span><span data-line="221">        <span class="bp">self</span><span class="o">.</span><span class="n">timeval</span> <span class="o">=</span> <span class="nb">bytes</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</span><span data-line="222">        <span class="bp">self</span><span class="o">.</span><span class="n">fraction</span> <span class="o">=</span> <span class="nb">bytes</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</span><span data-line="223">
 <div class="viewcode-block" id="Timestamp.from_datetime">
 <a class="viewcode-back" href="../../../../protocols/mms/api_data.html#icspacket.proto.mms.data.Timestamp.from_datetime">[docs]</a>
-</span><span data-line="222">    <span class="nd">@staticmethod</span>
-</span><span data-line="223">    <span class="k">def</span><span class="w"> </span><span class="nf">from_datetime</span><span class="p">(</span><span class="n">dt</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Timestamp&quot;</span><span class="p">:</span>
-</span><span data-line="224"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span data-line="225"><span class="sd">        Construct a :class:`Timestamp` from a Python :class:`datetime.datetime`.</span>
-</span><span data-line="226">
-</span><span data-line="227"><span class="sd">        The supplied datetime object is converted to a UNIX timestamp</span>
-</span><span data-line="228"><span class="sd">        (seconds since epoch), which is then used to populate the</span>
-</span><span data-line="229"><span class="sd">        internal ``seconds`` field of the :class:`Timestamp`.</span>
-</span><span data-line="230">
-</span><span data-line="231"><span class="sd">        Example</span>
-</span><span data-line="232"><span class="sd">        -------</span>
-</span><span data-line="233">
-</span><span data-line="234"><span class="sd">        .. code-block:: python</span>
+</span><span data-line="224">    <span class="nd">@staticmethod</span>
+</span><span data-line="225">    <span class="k">def</span><span class="w"> </span><span class="nf">from_datetime</span><span class="p">(</span><span class="n">dt</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Timestamp&quot;</span><span class="p">:</span>
+</span><span data-line="226"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="227"><span class="sd">        Construct a :class:`Timestamp` from a Python :class:`datetime.datetime`.</span>
+</span><span data-line="228">
+</span><span data-line="229"><span class="sd">        The supplied datetime object is converted to a UNIX timestamp</span>
+</span><span data-line="230"><span class="sd">        (seconds since epoch), which is then used to populate the</span>
+</span><span data-line="231"><span class="sd">        internal ``seconds`` field of the :class:`Timestamp`.</span>
+</span><span data-line="232">
+</span><span data-line="233"><span class="sd">        Example</span>
+</span><span data-line="234"><span class="sd">        -------</span>
 </span><span data-line="235">
-</span><span data-line="236"><span class="sd">            ts = Timestamp.from_datetime(datetime.datetime.utcnow())</span>
-</span><span data-line="237"><span class="sd">            print(ts.seconds)</span>
-</span><span data-line="238">
-</span><span data-line="239"><span class="sd">        :param dt:</span>
-</span><span data-line="240"><span class="sd">            A datetime instance to convert into a MMS Timestamp.</span>
-</span><span data-line="241"><span class="sd">        :type dt: datetime.datetime</span>
-</span><span data-line="242"><span class="sd">        :return:</span>
-</span><span data-line="243"><span class="sd">            A newly constructed :class:`Timestamp` instance.</span>
-</span><span data-line="244"><span class="sd">        :rtype: Timestamp</span>
-</span><span data-line="245">
-</span><span data-line="246"><span class="sd">        .. versionadded:: 0.2.4</span>
-</span><span data-line="247"><span class="sd">        &quot;&quot;&quot;</span>
-</span><span data-line="248">        <span class="n">ts</span> <span class="o">=</span> <span class="n">Timestamp</span><span class="p">()</span>
-</span><span data-line="249">        <span class="n">ts</span><span class="o">.</span><span class="n">seconds</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">dt</span><span class="o">.</span><span class="n">timestamp</span><span class="p">())</span>
-</span><span data-line="250">        <span class="k">return</span> <span class="n">ts</span></div>
+</span><span data-line="236"><span class="sd">        .. code-block:: python</span>
+</span><span data-line="237">
+</span><span data-line="238"><span class="sd">            ts = Timestamp.from_datetime(datetime.datetime.utcnow())</span>
+</span><span data-line="239"><span class="sd">            print(ts.seconds)</span>
+</span><span data-line="240">
+</span><span data-line="241"><span class="sd">        :param dt:</span>
+</span><span data-line="242"><span class="sd">            A datetime instance to convert into a MMS Timestamp.</span>
+</span><span data-line="243"><span class="sd">        :type dt: datetime.datetime</span>
+</span><span data-line="244"><span class="sd">        :return:</span>
+</span><span data-line="245"><span class="sd">            A newly constructed :class:`Timestamp` instance.</span>
+</span><span data-line="246"><span class="sd">        :rtype: Timestamp</span>
+</span><span data-line="247">
+</span><span data-line="248"><span class="sd">        .. versionadded:: 0.2.4</span>
+</span><span data-line="249"><span class="sd">        &quot;&quot;&quot;</span>
+</span><span data-line="250">        <span class="n">ts</span> <span class="o">=</span> <span class="n">Timestamp</span><span class="p">()</span>
+</span><span data-line="251">        <span class="n">ts</span><span class="o">.</span><span class="n">seconds</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">dt</span><span class="o">.</span><span class="n">timestamp</span><span class="p">())</span>
+</span><span data-line="252">        <span class="k">return</span> <span class="n">ts</span></div>
 
-</span><span data-line="251">
-</span><span data-line="252">    <span class="nd">@property</span>
-</span><span data-line="253">    <span class="k">def</span><span class="w"> </span><span class="nf">datetime</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">:</span>
-</span><span data-line="254"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span data-line="255"><span class="sd">        Get a :class:`datetime.datetime` object representing the timestamp.</span>
-</span><span data-line="256">
-</span><span data-line="257"><span class="sd">        :return: A :class:`datetime.datetime` object representing the</span>
-</span><span data-line="258"><span class="sd">            timestamp.</span>
-</span><span data-line="259"><span class="sd">        :rtype: datetime.datetime</span>
-</span><span data-line="260"><span class="sd">        &quot;&quot;&quot;</span>
-</span><span data-line="261">        <span class="k">return</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">fromtimestamp</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">seconds</span><span class="p">)</span></div>
+</span><span data-line="253">
+</span><span data-line="254">    <span class="nd">@property</span>
+</span><span data-line="255">    <span class="k">def</span><span class="w"> </span><span class="nf">datetime</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">:</span>
+</span><span data-line="256"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="257"><span class="sd">        Get a :class:`datetime.datetime` object representing the timestamp.</span>
+</span><span data-line="258">
+</span><span data-line="259"><span class="sd">        :return: A :class:`datetime.datetime` object representing the</span>
+</span><span data-line="260"><span class="sd">            timestamp.</span>
+</span><span data-line="261"><span class="sd">        :rtype: datetime.datetime</span>
+</span><span data-line="262"><span class="sd">        &quot;&quot;&quot;</span>
+</span><span data-line="263">        <span class="k">return</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">fromtimestamp</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">seconds</span><span class="p">)</span></div>
 
-</span><span data-line="262">
-</span><span data-line="263">
+</span><span data-line="264">
+</span><span data-line="265">
 <div class="viewcode-block" id="FileHandle">
 <a class="viewcode-back" href="../../../../protocols/mms/api_data.html#icspacket.proto.mms.data.FileHandle">[docs]</a>
-</span><span data-line="264"><span class="nd">@dataclass</span><span class="p">(</span><span class="n">frozen</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</span><span data-line="265"><span class="k">class</span><span class="w"> </span><span class="nc">FileHandle</span><span class="p">:</span>
-</span><span data-line="266"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Simple representation of an open file handle&quot;&quot;&quot;</span>
-</span><span data-line="267">
-</span><span data-line="268">    <span class="n">handle</span><span class="p">:</span> <span class="nb">int</span>
-</span><span data-line="269">    <span class="n">attributes</span><span class="p">:</span> <span class="n">FileAttributes</span></div>
+</span><span data-line="266"><span class="nd">@dataclass</span><span class="p">(</span><span class="n">frozen</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span data-line="267"><span class="k">class</span><span class="w"> </span><span class="nc">FileHandle</span><span class="p">:</span>
+</span><span data-line="268"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Simple representation of an open file handle&quot;&quot;&quot;</span>
+</span><span data-line="269">
+</span><span data-line="270">    <span class="n">handle</span><span class="p">:</span> <span class="nb">int</span>
+</span><span data-line="271">    <span class="n">attributes</span><span class="p">:</span> <span class="n">FileAttributes</span></div>
 
-</span><span data-line="270">
-</span><span data-line="271">
+</span><span data-line="272">
+</span><span data-line="273">
 <div class="viewcode-block" id="array2data">
 <a class="viewcode-back" href="../../../../protocols/mms/api_data.html#icspacket.proto.mms.data.array2data">[docs]</a>
-</span><span data-line="272"><span class="k">def</span><span class="w"> </span><span class="nf">array2data</span><span class="p">(</span><span class="n">obj</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">dict</span><span class="p">],</span> <span class="n">data</span><span class="p">:</span> <span class="n">Data</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-</span><span data-line="273"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span data-line="274"><span class="sd">    Convert a Python list of dicts into a MMS ``Data.array`` representation.</span>
-</span><span data-line="275">
-</span><span data-line="276"><span class="sd">    :param obj:</span>
-</span><span data-line="277"><span class="sd">        A list of dict objects, each convertible into :class:`Data`</span>
-</span><span data-line="278"><span class="sd">        using :func:`from_dict`.</span>
-</span><span data-line="279"><span class="sd">    :type obj: list[dict]</span>
-</span><span data-line="280"><span class="sd">    :param data:</span>
-</span><span data-line="281"><span class="sd">        Target :class:`Data` object to populate.</span>
-</span><span data-line="282"><span class="sd">    :type data: Data</span>
-</span><span data-line="283">
-</span><span data-line="284"><span class="sd">    .. versionadded:: 0.2.4</span>
-</span><span data-line="285"><span class="sd">    &quot;&quot;&quot;</span>
-</span><span data-line="286">    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
-</span><span data-line="287">        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Invalid array value: </span><span class="si">{</span><span class="n">obj</span><span class="si">!r}</span><span class="s2"> - expected list&quot;</span><span class="p">)</span>
-</span><span data-line="288">
-</span><span data-line="289">    <span class="n">data</span><span class="o">.</span><span class="n">array</span> <span class="o">=</span> <span class="n">Data</span><span class="o">.</span><span class="n">array_TYPE</span><span class="p">([</span><span class="n">from_dict</span><span class="p">(</span><span class="n">item</span><span class="p">)</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">obj</span><span class="p">])</span></div>
-
+</span><span data-line="274"><span class="k">def</span><span class="w"> </span><span class="nf">array2data</span><span class="p">(</span><span class="n">obj</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">dict</span><span class="p">],</span> <span class="n">data</span><span class="p">:</span> <span class="n">Data</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="275"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="276"><span class="sd">    Convert a Python list of dicts into a MMS ``Data.array`` representation.</span>
+</span><span data-line="277">
+</span><span data-line="278"><span class="sd">    :param obj:</span>
+</span><span data-line="279"><span class="sd">        A list of dict objects, each convertible into :class:`Data`</span>
+</span><span data-line="280"><span class="sd">        using :func:`from_dict`.</span>
+</span><span data-line="281"><span class="sd">    :type obj: list[dict]</span>
+</span><span data-line="282"><span class="sd">    :param data:</span>
+</span><span data-line="283"><span class="sd">        Target :class:`Data` object to populate.</span>
+</span><span data-line="284"><span class="sd">    :type data: Data</span>
+</span><span data-line="285">
+</span><span data-line="286"><span class="sd">    .. versionadded:: 0.2.4</span>
+</span><span data-line="287"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span data-line="288">    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+</span><span data-line="289">        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Invalid array value: </span><span class="si">{</span><span class="n">obj</span><span class="si">!r}</span><span class="s2"> - expected list&quot;</span><span class="p">)</span>
 </span><span data-line="290">
-</span><span data-line="291">
+</span><span data-line="291">    <span class="n">data</span><span class="o">.</span><span class="n">array</span> <span class="o">=</span> <span class="n">Data</span><span class="o">.</span><span class="n">array_TYPE</span><span class="p">([</span><span class="n">from_dict</span><span class="p">(</span><span class="n">item</span><span class="p">)</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">obj</span><span class="p">])</span></div>
+
+</span><span data-line="292">
+</span><span data-line="293">
 <div class="viewcode-block" id="struct2data">
 <a class="viewcode-back" href="../../../../protocols/mms/api_data.html#icspacket.proto.mms.data.struct2data">[docs]</a>
-</span><span data-line="292"><span class="k">def</span><span class="w"> </span><span class="nf">struct2data</span><span class="p">(</span><span class="n">obj</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">dict</span><span class="p">],</span> <span class="n">data</span><span class="p">:</span> <span class="n">Data</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-</span><span data-line="293"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span data-line="294"><span class="sd">    Convert a Python list of dicts into a MMS ``Data.structure`` representation.</span>
-</span><span data-line="295">
-</span><span data-line="296"><span class="sd">    Each dict is transformed into a :class:`Data` element using</span>
-</span><span data-line="297"><span class="sd">    :func:`from_dict`.</span>
-</span><span data-line="298">
-</span><span data-line="299"><span class="sd">    .. versionadded:: 0.2.4</span>
-</span><span data-line="300"><span class="sd">    &quot;&quot;&quot;</span>
-</span><span data-line="301">    <span class="n">structure</span> <span class="o">=</span> <span class="n">Data</span><span class="o">.</span><span class="n">structure_TYPE</span><span class="p">()</span>
-</span><span data-line="302">    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">obj</span><span class="p">:</span>
-</span><span data-line="303">        <span class="n">item_data</span> <span class="o">=</span> <span class="n">from_dict</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
-</span><span data-line="304">        <span class="n">structure</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">item_data</span><span class="p">)</span>
-</span><span data-line="305">    <span class="n">data</span><span class="o">.</span><span class="n">structure</span> <span class="o">=</span> <span class="n">structure</span></div>
+</span><span data-line="294"><span class="k">def</span><span class="w"> </span><span class="nf">struct2data</span><span class="p">(</span><span class="n">obj</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">dict</span><span class="p">],</span> <span class="n">data</span><span class="p">:</span> <span class="n">Data</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="295"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="296"><span class="sd">    Convert a Python list of dicts into a MMS ``Data.structure`` representation.</span>
+</span><span data-line="297">
+</span><span data-line="298"><span class="sd">    Each dict is transformed into a :class:`Data` element using</span>
+</span><span data-line="299"><span class="sd">    :func:`from_dict`.</span>
+</span><span data-line="300">
+</span><span data-line="301"><span class="sd">    .. versionadded:: 0.2.4</span>
+</span><span data-line="302"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span data-line="303">    <span class="n">structure</span> <span class="o">=</span> <span class="n">Data</span><span class="o">.</span><span class="n">structure_TYPE</span><span class="p">()</span>
+</span><span data-line="304">    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">obj</span><span class="p">:</span>
+</span><span data-line="305">        <span class="n">item_data</span> <span class="o">=</span> <span class="n">from_dict</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+</span><span data-line="306">        <span class="n">structure</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">item_data</span><span class="p">)</span>
+</span><span data-line="307">    <span class="n">data</span><span class="o">.</span><span class="n">structure</span> <span class="o">=</span> <span class="n">structure</span></div>
 
-</span><span data-line="306">
-</span><span data-line="307">
+</span><span data-line="308">
+</span><span data-line="309">
 <div class="viewcode-block" id="boolean2data">
 <a class="viewcode-back" href="../../../../protocols/mms/api_data.html#icspacket.proto.mms.data.boolean2data">[docs]</a>
-</span><span data-line="308"><span class="k">def</span><span class="w"> </span><span class="nf">boolean2data</span><span class="p">(</span><span class="n">obj</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="nb">str</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">Data</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-</span><span data-line="309"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span data-line="310"><span class="sd">    Convert a Python boolean or truthy string into MMS ``Data.boolean``.</span>
-</span><span data-line="311">
-</span><span data-line="312"><span class="sd">    Recognized truthy values include ``True``, ``1``, ``&quot;true&quot;``,</span>
-</span><span data-line="313"><span class="sd">    ``&quot;True&quot;``, ``&quot;On&quot;``, and ``&quot;on&quot;``.</span>
-</span><span data-line="314">
-</span><span data-line="315"><span class="sd">    .. versionadded:: 0.2.4</span>
-</span><span data-line="316"><span class="sd">    &quot;&quot;&quot;</span>
-</span><span data-line="317">    <span class="n">data</span><span class="o">.</span><span class="n">boolean</span> <span class="o">=</span> <span class="n">obj</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="s2">&quot;true&quot;</span><span class="p">,</span> <span class="s2">&quot;True&quot;</span><span class="p">,</span> <span class="s2">&quot;On&quot;</span><span class="p">,</span> <span class="s2">&quot;on&quot;</span><span class="p">)</span></div>
+</span><span data-line="310"><span class="k">def</span><span class="w"> </span><span class="nf">boolean2data</span><span class="p">(</span><span class="n">obj</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="nb">str</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">Data</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="311"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="312"><span class="sd">    Convert a Python boolean or truthy string into MMS ``Data.boolean``.</span>
+</span><span data-line="313">
+</span><span data-line="314"><span class="sd">    Recognized truthy values include ``True``, ``1``, ``&quot;true&quot;``,</span>
+</span><span data-line="315"><span class="sd">    ``&quot;True&quot;``, ``&quot;On&quot;``, and ``&quot;on&quot;``.</span>
+</span><span data-line="316">
+</span><span data-line="317"><span class="sd">    .. versionadded:: 0.2.4</span>
+</span><span data-line="318"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span data-line="319">    <span class="n">data</span><span class="o">.</span><span class="n">boolean</span> <span class="o">=</span> <span class="n">obj</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="s2">&quot;true&quot;</span><span class="p">,</span> <span class="s2">&quot;True&quot;</span><span class="p">,</span> <span class="s2">&quot;On&quot;</span><span class="p">,</span> <span class="s2">&quot;on&quot;</span><span class="p">)</span></div>
 
-</span><span data-line="318">
-</span><span data-line="319">
+</span><span data-line="320">
+</span><span data-line="321">
 <div class="viewcode-block" id="bit_string2data">
 <a class="viewcode-back" href="../../../../protocols/mms/api_data.html#icspacket.proto.mms.data.bit_string2data">[docs]</a>
-</span><span data-line="320"><span class="k">def</span><span class="w"> </span><span class="nf">bit_string2data</span><span class="p">(</span>
-</span><span data-line="321">    <span class="n">obj</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">bool</span><span class="p">]</span> <span class="o">|</span> <span class="nb">bytes</span> <span class="o">|</span> <span class="n">Data</span><span class="o">.</span><span class="n">bit_string_TYPE</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">Data</span>
-</span><span data-line="322"><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-</span><span data-line="323"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span data-line="324"><span class="sd">    Convert a dict, bytes, or bit_string_TYPE into MMS ``Data.bit_string``.</span>
-</span><span data-line="325">
-</span><span data-line="326"><span class="sd">    :param obj:</span>
-</span><span data-line="327"><span class="sd">        - If a ``dict[int, bool]``, the keys represent bit positions</span>
-</span><span data-line="328"><span class="sd">          (1-based) and the values indicate whether the bit is set.</span>
-</span><span data-line="329"><span class="sd">        - If ``bytes`` or ``bit_string_TYPE``, directly assigned.</span>
-</span><span data-line="330"><span class="sd">    :type obj: dict[int, bool] | bytes | Data.bit_string_TYPE</span>
-</span><span data-line="331"><span class="sd">    :param data:</span>
-</span><span data-line="332"><span class="sd">        Target :class:`Data` object to populate.</span>
-</span><span data-line="333"><span class="sd">    :type data: Data</span>
-</span><span data-line="334">
-</span><span data-line="335"><span class="sd">    .. versionadded:: 0.2.4</span>
-</span><span data-line="336"><span class="sd">    &quot;&quot;&quot;</span>
-</span><span data-line="337">    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
-</span><span data-line="338">        <span class="n">size</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
-</span><span data-line="339">        <span class="n">value</span> <span class="o">=</span> <span class="n">Data</span><span class="o">.</span><span class="n">bit_string_TYPE</span><span class="p">(</span><span class="n">size</span><span class="p">)</span>
-</span><span data-line="340">        <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">is_set</span> <span class="ow">in</span> <span class="n">obj</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-</span><span data-line="341">            <span class="n">value</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">is_set</span><span class="p">)</span>
-</span><span data-line="342">    <span class="k">else</span><span class="p">:</span>
-</span><span data-line="343">        <span class="n">value</span> <span class="o">=</span> <span class="n">obj</span>
-</span><span data-line="344">    <span class="n">data</span><span class="o">.</span><span class="n">bit_string</span> <span class="o">=</span> <span class="n">value</span></div>
+</span><span data-line="322"><span class="k">def</span><span class="w"> </span><span class="nf">bit_string2data</span><span class="p">(</span>
+</span><span data-line="323">    <span class="n">obj</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">bool</span><span class="p">]</span> <span class="o">|</span> <span class="nb">bytes</span> <span class="o">|</span> <span class="n">Data</span><span class="o">.</span><span class="n">bit_string_TYPE</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">Data</span>
+</span><span data-line="324"><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="325"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="326"><span class="sd">    Convert a dict, bytes, or bit_string_TYPE into MMS ``Data.bit_string``.</span>
+</span><span data-line="327">
+</span><span data-line="328"><span class="sd">    :param obj:</span>
+</span><span data-line="329"><span class="sd">        - If a ``dict[int, bool]``, the keys represent bit positions</span>
+</span><span data-line="330"><span class="sd">          (1-based) and the values indicate whether the bit is set.</span>
+</span><span data-line="331"><span class="sd">        - If ``bytes`` or ``bit_string_TYPE``, directly assigned.</span>
+</span><span data-line="332"><span class="sd">    :type obj: dict[int, bool] | bytes | Data.bit_string_TYPE</span>
+</span><span data-line="333"><span class="sd">    :param data:</span>
+</span><span data-line="334"><span class="sd">        Target :class:`Data` object to populate.</span>
+</span><span data-line="335"><span class="sd">    :type data: Data</span>
+</span><span data-line="336">
+</span><span data-line="337"><span class="sd">    .. versionadded:: 0.2.4</span>
+</span><span data-line="338"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span data-line="339">    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+</span><span data-line="340">        <span class="n">size</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+</span><span data-line="341">        <span class="n">value</span> <span class="o">=</span> <span class="n">Data</span><span class="o">.</span><span class="n">bit_string_TYPE</span><span class="p">(</span><span class="n">size</span><span class="p">)</span>
+</span><span data-line="342">        <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">is_set</span> <span class="ow">in</span> <span class="n">obj</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+</span><span data-line="343">            <span class="n">value</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">is_set</span><span class="p">)</span>
+</span><span data-line="344">    <span class="k">else</span><span class="p">:</span>
+</span><span data-line="345">        <span class="n">value</span> <span class="o">=</span> <span class="n">obj</span>
+</span><span data-line="346">    <span class="n">data</span><span class="o">.</span><span class="n">bit_string</span> <span class="o">=</span> <span class="n">value</span></div>
 
-</span><span data-line="345">
-</span><span data-line="346">
+</span><span data-line="347">
+</span><span data-line="348">
 <div class="viewcode-block" id="int2data">
 <a class="viewcode-back" href="../../../../protocols/mms/api_data.html#icspacket.proto.mms.data.int2data">[docs]</a>
-</span><span data-line="347"><span class="k">def</span><span class="w"> </span><span class="nf">int2data</span><span class="p">(</span><span class="n">obj</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">Data</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-</span><span data-line="348"><span class="w">    </span><span class="sd">&quot;&quot;&quot;.. versionadded:: 0.2.4&quot;&quot;&quot;</span>
-</span><span data-line="349">    <span class="n">data</span><span class="o">.</span><span class="n">integer</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span></div>
+</span><span data-line="349"><span class="k">def</span><span class="w"> </span><span class="nf">int2data</span><span class="p">(</span><span class="n">obj</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">Data</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="350"><span class="w">    </span><span class="sd">&quot;&quot;&quot;.. versionadded:: 0.2.4&quot;&quot;&quot;</span>
+</span><span data-line="351">    <span class="n">data</span><span class="o">.</span><span class="n">integer</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span></div>
 
-</span><span data-line="350">
-</span><span data-line="351">
+</span><span data-line="352">
+</span><span data-line="353">
 <div class="viewcode-block" id="uint2data">
 <a class="viewcode-back" href="../../../../protocols/mms/api_data.html#icspacket.proto.mms.data.uint2data">[docs]</a>
-</span><span data-line="352"><span class="k">def</span><span class="w"> </span><span class="nf">uint2data</span><span class="p">(</span><span class="n">obj</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">Data</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-</span><span data-line="353"><span class="w">    </span><span class="sd">&quot;&quot;&quot;.. versionadded:: 0.2.4&quot;&quot;&quot;</span>
-</span><span data-line="354">    <span class="k">if</span> <span class="n">obj</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
-</span><span data-line="355">        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Invalid unsigned integer value: </span><span class="si">{</span><span class="n">obj</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</span><span data-line="356">
-</span><span data-line="357">    <span class="n">data</span><span class="o">.</span><span class="n">unsigned</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span></div>
-
+</span><span data-line="354"><span class="k">def</span><span class="w"> </span><span class="nf">uint2data</span><span class="p">(</span><span class="n">obj</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">Data</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="355"><span class="w">    </span><span class="sd">&quot;&quot;&quot;.. versionadded:: 0.2.4&quot;&quot;&quot;</span>
+</span><span data-line="356">    <span class="k">if</span> <span class="n">obj</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+</span><span data-line="357">        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Invalid unsigned integer value: </span><span class="si">{</span><span class="n">obj</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </span><span data-line="358">
-</span><span data-line="359">
+</span><span data-line="359">    <span class="n">data</span><span class="o">.</span><span class="n">unsigned</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span></div>
+
+</span><span data-line="360">
+</span><span data-line="361">
 <div class="viewcode-block" id="float2data">
 <a class="viewcode-back" href="../../../../protocols/mms/api_data.html#icspacket.proto.mms.data.float2data">[docs]</a>
-</span><span data-line="360"><span class="k">def</span><span class="w"> </span><span class="nf">float2data</span><span class="p">(</span><span class="n">obj</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">Data</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-</span><span data-line="361"><span class="w">    </span><span class="sd">&quot;&quot;&quot;.. versionadded:: 0.2.4&quot;&quot;&quot;</span>
-</span><span data-line="362">    <span class="n">data</span><span class="o">.</span><span class="n">floating_point</span> <span class="o">=</span> <span class="n">create_floating_point_value</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span></div>
+</span><span data-line="362"><span class="k">def</span><span class="w"> </span><span class="nf">float2data</span><span class="p">(</span><span class="n">obj</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">Data</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="363"><span class="w">    </span><span class="sd">&quot;&quot;&quot;.. versionadded:: 0.2.4&quot;&quot;&quot;</span>
+</span><span data-line="364">    <span class="n">data</span><span class="o">.</span><span class="n">floating_point</span> <span class="o">=</span> <span class="n">create_floating_point_value</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span></div>
 
-</span><span data-line="363">
-</span><span data-line="364">
+</span><span data-line="365">
+</span><span data-line="366">
 <div class="viewcode-block" id="bytes2data">
 <a class="viewcode-back" href="../../../../protocols/mms/api_data.html#icspacket.proto.mms.data.bytes2data">[docs]</a>
-</span><span data-line="365"><span class="k">def</span><span class="w"> </span><span class="nf">bytes2data</span><span class="p">(</span><span class="n">obj</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">Data</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-</span><span data-line="366"><span class="w">    </span><span class="sd">&quot;&quot;&quot;.. versionadded:: 0.2.4&quot;&quot;&quot;</span>
-</span><span data-line="367">    <span class="n">data</span><span class="o">.</span><span class="n">octet_string</span> <span class="o">=</span> <span class="nb">bytes</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span></div>
+</span><span data-line="367"><span class="k">def</span><span class="w"> </span><span class="nf">bytes2data</span><span class="p">(</span><span class="n">obj</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">Data</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="368"><span class="w">    </span><span class="sd">&quot;&quot;&quot;.. versionadded:: 0.2.4&quot;&quot;&quot;</span>
+</span><span data-line="369">    <span class="n">data</span><span class="o">.</span><span class="n">octet_string</span> <span class="o">=</span> <span class="nb">bytes</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span></div>
 
-</span><span data-line="368">
-</span><span data-line="369">
+</span><span data-line="370">
+</span><span data-line="371">
 <div class="viewcode-block" id="visible_string2data">
 <a class="viewcode-back" href="../../../../protocols/mms/api_data.html#icspacket.proto.mms.data.visible_string2data">[docs]</a>
-</span><span data-line="370"><span class="k">def</span><span class="w"> </span><span class="nf">visible_string2data</span><span class="p">(</span><span class="n">obj</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">Data</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-</span><span data-line="371"><span class="w">    </span><span class="sd">&quot;&quot;&quot;.. versionadded:: 0.2.4&quot;&quot;&quot;</span>
-</span><span data-line="372">    <span class="n">data</span><span class="o">.</span><span class="n">visible_string</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span></div>
+</span><span data-line="372"><span class="k">def</span><span class="w"> </span><span class="nf">visible_string2data</span><span class="p">(</span><span class="n">obj</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">Data</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="373"><span class="w">    </span><span class="sd">&quot;&quot;&quot;.. versionadded:: 0.2.4&quot;&quot;&quot;</span>
+</span><span data-line="374">    <span class="n">data</span><span class="o">.</span><span class="n">visible_string</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span></div>
 
-</span><span data-line="373">
-</span><span data-line="374">
+</span><span data-line="375">
+</span><span data-line="376">
 <div class="viewcode-block" id="time2data">
 <a class="viewcode-back" href="../../../../protocols/mms/api_data.html#icspacket.proto.mms.data.time2data">[docs]</a>
-</span><span data-line="375"><span class="k">def</span><span class="w"> </span><span class="nf">time2data</span><span class="p">(</span><span class="n">obj</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">Data</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-</span><span data-line="376"><span class="w">    </span><span class="sd">&quot;&quot;&quot;.. versionadded:: 0.2.4&quot;&quot;&quot;</span>
-</span><span data-line="377">    <span class="n">data</span><span class="o">.</span><span class="n">generalized_time</span> <span class="o">=</span> <span class="nb">bytes</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span></div>
+</span><span data-line="377"><span class="k">def</span><span class="w"> </span><span class="nf">time2data</span><span class="p">(</span><span class="n">obj</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">Data</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="378"><span class="w">    </span><span class="sd">&quot;&quot;&quot;.. versionadded:: 0.2.4&quot;&quot;&quot;</span>
+</span><span data-line="379">    <span class="n">data</span><span class="o">.</span><span class="n">generalized_time</span> <span class="o">=</span> <span class="nb">bytes</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span></div>
 
-</span><span data-line="378">
-</span><span data-line="379">
+</span><span data-line="380">
+</span><span data-line="381">
 <div class="viewcode-block" id="bintime2data">
 <a class="viewcode-back" href="../../../../protocols/mms/api_data.html#icspacket.proto.mms.data.bintime2data">[docs]</a>
-</span><span data-line="380"><span class="k">def</span><span class="w"> </span><span class="nf">bintime2data</span><span class="p">(</span><span class="n">obj</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">Data</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-</span><span data-line="381"><span class="w">    </span><span class="sd">&quot;&quot;&quot;.. versionadded:: 0.2.4&quot;&quot;&quot;</span>
-</span><span data-line="382">    <span class="n">data</span><span class="o">.</span><span class="n">bintime</span> <span class="o">=</span> <span class="nb">bytes</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span></div>
+</span><span data-line="382"><span class="k">def</span><span class="w"> </span><span class="nf">bintime2data</span><span class="p">(</span><span class="n">obj</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">Data</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="383"><span class="w">    </span><span class="sd">&quot;&quot;&quot;.. versionadded:: 0.2.4&quot;&quot;&quot;</span>
+</span><span data-line="384">    <span class="n">data</span><span class="o">.</span><span class="n">bintime</span> <span class="o">=</span> <span class="nb">bytes</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span></div>
 
-</span><span data-line="383">
-</span><span data-line="384">
+</span><span data-line="385">
+</span><span data-line="386">
 <div class="viewcode-block" id="utctime2data">
 <a class="viewcode-back" href="../../../../protocols/mms/api_data.html#icspacket.proto.mms.data.utctime2data">[docs]</a>
-</span><span data-line="385"><span class="k">def</span><span class="w"> </span><span class="nf">utctime2data</span><span class="p">(</span><span class="n">obj</span><span class="p">:</span> <span class="nb">bytes</span> <span class="o">|</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">Data</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-</span><span data-line="386"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span data-line="387"><span class="sd">    Convert a UTC time value into MMS ``Data.utc_time``.</span>
-</span><span data-line="388">
-</span><span data-line="389"><span class="sd">    Accepts either raw bytes or a Python :class:`datetime.datetime`.</span>
-</span><span data-line="390"><span class="sd">    If a datetime is provided, it is converted using</span>
-</span><span data-line="391"><span class="sd">    :func:`Timestamp.from_datetime`.</span>
-</span><span data-line="392">
-</span><span data-line="393"><span class="sd">    .. versionadded:: 0.2.4</span>
-</span><span data-line="394"><span class="sd">    &quot;&quot;&quot;</span>
-</span><span data-line="395">    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">):</span>
-</span><span data-line="396">        <span class="n">obj</span> <span class="o">=</span> <span class="n">Timestamp</span><span class="o">.</span><span class="n">from_datetime</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
-</span><span data-line="397">    <span class="n">data</span><span class="o">.</span><span class="n">utc_time</span> <span class="o">=</span> <span class="nb">bytes</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span></div>
+</span><span data-line="387"><span class="k">def</span><span class="w"> </span><span class="nf">utctime2data</span><span class="p">(</span><span class="n">obj</span><span class="p">:</span> <span class="nb">bytes</span> <span class="o">|</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">Data</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="388"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="389"><span class="sd">    Convert a UTC time value into MMS ``Data.utc_time``.</span>
+</span><span data-line="390">
+</span><span data-line="391"><span class="sd">    Accepts either raw bytes or a Python :class:`datetime.datetime`.</span>
+</span><span data-line="392"><span class="sd">    If a datetime is provided, it is converted using</span>
+</span><span data-line="393"><span class="sd">    :func:`Timestamp.from_datetime`.</span>
+</span><span data-line="394">
+</span><span data-line="395"><span class="sd">    .. versionadded:: 0.2.4</span>
+</span><span data-line="396"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span data-line="397">    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">):</span>
+</span><span data-line="398">        <span class="n">obj</span> <span class="o">=</span> <span class="n">Timestamp</span><span class="o">.</span><span class="n">from_datetime</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
+</span><span data-line="399">    <span class="n">data</span><span class="o">.</span><span class="n">utc_time</span> <span class="o">=</span> <span class="nb">bytes</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span></div>
 
-</span><span data-line="398">
-</span><span data-line="399">
+</span><span data-line="400">
+</span><span data-line="401">
 <div class="viewcode-block" id="bcd2data">
 <a class="viewcode-back" href="../../../../protocols/mms/api_data.html#icspacket.proto.mms.data.bcd2data">[docs]</a>
-</span><span data-line="400"><span class="k">def</span><span class="w"> </span><span class="nf">bcd2data</span><span class="p">(</span><span class="n">obj</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">Data</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-</span><span data-line="401"><span class="w">    </span><span class="sd">&quot;&quot;&quot;.. versionadded:: 0.2.4&quot;&quot;&quot;</span>
-</span><span data-line="402">    <span class="n">data</span><span class="o">.</span><span class="n">bcd</span> <span class="o">=</span> <span class="n">obj</span></div>
+</span><span data-line="402"><span class="k">def</span><span class="w"> </span><span class="nf">bcd2data</span><span class="p">(</span><span class="n">obj</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">Data</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="403"><span class="w">    </span><span class="sd">&quot;&quot;&quot;.. versionadded:: 0.2.4&quot;&quot;&quot;</span>
+</span><span data-line="404">    <span class="n">data</span><span class="o">.</span><span class="n">bcd</span> <span class="o">=</span> <span class="n">obj</span></div>
 
-</span><span data-line="403">
-</span><span data-line="404">
+</span><span data-line="405">
+</span><span data-line="406">
 <div class="viewcode-block" id="boolean_array2data">
 <a class="viewcode-back" href="../../../../protocols/mms/api_data.html#icspacket.proto.mms.data.boolean_array2data">[docs]</a>
-</span><span data-line="405"><span class="k">def</span><span class="w"> </span><span class="nf">boolean_array2data</span><span class="p">(</span><span class="n">obj</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">bool</span><span class="p">],</span> <span class="n">data</span><span class="p">:</span> <span class="n">Data</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-</span><span data-line="406"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span data-line="407"><span class="sd">    Convert a Python list of booleans into MMS ``Data.booleanArray``.</span>
-</span><span data-line="408">
-</span><span data-line="409"><span class="sd">    :param obj:</span>
-</span><span data-line="410"><span class="sd">        Sequence of boolean values. Each element is mapped to an</span>
-</span><span data-line="411"><span class="sd">        index in the MMS ``booleanArray``.</span>
-</span><span data-line="412"><span class="sd">    :type obj: list[bool]</span>
-</span><span data-line="413">
-</span><span data-line="414"><span class="sd">    .. versionadded:: 0.2.4</span>
-</span><span data-line="415"><span class="sd">    &quot;&quot;&quot;</span>
-</span><span data-line="416">    <span class="n">value</span> <span class="o">=</span> <span class="n">Data</span><span class="o">.</span><span class="n">booleanArray_TYPE</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">obj</span><span class="p">))</span>
-</span><span data-line="417">    <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">is_set</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">obj</span><span class="p">):</span>
-</span><span data-line="418">        <span class="n">value</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="nb">bool</span><span class="p">(</span><span class="n">is_set</span><span class="p">))</span>
-</span><span data-line="419">    <span class="n">data</span><span class="o">.</span><span class="n">booleanArray</span> <span class="o">=</span> <span class="n">value</span></div>
+</span><span data-line="407"><span class="k">def</span><span class="w"> </span><span class="nf">boolean_array2data</span><span class="p">(</span><span class="n">obj</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">bool</span><span class="p">],</span> <span class="n">data</span><span class="p">:</span> <span class="n">Data</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="408"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="409"><span class="sd">    Convert a Python list of booleans into MMS ``Data.booleanArray``.</span>
+</span><span data-line="410">
+</span><span data-line="411"><span class="sd">    :param obj:</span>
+</span><span data-line="412"><span class="sd">        Sequence of boolean values. Each element is mapped to an</span>
+</span><span data-line="413"><span class="sd">        index in the MMS ``booleanArray``.</span>
+</span><span data-line="414"><span class="sd">    :type obj: list[bool]</span>
+</span><span data-line="415">
+</span><span data-line="416"><span class="sd">    .. versionadded:: 0.2.4</span>
+</span><span data-line="417"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span data-line="418">    <span class="n">value</span> <span class="o">=</span> <span class="n">Data</span><span class="o">.</span><span class="n">booleanArray_TYPE</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">obj</span><span class="p">))</span>
+</span><span data-line="419">    <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">is_set</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">obj</span><span class="p">):</span>
+</span><span data-line="420">        <span class="n">value</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="nb">bool</span><span class="p">(</span><span class="n">is_set</span><span class="p">))</span>
+</span><span data-line="421">    <span class="n">data</span><span class="o">.</span><span class="n">booleanArray</span> <span class="o">=</span> <span class="n">value</span></div>
 
-</span><span data-line="420">
-</span><span data-line="421">
+</span><span data-line="422">
+</span><span data-line="423">
 <div class="viewcode-block" id="obj_id2data">
 <a class="viewcode-back" href="../../../../protocols/mms/api_data.html#icspacket.proto.mms.data.obj_id2data">[docs]</a>
-</span><span data-line="422"><span class="k">def</span><span class="w"> </span><span class="nf">obj_id2data</span><span class="p">(</span><span class="n">obj</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">Data</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-</span><span data-line="423"><span class="w">    </span><span class="sd">&quot;&quot;&quot;.. versionadded:: 0.2.4&quot;&quot;&quot;</span>
-</span><span data-line="424">    <span class="n">data</span><span class="o">.</span><span class="n">objId</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span></div>
+</span><span data-line="424"><span class="k">def</span><span class="w"> </span><span class="nf">obj_id2data</span><span class="p">(</span><span class="n">obj</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">Data</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="425"><span class="w">    </span><span class="sd">&quot;&quot;&quot;.. versionadded:: 0.2.4&quot;&quot;&quot;</span>
+</span><span data-line="426">    <span class="n">data</span><span class="o">.</span><span class="n">objId</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span></div>
 
-</span><span data-line="425">
-</span><span data-line="426">
+</span><span data-line="427">
+</span><span data-line="428">
 <div class="viewcode-block" id="mms_string2data">
 <a class="viewcode-back" href="../../../../protocols/mms/api_data.html#icspacket.proto.mms.data.mms_string2data">[docs]</a>
-</span><span data-line="427"><span class="k">def</span><span class="w"> </span><span class="nf">mms_string2data</span><span class="p">(</span><span class="n">obj</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">Data</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-</span><span data-line="428"><span class="w">    </span><span class="sd">&quot;&quot;&quot;.. versionadded:: 0.2.4&quot;&quot;&quot;</span>
-</span><span data-line="429">    <span class="n">data</span><span class="o">.</span><span class="n">mMSString</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span></div>
+</span><span data-line="429"><span class="k">def</span><span class="w"> </span><span class="nf">mms_string2data</span><span class="p">(</span><span class="n">obj</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">Data</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="430"><span class="w">    </span><span class="sd">&quot;&quot;&quot;.. versionadded:: 0.2.4&quot;&quot;&quot;</span>
+</span><span data-line="431">    <span class="n">data</span><span class="o">.</span><span class="n">mMSString</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span></div>
 
-</span><span data-line="430">
-</span><span data-line="431">
+</span><span data-line="432">
+</span><span data-line="433">
 <div class="viewcode-block" id="from_dict">
 <a class="viewcode-back" href="../../../../protocols/mms/api_data.html#icspacket.proto.mms.data.from_dict">[docs]</a>
-</span><span data-line="432"><span class="k">def</span><span class="w"> </span><span class="nf">from_dict</span><span class="p">(</span><span class="n">obj</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Data</span><span class="p">:</span>
-</span><span data-line="433"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span data-line="434"><span class="sd">    Construct a :class:`Data` object from a Python dictionary.</span>
-</span><span data-line="435">
-</span><span data-line="436"><span class="sd">    This is a high-level factory function that simplifies the creation</span>
-</span><span data-line="437"><span class="sd">    of MMS ``Data`` instances from JSON-like structures. Keys in the</span>
-</span><span data-line="438"><span class="sd">    dictionary correspond to MMS ``Data.PRESENT`` discriminators</span>
-</span><span data-line="439"><span class="sd">    (e.g., ``&quot;integer&quot;``, ``&quot;boolean&quot;``, ``&quot;array&quot;``). Values are</span>
-</span><span data-line="440"><span class="sd">    converted using type-specific converters registered in</span>
-</span><span data-line="441"><span class="sd">    :data:`_DATA_CONVERT`.</span>
-</span><span data-line="442">
-</span><span data-line="443"><span class="sd">    Example</span>
-</span><span data-line="444"><span class="sd">    -------</span>
-</span><span data-line="445">
-</span><span data-line="446"><span class="sd">    .. code-block:: python</span>
+</span><span data-line="434"><span class="k">def</span><span class="w"> </span><span class="nf">from_dict</span><span class="p">(</span><span class="n">obj</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Data</span><span class="p">:</span>
+</span><span data-line="435"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="436"><span class="sd">    Construct a :class:`Data` object from a Python dictionary.</span>
+</span><span data-line="437">
+</span><span data-line="438"><span class="sd">    This is a high-level factory function that simplifies the creation</span>
+</span><span data-line="439"><span class="sd">    of MMS ``Data`` instances from JSON-like structures. Keys in the</span>
+</span><span data-line="440"><span class="sd">    dictionary correspond to MMS ``Data.PRESENT`` discriminators</span>
+</span><span data-line="441"><span class="sd">    (e.g., ``&quot;integer&quot;``, ``&quot;boolean&quot;``, ``&quot;array&quot;``). Values are</span>
+</span><span data-line="442"><span class="sd">    converted using type-specific converters registered in</span>
+</span><span data-line="443"><span class="sd">    :data:`_DATA_CONVERT`.</span>
+</span><span data-line="444">
+</span><span data-line="445"><span class="sd">    Example</span>
+</span><span data-line="446"><span class="sd">    -------</span>
 </span><span data-line="447">
-</span><span data-line="448"><span class="sd">        payload = {</span>
-</span><span data-line="449"><span class="sd">            &quot;integer&quot;: 42,</span>
-</span><span data-line="450"><span class="sd">            &quot;visible_string&quot;: &quot;hello&quot;,</span>
-</span><span data-line="451"><span class="sd">            &quot;boolean&quot;: True,</span>
-</span><span data-line="452"><span class="sd">            &quot;array&quot;: [</span>
-</span><span data-line="453"><span class="sd">                {&quot;integer&quot;: 1},</span>
-</span><span data-line="454"><span class="sd">                {&quot;integer&quot;: 2},</span>
-</span><span data-line="455"><span class="sd">            ],</span>
-</span><span data-line="456"><span class="sd">        }</span>
-</span><span data-line="457">
-</span><span data-line="458"><span class="sd">        data = from_dict(payload)</span>
+</span><span data-line="448"><span class="sd">    .. code-block:: python</span>
+</span><span data-line="449">
+</span><span data-line="450"><span class="sd">        payload = {</span>
+</span><span data-line="451"><span class="sd">            &quot;integer&quot;: 42,</span>
+</span><span data-line="452"><span class="sd">            &quot;visible_string&quot;: &quot;hello&quot;,</span>
+</span><span data-line="453"><span class="sd">            &quot;boolean&quot;: True,</span>
+</span><span data-line="454"><span class="sd">            &quot;array&quot;: [</span>
+</span><span data-line="455"><span class="sd">                {&quot;integer&quot;: 1},</span>
+</span><span data-line="456"><span class="sd">                {&quot;integer&quot;: 2},</span>
+</span><span data-line="457"><span class="sd">            ],</span>
+</span><span data-line="458"><span class="sd">        }</span>
 </span><span data-line="459">
-</span><span data-line="460"><span class="sd">    The above produces a :class:`Data` object equivalent to one that</span>
-</span><span data-line="461"><span class="sd">    would have been constructed manually.</span>
-</span><span data-line="462">
-</span><span data-line="463"><span class="sd">    :param obj:</span>
-</span><span data-line="464"><span class="sd">        Dictionary mapping field names (without the ``PR_`` prefix)</span>
-</span><span data-line="465"><span class="sd">        to Python values convertible into MMS ``Data`` elements.</span>
-</span><span data-line="466"><span class="sd">    :type obj: dict[str, Any]</span>
-</span><span data-line="467"><span class="sd">    :return:</span>
-</span><span data-line="468"><span class="sd">        A fully constructed :class:`Data` instance.</span>
-</span><span data-line="469"><span class="sd">    :rtype: Data</span>
-</span><span data-line="470">
-</span><span data-line="471"><span class="sd">    .. versionadded:: 0.2.4</span>
-</span><span data-line="472"><span class="sd">    &quot;&quot;&quot;</span>
-</span><span data-line="473">    <span class="n">data</span> <span class="o">=</span> <span class="n">Data</span><span class="p">()</span>
-</span><span data-line="474">    <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">obj</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-</span><span data-line="475">        <span class="n">present</span> <span class="o">=</span> <span class="n">Data</span><span class="o">.</span><span class="n">PRESENT</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;PR_</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">]</span>
-</span><span data-line="476">        <span class="n">converter</span> <span class="o">=</span> <span class="n">_DATA_CONVERT</span><span class="p">[</span><span class="n">present</span><span class="p">]</span>
-</span><span data-line="477">        <span class="n">converter</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
-</span><span data-line="478">    <span class="k">return</span> <span class="n">data</span></div>
+</span><span data-line="460"><span class="sd">        data = from_dict(payload)</span>
+</span><span data-line="461">
+</span><span data-line="462"><span class="sd">    The above produces a :class:`Data` object equivalent to one that</span>
+</span><span data-line="463"><span class="sd">    would have been constructed manually.</span>
+</span><span data-line="464">
+</span><span data-line="465"><span class="sd">    :param obj:</span>
+</span><span data-line="466"><span class="sd">        Dictionary mapping field names (without the ``PR_`` prefix)</span>
+</span><span data-line="467"><span class="sd">        to Python values convertible into MMS ``Data`` elements.</span>
+</span><span data-line="468"><span class="sd">    :type obj: dict[str, Any]</span>
+</span><span data-line="469"><span class="sd">    :return:</span>
+</span><span data-line="470"><span class="sd">        A fully constructed :class:`Data` instance.</span>
+</span><span data-line="471"><span class="sd">    :rtype: Data</span>
+</span><span data-line="472">
+</span><span data-line="473"><span class="sd">    .. versionadded:: 0.2.4</span>
+</span><span data-line="474"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span data-line="475">    <span class="n">data</span> <span class="o">=</span> <span class="n">Data</span><span class="p">()</span>
+</span><span data-line="476">    <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">obj</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+</span><span data-line="477">        <span class="n">present</span> <span class="o">=</span> <span class="n">Data</span><span class="o">.</span><span class="n">PRESENT</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;PR_</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">]</span>
+</span><span data-line="478">        <span class="n">converter</span> <span class="o">=</span> <span class="n">_DATA_CONVERT</span><span class="p">[</span><span class="n">present</span><span class="p">]</span>
+</span><span data-line="479">        <span class="n">converter</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+</span><span data-line="480">    <span class="k">return</span> <span class="n">data</span></div>
 
-</span><span data-line="479">
-</span><span data-line="480">
-</span><span data-line="481"><span class="n">_DATA_CONVERT</span> <span class="o">=</span> <span class="p">{</span>
-</span><span data-line="482">    <span class="n">Data</span><span class="o">.</span><span class="n">PRESENT</span><span class="o">.</span><span class="n">PR_array</span><span class="p">:</span> <span class="n">array2data</span><span class="p">,</span>
-</span><span data-line="483">    <span class="n">Data</span><span class="o">.</span><span class="n">PRESENT</span><span class="o">.</span><span class="n">PR_structure</span><span class="p">:</span> <span class="n">struct2data</span><span class="p">,</span>
-</span><span data-line="484">    <span class="n">Data</span><span class="o">.</span><span class="n">PRESENT</span><span class="o">.</span><span class="n">PR_boolean</span><span class="p">:</span> <span class="n">boolean2data</span><span class="p">,</span>
-</span><span data-line="485">    <span class="n">Data</span><span class="o">.</span><span class="n">PRESENT</span><span class="o">.</span><span class="n">PR_bit_string</span><span class="p">:</span> <span class="n">bit_string2data</span><span class="p">,</span>
-</span><span data-line="486">    <span class="n">Data</span><span class="o">.</span><span class="n">PRESENT</span><span class="o">.</span><span class="n">PR_integer</span><span class="p">:</span> <span class="n">int2data</span><span class="p">,</span>
-</span><span data-line="487">    <span class="n">Data</span><span class="o">.</span><span class="n">PRESENT</span><span class="o">.</span><span class="n">PR_unsigned</span><span class="p">:</span> <span class="n">uint2data</span><span class="p">,</span>
-</span><span data-line="488">    <span class="n">Data</span><span class="o">.</span><span class="n">PRESENT</span><span class="o">.</span><span class="n">PR_floating_point</span><span class="p">:</span> <span class="n">float2data</span><span class="p">,</span>
-</span><span data-line="489">    <span class="n">Data</span><span class="o">.</span><span class="n">PRESENT</span><span class="o">.</span><span class="n">PR_octet_string</span><span class="p">:</span> <span class="n">bytes2data</span><span class="p">,</span>
-</span><span data-line="490">    <span class="n">Data</span><span class="o">.</span><span class="n">PRESENT</span><span class="o">.</span><span class="n">PR_visible_string</span><span class="p">:</span> <span class="n">visible_string2data</span><span class="p">,</span>
-</span><span data-line="491">    <span class="n">Data</span><span class="o">.</span><span class="n">PRESENT</span><span class="o">.</span><span class="n">PR_generalized_time</span><span class="p">:</span> <span class="n">time2data</span><span class="p">,</span>
-</span><span data-line="492">    <span class="n">Data</span><span class="o">.</span><span class="n">PRESENT</span><span class="o">.</span><span class="n">PR_binary_time</span><span class="p">:</span> <span class="n">bintime2data</span><span class="p">,</span>
-</span><span data-line="493">    <span class="n">Data</span><span class="o">.</span><span class="n">PRESENT</span><span class="o">.</span><span class="n">PR_bcd</span><span class="p">:</span> <span class="n">bcd2data</span><span class="p">,</span>
-</span><span data-line="494">    <span class="n">Data</span><span class="o">.</span><span class="n">PRESENT</span><span class="o">.</span><span class="n">PR_booleanArray</span><span class="p">:</span> <span class="n">boolean_array2data</span><span class="p">,</span>
-</span><span data-line="495">    <span class="n">Data</span><span class="o">.</span><span class="n">PRESENT</span><span class="o">.</span><span class="n">PR_objId</span><span class="p">:</span> <span class="n">obj_id2data</span><span class="p">,</span>
-</span><span data-line="496">    <span class="n">Data</span><span class="o">.</span><span class="n">PRESENT</span><span class="o">.</span><span class="n">PR_mMSString</span><span class="p">:</span> <span class="n">mms_string2data</span><span class="p">,</span>
-</span><span data-line="497">    <span class="n">Data</span><span class="o">.</span><span class="n">PRESENT</span><span class="o">.</span><span class="n">PR_utc_time</span><span class="p">:</span> <span class="n">utctime2data</span><span class="p">,</span>
-</span><span data-line="498"><span class="p">}</span>
+</span><span data-line="481">
+</span><span data-line="482">
+</span><span data-line="483"><span class="n">_DATA_CONVERT</span> <span class="o">=</span> <span class="p">{</span>
+</span><span data-line="484">    <span class="n">Data</span><span class="o">.</span><span class="n">PRESENT</span><span class="o">.</span><span class="n">PR_array</span><span class="p">:</span> <span class="n">array2data</span><span class="p">,</span>
+</span><span data-line="485">    <span class="n">Data</span><span class="o">.</span><span class="n">PRESENT</span><span class="o">.</span><span class="n">PR_structure</span><span class="p">:</span> <span class="n">struct2data</span><span class="p">,</span>
+</span><span data-line="486">    <span class="n">Data</span><span class="o">.</span><span class="n">PRESENT</span><span class="o">.</span><span class="n">PR_boolean</span><span class="p">:</span> <span class="n">boolean2data</span><span class="p">,</span>
+</span><span data-line="487">    <span class="n">Data</span><span class="o">.</span><span class="n">PRESENT</span><span class="o">.</span><span class="n">PR_bit_string</span><span class="p">:</span> <span class="n">bit_string2data</span><span class="p">,</span>
+</span><span data-line="488">    <span class="n">Data</span><span class="o">.</span><span class="n">PRESENT</span><span class="o">.</span><span class="n">PR_integer</span><span class="p">:</span> <span class="n">int2data</span><span class="p">,</span>
+</span><span data-line="489">    <span class="n">Data</span><span class="o">.</span><span class="n">PRESENT</span><span class="o">.</span><span class="n">PR_unsigned</span><span class="p">:</span> <span class="n">uint2data</span><span class="p">,</span>
+</span><span data-line="490">    <span class="n">Data</span><span class="o">.</span><span class="n">PRESENT</span><span class="o">.</span><span class="n">PR_floating_point</span><span class="p">:</span> <span class="n">float2data</span><span class="p">,</span>
+</span><span data-line="491">    <span class="n">Data</span><span class="o">.</span><span class="n">PRESENT</span><span class="o">.</span><span class="n">PR_octet_string</span><span class="p">:</span> <span class="n">bytes2data</span><span class="p">,</span>
+</span><span data-line="492">    <span class="n">Data</span><span class="o">.</span><span class="n">PRESENT</span><span class="o">.</span><span class="n">PR_visible_string</span><span class="p">:</span> <span class="n">visible_string2data</span><span class="p">,</span>
+</span><span data-line="493">    <span class="n">Data</span><span class="o">.</span><span class="n">PRESENT</span><span class="o">.</span><span class="n">PR_generalized_time</span><span class="p">:</span> <span class="n">time2data</span><span class="p">,</span>
+</span><span data-line="494">    <span class="n">Data</span><span class="o">.</span><span class="n">PRESENT</span><span class="o">.</span><span class="n">PR_binary_time</span><span class="p">:</span> <span class="n">bintime2data</span><span class="p">,</span>
+</span><span data-line="495">    <span class="n">Data</span><span class="o">.</span><span class="n">PRESENT</span><span class="o">.</span><span class="n">PR_bcd</span><span class="p">:</span> <span class="n">bcd2data</span><span class="p">,</span>
+</span><span data-line="496">    <span class="n">Data</span><span class="o">.</span><span class="n">PRESENT</span><span class="o">.</span><span class="n">PR_booleanArray</span><span class="p">:</span> <span class="n">boolean_array2data</span><span class="p">,</span>
+</span><span data-line="497">    <span class="n">Data</span><span class="o">.</span><span class="n">PRESENT</span><span class="o">.</span><span class="n">PR_objId</span><span class="p">:</span> <span class="n">obj_id2data</span><span class="p">,</span>
+</span><span data-line="498">    <span class="n">Data</span><span class="o">.</span><span class="n">PRESENT</span><span class="o">.</span><span class="n">PR_mMSString</span><span class="p">:</span> <span class="n">mms_string2data</span><span class="p">,</span>
+</span><span data-line="499">    <span class="n">Data</span><span class="o">.</span><span class="n">PRESENT</span><span class="o">.</span><span class="n">PR_utc_time</span><span class="p">:</span> <span class="n">utctime2data</span><span class="p">,</span>
+</span><span data-line="500"><span class="p">}</span>
 </span></pre></div>
         </article><button class="back-to-top" type="button">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -848,7 +850,7 @@ data-aria-dark="Switch to auto color mode">
     </div>
   </div>
 </footer>
-      <script src="../../../../_static/documentation_options.js?v=ded930d6"></script>
+      <script src="../../../../_static/documentation_options.js?v=2624b5fb"></script>
       <script src="../../../../_static/doctools.js?v=fd6eb6e6"></script>
       <script src="../../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
       <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>

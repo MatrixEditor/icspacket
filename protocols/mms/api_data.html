@@ -2,7 +2,7 @@
 <html lang="en" data-accent-color="lime" data-content_root="../../">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Data Conversion - icspacket 0.1.dev1+ga30386068 documentation</title><link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="Protocol Utilities" href="api_utils.html" /><link rel="prev" title="MMS Connection" href="api_conn.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Data Conversion - icspacket 0.1.dev1+g19d351426 documentation</title><link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="Protocol Utilities" href="api_utils.html" /><link rel="prev" title="MMS Connection" href="api_conn.html" />
       <link rel="canonical" href="https://matrixeditor.github.io/icspacket/protocols/mms/api_data.html" /><script>
     function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
     setColorMode(localStorage._theme||"dark");
@@ -331,44 +331,46 @@ data-aria-dark="Switch to auto color mode">
 <dl class="py class">
 <dt class="sig sig-object py" id="icspacket.proto.mms.data.IEEE754Type">
 <span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">icspacket.proto.mms.data.</span></span><span class="sig-name descname"><span class="pre">IEEE754Type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">values</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/icspacket/proto/mms/data.html#IEEE754Type"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.mms.data.IEEE754Type" title="Link to this definition">#</a></dt>
-<dd><p>Enumeration representing supported IEEE 754 floating-point formats.</p>
-<p>The enumeration values encode the bit-width of the <strong>exponent field</strong>
-used in the floating-point representation. This width determines
-whether the format corresponds to a 32-bit or 64-bit IEEE 754 float.</p>
+<dd><p>Discriminator byte read by <a class="reference internal" href="#icspacket.proto.mms.data.IEEE754PackedFloat" title="icspacket.proto.mms.data.IEEE754PackedFloat"><code class="xref py py-class docutils literal notranslate"><span class="pre">IEEE754PackedFloat</span></code></a> to pick the codec
+used for the value bytes that follow it.</p>
+<p>Single- and double-precision IEEE 754 floats differ in how many bits
+their exponent occupies, so this enum simply stores that bit count and
+uses it to tell the two layouts apart.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.mms.data.IEEE754Type.FLOAT32">
 <span class="sig-name descname"><span class="pre">FLOAT32</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">8</span></span><a class="headerlink" href="#icspacket.proto.mms.data.IEEE754Type.FLOAT32" title="Link to this definition">#</a></dt>
-<dd><p>Single-precision floating-point type (8-bit exponent width).</p>
+<dd><p>Single-precision layout, identified by its 8-bit exponent field.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.mms.data.IEEE754Type.FLOAT64">
 <span class="sig-name descname"><span class="pre">FLOAT64</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">11</span></span><a class="headerlink" href="#icspacket.proto.mms.data.IEEE754Type.FLOAT64" title="Link to this definition">#</a></dt>
-<dd><p>Double-precision floating-point type (11-bit exponent width).</p>
+<dd><p>Double-precision layout, identified by its 11-bit exponent field.</p>
 </dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="icspacket.proto.mms.data.IEEE754PackedFloat">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">icspacket.proto.mms.data.</span></span><span class="sig-name descname"><span class="pre">IEEE754PackedFloat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">exponent_width</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#icspacket.proto.mms.data.IEEE754Type" title="icspacket.proto.mms.data.IEEE754Type"><span class="pre">IEEE754Type</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">IEEE754Type.FLOAT32</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">object</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">bytes</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/icspacket/proto/mms/data.html#IEEE754PackedFloat"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.mms.data.IEEE754PackedFloat" title="Link to this definition">#</a></dt>
-<dd><p>Structured representation of a floating-point value encoded in IEEE 754
-format.</p>
-<p>This structure encapsulates both the <strong>exponent width</strong> (to distinguish
-between 32-bit and 64-bit IEEE 754 floating-point values) and the
-associated binary-encoded value.</p>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">icspacket.proto.mms.data.</span></span><span class="sig-name descname"><span class="pre">IEEE754PackedFloat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">exponent_width</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#icspacket.proto.mms.data.IEEE754Type" title="icspacket.proto.mms.data.IEEE754Type"><span class="pre">IEEE754Type</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">IEEE754Type.FLOAT32</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">bytes</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/icspacket/proto/mms/data.html#IEEE754PackedFloat"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.mms.data.IEEE754PackedFloat" title="Link to this definition">#</a></dt>
+<dd><p>Wire format of an MMS <code class="docutils literal notranslate"><span class="pre">FloatingPoint</span></code> value: a leading
+<a class="reference internal" href="#icspacket.proto.mms.data.IEEE754Type" title="icspacket.proto.mms.data.IEEE754Type"><code class="xref py py-class docutils literal notranslate"><span class="pre">IEEE754Type</span></code></a> tag followed by the value itself.</p>
+<p>Packing and unpacking this struct is how <a class="reference internal" href="#icspacket.proto.mms.data.create_floating_point_value" title="icspacket.proto.mms.data.create_floating_point_value"><code class="xref py py-func docutils literal notranslate"><span class="pre">create_floating_point_value()</span></code></a>
+and <a class="reference internal" href="#icspacket.proto.mms.data.get_floating_point_value" title="icspacket.proto.mms.data.get_floating_point_value"><code class="xref py py-func docutils literal notranslate"><span class="pre">get_floating_point_value()</span></code></a> convert between plain Python floats
+and the tagged byte string MMS transports as <code class="docutils literal notranslate"><span class="pre">FloatingPoint</span></code>.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.mms.data.IEEE754PackedFloat.exponent_width">
 <span class="sig-name descname"><span class="pre">exponent_width</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#icspacket.proto.mms.data.IEEE754Type" title="icspacket.proto.mms.data.IEEE754Type"><span class="pre">IEEE754Type</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">int</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">8</span></span><a class="headerlink" href="#icspacket.proto.mms.data.IEEE754PackedFloat.exponent_width" title="Link to this definition">#</a></dt>
-<dd><p>The exponent width that determines the floating-point format (either
-<code class="docutils literal notranslate"><span class="pre">FLOAT32</span></code> or <code class="docutils literal notranslate"><span class="pre">FLOAT64</span></code>). Defaults to <code class="docutils literal notranslate"><span class="pre">FLOAT32</span></code>.</p>
+<dd><p>Tag selecting the codec applied to <a class="reference internal" href="#icspacket.proto.mms.data.IEEE754PackedFloat.value" title="icspacket.proto.mms.data.IEEE754PackedFloat.value"><code class="xref py py-attr docutils literal notranslate"><span class="pre">value</span></code></a> (<code class="docutils literal notranslate"><span class="pre">FLOAT32</span></code> or
+<code class="docutils literal notranslate"><span class="pre">FLOAT64</span></code>); defaults to <code class="docutils literal notranslate"><span class="pre">FLOAT32</span></code> when left unset.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.mms.data.IEEE754PackedFloat.value">
-<span class="sig-name descname"><span class="pre">value</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">object</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">bytes</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></span><a class="headerlink" href="#icspacket.proto.mms.data.IEEE754PackedFloat.value" title="Link to this definition">#</a></dt>
-<dd><p>The floating-point value encoded according to the specified exponent width.
-If the width is not recognized, the raw bytes are stored instead.</p>
+<span class="sig-name descname"><span class="pre">value</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">bytes</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></span><a class="headerlink" href="#icspacket.proto.mms.data.IEEE754PackedFloat.value" title="Link to this definition">#</a></dt>
+<dd><p>The float itself, packed or unpacked using the codec chosen by
+<a class="reference internal" href="#icspacket.proto.mms.data.IEEE754PackedFloat.exponent_width" title="icspacket.proto.mms.data.IEEE754PackedFloat.exponent_width"><code class="xref py py-attr docutils literal notranslate"><span class="pre">exponent_width</span></code></a>. Falls back to a raw byte string when the tag
+does not match a recognized codec.</p>
 </dd></dl>
 
 </dd></dl>
@@ -429,44 +431,50 @@ value or raw bytes.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="icspacket.proto.mms.data.Timestamp">
 <span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">icspacket.proto.mms.data.</span></span><span class="sig-name descname"><span class="pre">Timestamp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">timeval</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bytes</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">b'\x00\x00\x00\x00'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fraction</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bytes</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">b'\x00\x00\x00'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">leap_second_known</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clock_failure</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clock_not_synced</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">accuracy</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/icspacket/proto/mms/data.html#Timestamp"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.mms.data.Timestamp" title="Link to this definition">#</a></dt>
-<dd><p>Structured bitfield representation of a timestamp value.</p>
+<dd><p>Field-level view over a packed 8-byte MMS UTC timestamp.</p>
+<p>Splits the raw value carried by a <code class="xref py py-class docutils literal notranslate"><span class="pre">UtcTime</span></code> into a whole-seconds
+counter, a sub-second fraction, three one-bit status flags, and an
+accuracy indicator, so each part can be read or set directly instead of
+manipulating raw bytes. Build an instance with
+<a class="reference internal" href="#icspacket.proto.mms.data.Timestamp.from_utc_time" title="icspacket.proto.mms.data.Timestamp.from_utc_time"><code class="xref py py-meth docutils literal notranslate"><span class="pre">from_utc_time()</span></code></a>/<a class="reference internal" href="#icspacket.proto.mms.data.Timestamp.from_datetime" title="icspacket.proto.mms.data.Timestamp.from_datetime"><code class="xref py py-meth docutils literal notranslate"><span class="pre">from_datetime()</span></code></a> and read it back as plain
+Python values through <a class="reference internal" href="#icspacket.proto.mms.data.Timestamp.seconds" title="icspacket.proto.mms.data.Timestamp.seconds"><code class="xref py py-attr docutils literal notranslate"><span class="pre">seconds</span></code></a>/<a class="reference internal" href="#icspacket.proto.mms.data.Timestamp.datetime" title="icspacket.proto.mms.data.Timestamp.datetime"><code class="xref py py-attr docutils literal notranslate"><span class="pre">datetime</span></code></a>.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">Added in version 0.2.3.</span></p>
 </div>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.mms.data.Timestamp.timeval">
 <span class="sig-name descname"><span class="pre">timeval</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bytes</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">b'\x00\x00\x00\x00'</span></span><a class="headerlink" href="#icspacket.proto.mms.data.Timestamp.timeval" title="Link to this definition">#</a></dt>
-<dd><p>4-byte unsigned integer representing the elapsed time in seconds.</p>
+<dd><p>Elapsed seconds, packed as an unsigned big-endian value across these 4 bytes; see <a class="reference internal" href="#icspacket.proto.mms.data.Timestamp.seconds" title="icspacket.proto.mms.data.Timestamp.seconds"><code class="xref py py-attr docutils literal notranslate"><span class="pre">seconds</span></code></a> for reading/writing it as a Python int.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.mms.data.Timestamp.fraction">
 <span class="sig-name descname"><span class="pre">fraction</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bytes</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">b'\x00\x00\x00'</span></span><a class="headerlink" href="#icspacket.proto.mms.data.Timestamp.fraction" title="Link to this definition">#</a></dt>
-<dd><p>3-byte fractional component of the timestamp for sub-second precision.</p>
+<dd><p>Sub-second remainder of the timestamp, held as 3 raw bytes.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.mms.data.Timestamp.leap_second_known">
 <span class="sig-name descname"><span class="pre">leap_second_known</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></span><a class="headerlink" href="#icspacket.proto.mms.data.Timestamp.leap_second_known" title="Link to this definition">#</a></dt>
-<dd><p>Indicates whether the occurrence of leap seconds is known.</p>
+<dd><p>Set when this timestamp’s leap-second status is known rather than undefined.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.mms.data.Timestamp.clock_failure">
 <span class="sig-name descname"><span class="pre">clock_failure</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></span><a class="headerlink" href="#icspacket.proto.mms.data.Timestamp.clock_failure" title="Link to this definition">#</a></dt>
-<dd><p>Indicates whether a clock failure has been detected.</p>
+<dd><p>Set when the source clock is reporting a failure.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.mms.data.Timestamp.clock_not_synced">
 <span class="sig-name descname"><span class="pre">clock_not_synced</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></span><a class="headerlink" href="#icspacket.proto.mms.data.Timestamp.clock_not_synced" title="Link to this definition">#</a></dt>
-<dd><p>Indicates whether the clock is currently unsynchronized.</p>
+<dd><p>Set when the source clock has not (yet) synchronized to a reference.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.mms.data.Timestamp.accuracy">
 <span class="sig-name descname"><span class="pre">accuracy</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></span><a class="headerlink" href="#icspacket.proto.mms.data.Timestamp.accuracy" title="Link to this definition">#</a></dt>
-<dd><p>5-bit field encoding the accuracy of the timestamp.</p>
+<dd><p>5-bit value carrying the timestamp’s accuracy indicator.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -824,7 +832,7 @@ to Python values convertible into MMS <code class="docutils literal notranslate"
     </div>
   </div>
 </footer>
-      <script src="../../_static/documentation_options.js?v=ded930d6"></script>
+      <script src="../../_static/documentation_options.js?v=2624b5fb"></script>
       <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
       <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
       <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
