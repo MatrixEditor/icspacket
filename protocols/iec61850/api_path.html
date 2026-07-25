@@ -2,7 +2,7 @@
 <html lang="en" data-accent-color="lime" data-content_root="../../">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Object / Data References - icspacket 0.1.dev1+g19d351426 documentation</title><link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="Control / Operation" href="api_control.html" /><link rel="prev" title="Data Classes" href="api_data_classes.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Object / Data References - icspacket 0.1.dev1+gcaa5aba2d documentation</title><link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="Control / Operation" href="api_control.html" /><link rel="prev" title="Data Classes" href="api_data_classes.html" />
       <link rel="canonical" href="https://matrixeditor.github.io/icspacket/protocols/iec61850/api_path.html" /><script>
     function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
     setColorMode(localStorage._theme||"dark");
@@ -307,34 +307,35 @@ data-aria-dark="Switch to auto color mode">
 <dl class="py class">
 <dt class="sig sig-object py" id="icspacket.proto.iec61850.path.ObjectReference">
 <span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">icspacket.proto.iec61850.path.</span></span><span class="sig-name descname"><span class="pre">ObjectReference</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logical_device</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="positional-only-separator o"><abbr title="Positional-only parameter separator (PEP 570)"><span class="pre">/</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">logical_node</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">names</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/icspacket/proto/iec61850/path.html#ObjectReference"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iec61850.path.ObjectReference" title="Link to this definition">#</a></dt>
-<dd><p>IEC 61850 ACSI ObjectReference (IEC 61850-7-2 §5.5.3.3).</p>
-<p>An ObjectReference uniquely identifies instances in the ACSI class hierarchy
-(logical devices, logical nodes, data objects, sub-data objects, and data
-attributes). It is constructed by concatenating all instance names in the
-hierarchy.</p>
+<dd><p>IEC 61850 ACSI ObjectReference (See IEC 61850-7-2, §5.5.3.3).</p>
+<p>In this library, an ObjectReference is the in-memory path through the
+ACSI class hierarchy: a chain of instance names - logical device,
+logical node, data object, optional sub-data objects, and finally a
+data attribute - joined together so that one call can address an object
+no matter how deep it sits in that hierarchy.</p>
 <p><strong>IEC 61850 Representation</strong></p>
 <p>Format: <code class="docutils literal notranslate"><span class="pre">LDName/LNName.DoName.SubDoName.AttrName</span></code></p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">/</span></code> separates the logical device name (LDName) from the logical node
-name (LNName).</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">.</span></code> separates deeper hierarchical levels (data objects, sub-data
-objects, attributes).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">/</span></code> marks the boundary between the logical device name (LDName) and
+the logical node name (LNName).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.</span></code> chains together everything deeper than the logical node (data
+objects, sub-data objects, and attributes).</p></li>
 </ul>
 <p>Example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="n">LD1</span><span class="o">/</span><span class="n">MMXU1</span><span class="o">.</span><span class="n">A</span><span class="o">.</span><span class="n">phsA</span><span class="o">.</span><span class="n">mag</span><span class="o">.</span><span class="n">f</span>
 </span></pre></div>
 </div>
-<p><em>MMS Representation*</em></p>
-<p>In MMS, ObjectReferences are encoded as a variable-length VisibleString:</p>
+<p><strong>MMS Representation</strong></p>
+<p>On the wire, the same reference is carried as a VisibleString of
+variable length (capped at 129 octets), with every <code class="docutils literal notranslate"><span class="pre">.</span></code> rewritten as
+<code class="docutils literal notranslate"><span class="pre">$</span></code>:</p>
 <ul class="simple">
-<li><p>Maximum length: 129 octets</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">.</span></code> (dot) separators are replaced with <code class="docutils literal notranslate"><span class="pre">$</span></code> (dollar).</p></li>
 <li><p>Example: <code class="docutils literal notranslate"><span class="pre">LD1/MMXU1.A.phsA</span></code> → <code class="docutils literal notranslate"><span class="pre">LD1/MMXU1$A$phsA</span></code></p></li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The MMS representation contains an extra <em>functional constraint</em> (FC)
-between a logical node and its data objects.</p>
+<p>The MMS form inserts one extra segment - the <em>functional constraint</em>
+(FC) - between a logical node and its data objects.</p>
 </div>
 <p>ObjectReferences can be built directly:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="gp">&gt;&gt;&gt; </span><span class="n">ObjectReference</span><span class="p">(</span><span class="s2">&quot;LD1&quot;</span><span class="p">)</span>
@@ -465,10 +466,11 @@ between a logical node and its data objects.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="icspacket.proto.iec61850.path.DataObjectReference">
 <span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">icspacket.proto.iec61850.path.</span></span><span class="sig-name descname"><span class="pre">DataObjectReference</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logical_device</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="positional-only-separator o"><abbr title="Positional-only parameter separator (PEP 570)"><span class="pre">/</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">logical_node</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fc</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">names</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/icspacket/proto/iec61850/path.html#DataObjectReference"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iec61850.path.DataObjectReference" title="Link to this definition">#</a></dt>
-<dd><p>Specialized ObjectReference for data objects with Functional Constraints.</p>
+<dd><p>An <a class="reference internal" href="#icspacket.proto.iec61850.path.ObjectReference" title="icspacket.proto.iec61850.path.ObjectReference"><code class="xref py py-class docutils literal notranslate"><span class="pre">ObjectReference</span></code></a> for a data object, with the applicable
+Functional Constraint folded into the path.</p>
 <p>Format:</p>
 <p><code class="docutils literal notranslate"><span class="pre">&lt;LNVariableName&gt;$&lt;FC&gt;$&lt;LNDataObjectName&gt;[$&lt;SubDataObjectName&gt;...]</span></code></p>
-<p>Example (IEC 61850-7-2 §5.5.3.3):</p>
+<p>Example (See IEC 61850-7-2, §5.5.3.3):</p>
 <p><code class="docutils literal notranslate"><span class="pre">MMXU1$MX$A$phsA</span></code></p>
 <p>This maps into an ObjectReference hierarchy:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="gp">&gt;&gt;&gt; </span><span class="n">DataObjectReference</span><span class="p">(</span><span class="s2">&quot;LD1&quot;</span><span class="p">,</span> <span class="s2">&quot;MMXU1&quot;</span><span class="p">,</span> <span class="s2">&quot;MX&quot;</span><span class="p">,</span> <span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;phsA&quot;</span><span class="p">)</span>
@@ -574,7 +576,7 @@ switching from <code class="docutils literal notranslate"><span class="pre">ST</
     </div>
   </div>
 </footer>
-      <script src="../../_static/documentation_options.js?v=2624b5fb"></script>
+      <script src="../../_static/documentation_options.js?v=3d9de00a"></script>
       <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
       <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
       <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>

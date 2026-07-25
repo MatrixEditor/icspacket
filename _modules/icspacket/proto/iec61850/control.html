@@ -2,7 +2,7 @@
 <html lang="en" data-accent-color="lime" data-content_root="../../../../">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>icspacket.proto.iec61850.control - icspacket 0.1.dev1+g19d351426 documentation</title><link rel="index" title="Index" href="../../../../genindex.html" /><link rel="search" title="Search" href="../../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>icspacket.proto.iec61850.control - icspacket 0.1.dev1+gcaa5aba2d documentation</title><link rel="index" title="Index" href="../../../../genindex.html" /><link rel="search" title="Search" href="../../../../search.html" />
       <link rel="canonical" href="https://matrixeditor.github.io/icspacket/_modules/icspacket/proto/iec61850/control.html" /><script>
     function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
     setColorMode(localStorage._theme||"dark");
@@ -262,312 +262,336 @@ data-aria-dark="Switch to auto color mode">
 </span><span data-line="15"><span class="c1"># along with this program.  If not, see &lt;https://www.gnu.org/licenses/&gt;.</span>
 </span><span data-line="16"><span class="kn">import</span><span class="w"> </span><span class="nn">datetime</span>
 </span><span data-line="17"><span class="kn">import</span><span class="w"> </span><span class="nn">enum</span>
-</span><span data-line="18"><span class="kn">from</span><span class="w"> </span><span class="nn">typing_extensions</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">override</span>
-</span><span data-line="19"><span class="kn">from</span><span class="w"> </span><span class="nn">icspacket.proto.iec61850.classes</span><span class="w"> </span><span class="kn">import</span> <span class="n">ControlModel</span>
-</span><span data-line="20"><span class="kn">from</span><span class="w"> </span><span class="nn">icspacket.proto.iec61850.path</span><span class="w"> </span><span class="kn">import</span> <span class="n">ObjectReference</span>
-</span><span data-line="21"><span class="kn">from</span><span class="w"> </span><span class="nn">icspacket.proto.mms._mms</span><span class="w"> </span><span class="kn">import</span> <span class="n">Data</span><span class="p">,</span> <span class="n">TypeDescription</span>
-</span><span data-line="22"><span class="kn">from</span><span class="w"> </span><span class="nn">icspacket.proto.mms.data</span><span class="w"> </span><span class="kn">import</span> <span class="n">Timestamp</span><span class="p">,</span> <span class="n">from_dict</span>
-</span><span data-line="23">
-</span><span data-line="24">
+</span><span data-line="18">
+</span><span data-line="19"><span class="kn">from</span><span class="w"> </span><span class="nn">typing_extensions</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">override</span>
+</span><span data-line="20">
+</span><span data-line="21"><span class="kn">from</span><span class="w"> </span><span class="nn">icspacket.proto.iec61850.classes</span><span class="w"> </span><span class="kn">import</span> <span class="n">ControlModel</span>
+</span><span data-line="22"><span class="kn">from</span><span class="w"> </span><span class="nn">icspacket.proto.iec61850.path</span><span class="w"> </span><span class="kn">import</span> <span class="n">ObjectReference</span>
+</span><span data-line="23"><span class="kn">from</span><span class="w"> </span><span class="nn">icspacket.proto.mms._mms</span><span class="w"> </span><span class="kn">import</span> <span class="n">Data</span><span class="p">,</span> <span class="n">TypeDescription</span>
+</span><span data-line="24"><span class="kn">from</span><span class="w"> </span><span class="nn">icspacket.proto.mms.data</span><span class="w"> </span><span class="kn">import</span> <span class="n">Timestamp</span><span class="p">,</span> <span class="n">from_dict</span>
+</span><span data-line="25">
+</span><span data-line="26">
 <div class="viewcode-block" id="ControlError">
 <a class="viewcode-back" href="../../../../protocols/iec61850/api_control.html#icspacket.proto.iec61850.control.ControlError">[docs]</a>
-</span><span data-line="25"><span class="k">class</span><span class="w"> </span><span class="nc">ControlError</span><span class="p">(</span><span class="n">enum</span><span class="o">.</span><span class="n">IntEnum</span><span class="p">):</span>
-</span><span data-line="26"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span data-line="27"><span class="sd">    Control error codes for IEC 61850 control operations.</span>
-</span><span data-line="28">
-</span><span data-line="29"><span class="sd">    These values indicate the error category for a failed</span>
-</span><span data-line="30"><span class="sd">    control request or response.</span>
+</span><span data-line="27"><span class="k">class</span><span class="w"> </span><span class="nc">ControlError</span><span class="p">(</span><span class="n">enum</span><span class="o">.</span><span class="n">IntEnum</span><span class="p">):</span>
+</span><span data-line="28"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="29"><span class="sd">    Outcome code the client decodes from the ``error`` field of a</span>
+</span><span data-line="30"><span class="sd">    ``LastApplError`` diagnostic for an IEC 61850 control request.</span>
 </span><span data-line="31">
-</span><span data-line="32"><span class="sd">    .. versionadded:: 0.2.4</span>
-</span><span data-line="33"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span data-line="32"><span class="sd">    Together with a :class:`Cause`, this tells the caller in what way a</span>
+</span><span data-line="33"><span class="sd">    control request or response failed.</span>
 </span><span data-line="34">
-</span><span data-line="35">    <span class="n">NO_ERROR</span> <span class="o">=</span> <span class="mi">0</span>
-</span><span data-line="36"><span class="w">    </span><span class="sd">&quot;&quot;&quot;No error occurred during control execution.&quot;&quot;&quot;</span>
-</span><span data-line="37">    <span class="n">UNKNOWN</span> <span class="o">=</span> <span class="mi">1</span>
-</span><span data-line="38"><span class="w">    </span><span class="sd">&quot;&quot;&quot;An unknown error occurred.&quot;&quot;&quot;</span>
-</span><span data-line="39">    <span class="n">TIMEOUT</span> <span class="o">=</span> <span class="mi">2</span>
-</span><span data-line="40"><span class="w">    </span><span class="sd">&quot;&quot;&quot;The control operation timed out.&quot;&quot;&quot;</span>
-</span><span data-line="41">    <span class="n">OPERATOR_TEST_FAIL</span> <span class="o">=</span> <span class="mi">3</span>
-</span><span data-line="42"><span class="w">    </span><span class="sd">&quot;&quot;&quot;The operation failed during an operator test.&quot;&quot;&quot;</span></div>
+</span><span data-line="35"><span class="sd">    .. versionadded:: 0.2.4</span>
+</span><span data-line="36"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span data-line="37">
+</span><span data-line="38">    <span class="n">NO_ERROR</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span data-line="39"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Indicates the control command completed without error.&quot;&quot;&quot;</span>
+</span><span data-line="40">    <span class="n">UNKNOWN</span> <span class="o">=</span> <span class="mi">1</span>
+</span><span data-line="41"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Indicates the failure reason could not be classified further.&quot;&quot;&quot;</span>
+</span><span data-line="42">    <span class="n">TIMEOUT</span> <span class="o">=</span> <span class="mi">2</span>
+</span><span data-line="43"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Indicates the control operation did not complete in time.&quot;&quot;&quot;</span>
+</span><span data-line="44">    <span class="n">OPERATOR_TEST_FAIL</span> <span class="o">=</span> <span class="mi">3</span>
+</span><span data-line="45"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Indicates the control operation failed while running as an operator test.&quot;&quot;&quot;</span></div>
 
-</span><span data-line="43">
-</span><span data-line="44">
+</span><span data-line="46">
+</span><span data-line="47">
 <div class="viewcode-block" id="Cause">
 <a class="viewcode-back" href="../../../../protocols/iec61850/api_control.html#icspacket.proto.iec61850.control.Cause">[docs]</a>
-</span><span data-line="45"><span class="k">class</span><span class="w"> </span><span class="nc">Cause</span><span class="p">(</span><span class="n">enum</span><span class="o">.</span><span class="n">IntEnum</span><span class="p">):</span>
-</span><span data-line="46"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span data-line="47"><span class="sd">    Detailed causes for IEC 61850 control operation responses.</span>
-</span><span data-line="48">
-</span><span data-line="49"><span class="sd">    .. versionadded:: 0.2.4</span>
-</span><span data-line="50"><span class="sd">    &quot;&quot;&quot;</span>
-</span><span data-line="51">
-</span><span data-line="52">    <span class="n">Unknown</span> <span class="o">=</span> <span class="mi">0</span>
-</span><span data-line="53">    <span class="n">Not_supported</span> <span class="o">=</span> <span class="mi">1</span>
-</span><span data-line="54">    <span class="n">Blocked_by_switching_hierarchy</span> <span class="o">=</span> <span class="mi">2</span>
-</span><span data-line="55">    <span class="n">Select_failed</span> <span class="o">=</span> <span class="mi">3</span>
-</span><span data-line="56">    <span class="n">Invalid_position</span> <span class="o">=</span> <span class="mi">4</span>
-</span><span data-line="57">    <span class="n">Position_reached</span> <span class="o">=</span> <span class="mi">5</span>
-</span><span data-line="58">    <span class="n">Parameter_change_in_execution</span> <span class="o">=</span> <span class="mi">6</span>
-</span><span data-line="59">    <span class="n">Step_limit</span> <span class="o">=</span> <span class="mi">7</span>
-</span><span data-line="60">    <span class="n">Blocked_by_Mode</span> <span class="o">=</span> <span class="mi">8</span>
-</span><span data-line="61">    <span class="n">Blocked_by_process</span> <span class="o">=</span> <span class="mi">9</span>
-</span><span data-line="62">    <span class="n">Blocked_by_interlocking</span> <span class="o">=</span> <span class="mi">10</span>
-</span><span data-line="63">    <span class="n">Blocked_by_synchrocheck</span> <span class="o">=</span> <span class="mi">11</span>
-</span><span data-line="64">    <span class="n">Command_already_in_execution</span> <span class="o">=</span> <span class="mi">12</span>
-</span><span data-line="65">    <span class="n">Blocked_by_health</span> <span class="o">=</span> <span class="mi">13</span>
-</span><span data-line="66">    <span class="n">One_of_n_control</span> <span class="o">=</span> <span class="mi">14</span>
-</span><span data-line="67">    <span class="n">Abortion_by_cancel</span> <span class="o">=</span> <span class="mi">15</span>
-</span><span data-line="68">    <span class="n">Time_limit_over</span> <span class="o">=</span> <span class="mi">16</span>
-</span><span data-line="69">    <span class="n">Abortion_by_trip</span> <span class="o">=</span> <span class="mi">17</span>
-</span><span data-line="70">    <span class="n">Object_not_selected</span> <span class="o">=</span> <span class="mi">18</span>
-</span><span data-line="71">    <span class="n">Object_already_selected</span> <span class="o">=</span> <span class="mi">19</span>
-</span><span data-line="72">    <span class="n">No_access_authority</span> <span class="o">=</span> <span class="mi">20</span>
-</span><span data-line="73">    <span class="n">Ended_with_overshoot</span> <span class="o">=</span> <span class="mi">21</span>
-</span><span data-line="74">    <span class="n">Abortion_due_to_deviation</span> <span class="o">=</span> <span class="mi">22</span>
-</span><span data-line="75">    <span class="n">Abortion_by_communication_loss</span> <span class="o">=</span> <span class="mi">23</span>
-</span><span data-line="76">    <span class="n">Blocked_by_command</span> <span class="o">=</span> <span class="mi">24</span>
-</span><span data-line="77">    <span class="n">NONE</span> <span class="o">=</span> <span class="mi">25</span>
-</span><span data-line="78">    <span class="n">Inconsistent_parameters</span> <span class="o">=</span> <span class="mi">26</span>
-</span><span data-line="79">    <span class="n">Locked_by_other_client</span> <span class="o">=</span> <span class="mi">27</span></div>
+</span><span data-line="48"><span class="k">class</span><span class="w"> </span><span class="nc">Cause</span><span class="p">(</span><span class="n">enum</span><span class="o">.</span><span class="n">IntEnum</span><span class="p">):</span>
+</span><span data-line="49"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="50"><span class="sd">    Fine-grained reason the client decodes from the ``cause`` field of a</span>
+</span><span data-line="51"><span class="sd">    ``LastApplError`` diagnostic, alongside a :class:`ControlError`.</span>
+</span><span data-line="52">
+</span><span data-line="53"><span class="sd">    .. versionadded:: 0.2.4</span>
+</span><span data-line="54"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span data-line="55">
+</span><span data-line="56">    <span class="n">Unknown</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span data-line="57">    <span class="n">Not_supported</span> <span class="o">=</span> <span class="mi">1</span>
+</span><span data-line="58">    <span class="n">Blocked_by_switching_hierarchy</span> <span class="o">=</span> <span class="mi">2</span>
+</span><span data-line="59">    <span class="n">Select_failed</span> <span class="o">=</span> <span class="mi">3</span>
+</span><span data-line="60">    <span class="n">Invalid_position</span> <span class="o">=</span> <span class="mi">4</span>
+</span><span data-line="61">    <span class="n">Position_reached</span> <span class="o">=</span> <span class="mi">5</span>
+</span><span data-line="62">    <span class="n">Parameter_change_in_execution</span> <span class="o">=</span> <span class="mi">6</span>
+</span><span data-line="63">    <span class="n">Step_limit</span> <span class="o">=</span> <span class="mi">7</span>
+</span><span data-line="64">    <span class="n">Blocked_by_Mode</span> <span class="o">=</span> <span class="mi">8</span>
+</span><span data-line="65">    <span class="n">Blocked_by_process</span> <span class="o">=</span> <span class="mi">9</span>
+</span><span data-line="66">    <span class="n">Blocked_by_interlocking</span> <span class="o">=</span> <span class="mi">10</span>
+</span><span data-line="67">    <span class="n">Blocked_by_synchrocheck</span> <span class="o">=</span> <span class="mi">11</span>
+</span><span data-line="68">    <span class="n">Command_already_in_execution</span> <span class="o">=</span> <span class="mi">12</span>
+</span><span data-line="69">    <span class="n">Blocked_by_health</span> <span class="o">=</span> <span class="mi">13</span>
+</span><span data-line="70">    <span class="n">One_of_n_control</span> <span class="o">=</span> <span class="mi">14</span>
+</span><span data-line="71">    <span class="n">Abortion_by_cancel</span> <span class="o">=</span> <span class="mi">15</span>
+</span><span data-line="72">    <span class="n">Time_limit_over</span> <span class="o">=</span> <span class="mi">16</span>
+</span><span data-line="73">    <span class="n">Abortion_by_trip</span> <span class="o">=</span> <span class="mi">17</span>
+</span><span data-line="74">    <span class="n">Object_not_selected</span> <span class="o">=</span> <span class="mi">18</span>
+</span><span data-line="75">    <span class="n">Object_already_selected</span> <span class="o">=</span> <span class="mi">19</span>
+</span><span data-line="76">    <span class="n">No_access_authority</span> <span class="o">=</span> <span class="mi">20</span>
+</span><span data-line="77">    <span class="n">Ended_with_overshoot</span> <span class="o">=</span> <span class="mi">21</span>
+</span><span data-line="78">    <span class="n">Abortion_due_to_deviation</span> <span class="o">=</span> <span class="mi">22</span>
+</span><span data-line="79">    <span class="n">Abortion_by_communication_loss</span> <span class="o">=</span> <span class="mi">23</span>
+</span><span data-line="80">    <span class="n">Blocked_by_command</span> <span class="o">=</span> <span class="mi">24</span>
+</span><span data-line="81">    <span class="n">NONE</span> <span class="o">=</span> <span class="mi">25</span>
+</span><span data-line="82">    <span class="n">Inconsistent_parameters</span> <span class="o">=</span> <span class="mi">26</span>
+</span><span data-line="83">    <span class="n">Locked_by_other_client</span> <span class="o">=</span> <span class="mi">27</span></div>
 
-</span><span data-line="80">
-</span><span data-line="81">
+</span><span data-line="84">
+</span><span data-line="85">
 <div class="viewcode-block" id="LastApplError">
 <a class="viewcode-back" href="../../../../protocols/iec61850/api_control.html#icspacket.proto.iec61850.control.LastApplError">[docs]</a>
-</span><span data-line="82"><span class="k">class</span><span class="w"> </span><span class="nc">LastApplError</span><span class="p">(</span><span class="ne">ConnectionError</span><span class="p">):</span>
-</span><span data-line="83"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span data-line="84"><span class="sd">    Exception representing the *LastApplError* diagnostic</span>
-</span><span data-line="85"><span class="sd">    from IEC 61850 control services.</span>
-</span><span data-line="86">
-</span><span data-line="87"><span class="sd">    Raised when a control service returns an error response</span>
-</span><span data-line="88"><span class="sd">    containing both a control error and a cause.</span>
-</span><span data-line="89">
-</span><span data-line="90"><span class="sd">    .. versionadded:: 0.2.4</span>
-</span><span data-line="91">
-</span><span data-line="92"><span class="sd">    :param str ctrl_obj:</span>
-</span><span data-line="93"><span class="sd">        The control object reference string.</span>
-</span><span data-line="94"><span class="sd">    :param ControlError error:</span>
-</span><span data-line="95"><span class="sd">        The control error category.</span>
-</span><span data-line="96"><span class="sd">    :param int ctlnum:</span>
-</span><span data-line="97"><span class="sd">        The control number associated with the request.</span>
-</span><span data-line="98"><span class="sd">    :param Cause cause:</span>
-</span><span data-line="99"><span class="sd">        Detailed cause of the error.</span>
-</span><span data-line="100"><span class="sd">    &quot;&quot;&quot;</span>
-</span><span data-line="101">
-</span><span data-line="102">    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
-</span><span data-line="103">        <span class="bp">self</span><span class="p">,</span>
-</span><span data-line="104">        <span class="n">ctrl_obj</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span data-line="105">        <span class="n">error</span><span class="p">:</span> <span class="n">ControlError</span><span class="p">,</span>
-</span><span data-line="106">        <span class="n">ctlnum</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
-</span><span data-line="107">        <span class="n">cause</span><span class="p">:</span> <span class="n">Cause</span><span class="p">,</span>
-</span><span data-line="108">        <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="nb">object</span><span class="p">,</span>
-</span><span data-line="109">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-</span><span data-line="110">        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
-</span><span data-line="111">        <span class="bp">self</span><span class="o">.</span><span class="n">ctrl_obj</span> <span class="o">=</span> <span class="n">ctrl_obj</span>
-</span><span data-line="112">        <span class="bp">self</span><span class="o">.</span><span class="n">error</span> <span class="o">=</span> <span class="n">error</span>
-</span><span data-line="113">        <span class="bp">self</span><span class="o">.</span><span class="n">ctlnum</span> <span class="o">=</span> <span class="n">ctlnum</span>
-</span><span data-line="114">        <span class="bp">self</span><span class="o">.</span><span class="n">cause</span> <span class="o">=</span> <span class="n">cause</span></div>
+</span><span data-line="86"><span class="k">class</span><span class="w"> </span><span class="nc">LastApplError</span><span class="p">(</span><span class="ne">ConnectionError</span><span class="p">):</span>
+</span><span data-line="87"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="88"><span class="sd">    Exception representing the *LastApplError* diagnostic</span>
+</span><span data-line="89"><span class="sd">    from IEC 61850 control services.</span>
+</span><span data-line="90">
+</span><span data-line="91"><span class="sd">    Raised when a control service returns an error response</span>
+</span><span data-line="92"><span class="sd">    containing both a control error and a cause.</span>
+</span><span data-line="93">
+</span><span data-line="94"><span class="sd">    .. versionadded:: 0.2.4</span>
+</span><span data-line="95">
+</span><span data-line="96"><span class="sd">    :param str ctrl_obj:</span>
+</span><span data-line="97"><span class="sd">        The control object reference string.</span>
+</span><span data-line="98"><span class="sd">    :param ControlError error:</span>
+</span><span data-line="99"><span class="sd">        The control error category.</span>
+</span><span data-line="100"><span class="sd">    :param int ctlnum:</span>
+</span><span data-line="101"><span class="sd">        The control number associated with the request.</span>
+</span><span data-line="102"><span class="sd">    :param Cause cause:</span>
+</span><span data-line="103"><span class="sd">        Detailed cause of the error.</span>
+</span><span data-line="104"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span data-line="105">
+</span><span data-line="106">    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+</span><span data-line="107">        <span class="bp">self</span><span class="p">,</span>
+</span><span data-line="108">        <span class="n">ctrl_obj</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span data-line="109">        <span class="n">error</span><span class="p">:</span> <span class="n">ControlError</span><span class="p">,</span>
+</span><span data-line="110">        <span class="n">ctlnum</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+</span><span data-line="111">        <span class="n">cause</span><span class="p">:</span> <span class="n">Cause</span><span class="p">,</span>
+</span><span data-line="112">        <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="nb">object</span><span class="p">,</span>
+</span><span data-line="113">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="114">        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
+</span><span data-line="115">        <span class="bp">self</span><span class="o">.</span><span class="n">ctrl_obj</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">ctrl_obj</span>
+</span><span data-line="116">        <span class="bp">self</span><span class="o">.</span><span class="n">error</span><span class="p">:</span> <span class="n">ControlError</span> <span class="o">=</span> <span class="n">error</span>
+</span><span data-line="117">        <span class="bp">self</span><span class="o">.</span><span class="n">ctlnum</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">ctlnum</span>
+</span><span data-line="118">        <span class="bp">self</span><span class="o">.</span><span class="n">cause</span><span class="p">:</span> <span class="n">Cause</span> <span class="o">=</span> <span class="n">cause</span></div>
 
-</span><span data-line="115">
-</span><span data-line="116">
+</span><span data-line="119">
+</span><span data-line="120">
 <div class="viewcode-block" id="ControlObject">
 <a class="viewcode-back" href="../../../../protocols/iec61850/api_control.html#icspacket.proto.iec61850.control.ControlObject">[docs]</a>
-</span><span data-line="117"><span class="k">class</span><span class="w"> </span><span class="nc">ControlObject</span><span class="p">:</span>
-</span><span data-line="118"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span data-line="119"><span class="sd">    Represents an IEC 61850 control object reference.</span>
-</span><span data-line="120">
-</span><span data-line="121"><span class="sd">    Provides access to control object properties, origin parameters,</span>
-</span><span data-line="122"><span class="sd">    and the ability to generate operate data structures for issuing</span>
-</span><span data-line="123"><span class="sd">    control commands.</span>
+</span><span data-line="121"><span class="k">class</span><span class="w"> </span><span class="nc">ControlObject</span><span class="p">:</span>
+</span><span data-line="122"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="123"><span class="sd">    Represents an IEC 61850 control object reference.</span>
 </span><span data-line="124">
-</span><span data-line="125"><span class="sd">    Implements context manager protocol for safe usage in</span>
-</span><span data-line="126"><span class="sd">    connection-based operations.</span>
-</span><span data-line="127">
-</span><span data-line="128"><span class="sd">    .. versionadded:: 0.2.4</span>
-</span><span data-line="129">
-</span><span data-line="130"><span class="sd">    :param ref: The object reference for the control point.</span>
-</span><span data-line="131"><span class="sd">    :type ref: ObjectReference</span>
-</span><span data-line="132"><span class="sd">    :param spec: ASN.1 type description of the control object.</span>
-</span><span data-line="133"><span class="sd">    :type spec: TypeDescription</span>
-</span><span data-line="134"><span class="sd">    :param model: Control model (e.g., ``DIRECT_NORMAL`` or ``SBO_ENHANCED``).</span>
-</span><span data-line="135"><span class="sd">    :type model: ControlModel</span>
-</span><span data-line="136"><span class="sd">    &quot;&quot;&quot;</span>
-</span><span data-line="137">
-</span><span data-line="138">    <span class="n">origin_cat</span><span class="p">:</span> <span class="nb">int</span>
-</span><span data-line="139"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Origin category (integer identifier of the source).&quot;&quot;&quot;</span>
-</span><span data-line="140">    <span class="n">origin_ident</span><span class="p">:</span> <span class="nb">bytes</span> <span class="o">|</span> <span class="kc">None</span>
-</span><span data-line="141"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Origin identifier (client or system identifier).&quot;&quot;&quot;</span>
-</span><span data-line="142">    <span class="n">ctl_num</span><span class="p">:</span> <span class="nb">int</span>
-</span><span data-line="143"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Control number for tracking SBO and direct operations.&quot;&quot;&quot;</span>
-</span><span data-line="144">
-</span><span data-line="145">    <span class="n">test</span><span class="p">:</span> <span class="nb">bool</span>
-</span><span data-line="146"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Test flag indicating test vs. normal operation.&quot;&quot;&quot;</span>
-</span><span data-line="147">    <span class="n">interlock_check</span><span class="p">:</span> <span class="nb">bool</span>
-</span><span data-line="148"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Enable or disable interlock condition checking.&quot;&quot;&quot;</span>
-</span><span data-line="149">    <span class="n">synchro_check</span><span class="p">:</span> <span class="nb">bool</span>
-</span><span data-line="150"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Enable or disable synchrocheck condition checking.&quot;&quot;&quot;</span>
+</span><span data-line="125"><span class="sd">    Provides access to control object properties, origin parameters,</span>
+</span><span data-line="126"><span class="sd">    and the ability to generate operate data structures for issuing</span>
+</span><span data-line="127"><span class="sd">    control commands.</span>
+</span><span data-line="128">
+</span><span data-line="129"><span class="sd">    Implements context manager protocol for safe usage in</span>
+</span><span data-line="130"><span class="sd">    connection-based operations.</span>
+</span><span data-line="131">
+</span><span data-line="132"><span class="sd">    .. versionadded:: 0.2.4</span>
+</span><span data-line="133">
+</span><span data-line="134"><span class="sd">    :param ref: The object reference for the control point.</span>
+</span><span data-line="135"><span class="sd">    :type ref: ObjectReference</span>
+</span><span data-line="136"><span class="sd">    :param spec: ASN.1 type description of the control object.</span>
+</span><span data-line="137"><span class="sd">    :type spec: TypeDescription</span>
+</span><span data-line="138"><span class="sd">    :param model: Control model (e.g., ``DIRECT_NORMAL`` or ``SBO_ENHANCED``).</span>
+</span><span data-line="139"><span class="sd">    :type model: ControlModel</span>
+</span><span data-line="140"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span data-line="141">
+</span><span data-line="142">    <span class="n">origin_cat</span><span class="p">:</span> <span class="nb">int</span>
+</span><span data-line="143"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Numeric code for the source category, sent to the server as part of</span>
+</span><span data-line="144"><span class="sd">    the origin block.&quot;&quot;&quot;</span>
+</span><span data-line="145">    <span class="n">origin_ident</span><span class="p">:</span> <span class="nb">bytes</span> <span class="o">|</span> <span class="kc">None</span>
+</span><span data-line="146"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Byte-string naming or identifying the initiating client/system, sent</span>
+</span><span data-line="147"><span class="sd">    together with ``origin_cat``.&quot;&quot;&quot;</span>
+</span><span data-line="148">    <span class="n">ctl_num</span><span class="p">:</span> <span class="nb">int</span>
+</span><span data-line="149"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Running counter that tracks SBO and direct control operations;</span>
+</span><span data-line="150"><span class="sd">    advanced automatically for direct-operate models.&quot;&quot;&quot;</span>
 </span><span data-line="151">
-</span><span data-line="152">    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
-</span><span data-line="153">        <span class="bp">self</span><span class="p">,</span> <span class="n">ref</span><span class="p">:</span> <span class="n">ObjectReference</span><span class="p">,</span> <span class="n">spec</span><span class="p">:</span> <span class="n">TypeDescription</span><span class="p">,</span> <span class="n">model</span><span class="p">:</span> <span class="n">ControlModel</span>
-</span><span data-line="154">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-</span><span data-line="155">        <span class="c1"># what we need is:</span>
-</span><span data-line="156">        <span class="c1"># - CO_CtrlObjectRef</span>
-</span><span data-line="157">        <span class="c1">#</span>
-</span><span data-line="158">        <span class="bp">self</span><span class="o">.</span><span class="n">__ref</span> <span class="o">=</span> <span class="n">ref</span>
-</span><span data-line="159">        <span class="bp">self</span><span class="o">.</span><span class="n">__model</span> <span class="o">=</span> <span class="n">model</span>
-</span><span data-line="160">        <span class="bp">self</span><span class="o">.</span><span class="n">__type</span> <span class="o">=</span> <span class="n">spec</span>
+</span><span data-line="152">    <span class="n">test</span><span class="p">:</span> <span class="nb">bool</span>
+</span><span data-line="153"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Marks whether the server should treat this command as a test rather</span>
+</span><span data-line="154"><span class="sd">    than a normal operation.&quot;&quot;&quot;</span>
+</span><span data-line="155">    <span class="n">interlock_check</span><span class="p">:</span> <span class="nb">bool</span>
+</span><span data-line="156"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Controls whether the interlock check is applied when the command</span>
+</span><span data-line="157"><span class="sd">    executes.&quot;&quot;&quot;</span>
+</span><span data-line="158">    <span class="n">synchro_check</span><span class="p">:</span> <span class="nb">bool</span>
+</span><span data-line="159"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Controls whether the synchrocheck condition is applied when the</span>
+</span><span data-line="160"><span class="sd">    command executes.&quot;&quot;&quot;</span>
 </span><span data-line="161">
-</span><span data-line="162">        <span class="bp">self</span><span class="o">.</span><span class="n">__oper_tm</span> <span class="o">=</span> <span class="kc">False</span>
-</span><span data-line="163">        <span class="bp">self</span><span class="o">.</span><span class="n">__ctl_num</span> <span class="o">=</span> <span class="kc">False</span>
-</span><span data-line="164">        <span class="bp">self</span><span class="o">.</span><span class="n">__ctl_val_type</span> <span class="o">=</span> <span class="kc">None</span>
-</span><span data-line="165">
-</span><span data-line="166">        <span class="n">oper</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_item</span><span class="p">(</span><span class="n">spec</span><span class="p">,</span> <span class="s2">&quot;Oper&quot;</span><span class="p">)</span>
-</span><span data-line="167">        <span class="k">if</span> <span class="n">oper</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span data-line="168">            <span class="n">oper_spec</span> <span class="o">=</span> <span class="n">oper</span><span class="o">.</span><span class="n">componentType</span><span class="o">.</span><span class="n">typeDescription</span>
-</span><span data-line="169">            <span class="bp">self</span><span class="o">.</span><span class="n">__ctl_val_type</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_item</span><span class="p">(</span><span class="n">oper_spec</span><span class="p">,</span> <span class="s2">&quot;ctlVal&quot;</span><span class="p">)</span>
-</span><span data-line="170">            <span class="bp">self</span><span class="o">.</span><span class="n">__oper_tm</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_has_item</span><span class="p">(</span><span class="n">oper_spec</span><span class="p">,</span> <span class="s2">&quot;operTm&quot;</span><span class="p">)</span>
-</span><span data-line="171">            <span class="bp">self</span><span class="o">.</span><span class="n">__ctl_num</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_has_item</span><span class="p">(</span><span class="n">oper_spec</span><span class="p">,</span> <span class="s2">&quot;ctlNum&quot;</span><span class="p">)</span>
-</span><span data-line="172">
-</span><span data-line="173">        <span class="bp">self</span><span class="o">.</span><span class="n">origin_cat</span> <span class="o">=</span> <span class="mi">0</span>
-</span><span data-line="174">        <span class="bp">self</span><span class="o">.</span><span class="n">origin_ident</span> <span class="o">=</span> <span class="nb">bytes</span><span class="p">()</span>
-</span><span data-line="175">        <span class="bp">self</span><span class="o">.</span><span class="n">ctl_num</span> <span class="o">=</span> <span class="mi">0</span>
-</span><span data-line="176">        <span class="bp">self</span><span class="o">.</span><span class="n">test</span> <span class="o">=</span> <span class="kc">False</span>
-</span><span data-line="177">        <span class="bp">self</span><span class="o">.</span><span class="n">interlock_check</span> <span class="o">=</span> <span class="kc">False</span>
-</span><span data-line="178">        <span class="bp">self</span><span class="o">.</span><span class="n">synchro_check</span> <span class="o">=</span> <span class="kc">False</span>
-</span><span data-line="179">
-</span><span data-line="180">    <span class="k">def</span><span class="w"> </span><span class="fm">__enter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-</span><span data-line="181">        <span class="k">return</span> <span class="bp">self</span>
+</span><span data-line="162">    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+</span><span data-line="163">        <span class="bp">self</span><span class="p">,</span> <span class="n">ref</span><span class="p">:</span> <span class="n">ObjectReference</span><span class="p">,</span> <span class="n">spec</span><span class="p">:</span> <span class="n">TypeDescription</span><span class="p">,</span> <span class="n">model</span><span class="p">:</span> <span class="n">ControlModel</span>
+</span><span data-line="164">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="165">        <span class="c1"># what we need is:</span>
+</span><span data-line="166">        <span class="c1"># - CO_CtrlObjectRef</span>
+</span><span data-line="167">        <span class="c1">#</span>
+</span><span data-line="168">        <span class="bp">self</span><span class="o">.</span><span class="n">__ref</span> <span class="o">=</span> <span class="n">ref</span>
+</span><span data-line="169">        <span class="bp">self</span><span class="o">.</span><span class="n">__model</span> <span class="o">=</span> <span class="n">model</span>
+</span><span data-line="170">        <span class="bp">self</span><span class="o">.</span><span class="n">__type</span> <span class="o">=</span> <span class="n">spec</span>
+</span><span data-line="171">
+</span><span data-line="172">        <span class="bp">self</span><span class="o">.</span><span class="n">__oper_tm</span> <span class="o">=</span> <span class="kc">False</span>
+</span><span data-line="173">        <span class="bp">self</span><span class="o">.</span><span class="n">__ctl_num</span> <span class="o">=</span> <span class="kc">False</span>
+</span><span data-line="174">        <span class="bp">self</span><span class="o">.</span><span class="n">__ctl_val_type</span> <span class="o">=</span> <span class="kc">None</span>
+</span><span data-line="175">
+</span><span data-line="176">        <span class="n">oper</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_item</span><span class="p">(</span><span class="n">spec</span><span class="p">,</span> <span class="s2">&quot;Oper&quot;</span><span class="p">)</span>
+</span><span data-line="177">        <span class="k">if</span> <span class="n">oper</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="178">            <span class="n">oper_spec</span> <span class="o">=</span> <span class="n">oper</span><span class="o">.</span><span class="n">componentType</span><span class="o">.</span><span class="n">typeDescription</span>
+</span><span data-line="179">            <span class="bp">self</span><span class="o">.</span><span class="n">__ctl_val_type</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_item</span><span class="p">(</span><span class="n">oper_spec</span><span class="p">,</span> <span class="s2">&quot;ctlVal&quot;</span><span class="p">)</span>
+</span><span data-line="180">            <span class="bp">self</span><span class="o">.</span><span class="n">__oper_tm</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_has_item</span><span class="p">(</span><span class="n">oper_spec</span><span class="p">,</span> <span class="s2">&quot;operTm&quot;</span><span class="p">)</span>
+</span><span data-line="181">            <span class="bp">self</span><span class="o">.</span><span class="n">__ctl_num</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_has_item</span><span class="p">(</span><span class="n">oper_spec</span><span class="p">,</span> <span class="s2">&quot;ctlNum&quot;</span><span class="p">)</span>
 </span><span data-line="182">
-</span><span data-line="183">    <span class="k">def</span><span class="w"> </span><span class="fm">__exit__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exc_type</span><span class="p">,</span> <span class="n">exc_value</span><span class="p">,</span> <span class="n">traceback</span><span class="p">):</span>
-</span><span data-line="184">        <span class="k">pass</span>
-</span><span data-line="185">
-</span><span data-line="186">    <span class="nd">@override</span>
-</span><span data-line="187">    <span class="k">def</span><span class="w"> </span><span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-</span><span data-line="188"><span class="w">        </span><span class="sd">&quot;&quot;&quot;Return a human-readable string for debugging.&quot;&quot;&quot;</span>
-</span><span data-line="189">        <span class="n">type_name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__ctl_val_type</span><span class="o">.</span><span class="n">componentType</span><span class="o">.</span><span class="n">typeDescription</span><span class="o">.</span><span class="n">present</span><span class="o">.</span><span class="n">name</span><span class="p">[</span><span class="mi">3</span><span class="p">:]</span>
-</span><span data-line="190">        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;&lt;ControlObject model=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">__model</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2"> ref=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">__ref</span><span class="si">!r}</span><span class="s2"> ctlVal_Type=</span><span class="si">{</span><span class="n">type_name</span><span class="si">}</span><span class="s2">&gt;&quot;</span>
-</span><span data-line="191">
-</span><span data-line="192">    <span class="nd">@property</span>
-</span><span data-line="193">    <span class="k">def</span><span class="w"> </span><span class="nf">ctrl_object_ref</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ObjectReference</span><span class="p">:</span>
-</span><span data-line="194"><span class="w">        </span><span class="sd">&quot;&quot;&quot;Reference to the underlying control object node.&quot;&quot;&quot;</span>
-</span><span data-line="195">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__ref</span>
-</span><span data-line="196">
-</span><span data-line="197">    <span class="nd">@property</span>
-</span><span data-line="198">    <span class="k">def</span><span class="w"> </span><span class="nf">has_time_activated_oper</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-</span><span data-line="199"><span class="w">        </span><span class="sd">&quot;&quot;&quot;Whether this control object supports time-activated operate requests.&quot;&quot;&quot;</span>
-</span><span data-line="200">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__oper_tm</span>
+</span><span data-line="183">        <span class="bp">self</span><span class="o">.</span><span class="n">origin_cat</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span data-line="184">        <span class="bp">self</span><span class="o">.</span><span class="n">origin_ident</span> <span class="o">=</span> <span class="nb">bytes</span><span class="p">()</span>
+</span><span data-line="185">        <span class="bp">self</span><span class="o">.</span><span class="n">ctl_num</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span data-line="186">        <span class="bp">self</span><span class="o">.</span><span class="n">test</span> <span class="o">=</span> <span class="kc">False</span>
+</span><span data-line="187">        <span class="bp">self</span><span class="o">.</span><span class="n">interlock_check</span> <span class="o">=</span> <span class="kc">False</span>
+</span><span data-line="188">        <span class="bp">self</span><span class="o">.</span><span class="n">synchro_check</span> <span class="o">=</span> <span class="kc">False</span>
+</span><span data-line="189">
+</span><span data-line="190">    <span class="k">def</span><span class="w"> </span><span class="fm">__enter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span data-line="191">        <span class="k">return</span> <span class="bp">self</span>
+</span><span data-line="192">
+</span><span data-line="193">    <span class="k">def</span><span class="w"> </span><span class="fm">__exit__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exc_type</span><span class="p">,</span> <span class="n">exc_value</span><span class="p">,</span> <span class="n">traceback</span><span class="p">):</span>
+</span><span data-line="194">        <span class="k">pass</span>
+</span><span data-line="195">
+</span><span data-line="196">    <span class="nd">@override</span>
+</span><span data-line="197">    <span class="k">def</span><span class="w"> </span><span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+</span><span data-line="198"><span class="w">        </span><span class="sd">&quot;&quot;&quot;Return a human-readable string for debugging.&quot;&quot;&quot;</span>
+</span><span data-line="199">        <span class="n">type_name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__ctl_val_type</span><span class="o">.</span><span class="n">componentType</span><span class="o">.</span><span class="n">typeDescription</span><span class="o">.</span><span class="n">present</span><span class="o">.</span><span class="n">name</span><span class="p">[</span><span class="mi">3</span><span class="p">:]</span>
+</span><span data-line="200">        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;&lt;ControlObject model=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">__model</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2"> ref=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">__ref</span><span class="si">!r}</span><span class="s2"> ctlVal_Type=</span><span class="si">{</span><span class="n">type_name</span><span class="si">}</span><span class="s2">&gt;&quot;</span>
 </span><span data-line="201">
 </span><span data-line="202">    <span class="nd">@property</span>
-</span><span data-line="203">    <span class="k">def</span><span class="w"> </span><span class="nf">has_ctl_num</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-</span><span data-line="204"><span class="w">        </span><span class="sd">&quot;&quot;&quot;Whether this control object includes a control number field.&quot;&quot;&quot;</span>
-</span><span data-line="205">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__ctl_num</span>
+</span><span data-line="203">    <span class="k">def</span><span class="w"> </span><span class="nf">ctrl_object_ref</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ObjectReference</span><span class="p">:</span>
+</span><span data-line="204"><span class="w">        </span><span class="sd">&quot;&quot;&quot;Reference to the underlying control object node.&quot;&quot;&quot;</span>
+</span><span data-line="205">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__ref</span>
 </span><span data-line="206">
 </span><span data-line="207">    <span class="nd">@property</span>
-</span><span data-line="208">    <span class="k">def</span><span class="w"> </span><span class="nf">model</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ControlModel</span><span class="p">:</span>
-</span><span data-line="209"><span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the configured control model for this object.&quot;&quot;&quot;</span>
-</span><span data-line="210">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__model</span>
+</span><span data-line="208">    <span class="k">def</span><span class="w"> </span><span class="nf">has_time_activated_oper</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+</span><span data-line="209"><span class="w">        </span><span class="sd">&quot;&quot;&quot;Whether this control object supports time-activated operate requests.&quot;&quot;&quot;</span>
+</span><span data-line="210">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__oper_tm</span>
 </span><span data-line="211">
+</span><span data-line="212">    <span class="nd">@property</span>
+</span><span data-line="213">    <span class="k">def</span><span class="w"> </span><span class="nf">has_ctl_num</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+</span><span data-line="214"><span class="w">        </span><span class="sd">&quot;&quot;&quot;Whether this control object includes a control number field.&quot;&quot;&quot;</span>
+</span><span data-line="215">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__ctl_num</span>
+</span><span data-line="216">
+</span><span data-line="217">    <span class="nd">@property</span>
+</span><span data-line="218">    <span class="k">def</span><span class="w"> </span><span class="nf">model</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ControlModel</span><span class="p">:</span>
+</span><span data-line="219"><span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the configured control model for this object.&quot;&quot;&quot;</span>
+</span><span data-line="220">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__model</span>
+</span><span data-line="221">
+</span><span data-line="222">    <span class="nd">@property</span>
+</span><span data-line="223">    <span class="k">def</span><span class="w"> </span><span class="nf">ctl_val_type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="224"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="225"><span class="sd">        Return the ASN.1 *Data* CHOICE alternative name expected for</span>
+</span><span data-line="226"><span class="sd">        ``ctlVal`` (e.g. ``&quot;boolean&quot;``, ``&quot;integer&quot;``, ``&quot;visible_string&quot;``),</span>
+</span><span data-line="227"><span class="sd">        or ``None`` if the control object has no ``Oper.ctlVal`` attribute.</span>
+</span><span data-line="228"><span class="sd">        &quot;&quot;&quot;</span>
+</span><span data-line="229">        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__ctl_val_type</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="230">            <span class="k">return</span> <span class="kc">None</span>
+</span><span data-line="231">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__ctl_val_type</span><span class="o">.</span><span class="n">componentType</span><span class="o">.</span><span class="n">typeDescription</span><span class="o">.</span><span class="n">present</span><span class="o">.</span><span class="n">name</span><span class="p">[</span><span class="mi">3</span><span class="p">:]</span>
+</span><span data-line="232">
 <div class="viewcode-block" id="ControlObject.origin">
 <a class="viewcode-back" href="../../../../protocols/iec61850/api_control.html#icspacket.proto.iec61850.control.ControlObject.origin">[docs]</a>
-</span><span data-line="212">    <span class="k">def</span><span class="w"> </span><span class="nf">origin</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">bytes</span><span class="p">]]:</span>
-</span><span data-line="213"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span data-line="214"><span class="sd">        Return the *origin* structure as defined in IEC 61850-7-2.</span>
-</span><span data-line="215">
-</span><span data-line="216"><span class="sd">        :return: Origin information consisting of category and identifier.</span>
-</span><span data-line="217"><span class="sd">        :rtype: list[dict[str, int | bytes]]</span>
-</span><span data-line="218"><span class="sd">        &quot;&quot;&quot;</span>
-</span><span data-line="219">        <span class="k">return</span> <span class="p">[</span>
-</span><span data-line="220">            <span class="p">{</span><span class="s2">&quot;integer&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">origin_cat</span><span class="p">},</span>
-</span><span data-line="221">            <span class="p">{</span><span class="s2">&quot;octet_string&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">origin_ident</span> <span class="ow">or</span> <span class="nb">bytes</span><span class="p">()},</span>
-</span><span data-line="222">        <span class="p">]</span></div>
+</span><span data-line="233">    <span class="k">def</span><span class="w"> </span><span class="nf">origin</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">bytes</span><span class="p">]]:</span>
+</span><span data-line="234"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="235"><span class="sd">        Build the *origin* structure according to IEC 61850-7-2, used by</span>
+</span><span data-line="236"><span class="sd">        :meth:`get_operate_data` when assembling a control request.</span>
+</span><span data-line="237">
+</span><span data-line="238"><span class="sd">        :return: Origin information consisting of category and identifier.</span>
+</span><span data-line="239"><span class="sd">        :rtype: list[dict[str, int | bytes]]</span>
+</span><span data-line="240"><span class="sd">        &quot;&quot;&quot;</span>
+</span><span data-line="241">        <span class="k">return</span> <span class="p">[</span>
+</span><span data-line="242">            <span class="p">{</span><span class="s2">&quot;integer&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">origin_cat</span><span class="p">},</span>
+</span><span data-line="243">            <span class="p">{</span><span class="s2">&quot;octet_string&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">origin_ident</span> <span class="ow">or</span> <span class="nb">bytes</span><span class="p">()},</span>
+</span><span data-line="244">        <span class="p">]</span></div>
 
-</span><span data-line="223">
+</span><span data-line="245">
 <div class="viewcode-block" id="ControlObject.get_operate_data">
 <a class="viewcode-back" href="../../../../protocols/iec61850/api_control.html#icspacket.proto.iec61850.control.ControlObject.get_operate_data">[docs]</a>
-</span><span data-line="224">    <span class="k">def</span><span class="w"> </span><span class="nf">get_operate_data</span><span class="p">(</span>
-</span><span data-line="225">        <span class="bp">self</span><span class="p">,</span> <span class="n">ctl_val</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="n">oper_time</span><span class="p">:</span> <span class="n">Timestamp</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">check</span><span class="o">=</span><span class="kc">True</span>
-</span><span data-line="226">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Data</span><span class="p">:</span>
-</span><span data-line="227"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span data-line="228"><span class="sd">        Construct an MMS *Data* structure representing an operate request.</span>
-</span><span data-line="229">
-</span><span data-line="230"><span class="sd">        The resulting structure includes mandatory control fields such as</span>
-</span><span data-line="231"><span class="sd">        ``ctlVal``, ``T``, ``origin``, and optionally ``operTm``, ``ctlNum``,</span>
-</span><span data-line="232"><span class="sd">        ``Test``, and ``Check``.</span>
-</span><span data-line="233">
-</span><span data-line="234"><span class="sd">        :param ctl_val: The control value to apply.</span>
-</span><span data-line="235"><span class="sd">        :type ctl_val: Any</span>
-</span><span data-line="236"><span class="sd">        :param oper_time: Optional timestamp for time-activated control.</span>
-</span><span data-line="237"><span class="sd">        :type oper_time: Timestamp | None</span>
-</span><span data-line="238"><span class="sd">        :param check: Whether to include interlock and synchrocheck parameters.</span>
-</span><span data-line="239"><span class="sd">        :type check: bool</span>
-</span><span data-line="240"><span class="sd">        :return: ASN.1 encoded :class:`Data` structure for the operate request.</span>
-</span><span data-line="241"><span class="sd">        :rtype: Data</span>
-</span><span data-line="242"><span class="sd">        &quot;&quot;&quot;</span>
-</span><span data-line="243">        <span class="n">items</span> <span class="o">=</span> <span class="p">[</span>
-</span><span data-line="244">            <span class="p">{</span>
-</span><span data-line="245">                <span class="c1"># ctlVal = &lt;CO_CtrlObjectRef&gt;$Oper$ctlVal</span>
-</span><span data-line="246">                <span class="bp">self</span><span class="o">.</span><span class="n">__ctl_val_type</span><span class="o">.</span><span class="n">componentType</span><span class="o">.</span><span class="n">typeDescription</span><span class="o">.</span><span class="n">present</span><span class="o">.</span><span class="n">name</span><span class="p">[</span>
-</span><span data-line="247">                    <span class="mi">3</span><span class="p">:</span>
-</span><span data-line="248">                <span class="p">]:</span> <span class="n">ctl_val</span><span class="p">,</span>
-</span><span data-line="249">            <span class="p">}</span>
-</span><span data-line="250">        <span class="p">]</span>
-</span><span data-line="251">        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">has_time_activated_oper</span><span class="p">:</span>
-</span><span data-line="252">            <span class="n">ts</span> <span class="o">=</span> <span class="n">oper_time</span> <span class="ow">or</span> <span class="nb">bytes</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
-</span><span data-line="253">            <span class="c1"># operTm = &lt;CO_CtrlObjectRef&gt;$Oper$operTm</span>
-</span><span data-line="254">            <span class="n">items</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">&quot;utc_time&quot;</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">(</span><span class="n">ts</span><span class="p">)})</span>
-</span><span data-line="255">
-</span><span data-line="256">        <span class="c1"># origin = &lt;CO_CtrlObjectRef&gt;$Oper$origin</span>
-</span><span data-line="257">        <span class="n">items</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">&quot;structure&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">origin</span><span class="p">()})</span>
-</span><span data-line="258">
-</span><span data-line="259">        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="n">ControlModel</span><span class="o">.</span><span class="n">SBO_NORMAL</span><span class="p">,</span> <span class="n">ControlModel</span><span class="o">.</span><span class="n">SBO_ENHANCED</span><span class="p">):</span>
-</span><span data-line="260">            <span class="bp">self</span><span class="o">.</span><span class="n">ctl_num</span> <span class="o">+=</span> <span class="mi">1</span>
-</span><span data-line="261">
-</span><span data-line="262">        <span class="c1"># ctlNum = &lt;CO_CtrlObjectRef&gt;$Oper$ctlNum</span>
-</span><span data-line="263">        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">has_ctl_num</span><span class="p">:</span>
-</span><span data-line="264">            <span class="n">items</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">&quot;unsigned&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">ctl_num</span><span class="p">})</span>
-</span><span data-line="265">
-</span><span data-line="266">        <span class="c1"># T = &lt;CO_CtrlObjectRef&gt;$Oper$T</span>
-</span><span data-line="267">        <span class="n">ts</span> <span class="o">=</span> <span class="n">Timestamp</span><span class="o">.</span><span class="n">from_datetime</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">())</span>
-</span><span data-line="268">        <span class="n">items</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">&quot;utc_time&quot;</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">(</span><span class="n">ts</span><span class="p">)})</span>
-</span><span data-line="269">        <span class="c1"># Test = &lt;CO_CtrlObjectRef&gt;$Oper$Test</span>
-</span><span data-line="270">        <span class="n">items</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">&quot;boolean&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">test</span><span class="p">})</span>
-</span><span data-line="271">
-</span><span data-line="272">        <span class="k">if</span> <span class="n">check</span><span class="p">:</span>
-</span><span data-line="273">            <span class="n">check</span> <span class="o">=</span> <span class="n">Data</span><span class="o">.</span><span class="n">bit_string_TYPE</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-</span><span data-line="274">            <span class="n">check</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">interlock_check</span><span class="p">)</span>
-</span><span data-line="275">            <span class="n">check</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">synchro_check</span><span class="p">)</span>
-</span><span data-line="276">            <span class="c1"># Check = &lt;CO_CtrlObjectRef&gt;$Oper$Check</span>
-</span><span data-line="277">            <span class="n">items</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">&quot;bit_string&quot;</span><span class="p">:</span> <span class="n">check</span><span class="p">})</span>
-</span><span data-line="278">        <span class="k">return</span> <span class="n">from_dict</span><span class="p">({</span><span class="s2">&quot;structure&quot;</span><span class="p">:</span> <span class="n">items</span><span class="p">})</span></div>
-
+</span><span data-line="246">    <span class="k">def</span><span class="w"> </span><span class="nf">get_operate_data</span><span class="p">(</span>
+</span><span data-line="247">        <span class="bp">self</span><span class="p">,</span> <span class="n">ctl_val</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="n">oper_time</span><span class="p">:</span> <span class="n">Timestamp</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">check</span><span class="o">=</span><span class="kc">True</span>
+</span><span data-line="248">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Data</span><span class="p">:</span>
+</span><span data-line="249"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="250"><span class="sd">        Assemble the MMS ``Data`` payload written to a control object&#39;s</span>
+</span><span data-line="251"><span class="sd">        ``Oper`` attribute to carry out an operate request.</span>
+</span><span data-line="252">
+</span><span data-line="253"><span class="sd">        The value supplied in ``ctl_val`` is combined with a fresh ``T``</span>
+</span><span data-line="254"><span class="sd">        timestamp and the ``origin`` block; depending on this control</span>
+</span><span data-line="255"><span class="sd">        object&#39;s capabilities and the ``check`` flag, ``operTm``, ``ctlNum``,</span>
+</span><span data-line="256"><span class="sd">        ``Test``, and/or ``Check`` are folded in as well.</span>
+</span><span data-line="257">
+</span><span data-line="258"><span class="sd">        :param ctl_val: The control value to apply.</span>
+</span><span data-line="259"><span class="sd">        :type ctl_val: Any</span>
+</span><span data-line="260"><span class="sd">        :param oper_time: Optional timestamp for time-activated control.</span>
+</span><span data-line="261"><span class="sd">        :type oper_time: Timestamp | None</span>
+</span><span data-line="262"><span class="sd">        :param check: Whether to include interlock and synchrocheck parameters.</span>
+</span><span data-line="263"><span class="sd">        :type check: bool</span>
+</span><span data-line="264"><span class="sd">        :return: ASN.1 encoded :class:`Data` structure for the operate request.</span>
+</span><span data-line="265"><span class="sd">        :rtype: Data</span>
+</span><span data-line="266"><span class="sd">        &quot;&quot;&quot;</span>
+</span><span data-line="267">        <span class="n">items</span> <span class="o">=</span> <span class="p">[</span>
+</span><span data-line="268">            <span class="p">{</span>
+</span><span data-line="269">                <span class="c1"># ctlVal = &lt;CO_CtrlObjectRef&gt;$Oper$ctlVal</span>
+</span><span data-line="270">                <span class="bp">self</span><span class="o">.</span><span class="n">__ctl_val_type</span><span class="o">.</span><span class="n">componentType</span><span class="o">.</span><span class="n">typeDescription</span><span class="o">.</span><span class="n">present</span><span class="o">.</span><span class="n">name</span><span class="p">[</span>
+</span><span data-line="271">                    <span class="mi">3</span><span class="p">:</span>
+</span><span data-line="272">                <span class="p">]:</span> <span class="n">ctl_val</span><span class="p">,</span>
+</span><span data-line="273">            <span class="p">}</span>
+</span><span data-line="274">        <span class="p">]</span>
+</span><span data-line="275">        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">has_time_activated_oper</span><span class="p">:</span>
+</span><span data-line="276">            <span class="n">ts</span> <span class="o">=</span> <span class="n">oper_time</span> <span class="ow">or</span> <span class="nb">bytes</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
+</span><span data-line="277">            <span class="c1"># operTm = &lt;CO_CtrlObjectRef&gt;$Oper$operTm</span>
+</span><span data-line="278">            <span class="n">items</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">&quot;utc_time&quot;</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">(</span><span class="n">ts</span><span class="p">)})</span>
 </span><span data-line="279">
-</span><span data-line="280">    <span class="nd">@property</span>
-</span><span data-line="281">    <span class="k">def</span><span class="w"> </span><span class="nf">T</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Timestamp</span><span class="p">:</span>
-</span><span data-line="282"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span data-line="283"><span class="sd">        Return the current control timestamp (*T*).</span>
-</span><span data-line="284">
-</span><span data-line="285"><span class="sd">        :return: Timestamp of the control request.</span>
-</span><span data-line="286"><span class="sd">        :rtype: Timestamp</span>
-</span><span data-line="287"><span class="sd">        &quot;&quot;&quot;</span>
-</span><span data-line="288">        <span class="k">return</span> <span class="n">Timestamp</span><span class="o">.</span><span class="n">from_datetime</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">())</span>
+</span><span data-line="280">        <span class="c1"># origin = &lt;CO_CtrlObjectRef&gt;$Oper$origin</span>
+</span><span data-line="281">        <span class="n">items</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">&quot;structure&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">origin</span><span class="p">()})</span>
+</span><span data-line="282">
+</span><span data-line="283">        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="n">ControlModel</span><span class="o">.</span><span class="n">SBO_NORMAL</span><span class="p">,</span> <span class="n">ControlModel</span><span class="o">.</span><span class="n">SBO_ENHANCED</span><span class="p">):</span>
+</span><span data-line="284">            <span class="bp">self</span><span class="o">.</span><span class="n">ctl_num</span> <span class="o">+=</span> <span class="mi">1</span>
+</span><span data-line="285">
+</span><span data-line="286">        <span class="c1"># ctlNum = &lt;CO_CtrlObjectRef&gt;$Oper$ctlNum</span>
+</span><span data-line="287">        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">has_ctl_num</span><span class="p">:</span>
+</span><span data-line="288">            <span class="n">items</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">&quot;unsigned&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">ctl_num</span><span class="p">})</span>
 </span><span data-line="289">
-</span><span data-line="290">    <span class="c1"># --- private ---</span>
-</span><span data-line="291">    <span class="k">def</span><span class="w"> </span><span class="nf">_has_item</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">spec</span><span class="p">:</span> <span class="n">TypeDescription</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-</span><span data-line="292">        <span class="k">if</span> <span class="n">spec</span><span class="o">.</span><span class="n">present</span> <span class="o">==</span> <span class="n">TypeDescription</span><span class="o">.</span><span class="n">PRESENT</span><span class="o">.</span><span class="n">PR_structure</span><span class="p">:</span>
-</span><span data-line="293">            <span class="n">fields</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">spec</span><span class="o">.</span><span class="n">structure</span><span class="o">.</span><span class="n">components</span><span class="p">)</span>
-</span><span data-line="294">            <span class="k">for</span> <span class="n">field</span> <span class="ow">in</span> <span class="n">fields</span><span class="p">:</span>
-</span><span data-line="295">                <span class="k">if</span> <span class="n">field</span><span class="o">.</span><span class="n">componentName</span><span class="o">.</span><span class="n">value</span> <span class="o">==</span> <span class="n">name</span><span class="p">:</span>
-</span><span data-line="296">                    <span class="k">return</span> <span class="kc">True</span>
-</span><span data-line="297">        <span class="k">return</span> <span class="kc">False</span>
-</span><span data-line="298">
-</span><span data-line="299">    <span class="k">def</span><span class="w"> </span><span class="nf">_get_item</span><span class="p">(</span>
-</span><span data-line="300">        <span class="bp">self</span><span class="p">,</span> <span class="n">spec</span><span class="p">:</span> <span class="n">TypeDescription</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span>
-</span><span data-line="301">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TypeDescription</span><span class="o">.</span><span class="n">structure_TYPE</span><span class="o">.</span><span class="n">components_TYPE</span><span class="o">.</span><span class="n">Member_TYPE</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
-</span><span data-line="302">        <span class="k">if</span> <span class="n">spec</span><span class="o">.</span><span class="n">present</span> <span class="o">==</span> <span class="n">TypeDescription</span><span class="o">.</span><span class="n">PRESENT</span><span class="o">.</span><span class="n">PR_structure</span><span class="p">:</span>
-</span><span data-line="303">            <span class="n">fields</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">spec</span><span class="o">.</span><span class="n">structure</span><span class="o">.</span><span class="n">components</span><span class="p">)</span>
-</span><span data-line="304">            <span class="k">for</span> <span class="n">field</span> <span class="ow">in</span> <span class="n">fields</span><span class="p">:</span>
-</span><span data-line="305">                <span class="k">if</span> <span class="n">field</span><span class="o">.</span><span class="n">componentName</span><span class="o">.</span><span class="n">value</span> <span class="o">==</span> <span class="n">name</span><span class="p">:</span>
-</span><span data-line="306">                    <span class="k">return</span> <span class="n">field</span></div>
+</span><span data-line="290">        <span class="c1"># T = &lt;CO_CtrlObjectRef&gt;$Oper$T</span>
+</span><span data-line="291">        <span class="n">ts</span> <span class="o">=</span> <span class="n">Timestamp</span><span class="o">.</span><span class="n">from_datetime</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">())</span>
+</span><span data-line="292">        <span class="n">items</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">&quot;utc_time&quot;</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">(</span><span class="n">ts</span><span class="p">)})</span>
+</span><span data-line="293">        <span class="c1"># Test = &lt;CO_CtrlObjectRef&gt;$Oper$Test</span>
+</span><span data-line="294">        <span class="n">items</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">&quot;boolean&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">test</span><span class="p">})</span>
+</span><span data-line="295">
+</span><span data-line="296">        <span class="k">if</span> <span class="n">check</span><span class="p">:</span>
+</span><span data-line="297">            <span class="n">check</span> <span class="o">=</span> <span class="n">Data</span><span class="o">.</span><span class="n">bit_string_TYPE</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</span><span data-line="298">            <span class="n">check</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">interlock_check</span><span class="p">)</span>
+</span><span data-line="299">            <span class="n">check</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">synchro_check</span><span class="p">)</span>
+</span><span data-line="300">            <span class="c1"># Check = &lt;CO_CtrlObjectRef&gt;$Oper$Check</span>
+</span><span data-line="301">            <span class="n">items</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">&quot;bit_string&quot;</span><span class="p">:</span> <span class="n">check</span><span class="p">})</span>
+</span><span data-line="302">        <span class="k">return</span> <span class="n">from_dict</span><span class="p">({</span><span class="s2">&quot;structure&quot;</span><span class="p">:</span> <span class="n">items</span><span class="p">})</span></div>
+
+</span><span data-line="303">
+</span><span data-line="304">    <span class="nd">@property</span>
+</span><span data-line="305">    <span class="k">def</span><span class="w"> </span><span class="nf">T</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Timestamp</span><span class="p">:</span>
+</span><span data-line="306"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="307"><span class="sd">        Return the current control timestamp (*T*).</span>
+</span><span data-line="308">
+</span><span data-line="309"><span class="sd">        :return: Timestamp of the control request.</span>
+</span><span data-line="310"><span class="sd">        :rtype: Timestamp</span>
+</span><span data-line="311"><span class="sd">        &quot;&quot;&quot;</span>
+</span><span data-line="312">        <span class="k">return</span> <span class="n">Timestamp</span><span class="o">.</span><span class="n">from_datetime</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">())</span>
+</span><span data-line="313">
+</span><span data-line="314">    <span class="c1"># --- private ---</span>
+</span><span data-line="315">    <span class="k">def</span><span class="w"> </span><span class="nf">_has_item</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">spec</span><span class="p">:</span> <span class="n">TypeDescription</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+</span><span data-line="316">        <span class="k">if</span> <span class="n">spec</span><span class="o">.</span><span class="n">present</span> <span class="o">==</span> <span class="n">TypeDescription</span><span class="o">.</span><span class="n">PRESENT</span><span class="o">.</span><span class="n">PR_structure</span><span class="p">:</span>
+</span><span data-line="317">            <span class="n">fields</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">spec</span><span class="o">.</span><span class="n">structure</span><span class="o">.</span><span class="n">components</span><span class="p">)</span>
+</span><span data-line="318">            <span class="k">for</span> <span class="n">field</span> <span class="ow">in</span> <span class="n">fields</span><span class="p">:</span>
+</span><span data-line="319">                <span class="k">if</span> <span class="n">field</span><span class="o">.</span><span class="n">componentName</span><span class="o">.</span><span class="n">value</span> <span class="o">==</span> <span class="n">name</span><span class="p">:</span>
+</span><span data-line="320">                    <span class="k">return</span> <span class="kc">True</span>
+</span><span data-line="321">        <span class="k">return</span> <span class="kc">False</span>
+</span><span data-line="322">
+</span><span data-line="323">    <span class="k">def</span><span class="w"> </span><span class="nf">_get_item</span><span class="p">(</span>
+</span><span data-line="324">        <span class="bp">self</span><span class="p">,</span> <span class="n">spec</span><span class="p">:</span> <span class="n">TypeDescription</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span>
+</span><span data-line="325">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TypeDescription</span><span class="o">.</span><span class="n">structure_TYPE</span><span class="o">.</span><span class="n">components_TYPE</span><span class="o">.</span><span class="n">Member_TYPE</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="326">        <span class="k">if</span> <span class="n">spec</span><span class="o">.</span><span class="n">present</span> <span class="o">==</span> <span class="n">TypeDescription</span><span class="o">.</span><span class="n">PRESENT</span><span class="o">.</span><span class="n">PR_structure</span><span class="p">:</span>
+</span><span data-line="327">            <span class="n">fields</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">spec</span><span class="o">.</span><span class="n">structure</span><span class="o">.</span><span class="n">components</span><span class="p">)</span>
+</span><span data-line="328">            <span class="k">for</span> <span class="n">field</span> <span class="ow">in</span> <span class="n">fields</span><span class="p">:</span>
+</span><span data-line="329">                <span class="k">if</span> <span class="n">field</span><span class="o">.</span><span class="n">componentName</span><span class="o">.</span><span class="n">value</span> <span class="o">==</span> <span class="n">name</span><span class="p">:</span>
+</span><span data-line="330">                    <span class="k">return</span> <span class="n">field</span></div>
 
 </span></pre></div>
         </article><button class="back-to-top" type="button">
@@ -599,7 +623,7 @@ data-aria-dark="Switch to auto color mode">
     </div>
   </div>
 </footer>
-      <script src="../../../../_static/documentation_options.js?v=2624b5fb"></script>
+      <script src="../../../../_static/documentation_options.js?v=3d9de00a"></script>
       <script src="../../../../_static/doctools.js?v=fd6eb6e6"></script>
       <script src="../../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
       <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>

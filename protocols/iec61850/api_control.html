@@ -2,7 +2,7 @@
 <html lang="en" data-accent-color="lime" data-content_root="../../">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Control / Operation - icspacket 0.1.dev1+g19d351426 documentation</title><link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="IED Client" href="api_client.html" /><link rel="prev" title="Object / Data References" href="api_path.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Control / Operation - icspacket 0.1.dev1+gcaa5aba2d documentation</title><link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="IED Client" href="api_client.html" /><link rel="prev" title="Object / Data References" href="api_path.html" />
       <link rel="canonical" href="https://matrixeditor.github.io/icspacket/protocols/iec61850/api_control.html" /><script>
     function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
     setColorMode(localStorage._theme||"dark");
@@ -214,6 +214,7 @@ data-aria-dark="Switch to auto color mode">
 <li><a class="reference internal" href="#icspacket.proto.iec61850.control.ControlObject.has_time_activated_oper"><code class="docutils literal notranslate"><span class="pre">ControlObject.has_time_activated_oper</span></code></a></li>
 <li><a class="reference internal" href="#icspacket.proto.iec61850.control.ControlObject.has_ctl_num"><code class="docutils literal notranslate"><span class="pre">ControlObject.has_ctl_num</span></code></a></li>
 <li><a class="reference internal" href="#icspacket.proto.iec61850.control.ControlObject.model"><code class="docutils literal notranslate"><span class="pre">ControlObject.model</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.control.ControlObject.ctl_val_type"><code class="docutils literal notranslate"><span class="pre">ControlObject.ctl_val_type</span></code></a></li>
 <li><a class="reference internal" href="#icspacket.proto.iec61850.control.ControlObject.origin"><code class="docutils literal notranslate"><span class="pre">ControlObject.origin()</span></code></a></li>
 <li><a class="reference internal" href="#icspacket.proto.iec61850.control.ControlObject.get_operate_data"><code class="docutils literal notranslate"><span class="pre">ControlObject.get_operate_data()</span></code></a></li>
 <li><a class="reference internal" href="#icspacket.proto.iec61850.control.ControlObject.T"><code class="docutils literal notranslate"><span class="pre">ControlObject.T</span></code></a></li>
@@ -313,34 +314,35 @@ data-aria-dark="Switch to auto color mode">
 <dl class="py class">
 <dt class="sig sig-object py" id="icspacket.proto.iec61850.control.ControlError">
 <span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">icspacket.proto.iec61850.control.</span></span><span class="sig-name descname"><span class="pre">ControlError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">values</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/icspacket/proto/iec61850/control.html#ControlError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iec61850.control.ControlError" title="Link to this definition">#</a></dt>
-<dd><p>Control error codes for IEC 61850 control operations.</p>
-<p>These values indicate the error category for a failed
-control request or response.</p>
+<dd><p>Outcome code the client decodes from the <code class="docutils literal notranslate"><span class="pre">error</span></code> field of a
+<code class="docutils literal notranslate"><span class="pre">LastApplError</span></code> diagnostic for an IEC 61850 control request.</p>
+<p>Together with a <a class="reference internal" href="#icspacket.proto.iec61850.control.Cause" title="icspacket.proto.iec61850.control.Cause"><code class="xref py py-class docutils literal notranslate"><span class="pre">Cause</span></code></a>, this tells the caller in what way a
+control request or response failed.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">Added in version 0.2.4.</span></p>
 </div>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.iec61850.control.ControlError.NO_ERROR">
 <span class="sig-name descname"><span class="pre">NO_ERROR</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></span><a class="headerlink" href="#icspacket.proto.iec61850.control.ControlError.NO_ERROR" title="Link to this definition">#</a></dt>
-<dd><p>No error occurred during control execution.</p>
+<dd><p>Indicates the control command completed without error.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.iec61850.control.ControlError.UNKNOWN">
 <span class="sig-name descname"><span class="pre">UNKNOWN</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></span><a class="headerlink" href="#icspacket.proto.iec61850.control.ControlError.UNKNOWN" title="Link to this definition">#</a></dt>
-<dd><p>An unknown error occurred.</p>
+<dd><p>Indicates the failure reason could not be classified further.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.iec61850.control.ControlError.TIMEOUT">
 <span class="sig-name descname"><span class="pre">TIMEOUT</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2</span></span><a class="headerlink" href="#icspacket.proto.iec61850.control.ControlError.TIMEOUT" title="Link to this definition">#</a></dt>
-<dd><p>The control operation timed out.</p>
+<dd><p>Indicates the control operation did not complete in time.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.iec61850.control.ControlError.OPERATOR_TEST_FAIL">
 <span class="sig-name descname"><span class="pre">OPERATOR_TEST_FAIL</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">3</span></span><a class="headerlink" href="#icspacket.proto.iec61850.control.ControlError.OPERATOR_TEST_FAIL" title="Link to this definition">#</a></dt>
-<dd><p>The operation failed during an operator test.</p>
+<dd><p>Indicates the control operation failed while running as an operator test.</p>
 </dd></dl>
 
 </dd></dl>
@@ -348,7 +350,8 @@ control request or response.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="icspacket.proto.iec61850.control.Cause">
 <span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">icspacket.proto.iec61850.control.</span></span><span class="sig-name descname"><span class="pre">Cause</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">values</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/icspacket/proto/iec61850/control.html#Cause"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iec61850.control.Cause" title="Link to this definition">#</a></dt>
-<dd><p>Detailed causes for IEC 61850 control operation responses.</p>
+<dd><p>Fine-grained reason the client decodes from the <code class="docutils literal notranslate"><span class="pre">cause</span></code> field of a
+<code class="docutils literal notranslate"><span class="pre">LastApplError</span></code> diagnostic, alongside a <a class="reference internal" href="#icspacket.proto.iec61850.control.ControlError" title="icspacket.proto.iec61850.control.ControlError"><code class="xref py py-class docutils literal notranslate"><span class="pre">ControlError</span></code></a>.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">Added in version 0.2.4.</span></p>
 </div>
@@ -400,37 +403,43 @@ connection-based operations.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.iec61850.control.ControlObject.origin_cat">
 <span class="sig-name descname"><span class="pre">origin_cat</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><a class="headerlink" href="#icspacket.proto.iec61850.control.ControlObject.origin_cat" title="Link to this definition">#</a></dt>
-<dd><p>Origin category (integer identifier of the source).</p>
+<dd><p>Numeric code for the source category, sent to the server as part of
+the origin block.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.iec61850.control.ControlObject.origin_ident">
 <span class="sig-name descname"><span class="pre">origin_ident</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bytes</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#icspacket.proto.iec61850.control.ControlObject.origin_ident" title="Link to this definition">#</a></dt>
-<dd><p>Origin identifier (client or system identifier).</p>
+<dd><p>Byte-string naming or identifying the initiating client/system, sent
+together with <code class="docutils literal notranslate"><span class="pre">origin_cat</span></code>.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.iec61850.control.ControlObject.ctl_num">
 <span class="sig-name descname"><span class="pre">ctl_num</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><a class="headerlink" href="#icspacket.proto.iec61850.control.ControlObject.ctl_num" title="Link to this definition">#</a></dt>
-<dd><p>Control number for tracking SBO and direct operations.</p>
+<dd><p>Running counter that tracks SBO and direct control operations;
+advanced automatically for direct-operate models.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.iec61850.control.ControlObject.test">
 <span class="sig-name descname"><span class="pre">test</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></span><a class="headerlink" href="#icspacket.proto.iec61850.control.ControlObject.test" title="Link to this definition">#</a></dt>
-<dd><p>Test flag indicating test vs. normal operation.</p>
+<dd><p>Marks whether the server should treat this command as a test rather
+than a normal operation.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.iec61850.control.ControlObject.interlock_check">
 <span class="sig-name descname"><span class="pre">interlock_check</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></span><a class="headerlink" href="#icspacket.proto.iec61850.control.ControlObject.interlock_check" title="Link to this definition">#</a></dt>
-<dd><p>Enable or disable interlock condition checking.</p>
+<dd><p>Controls whether the interlock check is applied when the command
+executes.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.iec61850.control.ControlObject.synchro_check">
 <span class="sig-name descname"><span class="pre">synchro_check</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></span><a class="headerlink" href="#icspacket.proto.iec61850.control.ControlObject.synchro_check" title="Link to this definition">#</a></dt>
-<dd><p>Enable or disable synchrocheck condition checking.</p>
+<dd><p>Controls whether the synchrocheck condition is applied when the
+command executes.</p>
 </dd></dl>
 
 <dl class="py property">
@@ -457,10 +466,19 @@ connection-based operations.</p>
 <dd><p>Return the configured control model for this object.</p>
 </dd></dl>
 
+<dl class="py property">
+<dt class="sig sig-object py" id="icspacket.proto.iec61850.control.ControlObject.ctl_val_type">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">ctl_val_type</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#icspacket.proto.iec61850.control.ControlObject.ctl_val_type" title="Link to this definition">#</a></dt>
+<dd><p>Return the ASN.1 <em>Data</em> CHOICE alternative name expected for
+<code class="docutils literal notranslate"><span class="pre">ctlVal</span></code> (e.g. <code class="docutils literal notranslate"><span class="pre">&quot;boolean&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;integer&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;visible_string&quot;</span></code>),
+or <code class="docutils literal notranslate"><span class="pre">None</span></code> if the control object has no <code class="docutils literal notranslate"><span class="pre">Oper.ctlVal</span></code> attribute.</p>
+</dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="icspacket.proto.iec61850.control.ControlObject.origin">
 <span class="sig-name descname"><span class="pre">origin</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">bytes</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../../_modules/icspacket/proto/iec61850/control.html#ControlObject.origin"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iec61850.control.ControlObject.origin" title="Link to this definition">#</a></dt>
-<dd><p>Return the <em>origin</em> structure as defined in IEC 61850-7-2.</p>
+<dd><p>Build the <em>origin</em> structure according to IEC 61850-7-2, used by
+<a class="reference internal" href="#icspacket.proto.iec61850.control.ControlObject.get_operate_data" title="icspacket.proto.iec61850.control.ControlObject.get_operate_data"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_operate_data()</span></code></a> when assembling a control request.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Origin information consisting of category and identifier.</p>
@@ -474,10 +492,12 @@ connection-based operations.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="icspacket.proto.iec61850.control.ControlObject.get_operate_data">
 <span class="sig-name descname"><span class="pre">get_operate_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ctl_val</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">oper_time</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../mms/api_data.html#icspacket.proto.mms.data.Timestamp" title="icspacket.proto.mms.data.Timestamp"><span class="pre">Timestamp</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">check</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Data</span></span></span><a class="reference internal" href="../../_modules/icspacket/proto/iec61850/control.html#ControlObject.get_operate_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iec61850.control.ControlObject.get_operate_data" title="Link to this definition">#</a></dt>
-<dd><p>Construct an MMS <em>Data</em> structure representing an operate request.</p>
-<p>The resulting structure includes mandatory control fields such as
-<code class="docutils literal notranslate"><span class="pre">ctlVal</span></code>, <code class="docutils literal notranslate"><span class="pre">T</span></code>, <code class="docutils literal notranslate"><span class="pre">origin</span></code>, and optionally <code class="docutils literal notranslate"><span class="pre">operTm</span></code>, <code class="docutils literal notranslate"><span class="pre">ctlNum</span></code>,
-<code class="docutils literal notranslate"><span class="pre">Test</span></code>, and <code class="docutils literal notranslate"><span class="pre">Check</span></code>.</p>
+<dd><p>Assemble the MMS <code class="docutils literal notranslate"><span class="pre">Data</span></code> payload written to a control object’s
+<code class="docutils literal notranslate"><span class="pre">Oper</span></code> attribute to carry out an operate request.</p>
+<p>The value supplied in <code class="docutils literal notranslate"><span class="pre">ctl_val</span></code> is combined with a fresh <code class="docutils literal notranslate"><span class="pre">T</span></code>
+timestamp and the <code class="docutils literal notranslate"><span class="pre">origin</span></code> block; depending on this control
+object’s capabilities and the <code class="docutils literal notranslate"><span class="pre">check</span></code> flag, <code class="docutils literal notranslate"><span class="pre">operTm</span></code>, <code class="docutils literal notranslate"><span class="pre">ctlNum</span></code>,
+<code class="docutils literal notranslate"><span class="pre">Test</span></code>, and/or <code class="docutils literal notranslate"><span class="pre">Check</span></code> are folded in as well.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -556,7 +576,7 @@ connection-based operations.</p>
     </div>
   </div>
 </footer>
-      <script src="../../_static/documentation_options.js?v=2624b5fb"></script>
+      <script src="../../_static/documentation_options.js?v=3d9de00a"></script>
       <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
       <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
       <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>

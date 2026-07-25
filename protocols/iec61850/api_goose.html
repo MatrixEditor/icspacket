@@ -2,7 +2,7 @@
 <html lang="en" data-accent-color="lime" data-content_root="../../">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>GOOSE Client - icspacket 0.1.dev1+g19d351426 documentation</title><link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="SampledValues Client" href="api_sv.html" /><link rel="prev" title="IED Client" href="api_client.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>GOOSE Client - icspacket 0.1.dev1+gcaa5aba2d documentation</title><link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="SampledValues Client" href="api_sv.html" /><link rel="prev" title="IED Client" href="api_client.html" />
       <link rel="canonical" href="https://matrixeditor.github.io/icspacket/protocols/iec61850/api_goose.html" /><script>
     function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
     setColorMode(localStorage._theme||"dark");
@@ -370,37 +370,40 @@ data-aria-dark="Switch to auto color mode">
 <dl class="py data">
 <dt class="sig sig-object py" id="icspacket.proto.iec61850.goose.GOOSE_ETHER_TYPE">
 <span class="sig-prename descclassname"><span class="pre">icspacket.proto.iec61850.goose.</span></span><span class="sig-name descname"><span class="pre">GOOSE_ETHER_TYPE</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">35000</span></span><a class="headerlink" href="#icspacket.proto.iec61850.goose.GOOSE_ETHER_TYPE" title="Link to this definition">#</a></dt>
-<dd><p>EtherType value assigned to IEC 61850 GOOSE (Generic Object Oriented Substation
-Event)</p>
+<dd><p>Ethernet frames carrying GOOSE (Generic Object Oriented Substation Event)
+traffic use this EtherType, letting the sniffer/filter below recognize them
+on the wire.</p>
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="icspacket.proto.iec61850.goose.PDU">
 <span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">icspacket.proto.iec61850.goose.</span></span><span class="sig-name descname"><span class="pre">PDU</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">app_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">length</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reserved1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reserved2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">raw_apdu</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bytes</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">b''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/icspacket/proto/iec61850/goose.html#PDU"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iec61850.goose.PDU" title="Link to this definition">#</a></dt>
-<dd><p>Protocol Data Unit (PDU) representing the ISO/IEC 8802-3 frame structure
-used for GSE management and GOOSE communication.</p>
-<p>The PDU wraps the <strong>Application Protocol Data Unit (APDU)</strong> carried in an
-Ethernet frame. The frame contains reserved fields in addition to the
-application identifier and APDU payload.</p>
+<dd><p>Binary layout this library reads from and writes to the Ethernet
+(ISO/IEC 8802-3) payload for both GOOSE and GSE management traffic.</p>
+<p>Every instance corresponds to one on-the-wire frame: a short fixed
+header (application identifier plus two reserved words) followed by the
+<strong>Application Protocol Data Unit (APDU)</strong> that actually carries the
+GOOSE or GSE management data.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.iec61850.goose.PDU.app_id">
 <span class="sig-name descname"><span class="pre">app_id</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></span><a class="headerlink" href="#icspacket.proto.iec61850.goose.PDU.app_id" title="Link to this definition">#</a></dt>
-<dd><p>Application identifier (AppID). This field uniquely identifies the
-application instance for which the message is intended.</p>
+<dd><p>AppID header word identifying which application instance this frame is
+intended for.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.iec61850.goose.PDU.length">
 <span class="sig-name descname"><span class="pre">length</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></span><a class="headerlink" href="#icspacket.proto.iec61850.goose.PDU.length" title="Link to this definition">#</a></dt>
-<dd><p>Total length of the PDU in bytes, including the 8-byte header (AppID,
-Length, Reserved1, Reserved2).</p>
+<dd><p>Total on-the-wire byte count for this PDU, covering the 8-byte header
+made up of <code class="docutils literal notranslate"><span class="pre">app_id</span></code>, <code class="docutils literal notranslate"><span class="pre">length</span></code>, <code class="docutils literal notranslate"><span class="pre">reserved1</span></code>, and <code class="docutils literal notranslate"><span class="pre">reserved2</span></code>.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.iec61850.goose.PDU.raw_apdu">
 <span class="sig-name descname"><span class="pre">raw_apdu</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bytes</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">b''</span></span><a class="headerlink" href="#icspacket.proto.iec61850.goose.PDU.raw_apdu" title="Link to this definition">#</a></dt>
-<dd><p>Encoded APDU (Application Protocol Data Unit). This may contain ASN.1
-BER-encoded payloads or raw bytes depending on context.</p>
+<dd><p>Raw bytes of the APDU payload. Depending on how the PDU was produced or
+decoded, this may already be ASN.1 BER-encoded, or still be a plain
+<code class="docutils literal notranslate"><span class="pre">bytes</span></code> object awaiting encoding.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -889,7 +892,7 @@ interfaces exist, an explicit <code class="docutils literal notranslate"><span c
     </div>
   </div>
 </footer>
-      <script src="../../_static/documentation_options.js?v=2624b5fb"></script>
+      <script src="../../_static/documentation_options.js?v=3d9de00a"></script>
       <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
       <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
       <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
