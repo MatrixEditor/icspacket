@@ -13,23 +13,33 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
-# pyright: reportGeneralTypeIssues=false, reportUninitializedInstanceVariable=false, reportInvalidTypeForm=false
 import enum
 import math
+from collections.abc import Callable
 
 import crcmod.predefined
-
-from caterpillar.shortcuts import this, struct, bitfield, LittleEndian
-from caterpillar.fields import singleton, uint16, uint8
-from caterpillar.model import EnumFactory, pack, unpack
+from caterpillar.abc import _ContextLike
 from caterpillar.context import CTX_STREAM
 from caterpillar.exception import ValidationError
+from caterpillar.py import (
+    EnumFactory,
+    Invisible,
+    LittleEndian,
+    bitfield,
+    f,
+    pack,
+    singleton,
+    struct,
+    this,
+    uint16,
+    unpack,
+)
+from caterpillar.types import uint8_t, uint16_t
 
 from icspacket.proto.dnp3.application import APDU
 from icspacket.proto.dnp3.transport import TPDU
 
-
-Crc16DNP = crcmod.predefined.mkCrcFun("crc-16-dnp")
+Crc16DNP: Callable[[bytes], int] = crcmod.predefined.mkCrcFun("crc-16-dnp")
 
 # The minimum header length (only header)
 LPDU_HEADER_MIN_LENGTH = 5
@@ -46,98 +56,109 @@ LPDU_USER_DATA_MAX_LENGTH = LPDU_HEADER_MAX_LENGTH - LPDU_HEADER_MIN_LENGTH
 
 class LinkDirection(enum.IntEnum):
     """
-    Direction indicator bit for the DNP3 link layer (DIR field).
+    Values for the DNP3 link layer's direction bit (DIR field), used by this
+    library to tag which kind of station produced a frame.
 
     (See DNP3 Specification, Section 9.2.4.1.3.1)
     """
 
     MASTER = 1
-    """Indicates a frame sent from a Master device."""
+    """Marks a frame as originating from a Master device."""
 
     OUTSTATION = 0
-    """Indicates a frame sent from an Outstation device."""
+    """Marks a frame as originating from an Outstation device."""
 
 
 class LinkPrimaryFunctionCode(enum.IntEnum):
     """
-    Primary-to-Secondary function codes for the Link Layer.
+    Function codes this library uses for frames traveling from a primary
+    station to a secondary station.
 
     These codes are valid when the PRM bit is set (PRM = 1).
     (See DNP3 Specification, Table 9-1)
     """
 
     RESET_LINK_STATES = 0
-    """Reset link states."""
+    """Resets the secondary station's link-layer state."""
 
     TEST_LINK_STATES = 2
-    """Test link states."""
+    """Tests whether the secondary station's link layer is still responsive."""
 
     CONFIRMED_USER_DATA = 3
-    """Confirmed user data transfer."""
+    """Carries user data that the secondary station must acknowledge."""
 
     UNCONFIRMED_USER_DATA = 4
-    """Unconfirmed user data transfer."""
+    """Carries user data that does not require an acknowledgement."""
 
     REQUEST_LINK_STATUS = 9
-    """Request link status."""
+    """Asks the secondary station to report its current link status."""
 
 
 class LinkSecondaryFunctionCode(enum.IntEnum):
     """
-    Secondary-to-Primary function codes for the Link Layer.
+    Function codes this library uses for frames traveling from a secondary
+    station back to a primary station.
 
     These codes are valid when the PRM bit is clear (PRM = 0).
     (See DNP3 Specification, Table 9-2)
     """
 
     ACK = 0
-    """Acknowledgement."""
+    """Confirms that the previous frame from the primary station was accepted."""
 
     NACK = 1
-    """Negative acknowledgement."""
+    """Reports that the previous frame from the primary station was rejected."""
 
     LINK_STATUS = 11
-    """Report link status."""
+    """Carries the secondary station's answer to a `REQUEST_LINK_STATUS` query."""
 
     NOT_SUPPORTED = 15
-    """Function code not supported."""
+    """Tells the primary station that the requested link function code is
+    not implemented."""
 
 
 @bitfield
 class LinkControl:
     """
-    Control field of the Link Layer Protocol Data Unit (LPDU).
-
-    Stores metadata about the frame direction, initiator,
-    error handling, and function code.
+    This bitfield models the LPDU's control octet, exposing a frame's
+    direction, transaction role, retry-detection flags, and function code
+    as individual attributes instead of raw bits.
     (See DNP3 Specification, Section 9.2.4.1.3)
     """
 
-    direction: (1, EnumFactory(LinkDirection)) = LinkDirection.MASTER
-    """DIR bit. Indicates the physical origin of the frame (Master/Outstation)."""
+    direction: f[LinkDirection | int, (1, EnumFactory(LinkDirection))] = (
+        LinkDirection.MASTER
+    )
+    """DIR bit. Records which kind of station - Master or Outstation -
+    originated the frame."""
 
-    primary_message: 1 = False
+    primary_message: f[bool, 1] = False
     """PRM bit.
 
-    - ``True`` :octicon:`arrow-right` Frame initiates a transaction.
-    - ``False`` :octicon:`arrow-right` Frame completes a transaction.
+    - ``True`` :octicon:`arrow-right` This frame opens a new transaction.
+    - ``False`` :octicon:`arrow-right` This frame completes an existing transaction.
     """
 
-    frame_count_bit: 1 = False
-    """FCB bit. Used in primary-to-secondary frames to detect loss or duplication."""
+    frame_count_bit: f[bool, 1] = False
+    """FCB bit. Toggled on primary-to-secondary frames so the secondary
+    station can detect lost or duplicated frames."""
 
-    frame_count_valid: 1 = False
-    """FCV bit. Specifies whether the secondary station must examine the FCB."""
+    frame_count_valid: f[bool, 1] = False
+    """FCV bit. Tells the secondary station whether it should pay attention
+    to the FCB carried in this frame."""
 
-    function_code: 4 = 0
-    """Function code field identifying the service or command type."""
+    function_code: f[int, 4] = 0
+    """Raw 4-bit function code; decode it with :attr:`pri2sec_code` or
+    :attr:`sec2pri_code` depending on whether this is a primary or
+    secondary frame."""
 
     @property
     def data_flow_control(self) -> bool:
         """
-        Report data flow availability (DFC bit).
+        Expose the DFC bit as a boolean.
 
-        Indicates insufficient Data Link Layer buffer capacity.
+        A ``True`` value signals that the sending station's Data Link
+        Layer receive buffer has too little free space to accept more data.
 
         :return: ``True`` if buffer space is insufficient, ``False`` otherwise.
         :rtype: bool
@@ -168,16 +189,16 @@ class LinkControl:
 @singleton
 class LinkUserData:
     """
-    Encapsulates user data blocks inside an LPDU.
-
-    Each block consists of up to 16 bytes of data followed by a 16-bit CRC.
+    Handles the variable-length user-data portion of an LPDU during
+    (de)serialization: this library reads and writes it in blocks of up to
+    16 payload bytes, each immediately followed by its own 16-bit CRC.
     (See DNP3 Specification, Section 9.2.4.4)
     """
 
     def __type__(self):
         return bytes
 
-    def __size__(self, context) -> int:
+    def __size__(self, context: _ContextLike) -> int:
         """
         Calculate the size of the user data field.
 
@@ -189,7 +210,7 @@ class LinkUserData:
         """
         raise NotImplementedError
 
-    def __unpack__(self, context):
+    def __unpack__(self, context: _ContextLike) -> TPDU | None:
         """
         Unpack and validate user data from the input stream.
 
@@ -202,11 +223,11 @@ class LinkUserData:
         :return: Reassembled TPDU from unpacked user data.
         :rtype: TPDU
         """
-        length = this.length(context) - LPDU_HEADER_MIN_LENGTH
+        length: int = this.length(context) - LPDU_HEADER_MIN_LENGTH
         user_data = bytearray()
         while length > 0:
             size = min(length, 16)
-            chunk_data = context[CTX_STREAM].read(size)
+            chunk_data: bytes = context[CTX_STREAM].read(size)
             chunk_crc = uint16.__unpack__(context)
             expected_crc = Crc16DNP(chunk_data)
             if expected_crc != chunk_crc:
@@ -219,7 +240,7 @@ class LinkUserData:
 
         return unpack(TPDU, bytes(user_data)) if user_data else None
 
-    def __pack__(self, obj, context):
+    def __pack__(self, obj: TPDU | None, context: _ContextLike):
         """
         Pack user data into LPDU chunks with CRCs.
 
@@ -231,48 +252,51 @@ class LinkUserData:
         :param context: Output packing context with writable stream.
         :type context: dict
         """
-        data = bytes(obj)
-        length = len(data)
-        while length > 0:
-            size = min(length, 16)
-            chunk_data, data = data[:size], data[size:]
-            context[CTX_STREAM].write(chunk_data)
-            uint16.__pack__(Crc16DNP(chunk_data), context)
-            length -= size
+        if obj is not None:
+            data = bytes(obj)
+            length = len(data)
+            while length > 0:
+                size = min(length, 16)
+                chunk_data, data = data[:size], data[size:]
+                context[CTX_STREAM].write(chunk_data)
+                uint16.__pack__(Crc16DNP(chunk_data), context)
+                length -= size
 
 
-@struct(order=LittleEndian)
+@struct(order=LittleEndian, kw_only=True)
 class LPDU:
     """
     Link-layer Protocol Data Unit (LPDU).
 
-    Each LPDU consists of a fixed header block and a variable-length
-    sequence of data blocks, each terminated by a 16-bit CRC.
+    This struct models a complete LPDU as a fixed-size header followed by
+    zero or more variable-length data blocks, each one closed off with its
+    own 16-bit CRC.
     (See DNP3 Specification, Section 9.2.4)
     """
 
-    start: b"\x05\x64"
-    """Sync bytes marking the start of every LPDU (0x05, 0x64)."""
+    start: f[bytes, b"\x05\x64"] = Invisible()
+    """Fixed two-byte sync sequence (0x05, 0x64) at the start of every LPDU."""
 
-    length: uint8 = 0
-    """Length field.
-    Number of non-CRC bytes following the header. Includes CONTROL,
-    DESTINATION, SOURCE, and USER DATA fields."""
+    length: uint8_t = 0
+    """Length field: count of the non-CRC bytes that follow it, spanning the
+    CONTROL, DESTINATION, SOURCE, and USER DATA fields."""
 
-    control: LinkControl = None
-    """Control field containing direction, function, and status flags."""
+    control: LinkControl = None  # pyright: ignore[reportAssignmentType]
+    """Control octet for the frame, modeled by :class:`LinkControl`, holding
+    the direction, function code, and status flags."""
 
-    destination: uint16 = 0
-    """Destination address of the data link frame."""
+    destination: uint16_t = 0
+    """Address of the data-link frame's destination station."""
 
-    source: uint16 = 0
-    """Source address of the data link frame."""
+    source: uint16_t = 0
+    """Address of the data-link frame's source station."""
 
-    crc16: uint16 = 0
-    """CRC checksum for the LPDU header block."""
+    crc16: uint16_t = 0
+    """Checksum protecting the LPDU header block."""
 
-    user_data: LinkUserData = b""
-    """Payload data field containing one or more user data chunks."""
+    user_data: f[TPDU | None, LinkUserData] = None
+    """The frame's payload, held as one or more user-data chunks via
+    :class:`LinkUserData`."""
 
     def __post_init__(self):
         self.control = self.control or LinkControl()
@@ -284,7 +308,7 @@ class LPDU:
         :return: Encoded LPDU bytes.
         :rtype: bytes
         """
-        self.length = LPDU_HEADER_MIN_LENGTH + len(bytes(self.user_data))
+        self.length = LPDU_HEADER_MIN_LENGTH + len(bytes(self.user_data or b""))
         self.crc16 = 0
         header_octets = pack(self)[:8]
         self.crc16 = Crc16DNP(header_octets)
@@ -328,11 +352,14 @@ class LPDU:
         """
         Parse the APDU contained in the TPDU.
         """
-        return self.user_data.apdu
+        return self.tpdu.apdu
 
     @property
     def tpdu(self) -> TPDU:
         """
         The TPDU contained in the LPDU.
         """
+        if self.user_data is None:
+            raise ValueError("LPDU does not store a TPDU")
+
         return self.user_data
