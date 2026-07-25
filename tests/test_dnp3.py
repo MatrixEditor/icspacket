@@ -118,4 +118,8 @@ def test_octet_string():
     assert get_octet_string(objects, 112) == b"hello world"
 
     encoded = pack_objects(objects)
-    assert encoded.hex() == "700b0668656c6c6f20776f726c64"
+    assert encoded.hex() == "700b070168656c6c6f20776f726c64"
+
+    decoded = unpack_objects(encoded)
+    assert get_octet_string(decoded, 112) == b"hello world"
+    assert pack_objects(decoded) == encoded
