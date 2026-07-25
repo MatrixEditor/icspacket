@@ -2,12 +2,12 @@
 <html lang="en" data-accent-color="lime" data-content_root="../../">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Object / Data References - icspacket 0.2.4 documentation</title><link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="Control / Operation" href="api_control.html" /><link rel="prev" title="Data Classes" href="api_data_classes.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Object / Data References - icspacket 0.1.dev1+ga30386068 documentation</title><link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="Control / Operation" href="api_control.html" /><link rel="prev" title="Data Classes" href="api_data_classes.html" />
       <link rel="canonical" href="https://matrixeditor.github.io/icspacket/protocols/iec61850/api_path.html" /><script>
     function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
     setColorMode(localStorage._theme||"dark");
-  </script><link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b1a1f93b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/shibuya.css?v=bb284d7b" />
+  </script><link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=e1a1ceaf" />
+    <link rel="stylesheet" type="text/css" href="../../_static/shibuya.css?v=2ceb65ce" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link media="print" rel="stylesheet" type="text/css" href="../../_static/print.css?v=20ff2c19" />
@@ -20,10 +20,11 @@
   --sy-f-heading: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
 }
 </style>
-    <meta property="og:type" content="website"/>
-<meta property="og:url" content="https://matrixeditor.github.io/icspacket/protocols/iec61850/api_path.html"/>
-<meta property="og:title" content="Object / Data References"/>
-<meta name="twitter:card" content="summary"/>
+    
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://matrixeditor.github.io/icspacket/protocols/iec61850/api_path.html"/>
+  <meta property="og:title" content="Object / Data References"/>
+    <meta name="twitter:card" content="summary"/>
   </head>
 <body><div class="sy-head">
   <div class="sy-head-blur"></div>
@@ -194,22 +195,22 @@ data-aria-dark="Switch to auto color mode">
     </button>
     <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div class="localtoc"><h3>On this page</h3><ul>
 <li><a class="reference internal" href="#icspacket.proto.iec61850.path.ObjectReference"><code class="docutils literal notranslate"><span class="pre">ObjectReference</span></code></a><ul>
-<li><a class="reference internal" href="#icspacket.proto.iec61850.path.ObjectReference.ldname"><code class="docutils literal notranslate">ldname</span></code></a></li>
-<li><a class="reference internal" href="#icspacket.proto.iec61850.path.ObjectReference.lnname"><code class="docutils literal notranslate">lnname</span></code></a></li>
-<li><a class="reference internal" href="#icspacket.proto.iec61850.path.ObjectReference.lnclass"><code class="docutils literal notranslate">lnclass</span></code></a></li>
-<li><a class="reference internal" href="#icspacket.proto.iec61850.path.ObjectReference.lngroup"><code class="docutils literal notranslate">lngroup</span></code></a></li>
-<li><a class="reference internal" href="#icspacket.proto.iec61850.path.ObjectReference.parts"><code class="docutils literal notranslate">parts</span></code></a></li>
-<li><a class="reference internal" href="#icspacket.proto.iec61850.path.ObjectReference.name"><code class="docutils literal notranslate">name()</span></code></a></li>
-<li><a class="reference internal" href="#icspacket.proto.iec61850.path.ObjectReference.from_mmsref"><code class="docutils literal notranslate">from_mmsref()</span></code></a></li>
-<li><a class="reference internal" href="#icspacket.proto.iec61850.path.ObjectReference.from_string"><code class="docutils literal notranslate">from_string()</span></code></a></li>
-<li><a class="reference internal" href="#icspacket.proto.iec61850.path.ObjectReference.mmsref"><code class="docutils literal notranslate">mmsref</span></code></a></li>
-<li><a class="reference internal" href="#icspacket.proto.iec61850.path.ObjectReference.mms_name"><code class="docutils literal notranslate">mms_name</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.path.ObjectReference.ldname"><code class="docutils literal notranslate"><span class="pre">ObjectReference.ldname</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.path.ObjectReference.lnname"><code class="docutils literal notranslate"><span class="pre">ObjectReference.lnname</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.path.ObjectReference.lnclass"><code class="docutils literal notranslate"><span class="pre">ObjectReference.lnclass</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.path.ObjectReference.lngroup"><code class="docutils literal notranslate"><span class="pre">ObjectReference.lngroup</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.path.ObjectReference.parts"><code class="docutils literal notranslate"><span class="pre">ObjectReference.parts</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.path.ObjectReference.name"><code class="docutils literal notranslate"><span class="pre">ObjectReference.name()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.path.ObjectReference.from_mmsref"><code class="docutils literal notranslate"><span class="pre">ObjectReference.from_mmsref()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.path.ObjectReference.from_string"><code class="docutils literal notranslate"><span class="pre">ObjectReference.from_string()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.path.ObjectReference.mmsref"><code class="docutils literal notranslate"><span class="pre">ObjectReference.mmsref</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.path.ObjectReference.mms_name"><code class="docutils literal notranslate"><span class="pre">ObjectReference.mms_name</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#icspacket.proto.iec61850.path.DataObjectReference"><code class="docutils literal notranslate"><span class="pre">DataObjectReference</span></code></a><ul>
-<li><a class="reference internal" href="#icspacket.proto.iec61850.path.DataObjectReference.functional_constraint"><code class="docutils literal notranslate">functional_constraint</span></code></a></li>
-<li><a class="reference internal" href="#icspacket.proto.iec61850.path.DataObjectReference.datname"><code class="docutils literal notranslate">datname</span></code></a></li>
-<li><a class="reference internal" href="#icspacket.proto.iec61850.path.DataObjectReference.change_fc"><code class="docutils literal notranslate">change_fc()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.path.DataObjectReference.functional_constraint"><code class="docutils literal notranslate"><span class="pre">DataObjectReference.functional_constraint</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.path.DataObjectReference.datname"><code class="docutils literal notranslate"><span class="pre">DataObjectReference.datname</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.path.DataObjectReference.change_fc"><code class="docutils literal notranslate"><span class="pre">DataObjectReference.change_fc()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -264,13 +265,48 @@ data-aria-dark="Switch to auto color mode">
     </div>
   </div>
 </div><div class="flex flex-col break-words justify-between">
-      <div class="min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
-        <article class="yue" role="main">
+      <div class="relative min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
+  <div class="copy-page-wrapper relative pb-4 lg:absolute lg:top-8 lg:right-6 xl:right-12">
+  <div id="copy-page-trigger">
+    <button
+      type="button"
+      class="js-copy px-3 py-1 inline-flex items-center gap-1"
+      data-url="https://raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/protocols/iec61850/api_path.rst"
+    >
+      <i class="i-lucide" data-icon="copy"></i>
+      <span>Copy page</span>
+    </button>
+    <button class="js-menu px-2 py-1" type="button" aria-label="More actions"
+      aria-haspopup="menu" aria-expanded="false" aria-controls="copy-page-content">
+      <i class="i-lucide chevron-down"></i>
+    </button>
+  </div>
+  <div id="copy-page-content" role="menu" aria-orientation="vertical" aria-hidden="true">
+    <div role="presentation">
+      <div class="flex flex-col" role="group">
+        <button class="js-copy" type="button" role="menuitem"
+          data-url="https://raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/protocols/iec61850/api_path.rst">
+          <span class="iconify-icon">
+            <i class="i-lucide" data-icon="copy"></i>
+          </span>
+          <span>Copy page</span>
+        </button>
+        <a role="menuitem" href="https://raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/protocols/iec61850/api_path.rst" target="_blank" rel="nofollow"><iconify-icon icon="bi:code-slash"></iconify-icon>
+            <span>View Source</span></a><a role="menuitem" href="https://chatgpt.com/?hints=search&q=Read%20https%3A//raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/protocols/iec61850/api_path.rst%20so%20I%20can%20ask%20questions%20about%20it." target="_blank" rel="nofollow">
+          <iconify-icon icon="bi:openai"></iconify-icon>
+          <span>Open in ChatGPT</span>
+        </a><a role="menuitem" href="https://claude.ai/new?q=Read%20https%3A//raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/protocols/iec61850/api_path.rst%20so%20I%20can%20ask%20questions%20about%20it." target="_blank" rel="nofollow">
+          <iconify-icon icon="bi:claude"></iconify-icon>
+          <span>Open in Claude</span>
+        </a></div>
+    </div>
+  </div>
+</div><article class="yue" role="main">
           <section id="module-icspacket.proto.iec61850.path">
-<span id="object-data-references"></span><span id="iec61850-api-path"></span><h1>Object / Data References<a class="headerlink" href="#module-icspacket.proto.iec61850.path" title="Link to this heading">¶</a></h1>
+<span id="object-data-references"></span><span id="iec61850-api-path"></span><h1>Object / Data References<a class="headerlink" href="#module-icspacket.proto.iec61850.path" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="icspacket.proto.iec61850.path.ObjectReference">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">icspacket.proto.iec61850.path.</span></span><span class="sig-name descname"><span class="pre">ObjectReference</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logical_device</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="positional-only-separator o"><abbr title="Positional-only parameter separator (PEP 570)"><span class="pre">/</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">logical_node</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">names</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/icspacket/proto/iec61850/path.html#ObjectReference"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iec61850.path.ObjectReference" title="Link to this definition">¶</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">icspacket.proto.iec61850.path.</span></span><span class="sig-name descname"><span class="pre">ObjectReference</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logical_device</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="positional-only-separator o"><abbr title="Positional-only parameter separator (PEP 570)"><span class="pre">/</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">logical_node</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">names</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/icspacket/proto/iec61850/path.html#ObjectReference"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iec61850.path.ObjectReference" title="Link to this definition">#</a></dt>
 <dd><p>IEC 61850 ACSI ObjectReference (IEC 61850-7-2 §5.5.3.3).</p>
 <p>An ObjectReference uniquely identifies instances in the ACSI class hierarchy
 (logical devices, logical nodes, data objects, sub-data objects, and data
@@ -316,7 +352,7 @@ between a logical node and its data objects.</p>
 </ul>
 <dl class="py property">
 <dt class="sig sig-object py" id="icspacket.proto.iec61850.path.ObjectReference.ldname">
-<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ldname</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#icspacket.proto.iec61850.path.ObjectReference.ldname" title="Link to this definition">¶</a></dt>
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">ldname</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><a class="headerlink" href="#icspacket.proto.iec61850.path.ObjectReference.ldname" title="Link to this definition">#</a></dt>
 <dd><p>Return the logical device name (LDName).</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="gp">&gt;&gt;&gt; </span><span class="n">ref</span> <span class="o">=</span> <span class="n">ObjectReference</span><span class="p">(</span><span class="s2">&quot;LD1&quot;</span><span class="p">,</span> <span class="s2">&quot;MMXU1&quot;</span><span class="p">,</span> <span class="s2">&quot;A&quot;</span><span class="p">)</span>
 </span><span data-line="2"><span class="gp">&gt;&gt;&gt; </span><span class="n">ref</span><span class="o">.</span><span class="n">ldname</span>
@@ -327,7 +363,7 @@ between a logical node and its data objects.</p>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="icspacket.proto.iec61850.path.ObjectReference.lnname">
-<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">lnname</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#icspacket.proto.iec61850.path.ObjectReference.lnname" title="Link to this definition">¶</a></dt>
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">lnname</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#icspacket.proto.iec61850.path.ObjectReference.lnname" title="Link to this definition">#</a></dt>
 <dd><p>Return the logical node name (LNName), or <code class="docutils literal notranslate"><span class="pre">None</span></code> if not present.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="gp">&gt;&gt;&gt; </span><span class="n">ref</span> <span class="o">=</span> <span class="n">ObjectReference</span><span class="p">(</span><span class="s2">&quot;LD1&quot;</span><span class="p">,</span> <span class="s2">&quot;MMXU1&quot;</span><span class="p">,</span> <span class="s2">&quot;A&quot;</span><span class="p">)</span>
 </span><span data-line="2"><span class="gp">&gt;&gt;&gt; </span><span class="n">ref</span><span class="o">.</span><span class="n">lnname</span>
@@ -340,7 +376,7 @@ between a logical node and its data objects.</p>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="icspacket.proto.iec61850.path.ObjectReference.lnclass">
-<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">lnclass</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="api_data_classes.html#icspacket.proto.iec61850.classes.LN_Class" title="icspacket.proto.iec61850.classes.LN_Class"><span class="pre">LN_Class</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#icspacket.proto.iec61850.path.ObjectReference.lnclass" title="Link to this definition">¶</a></dt>
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">lnclass</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="api_data_classes.html#icspacket.proto.iec61850.classes.LN_Class" title="icspacket.proto.iec61850.classes.LN_Class"><span class="pre">LN_Class</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#icspacket.proto.iec61850.path.ObjectReference.lnclass" title="Link to this definition">#</a></dt>
 <dd><p>Resolve the LN class from the LNName, if available.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="gp">&gt;&gt;&gt; </span><span class="n">ref</span> <span class="o">=</span> <span class="n">ObjectReference</span><span class="p">(</span><span class="s2">&quot;LD1&quot;</span><span class="p">,</span> <span class="s2">&quot;MMXU1&quot;</span><span class="p">)</span>
 </span><span data-line="2"><span class="gp">&gt;&gt;&gt; </span><span class="n">ref</span><span class="o">.</span><span class="n">lnclass</span>
@@ -351,7 +387,7 @@ between a logical node and its data objects.</p>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="icspacket.proto.iec61850.path.ObjectReference.lngroup">
-<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">lngroup</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="api_data_classes.html#icspacket.proto.iec61850.classes.LN_Group" title="icspacket.proto.iec61850.classes.LN_Group"><span class="pre">LN_Group</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#icspacket.proto.iec61850.path.ObjectReference.lngroup" title="Link to this definition">¶</a></dt>
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">lngroup</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="api_data_classes.html#icspacket.proto.iec61850.classes.LN_Group" title="icspacket.proto.iec61850.classes.LN_Group"><span class="pre">LN_Group</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#icspacket.proto.iec61850.path.ObjectReference.lngroup" title="Link to this definition">#</a></dt>
 <dd><p>Resolve the LN group from the first character of the LNName.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="gp">&gt;&gt;&gt; </span><span class="n">ref</span> <span class="o">=</span> <span class="n">ObjectReference</span><span class="p">(</span><span class="s2">&quot;LD1&quot;</span><span class="p">,</span> <span class="s2">&quot;MMXU1&quot;</span><span class="p">)</span>
 </span><span data-line="2"><span class="gp">&gt;&gt;&gt; </span><span class="n">ref</span><span class="o">.</span><span class="n">lngroup</span>
@@ -362,7 +398,7 @@ between a logical node and its data objects.</p>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="icspacket.proto.iec61850.path.ObjectReference.parts">
-<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">parts</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#icspacket.proto.iec61850.path.ObjectReference.parts" title="Link to this definition">¶</a></dt>
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">parts</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.iec61850.path.ObjectReference.parts" title="Link to this definition">#</a></dt>
 <dd><p>Return the hierarchical components of the reference as a list.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="gp">&gt;&gt;&gt; </span><span class="n">ref</span> <span class="o">=</span> <span class="n">ObjectReference</span><span class="p">(</span><span class="s2">&quot;LD1&quot;</span><span class="p">,</span> <span class="s2">&quot;MMXU1&quot;</span><span class="p">,</span> <span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;phsA&quot;</span><span class="p">)</span>
 </span><span data-line="2"><span class="gp">&gt;&gt;&gt; </span><span class="n">ref</span><span class="o">.</span><span class="n">parts</span>
@@ -373,7 +409,7 @@ between a logical node and its data objects.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="icspacket.proto.iec61850.path.ObjectReference.name">
-<span class="sig-name descname"><span class="pre">name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../../_modules/icspacket/proto/iec61850/path.html#ObjectReference.name"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iec61850.path.ObjectReference.name" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../../_modules/icspacket/proto/iec61850/path.html#ObjectReference.name"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iec61850.path.ObjectReference.name" title="Link to this definition">#</a></dt>
 <dd><p>Return the name of the component at the given hierarchy index.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="gp">&gt;&gt;&gt; </span><span class="n">ref</span> <span class="o">=</span> <span class="n">ObjectReference</span><span class="p">(</span><span class="s2">&quot;LD1&quot;</span><span class="p">,</span> <span class="s2">&quot;MMXU1&quot;</span><span class="p">,</span> <span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;phsA&quot;</span><span class="p">)</span>
 </span><span data-line="2"><span class="gp">&gt;&gt;&gt; </span><span class="n">ref</span><span class="o">.</span><span class="n">name</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
@@ -384,7 +420,7 @@ between a logical node and its data objects.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="icspacket.proto.iec61850.path.ObjectReference.from_mmsref">
-<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_mmsref</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">reference</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Self</span></span></span><a class="reference internal" href="../../_modules/icspacket/proto/iec61850/path.html#ObjectReference.from_mmsref"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iec61850.path.ObjectReference.from_mmsref" title="Link to this definition">¶</a></dt>
+<span class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">from_mmsref</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">reference</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Self</span></span></span><a class="reference internal" href="../../_modules/icspacket/proto/iec61850/path.html#ObjectReference.from_mmsref"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iec61850.path.ObjectReference.from_mmsref" title="Link to this definition">#</a></dt>
 <dd><p>Parse an ObjectReference from an MMS VisibleString reference.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="gp">&gt;&gt;&gt; </span><span class="n">ObjectReference</span><span class="o">.</span><span class="n">from_mmsref</span><span class="p">(</span><span class="s2">&quot;LD1/MMXU1$A$phsA&quot;</span><span class="p">)</span>
 </span><span data-line="2"><span class="go">&#39;LD1/MMXU1.A.phsA&#39;</span>
@@ -394,7 +430,7 @@ between a logical node and its data objects.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="icspacket.proto.iec61850.path.ObjectReference.from_string">
-<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_string</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">reference</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Self</span></span></span><a class="reference internal" href="../../_modules/icspacket/proto/iec61850/path.html#ObjectReference.from_string"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iec61850.path.ObjectReference.from_string" title="Link to this definition">¶</a></dt>
+<span class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">from_string</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">reference</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Self</span></span></span><a class="reference internal" href="../../_modules/icspacket/proto/iec61850/path.html#ObjectReference.from_string"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iec61850.path.ObjectReference.from_string" title="Link to this definition">#</a></dt>
 <dd><p>Parse an ObjectReference from an IEC 61850 style string.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="gp">&gt;&gt;&gt; </span><span class="n">ObjectReference</span><span class="o">.</span><span class="n">from_string</span><span class="p">(</span><span class="s2">&quot;LD1/MMXU1.A.phsA&quot;</span><span class="p">)</span>
 </span><span data-line="2"><span class="go">&#39;LD1/MMXU1.A.phsA&#39;</span>
@@ -404,7 +440,7 @@ between a logical node and its data objects.</p>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="icspacket.proto.iec61850.path.ObjectReference.mmsref">
-<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">mmsref</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#icspacket.proto.iec61850.path.ObjectReference.mmsref" title="Link to this definition">¶</a></dt>
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">mmsref</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><a class="headerlink" href="#icspacket.proto.iec61850.path.ObjectReference.mmsref" title="Link to this definition">#</a></dt>
 <dd><p>Return the MMS VisibleString form (with <code class="docutils literal notranslate"><span class="pre">$</span></code> separators).</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="gp">&gt;&gt;&gt; </span><span class="n">ref</span> <span class="o">=</span> <span class="n">ObjectReference</span><span class="p">(</span><span class="s2">&quot;LD1&quot;</span><span class="p">,</span> <span class="s2">&quot;MMXU1&quot;</span><span class="p">,</span> <span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;phsA&quot;</span><span class="p">)</span>
 </span><span data-line="2"><span class="gp">&gt;&gt;&gt; </span><span class="n">ref</span><span class="o">.</span><span class="n">mmsref</span>
@@ -415,7 +451,7 @@ between a logical node and its data objects.</p>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="icspacket.proto.iec61850.path.ObjectReference.mms_name">
-<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">mms_name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ObjectName</span></em><a class="headerlink" href="#icspacket.proto.iec61850.path.ObjectReference.mms_name" title="Link to this definition">¶</a></dt>
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">mms_name</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ObjectName</span></span><a class="headerlink" href="#icspacket.proto.iec61850.path.ObjectReference.mms_name" title="Link to this definition">#</a></dt>
 <dd><p>Return the MMS ObjectName corresponding to this reference.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="gp">&gt;&gt;&gt; </span><span class="n">ref</span> <span class="o">=</span> <span class="n">ObjectReference</span><span class="p">(</span><span class="s2">&quot;LD1&quot;</span><span class="p">,</span> <span class="s2">&quot;MMXU1&quot;</span><span class="p">,</span> <span class="s2">&quot;A&quot;</span><span class="p">)</span>
 </span><span data-line="2"><span class="gp">&gt;&gt;&gt; </span><span class="n">ref</span><span class="o">.</span><span class="n">mms_name</span>
@@ -428,7 +464,7 @@ between a logical node and its data objects.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="icspacket.proto.iec61850.path.DataObjectReference">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">icspacket.proto.iec61850.path.</span></span><span class="sig-name descname"><span class="pre">DataObjectReference</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logical_device</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="positional-only-separator o"><abbr title="Positional-only parameter separator (PEP 570)"><span class="pre">/</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">logical_node</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fc</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">names</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/icspacket/proto/iec61850/path.html#DataObjectReference"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iec61850.path.DataObjectReference" title="Link to this definition">¶</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">icspacket.proto.iec61850.path.</span></span><span class="sig-name descname"><span class="pre">DataObjectReference</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logical_device</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="positional-only-separator o"><abbr title="Positional-only parameter separator (PEP 570)"><span class="pre">/</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">logical_node</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fc</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">names</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/icspacket/proto/iec61850/path.html#DataObjectReference"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iec61850.path.DataObjectReference" title="Link to this definition">#</a></dt>
 <dd><p>Specialized ObjectReference for data objects with Functional Constraints.</p>
 <p>Format:</p>
 <p><code class="docutils literal notranslate"><span class="pre">&lt;LNVariableName&gt;$&lt;FC&gt;$&lt;LNDataObjectName&gt;[$&lt;SubDataObjectName&gt;...]</span></code></p>
@@ -441,7 +477,7 @@ between a logical node and its data objects.</p>
 </div>
 <dl class="py property">
 <dt class="sig sig-object py" id="icspacket.proto.iec61850.path.DataObjectReference.functional_constraint">
-<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">functional_constraint</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="api_data_classes.html#icspacket.proto.iec61850.classes.FC" title="icspacket.proto.iec61850.classes.FC"><span class="pre">FC</span></a></em><a class="headerlink" href="#icspacket.proto.iec61850.path.DataObjectReference.functional_constraint" title="Link to this definition">¶</a></dt>
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">functional_constraint</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="api_data_classes.html#icspacket.proto.iec61850.classes.FC" title="icspacket.proto.iec61850.classes.FC"><span class="pre">FC</span></a></span><a class="headerlink" href="#icspacket.proto.iec61850.path.DataObjectReference.functional_constraint" title="Link to this definition">#</a></dt>
 <dd><p>Return the Functional Constraint (FC) of this DataObjectReference.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="gp">&gt;&gt;&gt; </span><span class="n">ref</span> <span class="o">=</span> <span class="n">DataObjectReference</span><span class="p">(</span><span class="s2">&quot;LD1&quot;</span><span class="p">,</span> <span class="s2">&quot;MMXU1&quot;</span><span class="p">,</span> <span class="s2">&quot;MX&quot;</span><span class="p">,</span> <span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;phsA&quot;</span><span class="p">)</span>
 </span><span data-line="2"><span class="gp">&gt;&gt;&gt; </span><span class="n">ref</span><span class="o">.</span><span class="n">functional_constraint</span>
@@ -452,7 +488,7 @@ between a logical node and its data objects.</p>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="icspacket.proto.iec61850.path.DataObjectReference.datname">
-<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">datname</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#icspacket.proto.iec61850.path.DataObjectReference.datname" title="Link to this definition">¶</a></dt>
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">datname</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><a class="headerlink" href="#icspacket.proto.iec61850.path.DataObjectReference.datname" title="Link to this definition">#</a></dt>
 <dd><p>Return the data object name.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="gp">&gt;&gt;&gt; </span><span class="n">ref</span> <span class="o">=</span> <span class="n">DataObjectReference</span><span class="p">(</span><span class="s2">&quot;LD1&quot;</span><span class="p">,</span> <span class="s2">&quot;MMXU1&quot;</span><span class="p">,</span> <span class="s2">&quot;MX&quot;</span><span class="p">,</span> <span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;phsA&quot;</span><span class="p">)</span>
 </span><span data-line="2"><span class="gp">&gt;&gt;&gt; </span><span class="n">ref</span><span class="o">.</span><span class="n">datname</span>
@@ -463,7 +499,7 @@ between a logical node and its data objects.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="icspacket.proto.iec61850.path.DataObjectReference.change_fc">
-<span class="sig-name descname"><span class="pre">change_fc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">new_fc</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api_data_classes.html#icspacket.proto.iec61850.classes.FC" title="icspacket.proto.iec61850.classes.FC"><span class="pre">FC</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#icspacket.proto.iec61850.path.DataObjectReference" title="icspacket.proto.iec61850.path.DataObjectReference"><span class="pre">DataObjectReference</span></a></span></span><a class="reference internal" href="../../_modules/icspacket/proto/iec61850/path.html#DataObjectReference.change_fc"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iec61850.path.DataObjectReference.change_fc" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">change_fc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">new_fc</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api_data_classes.html#icspacket.proto.iec61850.classes.FC" title="icspacket.proto.iec61850.classes.FC"><span class="pre">FC</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#icspacket.proto.iec61850.path.DataObjectReference" title="icspacket.proto.iec61850.path.DataObjectReference"><span class="pre">DataObjectReference</span></a></span></span><a class="reference internal" href="../../_modules/icspacket/proto/iec61850/path.html#DataObjectReference.change_fc"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iec61850.path.DataObjectReference.change_fc" title="Link to this definition">#</a></dt>
 <dd><p>Create a new <a class="reference internal" href="#icspacket.proto.iec61850.path.DataObjectReference" title="icspacket.proto.iec61850.path.DataObjectReference"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataObjectReference</span></code></a> with a different
 functional constraint (FC).</p>
 <p>This method is useful when the same logical node or data object
@@ -532,17 +568,17 @@ switching from <code class="docutils literal notranslate"><span class="pre">ST</
   </p>
 </div>
       <div class="sy-foot-socials">
-<a href="https://github.com/MatrixEditor/icspacket" aria-label="GitHub">
-  <iconify-icon icon="simple-icons:github"></iconify-icon>
-</a></div>
+  <a href="https://github.com/MatrixEditor/icspacket" aria-label="GitHub">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </a></div>
     </div>
   </div>
 </footer>
-      <script src="../../_static/documentation_options.js?v=53ae9ec8"></script>
-      <script src="../../_static/doctools.js?v=9bcbadda"></script>
-      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/documentation_options.js?v=ded930d6"></script>
+      <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
       <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
       <script src="../../_static/copybutton.js?v=f281be69"></script>
       <script src="../../_static/design-tabs.js?v=f930bc37"></script>
-      <script src="../../_static/shibuya.js?v=e730760c"></script></body>
+      <script src="../../_static/shibuya.js?v=50760d75"></script></body>
 </html>

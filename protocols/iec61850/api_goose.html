@@ -2,12 +2,12 @@
 <html lang="en" data-accent-color="lime" data-content_root="../../">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>GOOSE Client - icspacket 0.2.4 documentation</title><link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="SampledValues Client" href="api_sv.html" /><link rel="prev" title="IED Client" href="api_client.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>GOOSE Client - icspacket 0.1.dev1+ga30386068 documentation</title><link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="SampledValues Client" href="api_sv.html" /><link rel="prev" title="IED Client" href="api_client.html" />
       <link rel="canonical" href="https://matrixeditor.github.io/icspacket/protocols/iec61850/api_goose.html" /><script>
     function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
     setColorMode(localStorage._theme||"dark");
-  </script><link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b1a1f93b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/shibuya.css?v=bb284d7b" />
+  </script><link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=e1a1ceaf" />
+    <link rel="stylesheet" type="text/css" href="../../_static/shibuya.css?v=2ceb65ce" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link media="print" rel="stylesheet" type="text/css" href="../../_static/print.css?v=20ff2c19" />
@@ -20,10 +20,11 @@
   --sy-f-heading: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
 }
 </style>
-    <meta property="og:type" content="website"/>
-<meta property="og:url" content="https://matrixeditor.github.io/icspacket/protocols/iec61850/api_goose.html"/>
-<meta property="og:title" content="GOOSE Client"/>
-<meta name="twitter:card" content="summary"/>
+    
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://matrixeditor.github.io/icspacket/protocols/iec61850/api_goose.html"/>
+  <meta property="og:title" content="GOOSE Client"/>
+    <meta name="twitter:card" content="summary"/>
   </head>
 <body><div class="sy-head">
   <div class="sy-head-blur"></div>
@@ -195,63 +196,63 @@ data-aria-dark="Switch to auto color mode">
     <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div class="localtoc"><h3>On this page</h3><ul>
 <li><a class="reference internal" href="#icspacket.proto.iec61850.goose.GOOSE_ETHER_TYPE"><code class="docutils literal notranslate"><span class="pre">GOOSE_ETHER_TYPE</span></code></a></li>
 <li><a class="reference internal" href="#icspacket.proto.iec61850.goose.PDU"><code class="docutils literal notranslate"><span class="pre">PDU</span></code></a><ul>
-<li><a class="reference internal" href="#icspacket.proto.iec61850.goose.PDU.app_id"><code class="docutils literal notranslate">app_id</span></code></a></li>
-<li><a class="reference internal" href="#icspacket.proto.iec61850.goose.PDU.length"><code class="docutils literal notranslate">length</span></code></a></li>
-<li><a class="reference internal" href="#icspacket.proto.iec61850.goose.PDU.raw_apdu"><code class="docutils literal notranslate">raw_apdu</span></code></a></li>
-<li><a class="reference internal" href="#icspacket.proto.iec61850.goose.PDU.build"><code class="docutils literal notranslate">build()</span></code></a></li>
-<li><a class="reference internal" href="#icspacket.proto.iec61850.goose.PDU.apdu"><code class="docutils literal notranslate">apdu()</span></code></a></li>
-<li><a class="reference internal" href="#icspacket.proto.iec61850.goose.PDU.from_octets"><code class="docutils literal notranslate">from_octets()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.goose.PDU.app_id"><code class="docutils literal notranslate"><span class="pre">PDU.app_id</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.goose.PDU.length"><code class="docutils literal notranslate"><span class="pre">PDU.length</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.goose.PDU.raw_apdu"><code class="docutils literal notranslate"><span class="pre">PDU.raw_apdu</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.goose.PDU.build"><code class="docutils literal notranslate"><span class="pre">PDU.build()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.goose.PDU.apdu"><code class="docutils literal notranslate"><span class="pre">PDU.apdu()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.goose.PDU.from_octets"><code class="docutils literal notranslate"><span class="pre">PDU.from_octets()</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#icspacket.proto.iec61850.goose.GOOSE_Client"><code class="docutils literal notranslate"><span class="pre">GOOSE_Client</span></code></a><ul>
-<li><a class="reference internal" href="#icspacket.proto.iec61850.goose.GOOSE_Client.pkt_in"><code class="docutils literal notranslate">pkt_in</span></code></a></li>
-<li><a class="reference internal" href="#icspacket.proto.iec61850.goose.GOOSE_Client.start"><code class="docutils literal notranslate">start()</span></code></a></li>
-<li><a class="reference internal" href="#icspacket.proto.iec61850.goose.GOOSE_Client.stop"><code class="docutils literal notranslate">stop()</span></code></a></li>
-<li><a class="reference internal" href="#icspacket.proto.iec61850.goose.GOOSE_Client.listen_forever"><code class="docutils literal notranslate">listen_forever()</span></code></a></li>
-<li><a class="reference internal" href="#icspacket.proto.iec61850.goose.GOOSE_Client.recv_next"><code class="docutils literal notranslate">recv_next()</span></code></a></li>
-<li><a class="reference internal" href="#icspacket.proto.iec61850.goose.GOOSE_Client.publish_pdu"><code class="docutils literal notranslate">publish_pdu()</span></code></a></li>
-<li><a class="reference internal" href="#icspacket.proto.iec61850.goose.GOOSE_Client.publish"><code class="docutils literal notranslate">publish()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.goose.GOOSE_Client.pkt_in"><code class="docutils literal notranslate"><span class="pre">GOOSE_Client.pkt_in</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.goose.GOOSE_Client.start"><code class="docutils literal notranslate"><span class="pre">GOOSE_Client.start()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.goose.GOOSE_Client.stop"><code class="docutils literal notranslate"><span class="pre">GOOSE_Client.stop()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.goose.GOOSE_Client.listen_forever"><code class="docutils literal notranslate"><span class="pre">GOOSE_Client.listen_forever()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.goose.GOOSE_Client.recv_next"><code class="docutils literal notranslate"><span class="pre">GOOSE_Client.recv_next()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.goose.GOOSE_Client.publish_pdu"><code class="docutils literal notranslate"><span class="pre">GOOSE_Client.publish_pdu()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.goose.GOOSE_Client.publish"><code class="docutils literal notranslate"><span class="pre">GOOSE_Client.publish()</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#icspacket.proto.iec61850.goose.Data"><code class="docutils literal notranslate"><span class="pre">Data</span></code></a><ul>
-<li><a class="reference internal" href="#icspacket.proto.iec61850.goose.Data.PRESENT"><code class="docutils literal notranslate">PRESENT</span></code></a></li>
-<li><a class="reference internal" href="#icspacket.proto.iec61850.goose.Data.array_TYPE"><code class="docutils literal notranslate">array_TYPE</span></code></a></li>
-<li><a class="reference internal" href="#icspacket.proto.iec61850.goose.Data.structure_TYPE"><code class="docutils literal notranslate">structure_TYPE</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.goose.Data.PRESENT"><code class="docutils literal notranslate"><span class="pre">Data.PRESENT</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.goose.Data.array_TYPE"><code class="docutils literal notranslate"><span class="pre">Data.array_TYPE</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.goose.Data.structure_TYPE"><code class="docutils literal notranslate"><span class="pre">Data.structure_TYPE</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#icspacket.proto.iec61850.goose.MMSString"><code class="docutils literal notranslate"><span class="pre">MMSString</span></code></a></li>
 <li><a class="reference internal" href="#icspacket.proto.iec61850.goose.FloatingPoint"><code class="docutils literal notranslate"><span class="pre">FloatingPoint</span></code></a></li>
 <li><a class="reference internal" href="#icspacket.proto.iec61850.goose.TimeOfDay"><code class="docutils literal notranslate"><span class="pre">TimeOfDay</span></code></a></li>
 <li><a class="reference internal" href="#icspacket.proto.iec61850.goose.IEC61850_Specific_Protocol"><code class="docutils literal notranslate"><span class="pre">IEC61850_Specific_Protocol</span></code></a><ul>
-<li><a class="reference internal" href="#icspacket.proto.iec61850.goose.IEC61850_Specific_Protocol.PRESENT"><code class="docutils literal notranslate">PRESENT</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.goose.IEC61850_Specific_Protocol.PRESENT"><code class="docutils literal notranslate"><span class="pre">IEC61850_Specific_Protocol.PRESENT</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#icspacket.proto.iec61850.goose.GSEMngtPdu"><code class="docutils literal notranslate"><span class="pre">GSEMngtPdu</span></code></a></li>
 <li><a class="reference internal" href="#icspacket.proto.iec61850.goose.GSERequestResponse"><code class="docutils literal notranslate"><span class="pre">GSERequestResponse</span></code></a><ul>
-<li><a class="reference internal" href="#icspacket.proto.iec61850.goose.GSERequestResponse.PRESENT"><code class="docutils literal notranslate">PRESENT</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.goose.GSERequestResponse.PRESENT"><code class="docutils literal notranslate"><span class="pre">GSERequestResponse.PRESENT</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#icspacket.proto.iec61850.goose.GSEMngtRequests"><code class="docutils literal notranslate"><span class="pre">GSEMngtRequests</span></code></a><ul>
-<li><a class="reference internal" href="#icspacket.proto.iec61850.goose.GSEMngtRequests.PRESENT"><code class="docutils literal notranslate">PRESENT</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.goose.GSEMngtRequests.PRESENT"><code class="docutils literal notranslate"><span class="pre">GSEMngtRequests.PRESENT</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#icspacket.proto.iec61850.goose.GSEMngtResponses"><code class="docutils literal notranslate"><span class="pre">GSEMngtResponses</span></code></a><ul>
-<li><a class="reference internal" href="#icspacket.proto.iec61850.goose.GSEMngtResponses.PRESENT"><code class="docutils literal notranslate">PRESENT</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.goose.GSEMngtResponses.PRESENT"><code class="docutils literal notranslate"><span class="pre">GSEMngtResponses.PRESENT</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#icspacket.proto.iec61850.goose.GetReferenceRequestPdu"><code class="docutils literal notranslate"><span class="pre">GetReferenceRequestPdu</span></code></a><ul>
-<li><a class="reference internal" href="#icspacket.proto.iec61850.goose.GetReferenceRequestPdu.offset_TYPE"><code class="docutils literal notranslate">offset_TYPE</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.goose.GetReferenceRequestPdu.offset_TYPE"><code class="docutils literal notranslate"><span class="pre">GetReferenceRequestPdu.offset_TYPE</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#icspacket.proto.iec61850.goose.GetElementRequestPdu"><code class="docutils literal notranslate"><span class="pre">GetElementRequestPdu</span></code></a><ul>
-<li><a class="reference internal" href="#icspacket.proto.iec61850.goose.GetElementRequestPdu.references_TYPE"><code class="docutils literal notranslate">references_TYPE</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.goose.GetElementRequestPdu.references_TYPE"><code class="docutils literal notranslate"><span class="pre">GetElementRequestPdu.references_TYPE</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#icspacket.proto.iec61850.goose.GSEMngtResponsePdu"><code class="docutils literal notranslate"><span class="pre">GSEMngtResponsePdu</span></code></a><ul>
-<li><a class="reference internal" href="#icspacket.proto.iec61850.goose.GSEMngtResponsePdu.positiveNegative_TYPE"><code class="docutils literal notranslate">positiveNegative_TYPE</span></code></a><ul>
-<li><a class="reference internal" href="#icspacket.proto.iec61850.goose.GSEMngtResponsePdu.positiveNegative_TYPE.PRESENT"><code class="docutils literal notranslate">positiveNegative_TYPE.PRESENT</span></code></a></li>
-<li><a class="reference internal" href="#icspacket.proto.iec61850.goose.GSEMngtResponsePdu.positiveNegative_TYPE.responsePositive_TYPE"><code class="docutils literal notranslate">positiveNegative_TYPE.responsePositive_TYPE</span></code></a><ul>
-<li><a class="reference internal" href="#icspacket.proto.iec61850.goose.GSEMngtResponsePdu.positiveNegative_TYPE.responsePositive_TYPE.result_TYPE"><code class="docutils literal notranslate">positiveNegative_TYPE.responsePositive_TYPE.result_TYPE</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.goose.GSEMngtResponsePdu.positiveNegative_TYPE"><code class="docutils literal notranslate"><span class="pre">GSEMngtResponsePdu.positiveNegative_TYPE</span></code></a><ul>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.goose.GSEMngtResponsePdu.positiveNegative_TYPE.PRESENT"><code class="docutils literal notranslate"><span class="pre">GSEMngtResponsePdu.positiveNegative_TYPE.PRESENT</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.goose.GSEMngtResponsePdu.positiveNegative_TYPE.responsePositive_TYPE"><code class="docutils literal notranslate"><span class="pre">GSEMngtResponsePdu.positiveNegative_TYPE.responsePositive_TYPE</span></code></a><ul>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.goose.GSEMngtResponsePdu.positiveNegative_TYPE.responsePositive_TYPE.result_TYPE"><code class="docutils literal notranslate"><span class="pre">GSEMngtResponsePdu.positiveNegative_TYPE.responsePositive_TYPE.result_TYPE</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -259,19 +260,19 @@ data-aria-dark="Switch to auto color mode">
 </ul>
 </li>
 <li><a class="reference internal" href="#icspacket.proto.iec61850.goose.RequestResults"><code class="docutils literal notranslate"><span class="pre">RequestResults</span></code></a><ul>
-<li><a class="reference internal" href="#icspacket.proto.iec61850.goose.RequestResults.PRESENT"><code class="docutils literal notranslate">PRESENT</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.goose.RequestResults.PRESENT"><code class="docutils literal notranslate"><span class="pre">RequestResults.PRESENT</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#icspacket.proto.iec61850.goose.GlbErrors"><code class="docutils literal notranslate"><span class="pre">GlbErrors</span></code></a><ul>
-<li><a class="reference internal" href="#icspacket.proto.iec61850.goose.GlbErrors.VALUES"><code class="docutils literal notranslate">VALUES</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.goose.GlbErrors.VALUES"><code class="docutils literal notranslate"><span class="pre">GlbErrors.VALUES</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#icspacket.proto.iec61850.goose.ErrorReason"><code class="docutils literal notranslate"><span class="pre">ErrorReason</span></code></a><ul>
-<li><a class="reference internal" href="#icspacket.proto.iec61850.goose.ErrorReason.VALUES"><code class="docutils literal notranslate">VALUES</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.goose.ErrorReason.VALUES"><code class="docutils literal notranslate"><span class="pre">ErrorReason.VALUES</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#icspacket.proto.iec61850.goose.IECGoosePdu"><code class="docutils literal notranslate"><span class="pre">IECGoosePdu</span></code></a><ul>
-<li><a class="reference internal" href="#icspacket.proto.iec61850.goose.IECGoosePdu.allData_TYPE"><code class="docutils literal notranslate">allData_TYPE</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec61850.goose.IECGoosePdu.allData_TYPE"><code class="docutils literal notranslate"><span class="pre">IECGoosePdu.allData_TYPE</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#icspacket.proto.iec61850.goose.UtcTime"><code class="docutils literal notranslate"><span class="pre">UtcTime</span></code></a></li>
@@ -327,20 +328,55 @@ data-aria-dark="Switch to auto color mode">
     </div>
   </div>
 </div><div class="flex flex-col break-words justify-between">
-      <div class="min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
-        <article class="yue" role="main">
+      <div class="relative min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
+  <div class="copy-page-wrapper relative pb-4 lg:absolute lg:top-8 lg:right-6 xl:right-12">
+  <div id="copy-page-trigger">
+    <button
+      type="button"
+      class="js-copy px-3 py-1 inline-flex items-center gap-1"
+      data-url="https://raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/protocols/iec61850/api_goose.rst"
+    >
+      <i class="i-lucide" data-icon="copy"></i>
+      <span>Copy page</span>
+    </button>
+    <button class="js-menu px-2 py-1" type="button" aria-label="More actions"
+      aria-haspopup="menu" aria-expanded="false" aria-controls="copy-page-content">
+      <i class="i-lucide chevron-down"></i>
+    </button>
+  </div>
+  <div id="copy-page-content" role="menu" aria-orientation="vertical" aria-hidden="true">
+    <div role="presentation">
+      <div class="flex flex-col" role="group">
+        <button class="js-copy" type="button" role="menuitem"
+          data-url="https://raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/protocols/iec61850/api_goose.rst">
+          <span class="iconify-icon">
+            <i class="i-lucide" data-icon="copy"></i>
+          </span>
+          <span>Copy page</span>
+        </button>
+        <a role="menuitem" href="https://raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/protocols/iec61850/api_goose.rst" target="_blank" rel="nofollow"><iconify-icon icon="bi:code-slash"></iconify-icon>
+            <span>View Source</span></a><a role="menuitem" href="https://chatgpt.com/?hints=search&q=Read%20https%3A//raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/protocols/iec61850/api_goose.rst%20so%20I%20can%20ask%20questions%20about%20it." target="_blank" rel="nofollow">
+          <iconify-icon icon="bi:openai"></iconify-icon>
+          <span>Open in ChatGPT</span>
+        </a><a role="menuitem" href="https://claude.ai/new?q=Read%20https%3A//raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/protocols/iec61850/api_goose.rst%20so%20I%20can%20ask%20questions%20about%20it." target="_blank" rel="nofollow">
+          <iconify-icon icon="bi:claude"></iconify-icon>
+          <span>Open in Claude</span>
+        </a></div>
+    </div>
+  </div>
+</div><article class="yue" role="main">
           <section id="module-icspacket.proto.iec61850.goose">
-<span id="goose-client"></span><span id="iec61850-goose-api"></span><h1>GOOSE Client<a class="headerlink" href="#module-icspacket.proto.iec61850.goose" title="Link to this heading">¶</a></h1>
+<span id="goose-client"></span><span id="iec61850-goose-api"></span><h1>GOOSE Client<a class="headerlink" href="#module-icspacket.proto.iec61850.goose" title="Link to this heading">#</a></h1>
 <dl class="py data">
 <dt class="sig sig-object py" id="icspacket.proto.iec61850.goose.GOOSE_ETHER_TYPE">
-<span class="sig-prename descclassname"><span class="pre">icspacket.proto.iec61850.goose.</span></span><span class="sig-name descname"><span class="pre">GOOSE_ETHER_TYPE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">35000</span></em><a class="headerlink" href="#icspacket.proto.iec61850.goose.GOOSE_ETHER_TYPE" title="Link to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">icspacket.proto.iec61850.goose.</span></span><span class="sig-name descname"><span class="pre">GOOSE_ETHER_TYPE</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">35000</span></span><a class="headerlink" href="#icspacket.proto.iec61850.goose.GOOSE_ETHER_TYPE" title="Link to this definition">#</a></dt>
 <dd><p>EtherType value assigned to IEC 61850 GOOSE (Generic Object Oriented Substation
 Event)</p>
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="icspacket.proto.iec61850.goose.PDU">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">icspacket.proto.iec61850.goose.</span></span><span class="sig-name descname"><span class="pre">PDU</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">app_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">length</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reserved1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reserved2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">raw_apdu</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bytes</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">b''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/icspacket/proto/iec61850/goose.html#PDU"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iec61850.goose.PDU" title="Link to this definition">¶</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">icspacket.proto.iec61850.goose.</span></span><span class="sig-name descname"><span class="pre">PDU</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">app_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">length</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reserved1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reserved2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">raw_apdu</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bytes</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">b''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/icspacket/proto/iec61850/goose.html#PDU"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iec61850.goose.PDU" title="Link to this definition">#</a></dt>
 <dd><p>Protocol Data Unit (PDU) representing the ISO/IEC 8802-3 frame structure
 used for GSE management and GOOSE communication.</p>
 <p>The PDU wraps the <strong>Application Protocol Data Unit (APDU)</strong> carried in an
@@ -348,28 +384,28 @@ Ethernet frame. The frame contains reserved fields in addition to the
 application identifier and APDU payload.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.iec61850.goose.PDU.app_id">
-<span class="sig-name descname"><span class="pre">app_id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></em><a class="headerlink" href="#icspacket.proto.iec61850.goose.PDU.app_id" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">app_id</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></span><a class="headerlink" href="#icspacket.proto.iec61850.goose.PDU.app_id" title="Link to this definition">#</a></dt>
 <dd><p>Application identifier (AppID). This field uniquely identifies the
 application instance for which the message is intended.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.iec61850.goose.PDU.length">
-<span class="sig-name descname"><span class="pre">length</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></em><a class="headerlink" href="#icspacket.proto.iec61850.goose.PDU.length" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">length</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></span><a class="headerlink" href="#icspacket.proto.iec61850.goose.PDU.length" title="Link to this definition">#</a></dt>
 <dd><p>Total length of the PDU in bytes, including the 8-byte header (AppID,
 Length, Reserved1, Reserved2).</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.iec61850.goose.PDU.raw_apdu">
-<span class="sig-name descname"><span class="pre">raw_apdu</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bytes</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">b''</span></em><a class="headerlink" href="#icspacket.proto.iec61850.goose.PDU.raw_apdu" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">raw_apdu</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bytes</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">b''</span></span><a class="headerlink" href="#icspacket.proto.iec61850.goose.PDU.raw_apdu" title="Link to this definition">#</a></dt>
 <dd><p>Encoded APDU (Application Protocol Data Unit). This may contain ASN.1
 BER-encoded payloads or raw bytes depending on context.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="icspacket.proto.iec61850.goose.PDU.build">
-<span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bytes</span></span></span><a class="reference internal" href="../../_modules/icspacket/proto/iec61850/goose.html#PDU.build"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iec61850.goose.PDU.build" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bytes</span></span></span><a class="reference internal" href="../../_modules/icspacket/proto/iec61850/goose.html#PDU.build"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iec61850.goose.PDU.build" title="Link to this definition">#</a></dt>
 <dd><p>Construct a serialized representation of the PDU.</p>
 <p>If the <code class="docutils literal notranslate"><span class="pre">raw_apdu</span></code> field has a <code class="docutils literal notranslate"><span class="pre">ber_encode()</span></code> method, the APDU
 is encoded before serialization. The length field is automatically
@@ -389,7 +425,7 @@ recalculated to include the header.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="icspacket.proto.iec61850.goose.PDU.apdu">
-<span class="sig-name descname"><span class="pre">apdu</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">asn1_cls</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">type</span><span class="p"><span class="pre">[</span></span><span class="pre">_T</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">_T</span></span></span><a class="reference internal" href="../../_modules/icspacket/proto/iec61850/goose.html#PDU.apdu"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iec61850.goose.PDU.apdu" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">apdu</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">asn1_cls</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">type</span><span class="p"><span class="pre">[</span></span><span class="pre">_T</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">_T</span></span></span><a class="reference internal" href="../../_modules/icspacket/proto/iec61850/goose.html#PDU.apdu"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iec61850.goose.PDU.apdu" title="Link to this definition">#</a></dt>
 <dd><p>Decode the APDU portion of the PDU.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -406,7 +442,7 @@ recalculated to include the header.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="icspacket.proto.iec61850.goose.PDU.from_octets">
-<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_octets</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pctets</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bytes</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#icspacket.proto.iec61850.goose.PDU" title="icspacket.proto.iec61850.goose.PDU"><span class="pre">PDU</span></a></span></span><a class="reference internal" href="../../_modules/icspacket/proto/iec61850/goose.html#PDU.from_octets"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iec61850.goose.PDU.from_octets" title="Link to this definition">¶</a></dt>
+<span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">from_octets</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pctets</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bytes</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#icspacket.proto.iec61850.goose.PDU" title="icspacket.proto.iec61850.goose.PDU"><span class="pre">PDU</span></a></span></span><a class="reference internal" href="../../_modules/icspacket/proto/iec61850/goose.html#PDU.from_octets"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iec61850.goose.PDU.from_octets" title="Link to this definition">#</a></dt>
 <dd><p>Parse a serialized byte sequence into a <a class="reference internal" href="#icspacket.proto.iec61850.goose.PDU" title="icspacket.proto.iec61850.goose.PDU"><code class="xref py py-class docutils literal notranslate"><span class="pre">PDU</span></code></a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -425,15 +461,15 @@ recalculated to include the header.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="icspacket.proto.iec61850.goose.GOOSE_Client">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">icspacket.proto.iec61850.goose.</span></span><span class="sig-name descname"><span class="pre">GOOSE_Client</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">iface</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">callback</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="pre">Ether</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#icspacket.proto.iec61850.goose.PDU" title="icspacket.proto.iec61850.goose.PDU"><span class="pre">PDU</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">None</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ether_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">35000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inputs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">app_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vlan_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/icspacket/proto/iec61850/goose.html#GOOSE_Client"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iec61850.goose.GOOSE_Client" title="Link to this definition">¶</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">icspacket.proto.iec61850.goose.</span></span><span class="sig-name descname"><span class="pre">GOOSE_Client</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">iface</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">callback</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="pre">Ether</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#icspacket.proto.iec61850.goose.PDU" title="icspacket.proto.iec61850.goose.PDU"><span class="pre">PDU</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">None</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ether_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">35000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inputs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">app_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vlan_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/icspacket/proto/iec61850/goose.html#GOOSE_Client"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iec61850.goose.GOOSE_Client" title="Link to this definition">#</a></dt>
 <dd><p>Observer <strong>and Publisher</strong> for IEC 61850 GOOSE (Generic Object Oriented
 Substation Event) messages.</p>
 <p>This class provides a dual role:</p>
 <ol class="arabic simple">
-<li><p><strong>Observer</strong> — It captures and filters incoming GOOSE PDUs
+<li><p><strong>Observer</strong> - It captures and filters incoming GOOSE PDUs
 using <strong>Scapy</strong>’s asynchronous sniffer. Incoming PDUs can be accessed
 through a queue or by registering a callback.</p></li>
-<li><p><strong>Publisher</strong> — It constructs and transmits GOOSE PDUs over Ethernet,
+<li><p><strong>Publisher</strong> - It constructs and transmits GOOSE PDUs over Ethernet,
 supporting both raw PDUs and higher-level APDUs. VLAN tagging is
 supported where required by the application environment.</p></li>
 </ol>
@@ -474,7 +510,7 @@ publish call.</p></li>
 </dl>
 <dl class="py property">
 <dt class="sig sig-object py" id="icspacket.proto.iec61850.goose.GOOSE_Client.pkt_in">
-<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">pkt_in</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Queue</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#icspacket.proto.iec61850.goose.PDU" title="icspacket.proto.iec61850.goose.PDU"><span class="pre">PDU</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#icspacket.proto.iec61850.goose.GOOSE_Client.pkt_in" title="Link to this definition">¶</a></dt>
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">pkt_in</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Queue</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#icspacket.proto.iec61850.goose.PDU" title="icspacket.proto.iec61850.goose.PDU"><span class="pre">PDU</span></a><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.iec61850.goose.GOOSE_Client.pkt_in" title="Link to this definition">#</a></dt>
 <dd><p>Queue of decoded PDUs captured by the observer.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -488,14 +524,14 @@ publish call.</p></li>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="icspacket.proto.iec61850.goose.GOOSE_Client.start">
-<span class="sig-name descname"><span class="pre">start</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../../_modules/icspacket/proto/iec61850/goose.html#GOOSE_Client.start"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iec61850.goose.GOOSE_Client.start" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">start</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../../_modules/icspacket/proto/iec61850/goose.html#GOOSE_Client.start"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iec61850.goose.GOOSE_Client.start" title="Link to this definition">#</a></dt>
 <dd><p>Start the observer and begin sniffing packets.</p>
 <p>This resets the incoming PDU queue and clears the stop event.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="icspacket.proto.iec61850.goose.GOOSE_Client.stop">
-<span class="sig-name descname"><span class="pre">stop</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">join</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/icspacket/proto/iec61850/goose.html#GOOSE_Client.stop"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iec61850.goose.GOOSE_Client.stop" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">stop</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">join</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/icspacket/proto/iec61850/goose.html#GOOSE_Client.stop"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iec61850.goose.GOOSE_Client.stop" title="Link to this definition">#</a></dt>
 <dd><p>Stop the observer and terminate packet sniffing.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
@@ -511,7 +547,7 @@ files if specified in the constructor.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="icspacket.proto.iec61850.goose.GOOSE_Client.listen_forever">
-<span class="sig-name descname"><span class="pre">listen_forever</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../../_modules/icspacket/proto/iec61850/goose.html#GOOSE_Client.listen_forever"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iec61850.goose.GOOSE_Client.listen_forever" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">listen_forever</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../../_modules/icspacket/proto/iec61850/goose.html#GOOSE_Client.listen_forever"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iec61850.goose.GOOSE_Client.listen_forever" title="Link to this definition">#</a></dt>
 <dd><p>Continuously capture GOOSE packets until interrupted.</p>
 <p>This method blocks the calling thread until <code class="docutils literal notranslate"><span class="pre">stop()</span></code> is invoked
 or a keyboard interrupt is received.</p>
@@ -519,7 +555,7 @@ or a keyboard interrupt is received.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="icspacket.proto.iec61850.goose.GOOSE_Client.recv_next">
-<span class="sig-name descname"><span class="pre">recv_next</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#icspacket.proto.iec61850.goose.PDU" title="icspacket.proto.iec61850.goose.PDU"><span class="pre">PDU</span></a></span></span><a class="reference internal" href="../../_modules/icspacket/proto/iec61850/goose.html#GOOSE_Client.recv_next"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iec61850.goose.GOOSE_Client.recv_next" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">recv_next</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#icspacket.proto.iec61850.goose.PDU" title="icspacket.proto.iec61850.goose.PDU"><span class="pre">PDU</span></a></span></span><a class="reference internal" href="../../_modules/icspacket/proto/iec61850/goose.html#GOOSE_Client.recv_next"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iec61850.goose.GOOSE_Client.recv_next" title="Link to this definition">#</a></dt>
 <dd><p>Retrieve the next decoded PDU from the capture queue.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -536,7 +572,7 @@ or a keyboard interrupt is received.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="icspacket.proto.iec61850.goose.GOOSE_Client.publish_pdu">
-<span class="sig-name descname"><span class="pre">publish_pdu</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">addr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pdu</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#icspacket.proto.iec61850.goose.PDU" title="icspacket.proto.iec61850.goose.PDU"><span class="pre">PDU</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">vlan_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vlan_priority</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iface</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">all_interfaces</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../../_modules/icspacket/proto/iec61850/goose.html#GOOSE_Client.publish_pdu"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iec61850.goose.GOOSE_Client.publish_pdu" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">publish_pdu</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">addr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pdu</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#icspacket.proto.iec61850.goose.PDU" title="icspacket.proto.iec61850.goose.PDU"><span class="pre">PDU</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">vlan_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vlan_priority</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iface</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">all_interfaces</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../../_modules/icspacket/proto/iec61850/goose.html#GOOSE_Client.publish_pdu"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iec61850.goose.GOOSE_Client.publish_pdu" title="Link to this definition">#</a></dt>
 <dd><p>Transmit a fully constructed <a class="reference internal" href="#icspacket.proto.iec61850.goose.PDU" title="icspacket.proto.iec61850.goose.PDU"><code class="xref py py-class docutils literal notranslate"><span class="pre">PDU</span></code></a> to the given destination address.</p>
 <p>This is the low-level publishing method. It requires the caller
 to provide a complete <a class="reference internal" href="#icspacket.proto.iec61850.goose.PDU" title="icspacket.proto.iec61850.goose.PDU"><code class="xref py py-class docutils literal notranslate"><span class="pre">PDU</span></code></a> object (including encoded APDU).
@@ -568,7 +604,7 @@ was specified and <code class="docutils literal notranslate"><span class="pre">a
 
 <dl class="py method">
 <dt class="sig sig-object py" id="icspacket.proto.iec61850.goose.GOOSE_Client.publish">
-<span class="sig-name descname"><span class="pre">publish</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">addr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aodu</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">app_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vlan_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vlan_priority</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iface</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">all_interfaces</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../../_modules/icspacket/proto/iec61850/goose.html#GOOSE_Client.publish"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iec61850.goose.GOOSE_Client.publish" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">publish</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">addr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aodu</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">app_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vlan_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vlan_priority</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iface</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">all_interfaces</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../../_modules/icspacket/proto/iec61850/goose.html#GOOSE_Client.publish"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iec61850.goose.GOOSE_Client.publish" title="Link to this definition">#</a></dt>
 <dd><p>Publish an APDU (Application Protocol Data Unit) directly as a GOOSE PDU.</p>
 <p>This higher-level publishing method simplifies transmission by
 constructing the PDU automatically from the given APDU. The
@@ -606,23 +642,23 @@ interfaces exist, an explicit <code class="docutils literal notranslate"><span c
 
 <dl class="py class">
 <dt class="sig sig-object py" id="icspacket.proto.iec61850.goose.Data">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">icspacket.proto.iec61850.goose.</span></span><span class="sig-name descname"><span class="pre">Data</span></span><a class="headerlink" href="#icspacket.proto.iec61850.goose.Data" title="Link to this definition">¶</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">icspacket.proto.iec61850.goose.</span></span><span class="sig-name descname"><span class="pre">Data</span></span><a class="headerlink" href="#icspacket.proto.iec61850.goose.Data" title="Link to this definition">#</a></dt>
 <dd><p>ASN.1 Data type</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.iec61850.goose.Data.PRESENT">
-<span class="sig-name descname"><span class="pre">PRESENT</span></span><a class="headerlink" href="#icspacket.proto.iec61850.goose.Data.PRESENT" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">PRESENT</span></span><a class="headerlink" href="#icspacket.proto.iec61850.goose.Data.PRESENT" title="Link to this definition">#</a></dt>
 <dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">PRESENT</span></code></p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.iec61850.goose.Data.array_TYPE">
-<span class="sig-name descname"><span class="pre">array_TYPE</span></span><a class="headerlink" href="#icspacket.proto.iec61850.goose.Data.array_TYPE" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">array_TYPE</span></span><a class="headerlink" href="#icspacket.proto.iec61850.goose.Data.array_TYPE" title="Link to this definition">#</a></dt>
 <dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">array</span></code></p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.iec61850.goose.Data.structure_TYPE">
-<span class="sig-name descname"><span class="pre">structure_TYPE</span></span><a class="headerlink" href="#icspacket.proto.iec61850.goose.Data.structure_TYPE" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">structure_TYPE</span></span><a class="headerlink" href="#icspacket.proto.iec61850.goose.Data.structure_TYPE" title="Link to this definition">#</a></dt>
 <dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">structure</span></code></p>
 </dd></dl>
 
@@ -630,29 +666,29 @@ interfaces exist, an explicit <code class="docutils literal notranslate"><span c
 
 <dl class="py class">
 <dt class="sig sig-object py" id="icspacket.proto.iec61850.goose.MMSString">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">icspacket.proto.iec61850.goose.</span></span><span class="sig-name descname"><span class="pre">MMSString</span></span><a class="headerlink" href="#icspacket.proto.iec61850.goose.MMSString" title="Link to this definition">¶</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">icspacket.proto.iec61850.goose.</span></span><span class="sig-name descname"><span class="pre">MMSString</span></span><a class="headerlink" href="#icspacket.proto.iec61850.goose.MMSString" title="Link to this definition">#</a></dt>
 <dd><p>ASN.1 MMSString type</p>
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="icspacket.proto.iec61850.goose.FloatingPoint">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">icspacket.proto.iec61850.goose.</span></span><span class="sig-name descname"><span class="pre">FloatingPoint</span></span><a class="headerlink" href="#icspacket.proto.iec61850.goose.FloatingPoint" title="Link to this definition">¶</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">icspacket.proto.iec61850.goose.</span></span><span class="sig-name descname"><span class="pre">FloatingPoint</span></span><a class="headerlink" href="#icspacket.proto.iec61850.goose.FloatingPoint" title="Link to this definition">#</a></dt>
 <dd><p>ASN.1 FloatingPoint type</p>
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="icspacket.proto.iec61850.goose.TimeOfDay">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">icspacket.proto.iec61850.goose.</span></span><span class="sig-name descname"><span class="pre">TimeOfDay</span></span><a class="headerlink" href="#icspacket.proto.iec61850.goose.TimeOfDay" title="Link to this definition">¶</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">icspacket.proto.iec61850.goose.</span></span><span class="sig-name descname"><span class="pre">TimeOfDay</span></span><a class="headerlink" href="#icspacket.proto.iec61850.goose.TimeOfDay" title="Link to this definition">#</a></dt>
 <dd><p>ASN.1 TimeOfDay type</p>
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="icspacket.proto.iec61850.goose.IEC61850_Specific_Protocol">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">icspacket.proto.iec61850.goose.</span></span><span class="sig-name descname"><span class="pre">IEC61850_Specific_Protocol</span></span><a class="headerlink" href="#icspacket.proto.iec61850.goose.IEC61850_Specific_Protocol" title="Link to this definition">¶</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">icspacket.proto.iec61850.goose.</span></span><span class="sig-name descname"><span class="pre">IEC61850_Specific_Protocol</span></span><a class="headerlink" href="#icspacket.proto.iec61850.goose.IEC61850_Specific_Protocol" title="Link to this definition">#</a></dt>
 <dd><p>ASN.1 IEC61850_Specific_Protocol type</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.iec61850.goose.IEC61850_Specific_Protocol.PRESENT">
-<span class="sig-name descname"><span class="pre">PRESENT</span></span><a class="headerlink" href="#icspacket.proto.iec61850.goose.IEC61850_Specific_Protocol.PRESENT" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">PRESENT</span></span><a class="headerlink" href="#icspacket.proto.iec61850.goose.IEC61850_Specific_Protocol.PRESENT" title="Link to this definition">#</a></dt>
 <dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">PRESENT</span></code></p>
 </dd></dl>
 
@@ -660,17 +696,17 @@ interfaces exist, an explicit <code class="docutils literal notranslate"><span c
 
 <dl class="py class">
 <dt class="sig sig-object py" id="icspacket.proto.iec61850.goose.GSEMngtPdu">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">icspacket.proto.iec61850.goose.</span></span><span class="sig-name descname"><span class="pre">GSEMngtPdu</span></span><a class="headerlink" href="#icspacket.proto.iec61850.goose.GSEMngtPdu" title="Link to this definition">¶</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">icspacket.proto.iec61850.goose.</span></span><span class="sig-name descname"><span class="pre">GSEMngtPdu</span></span><a class="headerlink" href="#icspacket.proto.iec61850.goose.GSEMngtPdu" title="Link to this definition">#</a></dt>
 <dd><p>ASN.1 GSEMngtPdu type</p>
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="icspacket.proto.iec61850.goose.GSERequestResponse">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">icspacket.proto.iec61850.goose.</span></span><span class="sig-name descname"><span class="pre">GSERequestResponse</span></span><a class="headerlink" href="#icspacket.proto.iec61850.goose.GSERequestResponse" title="Link to this definition">¶</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">icspacket.proto.iec61850.goose.</span></span><span class="sig-name descname"><span class="pre">GSERequestResponse</span></span><a class="headerlink" href="#icspacket.proto.iec61850.goose.GSERequestResponse" title="Link to this definition">#</a></dt>
 <dd><p>ASN.1 GSERequestResponse type</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.iec61850.goose.GSERequestResponse.PRESENT">
-<span class="sig-name descname"><span class="pre">PRESENT</span></span><a class="headerlink" href="#icspacket.proto.iec61850.goose.GSERequestResponse.PRESENT" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">PRESENT</span></span><a class="headerlink" href="#icspacket.proto.iec61850.goose.GSERequestResponse.PRESENT" title="Link to this definition">#</a></dt>
 <dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">PRESENT</span></code></p>
 </dd></dl>
 
@@ -678,11 +714,11 @@ interfaces exist, an explicit <code class="docutils literal notranslate"><span c
 
 <dl class="py class">
 <dt class="sig sig-object py" id="icspacket.proto.iec61850.goose.GSEMngtRequests">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">icspacket.proto.iec61850.goose.</span></span><span class="sig-name descname"><span class="pre">GSEMngtRequests</span></span><a class="headerlink" href="#icspacket.proto.iec61850.goose.GSEMngtRequests" title="Link to this definition">¶</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">icspacket.proto.iec61850.goose.</span></span><span class="sig-name descname"><span class="pre">GSEMngtRequests</span></span><a class="headerlink" href="#icspacket.proto.iec61850.goose.GSEMngtRequests" title="Link to this definition">#</a></dt>
 <dd><p>ASN.1 GSEMngtRequests type</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.iec61850.goose.GSEMngtRequests.PRESENT">
-<span class="sig-name descname"><span class="pre">PRESENT</span></span><a class="headerlink" href="#icspacket.proto.iec61850.goose.GSEMngtRequests.PRESENT" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">PRESENT</span></span><a class="headerlink" href="#icspacket.proto.iec61850.goose.GSEMngtRequests.PRESENT" title="Link to this definition">#</a></dt>
 <dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">PRESENT</span></code></p>
 </dd></dl>
 
@@ -690,11 +726,11 @@ interfaces exist, an explicit <code class="docutils literal notranslate"><span c
 
 <dl class="py class">
 <dt class="sig sig-object py" id="icspacket.proto.iec61850.goose.GSEMngtResponses">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">icspacket.proto.iec61850.goose.</span></span><span class="sig-name descname"><span class="pre">GSEMngtResponses</span></span><a class="headerlink" href="#icspacket.proto.iec61850.goose.GSEMngtResponses" title="Link to this definition">¶</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">icspacket.proto.iec61850.goose.</span></span><span class="sig-name descname"><span class="pre">GSEMngtResponses</span></span><a class="headerlink" href="#icspacket.proto.iec61850.goose.GSEMngtResponses" title="Link to this definition">#</a></dt>
 <dd><p>ASN.1 GSEMngtResponses type</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.iec61850.goose.GSEMngtResponses.PRESENT">
-<span class="sig-name descname"><span class="pre">PRESENT</span></span><a class="headerlink" href="#icspacket.proto.iec61850.goose.GSEMngtResponses.PRESENT" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">PRESENT</span></span><a class="headerlink" href="#icspacket.proto.iec61850.goose.GSEMngtResponses.PRESENT" title="Link to this definition">#</a></dt>
 <dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">PRESENT</span></code></p>
 </dd></dl>
 
@@ -702,11 +738,11 @@ interfaces exist, an explicit <code class="docutils literal notranslate"><span c
 
 <dl class="py class">
 <dt class="sig sig-object py" id="icspacket.proto.iec61850.goose.GetReferenceRequestPdu">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">icspacket.proto.iec61850.goose.</span></span><span class="sig-name descname"><span class="pre">GetReferenceRequestPdu</span></span><a class="headerlink" href="#icspacket.proto.iec61850.goose.GetReferenceRequestPdu" title="Link to this definition">¶</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">icspacket.proto.iec61850.goose.</span></span><span class="sig-name descname"><span class="pre">GetReferenceRequestPdu</span></span><a class="headerlink" href="#icspacket.proto.iec61850.goose.GetReferenceRequestPdu" title="Link to this definition">#</a></dt>
 <dd><p>ASN.1 GetReferenceRequestPdu type</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.iec61850.goose.GetReferenceRequestPdu.offset_TYPE">
-<span class="sig-name descname"><span class="pre">offset_TYPE</span></span><a class="headerlink" href="#icspacket.proto.iec61850.goose.GetReferenceRequestPdu.offset_TYPE" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">offset_TYPE</span></span><a class="headerlink" href="#icspacket.proto.iec61850.goose.GetReferenceRequestPdu.offset_TYPE" title="Link to this definition">#</a></dt>
 <dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">offset</span></code></p>
 </dd></dl>
 
@@ -714,11 +750,11 @@ interfaces exist, an explicit <code class="docutils literal notranslate"><span c
 
 <dl class="py class">
 <dt class="sig sig-object py" id="icspacket.proto.iec61850.goose.GetElementRequestPdu">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">icspacket.proto.iec61850.goose.</span></span><span class="sig-name descname"><span class="pre">GetElementRequestPdu</span></span><a class="headerlink" href="#icspacket.proto.iec61850.goose.GetElementRequestPdu" title="Link to this definition">¶</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">icspacket.proto.iec61850.goose.</span></span><span class="sig-name descname"><span class="pre">GetElementRequestPdu</span></span><a class="headerlink" href="#icspacket.proto.iec61850.goose.GetElementRequestPdu" title="Link to this definition">#</a></dt>
 <dd><p>ASN.1 GetElementRequestPdu type</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.iec61850.goose.GetElementRequestPdu.references_TYPE">
-<span class="sig-name descname"><span class="pre">references_TYPE</span></span><a class="headerlink" href="#icspacket.proto.iec61850.goose.GetElementRequestPdu.references_TYPE" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">references_TYPE</span></span><a class="headerlink" href="#icspacket.proto.iec61850.goose.GetElementRequestPdu.references_TYPE" title="Link to this definition">#</a></dt>
 <dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">references</span></code></p>
 </dd></dl>
 
@@ -726,25 +762,25 @@ interfaces exist, an explicit <code class="docutils literal notranslate"><span c
 
 <dl class="py class">
 <dt class="sig sig-object py" id="icspacket.proto.iec61850.goose.GSEMngtResponsePdu">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">icspacket.proto.iec61850.goose.</span></span><span class="sig-name descname"><span class="pre">GSEMngtResponsePdu</span></span><a class="headerlink" href="#icspacket.proto.iec61850.goose.GSEMngtResponsePdu" title="Link to this definition">¶</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">icspacket.proto.iec61850.goose.</span></span><span class="sig-name descname"><span class="pre">GSEMngtResponsePdu</span></span><a class="headerlink" href="#icspacket.proto.iec61850.goose.GSEMngtResponsePdu" title="Link to this definition">#</a></dt>
 <dd><p>ASN.1 GSEMngtResponsePdu type</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="icspacket.proto.iec61850.goose.GSEMngtResponsePdu.positiveNegative_TYPE">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">positiveNegative_TYPE</span></span><a class="headerlink" href="#icspacket.proto.iec61850.goose.GSEMngtResponsePdu.positiveNegative_TYPE" title="Link to this definition">¶</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">positiveNegative_TYPE</span></span><a class="headerlink" href="#icspacket.proto.iec61850.goose.GSEMngtResponsePdu.positiveNegative_TYPE" title="Link to this definition">#</a></dt>
 <dd><p>ASN.1 anonymous type GSEMngtResponsePdu__positiveNegative_TYPE part of GSEMngtResponsePdu</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.iec61850.goose.GSEMngtResponsePdu.positiveNegative_TYPE.PRESENT">
-<span class="sig-name descname"><span class="pre">PRESENT</span></span><a class="headerlink" href="#icspacket.proto.iec61850.goose.GSEMngtResponsePdu.positiveNegative_TYPE.PRESENT" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">PRESENT</span></span><a class="headerlink" href="#icspacket.proto.iec61850.goose.GSEMngtResponsePdu.positiveNegative_TYPE.PRESENT" title="Link to this definition">#</a></dt>
 <dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">PRESENT</span></code></p>
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="icspacket.proto.iec61850.goose.GSEMngtResponsePdu.positiveNegative_TYPE.responsePositive_TYPE">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">responsePositive_TYPE</span></span><a class="headerlink" href="#icspacket.proto.iec61850.goose.GSEMngtResponsePdu.positiveNegative_TYPE.responsePositive_TYPE" title="Link to this definition">¶</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">responsePositive_TYPE</span></span><a class="headerlink" href="#icspacket.proto.iec61850.goose.GSEMngtResponsePdu.positiveNegative_TYPE.responsePositive_TYPE" title="Link to this definition">#</a></dt>
 <dd><p>ASN.1 anonymous type GSEMngtResponsePdu__positiveNegative__responsePositive_TYPE part of positiveNegative</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.iec61850.goose.GSEMngtResponsePdu.positiveNegative_TYPE.responsePositive_TYPE.result_TYPE">
-<span class="sig-name descname"><span class="pre">result_TYPE</span></span><a class="headerlink" href="#icspacket.proto.iec61850.goose.GSEMngtResponsePdu.positiveNegative_TYPE.responsePositive_TYPE.result_TYPE" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">result_TYPE</span></span><a class="headerlink" href="#icspacket.proto.iec61850.goose.GSEMngtResponsePdu.positiveNegative_TYPE.responsePositive_TYPE.result_TYPE" title="Link to this definition">#</a></dt>
 <dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">result_ANON_7</span></code></p>
 </dd></dl>
 
@@ -756,11 +792,11 @@ interfaces exist, an explicit <code class="docutils literal notranslate"><span c
 
 <dl class="py class">
 <dt class="sig sig-object py" id="icspacket.proto.iec61850.goose.RequestResults">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">icspacket.proto.iec61850.goose.</span></span><span class="sig-name descname"><span class="pre">RequestResults</span></span><a class="headerlink" href="#icspacket.proto.iec61850.goose.RequestResults" title="Link to this definition">¶</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">icspacket.proto.iec61850.goose.</span></span><span class="sig-name descname"><span class="pre">RequestResults</span></span><a class="headerlink" href="#icspacket.proto.iec61850.goose.RequestResults" title="Link to this definition">#</a></dt>
 <dd><p>ASN.1 RequestResults type</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.iec61850.goose.RequestResults.PRESENT">
-<span class="sig-name descname"><span class="pre">PRESENT</span></span><a class="headerlink" href="#icspacket.proto.iec61850.goose.RequestResults.PRESENT" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">PRESENT</span></span><a class="headerlink" href="#icspacket.proto.iec61850.goose.RequestResults.PRESENT" title="Link to this definition">#</a></dt>
 <dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">PRESENT</span></code></p>
 </dd></dl>
 
@@ -768,11 +804,11 @@ interfaces exist, an explicit <code class="docutils literal notranslate"><span c
 
 <dl class="py class">
 <dt class="sig sig-object py" id="icspacket.proto.iec61850.goose.GlbErrors">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">icspacket.proto.iec61850.goose.</span></span><span class="sig-name descname"><span class="pre">GlbErrors</span></span><a class="headerlink" href="#icspacket.proto.iec61850.goose.GlbErrors" title="Link to this definition">¶</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">icspacket.proto.iec61850.goose.</span></span><span class="sig-name descname"><span class="pre">GlbErrors</span></span><a class="headerlink" href="#icspacket.proto.iec61850.goose.GlbErrors" title="Link to this definition">#</a></dt>
 <dd><p>ASN.1 GlbErrors type</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.iec61850.goose.GlbErrors.VALUES">
-<span class="sig-name descname"><span class="pre">VALUES</span></span><a class="headerlink" href="#icspacket.proto.iec61850.goose.GlbErrors.VALUES" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">VALUES</span></span><a class="headerlink" href="#icspacket.proto.iec61850.goose.GlbErrors.VALUES" title="Link to this definition">#</a></dt>
 <dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">VALUES</span></code></p>
 </dd></dl>
 
@@ -780,11 +816,11 @@ interfaces exist, an explicit <code class="docutils literal notranslate"><span c
 
 <dl class="py class">
 <dt class="sig sig-object py" id="icspacket.proto.iec61850.goose.ErrorReason">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">icspacket.proto.iec61850.goose.</span></span><span class="sig-name descname"><span class="pre">ErrorReason</span></span><a class="headerlink" href="#icspacket.proto.iec61850.goose.ErrorReason" title="Link to this definition">¶</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">icspacket.proto.iec61850.goose.</span></span><span class="sig-name descname"><span class="pre">ErrorReason</span></span><a class="headerlink" href="#icspacket.proto.iec61850.goose.ErrorReason" title="Link to this definition">#</a></dt>
 <dd><p>ASN.1 ErrorReason type</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.iec61850.goose.ErrorReason.VALUES">
-<span class="sig-name descname"><span class="pre">VALUES</span></span><a class="headerlink" href="#icspacket.proto.iec61850.goose.ErrorReason.VALUES" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">VALUES</span></span><a class="headerlink" href="#icspacket.proto.iec61850.goose.ErrorReason.VALUES" title="Link to this definition">#</a></dt>
 <dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">VALUES</span></code></p>
 </dd></dl>
 
@@ -792,11 +828,11 @@ interfaces exist, an explicit <code class="docutils literal notranslate"><span c
 
 <dl class="py class">
 <dt class="sig sig-object py" id="icspacket.proto.iec61850.goose.IECGoosePdu">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">icspacket.proto.iec61850.goose.</span></span><span class="sig-name descname"><span class="pre">IECGoosePdu</span></span><a class="headerlink" href="#icspacket.proto.iec61850.goose.IECGoosePdu" title="Link to this definition">¶</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">icspacket.proto.iec61850.goose.</span></span><span class="sig-name descname"><span class="pre">IECGoosePdu</span></span><a class="headerlink" href="#icspacket.proto.iec61850.goose.IECGoosePdu" title="Link to this definition">#</a></dt>
 <dd><p>ASN.1 IECGoosePdu type</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.iec61850.goose.IECGoosePdu.allData_TYPE">
-<span class="sig-name descname"><span class="pre">allData_TYPE</span></span><a class="headerlink" href="#icspacket.proto.iec61850.goose.IECGoosePdu.allData_TYPE" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">allData_TYPE</span></span><a class="headerlink" href="#icspacket.proto.iec61850.goose.IECGoosePdu.allData_TYPE" title="Link to this definition">#</a></dt>
 <dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">allData</span></code></p>
 </dd></dl>
 
@@ -804,7 +840,7 @@ interfaces exist, an explicit <code class="docutils literal notranslate"><span c
 
 <dl class="py class">
 <dt class="sig sig-object py" id="icspacket.proto.iec61850.goose.UtcTime">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">icspacket.proto.iec61850.goose.</span></span><span class="sig-name descname"><span class="pre">UtcTime</span></span><a class="headerlink" href="#icspacket.proto.iec61850.goose.UtcTime" title="Link to this definition">¶</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">icspacket.proto.iec61850.goose.</span></span><span class="sig-name descname"><span class="pre">UtcTime</span></span><a class="headerlink" href="#icspacket.proto.iec61850.goose.UtcTime" title="Link to this definition">#</a></dt>
 <dd><p>ASN.1 UtcTime type</p>
 </dd></dl>
 
@@ -847,17 +883,17 @@ interfaces exist, an explicit <code class="docutils literal notranslate"><span c
   </p>
 </div>
       <div class="sy-foot-socials">
-<a href="https://github.com/MatrixEditor/icspacket" aria-label="GitHub">
-  <iconify-icon icon="simple-icons:github"></iconify-icon>
-</a></div>
+  <a href="https://github.com/MatrixEditor/icspacket" aria-label="GitHub">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </a></div>
     </div>
   </div>
 </footer>
-      <script src="../../_static/documentation_options.js?v=53ae9ec8"></script>
-      <script src="../../_static/doctools.js?v=9bcbadda"></script>
-      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/documentation_options.js?v=ded930d6"></script>
+      <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
       <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
       <script src="../../_static/copybutton.js?v=f281be69"></script>
       <script src="../../_static/design-tabs.js?v=f930bc37"></script>
-      <script src="../../_static/shibuya.js?v=e730760c"></script></body>
+      <script src="../../_static/shibuya.js?v=50760d75"></script></body>
 </html>

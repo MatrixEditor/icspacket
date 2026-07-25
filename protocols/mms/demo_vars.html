@@ -2,12 +2,12 @@
 <html lang="en" data-accent-color="lime" data-content_root="../../">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Variable Target Format - icspacket 0.2.4 documentation</title><link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="FileManagement Service" href="demo_files.html" /><link rel="prev" title="SampledValues Client" href="../iec61850/api_sv.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Variable Target Format - icspacket 0.1.dev1+ga30386068 documentation</title><link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="FileManagement Service" href="demo_files.html" /><link rel="prev" title="SampledValues Client" href="../iec61850/api_sv.html" />
       <link rel="canonical" href="https://matrixeditor.github.io/icspacket/protocols/mms/demo_vars.html" /><script>
     function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
     setColorMode(localStorage._theme||"dark");
-  </script><link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b1a1f93b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/shibuya.css?v=bb284d7b" />
+  </script><link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=e1a1ceaf" />
+    <link rel="stylesheet" type="text/css" href="../../_static/shibuya.css?v=2ceb65ce" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link media="print" rel="stylesheet" type="text/css" href="../../_static/print.css?v=20ff2c19" />
@@ -20,10 +20,11 @@
   --sy-f-heading: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
 }
 </style>
-    <meta property="og:type" content="website"/>
-<meta property="og:url" content="https://matrixeditor.github.io/icspacket/protocols/mms/demo_vars.html"/>
-<meta property="og:title" content="Variable Target Format"/>
-<meta name="twitter:card" content="summary"/>
+    
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://matrixeditor.github.io/icspacket/protocols/mms/demo_vars.html"/>
+  <meta property="og:title" content="Variable Target Format"/>
+    <meta name="twitter:card" content="summary"/>
   </head>
 <body><div class="sy-head">
   <div class="sy-head-blur"></div>
@@ -248,10 +249,45 @@ data-aria-dark="Switch to auto color mode">
     </div>
   </div>
 </div><div class="flex flex-col break-words justify-between">
-      <div class="min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
-        <article class="yue" role="main">
+      <div class="relative min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
+  <div class="copy-page-wrapper relative pb-4 lg:absolute lg:top-8 lg:right-6 xl:right-12">
+  <div id="copy-page-trigger">
+    <button
+      type="button"
+      class="js-copy px-3 py-1 inline-flex items-center gap-1"
+      data-url="https://raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/protocols/mms/demo_vars.rst"
+    >
+      <i class="i-lucide" data-icon="copy"></i>
+      <span>Copy page</span>
+    </button>
+    <button class="js-menu px-2 py-1" type="button" aria-label="More actions"
+      aria-haspopup="menu" aria-expanded="false" aria-controls="copy-page-content">
+      <i class="i-lucide chevron-down"></i>
+    </button>
+  </div>
+  <div id="copy-page-content" role="menu" aria-orientation="vertical" aria-hidden="true">
+    <div role="presentation">
+      <div class="flex flex-col" role="group">
+        <button class="js-copy" type="button" role="menuitem"
+          data-url="https://raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/protocols/mms/demo_vars.rst">
+          <span class="iconify-icon">
+            <i class="i-lucide" data-icon="copy"></i>
+          </span>
+          <span>Copy page</span>
+        </button>
+        <a role="menuitem" href="https://raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/protocols/mms/demo_vars.rst" target="_blank" rel="nofollow"><iconify-icon icon="bi:code-slash"></iconify-icon>
+            <span>View Source</span></a><a role="menuitem" href="https://chatgpt.com/?hints=search&q=Read%20https%3A//raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/protocols/mms/demo_vars.rst%20so%20I%20can%20ask%20questions%20about%20it." target="_blank" rel="nofollow">
+          <iconify-icon icon="bi:openai"></iconify-icon>
+          <span>Open in ChatGPT</span>
+        </a><a role="menuitem" href="https://claude.ai/new?q=Read%20https%3A//raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/protocols/mms/demo_vars.rst%20so%20I%20can%20ask%20questions%20about%20it." target="_blank" rel="nofollow">
+          <iconify-icon icon="bi:claude"></iconify-icon>
+          <span>Open in Claude</span>
+        </a></div>
+    </div>
+  </div>
+</div><article class="yue" role="main">
           <section id="variable-target-format">
-<span id="mms-examples-variables"></span><h1>Variable Target Format<a class="headerlink" href="#variable-target-format" title="Link to this heading">¶</a></h1>
+<span id="mms-examples-variables"></span><h1>Variable Target Format<a class="headerlink" href="#variable-target-format" title="Link to this heading">#</a></h1>
 <blockquote>
 <div><p>A “variable” is an abstract element of the VMD that is capable of providing (when read) or accepting (when
 written), or both, a typed data value. A “type description” is an abstract description of the class of data that may be
@@ -291,7 +327,7 @@ specification. For example:</p>
 </div>
 </section>
 <section id="variableaccess-service-rwq">
-<h1>VariableAccess Service (rwq)<a class="headerlink" href="#variableaccess-service-rwq" title="Link to this heading">¶</a></h1>
+<h1>VariableAccess Service (rwq)<a class="headerlink" href="#variableaccess-service-rwq" title="Link to this heading">#</a></h1>
 <p>The example tool provides three primary variable access services:</p>
 <ul class="simple">
 <li><p><strong>Query</strong> (<code class="docutils literal notranslate"><span class="pre">--query</span></code>): Retrieve metadata about a variable (type, address, attributes).</p></li>
@@ -299,7 +335,7 @@ specification. For example:</p>
 <li><p><strong>Write</strong> (<code class="docutils literal notranslate"><span class="pre">--write</span></code>): Modify the value of a variable.</p></li>
 </ul>
 <section id="querying-variables">
-<h2>Querying Variables<a class="headerlink" href="#querying-variables" title="Link to this heading">¶</a></h2>
+<h2>Querying Variables<a class="headerlink" href="#querying-variables" title="Link to this heading">#</a></h2>
 <p>Use the <code class="docutils literal notranslate"><span class="pre">--query</span></code> flag to inspect the attributes of a variable.
 This is especially useful to determine the variable’s data type before writing to it.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span data-line="1">mms_utility.py<span class="w"> </span>var<span class="w"> </span>--query<span class="w"> </span>&lt;domain&gt;/&lt;valve_state&gt;<span class="w"> </span>&lt;host&gt;
@@ -314,12 +350,12 @@ This is especially useful to determine the variable’s data type before writing
 <figure class="align-center" id="id1">
 <img alt="../../_images/mms-query-var.png" src="../../_images/mms-query-var.png" />
 <figcaption>
-<p><span class="caption-text">Even complex types will be shown.</span><a class="headerlink" href="#id1" title="Link to this image">¶</a></p>
+<p><span class="caption-text">Even complex types will be shown.</span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="reading-variables">
-<h2>Reading Variables<a class="headerlink" href="#reading-variables" title="Link to this heading">¶</a></h2>
+<h2>Reading Variables<a class="headerlink" href="#reading-variables" title="Link to this heading">#</a></h2>
 <p>To read variables from a remote MMS peer, use the <code class="docutils literal notranslate"><span class="pre">--read</span></code> flag.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span data-line="1">mms_utility.py<span class="w"> </span>var<span class="w"> </span>--read<span class="w"> </span>&lt;domain&gt;/&lt;variable&gt;<span class="w"> </span>&lt;host&gt;
 </span></pre></div>
@@ -338,7 +374,7 @@ This is especially useful to determine the variable’s data type before writing
 </figure>
 </section>
 <section id="writing-variables">
-<h2>Writing Variables<a class="headerlink" href="#writing-variables" title="Link to this heading">¶</a></h2>
+<h2>Writing Variables<a class="headerlink" href="#writing-variables" title="Link to this heading">#</a></h2>
 <p>Writing requires both the <code class="docutils literal notranslate"><span class="pre">--write</span></code> flag and a <code class="docutils literal notranslate"><span class="pre">--value</span></code> specification.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">--value</span></code> follows the format <code class="docutils literal notranslate"><span class="pre">&lt;type&gt;:&lt;value&gt;</span></code>.
 Supported types are:</p>
@@ -417,17 +453,17 @@ Supported types are:</p>
   </p>
 </div>
       <div class="sy-foot-socials">
-<a href="https://github.com/MatrixEditor/icspacket" aria-label="GitHub">
-  <iconify-icon icon="simple-icons:github"></iconify-icon>
-</a></div>
+  <a href="https://github.com/MatrixEditor/icspacket" aria-label="GitHub">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </a></div>
     </div>
   </div>
 </footer>
-      <script src="../../_static/documentation_options.js?v=53ae9ec8"></script>
-      <script src="../../_static/doctools.js?v=9bcbadda"></script>
-      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/documentation_options.js?v=ded930d6"></script>
+      <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
       <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
       <script src="../../_static/copybutton.js?v=f281be69"></script>
       <script src="../../_static/design-tabs.js?v=f930bc37"></script>
-      <script src="../../_static/shibuya.js?v=e730760c"></script></body>
+      <script src="../../_static/shibuya.js?v=50760d75"></script></body>
 </html>

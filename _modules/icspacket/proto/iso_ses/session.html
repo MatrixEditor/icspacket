@@ -2,12 +2,12 @@
 <html lang="en" data-accent-color="lime" data-content_root="../../../../">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>icspacket.proto.iso_ses.session - icspacket 0.2.4 documentation</title><link rel="index" title="Index" href="../../../../genindex.html" /><link rel="search" title="Search" href="../../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>icspacket.proto.iso_ses.session - icspacket 0.1.dev1+ga30386068 documentation</title><link rel="index" title="Index" href="../../../../genindex.html" /><link rel="search" title="Search" href="../../../../search.html" />
       <link rel="canonical" href="https://matrixeditor.github.io/icspacket/_modules/icspacket/proto/iso_ses/session.html" /><script>
     function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
     setColorMode(localStorage._theme||"dark");
-  </script><link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=b1a1f93b" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/shibuya.css?v=bb284d7b" />
+  </script><link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=e1a1ceaf" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/shibuya.css?v=2ceb65ce" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link media="print" rel="stylesheet" type="text/css" href="../../../../_static/print.css?v=20ff2c19" />
@@ -20,10 +20,11 @@
   --sy-f-heading: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
 }
 </style>
-    <meta property="og:type" content="website"/>
-<meta property="og:url" content="https://matrixeditor.github.io/icspacket/_modules/icspacket/proto/iso_ses/session.html"/>
-<meta property="og:title" content="icspacket.proto.iso_ses.session"/>
-<meta name="twitter:card" content="summary"/>
+    
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://matrixeditor.github.io/icspacket/_modules/icspacket/proto/iso_ses/session.html"/>
+  <meta property="og:title" content="icspacket.proto.iso_ses.session"/>
+    <meta name="twitter:card" content="summary"/>
   </head>
 <body><div class="sy-head">
   <div class="sy-head-blur"></div>
@@ -241,8 +242,8 @@ data-aria-dark="Switch to auto color mode">
     </div>
   </div>
 </div><div class="flex flex-col break-words justify-between">
-      <div class="min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
-        <article class="yue" role="main">
+      <div class="relative min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
+  <article class="yue" role="main">
           <h1>Source code for icspacket.proto.iso_ses.session</h1><div class="highlight"><pre>
 <span></span><span data-line="1"><span class="c1"># This file is part of icspacket.</span>
 </span><span data-line="2"><span class="c1"># Copyright (C) 2025-present  MatrixEditor @ github</span>
@@ -260,322 +261,662 @@ data-aria-dark="Switch to auto color mode">
 </span><span data-line="14"><span class="c1"># You should have received a copy of the GNU General Public License</span>
 </span><span data-line="15"><span class="c1"># along with this program.  If not, see &lt;https://www.gnu.org/licenses/&gt;.</span>
 </span><span data-line="16"><span class="kn">from</span><span class="w"> </span><span class="nn">dataclasses</span><span class="w"> </span><span class="kn">import</span> <span class="n">dataclass</span><span class="p">,</span> <span class="n">field</span>
-</span><span data-line="17"><span class="kn">from</span><span class="w"> </span><span class="nn">typing_extensions</span><span class="w"> </span><span class="kn">import</span> <span class="n">override</span>
-</span><span data-line="18">
-</span><span data-line="19"><span class="kn">from</span><span class="w"> </span><span class="nn">caterpillar.exception</span><span class="w"> </span><span class="kn">import</span> <span class="n">StructException</span>
-</span><span data-line="20"><span class="kn">from</span><span class="w"> </span><span class="nn">icspacket.core.connection</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
-</span><span data-line="21">    <span class="n">connection</span><span class="p">,</span>
-</span><span data-line="22">    <span class="ne">ConnectionError</span><span class="p">,</span>
-</span><span data-line="23">    <span class="n">ConnectionStateError</span><span class="p">,</span>
-</span><span data-line="24"><span class="p">)</span>
-</span><span data-line="25"><span class="kn">from</span><span class="w"> </span><span class="nn">icspacket.proto.iso_ses.tsdu</span><span class="w"> </span><span class="kn">import</span> <span class="n">TSDU</span>
-</span><span data-line="26"><span class="kn">from</span><span class="w"> </span><span class="nn">icspacket.proto.iso_ses.spdu</span><span class="w"> </span><span class="kn">import</span> <span class="n">PGI_Code</span><span class="p">,</span> <span class="n">SPDU_Codes</span>
-</span><span data-line="27"><span class="kn">from</span><span class="w"> </span><span class="nn">icspacket.proto.iso_ses.values</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
-</span><span data-line="28">    <span class="n">PV_SessionRequirements</span><span class="p">,</span>
-</span><span data-line="29"><span class="p">)</span>
-</span><span data-line="30"><span class="kn">from</span><span class="w"> </span><span class="nn">icspacket.proto.iso_ses.util</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
-</span><span data-line="31">    <span class="n">build_connect_spdu</span><span class="p">,</span>
-</span><span data-line="32">    <span class="n">build_data_tsdu</span><span class="p">,</span>
-</span><span data-line="33">    <span class="n">build_finish_spdu</span><span class="p">,</span>
-</span><span data-line="34"><span class="p">)</span>
-</span><span data-line="35"><span class="kn">from</span><span class="w"> </span><span class="nn">icspacket.proto.cotp.connection</span><span class="w"> </span><span class="kn">import</span> <span class="n">COTP_Connection</span>
-</span><span data-line="36">
-</span><span data-line="37">
-<div class="viewcode-block" id="SessionDataError">
-<a class="viewcode-back" href="../../../../protocols/cosp/session.html#icspacket.proto.iso_ses.session.SessionDataError">[docs]</a>
-</span><span data-line="38"><span class="k">class</span><span class="w"> </span><span class="nc">SessionDataError</span><span class="p">(</span><span class="ne">ConnectionError</span><span class="p">):</span>
-</span><span data-line="39"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span data-line="40"><span class="sd">    Raised when session data exchange fails or unexpected SPDU content is</span>
-</span><span data-line="41"><span class="sd">    received.</span>
-</span><span data-line="42"><span class="sd">    &quot;&quot;&quot;</span></div>
-
+</span><span data-line="17"><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">TypeVar</span>
+</span><span data-line="18"><span class="kn">from</span><span class="w"> </span><span class="nn">typing_extensions</span><span class="w"> </span><span class="kn">import</span> <span class="n">override</span>
+</span><span data-line="19">
+</span><span data-line="20"><span class="kn">from</span><span class="w"> </span><span class="nn">caterpillar.exception</span><span class="w"> </span><span class="kn">import</span> <span class="n">StructException</span>
+</span><span data-line="21"><span class="kn">from</span><span class="w"> </span><span class="nn">icspacket.core.connection</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+</span><span data-line="22">    <span class="n">connection</span><span class="p">,</span>
+</span><span data-line="23">    <span class="ne">ConnectionError</span><span class="p">,</span>
+</span><span data-line="24">    <span class="n">ConnectionClosedError</span><span class="p">,</span>
+</span><span data-line="25">    <span class="n">ConnectionStateError</span><span class="p">,</span>
+</span><span data-line="26"><span class="p">)</span>
+</span><span data-line="27"><span class="kn">from</span><span class="w"> </span><span class="nn">icspacket.proto.iso_ses.tsdu</span><span class="w"> </span><span class="kn">import</span> <span class="n">TSDU</span>
+</span><span data-line="28"><span class="kn">from</span><span class="w"> </span><span class="nn">icspacket.proto.iso_ses.spdu</span><span class="w"> </span><span class="kn">import</span> <span class="n">PGI_Code</span><span class="p">,</span> <span class="n">SPDU</span><span class="p">,</span> <span class="n">SPDU_Category</span><span class="p">,</span> <span class="n">SPDU_Codes</span>
+</span><span data-line="29"><span class="kn">from</span><span class="w"> </span><span class="nn">icspacket.proto.iso_ses.values</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+</span><span data-line="30">    <span class="n">PI_Code</span><span class="p">,</span>
+</span><span data-line="31">    <span class="n">PV_ProtocolOptions</span><span class="p">,</span>
+</span><span data-line="32">    <span class="n">PV_SessionRequirements</span><span class="p">,</span>
+</span><span data-line="33">    <span class="n">PV_TransportDisconnect</span><span class="p">,</span>
+</span><span data-line="34">    <span class="n">PV_VersionNumber</span><span class="p">,</span>
+</span><span data-line="35"><span class="p">)</span>
+</span><span data-line="36"><span class="kn">from</span><span class="w"> </span><span class="nn">icspacket.proto.iso_ses.util</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+</span><span data-line="37">    <span class="n">build_abort_spdu</span><span class="p">,</span>
+</span><span data-line="38">    <span class="n">build_connect_spdu</span><span class="p">,</span>
+</span><span data-line="39">    <span class="n">build_data_tsdu</span><span class="p">,</span>
+</span><span data-line="40">    <span class="n">build_finish_spdu</span><span class="p">,</span>
+</span><span data-line="41"><span class="p">)</span>
+</span><span data-line="42"><span class="kn">from</span><span class="w"> </span><span class="nn">icspacket.proto.cotp.connection</span><span class="w"> </span><span class="kn">import</span> <span class="n">COTP_Connection</span>
 </span><span data-line="43">
 </span><span data-line="44">
+</span><span data-line="45"><span class="n">T</span> <span class="o">=</span> <span class="n">TypeVar</span><span class="p">(</span><span class="s2">&quot;T&quot;</span><span class="p">)</span>
+</span><span data-line="46">
+</span><span data-line="47">
+<div class="viewcode-block" id="SessionDataError">
+<a class="viewcode-back" href="../../../../protocols/cosp/session.html#icspacket.proto.iso_ses.session.SessionDataError">[docs]</a>
+</span><span data-line="48"><span class="k">class</span><span class="w"> </span><span class="nc">SessionDataError</span><span class="p">(</span><span class="ne">ConnectionError</span><span class="p">):</span>
+</span><span data-line="49"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="50"><span class="sd">    Raised when session data exchange fails or unexpected SPDU content is</span>
+</span><span data-line="51"><span class="sd">    received.</span>
+</span><span data-line="52"><span class="sd">    &quot;&quot;&quot;</span></div>
+
+</span><span data-line="53">
+</span><span data-line="54">
 <div class="viewcode-block" id="SessionRejectedError">
 <a class="viewcode-back" href="../../../../protocols/cosp/session.html#icspacket.proto.iso_ses.session.SessionRejectedError">[docs]</a>
-</span><span data-line="45"><span class="k">class</span><span class="w"> </span><span class="nc">SessionRejectedError</span><span class="p">(</span><span class="ne">ConnectionError</span><span class="p">):</span>
-</span><span data-line="46"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span data-line="47"><span class="sd">    Raised when a session connection request is explicitly rejected by the peer.</span>
-</span><span data-line="48"><span class="sd">    &quot;&quot;&quot;</span></div>
+</span><span data-line="55"><span class="k">class</span><span class="w"> </span><span class="nc">SessionRejectedError</span><span class="p">(</span><span class="ne">ConnectionError</span><span class="p">):</span>
+</span><span data-line="56"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="57"><span class="sd">    Raised when a session connection request is explicitly rejected by the peer.</span>
+</span><span data-line="58"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span data-line="59">
+</span><span data-line="60">    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+</span><span data-line="61">        <span class="bp">self</span><span class="p">,</span>
+</span><span data-line="62">        <span class="n">message</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;Session rejected by peer&quot;</span><span class="p">,</span>
+</span><span data-line="63">        <span class="o">*</span><span class="p">,</span>
+</span><span data-line="64">        <span class="n">reason_code</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span data-line="65">        <span class="n">user_data</span><span class="p">:</span> <span class="nb">bytes</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span data-line="66">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="67">        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+</span><span data-line="68">        <span class="bp">self</span><span class="o">.</span><span class="n">reason_code</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="n">reason_code</span>
+</span><span data-line="69">        <span class="bp">self</span><span class="o">.</span><span class="n">user_data</span><span class="p">:</span> <span class="nb">bytes</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="n">user_data</span></div>
 
-</span><span data-line="49">
-</span><span data-line="50">
+</span><span data-line="70">
+</span><span data-line="71">
+<div class="viewcode-block" id="SessionAbortError">
+<a class="viewcode-back" href="../../../../protocols/cosp/session.html#icspacket.proto.iso_ses.session.SessionAbortError">[docs]</a>
+</span><span data-line="72"><span class="k">class</span><span class="w"> </span><span class="nc">SessionAbortError</span><span class="p">(</span><span class="ne">ConnectionError</span><span class="p">):</span>
+</span><span data-line="73"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="74"><span class="sd">    Raised when an abnormal release SPDU is received.</span>
+</span><span data-line="75"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span data-line="76">
+</span><span data-line="77">    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">user_data</span><span class="p">:</span> <span class="nb">bytes</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="78">        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="s2">&quot;Session aborted by peer&quot;</span><span class="p">)</span>
+</span><span data-line="79">        <span class="bp">self</span><span class="o">.</span><span class="n">user_data</span><span class="p">:</span> <span class="nb">bytes</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="n">user_data</span></div>
+
+</span><span data-line="80">
+</span><span data-line="81">
+<div class="viewcode-block" id="SessionEvent">
+<a class="viewcode-back" href="../../../../protocols/cosp/session.html#icspacket.proto.iso_ses.session.SessionEvent">[docs]</a>
+</span><span data-line="82"><span class="nd">@dataclass</span><span class="p">(</span><span class="n">frozen</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span data-line="83"><span class="k">class</span><span class="w"> </span><span class="nc">SessionEvent</span><span class="p">:</span>
+</span><span data-line="84"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Parsed session data or release event.&quot;&quot;&quot;</span>
+</span><span data-line="85">
+</span><span data-line="86">    <span class="n">kind</span><span class="p">:</span> <span class="nb">str</span>
+</span><span data-line="87">    <span class="n">user_data</span><span class="p">:</span> <span class="nb">bytes</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+</span><span data-line="88">    <span class="n">accepted</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></div>
+
+</span><span data-line="89">
+</span><span data-line="90">
+<div class="viewcode-block" id="SessionReleaseResult">
+<a class="viewcode-back" href="../../../../protocols/cosp/session.html#icspacket.proto.iso_ses.session.SessionReleaseResult">[docs]</a>
+</span><span data-line="91"><span class="nd">@dataclass</span><span class="p">(</span><span class="n">frozen</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span data-line="92"><span class="k">class</span><span class="w"> </span><span class="nc">SessionReleaseResult</span><span class="p">:</span>
+</span><span data-line="93"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="94"><span class="sd">    Result of an orderly release attempt.</span>
+</span><span data-line="95"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span data-line="96">
+</span><span data-line="97">    <span class="n">accepted</span><span class="p">:</span> <span class="nb">bool</span>
+</span><span data-line="98">    <span class="n">user_data</span><span class="p">:</span> <span class="nb">bytes</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+</span><span data-line="99">    <span class="n">collision</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></div>
+
+</span><span data-line="100">
+</span><span data-line="101">
+<div class="viewcode-block" id="ISO_SessionNegotiation">
+<a class="viewcode-back" href="../../../../protocols/cosp/session.html#icspacket.proto.iso_ses.session.ISO_SessionNegotiation">[docs]</a>
+</span><span data-line="102"><span class="nd">@dataclass</span><span class="p">(</span><span class="n">frozen</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span data-line="103"><span class="k">class</span><span class="w"> </span><span class="nc">ISO_SessionNegotiation</span><span class="p">:</span>
+</span><span data-line="104"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Negotiated X.225 session values for the established connection.&quot;&quot;&quot;</span>
+</span><span data-line="105">
+</span><span data-line="106">    <span class="n">version</span><span class="p">:</span> <span class="nb">int</span>
+</span><span data-line="107">    <span class="n">requirements</span><span class="p">:</span> <span class="n">PV_SessionRequirements</span>
+</span><span data-line="108">    <span class="n">extended</span><span class="p">:</span> <span class="nb">bool</span>
+</span><span data-line="109">    <span class="n">send_tsdu_max</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+</span><span data-line="110">    <span class="n">receive_tsdu_max</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span></div>
+
+</span><span data-line="111">
+</span><span data-line="112">
 <div class="viewcode-block" id="ISO_SessionSettings">
 <a class="viewcode-back" href="../../../../protocols/cosp/session.html#icspacket.proto.iso_ses.session.ISO_SessionSettings">[docs]</a>
-</span><span data-line="51"><span class="nd">@dataclass</span>
-</span><span data-line="52"><span class="k">class</span><span class="w"> </span><span class="nc">ISO_SessionSettings</span><span class="p">:</span>
-</span><span data-line="53"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Encapsulates (X.225 / ISO 8327-1) negotiation settings.</span>
-</span><span data-line="54">
-</span><span data-line="55"><span class="sd">    :param calling_ses_sel: Calling session selector.</span>
-</span><span data-line="56"><span class="sd">    :type calling_ses_sel: bytes</span>
-</span><span data-line="57"><span class="sd">    :param called_ses_sel: Called session selector.</span>
-</span><span data-line="58"><span class="sd">    :type called_ses_sel: bytes</span>
-</span><span data-line="59"><span class="sd">    :param session_req: Session requirements parameter vector.</span>
-</span><span data-line="60"><span class="sd">    :type session_req: PV_SessionRequirements</span>
-</span><span data-line="61"><span class="sd">    :param version: Session protocol version (default 2).</span>
-</span><span data-line="62"><span class="sd">    :type version: int</span>
-</span><span data-line="63"><span class="sd">    :param extended: Whether extended SPDU formats are enabled.</span>
-</span><span data-line="64"><span class="sd">    :type extended: bool</span>
-</span><span data-line="65"><span class="sd">    &quot;&quot;&quot;</span>
-</span><span data-line="66">
-</span><span data-line="67">    <span class="n">calling_ses_sel</span><span class="p">:</span> <span class="nb">bytes</span> <span class="o">=</span> <span class="nb">bytes</span><span class="o">.</span><span class="n">fromhex</span><span class="p">(</span><span class="s2">&quot;0001&quot;</span><span class="p">)</span>
-</span><span data-line="68">    <span class="n">called_ses_sel</span><span class="p">:</span> <span class="nb">bytes</span> <span class="o">=</span> <span class="nb">bytes</span><span class="o">.</span><span class="n">fromhex</span><span class="p">(</span><span class="s2">&quot;0001&quot;</span><span class="p">)</span>
-</span><span data-line="69">    <span class="n">session_req</span><span class="p">:</span> <span class="n">PV_SessionRequirements</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="n">PV_SessionRequirements</span><span class="p">)</span>
-</span><span data-line="70">    <span class="n">version</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2</span>
-</span><span data-line="71">    <span class="n">extended</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span></div>
+</span><span data-line="113"><span class="nd">@dataclass</span>
+</span><span data-line="114"><span class="k">class</span><span class="w"> </span><span class="nc">ISO_SessionSettings</span><span class="p">:</span>
+</span><span data-line="115"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Encapsulates (X.225 / ISO 8327-1) negotiation settings.</span>
+</span><span data-line="116">
+</span><span data-line="117"><span class="sd">    :param calling_ses_sel: Calling session selector.</span>
+</span><span data-line="118"><span class="sd">    :type calling_ses_sel: bytes</span>
+</span><span data-line="119"><span class="sd">    :param called_ses_sel: Called session selector.</span>
+</span><span data-line="120"><span class="sd">    :type called_ses_sel: bytes</span>
+</span><span data-line="121"><span class="sd">    :param session_req: Session requirements parameter vector.</span>
+</span><span data-line="122"><span class="sd">    :type session_req: PV_SessionRequirements</span>
+</span><span data-line="123"><span class="sd">    :param version: Session protocol version (default 2).</span>
+</span><span data-line="124"><span class="sd">    :type version: int</span>
+</span><span data-line="125"><span class="sd">    :param extended: Whether extended SPDU formats are enabled.</span>
+</span><span data-line="126"><span class="sd">    :type extended: bool</span>
+</span><span data-line="127"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span data-line="128">
+</span><span data-line="129">    <span class="n">calling_ses_sel</span><span class="p">:</span> <span class="nb">bytes</span> <span class="o">=</span> <span class="nb">bytes</span><span class="o">.</span><span class="n">fromhex</span><span class="p">(</span><span class="s2">&quot;0001&quot;</span><span class="p">)</span>
+</span><span data-line="130">    <span class="n">called_ses_sel</span><span class="p">:</span> <span class="nb">bytes</span> <span class="o">=</span> <span class="nb">bytes</span><span class="o">.</span><span class="n">fromhex</span><span class="p">(</span><span class="s2">&quot;0001&quot;</span><span class="p">)</span>
+</span><span data-line="131">    <span class="n">session_req</span><span class="p">:</span> <span class="n">PV_SessionRequirements</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span>
+</span><span data-line="132">        <span class="n">default_factory</span><span class="o">=</span><span class="n">PV_SessionRequirements</span><span class="o">.</span><span class="n">default</span>
+</span><span data-line="133">    <span class="p">)</span>
+</span><span data-line="134">    <span class="n">version</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2</span>
+</span><span data-line="135">    <span class="n">extended</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+</span><span data-line="136">
+</span><span data-line="137">    <span class="k">def</span><span class="w"> </span><span class="nf">__post_init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="138">        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">version</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">):</span>
+</span><span data-line="139">            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Session protocol version must be 1 or 2&quot;</span><span class="p">)</span></div>
 
-</span><span data-line="72">
-</span><span data-line="73">
+</span><span data-line="140">
+</span><span data-line="141">
 <div class="viewcode-block" id="ISO_Session">
 <a class="viewcode-back" href="../../../../protocols/cosp/session.html#icspacket.proto.iso_ses.session.ISO_Session">[docs]</a>
-</span><span data-line="74"><span class="k">class</span><span class="w"> </span><span class="nc">ISO_Session</span><span class="p">(</span><span class="n">connection</span><span class="p">):</span>
-</span><span data-line="75"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span data-line="76"><span class="sd">    Implements the Connection-oriented Session Protocol (COSP) (ITU X.225 / ISO</span>
-</span><span data-line="77"><span class="sd">    8327-1) endpoint on top of COTP.</span>
-</span><span data-line="78">
-</span><span data-line="79"><span class="sd">    Provides session connection establishment, data transfer, and orderly</span>
-</span><span data-line="80"><span class="sd">    release services using SPDUs (Session Protocol Data Units). This class</span>
-</span><span data-line="81"><span class="sd">    ensures proper sequencing and validation of SPDUs as per ISO Session</span>
-</span><span data-line="82"><span class="sd">    protocol semantics.</span>
-</span><span data-line="83">
-</span><span data-line="84"><span class="sd">    :param transport: Underlying COTP transport connection.</span>
-</span><span data-line="85"><span class="sd">    :type transport: COTP_Connection</span>
-</span><span data-line="86"><span class="sd">    :param settings: Session negotiation settings.</span>
-</span><span data-line="87"><span class="sd">    :type settings: ISO_SessionSettings | None</span>
-</span><span data-line="88"><span class="sd">    &quot;&quot;&quot;</span>
-</span><span data-line="89">
-</span><span data-line="90">    <span class="n">settings</span><span class="p">:</span> <span class="n">ISO_SessionSettings</span>
-</span><span data-line="91"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Currently applied session settings&quot;&quot;&quot;</span>
-</span><span data-line="92">
-</span><span data-line="93">    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
-</span><span data-line="94">        <span class="bp">self</span><span class="p">,</span>
-</span><span data-line="95">        <span class="n">transport</span><span class="p">:</span> <span class="n">COTP_Connection</span><span class="p">,</span>
-</span><span data-line="96">        <span class="n">settings</span><span class="p">:</span> <span class="n">ISO_SessionSettings</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span data-line="97">    <span class="p">):</span>
-</span><span data-line="98">        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
-</span><span data-line="99">        <span class="bp">self</span><span class="o">.</span><span class="n">__transport</span> <span class="o">=</span> <span class="n">transport</span>
-</span><span data-line="100">        <span class="bp">self</span><span class="o">.</span><span class="n">_connected</span> <span class="o">=</span> <span class="n">transport</span><span class="o">.</span><span class="n">is_connected</span><span class="p">()</span>
-</span><span data-line="101">        <span class="bp">self</span><span class="o">.</span><span class="n">_valid</span> <span class="o">=</span> <span class="kc">False</span>
-</span><span data-line="102">
-</span><span data-line="103">        <span class="c1"># publicly available settings</span>
-</span><span data-line="104">        <span class="bp">self</span><span class="o">.</span><span class="n">settings</span> <span class="o">=</span> <span class="n">settings</span> <span class="ow">or</span> <span class="n">ISO_SessionSettings</span><span class="p">()</span>
-</span><span data-line="105">
-</span><span data-line="106">    <span class="nd">@property</span>
-</span><span data-line="107">    <span class="k">def</span><span class="w"> </span><span class="nf">transport</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">COTP_Connection</span><span class="p">:</span>
-</span><span data-line="108"><span class="w">        </span><span class="sd">&quot;&quot;&quot;Associated transport connection.&quot;&quot;&quot;</span>
-</span><span data-line="109">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__transport</span>
-</span><span data-line="110">
+</span><span data-line="142"><span class="k">class</span><span class="w"> </span><span class="nc">ISO_Session</span><span class="p">(</span><span class="n">connection</span><span class="p">):</span>
+</span><span data-line="143"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="144"><span class="sd">    Implements the Connection-oriented Session Protocol (COSP) (ITU X.225 / ISO</span>
+</span><span data-line="145"><span class="sd">    8327-1) endpoint on top of COTP.</span>
+</span><span data-line="146">
+</span><span data-line="147"><span class="sd">    Provides session connection establishment, data transfer, and orderly</span>
+</span><span data-line="148"><span class="sd">    release services using SPDUs (Session Protocol Data Units). This class</span>
+</span><span data-line="149"><span class="sd">    ensures proper sequencing and validation of SPDUs according to ISO Session</span>
+</span><span data-line="150"><span class="sd">    protocol semantics.</span>
+</span><span data-line="151">
+</span><span data-line="152"><span class="sd">    :param transport: Underlying COTP transport connection.</span>
+</span><span data-line="153"><span class="sd">    :type transport: COTP_Connection</span>
+</span><span data-line="154"><span class="sd">    :param settings: Session negotiation settings.</span>
+</span><span data-line="155"><span class="sd">    :type settings: ISO_SessionSettings | None</span>
+</span><span data-line="156"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span data-line="157">
+</span><span data-line="158">    <span class="n">settings</span><span class="p">:</span> <span class="n">ISO_SessionSettings</span>
+</span><span data-line="159"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Currently applied session settings&quot;&quot;&quot;</span>
+</span><span data-line="160">
+</span><span data-line="161">    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+</span><span data-line="162">        <span class="bp">self</span><span class="p">,</span>
+</span><span data-line="163">        <span class="n">transport</span><span class="p">:</span> <span class="n">COTP_Connection</span><span class="p">,</span>
+</span><span data-line="164">        <span class="n">settings</span><span class="p">:</span> <span class="n">ISO_SessionSettings</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span data-line="165">    <span class="p">):</span>
+</span><span data-line="166">        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+</span><span data-line="167">        <span class="bp">self</span><span class="o">.</span><span class="n">__transport</span> <span class="o">=</span> <span class="n">transport</span>
+</span><span data-line="168">        <span class="bp">self</span><span class="o">.</span><span class="n">_connected</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="n">transport</span><span class="o">.</span><span class="n">is_connected</span><span class="p">()</span>
+</span><span data-line="169">        <span class="bp">self</span><span class="o">.</span><span class="n">_valid</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+</span><span data-line="170">        <span class="bp">self</span><span class="o">.</span><span class="n">negotiated</span><span class="p">:</span> <span class="n">ISO_SessionNegotiation</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+</span><span data-line="171">
+</span><span data-line="172">        <span class="c1"># publicly available settings</span>
+</span><span data-line="173">        <span class="bp">self</span><span class="o">.</span><span class="n">settings</span> <span class="o">=</span> <span class="n">settings</span> <span class="ow">or</span> <span class="n">ISO_SessionSettings</span><span class="p">()</span>
+</span><span data-line="174">
+</span><span data-line="175">    <span class="nd">@property</span>
+</span><span data-line="176">    <span class="k">def</span><span class="w"> </span><span class="nf">transport</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">COTP_Connection</span><span class="p">:</span>
+</span><span data-line="177"><span class="w">        </span><span class="sd">&quot;&quot;&quot;Associated transport connection.&quot;&quot;&quot;</span>
+</span><span data-line="178">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__transport</span>
+</span><span data-line="179">
 <div class="viewcode-block" id="ISO_Session.send_data">
 <a class="viewcode-back" href="../../../../protocols/cosp/session.html#icspacket.proto.iso_ses.session.ISO_Session.send_data">[docs]</a>
-</span><span data-line="111">    <span class="nd">@override</span>
-</span><span data-line="112">    <span class="k">def</span><span class="w"> </span><span class="nf">send_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">octets</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">,</span> <span class="o">/</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-</span><span data-line="113"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span data-line="114"><span class="sd">        Send user data wrapped in a session TSDU.</span>
-</span><span data-line="115">
-</span><span data-line="116"><span class="sd">        .. note::</span>
-</span><span data-line="117"><span class="sd">            The session must already be initialized with an ACCEPT SPDU.</span>
-</span><span data-line="118">
-</span><span data-line="119"><span class="sd">        :param octets: User data payload.</span>
-</span><span data-line="120"><span class="sd">        :type octets: bytes</span>
-</span><span data-line="121"><span class="sd">        :raises ConnectionStateError: If the session is not initialized.</span>
-</span><span data-line="122"><span class="sd">        &quot;&quot;&quot;</span>
-</span><span data-line="123">        <span class="bp">self</span><span class="o">.</span><span class="n">_assert_connected</span><span class="p">()</span>
-</span><span data-line="124">        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_valid</span><span class="p">():</span>
-</span><span data-line="125">            <span class="k">raise</span> <span class="n">ConnectionStateError</span><span class="p">(</span>
-</span><span data-line="126">                <span class="s2">&quot;Session must be initialized before sending data&quot;</span>
-</span><span data-line="127">            <span class="p">)</span>
-</span><span data-line="128">
-</span><span data-line="129">        <span class="n">tsdu</span> <span class="o">=</span> <span class="n">build_data_tsdu</span><span class="p">(</span><span class="n">octets</span><span class="p">)</span>
-</span><span data-line="130">        <span class="bp">self</span><span class="o">.</span><span class="n">send_tsdu</span><span class="p">(</span><span class="n">tsdu</span><span class="p">)</span></div>
+</span><span data-line="180">    <span class="nd">@override</span>
+</span><span data-line="181">    <span class="k">def</span><span class="w"> </span><span class="nf">send_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">octets</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">,</span> <span class="o">/</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="182"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="183"><span class="sd">        Send user data wrapped in a session TSDU.</span>
+</span><span data-line="184">
+</span><span data-line="185"><span class="sd">        .. note::</span>
+</span><span data-line="186"><span class="sd">            The session must already be initialized with an ACCEPT SPDU.</span>
+</span><span data-line="187">
+</span><span data-line="188"><span class="sd">        :param octets: User data payload.</span>
+</span><span data-line="189"><span class="sd">        :type octets: bytes</span>
+</span><span data-line="190"><span class="sd">        :raises ConnectionStateError: If the session is not initialized.</span>
+</span><span data-line="191"><span class="sd">        &quot;&quot;&quot;</span>
+</span><span data-line="192">        <span class="bp">self</span><span class="o">.</span><span class="n">_assert_connected</span><span class="p">()</span>
+</span><span data-line="193">        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_valid</span><span class="p">():</span>
+</span><span data-line="194">            <span class="k">raise</span> <span class="n">ConnectionStateError</span><span class="p">(</span>
+</span><span data-line="195">                <span class="s2">&quot;Session must be initialized before sending data&quot;</span>
+</span><span data-line="196">            <span class="p">)</span>
+</span><span data-line="197">
+</span><span data-line="198">        <span class="n">tsdu</span> <span class="o">=</span> <span class="n">build_data_tsdu</span><span class="p">(</span><span class="n">octets</span><span class="p">)</span>
+</span><span data-line="199">        <span class="bp">self</span><span class="o">.</span><span class="n">send_tsdu</span><span class="p">(</span><span class="n">tsdu</span><span class="p">)</span></div>
 
-</span><span data-line="131">
+</span><span data-line="200">
 <div class="viewcode-block" id="ISO_Session.send_tsdu">
 <a class="viewcode-back" href="../../../../protocols/cosp/session.html#icspacket.proto.iso_ses.session.ISO_Session.send_tsdu">[docs]</a>
-</span><span data-line="132">    <span class="k">def</span><span class="w"> </span><span class="nf">send_tsdu</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tsdu</span><span class="p">:</span> <span class="n">TSDU</span><span class="p">,</span> <span class="o">/</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-</span><span data-line="133"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span data-line="134"><span class="sd">        Send a fully constructed TSDU over the transport connection.</span>
-</span><span data-line="135">
-</span><span data-line="136"><span class="sd">        :param tsdu: Transport Service Data Unit.</span>
-</span><span data-line="137"><span class="sd">        :type tsdu: TSDU</span>
-</span><span data-line="138"><span class="sd">        &quot;&quot;&quot;</span>
-</span><span data-line="139">        <span class="bp">self</span><span class="o">.</span><span class="n">_assert_connected</span><span class="p">()</span>
-</span><span data-line="140">        <span class="bp">self</span><span class="o">.</span><span class="n">transport</span><span class="o">.</span><span class="n">send_data</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_build_tsdu</span><span class="p">(</span><span class="n">tsdu</span><span class="p">))</span></div>
+</span><span data-line="201">    <span class="k">def</span><span class="w"> </span><span class="nf">send_tsdu</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tsdu</span><span class="p">:</span> <span class="n">TSDU</span><span class="p">,</span> <span class="o">/</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="202"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="203"><span class="sd">        Send a fully constructed TSDU over the transport connection.</span>
+</span><span data-line="204">
+</span><span data-line="205"><span class="sd">        :param tsdu: Transport Service Data Unit.</span>
+</span><span data-line="206"><span class="sd">        :type tsdu: TSDU</span>
+</span><span data-line="207"><span class="sd">        &quot;&quot;&quot;</span>
+</span><span data-line="208">        <span class="bp">self</span><span class="o">.</span><span class="n">_assert_connected</span><span class="p">()</span>
+</span><span data-line="209">        <span class="k">try</span><span class="p">:</span>
+</span><span data-line="210">            <span class="n">encoded</span> <span class="o">=</span> <span class="n">tsdu</span><span class="o">.</span><span class="n">build</span><span class="p">()</span>
+</span><span data-line="211">        <span class="k">except</span> <span class="n">StructException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+</span><span data-line="212">            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+</span><span data-line="213">                <span class="s2">&quot;Could not build TSDU: maybe wrong parameter value?&quot;</span>
+</span><span data-line="214">            <span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">e</span>
+</span><span data-line="215">
+</span><span data-line="216">        <span class="k">if</span> <span class="p">(</span>
+</span><span data-line="217">            <span class="bp">self</span><span class="o">.</span><span class="n">is_valid</span><span class="p">()</span>
+</span><span data-line="218">            <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">negotiated</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+</span><span data-line="219">            <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">negotiated</span><span class="o">.</span><span class="n">send_tsdu_max</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+</span><span data-line="220">            <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">encoded</span><span class="p">)</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">negotiated</span><span class="o">.</span><span class="n">send_tsdu_max</span>
+</span><span data-line="221">        <span class="p">):</span>
+</span><span data-line="222">            <span class="k">raise</span> <span class="n">SessionDataError</span><span class="p">(</span><span class="s2">&quot;TSDU exceeds negotiated maximum size&quot;</span><span class="p">)</span>
+</span><span data-line="223">
+</span><span data-line="224">        <span class="bp">self</span><span class="o">.</span><span class="n">transport</span><span class="o">.</span><span class="n">send_data</span><span class="p">(</span><span class="n">encoded</span><span class="p">)</span></div>
 
-</span><span data-line="141">
+</span><span data-line="225">
 <div class="viewcode-block" id="ISO_Session.recv_data">
 <a class="viewcode-back" href="../../../../protocols/cosp/session.html#icspacket.proto.iso_ses.session.ISO_Session.recv_data">[docs]</a>
-</span><span data-line="142">    <span class="nd">@override</span>
-</span><span data-line="143">    <span class="k">def</span><span class="w"> </span><span class="nf">recv_data</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bytes</span><span class="p">:</span>
-</span><span data-line="144"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span data-line="145"><span class="sd">        Receive user data from the session.</span>
-</span><span data-line="146">
-</span><span data-line="147"><span class="sd">        :return: Extracted user data payload.</span>
-</span><span data-line="148"><span class="sd">        :rtype: bytes</span>
-</span><span data-line="149"><span class="sd">        :raises SessionDataError: If the expected SPDU sequence is not found.</span>
-</span><span data-line="150"><span class="sd">        &quot;&quot;&quot;</span>
-</span><span data-line="151">        <span class="n">tsdu</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">recv_tsdu</span><span class="p">()</span>
-</span><span data-line="152">        <span class="c1"># data transfer response should only store GIVE_TOKENS and DATA_TRANSFER</span>
-</span><span data-line="153">        <span class="k">if</span> <span class="n">tsdu</span><span class="o">.</span><span class="n">spdus</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">code</span> <span class="o">!=</span> <span class="n">SPDU_Codes</span><span class="o">.</span><span class="n">GIVE_TOKENS_SPDU</span><span class="p">:</span>
-</span><span data-line="154">            <span class="k">raise</span> <span class="n">SessionDataError</span><span class="p">(</span>
-</span><span data-line="155">                <span class="sa">f</span><span class="s2">&quot;Expected a TSDU with GIVE_TOKENS as first SPDU, got </span><span class="si">{</span><span class="n">tsdu</span><span class="o">.</span><span class="n">spdus</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span>
-</span><span data-line="156">            <span class="p">)</span>
-</span><span data-line="157">
-</span><span data-line="158">        <span class="c1"># NOTE - we just use the user information even if the received TSDU does</span>
-</span><span data-line="159">        <span class="c1"># not specify them</span>
-</span><span data-line="160">        <span class="k">return</span> <span class="n">tsdu</span><span class="o">.</span><span class="n">spdus</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">user_information</span></div>
+</span><span data-line="226">    <span class="nd">@override</span>
+</span><span data-line="227">    <span class="k">def</span><span class="w"> </span><span class="nf">recv_data</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bytes</span><span class="p">:</span>
+</span><span data-line="228"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="229"><span class="sd">        Receive user data from the session.</span>
+</span><span data-line="230">
+</span><span data-line="231"><span class="sd">        :return: Extracted user data payload.</span>
+</span><span data-line="232"><span class="sd">        :rtype: bytes</span>
+</span><span data-line="233"><span class="sd">        :raises SessionAbortError: If the peer aborts the session.</span>
+</span><span data-line="234"><span class="sd">        :raises SessionDataError: If the expected SPDU sequence is not found.</span>
+</span><span data-line="235"><span class="sd">        &quot;&quot;&quot;</span>
+</span><span data-line="236">        <span class="n">event</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">recv_event</span><span class="p">()</span>
+</span><span data-line="237">        <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">kind</span> <span class="o">!=</span> <span class="s2">&quot;data&quot;</span><span class="p">:</span>
+</span><span data-line="238">            <span class="k">raise</span> <span class="n">SessionDataError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Expected session data, got </span><span class="si">{</span><span class="n">event</span><span class="o">.</span><span class="n">kind</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span data-line="239">        <span class="k">return</span> <span class="n">event</span><span class="o">.</span><span class="n">user_data</span> <span class="ow">or</span> <span class="sa">b</span><span class="s2">&quot;&quot;</span></div>
 
-</span><span data-line="161">
-<div class="viewcode-block" id="ISO_Session.recv_tsdu">
-<a class="viewcode-back" href="../../../../protocols/cosp/session.html#icspacket.proto.iso_ses.session.ISO_Session.recv_tsdu">[docs]</a>
-</span><span data-line="162">    <span class="k">def</span><span class="w"> </span><span class="nf">recv_tsdu</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TSDU</span><span class="p">:</span>
-</span><span data-line="163"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span data-line="164"><span class="sd">        Receive and parse a TSDU from the transport connection.</span>
-</span><span data-line="165">
-</span><span data-line="166"><span class="sd">        :return: Parsed TSDU object.</span>
-</span><span data-line="167"><span class="sd">        :rtype: TSDU</span>
-</span><span data-line="168"><span class="sd">        &quot;&quot;&quot;</span>
-</span><span data-line="169">        <span class="bp">self</span><span class="o">.</span><span class="n">_assert_connected</span><span class="p">()</span>
-</span><span data-line="170">        <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">transport</span><span class="o">.</span><span class="n">recv_data</span><span class="p">()</span>
-</span><span data-line="171">        <span class="k">return</span> <span class="n">TSDU</span><span class="o">.</span><span class="n">from_octets</span><span class="p">(</span><span class="n">data</span><span class="p">)</span></div>
-
-</span><span data-line="172">
-<div class="viewcode-block" id="ISO_Session.close">
-<a class="viewcode-back" href="../../../../protocols/cosp/session.html#icspacket.proto.iso_ses.session.ISO_Session.close">[docs]</a>
-</span><span data-line="173">    <span class="nd">@override</span>
-</span><span data-line="174">    <span class="k">def</span><span class="w"> </span><span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-</span><span data-line="175"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span data-line="176"><span class="sd">        Close the session and underlying transport connection immediately.</span>
-</span><span data-line="177"><span class="sd">        &quot;&quot;&quot;</span>
-</span><span data-line="178">        <span class="bp">self</span><span class="o">.</span><span class="n">_connected</span> <span class="o">=</span> <span class="kc">False</span>
-</span><span data-line="179">        <span class="bp">self</span><span class="o">.</span><span class="n">_valid</span> <span class="o">=</span> <span class="kc">False</span>
-</span><span data-line="180">        <span class="bp">self</span><span class="o">.</span><span class="n">transport</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></div>
-
-</span><span data-line="181">
-<div class="viewcode-block" id="ISO_Session.close_session">
-<a class="viewcode-back" href="../../../../protocols/cosp/session.html#icspacket.proto.iso_ses.session.ISO_Session.close_session">[docs]</a>
-</span><span data-line="182">    <span class="k">def</span><span class="w"> </span><span class="nf">close_session</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pres_octets</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">,</span> <span class="n">graceful</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bytes</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
-</span><span data-line="183"><span class="w">        </span><span class="sd">&quot;&quot;&quot;Attempt an orderly session release.</span>
-</span><span data-line="184">
-</span><span data-line="185"><span class="sd">        This method does not close the connection if graceful is set **and**</span>
-</span><span data-line="186"><span class="sd">        user data is returned by the peer.</span>
-</span><span data-line="187">
-</span><span data-line="188"><span class="sd">        :param pres_octets: User data to include in FINISH SPDU.</span>
-</span><span data-line="189"><span class="sd">        :type pres_octets: bytes</span>
-</span><span data-line="190"><span class="sd">        :param graceful: Whether to expect and validate a DISCONNECT_SPDU.</span>
-</span><span data-line="191"><span class="sd">        :type graceful: bool</span>
-</span><span data-line="192"><span class="sd">        :return: Optional user data returned by peer during graceful release.</span>
-</span><span data-line="193"><span class="sd">        :rtype: bytes | None</span>
-</span><span data-line="194"><span class="sd">        :raises SessionDataError: If graceful close fails due to unexpected SPDU.</span>
-</span><span data-line="195"><span class="sd">        &quot;&quot;&quot;</span>
-</span><span data-line="196">        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_connected</span><span class="p">()</span> <span class="ow">or</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_valid</span><span class="p">():</span>
-</span><span data-line="197">            <span class="k">return</span>
-</span><span data-line="198">
-</span><span data-line="199">        <span class="n">tsdu</span> <span class="o">=</span> <span class="n">TSDU</span><span class="p">()</span>
-</span><span data-line="200">        <span class="n">spdu</span> <span class="o">=</span> <span class="n">build_finish_spdu</span><span class="p">(</span><span class="n">user_data</span><span class="o">=</span><span class="n">pres_octets</span><span class="p">)</span>
-</span><span data-line="201">        <span class="n">tsdu</span><span class="o">.</span><span class="n">spdus</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">spdu</span><span class="p">)</span>
-</span><span data-line="202">
-</span><span data-line="203">        <span class="bp">self</span><span class="o">.</span><span class="n">send_tsdu</span><span class="p">(</span><span class="n">tsdu</span><span class="p">)</span>
-</span><span data-line="204">        <span class="k">if</span> <span class="n">graceful</span><span class="p">:</span>
-</span><span data-line="205">            <span class="n">tsdu</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">recv_tsdu</span><span class="p">()</span>
-</span><span data-line="206">            <span class="k">if</span> <span class="p">(</span>
-</span><span data-line="207">                <span class="nb">len</span><span class="p">(</span><span class="n">tsdu</span><span class="o">.</span><span class="n">spdus</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span>
-</span><span data-line="208">                <span class="ow">and</span> <span class="n">tsdu</span><span class="o">.</span><span class="n">spdus</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">code</span> <span class="o">!=</span> <span class="n">SPDU_Codes</span><span class="o">.</span><span class="n">DISCONNECT_SPDU</span>
-</span><span data-line="209">            <span class="p">):</span>
-</span><span data-line="210">                <span class="k">raise</span> <span class="n">SessionDataError</span><span class="p">(</span>
-</span><span data-line="211">                    <span class="s2">&quot;Could not close session gracefully, expected DISCONNECT_SPDU&quot;</span>
-</span><span data-line="212">                    <span class="o">+</span> <span class="sa">f</span><span class="s2">&quot; but got </span><span class="si">{</span><span class="n">tsdu</span><span class="o">.</span><span class="n">spdus</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2"> instead&quot;</span>
-</span><span data-line="213">                <span class="p">)</span>
-</span><span data-line="214">
-</span><span data-line="215">            <span class="n">user_data</span> <span class="o">=</span> <span class="n">tsdu</span><span class="o">.</span><span class="n">spdus</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">parameter_by_id</span><span class="p">(</span><span class="n">PGI_Code</span><span class="o">.</span><span class="n">USER_DATA</span><span class="p">)</span>
-</span><span data-line="216">            <span class="k">if</span> <span class="n">user_data</span><span class="p">:</span>
-</span><span data-line="217">                <span class="k">return</span> <span class="n">user_data</span><span class="o">.</span><span class="n">value</span>
-</span><span data-line="218">
-</span><span data-line="219">        <span class="bp">self</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></div>
-
-</span><span data-line="220">
-<div class="viewcode-block" id="ISO_Session.connect">
-<a class="viewcode-back" href="../../../../protocols/cosp/session.html#icspacket.proto.iso_ses.session.ISO_Session.connect">[docs]</a>
-</span><span data-line="221">    <span class="nd">@override</span>
-</span><span data-line="222">    <span class="k">def</span><span class="w"> </span><span class="nf">connect</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">address</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-</span><span data-line="223"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span data-line="224"><span class="sd">        Connect the underlying transport if not already connected.</span>
-</span><span data-line="225">
-</span><span data-line="226"><span class="sd">        :param address: Target address (host, port).</span>
-</span><span data-line="227"><span class="sd">        :type address: tuple[str, int]</span>
-</span><span data-line="228"><span class="sd">        &quot;&quot;&quot;</span>
-</span><span data-line="229">        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">transport</span><span class="o">.</span><span class="n">is_connected</span><span class="p">():</span>
-</span><span data-line="230">            <span class="bp">self</span><span class="o">.</span><span class="n">transport</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">address</span><span class="p">)</span>
-</span><span data-line="231">            <span class="bp">self</span><span class="o">.</span><span class="n">_connected</span> <span class="o">=</span> <span class="kc">True</span></div>
-
-</span><span data-line="232">
-<div class="viewcode-block" id="ISO_Session.init_session">
-<a class="viewcode-back" href="../../../../protocols/cosp/session.html#icspacket.proto.iso_ses.session.ISO_Session.init_session">[docs]</a>
-</span><span data-line="233">    <span class="k">def</span><span class="w"> </span><span class="nf">init_session</span><span class="p">(</span>
-</span><span data-line="234">        <span class="bp">self</span><span class="p">,</span> <span class="n">pres_octets</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">,</span> <span class="n">address</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
-</span><span data-line="235">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bytes</span><span class="p">:</span>
-</span><span data-line="236"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span data-line="237"><span class="sd">        Initialize a session by sending CONNECT SPDU and awaiting ACCEPT SPDU.</span>
-</span><span data-line="238">
-</span><span data-line="239"><span class="sd">        :param pres_octets: Presentation-layer user data to include.</span>
-</span><span data-line="240"><span class="sd">        :type pres_octets: bytes</span>
-</span><span data-line="241"><span class="sd">        :param address: Optional (host, port) if transport not yet connected.</span>
-</span><span data-line="242"><span class="sd">        :type address: tuple[str, int] | None</span>
-</span><span data-line="243"><span class="sd">        :return: User data returned by peer in ACCEPT SPDU.</span>
-</span><span data-line="244"><span class="sd">        :rtype: bytes</span>
-</span><span data-line="245"><span class="sd">        :raises ValueError: If address is required but not provided.</span>
-</span><span data-line="246"><span class="sd">        :raises SessionDataError: If unexpected SPDU is received in response.</span>
-</span><span data-line="247"><span class="sd">        :raises SessionRejectedError: If peer rejects the session.</span>
-</span><span data-line="248"><span class="sd">        &quot;&quot;&quot;</span>
-</span><span data-line="249">        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_connected</span><span class="p">():</span>
-</span><span data-line="250">            <span class="k">if</span> <span class="n">address</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-</span><span data-line="251">                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Must specify address if not connected&quot;</span><span class="p">)</span>
-</span><span data-line="252">            <span class="bp">self</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">address</span><span class="p">)</span>
+</span><span data-line="240">
+<div class="viewcode-block" id="ISO_Session.recv_event">
+<a class="viewcode-back" href="../../../../protocols/cosp/session.html#icspacket.proto.iso_ses.session.ISO_Session.recv_event">[docs]</a>
+</span><span data-line="241">    <span class="k">def</span><span class="w"> </span><span class="nf">recv_event</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SessionEvent</span><span class="p">:</span>
+</span><span data-line="242"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="243"><span class="sd">        Receive and classify the next session event.</span>
+</span><span data-line="244">
+</span><span data-line="245"><span class="sd">        :return: Parsed session event.</span>
+</span><span data-line="246"><span class="sd">        :rtype: SessionEvent</span>
+</span><span data-line="247"><span class="sd">        :raises SessionAbortError: If the peer aborts the session.</span>
+</span><span data-line="248"><span class="sd">        :raises SessionDataError: If the TSDU is empty or malformed.</span>
+</span><span data-line="249"><span class="sd">        &quot;&quot;&quot;</span>
+</span><span data-line="250">        <span class="n">tsdu</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">recv_tsdu</span><span class="p">()</span>
+</span><span data-line="251">        <span class="k">if</span> <span class="ow">not</span> <span class="n">tsdu</span><span class="o">.</span><span class="n">spdus</span><span class="p">:</span>
+</span><span data-line="252">            <span class="k">raise</span> <span class="n">SessionDataError</span><span class="p">(</span><span class="s2">&quot;Received an empty TSDU&quot;</span><span class="p">)</span>
 </span><span data-line="253">
-</span><span data-line="254">        <span class="bp">self</span><span class="o">.</span><span class="n">_assert_connected</span><span class="p">()</span>
-</span><span data-line="255">        <span class="n">tsdu</span> <span class="o">=</span> <span class="n">TSDU</span><span class="p">()</span>
-</span><span data-line="256">        <span class="n">spdu</span> <span class="o">=</span> <span class="n">build_connect_spdu</span><span class="p">(</span>
-</span><span data-line="257">            <span class="n">extended</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">extended</span><span class="p">,</span>
-</span><span data-line="258">            <span class="n">version2</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">version</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">,</span>
-</span><span data-line="259">            <span class="n">requirements</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">session_req</span><span class="p">,</span>
-</span><span data-line="260">            <span class="n">called_ses_sel</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">called_ses_sel</span><span class="p">,</span>
-</span><span data-line="261">            <span class="n">calling_ses_sel</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">calling_ses_sel</span><span class="p">,</span>
-</span><span data-line="262">            <span class="n">user_data</span><span class="o">=</span><span class="n">pres_octets</span><span class="p">,</span>
-</span><span data-line="263">        <span class="p">)</span>
-</span><span data-line="264">        <span class="n">tsdu</span><span class="o">.</span><span class="n">spdus</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">spdu</span><span class="p">)</span>
-</span><span data-line="265">        <span class="bp">self</span><span class="o">.</span><span class="n">send_tsdu</span><span class="p">(</span><span class="n">tsdu</span><span class="p">)</span>
-</span><span data-line="266">
-</span><span data-line="267">        <span class="n">tsdu</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">recv_tsdu</span><span class="p">()</span>
-</span><span data-line="268">        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">tsdu</span><span class="o">.</span><span class="n">spdus</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
-</span><span data-line="269">            <span class="k">raise</span> <span class="n">SessionDataError</span><span class="p">(</span>
-</span><span data-line="270">                <span class="sa">f</span><span class="s2">&quot;Expected a single SPDU in TSDU, got </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">tsdu</span><span class="o">.</span><span class="n">spdus</span><span class="p">)</span><span class="si">}</span><span class="s2"> instead&quot;</span>
-</span><span data-line="271">            <span class="p">)</span>
-</span><span data-line="272">
-</span><span data-line="273">        <span class="n">spdu</span> <span class="o">=</span> <span class="n">tsdu</span><span class="o">.</span><span class="n">spdus</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-</span><span data-line="274">        <span class="k">if</span> <span class="n">spdu</span><span class="o">.</span><span class="n">code</span> <span class="o">!=</span> <span class="n">SPDU_Codes</span><span class="o">.</span><span class="n">ACCEPT_SPDU</span><span class="p">:</span>
-</span><span data-line="275">            <span class="k">raise</span> <span class="n">SessionRejectedError</span><span class="p">(</span>
-</span><span data-line="276">                <span class="sa">f</span><span class="s2">&quot;Target did not accept session request (SPDU </span><span class="si">{</span><span class="n">spdu</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">)&quot;</span>
+</span><span data-line="254">        <span class="n">first</span> <span class="o">=</span> <span class="n">tsdu</span><span class="o">.</span><span class="n">spdus</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</span><span data-line="255">        <span class="k">if</span> <span class="n">first</span><span class="o">.</span><span class="n">category</span> <span class="o">==</span> <span class="n">SPDU_Category</span><span class="o">.</span><span class="n">CATEGORY_0</span><span class="p">:</span>
+</span><span data-line="256">            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">tsdu</span><span class="o">.</span><span class="n">spdus</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">:</span>
+</span><span data-line="257">                <span class="k">raise</span> <span class="n">SessionDataError</span><span class="p">(</span>
+</span><span data-line="258">                    <span class="s2">&quot;Expected basic GIVE_TOKENS + DATA_TRANSFER TSDU&quot;</span>
+</span><span data-line="259">                <span class="p">)</span>
+</span><span data-line="260">
+</span><span data-line="261">            <span class="n">first</span><span class="p">,</span> <span class="n">data_spdu</span> <span class="o">=</span> <span class="n">tsdu</span><span class="o">.</span><span class="n">spdus</span>
+</span><span data-line="262">            <span class="k">if</span> <span class="n">first</span><span class="o">.</span><span class="n">code</span> <span class="o">!=</span> <span class="n">SPDU_Codes</span><span class="o">.</span><span class="n">GIVE_TOKENS_SPDU</span><span class="p">:</span>
+</span><span data-line="263">                <span class="k">raise</span> <span class="n">SessionDataError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unexpected category 0 SPDU: </span><span class="si">{</span><span class="n">first</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span data-line="264">
+</span><span data-line="265">            <span class="k">if</span> <span class="p">(</span>
+</span><span data-line="266">                <span class="n">data_spdu</span><span class="o">.</span><span class="n">category</span> <span class="o">!=</span> <span class="n">SPDU_Category</span><span class="o">.</span><span class="n">CATEGORY_2</span>
+</span><span data-line="267">                <span class="ow">or</span> <span class="n">data_spdu</span><span class="o">.</span><span class="n">code</span> <span class="o">!=</span> <span class="n">SPDU_Codes</span><span class="o">.</span><span class="n">DATA_TRANSFER_SPDU</span>
+</span><span data-line="268">            <span class="p">):</span>
+</span><span data-line="269">                <span class="k">raise</span> <span class="n">SessionDataError</span><span class="p">(</span>
+</span><span data-line="270">                    <span class="s2">&quot;Expected DATA_TRANSFER_SPDU after GIVE_TOKENS, got &quot;</span>
+</span><span data-line="271">                    <span class="o">+</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">data_spdu</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span data-line="272">                <span class="p">)</span>
+</span><span data-line="273">
+</span><span data-line="274">            <span class="k">return</span> <span class="n">SessionEvent</span><span class="p">(</span>
+</span><span data-line="275">                <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;data&quot;</span><span class="p">,</span>
+</span><span data-line="276">                <span class="n">user_data</span><span class="o">=</span><span class="n">data_spdu</span><span class="o">.</span><span class="n">user_information</span><span class="p">,</span>
 </span><span data-line="277">            <span class="p">)</span>
 </span><span data-line="278">
-</span><span data-line="279">        <span class="bp">self</span><span class="o">.</span><span class="n">_valid</span> <span class="o">=</span> <span class="kc">True</span>
-</span><span data-line="280">        <span class="n">parameter</span> <span class="o">=</span> <span class="n">spdu</span><span class="o">.</span><span class="n">parameter_by_id</span><span class="p">(</span><span class="n">PGI_Code</span><span class="o">.</span><span class="n">USER_DATA</span><span class="p">)</span>
-</span><span data-line="281">        <span class="k">return</span> <span class="sa">b</span><span class="s2">&quot;&quot;</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">parameter</span> <span class="k">else</span> <span class="n">parameter</span><span class="o">.</span><span class="n">value</span></div>
+</span><span data-line="279">        <span class="n">user_data</span> <span class="o">=</span> <span class="n">first</span><span class="o">.</span><span class="n">parameter_by_id</span><span class="p">(</span><span class="n">PGI_Code</span><span class="o">.</span><span class="n">USER_DATA</span><span class="p">)</span>
+</span><span data-line="280">        <span class="n">user_octets</span> <span class="o">=</span> <span class="kc">None</span> <span class="k">if</span> <span class="n">user_data</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">user_data</span><span class="o">.</span><span class="n">value</span>
+</span><span data-line="281">
+</span><span data-line="282">        <span class="k">match</span> <span class="n">first</span><span class="o">.</span><span class="n">code</span><span class="p">:</span>
+</span><span data-line="283">            <span class="k">case</span> <span class="n">SPDU_Codes</span><span class="o">.</span><span class="n">FINISH_SPDU</span><span class="p">:</span>
+</span><span data-line="284">                <span class="k">return</span> <span class="n">SessionEvent</span><span class="p">(</span>
+</span><span data-line="285">                    <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;release_request&quot;</span><span class="p">,</span>
+</span><span data-line="286">                    <span class="n">user_data</span><span class="o">=</span><span class="n">user_octets</span><span class="p">,</span>
+</span><span data-line="287">                <span class="p">)</span>
+</span><span data-line="288">            <span class="k">case</span> <span class="n">SPDU_Codes</span><span class="o">.</span><span class="n">DISCONNECT_SPDU</span><span class="p">:</span>
+</span><span data-line="289">                <span class="k">return</span> <span class="n">SessionEvent</span><span class="p">(</span>
+</span><span data-line="290">                    <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;release_response&quot;</span><span class="p">,</span>
+</span><span data-line="291">                    <span class="n">user_data</span><span class="o">=</span><span class="n">user_octets</span><span class="p">,</span>
+</span><span data-line="292">                    <span class="n">accepted</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+</span><span data-line="293">                <span class="p">)</span>
+</span><span data-line="294">            <span class="k">case</span> <span class="n">SPDU_Codes</span><span class="o">.</span><span class="n">NOT_FINISHED_SPDU</span><span class="p">:</span>
+</span><span data-line="295">                <span class="k">return</span> <span class="n">SessionEvent</span><span class="p">(</span>
+</span><span data-line="296">                    <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;release_response&quot;</span><span class="p">,</span>
+</span><span data-line="297">                    <span class="n">user_data</span><span class="o">=</span><span class="n">user_octets</span><span class="p">,</span>
+</span><span data-line="298">                    <span class="n">accepted</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+</span><span data-line="299">                <span class="p">)</span>
+</span><span data-line="300">            <span class="k">case</span> <span class="n">SPDU_Codes</span><span class="o">.</span><span class="n">ABORT_SPDU</span><span class="p">:</span>
+</span><span data-line="301">                <span class="bp">self</span><span class="o">.</span><span class="n">_handle_abort_spdu</span><span class="p">(</span><span class="n">first</span><span class="p">)</span>
+</span><span data-line="302">                <span class="k">raise</span> <span class="n">SessionAbortError</span><span class="p">(</span><span class="n">user_octets</span><span class="p">)</span>
+</span><span data-line="303">            <span class="k">case</span><span class="w"> </span><span class="k">_</span><span class="p">:</span>
+</span><span data-line="304">                <span class="k">raise</span> <span class="n">SessionDataError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unexpected session SPDU: </span><span class="si">{</span><span class="n">first</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></div>
 
-</span><span data-line="282">
-</span><span data-line="283">    <span class="k">def</span><span class="w"> </span><span class="nf">_build_tsdu</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tsdu</span><span class="p">:</span> <span class="n">TSDU</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bytes</span><span class="p">:</span>
-</span><span data-line="284"><span class="w">        </span><span class="sd">&quot;&quot;&quot;Encode a TSDU into raw octets for transmission.</span>
-</span><span data-line="285">
-</span><span data-line="286"><span class="sd">        :param tsdu: TSDU to encode.</span>
-</span><span data-line="287"><span class="sd">        :type tsdu: TSDU</span>
-</span><span data-line="288"><span class="sd">        :return: Encoded TSDU octet stream.</span>
-</span><span data-line="289"><span class="sd">        :rtype: bytes</span>
-</span><span data-line="290"><span class="sd">        :raises ValueError: If encoding fails due to invalid parameter values.</span>
-</span><span data-line="291"><span class="sd">        &quot;&quot;&quot;</span>
-</span><span data-line="292">        <span class="k">try</span><span class="p">:</span>
-</span><span data-line="293">            <span class="k">return</span> <span class="n">tsdu</span><span class="o">.</span><span class="n">build</span><span class="p">()</span>
-</span><span data-line="294">        <span class="k">except</span> <span class="n">StructException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-</span><span data-line="295">            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-</span><span data-line="296">                <span class="s2">&quot;Could not build TSDU: maybe wrong parameter value?&quot;</span>
-</span><span data-line="297">            <span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">e</span></div>
+</span><span data-line="305">
+<div class="viewcode-block" id="ISO_Session.recv_tsdu">
+<a class="viewcode-back" href="../../../../protocols/cosp/session.html#icspacket.proto.iso_ses.session.ISO_Session.recv_tsdu">[docs]</a>
+</span><span data-line="306">    <span class="k">def</span><span class="w"> </span><span class="nf">recv_tsdu</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TSDU</span><span class="p">:</span>
+</span><span data-line="307"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="308"><span class="sd">        Receive and parse a TSDU from the transport connection.</span>
+</span><span data-line="309">
+</span><span data-line="310"><span class="sd">        :return: Parsed TSDU object.</span>
+</span><span data-line="311"><span class="sd">        :rtype: TSDU</span>
+</span><span data-line="312"><span class="sd">        &quot;&quot;&quot;</span>
+</span><span data-line="313">        <span class="bp">self</span><span class="o">.</span><span class="n">_assert_connected</span><span class="p">()</span>
+</span><span data-line="314">        <span class="k">try</span><span class="p">:</span>
+</span><span data-line="315">            <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">transport</span><span class="o">.</span><span class="n">recv_data</span><span class="p">()</span>
+</span><span data-line="316">            <span class="k">return</span> <span class="n">TSDU</span><span class="o">.</span><span class="n">from_octets</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</span><span data-line="317">        <span class="k">except</span> <span class="n">ConnectionClosedError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+</span><span data-line="318">            <span class="bp">self</span><span class="o">.</span><span class="n">_connected</span> <span class="o">=</span> <span class="kc">False</span>
+</span><span data-line="319">            <span class="bp">self</span><span class="o">.</span><span class="n">_valid</span> <span class="o">=</span> <span class="kc">False</span>
+</span><span data-line="320">            <span class="bp">self</span><span class="o">.</span><span class="n">negotiated</span> <span class="o">=</span> <span class="kc">None</span>
+</span><span data-line="321">            <span class="k">raise</span> <span class="n">SessionAbortError</span><span class="p">()</span> <span class="kn">from</span><span class="w"> </span><span class="nn">e</span>
+</span><span data-line="322">        <span class="k">except</span> <span class="p">(</span><span class="ne">IndexError</span><span class="p">,</span> <span class="ne">ValueError</span><span class="p">,</span> <span class="n">StructException</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+</span><span data-line="323">            <span class="bp">self</span><span class="o">.</span><span class="n">_valid</span> <span class="o">=</span> <span class="kc">False</span>
+</span><span data-line="324">            <span class="bp">self</span><span class="o">.</span><span class="n">negotiated</span> <span class="o">=</span> <span class="kc">None</span>
+</span><span data-line="325">            <span class="k">raise</span> <span class="n">SessionDataError</span><span class="p">(</span><span class="s2">&quot;Malformed session TSDU received&quot;</span><span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">e</span></div>
+
+</span><span data-line="326">
+<div class="viewcode-block" id="ISO_Session.close">
+<a class="viewcode-back" href="../../../../protocols/cosp/session.html#icspacket.proto.iso_ses.session.ISO_Session.close">[docs]</a>
+</span><span data-line="327">    <span class="nd">@override</span>
+</span><span data-line="328">    <span class="k">def</span><span class="w"> </span><span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="329"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="330"><span class="sd">        Close the session and underlying transport connection immediately.</span>
+</span><span data-line="331"><span class="sd">        &quot;&quot;&quot;</span>
+</span><span data-line="332">        <span class="bp">self</span><span class="o">.</span><span class="n">_connected</span> <span class="o">=</span> <span class="kc">False</span>
+</span><span data-line="333">        <span class="bp">self</span><span class="o">.</span><span class="n">_valid</span> <span class="o">=</span> <span class="kc">False</span>
+</span><span data-line="334">        <span class="bp">self</span><span class="o">.</span><span class="n">negotiated</span> <span class="o">=</span> <span class="kc">None</span>
+</span><span data-line="335">        <span class="bp">self</span><span class="o">.</span><span class="n">transport</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></div>
+
+</span><span data-line="336">
+<div class="viewcode-block" id="ISO_Session.close_session">
+<a class="viewcode-back" href="../../../../protocols/cosp/session.html#icspacket.proto.iso_ses.session.ISO_Session.close_session">[docs]</a>
+</span><span data-line="337">    <span class="k">def</span><span class="w"> </span><span class="nf">close_session</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pres_octets</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">,</span> <span class="n">graceful</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bytes</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="338"><span class="w">        </span><span class="sd">&quot;&quot;&quot;Attempt an orderly session release.</span>
+</span><span data-line="339">
+</span><span data-line="340"><span class="sd">        This method does not close the connection if graceful is set **and**</span>
+</span><span data-line="341"><span class="sd">        user data is returned by the peer.</span>
+</span><span data-line="342">
+</span><span data-line="343"><span class="sd">        :param pres_octets: User data to include in FINISH SPDU.</span>
+</span><span data-line="344"><span class="sd">        :type pres_octets: bytes</span>
+</span><span data-line="345"><span class="sd">        :param graceful: Whether to expect and validate a DISCONNECT_SPDU.</span>
+</span><span data-line="346"><span class="sd">        :type graceful: bool</span>
+</span><span data-line="347"><span class="sd">        :return: Optional user data returned by peer during graceful release.</span>
+</span><span data-line="348"><span class="sd">        :rtype: bytes | None</span>
+</span><span data-line="349"><span class="sd">        :raises SessionDataError: If graceful close fails due to unexpected SPDU.</span>
+</span><span data-line="350"><span class="sd">        &quot;&quot;&quot;</span>
+</span><span data-line="351">        <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">close_session_result</span><span class="p">(</span><span class="n">pres_octets</span><span class="p">,</span> <span class="n">graceful</span><span class="p">)</span>
+</span><span data-line="352">        <span class="k">return</span> <span class="kc">None</span> <span class="k">if</span> <span class="n">result</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">result</span><span class="o">.</span><span class="n">user_data</span></div>
+
+</span><span data-line="353">
+<div class="viewcode-block" id="ISO_Session.close_session_result">
+<a class="viewcode-back" href="../../../../protocols/cosp/session.html#icspacket.proto.iso_ses.session.ISO_Session.close_session_result">[docs]</a>
+</span><span data-line="354">    <span class="k">def</span><span class="w"> </span><span class="nf">close_session_result</span><span class="p">(</span>
+</span><span data-line="355">        <span class="bp">self</span><span class="p">,</span> <span class="n">pres_octets</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">,</span> <span class="n">graceful</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+</span><span data-line="356">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SessionReleaseResult</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="357"><span class="w">        </span><span class="sd">&quot;&quot;&quot;Attempt an orderly session release and return its result.</span>
+</span><span data-line="358">
+</span><span data-line="359"><span class="sd">        :param pres_octets: User data to include in FINISH SPDU.</span>
+</span><span data-line="360"><span class="sd">        :type pres_octets: bytes</span>
+</span><span data-line="361"><span class="sd">        :param graceful: Whether to expect and validate a release response.</span>
+</span><span data-line="362"><span class="sd">        :type graceful: bool</span>
+</span><span data-line="363"><span class="sd">        :return: Release result, or ``None`` if the session was not open.</span>
+</span><span data-line="364"><span class="sd">        :rtype: SessionReleaseResult | None</span>
+</span><span data-line="365"><span class="sd">        :raises SessionAbortError: If the peer aborts during release.</span>
+</span><span data-line="366"><span class="sd">        :raises SessionDataError: If graceful close receives an unexpected event.</span>
+</span><span data-line="367"><span class="sd">        &quot;&quot;&quot;</span>
+</span><span data-line="368">        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_connected</span><span class="p">()</span> <span class="ow">or</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_valid</span><span class="p">():</span>
+</span><span data-line="369">            <span class="k">return</span> <span class="kc">None</span>
+</span><span data-line="370">
+</span><span data-line="371">        <span class="bp">self</span><span class="o">.</span><span class="n">send_tsdu</span><span class="p">(</span><span class="n">TSDU</span><span class="p">(</span><span class="n">build_finish_spdu</span><span class="p">(</span><span class="n">user_data</span><span class="o">=</span><span class="n">pres_octets</span><span class="p">)))</span>
+</span><span data-line="372">        <span class="k">if</span> <span class="n">graceful</span><span class="p">:</span>
+</span><span data-line="373">            <span class="n">event</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">recv_event</span><span class="p">()</span>
+</span><span data-line="374">            <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">kind</span> <span class="o">==</span> <span class="s2">&quot;release_request&quot;</span><span class="p">:</span>
+</span><span data-line="375">                <span class="k">return</span> <span class="n">SessionReleaseResult</span><span class="p">(</span>
+</span><span data-line="376">                    <span class="n">accepted</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+</span><span data-line="377">                    <span class="n">user_data</span><span class="o">=</span><span class="n">event</span><span class="o">.</span><span class="n">user_data</span><span class="p">,</span>
+</span><span data-line="378">                    <span class="n">collision</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+</span><span data-line="379">                <span class="p">)</span>
+</span><span data-line="380">
+</span><span data-line="381">            <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">kind</span> <span class="o">!=</span> <span class="s2">&quot;release_response&quot;</span><span class="p">:</span>
+</span><span data-line="382">                <span class="k">raise</span> <span class="n">SessionDataError</span><span class="p">(</span>
+</span><span data-line="383">                    <span class="s2">&quot;Could not close session gracefully, expected release response&quot;</span>
+</span><span data-line="384">                    <span class="o">+</span> <span class="sa">f</span><span class="s2">&quot; but got </span><span class="si">{</span><span class="n">event</span><span class="o">.</span><span class="n">kind</span><span class="si">}</span><span class="s2"> instead&quot;</span>
+</span><span data-line="385">                <span class="p">)</span>
+</span><span data-line="386">
+</span><span data-line="387">            <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">accepted</span><span class="p">:</span>
+</span><span data-line="388">                <span class="bp">self</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</span><span data-line="389">
+</span><span data-line="390">            <span class="k">return</span> <span class="n">SessionReleaseResult</span><span class="p">(</span>
+</span><span data-line="391">                <span class="n">accepted</span><span class="o">=</span><span class="nb">bool</span><span class="p">(</span><span class="n">event</span><span class="o">.</span><span class="n">accepted</span><span class="p">),</span>
+</span><span data-line="392">                <span class="n">user_data</span><span class="o">=</span><span class="n">event</span><span class="o">.</span><span class="n">user_data</span><span class="p">,</span>
+</span><span data-line="393">            <span class="p">)</span>
+</span><span data-line="394">
+</span><span data-line="395">        <span class="bp">self</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</span><span data-line="396">        <span class="k">return</span> <span class="n">SessionReleaseResult</span><span class="p">(</span><span class="n">accepted</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></div>
+
+</span><span data-line="397">
+<div class="viewcode-block" id="ISO_Session.abort_session">
+<a class="viewcode-back" href="../../../../protocols/cosp/session.html#icspacket.proto.iso_ses.session.ISO_Session.abort_session">[docs]</a>
+</span><span data-line="398">    <span class="k">def</span><span class="w"> </span><span class="nf">abort_session</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pres_octets</span><span class="p">:</span> <span class="nb">bytes</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="399"><span class="w">        </span><span class="sd">&quot;&quot;&quot;Abort the session with an ABORT SPDU.</span>
+</span><span data-line="400">
+</span><span data-line="401"><span class="sd">        :param pres_octets: Optional presentation-layer user data.</span>
+</span><span data-line="402"><span class="sd">        :type pres_octets: bytes | None</span>
+</span><span data-line="403"><span class="sd">        &quot;&quot;&quot;</span>
+</span><span data-line="404">        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_connected</span><span class="p">()</span> <span class="ow">or</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_valid</span><span class="p">():</span>
+</span><span data-line="405">            <span class="k">return</span>
+</span><span data-line="406">
+</span><span data-line="407">        <span class="n">tsdu</span> <span class="o">=</span> <span class="n">TSDU</span><span class="p">(</span>
+</span><span data-line="408">            <span class="n">build_abort_spdu</span><span class="p">(</span>
+</span><span data-line="409">                <span class="n">user_data</span><span class="o">=</span><span class="n">pres_octets</span><span class="p">,</span>
+</span><span data-line="410">                <span class="n">release_transport</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+</span><span data-line="411">                <span class="n">user_abort</span><span class="o">=</span><span class="n">pres_octets</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">,</span>
+</span><span data-line="412">            <span class="p">)</span>
+</span><span data-line="413">        <span class="p">)</span>
+</span><span data-line="414">        <span class="k">try</span><span class="p">:</span>
+</span><span data-line="415">            <span class="bp">self</span><span class="o">.</span><span class="n">send_tsdu</span><span class="p">(</span><span class="n">tsdu</span><span class="p">)</span>
+</span><span data-line="416">        <span class="k">finally</span><span class="p">:</span>
+</span><span data-line="417">            <span class="bp">self</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></div>
+
+</span><span data-line="418">
+<div class="viewcode-block" id="ISO_Session.connect">
+<a class="viewcode-back" href="../../../../protocols/cosp/session.html#icspacket.proto.iso_ses.session.ISO_Session.connect">[docs]</a>
+</span><span data-line="419">    <span class="nd">@override</span>
+</span><span data-line="420">    <span class="k">def</span><span class="w"> </span><span class="nf">connect</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">address</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="421"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="422"><span class="sd">        Connect the underlying transport if not already connected.</span>
+</span><span data-line="423">
+</span><span data-line="424"><span class="sd">        :param address: Target address (host, port).</span>
+</span><span data-line="425"><span class="sd">        :type address: tuple[str, int]</span>
+</span><span data-line="426"><span class="sd">        &quot;&quot;&quot;</span>
+</span><span data-line="427">        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">transport</span><span class="o">.</span><span class="n">is_connected</span><span class="p">():</span>
+</span><span data-line="428">            <span class="bp">self</span><span class="o">.</span><span class="n">transport</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">address</span><span class="p">)</span>
+</span><span data-line="429">            <span class="bp">self</span><span class="o">.</span><span class="n">_connected</span> <span class="o">=</span> <span class="kc">True</span></div>
+
+</span><span data-line="430">
+<div class="viewcode-block" id="ISO_Session.init_session">
+<a class="viewcode-back" href="../../../../protocols/cosp/session.html#icspacket.proto.iso_ses.session.ISO_Session.init_session">[docs]</a>
+</span><span data-line="431">    <span class="k">def</span><span class="w"> </span><span class="nf">init_session</span><span class="p">(</span>
+</span><span data-line="432">        <span class="bp">self</span><span class="p">,</span> <span class="n">pres_octets</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">,</span> <span class="n">address</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+</span><span data-line="433">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bytes</span><span class="p">:</span>
+</span><span data-line="434"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="435"><span class="sd">        Initialize a session by sending CONNECT SPDU and awaiting ACCEPT SPDU.</span>
+</span><span data-line="436">
+</span><span data-line="437"><span class="sd">        :param pres_octets: Presentation-layer user data to include.</span>
+</span><span data-line="438"><span class="sd">        :type pres_octets: bytes</span>
+</span><span data-line="439"><span class="sd">        :param address: Optional (host, port) if transport not yet connected.</span>
+</span><span data-line="440"><span class="sd">        :type address: tuple[str, int] | None</span>
+</span><span data-line="441"><span class="sd">        :return: User data returned by peer in ACCEPT SPDU.</span>
+</span><span data-line="442"><span class="sd">        :rtype: bytes</span>
+</span><span data-line="443"><span class="sd">        :raises ValueError: If address is required but not provided.</span>
+</span><span data-line="444"><span class="sd">        :raises SessionDataError: If unexpected SPDU is received in response.</span>
+</span><span data-line="445"><span class="sd">        :raises SessionRejectedError: If peer rejects the session.</span>
+</span><span data-line="446"><span class="sd">        &quot;&quot;&quot;</span>
+</span><span data-line="447">        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_connected</span><span class="p">():</span>
+</span><span data-line="448">            <span class="k">if</span> <span class="n">address</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="449">                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Must specify address if not connected&quot;</span><span class="p">)</span>
+</span><span data-line="450">            <span class="bp">self</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">address</span><span class="p">)</span>
+</span><span data-line="451">
+</span><span data-line="452">        <span class="bp">self</span><span class="o">.</span><span class="n">_assert_connected</span><span class="p">()</span>
+</span><span data-line="453">        <span class="bp">self</span><span class="o">.</span><span class="n">send_tsdu</span><span class="p">(</span>
+</span><span data-line="454">            <span class="n">TSDU</span><span class="p">(</span>
+</span><span data-line="455">                <span class="n">build_connect_spdu</span><span class="p">(</span>
+</span><span data-line="456">                    <span class="n">extended</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">extended</span><span class="p">,</span>
+</span><span data-line="457">                    <span class="n">version2</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">version</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">,</span>
+</span><span data-line="458">                    <span class="n">requirements</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">session_req</span><span class="p">,</span>
+</span><span data-line="459">                    <span class="n">called_ses_sel</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">called_ses_sel</span><span class="p">,</span>
+</span><span data-line="460">                    <span class="n">calling_ses_sel</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">calling_ses_sel</span><span class="p">,</span>
+</span><span data-line="461">                    <span class="n">user_data</span><span class="o">=</span><span class="n">pres_octets</span><span class="p">,</span>
+</span><span data-line="462">                <span class="p">)</span>
+</span><span data-line="463">            <span class="p">)</span>
+</span><span data-line="464">        <span class="p">)</span>
+</span><span data-line="465">
+</span><span data-line="466">        <span class="n">tsdu</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">recv_tsdu</span><span class="p">()</span>
+</span><span data-line="467">        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">tsdu</span><span class="o">.</span><span class="n">spdus</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
+</span><span data-line="468">            <span class="k">raise</span> <span class="n">SessionDataError</span><span class="p">(</span>
+</span><span data-line="469">                <span class="sa">f</span><span class="s2">&quot;Expected a single SPDU in TSDU, got </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">tsdu</span><span class="o">.</span><span class="n">spdus</span><span class="p">)</span><span class="si">}</span><span class="s2"> instead&quot;</span>
+</span><span data-line="470">            <span class="p">)</span>
+</span><span data-line="471">
+</span><span data-line="472">        <span class="n">spdu</span> <span class="o">=</span> <span class="n">tsdu</span><span class="o">.</span><span class="n">spdus</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</span><span data-line="473">        <span class="k">match</span> <span class="n">spdu</span><span class="o">.</span><span class="n">code</span><span class="p">:</span>
+</span><span data-line="474">            <span class="k">case</span> <span class="n">SPDU_Codes</span><span class="o">.</span><span class="n">ACCEPT_SPDU</span><span class="p">:</span>
+</span><span data-line="475">                <span class="bp">self</span><span class="o">.</span><span class="n">_handle_accept_spdu</span><span class="p">(</span><span class="n">spdu</span><span class="p">)</span>
+</span><span data-line="476">            <span class="k">case</span> <span class="n">SPDU_Codes</span><span class="o">.</span><span class="n">REFUSE_SPDU</span><span class="p">:</span>
+</span><span data-line="477">                <span class="bp">self</span><span class="o">.</span><span class="n">_handle_refuse_spdu</span><span class="p">(</span><span class="n">spdu</span><span class="p">)</span>
+</span><span data-line="478">            <span class="k">case</span> <span class="n">SPDU_Codes</span><span class="o">.</span><span class="n">ABORT_SPDU</span><span class="p">:</span>
+</span><span data-line="479">                <span class="bp">self</span><span class="o">.</span><span class="n">_handle_connect_abort_spdu</span><span class="p">(</span><span class="n">spdu</span><span class="p">)</span>
+</span><span data-line="480">            <span class="k">case</span><span class="w"> </span><span class="k">_</span><span class="p">:</span>
+</span><span data-line="481">                <span class="k">raise</span> <span class="n">SessionRejectedError</span><span class="p">(</span>
+</span><span data-line="482">                    <span class="sa">f</span><span class="s2">&quot;Target did not accept session request (SPDU </span><span class="si">{</span><span class="n">spdu</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">)&quot;</span>
+</span><span data-line="483">                <span class="p">)</span>
+</span><span data-line="484">
+</span><span data-line="485">        <span class="n">parameter</span> <span class="o">=</span> <span class="n">spdu</span><span class="o">.</span><span class="n">parameter_by_id</span><span class="p">(</span><span class="n">PGI_Code</span><span class="o">.</span><span class="n">USER_DATA</span><span class="p">)</span>
+</span><span data-line="486">        <span class="k">return</span> <span class="sa">b</span><span class="s2">&quot;&quot;</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">parameter</span> <span class="k">else</span> <span class="n">parameter</span><span class="o">.</span><span class="n">value</span></div>
+
+</span><span data-line="487">
+</span><span data-line="488">    <span class="k">def</span><span class="w"> </span><span class="nf">_handle_accept_spdu</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">spdu</span><span class="p">:</span> <span class="n">SPDU</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="489">        <span class="k">try</span><span class="p">:</span>
+</span><span data-line="490">            <span class="n">selected_version</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_selected_version</span><span class="p">(</span><span class="n">spdu</span><span class="p">)</span>
+</span><span data-line="491">            <span class="n">accepted_requirements</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_accepted_requirements</span><span class="p">(</span><span class="n">spdu</span><span class="p">)</span>
+</span><span data-line="492">            <span class="c1"># Some MMS stacks return 0x0000 here despite accepting the CONNECT.</span>
+</span><span data-line="493">            <span class="c1"># Treat that as a responder echo of the valid client proposal.</span>
+</span><span data-line="494">            <span class="k">if</span> <span class="n">accepted_requirements</span><span class="o">.</span><span class="n">is_empty</span><span class="p">:</span>
+</span><span data-line="495">                <span class="n">accepted_requirements</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">session_req</span>
+</span><span data-line="496">
+</span><span data-line="497">            <span class="n">selected_requirements</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">session_req</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
+</span><span data-line="498">                <span class="n">accepted_requirements</span>
+</span><span data-line="499">            <span class="p">)</span>
+</span><span data-line="500">            <span class="n">options</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_protocol_options</span><span class="p">(</span><span class="n">spdu</span><span class="p">)</span>
+</span><span data-line="501">            <span class="n">send_tsdu_max</span><span class="p">,</span> <span class="n">receive_tsdu_max</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tsdu_maximum_size</span><span class="p">(</span><span class="n">spdu</span><span class="p">)</span>
+</span><span data-line="502">        <span class="k">except</span> <span class="p">(</span><span class="n">SessionDataError</span><span class="p">,</span> <span class="ne">ValueError</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+</span><span data-line="503">            <span class="bp">self</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</span><span data-line="504">            <span class="k">raise</span> <span class="n">SessionDataError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Invalid ACCEPT SPDU: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">e</span>
+</span><span data-line="505">
+</span><span data-line="506">        <span class="bp">self</span><span class="o">.</span><span class="n">negotiated</span> <span class="o">=</span> <span class="n">ISO_SessionNegotiation</span><span class="p">(</span>
+</span><span data-line="507">            <span class="n">version</span><span class="o">=</span><span class="n">selected_version</span><span class="p">,</span>
+</span><span data-line="508">            <span class="n">requirements</span><span class="o">=</span><span class="n">selected_requirements</span><span class="p">,</span>
+</span><span data-line="509">            <span class="n">extended</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">extended</span> <span class="ow">and</span> <span class="n">options</span><span class="o">.</span><span class="n">extended</span><span class="p">,</span>
+</span><span data-line="510">            <span class="n">send_tsdu_max</span><span class="o">=</span><span class="n">send_tsdu_max</span><span class="p">,</span>
+</span><span data-line="511">            <span class="n">receive_tsdu_max</span><span class="o">=</span><span class="n">receive_tsdu_max</span><span class="p">,</span>
+</span><span data-line="512">        <span class="p">)</span>
+</span><span data-line="513">        <span class="bp">self</span><span class="o">.</span><span class="n">_valid</span> <span class="o">=</span> <span class="kc">True</span>
+</span><span data-line="514">
+</span><span data-line="515">    <span class="k">def</span><span class="w"> </span><span class="nf">_handle_refuse_spdu</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">spdu</span><span class="p">:</span> <span class="n">SPDU</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="516">        <span class="n">parameter</span> <span class="o">=</span> <span class="n">spdu</span><span class="o">.</span><span class="n">parameter_by_id</span><span class="p">(</span><span class="n">PI_Code</span><span class="o">.</span><span class="n">REASON_CODE</span><span class="p">)</span>
+</span><span data-line="517">        <span class="bp">self</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</span><span data-line="518">
+</span><span data-line="519">        <span class="k">if</span> <span class="n">parameter</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">parameter</span><span class="o">.</span><span class="n">value</span><span class="p">:</span>
+</span><span data-line="520">            <span class="k">raise</span> <span class="n">SessionRejectedError</span><span class="p">()</span>
+</span><span data-line="521">
+</span><span data-line="522">        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">parameter</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">):</span>
+</span><span data-line="523">            <span class="k">raise</span> <span class="n">SessionDataError</span><span class="p">(</span><span class="s2">&quot;REFUSE Reason Code parameter is malformed&quot;</span><span class="p">)</span>
+</span><span data-line="524">
+</span><span data-line="525">        <span class="n">reason_code</span> <span class="o">=</span> <span class="n">parameter</span><span class="o">.</span><span class="n">value</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</span><span data-line="526">        <span class="n">user_data</span> <span class="o">=</span> <span class="n">parameter</span><span class="o">.</span><span class="n">value</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="ow">or</span> <span class="kc">None</span>
+</span><span data-line="527">        <span class="k">raise</span> <span class="n">SessionRejectedError</span><span class="p">(</span>
+</span><span data-line="528">            <span class="sa">f</span><span class="s2">&quot;Session rejected by peer (reason </span><span class="si">{</span><span class="n">reason_code</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">,</span>
+</span><span data-line="529">            <span class="n">reason_code</span><span class="o">=</span><span class="n">reason_code</span><span class="p">,</span>
+</span><span data-line="530">            <span class="n">user_data</span><span class="o">=</span><span class="n">user_data</span><span class="p">,</span>
+</span><span data-line="531">        <span class="p">)</span>
+</span><span data-line="532">
+</span><span data-line="533">    <span class="k">def</span><span class="w"> </span><span class="nf">_handle_connect_abort_spdu</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">spdu</span><span class="p">:</span> <span class="n">SPDU</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="534">        <span class="n">parameter</span> <span class="o">=</span> <span class="n">spdu</span><span class="o">.</span><span class="n">parameter_by_id</span><span class="p">(</span><span class="n">PGI_Code</span><span class="o">.</span><span class="n">USER_DATA</span><span class="p">)</span>
+</span><span data-line="535">        <span class="bp">self</span><span class="o">.</span><span class="n">_handle_abort_spdu</span><span class="p">(</span><span class="n">spdu</span><span class="p">)</span>
+</span><span data-line="536">        <span class="k">raise</span> <span class="n">SessionAbortError</span><span class="p">(</span><span class="kc">None</span> <span class="k">if</span> <span class="n">parameter</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">parameter</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+</span><span data-line="537">
+</span><span data-line="538">    <span class="k">def</span><span class="w"> </span><span class="nf">_handle_abort_spdu</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">spdu</span><span class="p">:</span> <span class="n">SPDU</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="539"><span class="w">        </span><span class="sd">&quot;&quot;&quot;Invalidate the session and release COTP only when the peer requests it.&quot;&quot;&quot;</span>
+</span><span data-line="540">
+</span><span data-line="541">        <span class="n">parameter</span> <span class="o">=</span> <span class="n">spdu</span><span class="o">.</span><span class="n">parameter_by_id</span><span class="p">(</span><span class="n">PI_Code</span><span class="o">.</span><span class="n">TRANSPORT_DISCONNECT</span><span class="p">)</span>
+</span><span data-line="542">        <span class="bp">self</span><span class="o">.</span><span class="n">_valid</span> <span class="o">=</span> <span class="kc">False</span>
+</span><span data-line="543">        <span class="bp">self</span><span class="o">.</span><span class="n">negotiated</span> <span class="o">=</span> <span class="kc">None</span>
+</span><span data-line="544">        <span class="k">if</span> <span class="p">(</span>
+</span><span data-line="545">            <span class="n">parameter</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+</span><span data-line="546">            <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">parameter</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">PV_TransportDisconnect</span><span class="p">)</span>
+</span><span data-line="547">            <span class="ow">and</span> <span class="n">parameter</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">release_transport</span>
+</span><span data-line="548">        <span class="p">):</span>
+</span><span data-line="549">            <span class="bp">self</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</span><span data-line="550">
+</span><span data-line="551">    <span class="k">def</span><span class="w"> </span><span class="nf">_selected_version</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">spdu</span><span class="p">:</span> <span class="n">SPDU</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+</span><span data-line="552">        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_typed_parameter</span><span class="p">(</span>
+</span><span data-line="553">            <span class="n">spdu</span><span class="p">,</span>
+</span><span data-line="554">            <span class="n">PI_Code</span><span class="o">.</span><span class="n">VERSION_NUMBER</span><span class="p">,</span>
+</span><span data-line="555">            <span class="n">PV_VersionNumber</span><span class="p">,</span>
+</span><span data-line="556">        <span class="p">)</span>
+</span><span data-line="557">        <span class="k">if</span> <span class="n">response</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="558">            <span class="n">response</span> <span class="o">=</span> <span class="n">PV_VersionNumber</span><span class="p">(</span><span class="n">version1</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">version2</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</span><span data-line="559">
+</span><span data-line="560">        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">version</span> <span class="o">==</span> <span class="mi">2</span> <span class="ow">and</span> <span class="n">response</span><span class="o">.</span><span class="n">version2</span><span class="p">:</span>
+</span><span data-line="561">            <span class="k">return</span> <span class="mi">2</span>
+</span><span data-line="562">        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">version</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">response</span><span class="o">.</span><span class="n">version1</span><span class="p">:</span>
+</span><span data-line="563">            <span class="k">return</span> <span class="mi">1</span>
+</span><span data-line="564">
+</span><span data-line="565">        <span class="k">raise</span> <span class="n">SessionDataError</span><span class="p">(</span><span class="s2">&quot;ACCEPT selected no supported protocol version&quot;</span><span class="p">)</span>
+</span><span data-line="566">
+</span><span data-line="567">    <span class="k">def</span><span class="w"> </span><span class="nf">_accepted_requirements</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">spdu</span><span class="p">:</span> <span class="n">SPDU</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">PV_SessionRequirements</span><span class="p">:</span>
+</span><span data-line="568">        <span class="n">requirements</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_typed_parameter</span><span class="p">(</span>
+</span><span data-line="569">            <span class="n">spdu</span><span class="p">,</span>
+</span><span data-line="570">            <span class="n">PI_Code</span><span class="o">.</span><span class="n">SESSION_REQUIREMENT</span><span class="p">,</span>
+</span><span data-line="571">            <span class="n">PV_SessionRequirements</span><span class="p">,</span>
+</span><span data-line="572">        <span class="p">)</span>
+</span><span data-line="573">        <span class="k">if</span> <span class="n">requirements</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="574">            <span class="k">return</span> <span class="n">requirements</span>
+</span><span data-line="575">
+</span><span data-line="576">        <span class="k">return</span> <span class="n">PV_SessionRequirements</span><span class="p">(</span>
+</span><span data-line="577">            <span class="n">half_duplex</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+</span><span data-line="578">            <span class="n">minor_sync</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+</span><span data-line="579">            <span class="n">activity_management</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+</span><span data-line="580">            <span class="n">capability_data_exchange</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+</span><span data-line="581">            <span class="n">exceptions</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+</span><span data-line="582">        <span class="p">)</span>
+</span><span data-line="583">
+</span><span data-line="584">    <span class="k">def</span><span class="w"> </span><span class="nf">_protocol_options</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">spdu</span><span class="p">:</span> <span class="n">SPDU</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">PV_ProtocolOptions</span><span class="p">:</span>
+</span><span data-line="585">        <span class="n">options</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_typed_parameter</span><span class="p">(</span>
+</span><span data-line="586">            <span class="n">spdu</span><span class="p">,</span>
+</span><span data-line="587">            <span class="n">PI_Code</span><span class="o">.</span><span class="n">PROTOCOL_OPTIONS</span><span class="p">,</span>
+</span><span data-line="588">            <span class="n">PV_ProtocolOptions</span><span class="p">,</span>
+</span><span data-line="589">        <span class="p">)</span>
+</span><span data-line="590">        <span class="k">return</span> <span class="n">PV_ProtocolOptions</span><span class="p">(</span><span class="n">extended</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="k">if</span> <span class="n">options</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">options</span>
+</span><span data-line="591">
+</span><span data-line="592">    <span class="k">def</span><span class="w"> </span><span class="nf">_tsdu_maximum_size</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">spdu</span><span class="p">:</span> <span class="n">SPDU</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span><span class="p">]:</span>
+</span><span data-line="593">        <span class="n">maximum_size</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_typed_parameter</span><span class="p">(</span>
+</span><span data-line="594">            <span class="n">spdu</span><span class="p">,</span>
+</span><span data-line="595">            <span class="n">PI_Code</span><span class="o">.</span><span class="n">TSDU_MAXIMUM_SIZE</span><span class="p">,</span>
+</span><span data-line="596">            <span class="nb">int</span><span class="p">,</span>
+</span><span data-line="597">        <span class="p">)</span>
+</span><span data-line="598">        <span class="k">if</span> <span class="n">maximum_size</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="599">            <span class="k">return</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span>
+</span><span data-line="600">
+</span><span data-line="601">        <span class="n">send_tsdu_max</span> <span class="o">=</span> <span class="n">maximum_size</span> <span class="o">&gt;&gt;</span> <span class="mi">16</span>
+</span><span data-line="602">        <span class="n">receive_tsdu_max</span> <span class="o">=</span> <span class="n">maximum_size</span> <span class="o">&amp;</span> <span class="mh">0xFFFF</span>
+</span><span data-line="603">        <span class="k">return</span> <span class="n">send_tsdu_max</span> <span class="ow">or</span> <span class="kc">None</span><span class="p">,</span> <span class="n">receive_tsdu_max</span> <span class="ow">or</span> <span class="kc">None</span>
+</span><span data-line="604">
+</span><span data-line="605">    <span class="nd">@staticmethod</span>
+</span><span data-line="606">    <span class="k">def</span><span class="w"> </span><span class="nf">_typed_parameter</span><span class="p">(</span>
+</span><span data-line="607">        <span class="n">spdu</span><span class="p">:</span> <span class="n">SPDU</span><span class="p">,</span>
+</span><span data-line="608">        <span class="n">code</span><span class="p">:</span> <span class="n">PI_Code</span><span class="p">,</span>
+</span><span data-line="609">        <span class="n">value_type</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">T</span><span class="p">],</span>
+</span><span data-line="610">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">T</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="611">        <span class="n">parameter</span> <span class="o">=</span> <span class="n">spdu</span><span class="o">.</span><span class="n">parameter_by_id</span><span class="p">(</span><span class="n">code</span><span class="p">)</span>
+</span><span data-line="612">        <span class="k">if</span> <span class="n">parameter</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="613">            <span class="k">return</span> <span class="kc">None</span>
+</span><span data-line="614">        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">parameter</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">value_type</span><span class="p">):</span>
+</span><span data-line="615">            <span class="k">raise</span> <span class="n">SessionDataError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;ACCEPT </span><span class="si">{</span><span class="n">code</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2"> parameter is malformed&quot;</span><span class="p">)</span>
+</span><span data-line="616">        <span class="k">return</span> <span class="n">parameter</span><span class="o">.</span><span class="n">value</span></div>
 
 </span></pre></div>
         </article><button class="back-to-top" type="button">
@@ -601,17 +942,17 @@ data-aria-dark="Switch to auto color mode">
   </p>
 </div>
       <div class="sy-foot-socials">
-<a href="https://github.com/MatrixEditor/icspacket" aria-label="GitHub">
-  <iconify-icon icon="simple-icons:github"></iconify-icon>
-</a></div>
+  <a href="https://github.com/MatrixEditor/icspacket" aria-label="GitHub">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </a></div>
     </div>
   </div>
 </footer>
-      <script src="../../../../_static/documentation_options.js?v=53ae9ec8"></script>
-      <script src="../../../../_static/doctools.js?v=9bcbadda"></script>
-      <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../../../_static/documentation_options.js?v=ded930d6"></script>
+      <script src="../../../../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
       <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
       <script src="../../../../_static/copybutton.js?v=f281be69"></script>
       <script src="../../../../_static/design-tabs.js?v=f930bc37"></script>
-      <script src="../../../../_static/shibuya.js?v=e730760c"></script></body>
+      <script src="../../../../_static/shibuya.js?v=50760d75"></script></body>
 </html>

@@ -2,12 +2,12 @@
 <html lang="en" data-accent-color="lime" data-content_root="../../">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Protocol Utilities - icspacket 0.2.4 documentation</title><link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="API Reference" href="../cosp/api.html" /><link rel="prev" title="ISO Presentation" href="presentation.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Protocol Utilities - icspacket 0.1.dev1+ga30386068 documentation</title><link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="API Reference" href="../cosp/api.html" /><link rel="prev" title="ISO Presentation" href="presentation.html" />
       <link rel="canonical" href="https://matrixeditor.github.io/icspacket/protocols/copp/utils.html" /><script>
     function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
     setColorMode(localStorage._theme||"dark");
-  </script><link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b1a1f93b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/shibuya.css?v=bb284d7b" />
+  </script><link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=e1a1ceaf" />
+    <link rel="stylesheet" type="text/css" href="../../_static/shibuya.css?v=2ceb65ce" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link media="print" rel="stylesheet" type="text/css" href="../../_static/print.css?v=20ff2c19" />
@@ -20,10 +20,11 @@
   --sy-f-heading: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
 }
 </style>
-    <meta property="og:type" content="website"/>
-<meta property="og:url" content="https://matrixeditor.github.io/icspacket/protocols/copp/utils.html"/>
-<meta property="og:title" content="Protocol Utilities"/>
-<meta name="twitter:card" content="summary"/>
+    
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://matrixeditor.github.io/icspacket/protocols/copp/utils.html"/>
+  <meta property="og:title" content="Protocol Utilities"/>
+    <meta name="twitter:card" content="summary"/>
   </head>
 <body><div class="sy-head">
   <div class="sy-head-blur"></div>
@@ -193,8 +194,12 @@ data-aria-dark="Switch to auto color mode">
       <i class="i-lucide close"></i>
     </button>
     <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div class="localtoc"><h3>On this page</h3><ul>
+<li><a class="reference internal" href="#icspacket.proto.iso_pres.util.presentation_context_id"><code class="docutils literal notranslate"><span class="pre">presentation_context_id()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iso_pres.util.presentation_context_transfer_syntaxes"><code class="docutils literal notranslate"><span class="pre">presentation_context_transfer_syntaxes()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iso_pres.util.validate_presentation_context_items"><code class="docutils literal notranslate"><span class="pre">validate_presentation_context_items()</span></code></a></li>
 <li><a class="reference internal" href="#icspacket.proto.iso_pres.util.build_connect_ppdu"><code class="docutils literal notranslate"><span class="pre">build_connect_ppdu()</span></code></a></li>
 <li><a class="reference internal" href="#icspacket.proto.iso_pres.util.build_user_data"><code class="docutils literal notranslate"><span class="pre">build_user_data()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iso_pres.util.build_x410_user_data"><code class="docutils literal notranslate"><span class="pre">build_x410_user_data()</span></code></a></li>
 <li><a class="reference internal" href="#icspacket.proto.iso_pres.util.user_data_get_single_asn1"><code class="docutils literal notranslate"><span class="pre">user_data_get_single_asn1()</span></code></a></li>
 </ul>
 </div><a class="js-repo-stats repo-stats flex items-center" href="https://github.com/MatrixEditor/icspacket"
@@ -248,13 +253,66 @@ data-aria-dark="Switch to auto color mode">
     </div>
   </div>
 </div><div class="flex flex-col break-words justify-between">
-      <div class="min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
-        <article class="yue" role="main">
+      <div class="relative min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
+  <div class="copy-page-wrapper relative pb-4 lg:absolute lg:top-8 lg:right-6 xl:right-12">
+  <div id="copy-page-trigger">
+    <button
+      type="button"
+      class="js-copy px-3 py-1 inline-flex items-center gap-1"
+      data-url="https://raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/protocols/copp/utils.rst"
+    >
+      <i class="i-lucide" data-icon="copy"></i>
+      <span>Copy page</span>
+    </button>
+    <button class="js-menu px-2 py-1" type="button" aria-label="More actions"
+      aria-haspopup="menu" aria-expanded="false" aria-controls="copy-page-content">
+      <i class="i-lucide chevron-down"></i>
+    </button>
+  </div>
+  <div id="copy-page-content" role="menu" aria-orientation="vertical" aria-hidden="true">
+    <div role="presentation">
+      <div class="flex flex-col" role="group">
+        <button class="js-copy" type="button" role="menuitem"
+          data-url="https://raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/protocols/copp/utils.rst">
+          <span class="iconify-icon">
+            <i class="i-lucide" data-icon="copy"></i>
+          </span>
+          <span>Copy page</span>
+        </button>
+        <a role="menuitem" href="https://raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/protocols/copp/utils.rst" target="_blank" rel="nofollow"><iconify-icon icon="bi:code-slash"></iconify-icon>
+            <span>View Source</span></a><a role="menuitem" href="https://chatgpt.com/?hints=search&q=Read%20https%3A//raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/protocols/copp/utils.rst%20so%20I%20can%20ask%20questions%20about%20it." target="_blank" rel="nofollow">
+          <iconify-icon icon="bi:openai"></iconify-icon>
+          <span>Open in ChatGPT</span>
+        </a><a role="menuitem" href="https://claude.ai/new?q=Read%20https%3A//raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/protocols/copp/utils.rst%20so%20I%20can%20ask%20questions%20about%20it." target="_blank" rel="nofollow">
+          <iconify-icon icon="bi:claude"></iconify-icon>
+          <span>Open in Claude</span>
+        </a></div>
+    </div>
+  </div>
+</div><article class="yue" role="main">
           <section id="module-icspacket.proto.iso_pres.util">
-<span id="protocol-utilities"></span><span id="copp-util"></span><h1>Protocol Utilities<a class="headerlink" href="#module-icspacket.proto.iso_pres.util" title="Link to this heading">¶</a></h1>
+<span id="protocol-utilities"></span><span id="copp-util"></span><h1>Protocol Utilities<a class="headerlink" href="#module-icspacket.proto.iso_pres.util" title="Link to this heading">#</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="icspacket.proto.iso_pres.util.presentation_context_id">
+<span class="sig-prename descclassname"><span class="pre">icspacket.proto.iso_pres.util.</span></span><span class="sig-name descname"><span class="pre">presentation_context_id</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Member_TYPE</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="../../_modules/icspacket/proto/iso_pres/util.html#presentation_context_id"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iso_pres.util.presentation_context_id" title="Link to this definition">#</a></dt>
+<dd><p>Return the integer presentation context identifier for a context item.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="icspacket.proto.iso_pres.util.presentation_context_transfer_syntaxes">
+<span class="sig-prename descclassname"><span class="pre">icspacket.proto.iso_pres.util.</span></span><span class="sig-name descname"><span class="pre">presentation_context_transfer_syntaxes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Member_TYPE</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../../_modules/icspacket/proto/iso_pres/util.html#presentation_context_transfer_syntaxes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iso_pres.util.presentation_context_transfer_syntaxes" title="Link to this definition">#</a></dt>
+<dd><p>Return transfer syntax object identifiers from a context item.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="icspacket.proto.iso_pres.util.validate_presentation_context_items">
+<span class="sig-prename descclassname"><span class="pre">icspacket.proto.iso_pres.util.</span></span><span class="sig-name descname"><span class="pre">validate_presentation_context_items</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pres_context_items</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">Member_TYPE</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../../_modules/icspacket/proto/iso_pres/util.html#validate_presentation_context_items"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iso_pres.util.validate_presentation_context_items" title="Link to this definition">#</a></dt>
+<dd><p>Validate client-side CP presentation context definition items.</p>
+</dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="icspacket.proto.iso_pres.util.build_connect_ppdu">
-<span class="sig-prename descclassname"><span class="pre">icspacket.proto.iso_pres.util.</span></span><span class="sig-name descname"><span class="pre">build_connect_ppdu</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">user_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bytes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pres_context_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">calling_presentation_selector</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bytes</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">called_presentation_selector</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bytes</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_version_1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">requirements</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Presentation_requirements</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pres_context_items</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">Member_TYPE</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">CP_type</span></span></span><a class="reference internal" href="../../_modules/icspacket/proto/iso_pres/util.html#build_connect_ppdu"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iso_pres.util.build_connect_ppdu" title="Link to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">icspacket.proto.iso_pres.util.</span></span><span class="sig-name descname"><span class="pre">build_connect_ppdu</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">user_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bytes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pres_context_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">calling_presentation_selector</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bytes</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">called_presentation_selector</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bytes</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_version_1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">requirements</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Presentation_requirements</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pres_context_items</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">Member_TYPE</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">CP_type</span></span></span><a class="reference internal" href="../../_modules/icspacket/proto/iso_pres/util.html#build_connect_ppdu"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iso_pres.util.build_connect_ppdu" title="Link to this definition">#</a></dt>
 <dd><p>Construct a <code class="docutils literal notranslate"><span class="pre">CP-type</span></code> (CONNECT PPDU) for initiating a COPP session.</p>
 <p>Assembles a presentation-layer connection request including version,
 selectors, requirements, context definitions, and user data (ASN.1 payloads
@@ -299,7 +357,7 @@ structures that may be added in future extensions.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="icspacket.proto.iso_pres.util.build_user_data">
-<span class="sig-prename descclassname"><span class="pre">icspacket.proto.iso_pres.util.</span></span><span class="sig-name descname"><span class="pre">build_user_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">user_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bytes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">presentation_context_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">User_data</span></span></span><a class="reference internal" href="../../_modules/icspacket/proto/iso_pres/util.html#build_user_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iso_pres.util.build_user_data" title="Link to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">icspacket.proto.iso_pres.util.</span></span><span class="sig-name descname"><span class="pre">build_user_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">user_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bytes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">presentation_context_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transfer_syntax_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">User_data</span></span></span><a class="reference internal" href="../../_modules/icspacket/proto/iso_pres/util.html#build_user_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iso_pres.util.build_user_data" title="Link to this definition">#</a></dt>
 <dd><p>Build a <code class="docutils literal notranslate"><span class="pre">User_data</span></code> structure wrapping raw ASN.1 data.</p>
 <p>This creates a <code class="docutils literal notranslate"><span class="pre">PDV-list</span></code> entry with the given presentation
 context identifier, assigning the payload as a
@@ -311,6 +369,12 @@ context identifier, assigning the payload as a
 <li><p><strong>presentation_context_id</strong> (<em>int</em>) – Identifier for the presentation
 context under which the payload
 is interpreted.</p></li>
+<li><p><strong>transfer_syntax_name</strong> (<em>str</em><em> | </em><em>None</em>) – Name of the transfer syntax to record in the
+PDV list entry. It is optional in general,
+but this library still supplies it, according to X.226,
+whenever the referenced context originally offered more
+than one transfer syntax for a CP’s user data, so the
+decoder knows which one was actually chosen.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -329,8 +393,18 @@ arbitrary) are needed, the construction must be extended.</p>
 </dd></dl>
 
 <dl class="py function">
+<dt class="sig sig-object py" id="icspacket.proto.iso_pres.util.build_x410_user_data">
+<span class="sig-prename descclassname"><span class="pre">icspacket.proto.iso_pres.util.</span></span><span class="sig-name descname"><span class="pre">build_x410_user_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">user_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bytes</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">User_data</span></span></span><a class="reference internal" href="../../_modules/icspacket/proto/iso_pres/util.html#build_x410_user_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iso_pres.util.build_x410_user_data" title="Link to this definition">#</a></dt>
+<dd><p>Build X.410-1984 mode user data.</p>
+<p>Used for ACSE APCI exchanged in X.410-1984 mode, a mode that has no
+concept of presentation context identifiers; the payload is therefore
+stored as plain “simply encoded data” instead of being wrapped in a
+PDV-list like <a class="reference internal" href="#icspacket.proto.iso_pres.util.build_user_data" title="icspacket.proto.iso_pres.util.build_user_data"><code class="xref py py-func docutils literal notranslate"><span class="pre">build_user_data()</span></code></a> does.</p>
+</dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="icspacket.proto.iso_pres.util.user_data_get_single_asn1">
-<span class="sig-prename descclassname"><span class="pre">icspacket.proto.iso_pres.util.</span></span><span class="sig-name descname"><span class="pre">user_data_get_single_asn1</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">user_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">User_data</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">type</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Any</span></span></span><a class="reference internal" href="../../_modules/icspacket/proto/iso_pres/util.html#user_data_get_single_asn1"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iso_pres.util.user_data_get_single_asn1" title="Link to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">icspacket.proto.iso_pres.util.</span></span><span class="sig-name descname"><span class="pre">user_data_get_single_asn1</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">user_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">User_data</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">type</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Any</span></span></span><a class="reference internal" href="../../_modules/icspacket/proto/iso_pres/util.html#user_data_get_single_asn1"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iso_pres.util.user_data_get_single_asn1" title="Link to this definition">#</a></dt>
 <dd><p>Extract and decode a single ASN.1 object from <code class="docutils literal notranslate"><span class="pre">User_data</span></code>.</p>
 <p>Validates that the input is fully encoded, contains exactly
 one <code class="docutils literal notranslate"><span class="pre">PDV-list</span></code>, and that the encoding is of type
@@ -407,17 +481,17 @@ misinterpretation of payloads.</p>
   </p>
 </div>
       <div class="sy-foot-socials">
-<a href="https://github.com/MatrixEditor/icspacket" aria-label="GitHub">
-  <iconify-icon icon="simple-icons:github"></iconify-icon>
-</a></div>
+  <a href="https://github.com/MatrixEditor/icspacket" aria-label="GitHub">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </a></div>
     </div>
   </div>
 </footer>
-      <script src="../../_static/documentation_options.js?v=53ae9ec8"></script>
-      <script src="../../_static/doctools.js?v=9bcbadda"></script>
-      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/documentation_options.js?v=ded930d6"></script>
+      <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
       <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
       <script src="../../_static/copybutton.js?v=f281be69"></script>
       <script src="../../_static/design-tabs.js?v=f930bc37"></script>
-      <script src="../../_static/shibuya.js?v=e730760c"></script></body>
+      <script src="../../_static/shibuya.js?v=50760d75"></script></body>
 </html>

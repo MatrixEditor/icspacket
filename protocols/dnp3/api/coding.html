@@ -2,12 +2,12 @@
 <html lang="en" data-accent-color="lime" data-content_root="../../../">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Encoding / Decoding - icspacket 0.2.4 documentation</title><link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" /><link rel="next" title="Variations" href="variations.html" /><link rel="prev" title="Primitive Types" href="primitives.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Encoding / Decoding - icspacket 0.1.dev1+ga30386068 documentation</title><link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" /><link rel="next" title="Variations" href="variations.html" /><link rel="prev" title="Primitive Types" href="primitives.html" />
       <link rel="canonical" href="https://matrixeditor.github.io/icspacket/protocols/dnp3/api/coding.html" /><script>
     function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
     setColorMode(localStorage._theme||"dark");
-  </script><link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b1a1f93b" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/shibuya.css?v=bb284d7b" />
+  </script><link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=e1a1ceaf" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/shibuya.css?v=2ceb65ce" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link media="print" rel="stylesheet" type="text/css" href="../../../_static/print.css?v=20ff2c19" />
@@ -20,10 +20,11 @@
   --sy-f-heading: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
 }
 </style>
-    <meta property="og:type" content="website"/>
-<meta property="og:url" content="https://matrixeditor.github.io/icspacket/protocols/dnp3/api/coding.html"/>
-<meta property="og:title" content="Encoding / Decoding"/>
-<meta name="twitter:card" content="summary"/>
+    
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://matrixeditor.github.io/icspacket/protocols/dnp3/api/coding.html"/>
+  <meta property="og:title" content="Encoding / Decoding"/>
+    <meta name="twitter:card" content="summary"/>
   </head>
 <body><div class="sy-head">
   <div class="sy-head-blur"></div>
@@ -195,28 +196,28 @@ data-aria-dark="Switch to auto color mode">
     <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div class="localtoc"><h3>On this page</h3><ul>
 <li><a class="reference internal" href="#example-class0123-request">Example: Class0123 Request</a></li>
 <li><a class="reference internal" href="#icspacket.proto.dnp3.objects.coding.ObjectHeader"><code class="docutils literal notranslate"><span class="pre">ObjectHeader</span></code></a><ul>
-<li><a class="reference internal" href="#icspacket.proto.dnp3.objects.coding.ObjectHeader.group"><code class="docutils literal notranslate">group</span></code></a></li>
-<li><a class="reference internal" href="#icspacket.proto.dnp3.objects.coding.ObjectHeader.variation"><code class="docutils literal notranslate">variation</span></code></a></li>
-<li><a class="reference internal" href="#icspacket.proto.dnp3.objects.coding.ObjectHeader.obj_prefix"><code class="docutils literal notranslate">obj_prefix</span></code></a></li>
-<li><a class="reference internal" href="#icspacket.proto.dnp3.objects.coding.ObjectHeader.range_spec"><code class="docutils literal notranslate">range_spec</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.dnp3.objects.coding.ObjectHeader.group"><code class="docutils literal notranslate"><span class="pre">ObjectHeader.group</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.dnp3.objects.coding.ObjectHeader.variation"><code class="docutils literal notranslate"><span class="pre">ObjectHeader.variation</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.dnp3.objects.coding.ObjectHeader.obj_prefix"><code class="docutils literal notranslate"><span class="pre">ObjectHeader.obj_prefix</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.dnp3.objects.coding.ObjectHeader.range_spec"><code class="docutils literal notranslate"><span class="pre">ObjectHeader.range_spec</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#icspacket.proto.dnp3.objects.coding.DNP3Object"><code class="docutils literal notranslate"><span class="pre">DNP3Object</span></code></a><ul>
-<li><a class="reference internal" href="#icspacket.proto.dnp3.objects.coding.DNP3Object.prefix"><code class="docutils literal notranslate">prefix</span></code></a></li>
-<li><a class="reference internal" href="#icspacket.proto.dnp3.objects.coding.DNP3Object.index"><code class="docutils literal notranslate">index</span></code></a></li>
-<li><a class="reference internal" href="#icspacket.proto.dnp3.objects.coding.DNP3Object.instance"><code class="docutils literal notranslate">instance</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.dnp3.objects.coding.DNP3Object.prefix"><code class="docutils literal notranslate"><span class="pre">DNP3Object.prefix</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.dnp3.objects.coding.DNP3Object.index"><code class="docutils literal notranslate"><span class="pre">DNP3Object.index</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.dnp3.objects.coding.DNP3Object.instance"><code class="docutils literal notranslate"><span class="pre">DNP3Object.instance</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#icspacket.proto.dnp3.objects.coding.DNP3ObjectVariations"><code class="docutils literal notranslate"><span class="pre">DNP3ObjectVariations</span></code></a><ul>
-<li><a class="reference internal" href="#icspacket.proto.dnp3.objects.coding.DNP3ObjectVariations.range_type"><code class="docutils literal notranslate">range_type</span></code></a></li>
-<li><a class="reference internal" href="#icspacket.proto.dnp3.objects.coding.DNP3ObjectVariations.range"><code class="docutils literal notranslate">range</span></code></a></li>
-<li><a class="reference internal" href="#icspacket.proto.dnp3.objects.coding.DNP3ObjectVariations.prefix_type"><code class="docutils literal notranslate">prefix_type</span></code></a></li>
-<li><a class="reference internal" href="#icspacket.proto.dnp3.objects.coding.DNP3ObjectVariations.get_range"><code class="docutils literal notranslate">get_range()</span></code></a></li>
-<li><a class="reference internal" href="#icspacket.proto.dnp3.objects.coding.DNP3ObjectVariations.add"><code class="docutils literal notranslate">add()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.dnp3.objects.coding.DNP3ObjectVariations.range_type"><code class="docutils literal notranslate"><span class="pre">DNP3ObjectVariations.range_type</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.dnp3.objects.coding.DNP3ObjectVariations.range"><code class="docutils literal notranslate"><span class="pre">DNP3ObjectVariations.range</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.dnp3.objects.coding.DNP3ObjectVariations.prefix_type"><code class="docutils literal notranslate"><span class="pre">DNP3ObjectVariations.prefix_type</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.dnp3.objects.coding.DNP3ObjectVariations.get_range"><code class="docutils literal notranslate"><span class="pre">DNP3ObjectVariations.get_range()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.dnp3.objects.coding.DNP3ObjectVariations.add"><code class="docutils literal notranslate"><span class="pre">DNP3ObjectVariations.add()</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#icspacket.proto.dnp3.objects.coding.DNP3Objects"><code class="docutils literal notranslate"><span class="pre">DNP3Objects</span></code></a><ul>
-<li><a class="reference internal" href="#icspacket.proto.dnp3.objects.coding.DNP3Objects.get_variation"><code class="docutils literal notranslate">get_variation()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.dnp3.objects.coding.DNP3Objects.get_variation"><code class="docutils literal notranslate"><span class="pre">DNP3Objects.get_variation()</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#icspacket.proto.dnp3.objects.coding.unpack_objects"><code class="docutils literal notranslate"><span class="pre">unpack_objects()</span></code></a></li>
@@ -277,10 +278,45 @@ data-aria-dark="Switch to auto color mode">
     </div>
   </div>
 </div><div class="flex flex-col break-words justify-between">
-      <div class="min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
-        <article class="yue" role="main">
+      <div class="relative min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
+  <div class="copy-page-wrapper relative pb-4 lg:absolute lg:top-8 lg:right-6 xl:right-12">
+  <div id="copy-page-trigger">
+    <button
+      type="button"
+      class="js-copy px-3 py-1 inline-flex items-center gap-1"
+      data-url="https://raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/protocols/dnp3/api/coding.rst"
+    >
+      <i class="i-lucide" data-icon="copy"></i>
+      <span>Copy page</span>
+    </button>
+    <button class="js-menu px-2 py-1" type="button" aria-label="More actions"
+      aria-haspopup="menu" aria-expanded="false" aria-controls="copy-page-content">
+      <i class="i-lucide chevron-down"></i>
+    </button>
+  </div>
+  <div id="copy-page-content" role="menu" aria-orientation="vertical" aria-hidden="true">
+    <div role="presentation">
+      <div class="flex flex-col" role="group">
+        <button class="js-copy" type="button" role="menuitem"
+          data-url="https://raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/protocols/dnp3/api/coding.rst">
+          <span class="iconify-icon">
+            <i class="i-lucide" data-icon="copy"></i>
+          </span>
+          <span>Copy page</span>
+        </button>
+        <a role="menuitem" href="https://raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/protocols/dnp3/api/coding.rst" target="_blank" rel="nofollow"><iconify-icon icon="bi:code-slash"></iconify-icon>
+            <span>View Source</span></a><a role="menuitem" href="https://chatgpt.com/?hints=search&q=Read%20https%3A//raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/protocols/dnp3/api/coding.rst%20so%20I%20can%20ask%20questions%20about%20it." target="_blank" rel="nofollow">
+          <iconify-icon icon="bi:openai"></iconify-icon>
+          <span>Open in ChatGPT</span>
+        </a><a role="menuitem" href="https://claude.ai/new?q=Read%20https%3A//raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/protocols/dnp3/api/coding.rst%20so%20I%20can%20ask%20questions%20about%20it." target="_blank" rel="nofollow">
+          <iconify-icon icon="bi:claude"></iconify-icon>
+          <span>Open in Claude</span>
+        </a></div>
+    </div>
+  </div>
+</div><article class="yue" role="main">
           <section id="module-icspacket.proto.dnp3.objects.coding">
-<span id="encoding-decoding"></span><span id="dnp3-obj-lib-coding"></span><h1>Encoding / Decoding<a class="headerlink" href="#module-icspacket.proto.dnp3.objects.coding" title="Link to this heading">¶</a></h1>
+<span id="encoding-decoding"></span><span id="dnp3-obj-lib-coding"></span><h1>Encoding / Decoding<a class="headerlink" href="#module-icspacket.proto.dnp3.objects.coding" title="Link to this heading">#</a></h1>
 <p>This module implements parsing and serialization of <strong>DNP3 Application Layer
 objects</strong> as defined in section <em>4.2.2.7 Object Headers</em> of the DNP3
 specification.</p>
@@ -294,7 +330,7 @@ prefixing mechanism is applied.</p></li>
 <li><p><strong>Objects</strong>: The actual data values.</p></li>
 </ul>
 <section id="example-class0123-request">
-<h2>Example: Class0123 Request<a class="headerlink" href="#example-class0123-request" title="Link to this heading">¶</a></h2>
+<h2>Example: Class0123 Request<a class="headerlink" href="#example-class0123-request" title="Link to this heading">#</a></h2>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="c1"># no prefix and no range needed here</span>
 </span><span data-line="2"><span class="n">objects</span> <span class="o">=</span> <span class="n">DNP3Objects</span><span class="p">()</span>
 </span><span data-line="3"><span class="n">objects</span><span class="o">.</span><span class="n">add_emtpy</span><span class="p">(</span><span class="mi">60</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="c1"># object 60, variation 1 (Class 0)</span>
@@ -310,14 +346,14 @@ prefixing mechanism is applied.</p></li>
 </section>
 <dl class="py class">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.objects.coding.ObjectHeader">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">icspacket.proto.dnp3.objects.coding.</span></span><span class="sig-name descname"><span class="pre">ObjectHeader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">group</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">variation</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reserved</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">obj_prefix</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="application.html#icspacket.proto.dnp3.const.ObjectPrefixCode" title="icspacket.proto.dnp3.const.ObjectPrefixCode"><span class="pre">ObjectPrefixCode</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">ObjectPrefixCode.NONE</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">range_spec</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="application.html#icspacket.proto.dnp3.const.RangeSpecifierCode" title="icspacket.proto.dnp3.const.RangeSpecifierCode"><span class="pre">RangeSpecifierCode</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">RangeSpecifierCode.NONE</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/icspacket/proto/dnp3/objects/coding.html#ObjectHeader"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.dnp3.objects.coding.ObjectHeader" title="Link to this definition">¶</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">icspacket.proto.dnp3.objects.coding.</span></span><span class="sig-name descname"><span class="pre">ObjectHeader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">group</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">variation</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reserved</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">obj_prefix</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="application.html#icspacket.proto.dnp3.const.ObjectPrefixCode" title="icspacket.proto.dnp3.const.ObjectPrefixCode"><span class="pre">ObjectPrefixCode</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">ObjectPrefixCode.NONE</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">range_spec</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="application.html#icspacket.proto.dnp3.const.RangeSpecifierCode" title="icspacket.proto.dnp3.const.RangeSpecifierCode"><span class="pre">RangeSpecifierCode</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">RangeSpecifierCode.NONE</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/icspacket/proto/dnp3/objects/coding.html#ObjectHeader"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.dnp3.objects.coding.ObjectHeader" title="Link to this definition">#</a></dt>
 <dd><p>Represents a <strong>DNP3 Object Header</strong>.</p>
 <p>Object headers provide additional context about a set of objects
 transmitted in the Application Layer. They define the group, variation,
 and addressing/range information for associated data objects.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.objects.coding.ObjectHeader.group">
-<span class="sig-name descname"><span class="pre">group</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#icspacket.proto.dnp3.objects.coding.ObjectHeader.group" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">group</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><a class="headerlink" href="#icspacket.proto.dnp3.objects.coding.ObjectHeader.group" title="Link to this definition">#</a></dt>
 <dd><p>/4.2.2.7.1 Object group
 The object group specifies what data type or values are included in a
 master request or in an outstation response.</p>
@@ -325,7 +361,7 @@ master request or in an outstation response.</p>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.objects.coding.ObjectHeader.variation">
-<span class="sig-name descname"><span class="pre">variation</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#icspacket.proto.dnp3.objects.coding.ObjectHeader.variation" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">variation</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><a class="headerlink" href="#icspacket.proto.dnp3.objects.coding.ObjectHeader.variation" title="Link to this definition">#</a></dt>
 <dd><p>/4.2.2.7.2 Object variation
 Specifies the data format of DNP3 objects. The object group and object variation
 together uniquely specify the structure of a DNP3 object and the type of data that
@@ -334,7 +370,7 @@ it references.</p>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.objects.coding.ObjectHeader.obj_prefix">
-<span class="sig-name descname"><span class="pre">obj_prefix</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="application.html#icspacket.proto.dnp3.const.ObjectPrefixCode" title="icspacket.proto.dnp3.const.ObjectPrefixCode"><span class="pre">ObjectPrefixCode</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></em><a class="headerlink" href="#icspacket.proto.dnp3.objects.coding.ObjectHeader.obj_prefix" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">obj_prefix</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="application.html#icspacket.proto.dnp3.const.ObjectPrefixCode" title="icspacket.proto.dnp3.const.ObjectPrefixCode"><span class="pre">ObjectPrefixCode</span></a></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></span><a class="headerlink" href="#icspacket.proto.dnp3.objects.coding.ObjectHeader.obj_prefix" title="Link to this definition">#</a></dt>
 <dd><p>/4.2.2.7.3.2 Object prefix code
 Specifies what, if any, prefix value appears before each of the DNP3
 objects that follow the object header. Prefixes are either an index number
@@ -343,7 +379,7 @@ or an object size.</p>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.objects.coding.ObjectHeader.range_spec">
-<span class="sig-name descname"><span class="pre">range_spec</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="application.html#icspacket.proto.dnp3.const.RangeSpecifierCode" title="icspacket.proto.dnp3.const.RangeSpecifierCode"><span class="pre">RangeSpecifierCode</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">6</span></em><a class="headerlink" href="#icspacket.proto.dnp3.objects.coding.ObjectHeader.range_spec" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">range_spec</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="application.html#icspacket.proto.dnp3.const.RangeSpecifierCode" title="icspacket.proto.dnp3.const.RangeSpecifierCode"><span class="pre">RangeSpecifierCode</span></a></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">6</span></span><a class="headerlink" href="#icspacket.proto.dnp3.objects.coding.ObjectHeader.range_spec" title="Link to this definition">#</a></dt>
 <dd><p>/4.2.2.7.3.3 Range specifier codes</p>
 </dd></dl>
 
@@ -351,25 +387,25 @@ or an object size.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.objects.coding.DNP3Object">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">icspacket.proto.dnp3.objects.coding.</span></span><span class="sig-name descname"><span class="pre">DNP3Object</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prefix</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">instance</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/icspacket/proto/dnp3/objects/coding.html#DNP3Object"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.dnp3.objects.coding.DNP3Object" title="Link to this definition">¶</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">icspacket.proto.dnp3.objects.coding.</span></span><span class="sig-name descname"><span class="pre">DNP3Object</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prefix</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">instance</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/icspacket/proto/dnp3/objects/coding.html#DNP3Object"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.dnp3.objects.coding.DNP3Object" title="Link to this definition">#</a></dt>
 <dd><p>Represents a single transmitted <strong>DNP3 object instance</strong>.</p>
 <p>A DNP3 object may optionally include a prefix (such as an index),
 followed by its data value.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.objects.coding.DNP3Object.prefix">
-<span class="sig-name descname"><span class="pre">prefix</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#icspacket.proto.dnp3.objects.coding.DNP3Object.prefix" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">prefix</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#icspacket.proto.dnp3.objects.coding.DNP3Object.prefix" title="Link to this definition">#</a></dt>
 <dd><p>Parsed prefix value (if present). This may represent an index or size.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.objects.coding.DNP3Object.index">
-<span class="sig-name descname"><span class="pre">index</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#icspacket.proto.dnp3.objects.coding.DNP3Object.index" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">index</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><a class="headerlink" href="#icspacket.proto.dnp3.objects.coding.DNP3Object.index" title="Link to this definition">#</a></dt>
 <dd><p>Sequential index of this object within its variation.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.objects.coding.DNP3Object.instance">
-<span class="sig-name descname"><span class="pre">instance</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Any</span></em><a class="headerlink" href="#icspacket.proto.dnp3.objects.coding.DNP3Object.instance" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">instance</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Any</span></span><a class="headerlink" href="#icspacket.proto.dnp3.objects.coding.DNP3Object.instance" title="Link to this definition">#</a></dt>
 <dd><p>The parsed data payload for this object (actual value).</p>
 </dd></dl>
 
@@ -377,7 +413,7 @@ followed by its data value.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.objects.coding.DNP3ObjectVariations">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">icspacket.proto.dnp3.objects.coding.</span></span><span class="sig-name descname"><span class="pre">DNP3ObjectVariations</span></span><a class="reference internal" href="../../../_modules/icspacket/proto/dnp3/objects/coding.html#DNP3ObjectVariations"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.dnp3.objects.coding.DNP3ObjectVariations" title="Link to this definition">¶</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">icspacket.proto.dnp3.objects.coding.</span></span><span class="sig-name descname"><span class="pre">DNP3ObjectVariations</span></span><a class="reference internal" href="../../../_modules/icspacket/proto/dnp3/objects/coding.html#DNP3ObjectVariations"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.dnp3.objects.coding.DNP3ObjectVariations" title="Link to this definition">#</a></dt>
 <dd><p>Represents all <strong>objects of a given variation</strong> within a group.</p>
 <p>Extends <code class="docutils literal notranslate"><span class="pre">list[DNP3Object]</span></code> to hold multiple instances of the same
 group/variation. Additional metadata about range and prefixing is stored
@@ -388,26 +424,26 @@ here for proper serialization.</p>
 </div>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.objects.coding.DNP3ObjectVariations.range_type">
-<span class="sig-name descname"><span class="pre">range_type</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="application.html#icspacket.proto.dnp3.const.RangeSpecifierCode" title="icspacket.proto.dnp3.const.RangeSpecifierCode"><span class="pre">RangeSpecifierCode</span></a></em><a class="headerlink" href="#icspacket.proto.dnp3.objects.coding.DNP3ObjectVariations.range_type" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">range_type</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="application.html#icspacket.proto.dnp3.const.RangeSpecifierCode" title="icspacket.proto.dnp3.const.RangeSpecifierCode"><span class="pre">RangeSpecifierCode</span></a></span><a class="headerlink" href="#icspacket.proto.dnp3.objects.coding.DNP3ObjectVariations.range_type" title="Link to this definition">#</a></dt>
 <dd><p>Indicates the range encoding used for this variation (count or start/end).</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.objects.coding.DNP3ObjectVariations.range">
-<span class="sig-name descname"><span class="pre">range</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#icspacket.proto.dnp3.objects.coding.DNP3ObjectVariations.range" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">range</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#icspacket.proto.dnp3.objects.coding.DNP3ObjectVariations.range" title="Link to this definition">#</a></dt>
 <dd><p>The decoded range value. May be a tuple <code class="docutils literal notranslate"><span class="pre">(start,</span> <span class="pre">stop)</span></code> for index ranges,
 an integer count, or <code class="docutils literal notranslate"><span class="pre">None</span></code> if not specified.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.objects.coding.DNP3ObjectVariations.prefix_type">
-<span class="sig-name descname"><span class="pre">prefix_type</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="application.html#icspacket.proto.dnp3.const.ObjectPrefixCode" title="icspacket.proto.dnp3.const.ObjectPrefixCode"><span class="pre">ObjectPrefixCode</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#icspacket.proto.dnp3.objects.coding.DNP3ObjectVariations.prefix_type" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">prefix_type</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="application.html#icspacket.proto.dnp3.const.ObjectPrefixCode" title="icspacket.proto.dnp3.const.ObjectPrefixCode"><span class="pre">ObjectPrefixCode</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#icspacket.proto.dnp3.objects.coding.DNP3ObjectVariations.prefix_type" title="Link to this definition">#</a></dt>
 <dd><p>Prefix encoding used for the objects (e.g., none, 1-byte, 2-byte index).</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.objects.coding.DNP3ObjectVariations.get_range">
-<span class="sig-name descname"><span class="pre">get_range</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="reference internal" href="../../../_modules/icspacket/proto/dnp3/objects/coding.html#DNP3ObjectVariations.get_range"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.dnp3.objects.coding.DNP3ObjectVariations.get_range" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">get_range</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="reference internal" href="../../../_modules/icspacket/proto/dnp3/objects/coding.html#DNP3ObjectVariations.get_range"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.dnp3.objects.coding.DNP3ObjectVariations.get_range" title="Link to this definition">#</a></dt>
 <dd><p>Compute the effective range of objects for this variation.</p>
 <p>If an explicit range is already set, it is returned. Otherwise,
 derives the range based on the range type.</p>
@@ -423,7 +459,7 @@ derives the range based on the range type.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.objects.coding.DNP3ObjectVariations.add">
-<span class="sig-name descname"><span class="pre">add</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="positional-only-separator o"><abbr title="Positional-only parameter separator (PEP 570)"><span class="pre">/</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefix</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../../../_modules/icspacket/proto/dnp3/objects/coding.html#DNP3ObjectVariations.add"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.dnp3.objects.coding.DNP3ObjectVariations.add" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">add</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="positional-only-separator o"><abbr title="Positional-only parameter separator (PEP 570)"><span class="pre">/</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefix</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../../../_modules/icspacket/proto/dnp3/objects/coding.html#DNP3ObjectVariations.add"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.dnp3.objects.coding.DNP3ObjectVariations.add" title="Link to this definition">#</a></dt>
 <dd><p>Add a new object instance to this variation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -441,7 +477,7 @@ with this object.</p></li>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.objects.coding.DNP3Objects">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">icspacket.proto.dnp3.objects.coding.</span></span><span class="sig-name descname"><span class="pre">DNP3Objects</span></span><a class="reference internal" href="../../../_modules/icspacket/proto/dnp3/objects/coding.html#DNP3Objects"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.dnp3.objects.coding.DNP3Objects" title="Link to this definition">¶</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">icspacket.proto.dnp3.objects.coding.</span></span><span class="sig-name descname"><span class="pre">DNP3Objects</span></span><a class="reference internal" href="../../../_modules/icspacket/proto/dnp3/objects/coding.html#DNP3Objects"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.dnp3.objects.coding.DNP3Objects" title="Link to this definition">#</a></dt>
 <dd><p>A container for all <strong>DNP3 objects in a fragment</strong>.</p>
 <p>Maps group numbers to variations, which then contain one or more
 object instances.</p>
@@ -451,7 +487,7 @@ object instances.</p>
 </div>
 <dl class="py method">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.objects.coding.DNP3Objects.get_variation">
-<span class="sig-name descname"><span class="pre">get_variation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">group</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">variation</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="positional-only-separator o"><abbr title="Positional-only parameter separator (PEP 570)"><span class="pre">/</span></abbr></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#icspacket.proto.dnp3.objects.coding.DNP3ObjectVariations" title="icspacket.proto.dnp3.objects.coding.DNP3ObjectVariations"><span class="pre">DNP3ObjectVariations</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="reference internal" href="../../../_modules/icspacket/proto/dnp3/objects/coding.html#DNP3Objects.get_variation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.dnp3.objects.coding.DNP3Objects.get_variation" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">get_variation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">group</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">variation</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="positional-only-separator o"><abbr title="Positional-only parameter separator (PEP 570)"><span class="pre">/</span></abbr></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#icspacket.proto.dnp3.objects.coding.DNP3ObjectVariations" title="icspacket.proto.dnp3.objects.coding.DNP3ObjectVariations"><span class="pre">DNP3ObjectVariations</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="reference internal" href="../../../_modules/icspacket/proto/dnp3/objects/coding.html#DNP3Objects.get_variation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.dnp3.objects.coding.DNP3Objects.get_variation" title="Link to this definition">#</a></dt>
 <dd><p>Retrieve or create a variation container for the given group/variation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -473,7 +509,7 @@ object instances.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.objects.coding.unpack_objects">
-<span class="sig-prename descclassname"><span class="pre">icspacket.proto.dnp3.objects.coding.</span></span><span class="sig-name descname"><span class="pre">unpack_objects</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">object_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bytes</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#icspacket.proto.dnp3.objects.coding.DNP3Objects" title="icspacket.proto.dnp3.objects.coding.DNP3Objects"><span class="pre">DNP3Objects</span></a></span></span><a class="reference internal" href="../../../_modules/icspacket/proto/dnp3/objects/coding.html#unpack_objects"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.dnp3.objects.coding.unpack_objects" title="Link to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">icspacket.proto.dnp3.objects.coding.</span></span><span class="sig-name descname"><span class="pre">unpack_objects</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">object_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bytes</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#icspacket.proto.dnp3.objects.coding.DNP3Objects" title="icspacket.proto.dnp3.objects.coding.DNP3Objects"><span class="pre">DNP3Objects</span></a></span></span><a class="reference internal" href="../../../_modules/icspacket/proto/dnp3/objects/coding.html#unpack_objects"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.dnp3.objects.coding.unpack_objects" title="Link to this definition">#</a></dt>
 <dd><p>Parse raw DNP3 object data into structured representations.</p>
 <p>Reads one or more object headers and associated objects from
 a byte sequence. Automatically handles range specifiers, prefix
@@ -496,7 +532,7 @@ codes, and object variations.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.objects.coding.pack_objects">
-<span class="sig-prename descclassname"><span class="pre">icspacket.proto.dnp3.objects.coding.</span></span><span class="sig-name descname"><span class="pre">pack_objects</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">objects</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#icspacket.proto.dnp3.objects.coding.DNP3Objects" title="icspacket.proto.dnp3.objects.coding.DNP3Objects"><span class="pre">DNP3Objects</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefix_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="application.html#icspacket.proto.dnp3.const.ObjectPrefixCode" title="icspacket.proto.dnp3.const.ObjectPrefixCode"><span class="pre">ObjectPrefixCode</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">range_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="application.html#icspacket.proto.dnp3.const.RangeSpecifierCode" title="icspacket.proto.dnp3.const.RangeSpecifierCode"><span class="pre">RangeSpecifierCode</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bytes</span></span></span><a class="reference internal" href="../../../_modules/icspacket/proto/dnp3/objects/coding.html#pack_objects"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.dnp3.objects.coding.pack_objects" title="Link to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">icspacket.proto.dnp3.objects.coding.</span></span><span class="sig-name descname"><span class="pre">pack_objects</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">objects</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#icspacket.proto.dnp3.objects.coding.DNP3Objects" title="icspacket.proto.dnp3.objects.coding.DNP3Objects"><span class="pre">DNP3Objects</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefix_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="application.html#icspacket.proto.dnp3.const.ObjectPrefixCode" title="icspacket.proto.dnp3.const.ObjectPrefixCode"><span class="pre">ObjectPrefixCode</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">range_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="application.html#icspacket.proto.dnp3.const.RangeSpecifierCode" title="icspacket.proto.dnp3.const.RangeSpecifierCode"><span class="pre">RangeSpecifierCode</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bytes</span></span></span><a class="reference internal" href="../../../_modules/icspacket/proto/dnp3/objects/coding.html#pack_objects"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.dnp3.objects.coding.pack_objects" title="Link to this definition">#</a></dt>
 <dd><p>Serialize structured DNP3 objects into raw bytes.</p>
 <p>Iterates over all object groups and variations in the provided
 container, generating object headers, range/prefix encodings,
@@ -562,17 +598,17 @@ apply when none is specified.</p></li>
   </p>
 </div>
       <div class="sy-foot-socials">
-<a href="https://github.com/MatrixEditor/icspacket" aria-label="GitHub">
-  <iconify-icon icon="simple-icons:github"></iconify-icon>
-</a></div>
+  <a href="https://github.com/MatrixEditor/icspacket" aria-label="GitHub">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </a></div>
     </div>
   </div>
 </footer>
-      <script src="../../../_static/documentation_options.js?v=53ae9ec8"></script>
-      <script src="../../../_static/doctools.js?v=9bcbadda"></script>
-      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../../_static/documentation_options.js?v=ded930d6"></script>
+      <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
       <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
       <script src="../../../_static/copybutton.js?v=f281be69"></script>
       <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
-      <script src="../../../_static/shibuya.js?v=e730760c"></script></body>
+      <script src="../../../_static/shibuya.js?v=50760d75"></script></body>
 </html>

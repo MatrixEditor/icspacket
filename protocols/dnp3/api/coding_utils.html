@@ -2,12 +2,12 @@
 <html lang="en" data-accent-color="lime" data-content_root="../../../">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Object Utilities - icspacket 0.2.4 documentation</title><link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" /><link rel="next" title="Enumerating IEDs" href="../../iec61850/iedmap.html" /><link rel="prev" title="Variations" href="variations.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Object Utilities - icspacket 0.1.dev1+ga30386068 documentation</title><link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" /><link rel="next" title="Enumerating IEDs" href="../../iec61850/iedmap.html" /><link rel="prev" title="Variations" href="variations.html" />
       <link rel="canonical" href="https://matrixeditor.github.io/icspacket/protocols/dnp3/api/coding_utils.html" /><script>
     function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
     setColorMode(localStorage._theme||"dark");
-  </script><link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b1a1f93b" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/shibuya.css?v=bb284d7b" />
+  </script><link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=e1a1ceaf" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/shibuya.css?v=2ceb65ce" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link media="print" rel="stylesheet" type="text/css" href="../../../_static/print.css?v=20ff2c19" />
@@ -20,10 +20,11 @@
   --sy-f-heading: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
 }
 </style>
-    <meta property="og:type" content="website"/>
-<meta property="og:url" content="https://matrixeditor.github.io/icspacket/protocols/dnp3/api/coding_utils.html"/>
-<meta property="og:title" content="Object Utilities"/>
-<meta name="twitter:card" content="summary"/>
+    
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://matrixeditor.github.io/icspacket/protocols/dnp3/api/coding_utils.html"/>
+  <meta property="og:title" content="Object Utilities"/>
+    <meta name="twitter:card" content="summary"/>
   </head>
 <body><div class="sy-head">
   <div class="sy-head-blur"></div>
@@ -253,13 +254,48 @@ data-aria-dark="Switch to auto color mode">
     </div>
   </div>
 </div><div class="flex flex-col break-words justify-between">
-      <div class="min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
-        <article class="yue" role="main">
+      <div class="relative min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
+  <div class="copy-page-wrapper relative pb-4 lg:absolute lg:top-8 lg:right-6 xl:right-12">
+  <div id="copy-page-trigger">
+    <button
+      type="button"
+      class="js-copy px-3 py-1 inline-flex items-center gap-1"
+      data-url="https://raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/protocols/dnp3/api/coding_utils.rst"
+    >
+      <i class="i-lucide" data-icon="copy"></i>
+      <span>Copy page</span>
+    </button>
+    <button class="js-menu px-2 py-1" type="button" aria-label="More actions"
+      aria-haspopup="menu" aria-expanded="false" aria-controls="copy-page-content">
+      <i class="i-lucide chevron-down"></i>
+    </button>
+  </div>
+  <div id="copy-page-content" role="menu" aria-orientation="vertical" aria-hidden="true">
+    <div role="presentation">
+      <div class="flex flex-col" role="group">
+        <button class="js-copy" type="button" role="menuitem"
+          data-url="https://raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/protocols/dnp3/api/coding_utils.rst">
+          <span class="iconify-icon">
+            <i class="i-lucide" data-icon="copy"></i>
+          </span>
+          <span>Copy page</span>
+        </button>
+        <a role="menuitem" href="https://raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/protocols/dnp3/api/coding_utils.rst" target="_blank" rel="nofollow"><iconify-icon icon="bi:code-slash"></iconify-icon>
+            <span>View Source</span></a><a role="menuitem" href="https://chatgpt.com/?hints=search&q=Read%20https%3A//raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/protocols/dnp3/api/coding_utils.rst%20so%20I%20can%20ask%20questions%20about%20it." target="_blank" rel="nofollow">
+          <iconify-icon icon="bi:openai"></iconify-icon>
+          <span>Open in ChatGPT</span>
+        </a><a role="menuitem" href="https://claude.ai/new?q=Read%20https%3A//raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/protocols/dnp3/api/coding_utils.rst%20so%20I%20can%20ask%20questions%20about%20it." target="_blank" rel="nofollow">
+          <iconify-icon icon="bi:claude"></iconify-icon>
+          <span>Open in Claude</span>
+        </a></div>
+    </div>
+  </div>
+</div><article class="yue" role="main">
           <section id="module-icspacket.proto.dnp3.objects.util">
-<span id="object-utilities"></span><span id="dnp3-obj-lib-utils"></span><h1>Object Utilities<a class="headerlink" href="#module-icspacket.proto.dnp3.objects.util" title="Link to this heading">¶</a></h1>
+<span id="object-utilities"></span><span id="dnp3-obj-lib-utils"></span><h1>Object Utilities<a class="headerlink" href="#module-icspacket.proto.dnp3.objects.util" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.objects.util.new_octet_string">
-<span class="sig-prename descclassname"><span class="pre">icspacket.proto.dnp3.objects.util.</span></span><span class="sig-name descname"><span class="pre">new_octet_string</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bytes</span></span></em>, <em class="sig-param"><span class="positional-only-separator o"><abbr title="Positional-only parameter separator (PEP 570)"><span class="pre">/</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">group</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefix</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="coding.html#icspacket.proto.dnp3.objects.coding.DNP3Objects" title="icspacket.proto.dnp3.objects.coding.DNP3Objects"><span class="pre">DNP3Objects</span></a></span></span><a class="reference internal" href="../../../_modules/icspacket/proto/dnp3/objects/util.html#new_octet_string"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.dnp3.objects.util.new_octet_string" title="Link to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">icspacket.proto.dnp3.objects.util.</span></span><span class="sig-name descname"><span class="pre">new_octet_string</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bytes</span></span></em>, <em class="sig-param"><span class="positional-only-separator o"><abbr title="Positional-only parameter separator (PEP 570)"><span class="pre">/</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">group</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefix</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="coding.html#icspacket.proto.dnp3.objects.coding.DNP3Objects" title="icspacket.proto.dnp3.objects.coding.DNP3Objects"><span class="pre">DNP3Objects</span></a></span></span><a class="reference internal" href="../../../_modules/icspacket/proto/dnp3/objects/util.html#new_octet_string"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.dnp3.objects.util.new_octet_string" title="Link to this definition">#</a></dt>
 <dd><p>Create a new DNP3 octet string object.</p>
 <p>This function constructs a <code class="xref py py-class docutils literal notranslate"><span class="pre">DNP3Objects</span></code> container holding
 a single octet string object of the given length. By default,
@@ -289,7 +325,7 @@ the length of the input string.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.objects.util.get_octet_string">
-<span class="sig-prename descclassname"><span class="pre">icspacket.proto.dnp3.objects.util.</span></span><span class="sig-name descname"><span class="pre">get_octet_string</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">objects</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="coding.html#icspacket.proto.dnp3.objects.coding.DNP3Objects" title="icspacket.proto.dnp3.objects.coding.DNP3Objects"><span class="pre">DNP3Objects</span></a></span></em>, <em class="sig-param"><span class="positional-only-separator o"><abbr title="Positional-only parameter separator (PEP 570)"><span class="pre">/</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">group_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bytes</span></span></span><a class="reference internal" href="../../../_modules/icspacket/proto/dnp3/objects/util.html#get_octet_string"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.dnp3.objects.util.get_octet_string" title="Link to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">icspacket.proto.dnp3.objects.util.</span></span><span class="sig-name descname"><span class="pre">get_octet_string</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">objects</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="coding.html#icspacket.proto.dnp3.objects.coding.DNP3Objects" title="icspacket.proto.dnp3.objects.coding.DNP3Objects"><span class="pre">DNP3Objects</span></a></span></em>, <em class="sig-param"><span class="positional-only-separator o"><abbr title="Positional-only parameter separator (PEP 570)"><span class="pre">/</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">group_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bytes</span></span></span><a class="reference internal" href="../../../_modules/icspacket/proto/dnp3/objects/util.html#get_octet_string"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.dnp3.objects.util.get_octet_string" title="Link to this definition">#</a></dt>
 <dd><p>Extract the first octet string instance from a DNP3Objects container.</p>
 <p>This function searches the given <code class="xref py py-class docutils literal notranslate"><span class="pre">DNP3Objects</span></code> container
 for an octet string in the specified group (default: 110).
@@ -313,7 +349,7 @@ If found, it returns the first octet string instance.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.objects.util.as_variation0">
-<span class="sig-prename descclassname"><span class="pre">icspacket.proto.dnp3.objects.util.</span></span><span class="sig-name descname"><span class="pre">as_variation0</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">groups</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="coding.html#icspacket.proto.dnp3.objects.coding.DNP3Objects" title="icspacket.proto.dnp3.objects.coding.DNP3Objects"><span class="pre">DNP3Objects</span></a></span></span><a class="reference internal" href="../../../_modules/icspacket/proto/dnp3/objects/util.html#as_variation0"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.dnp3.objects.util.as_variation0" title="Link to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">icspacket.proto.dnp3.objects.util.</span></span><span class="sig-name descname"><span class="pre">as_variation0</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">groups</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="coding.html#icspacket.proto.dnp3.objects.coding.DNP3Objects" title="icspacket.proto.dnp3.objects.coding.DNP3Objects"><span class="pre">DNP3Objects</span></a></span></span><a class="reference internal" href="../../../_modules/icspacket/proto/dnp3/objects/util.html#as_variation0"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.dnp3.objects.util.as_variation0" title="Link to this definition">#</a></dt>
 <dd><p>Construct variation 0 objects for the given groups.</p>
 <p>Variation 0 is a “request all variations” mechanism defined by
 the DNP3 specification. This utility builds a <code class="xref py py-class docutils literal notranslate"><span class="pre">DNP3Objects</span></code>
@@ -333,7 +369,7 @@ container where each requested group contains a variation 0 object.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.objects.util.new_class_data_request">
-<span class="sig-prename descclassname"><span class="pre">icspacket.proto.dnp3.objects.util.</span></span><span class="sig-name descname"><span class="pre">new_class_data_request</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">classes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="coding.html#icspacket.proto.dnp3.objects.coding.DNP3Objects" title="icspacket.proto.dnp3.objects.coding.DNP3Objects"><span class="pre">DNP3Objects</span></a></span></span><a class="reference internal" href="../../../_modules/icspacket/proto/dnp3/objects/util.html#new_class_data_request"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.dnp3.objects.util.new_class_data_request" title="Link to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">icspacket.proto.dnp3.objects.util.</span></span><span class="sig-name descname"><span class="pre">new_class_data_request</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">classes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="coding.html#icspacket.proto.dnp3.objects.coding.DNP3Objects" title="icspacket.proto.dnp3.objects.coding.DNP3Objects"><span class="pre">DNP3Objects</span></a></span></span><a class="reference internal" href="../../../_modules/icspacket/proto/dnp3/objects/util.html#new_class_data_request"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.dnp3.objects.util.new_class_data_request" title="Link to this definition">#</a></dt>
 <dd><p>Construct a DNP3 class data request.</p>
 <p>This function creates a <code class="xref py py-class docutils literal notranslate"><span class="pre">DNP3Objects</span></code> container representing
 a request for event data belonging to the specified DNP3 classes
@@ -396,17 +432,17 @@ a request for event data belonging to the specified DNP3 classes
   </p>
 </div>
       <div class="sy-foot-socials">
-<a href="https://github.com/MatrixEditor/icspacket" aria-label="GitHub">
-  <iconify-icon icon="simple-icons:github"></iconify-icon>
-</a></div>
+  <a href="https://github.com/MatrixEditor/icspacket" aria-label="GitHub">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </a></div>
     </div>
   </div>
 </footer>
-      <script src="../../../_static/documentation_options.js?v=53ae9ec8"></script>
-      <script src="../../../_static/doctools.js?v=9bcbadda"></script>
-      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../../_static/documentation_options.js?v=ded930d6"></script>
+      <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
       <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
       <script src="../../../_static/copybutton.js?v=f281be69"></script>
       <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
-      <script src="../../../_static/shibuya.js?v=e730760c"></script></body>
+      <script src="../../../_static/shibuya.js?v=50760d75"></script></body>
 </html>

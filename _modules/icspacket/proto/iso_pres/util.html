@@ -2,12 +2,12 @@
 <html lang="en" data-accent-color="lime" data-content_root="../../../../">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>icspacket.proto.iso_pres.util - icspacket 0.2.4 documentation</title><link rel="index" title="Index" href="../../../../genindex.html" /><link rel="search" title="Search" href="../../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>icspacket.proto.iso_pres.util - icspacket 0.1.dev1+ga30386068 documentation</title><link rel="index" title="Index" href="../../../../genindex.html" /><link rel="search" title="Search" href="../../../../search.html" />
       <link rel="canonical" href="https://matrixeditor.github.io/icspacket/_modules/icspacket/proto/iso_pres/util.html" /><script>
     function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
     setColorMode(localStorage._theme||"dark");
-  </script><link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=b1a1f93b" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/shibuya.css?v=bb284d7b" />
+  </script><link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=e1a1ceaf" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/shibuya.css?v=2ceb65ce" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link media="print" rel="stylesheet" type="text/css" href="../../../../_static/print.css?v=20ff2c19" />
@@ -20,10 +20,11 @@
   --sy-f-heading: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
 }
 </style>
-    <meta property="og:type" content="website"/>
-<meta property="og:url" content="https://matrixeditor.github.io/icspacket/_modules/icspacket/proto/iso_pres/util.html"/>
-<meta property="og:title" content="icspacket.proto.iso_pres.util"/>
-<meta name="twitter:card" content="summary"/>
+    
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://matrixeditor.github.io/icspacket/_modules/icspacket/proto/iso_pres/util.html"/>
+  <meta property="og:title" content="icspacket.proto.iso_pres.util"/>
+    <meta name="twitter:card" content="summary"/>
   </head>
 <body><div class="sy-head">
   <div class="sy-head-blur"></div>
@@ -241,8 +242,8 @@ data-aria-dark="Switch to auto color mode">
     </div>
   </div>
 </div><div class="flex flex-col break-words justify-between">
-      <div class="min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
-        <article class="yue" role="main">
+      <div class="relative min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
+  <article class="yue" role="main">
           <h1>Source code for icspacket.proto.iso_pres.util</h1><div class="highlight"><pre>
 <span></span><span data-line="1"><span class="c1"># This file is part of icspacket.</span>
 </span><span data-line="2"><span class="c1"># Copyright (C) 2025-present  MatrixEditor @ github</span>
@@ -260,209 +261,314 @@ data-aria-dark="Switch to auto color mode">
 </span><span data-line="14"><span class="c1"># You should have received a copy of the GNU General Public License</span>
 </span><span data-line="15"><span class="c1"># along with this program.  If not, see &lt;https://www.gnu.org/licenses/&gt;.</span>
 </span><span data-line="16"><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span>
-</span><span data-line="17"><span class="kn">from</span><span class="w"> </span><span class="nn">icspacket.proto.iso_pres.iso8823</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
-</span><span data-line="18">    <span class="n">CP_type</span><span class="p">,</span>
-</span><span data-line="19">    <span class="n">Fully_encoded_data</span><span class="p">,</span>
-</span><span data-line="20">    <span class="n">Mode_selector</span><span class="p">,</span>
-</span><span data-line="21">    <span class="n">PDV_list</span><span class="p">,</span>
-</span><span data-line="22">    <span class="n">PresentaionContextItem</span><span class="p">,</span>
-</span><span data-line="23">    <span class="n">Presentation_requirements</span><span class="p">,</span>
-</span><span data-line="24">    <span class="n">Protocol_version</span><span class="p">,</span>
-</span><span data-line="25">    <span class="n">User_data</span><span class="p">,</span>
-</span><span data-line="26">    <span class="n">Called_presentation_selector</span><span class="p">,</span>
-</span><span data-line="27">    <span class="n">Calling_presentation_selector</span><span class="p">,</span>
-</span><span data-line="28"><span class="p">)</span>
-</span><span data-line="29">
+</span><span data-line="17">
+</span><span data-line="18"><span class="kn">from</span><span class="w"> </span><span class="nn">icspacket.proto.iso_pres.iso8823</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+</span><span data-line="19">    <span class="n">Called_presentation_selector</span><span class="p">,</span>
+</span><span data-line="20">    <span class="n">Calling_presentation_selector</span><span class="p">,</span>
+</span><span data-line="21">    <span class="n">CP_type</span><span class="p">,</span>
+</span><span data-line="22">    <span class="n">Fully_encoded_data</span><span class="p">,</span>
+</span><span data-line="23">    <span class="n">Mode_selector</span><span class="p">,</span>
+</span><span data-line="24">    <span class="n">PDV_list</span><span class="p">,</span>
+</span><span data-line="25">    <span class="n">PresentaionContextItem</span><span class="p">,</span>
+</span><span data-line="26">    <span class="n">Presentation_requirements</span><span class="p">,</span>
+</span><span data-line="27">    <span class="n">Protocol_version</span><span class="p">,</span>
+</span><span data-line="28">    <span class="n">User_data</span><span class="p">,</span>
+</span><span data-line="29"><span class="p">)</span>
 </span><span data-line="30">
+</span><span data-line="31">
+</span><span data-line="32"><span class="k">def</span><span class="w"> </span><span class="nf">_asn1_value</span><span class="p">(</span><span class="n">value</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
+</span><span data-line="33">    <span class="k">return</span> <span class="n">value</span><span class="o">.</span><span class="n">value</span> <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">)</span> <span class="k">else</span> <span class="n">value</span>
+</span><span data-line="34">
+</span><span data-line="35">
+<div class="viewcode-block" id="presentation_context_id">
+<a class="viewcode-back" href="../../../../protocols/copp/utils.html#icspacket.proto.iso_pres.util.presentation_context_id">[docs]</a>
+</span><span data-line="36"><span class="k">def</span><span class="w"> </span><span class="nf">presentation_context_id</span><span class="p">(</span><span class="n">item</span><span class="p">:</span> <span class="n">PresentaionContextItem</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+</span><span data-line="37"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the integer presentation context identifier for a context item.&quot;&quot;&quot;</span>
+</span><span data-line="38">    <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">_asn1_value</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">presentation_context_identifier</span><span class="p">))</span></div>
+
+</span><span data-line="39">
+</span><span data-line="40">
+<div class="viewcode-block" id="presentation_context_transfer_syntaxes">
+<a class="viewcode-back" href="../../../../protocols/copp/utils.html#icspacket.proto.iso_pres.util.presentation_context_transfer_syntaxes">[docs]</a>
+</span><span data-line="41"><span class="k">def</span><span class="w"> </span><span class="nf">presentation_context_transfer_syntaxes</span><span class="p">(</span><span class="n">item</span><span class="p">:</span> <span class="n">PresentaionContextItem</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+</span><span data-line="42"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Return transfer syntax object identifiers from a context item.&quot;&quot;&quot;</span>
+</span><span data-line="43">    <span class="k">return</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">_asn1_value</span><span class="p">(</span><span class="n">syntax</span><span class="p">))</span> <span class="k">for</span> <span class="n">syntax</span> <span class="ow">in</span> <span class="n">item</span><span class="o">.</span><span class="n">transfer_syntax_name_list</span><span class="p">]</span></div>
+
+</span><span data-line="44">
+</span><span data-line="45">
+<div class="viewcode-block" id="validate_presentation_context_items">
+<a class="viewcode-back" href="../../../../protocols/copp/utils.html#icspacket.proto.iso_pres.util.validate_presentation_context_items">[docs]</a>
+</span><span data-line="46"><span class="k">def</span><span class="w"> </span><span class="nf">validate_presentation_context_items</span><span class="p">(</span>
+</span><span data-line="47">    <span class="n">pres_context_items</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">PresentaionContextItem</span><span class="p">],</span>
+</span><span data-line="48"><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="49"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Validate client-side CP presentation context definition items.&quot;&quot;&quot;</span>
+</span><span data-line="50">    <span class="n">seen</span><span class="p">:</span> <span class="nb">set</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+</span><span data-line="51">    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">pres_context_items</span><span class="p">:</span>
+</span><span data-line="52">        <span class="n">context_id</span> <span class="o">=</span> <span class="n">presentation_context_id</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+</span><span data-line="53">        <span class="k">if</span> <span class="n">context_id</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+</span><span data-line="54">            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Presentation context identifier must be positive&quot;</span><span class="p">)</span>
+</span><span data-line="55">
+</span><span data-line="56">        <span class="k">if</span> <span class="n">context_id</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+</span><span data-line="57">            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+</span><span data-line="58">                <span class="s2">&quot;Client presentation context identifiers in CP must be odd&quot;</span>
+</span><span data-line="59">            <span class="p">)</span>
+</span><span data-line="60">
+</span><span data-line="61">        <span class="k">if</span> <span class="n">context_id</span> <span class="ow">in</span> <span class="n">seen</span><span class="p">:</span>
+</span><span data-line="62">            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Duplicate presentation context id </span><span class="si">{</span><span class="n">context_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span data-line="63">        <span class="n">seen</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">context_id</span><span class="p">)</span>
+</span><span data-line="64">
+</span><span data-line="65">        <span class="k">if</span> <span class="ow">not</span> <span class="n">presentation_context_transfer_syntaxes</span><span class="p">(</span><span class="n">item</span><span class="p">):</span>
+</span><span data-line="66">            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+</span><span data-line="67">                <span class="sa">f</span><span class="s2">&quot;Presentation context id </span><span class="si">{</span><span class="n">context_id</span><span class="si">}</span><span class="s2"> has no transfer syntaxes&quot;</span>
+</span><span data-line="68">            <span class="p">)</span></div>
+
+</span><span data-line="69">
+</span><span data-line="70">
 <div class="viewcode-block" id="build_connect_ppdu">
 <a class="viewcode-back" href="../../../../protocols/copp/utils.html#icspacket.proto.iso_pres.util.build_connect_ppdu">[docs]</a>
-</span><span data-line="31"><span class="k">def</span><span class="w"> </span><span class="nf">build_connect_ppdu</span><span class="p">(</span>
-</span><span data-line="32">    <span class="n">user_data</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">,</span>
-</span><span data-line="33">    <span class="n">pres_context_id</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span data-line="34">    <span class="o">*</span><span class="p">,</span>
-</span><span data-line="35">    <span class="n">calling_presentation_selector</span><span class="p">:</span> <span class="nb">bytes</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span data-line="36">    <span class="n">called_presentation_selector</span><span class="p">:</span> <span class="nb">bytes</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span data-line="37">    <span class="n">use_version_1</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span data-line="38">    <span class="n">requirements</span><span class="p">:</span> <span class="n">Presentation_requirements</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span data-line="39">    <span class="n">pres_context_items</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">PresentaionContextItem</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span data-line="40"><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CP_type</span><span class="p">:</span>
-</span><span data-line="41"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span data-line="42"><span class="sd">    Construct a ``CP-type`` (CONNECT PPDU) for initiating a COPP session.</span>
-</span><span data-line="43">
-</span><span data-line="44"><span class="sd">    Assembles a presentation-layer connection request including version,</span>
-</span><span data-line="45"><span class="sd">    selectors, requirements, context definitions, and user data (ASN.1 payloads</span>
-</span><span data-line="46"><span class="sd">    wrapped in PDV-lists).</span>
-</span><span data-line="47">
-</span><span data-line="48"><span class="sd">    :param user_data: Encoded ASN.1 payload to embed into</span>
-</span><span data-line="49"><span class="sd">                      the user data field.</span>
-</span><span data-line="50"><span class="sd">    :type user_data: bytes</span>
-</span><span data-line="51"><span class="sd">    :param pres_context_id: Identifier for the presentation context</span>
-</span><span data-line="52"><span class="sd">                            associated with the ``user_data``.</span>
-</span><span data-line="53"><span class="sd">                            Defaults to ``1`` if not provided.</span>
-</span><span data-line="54"><span class="sd">    :type pres_context_id: int | None</span>
-</span><span data-line="55"><span class="sd">    :param calling_presentation_selector: Optional selector identifying</span>
-</span><span data-line="56"><span class="sd">                                          the calling presentation entity.</span>
-</span><span data-line="57"><span class="sd">    :type calling_presentation_selector: bytes | None</span>
-</span><span data-line="58"><span class="sd">    :param called_presentation_selector: Optional selector identifying</span>
-</span><span data-line="59"><span class="sd">                                         the called presentation entity.</span>
-</span><span data-line="60"><span class="sd">    :type called_presentation_selector: bytes | None</span>
-</span><span data-line="61"><span class="sd">    :param use_version_1: If ``True``, explicitly requests version 1</span>
-</span><span data-line="62"><span class="sd">                          of the Presentation protocol.</span>
-</span><span data-line="63"><span class="sd">                          Defaults to ``False`` (version negotiation left open).</span>
-</span><span data-line="64"><span class="sd">    :type use_version_1: bool</span>
-</span><span data-line="65"><span class="sd">    :param requirements: Presentation requirements field. If not set,</span>
-</span><span data-line="66"><span class="sd">                         a default empty ``Presentation_requirements``</span>
-</span><span data-line="67"><span class="sd">                         instance is used.</span>
-</span><span data-line="68"><span class="sd">    :type requirements: Presentation_requirements | None</span>
-</span><span data-line="69"><span class="sd">    :param pres_context_items: Optional list of presentation context</span>
-</span><span data-line="70"><span class="sd">                               definitions (e.g., abstract syntax +</span>
-</span><span data-line="71"><span class="sd">                               transfer syntax pairs).</span>
-</span><span data-line="72"><span class="sd">    :type pres_context_items: list[PresentaionContextItem] | None</span>
-</span><span data-line="73"><span class="sd">    :return: A fully-formed ``CP-type`` connect PDU.</span>
-</span><span data-line="74"><span class="sd">    :rtype: CP_type</span>
-</span><span data-line="75">
-</span><span data-line="76"><span class="sd">    .. note::</span>
-</span><span data-line="77"><span class="sd">       This constructs only a ``normal-mode`` connect PDU.</span>
-</span><span data-line="78"><span class="sd">       X.226 also defines other connection modes and negotiation</span>
-</span><span data-line="79"><span class="sd">       structures that may be added in future extensions.</span>
-</span><span data-line="80"><span class="sd">    &quot;&quot;&quot;</span>
-</span><span data-line="81">    <span class="n">ppdu</span> <span class="o">=</span> <span class="n">CP_type</span><span class="p">()</span>
-</span><span data-line="82">
-</span><span data-line="83">    <span class="c1"># normal mode supported</span>
-</span><span data-line="84">    <span class="n">mode_selector</span> <span class="o">=</span> <span class="n">Mode_selector</span><span class="p">()</span>
-</span><span data-line="85">    <span class="n">mode_selector</span><span class="o">.</span><span class="n">mode_value</span> <span class="o">=</span> <span class="n">Mode_selector</span><span class="o">.</span><span class="n">mode_value_VALUES</span><span class="o">.</span><span class="n">V_normal_mode</span>
-</span><span data-line="86">    <span class="n">ppdu</span><span class="o">.</span><span class="n">mode_selector</span> <span class="o">=</span> <span class="n">mode_selector</span>
+</span><span data-line="71"><span class="k">def</span><span class="w"> </span><span class="nf">build_connect_ppdu</span><span class="p">(</span>
+</span><span data-line="72">    <span class="n">user_data</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">,</span>
+</span><span data-line="73">    <span class="n">pres_context_id</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span data-line="74">    <span class="o">*</span><span class="p">,</span>
+</span><span data-line="75">    <span class="n">calling_presentation_selector</span><span class="p">:</span> <span class="nb">bytes</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span data-line="76">    <span class="n">called_presentation_selector</span><span class="p">:</span> <span class="nb">bytes</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span data-line="77">    <span class="n">use_version_1</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span data-line="78">    <span class="n">requirements</span><span class="p">:</span> <span class="n">Presentation_requirements</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span data-line="79">    <span class="n">pres_context_items</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">PresentaionContextItem</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span data-line="80"><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CP_type</span><span class="p">:</span>
+</span><span data-line="81"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="82"><span class="sd">    Construct a ``CP-type`` (CONNECT PPDU) for initiating a COPP session.</span>
+</span><span data-line="83">
+</span><span data-line="84"><span class="sd">    Assembles a presentation-layer connection request including version,</span>
+</span><span data-line="85"><span class="sd">    selectors, requirements, context definitions, and user data (ASN.1 payloads</span>
+</span><span data-line="86"><span class="sd">    wrapped in PDV-lists).</span>
 </span><span data-line="87">
-</span><span data-line="88">    <span class="n">parameters</span> <span class="o">=</span> <span class="n">CP_type</span><span class="o">.</span><span class="n">normal_mode_parameters_TYPE</span><span class="p">()</span>
-</span><span data-line="89">    <span class="k">if</span> <span class="n">use_version_1</span><span class="p">:</span>
-</span><span data-line="90">        <span class="n">version</span> <span class="o">=</span> <span class="n">Protocol_version</span><span class="p">()</span>
-</span><span data-line="91">        <span class="n">version</span><span class="o">.</span><span class="n">V_version_1</span> <span class="o">=</span> <span class="kc">True</span>
-</span><span data-line="92">        <span class="n">parameters</span><span class="o">.</span><span class="n">protocol_version</span> <span class="o">=</span> <span class="n">version</span>
-</span><span data-line="93">
-</span><span data-line="94">    <span class="k">if</span> <span class="n">called_presentation_selector</span><span class="p">:</span>
-</span><span data-line="95">        <span class="n">parameters</span><span class="o">.</span><span class="n">called_presentation_selector</span> <span class="o">=</span> <span class="n">Called_presentation_selector</span><span class="p">(</span>
-</span><span data-line="96">            <span class="n">called_presentation_selector</span>
-</span><span data-line="97">        <span class="p">)</span>
-</span><span data-line="98">
-</span><span data-line="99">    <span class="k">if</span> <span class="n">calling_presentation_selector</span><span class="p">:</span>
-</span><span data-line="100">        <span class="n">parameters</span><span class="o">.</span><span class="n">calling_presentation_selector</span> <span class="o">=</span> <span class="n">Calling_presentation_selector</span><span class="p">(</span>
-</span><span data-line="101">            <span class="n">calling_presentation_selector</span>
-</span><span data-line="102">        <span class="p">)</span>
-</span><span data-line="103">
-</span><span data-line="104">    <span class="k">if</span> <span class="n">pres_context_items</span><span class="p">:</span>
-</span><span data-line="105">        <span class="n">parameters</span><span class="o">.</span><span class="n">presentation_context_definition_list</span> <span class="o">=</span> <span class="n">pres_context_items</span>
-</span><span data-line="106">
-</span><span data-line="107">    <span class="k">if</span> <span class="ow">not</span> <span class="n">requirements</span><span class="p">:</span>
-</span><span data-line="108">        <span class="n">requirements</span> <span class="o">=</span> <span class="n">Presentation_requirements</span><span class="p">()</span>
-</span><span data-line="109">
-</span><span data-line="110">    <span class="n">parameters</span><span class="o">.</span><span class="n">presentation_requirements</span> <span class="o">=</span> <span class="n">requirements</span>
-</span><span data-line="111">
-</span><span data-line="112">    <span class="n">parameters</span><span class="o">.</span><span class="n">user_data</span> <span class="o">=</span> <span class="n">build_user_data</span><span class="p">(</span>
-</span><span data-line="113">        <span class="n">user_data</span><span class="p">,</span> <span class="n">presentation_context_id</span><span class="o">=</span><span class="n">pres_context_id</span> <span class="ow">or</span> <span class="mi">1</span>
-</span><span data-line="114">    <span class="p">)</span>
-</span><span data-line="115">    <span class="n">ppdu</span><span class="o">.</span><span class="n">normal_mode_parameters</span> <span class="o">=</span> <span class="n">parameters</span>
-</span><span data-line="116">    <span class="k">return</span> <span class="n">ppdu</span></div>
+</span><span data-line="88"><span class="sd">    :param user_data: Encoded ASN.1 payload to embed into</span>
+</span><span data-line="89"><span class="sd">                      the user data field.</span>
+</span><span data-line="90"><span class="sd">    :type user_data: bytes</span>
+</span><span data-line="91"><span class="sd">    :param pres_context_id: Identifier for the presentation context</span>
+</span><span data-line="92"><span class="sd">                            associated with the ``user_data``.</span>
+</span><span data-line="93"><span class="sd">                            Defaults to ``1`` if not provided.</span>
+</span><span data-line="94"><span class="sd">    :type pres_context_id: int | None</span>
+</span><span data-line="95"><span class="sd">    :param calling_presentation_selector: Optional selector identifying</span>
+</span><span data-line="96"><span class="sd">                                          the calling presentation entity.</span>
+</span><span data-line="97"><span class="sd">    :type calling_presentation_selector: bytes | None</span>
+</span><span data-line="98"><span class="sd">    :param called_presentation_selector: Optional selector identifying</span>
+</span><span data-line="99"><span class="sd">                                         the called presentation entity.</span>
+</span><span data-line="100"><span class="sd">    :type called_presentation_selector: bytes | None</span>
+</span><span data-line="101"><span class="sd">    :param use_version_1: If ``True``, explicitly requests version 1</span>
+</span><span data-line="102"><span class="sd">                          of the Presentation protocol.</span>
+</span><span data-line="103"><span class="sd">                          Defaults to ``False`` (version negotiation left open).</span>
+</span><span data-line="104"><span class="sd">    :type use_version_1: bool</span>
+</span><span data-line="105"><span class="sd">    :param requirements: Presentation requirements field. If not set,</span>
+</span><span data-line="106"><span class="sd">                         a default empty ``Presentation_requirements``</span>
+</span><span data-line="107"><span class="sd">                         instance is used.</span>
+</span><span data-line="108"><span class="sd">    :type requirements: Presentation_requirements | None</span>
+</span><span data-line="109"><span class="sd">    :param pres_context_items: Optional list of presentation context</span>
+</span><span data-line="110"><span class="sd">                               definitions (e.g., abstract syntax +</span>
+</span><span data-line="111"><span class="sd">                               transfer syntax pairs).</span>
+</span><span data-line="112"><span class="sd">    :type pres_context_items: list[PresentaionContextItem] | None</span>
+</span><span data-line="113"><span class="sd">    :return: A fully-formed ``CP-type`` connect PDU.</span>
+</span><span data-line="114"><span class="sd">    :rtype: CP_type</span>
+</span><span data-line="115">
+</span><span data-line="116"><span class="sd">    .. note::</span>
+</span><span data-line="117"><span class="sd">       This constructs only a ``normal-mode`` connect PDU.</span>
+</span><span data-line="118"><span class="sd">       X.226 also defines other connection modes and negotiation</span>
+</span><span data-line="119"><span class="sd">       structures that may be added in future extensions.</span>
+</span><span data-line="120"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span data-line="121">    <span class="n">ppdu</span> <span class="o">=</span> <span class="n">CP_type</span><span class="p">()</span>
+</span><span data-line="122">
+</span><span data-line="123">    <span class="c1"># normal mode supported</span>
+</span><span data-line="124">    <span class="n">mode_selector</span> <span class="o">=</span> <span class="n">Mode_selector</span><span class="p">()</span>
+</span><span data-line="125">    <span class="n">mode_selector</span><span class="o">.</span><span class="n">mode_value</span> <span class="o">=</span> <span class="n">Mode_selector</span><span class="o">.</span><span class="n">mode_value_VALUES</span><span class="o">.</span><span class="n">V_normal_mode</span>
+</span><span data-line="126">    <span class="n">ppdu</span><span class="o">.</span><span class="n">mode_selector</span> <span class="o">=</span> <span class="n">mode_selector</span>
+</span><span data-line="127">
+</span><span data-line="128">    <span class="n">parameters</span> <span class="o">=</span> <span class="n">CP_type</span><span class="o">.</span><span class="n">normal_mode_parameters_TYPE</span><span class="p">()</span>
+</span><span data-line="129">    <span class="k">if</span> <span class="n">use_version_1</span><span class="p">:</span>
+</span><span data-line="130">        <span class="n">version</span> <span class="o">=</span> <span class="n">Protocol_version</span><span class="p">()</span>
+</span><span data-line="131">        <span class="n">version</span><span class="o">.</span><span class="n">V_version_1</span> <span class="o">=</span> <span class="kc">True</span>
+</span><span data-line="132">        <span class="n">parameters</span><span class="o">.</span><span class="n">protocol_version</span> <span class="o">=</span> <span class="n">version</span>
+</span><span data-line="133">
+</span><span data-line="134">    <span class="k">if</span> <span class="n">called_presentation_selector</span><span class="p">:</span>
+</span><span data-line="135">        <span class="n">parameters</span><span class="o">.</span><span class="n">called_presentation_selector</span> <span class="o">=</span> <span class="n">Called_presentation_selector</span><span class="p">(</span>
+</span><span data-line="136">            <span class="n">called_presentation_selector</span>
+</span><span data-line="137">        <span class="p">)</span>
+</span><span data-line="138">
+</span><span data-line="139">    <span class="k">if</span> <span class="n">calling_presentation_selector</span><span class="p">:</span>
+</span><span data-line="140">        <span class="n">parameters</span><span class="o">.</span><span class="n">calling_presentation_selector</span> <span class="o">=</span> <span class="n">Calling_presentation_selector</span><span class="p">(</span>
+</span><span data-line="141">            <span class="n">calling_presentation_selector</span>
+</span><span data-line="142">        <span class="p">)</span>
+</span><span data-line="143">
+</span><span data-line="144">    <span class="n">context_items</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">pres_context_items</span> <span class="ow">or</span> <span class="p">[])</span>
+</span><span data-line="145">    <span class="k">if</span> <span class="n">context_items</span><span class="p">:</span>
+</span><span data-line="146">        <span class="n">validate_presentation_context_items</span><span class="p">(</span><span class="n">context_items</span><span class="p">)</span>
+</span><span data-line="147">        <span class="n">parameters</span><span class="o">.</span><span class="n">presentation_context_definition_list</span> <span class="o">=</span> <span class="n">context_items</span>
+</span><span data-line="148">
+</span><span data-line="149">    <span class="k">if</span> <span class="ow">not</span> <span class="n">requirements</span><span class="p">:</span>
+</span><span data-line="150">        <span class="n">requirements</span> <span class="o">=</span> <span class="n">Presentation_requirements</span><span class="p">()</span>
+</span><span data-line="151">
+</span><span data-line="152">    <span class="n">parameters</span><span class="o">.</span><span class="n">presentation_requirements</span> <span class="o">=</span> <span class="n">requirements</span>
+</span><span data-line="153">
+</span><span data-line="154">    <span class="k">if</span> <span class="n">context_items</span><span class="p">:</span>
+</span><span data-line="155">        <span class="n">context_by_id</span> <span class="o">=</span> <span class="p">{</span><span class="n">presentation_context_id</span><span class="p">(</span><span class="n">item</span><span class="p">):</span> <span class="n">item</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">context_items</span><span class="p">}</span>
+</span><span data-line="156">        <span class="n">user_context_id</span> <span class="o">=</span> <span class="p">(</span>
+</span><span data-line="157">            <span class="n">pres_context_id</span>
+</span><span data-line="158">            <span class="k">if</span> <span class="n">pres_context_id</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+</span><span data-line="159">            <span class="k">else</span> <span class="n">presentation_context_id</span><span class="p">(</span><span class="n">context_items</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</span><span data-line="160">        <span class="p">)</span>
+</span><span data-line="161">        <span class="k">if</span> <span class="n">user_context_id</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">context_by_id</span><span class="p">:</span>
+</span><span data-line="162">            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+</span><span data-line="163">                <span class="sa">f</span><span class="s2">&quot;User data references unknown presentation context id </span><span class="si">{</span><span class="n">user_context_id</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span data-line="164">            <span class="p">)</span>
+</span><span data-line="165">
+</span><span data-line="166">        <span class="n">transfer_syntax_name</span> <span class="o">=</span> <span class="kc">None</span>
+</span><span data-line="167">        <span class="n">transfer_syntaxes</span> <span class="o">=</span> <span class="n">presentation_context_transfer_syntaxes</span><span class="p">(</span>
+</span><span data-line="168">            <span class="n">context_by_id</span><span class="p">[</span><span class="n">user_context_id</span><span class="p">]</span>
+</span><span data-line="169">        <span class="p">)</span>
+</span><span data-line="170">        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">transfer_syntaxes</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+</span><span data-line="171">            <span class="n">transfer_syntax_name</span> <span class="o">=</span> <span class="n">transfer_syntaxes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</span><span data-line="172">
+</span><span data-line="173">        <span class="n">parameters</span><span class="o">.</span><span class="n">user_data</span> <span class="o">=</span> <span class="n">build_user_data</span><span class="p">(</span>
+</span><span data-line="174">            <span class="n">user_data</span><span class="p">,</span>
+</span><span data-line="175">            <span class="n">presentation_context_id</span><span class="o">=</span><span class="n">user_context_id</span><span class="p">,</span>
+</span><span data-line="176">            <span class="n">transfer_syntax_name</span><span class="o">=</span><span class="n">transfer_syntax_name</span><span class="p">,</span>
+</span><span data-line="177">        <span class="p">)</span>
+</span><span data-line="178">    <span class="k">else</span><span class="p">:</span>
+</span><span data-line="179">        <span class="n">parameters</span><span class="o">.</span><span class="n">user_data</span> <span class="o">=</span> <span class="n">build_x410_user_data</span><span class="p">(</span><span class="n">user_data</span><span class="p">)</span>
+</span><span data-line="180">
+</span><span data-line="181">    <span class="n">ppdu</span><span class="o">.</span><span class="n">normal_mode_parameters</span> <span class="o">=</span> <span class="n">parameters</span>
+</span><span data-line="182">    <span class="k">return</span> <span class="n">ppdu</span></div>
 
-</span><span data-line="117">
-</span><span data-line="118">
+</span><span data-line="183">
+</span><span data-line="184">
 <div class="viewcode-block" id="build_user_data">
 <a class="viewcode-back" href="../../../../protocols/copp/utils.html#icspacket.proto.iso_pres.util.build_user_data">[docs]</a>
-</span><span data-line="119"><span class="k">def</span><span class="w"> </span><span class="nf">build_user_data</span><span class="p">(</span>
-</span><span data-line="120">    <span class="n">user_data</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">,</span>
-</span><span data-line="121">    <span class="n">presentation_context_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
-</span><span data-line="122"><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">User_data</span><span class="p">:</span>
-</span><span data-line="123"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span data-line="124"><span class="sd">    Build a ``User_data`` structure wrapping raw ASN.1 data.</span>
-</span><span data-line="125">
-</span><span data-line="126"><span class="sd">    This creates a ``PDV-list`` entry with the given presentation</span>
-</span><span data-line="127"><span class="sd">    context identifier, assigning the payload as a</span>
-</span><span data-line="128"><span class="sd">    ``single-ASN1-type``.</span>
-</span><span data-line="129">
-</span><span data-line="130"><span class="sd">    :param user_data: Encoded ASN.1 payload to embed.</span>
-</span><span data-line="131"><span class="sd">    :type user_data: bytes</span>
-</span><span data-line="132"><span class="sd">    :param presentation_context_id: Identifier for the presentation</span>
-</span><span data-line="133"><span class="sd">                                    context under which the payload</span>
-</span><span data-line="134"><span class="sd">                                    is interpreted.</span>
-</span><span data-line="135"><span class="sd">    :type presentation_context_id: int</span>
-</span><span data-line="136"><span class="sd">    :return: A ``User_data`` element containing fully encoded data.</span>
-</span><span data-line="137"><span class="sd">    :rtype: User_data</span>
-</span><span data-line="138">
-</span><span data-line="139"><span class="sd">    .. note::</span>
-</span><span data-line="140"><span class="sd">       This helper assumes **single ASN.1 type** encoding.</span>
-</span><span data-line="141"><span class="sd">       If multiple PDVs or different encodings (octet-aligned,</span>
-</span><span data-line="142"><span class="sd">       arbitrary) are needed, the construction must be extended.</span>
-</span><span data-line="143"><span class="sd">    &quot;&quot;&quot;</span>
-</span><span data-line="144">    <span class="n">pdv_list</span> <span class="o">=</span> <span class="n">PDV_list</span><span class="p">()</span>
-</span><span data-line="145">    <span class="n">pdv_list</span><span class="o">.</span><span class="n">presentation_context_identifier</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">presentation_context_id</span>
-</span><span data-line="146">    <span class="n">pdv_list</span><span class="o">.</span><span class="n">presentation_data_values</span><span class="o">.</span><span class="n">single_ASN1_type</span> <span class="o">=</span> <span class="n">user_data</span>
-</span><span data-line="147">
-</span><span data-line="148">    <span class="n">data</span> <span class="o">=</span> <span class="n">User_data</span><span class="p">()</span>
-</span><span data-line="149">    <span class="n">fully_encoded_data</span> <span class="o">=</span> <span class="n">Fully_encoded_data</span><span class="p">()</span>
-</span><span data-line="150">    <span class="n">fully_encoded_data</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">pdv_list</span><span class="p">)</span>
-</span><span data-line="151">    <span class="n">data</span><span class="o">.</span><span class="n">fully_encoded_data</span> <span class="o">=</span> <span class="n">fully_encoded_data</span>
-</span><span data-line="152">    <span class="k">return</span> <span class="n">data</span></div>
+</span><span data-line="185"><span class="k">def</span><span class="w"> </span><span class="nf">build_user_data</span><span class="p">(</span>
+</span><span data-line="186">    <span class="n">user_data</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">,</span>
+</span><span data-line="187">    <span class="n">presentation_context_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+</span><span data-line="188">    <span class="n">transfer_syntax_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span data-line="189"><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">User_data</span><span class="p">:</span>
+</span><span data-line="190"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="191"><span class="sd">    Build a ``User_data`` structure wrapping raw ASN.1 data.</span>
+</span><span data-line="192">
+</span><span data-line="193"><span class="sd">    This creates a ``PDV-list`` entry with the given presentation</span>
+</span><span data-line="194"><span class="sd">    context identifier, assigning the payload as a</span>
+</span><span data-line="195"><span class="sd">    ``single-ASN1-type``.</span>
+</span><span data-line="196">
+</span><span data-line="197"><span class="sd">    :param user_data: Encoded ASN.1 payload to embed.</span>
+</span><span data-line="198"><span class="sd">    :type user_data: bytes</span>
+</span><span data-line="199"><span class="sd">    :param presentation_context_id: Identifier for the presentation</span>
+</span><span data-line="200"><span class="sd">                                    context under which the payload</span>
+</span><span data-line="201"><span class="sd">                                    is interpreted.</span>
+</span><span data-line="202"><span class="sd">    :type presentation_context_id: int</span>
+</span><span data-line="203"><span class="sd">    :param transfer_syntax_name: Name of the transfer syntax to record in the</span>
+</span><span data-line="204"><span class="sd">                                 PDV list entry. It is optional in general,</span>
+</span><span data-line="205"><span class="sd">                                 but this library still supplies it, according to X.226,</span>
+</span><span data-line="206"><span class="sd">                                 whenever the referenced context originally offered more</span>
+</span><span data-line="207"><span class="sd">                                 than one transfer syntax for a CP&#39;s user data, so the</span>
+</span><span data-line="208"><span class="sd">                                 decoder knows which one was actually chosen.</span>
+</span><span data-line="209"><span class="sd">    :type transfer_syntax_name: str | None</span>
+</span><span data-line="210"><span class="sd">    :return: A ``User_data`` element containing fully encoded data.</span>
+</span><span data-line="211"><span class="sd">    :rtype: User_data</span>
+</span><span data-line="212">
+</span><span data-line="213"><span class="sd">    .. note::</span>
+</span><span data-line="214"><span class="sd">       This helper assumes **single ASN.1 type** encoding.</span>
+</span><span data-line="215"><span class="sd">       If multiple PDVs or different encodings (octet-aligned,</span>
+</span><span data-line="216"><span class="sd">       arbitrary) are needed, the construction must be extended.</span>
+</span><span data-line="217"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span data-line="218">    <span class="k">if</span> <span class="n">presentation_context_id</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+</span><span data-line="219">        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Presentation context identifier must be positive&quot;</span><span class="p">)</span>
+</span><span data-line="220">
+</span><span data-line="221">    <span class="n">pdv_list</span> <span class="o">=</span> <span class="n">PDV_list</span><span class="p">()</span>
+</span><span data-line="222">    <span class="n">pdv_list</span><span class="o">.</span><span class="n">presentation_context_identifier</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">presentation_context_id</span>
+</span><span data-line="223">    <span class="k">if</span> <span class="n">transfer_syntax_name</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="224">        <span class="n">pdv_list</span><span class="o">.</span><span class="n">transfer_syntax_name</span> <span class="o">=</span> <span class="n">transfer_syntax_name</span>
+</span><span data-line="225">    <span class="n">pdv_list</span><span class="o">.</span><span class="n">presentation_data_values</span><span class="o">.</span><span class="n">single_ASN1_type</span> <span class="o">=</span> <span class="n">user_data</span>
+</span><span data-line="226">
+</span><span data-line="227">    <span class="n">data</span> <span class="o">=</span> <span class="n">User_data</span><span class="p">()</span>
+</span><span data-line="228">    <span class="n">fully_encoded_data</span> <span class="o">=</span> <span class="n">Fully_encoded_data</span><span class="p">()</span>
+</span><span data-line="229">    <span class="n">fully_encoded_data</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">pdv_list</span><span class="p">)</span>
+</span><span data-line="230">    <span class="n">data</span><span class="o">.</span><span class="n">fully_encoded_data</span> <span class="o">=</span> <span class="n">fully_encoded_data</span>
+</span><span data-line="231">    <span class="k">return</span> <span class="n">data</span></div>
 
-</span><span data-line="153">
-</span><span data-line="154">
+</span><span data-line="232">
+</span><span data-line="233">
+<div class="viewcode-block" id="build_x410_user_data">
+<a class="viewcode-back" href="../../../../protocols/copp/utils.html#icspacket.proto.iso_pres.util.build_x410_user_data">[docs]</a>
+</span><span data-line="234"><span class="k">def</span><span class="w"> </span><span class="nf">build_x410_user_data</span><span class="p">(</span><span class="n">user_data</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">User_data</span><span class="p">:</span>
+</span><span data-line="235"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="236"><span class="sd">    Build X.410-1984 mode user data.</span>
+</span><span data-line="237">
+</span><span data-line="238"><span class="sd">    Used for ACSE APCI exchanged in X.410-1984 mode, a mode that has no</span>
+</span><span data-line="239"><span class="sd">    concept of presentation context identifiers; the payload is therefore</span>
+</span><span data-line="240"><span class="sd">    stored as plain &quot;simply encoded data&quot; instead of being wrapped in a</span>
+</span><span data-line="241"><span class="sd">    PDV-list like :func:`build_user_data` does.</span>
+</span><span data-line="242"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span data-line="243">    <span class="n">data</span> <span class="o">=</span> <span class="n">User_data</span><span class="p">()</span>
+</span><span data-line="244">    <span class="n">data</span><span class="o">.</span><span class="n">simply_encoded_data</span> <span class="o">=</span> <span class="n">user_data</span>
+</span><span data-line="245">    <span class="k">return</span> <span class="n">data</span></div>
+
+</span><span data-line="246">
+</span><span data-line="247">
 <div class="viewcode-block" id="user_data_get_single_asn1">
 <a class="viewcode-back" href="../../../../protocols/copp/utils.html#icspacket.proto.iso_pres.util.user_data_get_single_asn1">[docs]</a>
-</span><span data-line="155"><span class="k">def</span><span class="w"> </span><span class="nf">user_data_get_single_asn1</span><span class="p">(</span>
-</span><span data-line="156">    <span class="n">user_data</span><span class="p">:</span> <span class="n">User_data</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">type</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
-</span><span data-line="157"><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
-</span><span data-line="158"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span data-line="159"><span class="sd">    Extract and decode a single ASN.1 object from ``User_data``.</span>
-</span><span data-line="160">
-</span><span data-line="161"><span class="sd">    Validates that the input is fully encoded, contains exactly</span>
-</span><span data-line="162"><span class="sd">    one ``PDV-list``, and that the encoding is of type</span>
-</span><span data-line="163"><span class="sd">    ``single-ASN1-type``. The payload is then decoded using the</span>
-</span><span data-line="164"><span class="sd">    ASN.1 class mapped to the presentation context identifier.</span>
-</span><span data-line="165">
-</span><span data-line="166"><span class="sd">    :param user_data: The presentation user data structure to inspect.</span>
-</span><span data-line="167"><span class="sd">    :type user_data: User_data</span>
-</span><span data-line="168"><span class="sd">    :param context: Mapping of presentation context identifiers to</span>
-</span><span data-line="169"><span class="sd">                    ASN.1 classes that implement a ``ber_decode`` method.</span>
-</span><span data-line="170"><span class="sd">                    If not provided, defaults to an empty map (error</span>
-</span><span data-line="171"><span class="sd">                    if lookup fails).</span>
-</span><span data-line="172"><span class="sd">    :type context: dict[int, type[Any]] | None</span>
-</span><span data-line="173"><span class="sd">    :raises ValueError: If the data is not fully encoded,</span>
-</span><span data-line="174"><span class="sd">                        contains multiple PDVs,</span>
-</span><span data-line="175"><span class="sd">                        has an unexpected data type,</span>
-</span><span data-line="176"><span class="sd">                        or references an unknown context id.</span>
-</span><span data-line="177"><span class="sd">    :return: The decoded ASN.1 object.</span>
-</span><span data-line="178"><span class="sd">    :rtype: Any</span>
-</span><span data-line="179">
-</span><span data-line="180"><span class="sd">    .. warning::</span>
-</span><span data-line="181"><span class="sd">       This function assumes that the ``context`` dictionary</span>
-</span><span data-line="182"><span class="sd">       correctly maps presentation context identifiers to</span>
-</span><span data-line="183"><span class="sd">       decodable ASN.1 types. Incorrect mappings may lead to</span>
-</span><span data-line="184"><span class="sd">       misinterpretation of payloads.</span>
-</span><span data-line="185"><span class="sd">    &quot;&quot;&quot;</span>
-</span><span data-line="186">    <span class="n">pres_context</span> <span class="o">=</span> <span class="n">context</span> <span class="ow">or</span> <span class="p">{}</span>
-</span><span data-line="187">    <span class="k">if</span> <span class="n">user_data</span><span class="o">.</span><span class="n">present</span> <span class="o">!=</span> <span class="n">User_data</span><span class="o">.</span><span class="n">PRESENT</span><span class="o">.</span><span class="n">PR_fully_encoded_data</span><span class="p">:</span>
-</span><span data-line="188">        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Expected fully encoded data&quot;</span><span class="p">)</span>
-</span><span data-line="189">
-</span><span data-line="190">    <span class="n">encoded_data</span> <span class="o">=</span> <span class="n">user_data</span><span class="o">.</span><span class="n">fully_encoded_data</span>
-</span><span data-line="191">    <span class="k">assert</span> <span class="n">encoded_data</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>  <span class="c1"># MUST be present</span>
-</span><span data-line="192">
-</span><span data-line="193">    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">encoded_data</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
-</span><span data-line="194">        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Expected a single PDV list in fully encoded data&quot;</span><span class="p">)</span>
-</span><span data-line="195">
-</span><span data-line="196">    <span class="n">pdv_list</span> <span class="o">=</span> <span class="n">encoded_data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-</span><span data-line="197">    <span class="k">if</span> <span class="n">pdv_list</span><span class="o">.</span><span class="n">presentation_context_identifier</span><span class="o">.</span><span class="n">value</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">pres_context</span><span class="p">:</span>
-</span><span data-line="198">        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-</span><span data-line="199">            <span class="sa">f</span><span class="s2">&quot;Unknown presentation context id </span><span class="si">{</span><span class="n">pdv_list</span><span class="o">.</span><span class="n">presentation_context_identifier</span><span class="o">.</span><span class="n">value</span><span class="si">}</span><span class="s2">&quot;</span>
-</span><span data-line="200">        <span class="p">)</span>
-</span><span data-line="201">
-</span><span data-line="202">    <span class="k">if</span> <span class="p">(</span>
-</span><span data-line="203">        <span class="n">pdv_list</span><span class="o">.</span><span class="n">presentation_data_values</span><span class="o">.</span><span class="n">present</span>
-</span><span data-line="204">        <span class="o">!=</span> <span class="n">PDV_list</span><span class="o">.</span><span class="n">presentation_data_values_TYPE</span><span class="o">.</span><span class="n">PRESENT</span><span class="o">.</span><span class="n">PR_single_ASN1_type</span>
-</span><span data-line="205">    <span class="p">):</span>
-</span><span data-line="206">        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-</span><span data-line="207">            <span class="sa">f</span><span class="s2">&quot;Expected single ASN1 type, got </span><span class="si">{</span><span class="n">pdv_list</span><span class="o">.</span><span class="n">presentation_data_values</span><span class="o">.</span><span class="n">present</span><span class="si">}</span><span class="s2">&quot;</span>
-</span><span data-line="208">        <span class="p">)</span>
-</span><span data-line="209">
-</span><span data-line="210">    <span class="n">asn1_cls</span> <span class="o">=</span> <span class="n">pres_context</span><span class="p">[</span><span class="n">pdv_list</span><span class="o">.</span><span class="n">presentation_context_identifier</span><span class="o">.</span><span class="n">value</span><span class="p">]</span>
-</span><span data-line="211">    <span class="k">return</span> <span class="n">asn1_cls</span><span class="o">.</span><span class="n">ber_decode</span><span class="p">(</span><span class="n">pdv_list</span><span class="o">.</span><span class="n">presentation_data_values</span><span class="o">.</span><span class="n">single_ASN1_type</span><span class="p">)</span></div>
+</span><span data-line="248"><span class="k">def</span><span class="w"> </span><span class="nf">user_data_get_single_asn1</span><span class="p">(</span>
+</span><span data-line="249">    <span class="n">user_data</span><span class="p">:</span> <span class="n">User_data</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">type</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+</span><span data-line="250"><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
+</span><span data-line="251"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="252"><span class="sd">    Extract and decode a single ASN.1 object from ``User_data``.</span>
+</span><span data-line="253">
+</span><span data-line="254"><span class="sd">    Validates that the input is fully encoded, contains exactly</span>
+</span><span data-line="255"><span class="sd">    one ``PDV-list``, and that the encoding is of type</span>
+</span><span data-line="256"><span class="sd">    ``single-ASN1-type``. The payload is then decoded using the</span>
+</span><span data-line="257"><span class="sd">    ASN.1 class mapped to the presentation context identifier.</span>
+</span><span data-line="258">
+</span><span data-line="259"><span class="sd">    :param user_data: The presentation user data structure to inspect.</span>
+</span><span data-line="260"><span class="sd">    :type user_data: User_data</span>
+</span><span data-line="261"><span class="sd">    :param context: Mapping of presentation context identifiers to</span>
+</span><span data-line="262"><span class="sd">                    ASN.1 classes that implement a ``ber_decode`` method.</span>
+</span><span data-line="263"><span class="sd">                    If not provided, defaults to an empty map (error</span>
+</span><span data-line="264"><span class="sd">                    if lookup fails).</span>
+</span><span data-line="265"><span class="sd">    :type context: dict[int, type[Any]] | None</span>
+</span><span data-line="266"><span class="sd">    :raises ValueError: If the data is not fully encoded,</span>
+</span><span data-line="267"><span class="sd">                        contains multiple PDVs,</span>
+</span><span data-line="268"><span class="sd">                        has an unexpected data type,</span>
+</span><span data-line="269"><span class="sd">                        or references an unknown context id.</span>
+</span><span data-line="270"><span class="sd">    :return: The decoded ASN.1 object.</span>
+</span><span data-line="271"><span class="sd">    :rtype: Any</span>
+</span><span data-line="272">
+</span><span data-line="273"><span class="sd">    .. warning::</span>
+</span><span data-line="274"><span class="sd">       This function assumes that the ``context`` dictionary</span>
+</span><span data-line="275"><span class="sd">       correctly maps presentation context identifiers to</span>
+</span><span data-line="276"><span class="sd">       decodable ASN.1 types. Incorrect mappings may lead to</span>
+</span><span data-line="277"><span class="sd">       misinterpretation of payloads.</span>
+</span><span data-line="278"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span data-line="279">    <span class="n">pres_context</span> <span class="o">=</span> <span class="n">context</span> <span class="ow">or</span> <span class="p">{}</span>
+</span><span data-line="280">    <span class="k">if</span> <span class="n">user_data</span><span class="o">.</span><span class="n">present</span> <span class="o">!=</span> <span class="n">User_data</span><span class="o">.</span><span class="n">PRESENT</span><span class="o">.</span><span class="n">PR_fully_encoded_data</span><span class="p">:</span>
+</span><span data-line="281">        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Expected fully encoded data&quot;</span><span class="p">)</span>
+</span><span data-line="282">
+</span><span data-line="283">    <span class="n">encoded_data</span> <span class="o">=</span> <span class="n">user_data</span><span class="o">.</span><span class="n">fully_encoded_data</span>
+</span><span data-line="284">    <span class="k">assert</span> <span class="n">encoded_data</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>  <span class="c1"># MUST be present</span>
+</span><span data-line="285">
+</span><span data-line="286">    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">encoded_data</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
+</span><span data-line="287">        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Expected a single PDV list in fully encoded data&quot;</span><span class="p">)</span>
+</span><span data-line="288">
+</span><span data-line="289">    <span class="n">pdv_list</span> <span class="o">=</span> <span class="n">encoded_data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</span><span data-line="290">    <span class="k">if</span> <span class="n">pdv_list</span><span class="o">.</span><span class="n">presentation_context_identifier</span><span class="o">.</span><span class="n">value</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">pres_context</span><span class="p">:</span>
+</span><span data-line="291">        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+</span><span data-line="292">            <span class="sa">f</span><span class="s2">&quot;Unknown presentation context id </span><span class="si">{</span><span class="n">pdv_list</span><span class="o">.</span><span class="n">presentation_context_identifier</span><span class="o">.</span><span class="n">value</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span data-line="293">        <span class="p">)</span>
+</span><span data-line="294">
+</span><span data-line="295">    <span class="k">if</span> <span class="p">(</span>
+</span><span data-line="296">        <span class="n">pdv_list</span><span class="o">.</span><span class="n">presentation_data_values</span><span class="o">.</span><span class="n">present</span>
+</span><span data-line="297">        <span class="o">!=</span> <span class="n">PDV_list</span><span class="o">.</span><span class="n">presentation_data_values_TYPE</span><span class="o">.</span><span class="n">PRESENT</span><span class="o">.</span><span class="n">PR_single_ASN1_type</span>
+</span><span data-line="298">    <span class="p">):</span>
+</span><span data-line="299">        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+</span><span data-line="300">            <span class="sa">f</span><span class="s2">&quot;Expected single ASN1 type, got </span><span class="si">{</span><span class="n">pdv_list</span><span class="o">.</span><span class="n">presentation_data_values</span><span class="o">.</span><span class="n">present</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span data-line="301">        <span class="p">)</span>
+</span><span data-line="302">
+</span><span data-line="303">    <span class="n">asn1_cls</span> <span class="o">=</span> <span class="n">pres_context</span><span class="p">[</span><span class="n">pdv_list</span><span class="o">.</span><span class="n">presentation_context_identifier</span><span class="o">.</span><span class="n">value</span><span class="p">]</span>
+</span><span data-line="304">    <span class="k">return</span> <span class="n">asn1_cls</span><span class="o">.</span><span class="n">ber_decode</span><span class="p">(</span><span class="n">pdv_list</span><span class="o">.</span><span class="n">presentation_data_values</span><span class="o">.</span><span class="n">single_ASN1_type</span><span class="p">)</span></div>
 
 </span></pre></div>
         </article><button class="back-to-top" type="button">
@@ -488,17 +594,17 @@ data-aria-dark="Switch to auto color mode">
   </p>
 </div>
       <div class="sy-foot-socials">
-<a href="https://github.com/MatrixEditor/icspacket" aria-label="GitHub">
-  <iconify-icon icon="simple-icons:github"></iconify-icon>
-</a></div>
+  <a href="https://github.com/MatrixEditor/icspacket" aria-label="GitHub">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </a></div>
     </div>
   </div>
 </footer>
-      <script src="../../../../_static/documentation_options.js?v=53ae9ec8"></script>
-      <script src="../../../../_static/doctools.js?v=9bcbadda"></script>
-      <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../../../_static/documentation_options.js?v=ded930d6"></script>
+      <script src="../../../../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
       <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
       <script src="../../../../_static/copybutton.js?v=f281be69"></script>
       <script src="../../../../_static/design-tabs.js?v=f930bc37"></script>
-      <script src="../../../../_static/shibuya.js?v=e730760c"></script></body>
+      <script src="../../../../_static/shibuya.js?v=50760d75"></script></body>
 </html>

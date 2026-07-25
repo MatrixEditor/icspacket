@@ -2,12 +2,12 @@
 <html lang="en" data-accent-color="lime" data-content_root="../../../">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Primitive Types - icspacket 0.2.4 documentation</title><link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" /><link rel="next" title="Encoding / Decoding" href="coding.html" /><link rel="prev" title="Object Library" href="object_library.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Primitive Types - icspacket 0.1.dev1+ga30386068 documentation</title><link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" /><link rel="next" title="Encoding / Decoding" href="coding.html" /><link rel="prev" title="Object Library" href="object_library.html" />
       <link rel="canonical" href="https://matrixeditor.github.io/icspacket/protocols/dnp3/api/primitives.html" /><script>
     function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
     setColorMode(localStorage._theme||"dark");
-  </script><link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b1a1f93b" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/shibuya.css?v=bb284d7b" />
+  </script><link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=e1a1ceaf" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/shibuya.css?v=2ceb65ce" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link media="print" rel="stylesheet" type="text/css" href="../../../_static/print.css?v=20ff2c19" />
@@ -20,10 +20,11 @@
   --sy-f-heading: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
 }
 </style>
-    <meta property="og:type" content="website"/>
-<meta property="og:url" content="https://matrixeditor.github.io/icspacket/protocols/dnp3/api/primitives.html"/>
-<meta property="og:title" content="Primitive Types"/>
-<meta name="twitter:card" content="summary"/>
+    
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://matrixeditor.github.io/icspacket/protocols/dnp3/api/primitives.html"/>
+  <meta property="og:title" content="Primitive Types"/>
+    <meta name="twitter:card" content="summary"/>
   </head>
 <body><div class="sy-head">
   <div class="sy-head-blur"></div>
@@ -204,16 +205,16 @@ data-aria-dark="Switch to auto color mode">
 <li><a class="reference internal" href="#icspacket.proto.dnp3.objects.primitive.FLT32"><code class="docutils literal notranslate"><span class="pre">FLT32</span></code></a></li>
 <li><a class="reference internal" href="#icspacket.proto.dnp3.objects.primitive.FLT64"><code class="docutils literal notranslate"><span class="pre">FLT64</span></code></a></li>
 <li><a class="reference internal" href="#icspacket.proto.dnp3.objects.primitive.BCD"><code class="docutils literal notranslate"><span class="pre">BCD</span></code></a><ul>
-<li><a class="reference internal" href="#icspacket.proto.dnp3.objects.primitive.BCD.decode"><code class="docutils literal notranslate">decode()</span></code></a></li>
-<li><a class="reference internal" href="#icspacket.proto.dnp3.objects.primitive.BCD.encode"><code class="docutils literal notranslate">encode()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.dnp3.objects.primitive.BCD.decode"><code class="docutils literal notranslate"><span class="pre">BCD.decode()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.dnp3.objects.primitive.BCD.encode"><code class="docutils literal notranslate"><span class="pre">BCD.encode()</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#icspacket.proto.dnp3.objects.primitive.BSTRn"><code class="docutils literal notranslate"><span class="pre">BSTRn</span></code></a><ul>
-<li><a class="reference internal" href="#icspacket.proto.dnp3.objects.primitive.BSTRn.count"><code class="docutils literal notranslate">count()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.dnp3.objects.primitive.BSTRn.count"><code class="docutils literal notranslate"><span class="pre">BSTRn.count()</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#icspacket.proto.dnp3.objects.primitive.DBSTRn"><code class="docutils literal notranslate"><span class="pre">DBSTRn</span></code></a><ul>
-<li><a class="reference internal" href="#icspacket.proto.dnp3.objects.primitive.DBSTRn.count"><code class="docutils literal notranslate">count()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.dnp3.objects.primitive.DBSTRn.count"><code class="docutils literal notranslate"><span class="pre">DBSTRn.count()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -272,10 +273,45 @@ data-aria-dark="Switch to auto color mode">
     </div>
   </div>
 </div><div class="flex flex-col break-words justify-between">
-      <div class="min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
-        <article class="yue" role="main">
+      <div class="relative min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
+  <div class="copy-page-wrapper relative pb-4 lg:absolute lg:top-8 lg:right-6 xl:right-12">
+  <div id="copy-page-trigger">
+    <button
+      type="button"
+      class="js-copy px-3 py-1 inline-flex items-center gap-1"
+      data-url="https://raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/protocols/dnp3/api/primitives.rst"
+    >
+      <i class="i-lucide" data-icon="copy"></i>
+      <span>Copy page</span>
+    </button>
+    <button class="js-menu px-2 py-1" type="button" aria-label="More actions"
+      aria-haspopup="menu" aria-expanded="false" aria-controls="copy-page-content">
+      <i class="i-lucide chevron-down"></i>
+    </button>
+  </div>
+  <div id="copy-page-content" role="menu" aria-orientation="vertical" aria-hidden="true">
+    <div role="presentation">
+      <div class="flex flex-col" role="group">
+        <button class="js-copy" type="button" role="menuitem"
+          data-url="https://raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/protocols/dnp3/api/primitives.rst">
+          <span class="iconify-icon">
+            <i class="i-lucide" data-icon="copy"></i>
+          </span>
+          <span>Copy page</span>
+        </button>
+        <a role="menuitem" href="https://raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/protocols/dnp3/api/primitives.rst" target="_blank" rel="nofollow"><iconify-icon icon="bi:code-slash"></iconify-icon>
+            <span>View Source</span></a><a role="menuitem" href="https://chatgpt.com/?hints=search&q=Read%20https%3A//raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/protocols/dnp3/api/primitives.rst%20so%20I%20can%20ask%20questions%20about%20it." target="_blank" rel="nofollow">
+          <iconify-icon icon="bi:openai"></iconify-icon>
+          <span>Open in ChatGPT</span>
+        </a><a role="menuitem" href="https://claude.ai/new?q=Read%20https%3A//raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/protocols/dnp3/api/primitives.rst%20so%20I%20can%20ask%20questions%20about%20it." target="_blank" rel="nofollow">
+          <iconify-icon icon="bi:claude"></iconify-icon>
+          <span>Open in Claude</span>
+        </a></div>
+    </div>
+  </div>
+</div><article class="yue" role="main">
           <section id="module-icspacket.proto.dnp3.objects.primitive">
-<span id="primitive-types"></span><span id="dnp3-obj-lib-primitives"></span><h1>Primitive Types<a class="headerlink" href="#module-icspacket.proto.dnp3.objects.primitive" title="Link to this heading">¶</a></h1>
+<span id="primitive-types"></span><span id="dnp3-obj-lib-primitives"></span><h1>Primitive Types<a class="headerlink" href="#module-icspacket.proto.dnp3.objects.primitive" title="Link to this heading">#</a></h1>
 <p>Primitive data types and bit string representations used in the DNP3 object library.</p>
 <p>This module defines the canonical mappings between DNP3’s primitive object
 types and Python equivalents (e.g., UINT8, INT32, FLT32). It also includes
@@ -295,67 +331,67 @@ when parsing or constructing DNP3 Application Layer objects.</p>
 </div>
 <dl class="py data">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.objects.primitive.UINT8">
-<span class="sig-prename descclassname"><span class="pre">icspacket.proto.dnp3.objects.primitive.</span></span><span class="sig-name descname"><span class="pre">UINT8</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;int8&gt;</span></em><a class="headerlink" href="#icspacket.proto.dnp3.objects.primitive.UINT8" title="Link to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">icspacket.proto.dnp3.objects.primitive.</span></span><span class="sig-name descname"><span class="pre">UINT8</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;int8&gt;</span></span><a class="headerlink" href="#icspacket.proto.dnp3.objects.primitive.UINT8" title="Link to this definition">#</a></dt>
 <dd><p>8-bit unsigned integer.</p>
 </dd></dl>
 
 <dl class="py data">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.objects.primitive.UINT16">
-<span class="sig-prename descclassname"><span class="pre">icspacket.proto.dnp3.objects.primitive.</span></span><span class="sig-name descname"><span class="pre">UINT16</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;int16&gt;</span></em><a class="headerlink" href="#icspacket.proto.dnp3.objects.primitive.UINT16" title="Link to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">icspacket.proto.dnp3.objects.primitive.</span></span><span class="sig-name descname"><span class="pre">UINT16</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;int16&gt;</span></span><a class="headerlink" href="#icspacket.proto.dnp3.objects.primitive.UINT16" title="Link to this definition">#</a></dt>
 <dd><p>16-bit unsigned integer.</p>
 </dd></dl>
 
 <dl class="py data">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.objects.primitive.UINT24">
-<span class="sig-prename descclassname"><span class="pre">icspacket.proto.dnp3.objects.primitive.</span></span><span class="sig-name descname"><span class="pre">UINT24</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;uint24&gt;</span></em><a class="headerlink" href="#icspacket.proto.dnp3.objects.primitive.UINT24" title="Link to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">icspacket.proto.dnp3.objects.primitive.</span></span><span class="sig-name descname"><span class="pre">UINT24</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;uint24&gt;</span></span><a class="headerlink" href="#icspacket.proto.dnp3.objects.primitive.UINT24" title="Link to this definition">#</a></dt>
 <dd><p>24-bit unsigned integer.</p>
 </dd></dl>
 
 <dl class="py data">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.objects.primitive.UINT32">
-<span class="sig-prename descclassname"><span class="pre">icspacket.proto.dnp3.objects.primitive.</span></span><span class="sig-name descname"><span class="pre">UINT32</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;int32&gt;</span></em><a class="headerlink" href="#icspacket.proto.dnp3.objects.primitive.UINT32" title="Link to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">icspacket.proto.dnp3.objects.primitive.</span></span><span class="sig-name descname"><span class="pre">UINT32</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;int32&gt;</span></span><a class="headerlink" href="#icspacket.proto.dnp3.objects.primitive.UINT32" title="Link to this definition">#</a></dt>
 <dd><p>32-bit unsigned integer.</p>
 </dd></dl>
 
 <dl class="py data">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.objects.primitive.INT16">
-<span class="sig-prename descclassname"><span class="pre">icspacket.proto.dnp3.objects.primitive.</span></span><span class="sig-name descname"><span class="pre">INT16</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;int16&gt;</span></em><a class="headerlink" href="#icspacket.proto.dnp3.objects.primitive.INT16" title="Link to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">icspacket.proto.dnp3.objects.primitive.</span></span><span class="sig-name descname"><span class="pre">INT16</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;int16&gt;</span></span><a class="headerlink" href="#icspacket.proto.dnp3.objects.primitive.INT16" title="Link to this definition">#</a></dt>
 <dd><p>16-bit signed integer.</p>
 </dd></dl>
 
 <dl class="py data">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.objects.primitive.INT32">
-<span class="sig-prename descclassname"><span class="pre">icspacket.proto.dnp3.objects.primitive.</span></span><span class="sig-name descname"><span class="pre">INT32</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;int32&gt;</span></em><a class="headerlink" href="#icspacket.proto.dnp3.objects.primitive.INT32" title="Link to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">icspacket.proto.dnp3.objects.primitive.</span></span><span class="sig-name descname"><span class="pre">INT32</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;int32&gt;</span></span><a class="headerlink" href="#icspacket.proto.dnp3.objects.primitive.INT32" title="Link to this definition">#</a></dt>
 <dd><p>32-bit signed integer.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.objects.primitive.VSTR">
-<span class="sig-prename descclassname"><span class="pre">icspacket.proto.dnp3.objects.primitive.</span></span><span class="sig-name descname"><span class="pre">VSTR</span></span><a class="headerlink" href="#icspacket.proto.dnp3.objects.primitive.VSTR" title="Link to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">icspacket.proto.dnp3.objects.primitive.</span></span><span class="sig-name descname"><span class="pre">VSTR</span></span><a class="headerlink" href="#icspacket.proto.dnp3.objects.primitive.VSTR" title="Link to this definition">#</a></dt>
 <dd><p>Variable-length string.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.objects.primitive.OSTR">
-<span class="sig-prename descclassname"><span class="pre">icspacket.proto.dnp3.objects.primitive.</span></span><span class="sig-name descname"><span class="pre">OSTR</span></span><a class="headerlink" href="#icspacket.proto.dnp3.objects.primitive.OSTR" title="Link to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">icspacket.proto.dnp3.objects.primitive.</span></span><span class="sig-name descname"><span class="pre">OSTR</span></span><a class="headerlink" href="#icspacket.proto.dnp3.objects.primitive.OSTR" title="Link to this definition">#</a></dt>
 <dd><p>Octet string (arbitrary-length byte sequence).</p>
 </dd></dl>
 
 <dl class="py data">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.objects.primitive.FLT32">
-<span class="sig-prename descclassname"><span class="pre">icspacket.proto.dnp3.objects.primitive.</span></span><span class="sig-name descname"><span class="pre">FLT32</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;float32&gt;</span></em><a class="headerlink" href="#icspacket.proto.dnp3.objects.primitive.FLT32" title="Link to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">icspacket.proto.dnp3.objects.primitive.</span></span><span class="sig-name descname"><span class="pre">FLT32</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;float32&gt;</span></span><a class="headerlink" href="#icspacket.proto.dnp3.objects.primitive.FLT32" title="Link to this definition">#</a></dt>
 <dd><p>32-bit IEEE-754 floating point.</p>
 </dd></dl>
 
 <dl class="py data">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.objects.primitive.FLT64">
-<span class="sig-prename descclassname"><span class="pre">icspacket.proto.dnp3.objects.primitive.</span></span><span class="sig-name descname"><span class="pre">FLT64</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;float64&gt;</span></em><a class="headerlink" href="#icspacket.proto.dnp3.objects.primitive.FLT64" title="Link to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">icspacket.proto.dnp3.objects.primitive.</span></span><span class="sig-name descname"><span class="pre">FLT64</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;float64&gt;</span></span><a class="headerlink" href="#icspacket.proto.dnp3.objects.primitive.FLT64" title="Link to this definition">#</a></dt>
 <dd><p>64-bit IEEE-754 floating point.</p>
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.objects.primitive.BCD">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">icspacket.proto.dnp3.objects.primitive.</span></span><span class="sig-name descname"><span class="pre">BCD</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">count</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/icspacket/proto/dnp3/objects/primitive.html#BCD"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.dnp3.objects.primitive.BCD" title="Link to this definition">¶</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">icspacket.proto.dnp3.objects.primitive.</span></span><span class="sig-name descname"><span class="pre">BCD</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">count</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/icspacket/proto/dnp3/objects/primitive.html#BCD"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.dnp3.objects.primitive.BCD" title="Link to this definition">#</a></dt>
 <dd><p>Binary-coded decimal (BCD) type.</p>
 <p>Implements DNP3 section 11.3.6: <em>Binary-coded decimal values use the notation
 BCDn, where ``n`` represents the number of BCD characters. For example,
@@ -364,7 +400,7 @@ BCDn, where ``n`` represents the number of BCD characters. For example,
 into a single byte in little-endian order.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.objects.primitive.BCD.decode">
-<span class="sig-name descname"><span class="pre">decode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parsed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bytes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">context</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../../../_modules/icspacket/proto/dnp3/objects/primitive.html#BCD.decode"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.dnp3.objects.primitive.BCD.decode" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">decode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parsed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bytes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">context</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../../../_modules/icspacket/proto/dnp3/objects/primitive.html#BCD.decode"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.dnp3.objects.primitive.BCD.decode" title="Link to this definition">#</a></dt>
 <dd><p>Encode a string of decimal digits into BCD bytes.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -385,7 +421,7 @@ to represent a nibble value of 10.</p></li>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.objects.primitive.BCD.encode">
-<span class="sig-name descname"><span class="pre">encode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">context</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bytes</span></span></span><a class="reference internal" href="../../../_modules/icspacket/proto/dnp3/objects/primitive.html#BCD.encode"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.dnp3.objects.primitive.BCD.encode" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">encode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">context</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bytes</span></span></span><a class="reference internal" href="../../../_modules/icspacket/proto/dnp3/objects/primitive.html#BCD.encode"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.dnp3.objects.primitive.BCD.encode" title="Link to this definition">#</a></dt>
 <dd><p>Encode data using the wrapped _StructLike object.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -404,7 +440,7 @@ to represent a nibble value of 10.</p></li>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.objects.primitive.BSTRn">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">icspacket.proto.dnp3.objects.primitive.</span></span><span class="sig-name descname"><span class="pre">BSTRn</span></span><a class="reference internal" href="../../../_modules/icspacket/proto/dnp3/objects/primitive.html#BSTRn"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.dnp3.objects.primitive.BSTRn" title="Link to this definition">¶</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">icspacket.proto.dnp3.objects.primitive.</span></span><span class="sig-name descname"><span class="pre">BSTRn</span></span><a class="reference internal" href="../../../_modules/icspacket/proto/dnp3/objects/primitive.html#BSTRn"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.dnp3.objects.primitive.BSTRn" title="Link to this definition">#</a></dt>
 <dd><p>Packed bit string (BSTRn) representation.</p>
 <p>This class implements the parsing and serialization of packed bit
 strings used in DNP3 objects. Each bit encodes a boolean value,
@@ -415,7 +451,7 @@ When unpacked, it is represented as a <code class="xref py py-class docutils lit
 with little-endian ordering.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.objects.primitive.BSTRn.count">
-<span class="sig-name descname"><span class="pre">count</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bitarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="../../../_modules/icspacket/proto/dnp3/objects/primitive.html#BSTRn.count"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.dnp3.objects.primitive.BSTRn.count" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">count</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bitarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="../../../_modules/icspacket/proto/dnp3/objects/primitive.html#BSTRn.count"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.dnp3.objects.primitive.BSTRn.count" title="Link to this definition">#</a></dt>
 <dd><p>Return the number of bits in the given bit string.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -434,7 +470,7 @@ with little-endian ordering.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.objects.primitive.DBSTRn">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">icspacket.proto.dnp3.objects.primitive.</span></span><span class="sig-name descname"><span class="pre">DBSTRn</span></span><a class="reference internal" href="../../../_modules/icspacket/proto/dnp3/objects/primitive.html#DBSTRn"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.dnp3.objects.primitive.DBSTRn" title="Link to this definition">¶</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">icspacket.proto.dnp3.objects.primitive.</span></span><span class="sig-name descname"><span class="pre">DBSTRn</span></span><a class="reference internal" href="../../../_modules/icspacket/proto/dnp3/objects/primitive.html#DBSTRn"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.dnp3.objects.primitive.DBSTRn" title="Link to this definition">#</a></dt>
 <dd><p>Double-bit string (DBSTRn) representation.</p>
 <p>This class implements parsing and serialization of double-bit
 strings, where each pair of bits encodes a state. For example:</p>
@@ -448,7 +484,7 @@ strings, where each pair of bits encodes a state. For example:</p>
 <p>Internally, unpacked values are represented as lists of integers.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.objects.primitive.DBSTRn.count">
-<span class="sig-name descname"><span class="pre">count</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="../../../_modules/icspacket/proto/dnp3/objects/primitive.html#DBSTRn.count"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.dnp3.objects.primitive.DBSTRn.count" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">count</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="../../../_modules/icspacket/proto/dnp3/objects/primitive.html#DBSTRn.count"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.dnp3.objects.primitive.DBSTRn.count" title="Link to this definition">#</a></dt>
 <dd><p>Return the number of double-bit values in the list.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -504,17 +540,17 @@ strings, where each pair of bits encodes a state. For example:</p>
   </p>
 </div>
       <div class="sy-foot-socials">
-<a href="https://github.com/MatrixEditor/icspacket" aria-label="GitHub">
-  <iconify-icon icon="simple-icons:github"></iconify-icon>
-</a></div>
+  <a href="https://github.com/MatrixEditor/icspacket" aria-label="GitHub">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </a></div>
     </div>
   </div>
 </footer>
-      <script src="../../../_static/documentation_options.js?v=53ae9ec8"></script>
-      <script src="../../../_static/doctools.js?v=9bcbadda"></script>
-      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../../_static/documentation_options.js?v=ded930d6"></script>
+      <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
       <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
       <script src="../../../_static/copybutton.js?v=f281be69"></script>
       <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
-      <script src="../../../_static/shibuya.js?v=e730760c"></script></body>
+      <script src="../../../_static/shibuya.js?v=50760d75"></script></body>
 </html>

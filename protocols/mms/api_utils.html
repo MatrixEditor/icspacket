@@ -2,12 +2,12 @@
 <html lang="en" data-accent-color="lime" data-content_root="../../">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Protocol Utilities - icspacket 0.2.4 documentation</title><link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="API Reference" href="../acse/api.html" /><link rel="prev" title="Data Conversion" href="api_data.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Protocol Utilities - icspacket 0.1.dev1+ga30386068 documentation</title><link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="API Reference" href="../acse/api.html" /><link rel="prev" title="Data Conversion" href="api_data.html" />
       <link rel="canonical" href="https://matrixeditor.github.io/icspacket/protocols/mms/api_utils.html" /><script>
     function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
     setColorMode(localStorage._theme||"dark");
-  </script><link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b1a1f93b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/shibuya.css?v=bb284d7b" />
+  </script><link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=e1a1ceaf" />
+    <link rel="stylesheet" type="text/css" href="../../_static/shibuya.css?v=2ceb65ce" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link media="print" rel="stylesheet" type="text/css" href="../../_static/print.css?v=20ff2c19" />
@@ -20,10 +20,11 @@
   --sy-f-heading: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
 }
 </style>
-    <meta property="og:type" content="website"/>
-<meta property="og:url" content="https://matrixeditor.github.io/icspacket/protocols/mms/api_utils.html"/>
-<meta property="og:title" content="Protocol Utilities"/>
-<meta name="twitter:card" content="summary"/>
+    
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://matrixeditor.github.io/icspacket/protocols/mms/api_utils.html"/>
+  <meta property="og:title" content="Protocol Utilities"/>
+    <meta name="twitter:card" content="summary"/>
   </head>
 <body><div class="sy-head">
   <div class="sy-head-blur"></div>
@@ -260,61 +261,96 @@ data-aria-dark="Switch to auto color mode">
     </div>
   </div>
 </div><div class="flex flex-col break-words justify-between">
-      <div class="min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
-        <article class="yue" role="main">
+      <div class="relative min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
+  <div class="copy-page-wrapper relative pb-4 lg:absolute lg:top-8 lg:right-6 xl:right-12">
+  <div id="copy-page-trigger">
+    <button
+      type="button"
+      class="js-copy px-3 py-1 inline-flex items-center gap-1"
+      data-url="https://raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/protocols/mms/api_utils.rst"
+    >
+      <i class="i-lucide" data-icon="copy"></i>
+      <span>Copy page</span>
+    </button>
+    <button class="js-menu px-2 py-1" type="button" aria-label="More actions"
+      aria-haspopup="menu" aria-expanded="false" aria-controls="copy-page-content">
+      <i class="i-lucide chevron-down"></i>
+    </button>
+  </div>
+  <div id="copy-page-content" role="menu" aria-orientation="vertical" aria-hidden="true">
+    <div role="presentation">
+      <div class="flex flex-col" role="group">
+        <button class="js-copy" type="button" role="menuitem"
+          data-url="https://raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/protocols/mms/api_utils.rst">
+          <span class="iconify-icon">
+            <i class="i-lucide" data-icon="copy"></i>
+          </span>
+          <span>Copy page</span>
+        </button>
+        <a role="menuitem" href="https://raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/protocols/mms/api_utils.rst" target="_blank" rel="nofollow"><iconify-icon icon="bi:code-slash"></iconify-icon>
+            <span>View Source</span></a><a role="menuitem" href="https://chatgpt.com/?hints=search&q=Read%20https%3A//raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/protocols/mms/api_utils.rst%20so%20I%20can%20ask%20questions%20about%20it." target="_blank" rel="nofollow">
+          <iconify-icon icon="bi:openai"></iconify-icon>
+          <span>Open in ChatGPT</span>
+        </a><a role="menuitem" href="https://claude.ai/new?q=Read%20https%3A//raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/protocols/mms/api_utils.rst%20so%20I%20can%20ask%20questions%20about%20it." target="_blank" rel="nofollow">
+          <iconify-icon icon="bi:claude"></iconify-icon>
+          <span>Open in Claude</span>
+        </a></div>
+    </div>
+  </div>
+</div><article class="yue" role="main">
           <section id="module-icspacket.proto.mms.util">
-<span id="protocol-utilities"></span><span id="api-mms-utils"></span><h1>Protocol Utilities<a class="headerlink" href="#module-icspacket.proto.mms.util" title="Link to this heading">¶</a></h1>
+<span id="protocol-utilities"></span><span id="api-mms-utils"></span><h1>Protocol Utilities<a class="headerlink" href="#module-icspacket.proto.mms.util" title="Link to this heading">#</a></h1>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.mms.util.BasicObjectClassType">
-<span class="sig-prename descclassname"><span class="pre">icspacket.proto.mms.util.</span></span><span class="sig-name descname"><span class="pre">BasicObjectClassType</span></span><a class="headerlink" href="#icspacket.proto.mms.util.BasicObjectClassType" title="Link to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">icspacket.proto.mms.util.</span></span><span class="sig-name descname"><span class="pre">BasicObjectClassType</span></span><a class="headerlink" href="#icspacket.proto.mms.util.BasicObjectClassType" title="Link to this definition">#</a></dt>
 <dd><p>Alias for the MMS <code class="docutils literal notranslate"><span class="pre">ObjectClass.basicObjectClass</span></code> enumeration values.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.mms.util.DomainSpecificName">
-<span class="sig-prename descclassname"><span class="pre">icspacket.proto.mms.util.</span></span><span class="sig-name descname"><span class="pre">DomainSpecificName</span></span><a class="headerlink" href="#icspacket.proto.mms.util.DomainSpecificName" title="Link to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">icspacket.proto.mms.util.</span></span><span class="sig-name descname"><span class="pre">DomainSpecificName</span></span><a class="headerlink" href="#icspacket.proto.mms.util.DomainSpecificName" title="Link to this definition">#</a></dt>
 <dd><p>Alias for the MMS <code class="docutils literal notranslate"><span class="pre">ObjectName.domain-specific</span></code> choice type.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.mms.util.ObjectScope">
-<span class="sig-prename descclassname"><span class="pre">icspacket.proto.mms.util.</span></span><span class="sig-name descname"><span class="pre">ObjectScope</span></span><a class="headerlink" href="#icspacket.proto.mms.util.ObjectScope" title="Link to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">icspacket.proto.mms.util.</span></span><span class="sig-name descname"><span class="pre">ObjectScope</span></span><a class="headerlink" href="#icspacket.proto.mms.util.ObjectScope" title="Link to this definition">#</a></dt>
 <dd><p>Alias for the MMS <code class="docutils literal notranslate"><span class="pre">GetNameList-Request.objectScope</span></code> type.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.mms.util.VariableAccessItem">
-<span class="sig-prename descclassname"><span class="pre">icspacket.proto.mms.util.</span></span><span class="sig-name descname"><span class="pre">VariableAccessItem</span></span><a class="headerlink" href="#icspacket.proto.mms.util.VariableAccessItem" title="Link to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">icspacket.proto.mms.util.</span></span><span class="sig-name descname"><span class="pre">VariableAccessItem</span></span><a class="headerlink" href="#icspacket.proto.mms.util.VariableAccessItem" title="Link to this definition">#</a></dt>
 <dd><p>Alias for the MMS <code class="docutils literal notranslate"><span class="pre">VariableAccessSpecification.listOfVariable.Member</span></code> type.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.mms.util.NamedVariableSpecificationItem">
-<span class="sig-prename descclassname"><span class="pre">icspacket.proto.mms.util.</span></span><span class="sig-name descname"><span class="pre">NamedVariableSpecificationItem</span></span><a class="headerlink" href="#icspacket.proto.mms.util.NamedVariableSpecificationItem" title="Link to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">icspacket.proto.mms.util.</span></span><span class="sig-name descname"><span class="pre">NamedVariableSpecificationItem</span></span><a class="headerlink" href="#icspacket.proto.mms.util.NamedVariableSpecificationItem" title="Link to this definition">#</a></dt>
 <dd><p>Alias for the MMS <code class="docutils literal notranslate"><span class="pre">VariableAccessSpecification.listOfVariable.Member</span></code> type.</p>
 </dd></dl>
 
 <dl class="py data">
 <dt class="sig sig-object py" id="icspacket.proto.mms.util.DEFAULT_MAX_CALLED">
-<span class="sig-prename descclassname"><span class="pre">icspacket.proto.mms.util.</span></span><span class="sig-name descname"><span class="pre">DEFAULT_MAX_CALLED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">10</span></em><a class="headerlink" href="#icspacket.proto.mms.util.DEFAULT_MAX_CALLED" title="Link to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">icspacket.proto.mms.util.</span></span><span class="sig-name descname"><span class="pre">DEFAULT_MAX_CALLED</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">10</span></span><a class="headerlink" href="#icspacket.proto.mms.util.DEFAULT_MAX_CALLED" title="Link to this definition">#</a></dt>
 <dd><p>Default value for <code class="docutils literal notranslate"><span class="pre">proposedMaxServOutstandingCalled</span></code> in an Initiate-Request.</p>
 </dd></dl>
 
 <dl class="py data">
 <dt class="sig sig-object py" id="icspacket.proto.mms.util.DEFAULT_MAX_CALLING">
-<span class="sig-prename descclassname"><span class="pre">icspacket.proto.mms.util.</span></span><span class="sig-name descname"><span class="pre">DEFAULT_MAX_CALLING</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">10</span></em><a class="headerlink" href="#icspacket.proto.mms.util.DEFAULT_MAX_CALLING" title="Link to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">icspacket.proto.mms.util.</span></span><span class="sig-name descname"><span class="pre">DEFAULT_MAX_CALLING</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">10</span></span><a class="headerlink" href="#icspacket.proto.mms.util.DEFAULT_MAX_CALLING" title="Link to this definition">#</a></dt>
 <dd><p>Default value for <code class="docutils literal notranslate"><span class="pre">proposedMaxServOutstandingCalling</span></code> in an Initiate-Request.</p>
 </dd></dl>
 
 <dl class="py data">
 <dt class="sig sig-object py" id="icspacket.proto.mms.util.DEFAULT_MAX_DATA_NESTING_DEPTH">
-<span class="sig-prename descclassname"><span class="pre">icspacket.proto.mms.util.</span></span><span class="sig-name descname"><span class="pre">DEFAULT_MAX_DATA_NESTING_DEPTH</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">10</span></em><a class="headerlink" href="#icspacket.proto.mms.util.DEFAULT_MAX_DATA_NESTING_DEPTH" title="Link to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">icspacket.proto.mms.util.</span></span><span class="sig-name descname"><span class="pre">DEFAULT_MAX_DATA_NESTING_DEPTH</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">10</span></span><a class="headerlink" href="#icspacket.proto.mms.util.DEFAULT_MAX_DATA_NESTING_DEPTH" title="Link to this definition">#</a></dt>
 <dd><p>Default value for <code class="docutils literal notranslate"><span class="pre">proposedDataStructureNestingLevel</span></code> in an Initiate-Request.</p>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="icspacket.proto.mms.util.new_initiate_request">
-<span class="sig-prename descclassname"><span class="pre">icspacket.proto.mms.util.</span></span><span class="sig-name descname"><span class="pre">new_initiate_request</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">local_detail_calling</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_serv_outstanding_called</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_serv_outstanding_calling</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_nesting_depth</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version_number</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">options</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ServiceSupportOptions</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Initiate_RequestPDU</span></span></span><a class="reference internal" href="../../_modules/icspacket/proto/mms/util.html#new_initiate_request"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.mms.util.new_initiate_request" title="Link to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">icspacket.proto.mms.util.</span></span><span class="sig-name descname"><span class="pre">new_initiate_request</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">local_detail_calling</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_serv_outstanding_called</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_serv_outstanding_calling</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_nesting_depth</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version_number</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">options</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ServiceSupportOptions</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Initiate_RequestPDU</span></span></span><a class="reference internal" href="../../_modules/icspacket/proto/mms/util.html#new_initiate_request"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.mms.util.new_initiate_request" title="Link to this definition">#</a></dt>
 <dd><p>Build a new MMS <code class="docutils literal notranslate"><span class="pre">Initiate-RequestPDU</span></code>.</p>
 <p>This utility simplifies construction of the Initiate Service
 defined in <strong>ISO 9506-1, §8.2</strong>.</p>
@@ -357,7 +393,7 @@ If not provided, defaults to the return value of
 
 <dl class="py function">
 <dt class="sig sig-object py" id="icspacket.proto.mms.util.default_support_options">
-<span class="sig-prename descclassname"><span class="pre">icspacket.proto.mms.util.</span></span><span class="sig-name descname"><span class="pre">default_support_options</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ServiceSupportOptions</span></span></span><a class="reference internal" href="../../_modules/icspacket/proto/mms/util.html#default_support_options"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.mms.util.default_support_options" title="Link to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">icspacket.proto.mms.util.</span></span><span class="sig-name descname"><span class="pre">default_support_options</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ServiceSupportOptions</span></span></span><a class="reference internal" href="../../_modules/icspacket/proto/mms/util.html#default_support_options"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.mms.util.default_support_options" title="Link to this definition">#</a></dt>
 <dd><p>Return a default set of MMS service support options.</p>
 <p>This function enables a calling MMS-user to quickly declare support
 for a representative set of services, without manually toggling each
@@ -383,11 +419,11 @@ option. The defaults include:</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="icspacket.proto.mms.util.basic_object_class">
-<span class="sig-prename descclassname"><span class="pre">icspacket.proto.mms.util.</span></span><span class="sig-name descname"><span class="pre">basic_object_class</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">class_</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">basicObjectClass_VALUES</span></span></em>, <em class="sig-param"><span class="positional-only-separator o"><abbr title="Positional-only parameter separator (PEP 570)"><span class="pre">/</span></abbr></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ObjectClass</span></span></span><a class="reference internal" href="../../_modules/icspacket/proto/mms/util.html#basic_object_class"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.mms.util.basic_object_class" title="Link to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">icspacket.proto.mms.util.</span></span><span class="sig-name descname"><span class="pre">basic_object_class</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">class_</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">basicObjectClass_VALUES</span></span></em>, <em class="sig-param"><span class="positional-only-separator o"><abbr title="Positional-only parameter separator (PEP 570)"><span class="pre">/</span></abbr></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ObjectClass</span></span></span><a class="reference internal" href="../../_modules/icspacket/proto/mms/util.html#basic_object_class"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.mms.util.basic_object_class" title="Link to this definition">#</a></dt>
 <dd><p>Construct an MMS <code class="docutils literal notranslate"><span class="pre">ObjectClass</span></code> using a basic object class value.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>class</strong> (<em>BasicObjectClassType</em>) – Basic object class value (from <a class="reference internal" href="#icspacket.proto.mms.util.BasicObjectClassType" title="icspacket.proto.mms.util.BasicObjectClassType"><code class="xref py py-data docutils literal notranslate"><span class="pre">BasicObjectClassType</span></code></a>).</p>
+<dd class="field-odd"><p><strong>class</strong> (<a class="reference internal" href="#icspacket.proto.mms.util.BasicObjectClassType" title="icspacket.proto.mms.util.BasicObjectClassType"><em>BasicObjectClassType</em></a>) – Basic object class value (from <a class="reference internal" href="#icspacket.proto.mms.util.BasicObjectClassType" title="icspacket.proto.mms.util.BasicObjectClassType"><code class="xref py py-data docutils literal notranslate"><span class="pre">BasicObjectClassType</span></code></a>).</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>A new <code class="docutils literal notranslate"><span class="pre">ObjectClass</span></code> instance.</p>
@@ -400,7 +436,7 @@ option. The defaults include:</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="icspacket.proto.mms.util.domain_object_name">
-<span class="sig-prename descclassname"><span class="pre">icspacket.proto.mms.util.</span></span><span class="sig-name descname"><span class="pre">domain_object_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">domain</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">item</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ObjectName</span></span></span><a class="reference internal" href="../../_modules/icspacket/proto/mms/util.html#domain_object_name"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.mms.util.domain_object_name" title="Link to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">icspacket.proto.mms.util.</span></span><span class="sig-name descname"><span class="pre">domain_object_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">domain</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">item</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ObjectName</span></span></span><a class="reference internal" href="../../_modules/icspacket/proto/mms/util.html#domain_object_name"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.mms.util.domain_object_name" title="Link to this definition">#</a></dt>
 <dd><p>Construct a domain-specific MMS <code class="docutils literal notranslate"><span class="pre">ObjectName</span></code>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -420,7 +456,7 @@ option. The defaults include:</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="icspacket.proto.mms.util.domain_variable_access">
-<span class="sig-prename descclassname"><span class="pre">icspacket.proto.mms.util.</span></span><span class="sig-name descname"><span class="pre">domain_variable_access</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">domain</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Member_TYPE</span></span></span><a class="reference internal" href="../../_modules/icspacket/proto/mms/util.html#domain_variable_access"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.mms.util.domain_variable_access" title="Link to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">icspacket.proto.mms.util.</span></span><span class="sig-name descname"><span class="pre">domain_variable_access</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">domain</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Member_TYPE</span></span></span><a class="reference internal" href="../../_modules/icspacket/proto/mms/util.html#domain_variable_access"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.mms.util.domain_variable_access" title="Link to this definition">#</a></dt>
 <dd><p>Construct a domain-specific MMS variable access specification.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -433,14 +469,14 @@ option. The defaults include:</p>
 <dd class="field-even"><p>A new variable access item for the given domain object.</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>VariableAccessItem</p>
+<dd class="field-odd"><p><a class="reference internal" href="#icspacket.proto.mms.util.VariableAccessItem" title="icspacket.proto.mms.util.VariableAccessItem">VariableAccessItem</a></p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="icspacket.proto.mms.util.vmd_variable_access">
-<span class="sig-prename descclassname"><span class="pre">icspacket.proto.mms.util.</span></span><span class="sig-name descname"><span class="pre">vmd_variable_access</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Member_TYPE</span></span></span><a class="reference internal" href="../../_modules/icspacket/proto/mms/util.html#vmd_variable_access"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.mms.util.vmd_variable_access" title="Link to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">icspacket.proto.mms.util.</span></span><span class="sig-name descname"><span class="pre">vmd_variable_access</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Member_TYPE</span></span></span><a class="reference internal" href="../../_modules/icspacket/proto/mms/util.html#vmd_variable_access"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.mms.util.vmd_variable_access" title="Link to this definition">#</a></dt>
 <dd><p>Construct an MMS variable access specification for a VMD-specific variable.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -450,14 +486,14 @@ option. The defaults include:</p>
 <dd class="field-even"><p>A new variable access item for the given VMD object.</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>VariableAccessItem</p>
+<dd class="field-odd"><p><a class="reference internal" href="#icspacket.proto.mms.util.VariableAccessItem" title="icspacket.proto.mms.util.VariableAccessItem">VariableAccessItem</a></p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="icspacket.proto.mms.util.object_name_to_string">
-<span class="sig-prename descclassname"><span class="pre">icspacket.proto.mms.util.</span></span><span class="sig-name descname"><span class="pre">object_name_to_string</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ObjectName</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../../_modules/icspacket/proto/mms/util.html#object_name_to_string"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.mms.util.object_name_to_string" title="Link to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">icspacket.proto.mms.util.</span></span><span class="sig-name descname"><span class="pre">object_name_to_string</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ObjectName</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../../_modules/icspacket/proto/mms/util.html#object_name_to_string"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.mms.util.object_name_to_string" title="Link to this definition">#</a></dt>
 <dd><p>Convert an MMS <code class="docutils literal notranslate"><span class="pre">ObjectName</span></code> to a string representation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -511,17 +547,17 @@ option. The defaults include:</p>
   </p>
 </div>
       <div class="sy-foot-socials">
-<a href="https://github.com/MatrixEditor/icspacket" aria-label="GitHub">
-  <iconify-icon icon="simple-icons:github"></iconify-icon>
-</a></div>
+  <a href="https://github.com/MatrixEditor/icspacket" aria-label="GitHub">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </a></div>
     </div>
   </div>
 </footer>
-      <script src="../../_static/documentation_options.js?v=53ae9ec8"></script>
-      <script src="../../_static/doctools.js?v=9bcbadda"></script>
-      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/documentation_options.js?v=ded930d6"></script>
+      <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
       <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
       <script src="../../_static/copybutton.js?v=f281be69"></script>
       <script src="../../_static/design-tabs.js?v=f930bc37"></script>
-      <script src="../../_static/shibuya.js?v=e730760c"></script></body>
+      <script src="../../_static/shibuya.js?v=50760d75"></script></body>
 </html>

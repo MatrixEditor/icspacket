@@ -2,12 +2,12 @@
 <html lang="en" data-accent-color="lime" data-content_root="../../">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>TSDU - icspacket 0.2.4 documentation</title><link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="SPDU Types" href="spdu.html" /><link rel="prev" title="API Reference" href="api.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>TSDU - icspacket 0.1.dev1+ga30386068 documentation</title><link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="SPDU Types" href="spdu.html" /><link rel="prev" title="API Reference" href="api.html" />
       <link rel="canonical" href="https://matrixeditor.github.io/icspacket/protocols/cosp/tsdu.html" /><script>
     function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
     setColorMode(localStorage._theme||"dark");
-  </script><link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b1a1f93b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/shibuya.css?v=bb284d7b" />
+  </script><link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=e1a1ceaf" />
+    <link rel="stylesheet" type="text/css" href="../../_static/shibuya.css?v=2ceb65ce" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link media="print" rel="stylesheet" type="text/css" href="../../_static/print.css?v=20ff2c19" />
@@ -20,10 +20,11 @@
   --sy-f-heading: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
 }
 </style>
-    <meta property="og:type" content="website"/>
-<meta property="og:url" content="https://matrixeditor.github.io/icspacket/protocols/cosp/tsdu.html"/>
-<meta property="og:title" content="TSDU"/>
-<meta name="twitter:card" content="summary"/>
+    
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://matrixeditor.github.io/icspacket/protocols/cosp/tsdu.html"/>
+  <meta property="og:title" content="TSDU"/>
+    <meta name="twitter:card" content="summary"/>
   </head>
 <body><div class="sy-head">
   <div class="sy-head-blur"></div>
@@ -195,10 +196,10 @@ data-aria-dark="Switch to auto color mode">
     <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div class="localtoc"><h3>On this page</h3><ul>
 <li><a class="reference internal" href="#tsdu-transport-service-data-unit-handling">TSDU (Transport Service Data Unit) Handling</a></li>
 <li><a class="reference internal" href="#icspacket.proto.iso_ses.tsdu.TSDU"><code class="docutils literal notranslate"><span class="pre">TSDU</span></code></a><ul>
-<li><a class="reference internal" href="#icspacket.proto.iso_ses.tsdu.TSDU.add_spdu"><code class="docutils literal notranslate">add_spdu()</span></code></a></li>
-<li><a class="reference internal" href="#icspacket.proto.iso_ses.tsdu.TSDU.spdus"><code class="docutils literal notranslate">spdus</span></code></a></li>
-<li><a class="reference internal" href="#icspacket.proto.iso_ses.tsdu.TSDU.from_octets"><code class="docutils literal notranslate">from_octets()</span></code></a></li>
-<li><a class="reference internal" href="#icspacket.proto.iso_ses.tsdu.TSDU.build"><code class="docutils literal notranslate">build()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iso_ses.tsdu.TSDU.add_spdu"><code class="docutils literal notranslate"><span class="pre">TSDU.add_spdu()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iso_ses.tsdu.TSDU.spdus"><code class="docutils literal notranslate"><span class="pre">TSDU.spdus</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iso_ses.tsdu.TSDU.from_octets"><code class="docutils literal notranslate"><span class="pre">TSDU.from_octets()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iso_ses.tsdu.TSDU.build"><code class="docutils literal notranslate"><span class="pre">TSDU.build()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -253,35 +254,70 @@ data-aria-dark="Switch to auto color mode">
     </div>
   </div>
 </div><div class="flex flex-col break-words justify-between">
-      <div class="min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
-        <article class="yue" role="main">
+      <div class="relative min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
+  <div class="copy-page-wrapper relative pb-4 lg:absolute lg:top-8 lg:right-6 xl:right-12">
+  <div id="copy-page-trigger">
+    <button
+      type="button"
+      class="js-copy px-3 py-1 inline-flex items-center gap-1"
+      data-url="https://raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/protocols/cosp/tsdu.rst"
+    >
+      <i class="i-lucide" data-icon="copy"></i>
+      <span>Copy page</span>
+    </button>
+    <button class="js-menu px-2 py-1" type="button" aria-label="More actions"
+      aria-haspopup="menu" aria-expanded="false" aria-controls="copy-page-content">
+      <i class="i-lucide chevron-down"></i>
+    </button>
+  </div>
+  <div id="copy-page-content" role="menu" aria-orientation="vertical" aria-hidden="true">
+    <div role="presentation">
+      <div class="flex flex-col" role="group">
+        <button class="js-copy" type="button" role="menuitem"
+          data-url="https://raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/protocols/cosp/tsdu.rst">
+          <span class="iconify-icon">
+            <i class="i-lucide" data-icon="copy"></i>
+          </span>
+          <span>Copy page</span>
+        </button>
+        <a role="menuitem" href="https://raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/protocols/cosp/tsdu.rst" target="_blank" rel="nofollow"><iconify-icon icon="bi:code-slash"></iconify-icon>
+            <span>View Source</span></a><a role="menuitem" href="https://chatgpt.com/?hints=search&q=Read%20https%3A//raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/protocols/cosp/tsdu.rst%20so%20I%20can%20ask%20questions%20about%20it." target="_blank" rel="nofollow">
+          <iconify-icon icon="bi:openai"></iconify-icon>
+          <span>Open in ChatGPT</span>
+        </a><a role="menuitem" href="https://claude.ai/new?q=Read%20https%3A//raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/protocols/cosp/tsdu.rst%20so%20I%20can%20ask%20questions%20about%20it." target="_blank" rel="nofollow">
+          <iconify-icon icon="bi:claude"></iconify-icon>
+          <span>Open in Claude</span>
+        </a></div>
+    </div>
+  </div>
+</div><article class="yue" role="main">
           <section id="module-icspacket.proto.iso_ses.tsdu">
-<span id="tsdu"></span><span id="cosp-tsdu"></span><h1>TSDU<a class="headerlink" href="#module-icspacket.proto.iso_ses.tsdu" title="Link to this heading">¶</a></h1>
+<span id="tsdu"></span><span id="cosp-tsdu"></span><h1>TSDU<a class="headerlink" href="#module-icspacket.proto.iso_ses.tsdu" title="Link to this heading">#</a></h1>
 <section id="tsdu-transport-service-data-unit-handling">
-<h2>TSDU (Transport Service Data Unit) Handling<a class="headerlink" href="#tsdu-transport-service-data-unit-handling" title="Link to this heading">¶</a></h2>
-<p>This module implements parsing and building logic for <strong>TSDUs</strong> as defined in
+<h2>TSDU (Transport Service Data Unit) Handling<a class="headerlink" href="#tsdu-transport-service-data-unit-handling" title="Link to this heading">#</a></h2>
+<p>This module implements parsing and building logic for <strong>TSDUs</strong> according to
 §8.1 of the X.225 specification.</p>
-<p>A TSDU is the <em>unit of data</em> exchanged between the session layer and the
-transport layer. It may contain:</p>
+<p>Every hand-off between the session layer and the transport layer travels as
+one TSDU, which - depending on what is being sent - may be built from:</p>
 <ul class="simple">
 <li><p>One SPDU mapped directly to a TSDU (Category 1)</p></li>
 <li><p>Multiple SPDUs concatenated (Category 0 + Category 2, or multiple Category 2s)</p></li>
 <li><p>In special cases, only a Category 0 SPDU</p></li>
 </ul>
-<p>Concatenation rules are defined in §6.3.7:</p>
+<p>Concatenation rules (See §6.3.7):</p>
 <ul class="simple">
 <li><dl class="simple">
-<dt><strong>Category 0</strong> SPDUs may be mapped one-to-one onto a TSDU <em>or</em></dt><dd><p>concatenated with one or more Category 2 SPDUs.</p>
+<dt><strong>Category 0</strong>: fine either as a lone TSDU or as the lead-in for one or</dt><dd><p>more Category 2 SPDUs concatenated onto it.</p>
 </dd>
 </dl>
 </li>
 <li><dl class="simple">
-<dt><strong>Category 1</strong> SPDUs are always mapped one-to-one to a TSDU (no</dt><dd><p>concatenation).</p>
+<dt><strong>Category 1</strong>: always fills a whole TSDU by itself; never concatenated</dt><dd><p>with anything else.</p>
 </dd>
 </dl>
 </li>
 <li><dl class="simple">
-<dt><strong>Category 2</strong> SPDUs are never mapped one-to-one — they appear only after</dt><dd><p>a Category 0 SPDU in the same TSDU.</p>
+<dt><strong>Category 2</strong>: never forms a TSDU on its own - it only ever shows up</dt><dd><p>tacked onto a preceding Category 0 SPDU within the same TSDU.</p>
 </dd>
 </dl>
 </li>
@@ -297,8 +333,8 @@ transport layer. It may contain:</p>
 </section>
 <dl class="py class">
 <dt class="sig sig-object py" id="icspacket.proto.iso_ses.tsdu.TSDU">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">icspacket.proto.iso_ses.tsdu.</span></span><span class="sig-name descname"><span class="pre">TSDU</span></span><a class="reference internal" href="../../_modules/icspacket/proto/iso_ses/tsdu.html#TSDU"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iso_ses.tsdu.TSDU" title="Link to this definition">¶</a></dt>
-<dd><p>TSDU container for one or more concatenated SPDUs — X.225 §8.1</p>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">icspacket.proto.iso_ses.tsdu.</span></span><span class="sig-name descname"><span class="pre">TSDU</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">spdus</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="spdu.html#icspacket.proto.iso_ses.spdu.SPDU" title="icspacket.proto.iso_ses.spdu.SPDU"><span class="pre">SPDU</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/icspacket/proto/iso_ses/tsdu.html#TSDU"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iso_ses.tsdu.TSDU" title="Link to this definition">#</a></dt>
+<dd><p>TSDU container for one or more concatenated SPDUs. (See X.225, §8.1)</p>
 <p>Usage:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="gp">&gt;&gt;&gt; </span><span class="n">tsdu</span> <span class="o">=</span> <span class="n">TSDU</span><span class="o">.</span><span class="n">from_octets</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>   <span class="c1"># Parse a raw TSDU from bytes</span>
 </span><span data-line="2"><span class="gp">&gt;&gt;&gt; </span><span class="n">tsdu</span><span class="o">.</span><span class="n">build</span><span class="p">()</span>                    <span class="c1"># Encode back to raw bytes</span>
@@ -306,7 +342,7 @@ transport layer. It may contain:</p>
 </div>
 <dl class="py method">
 <dt class="sig sig-object py" id="icspacket.proto.iso_ses.tsdu.TSDU.add_spdu">
-<span class="sig-name descname"><span class="pre">add_spdu</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">code</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">category</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="spdu.html#icspacket.proto.iso_ses.spdu.SPDU_Category" title="icspacket.proto.iso_ses.spdu.SPDU_Category"><span class="pre">SPDU_Category</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="spdu.html#icspacket.proto.iso_ses.spdu.SPDU" title="icspacket.proto.iso_ses.spdu.SPDU"><span class="pre">SPDU</span></a></span></span><a class="reference internal" href="../../_modules/icspacket/proto/iso_ses/tsdu.html#TSDU.add_spdu"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iso_ses.tsdu.TSDU.add_spdu" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">add_spdu</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">code</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">category</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="spdu.html#icspacket.proto.iso_ses.spdu.SPDU_Category" title="icspacket.proto.iso_ses.spdu.SPDU_Category"><span class="pre">SPDU_Category</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="spdu.html#icspacket.proto.iso_ses.spdu.SPDU" title="icspacket.proto.iso_ses.spdu.SPDU"><span class="pre">SPDU</span></a></span></span><a class="reference internal" href="../../_modules/icspacket/proto/iso_ses/tsdu.html#TSDU.add_spdu"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iso_ses.tsdu.TSDU.add_spdu" title="Link to this definition">#</a></dt>
 <dd><p>Create a new SPDU and append it to this TSDU.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -326,7 +362,7 @@ transport layer. It may contain:</p>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="icspacket.proto.iso_ses.tsdu.TSDU.spdus">
-<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">spdus</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="spdu.html#icspacket.proto.iso_ses.spdu.SPDU" title="icspacket.proto.iso_ses.spdu.SPDU"><span class="pre">SPDU</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#icspacket.proto.iso_ses.tsdu.TSDU.spdus" title="Link to this definition">¶</a></dt>
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">spdus</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="spdu.html#icspacket.proto.iso_ses.spdu.SPDU" title="icspacket.proto.iso_ses.spdu.SPDU"><span class="pre">SPDU</span></a><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.iso_ses.tsdu.TSDU.spdus" title="Link to this definition">#</a></dt>
 <dd><p>List of SPDUs contained in this TSDU.</p>
 <p>This property returns a direct reference to the internal list, so it can be
 iterated over or modified directly.</p>
@@ -334,7 +370,7 @@ iterated over or modified directly.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="icspacket.proto.iso_ses.tsdu.TSDU.from_octets">
-<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_octets</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">octets</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bytes</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/icspacket/proto/iso_ses/tsdu.html#TSDU.from_octets"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iso_ses.tsdu.TSDU.from_octets" title="Link to this definition">¶</a></dt>
+<span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">from_octets</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">octets</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bytes</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#icspacket.proto.iso_ses.tsdu.TSDU" title="icspacket.proto.iso_ses.tsdu.TSDU"><span class="pre">TSDU</span></a></span></span><a class="reference internal" href="../../_modules/icspacket/proto/iso_ses/tsdu.html#TSDU.from_octets"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iso_ses.tsdu.TSDU.from_octets" title="Link to this definition">#</a></dt>
 <dd><p>Decode a raw TSDU from its octet representation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -355,7 +391,7 @@ any SPDU length is invalid (extends beyond buffer).</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="icspacket.proto.iso_ses.tsdu.TSDU.build">
-<span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bytes</span></span></span><a class="reference internal" href="../../_modules/icspacket/proto/iso_ses/tsdu.html#TSDU.build"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iso_ses.tsdu.TSDU.build" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bytes</span></span></span><a class="reference internal" href="../../_modules/icspacket/proto/iso_ses/tsdu.html#TSDU.build"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iso_ses.tsdu.TSDU.build" title="Link to this definition">#</a></dt>
 <dd><p>Assemble the TSDU into its raw octet representation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -409,17 +445,17 @@ representation.</p>
   </p>
 </div>
       <div class="sy-foot-socials">
-<a href="https://github.com/MatrixEditor/icspacket" aria-label="GitHub">
-  <iconify-icon icon="simple-icons:github"></iconify-icon>
-</a></div>
+  <a href="https://github.com/MatrixEditor/icspacket" aria-label="GitHub">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </a></div>
     </div>
   </div>
 </footer>
-      <script src="../../_static/documentation_options.js?v=53ae9ec8"></script>
-      <script src="../../_static/doctools.js?v=9bcbadda"></script>
-      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/documentation_options.js?v=ded930d6"></script>
+      <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
       <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
       <script src="../../_static/copybutton.js?v=f281be69"></script>
       <script src="../../_static/design-tabs.js?v=f930bc37"></script>
-      <script src="../../_static/shibuya.js?v=e730760c"></script></body>
+      <script src="../../_static/shibuya.js?v=50760d75"></script></body>
 </html>

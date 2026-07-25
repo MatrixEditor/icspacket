@@ -2,12 +2,12 @@
 <html lang="en" data-accent-color="lime" data-content_root="../../../">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Transport Layer - icspacket 0.2.4 documentation</title><link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" /><link rel="next" title="Application Layer" href="application.html" /><link rel="prev" title="Link Layer" href="link.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Transport Layer - icspacket 0.1.dev1+ga30386068 documentation</title><link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" /><link rel="next" title="Application Layer" href="application.html" /><link rel="prev" title="Link Layer" href="link.html" />
       <link rel="canonical" href="https://matrixeditor.github.io/icspacket/protocols/dnp3/api/transport.html" /><script>
     function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
     setColorMode(localStorage._theme||"dark");
-  </script><link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b1a1f93b" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/shibuya.css?v=bb284d7b" />
+  </script><link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=e1a1ceaf" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/shibuya.css?v=2ceb65ce" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link media="print" rel="stylesheet" type="text/css" href="../../../_static/print.css?v=20ff2c19" />
@@ -20,10 +20,11 @@
   --sy-f-heading: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
 }
 </style>
-    <meta property="og:type" content="website"/>
-<meta property="og:url" content="https://matrixeditor.github.io/icspacket/protocols/dnp3/api/transport.html"/>
-<meta property="og:title" content="Transport Layer"/>
-<meta name="twitter:card" content="summary"/>
+    
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://matrixeditor.github.io/icspacket/protocols/dnp3/api/transport.html"/>
+  <meta property="og:title" content="Transport Layer"/>
+    <meta name="twitter:card" content="summary"/>
   </head>
 <body><div class="sy-head">
   <div class="sy-head-blur"></div>
@@ -194,12 +195,12 @@ data-aria-dark="Switch to auto color mode">
     </button>
     <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div class="localtoc"><h3>On this page</h3><ul>
 <li><a class="reference internal" href="#icspacket.proto.dnp3.transport.TPDU"><code class="docutils literal notranslate"><span class="pre">TPDU</span></code></a><ul>
-<li><a class="reference internal" href="#icspacket.proto.dnp3.transport.TPDU.final_segment"><code class="docutils literal notranslate">final_segment</span></code></a></li>
-<li><a class="reference internal" href="#icspacket.proto.dnp3.transport.TPDU.first_segment"><code class="docutils literal notranslate">first_segment</span></code></a></li>
-<li><a class="reference internal" href="#icspacket.proto.dnp3.transport.TPDU.sequence"><code class="docutils literal notranslate">sequence</span></code></a></li>
-<li><a class="reference internal" href="#icspacket.proto.dnp3.transport.TPDU.app_fragment"><code class="docutils literal notranslate">app_fragment</span></code></a></li>
-<li><a class="reference internal" href="#icspacket.proto.dnp3.transport.TPDU.real_sequence"><code class="docutils literal notranslate">real_sequence</span></code></a></li>
-<li><a class="reference internal" href="#icspacket.proto.dnp3.transport.TPDU.apdu"><code class="docutils literal notranslate">apdu</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.dnp3.transport.TPDU.final_segment"><code class="docutils literal notranslate"><span class="pre">TPDU.final_segment</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.dnp3.transport.TPDU.first_segment"><code class="docutils literal notranslate"><span class="pre">TPDU.first_segment</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.dnp3.transport.TPDU.sequence"><code class="docutils literal notranslate"><span class="pre">TPDU.sequence</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.dnp3.transport.TPDU.app_fragment"><code class="docutils literal notranslate"><span class="pre">TPDU.app_fragment</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.dnp3.transport.TPDU.real_sequence"><code class="docutils literal notranslate"><span class="pre">TPDU.real_sequence</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.dnp3.transport.TPDU.apdu"><code class="docutils literal notranslate"><span class="pre">TPDU.apdu</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -254,13 +255,48 @@ data-aria-dark="Switch to auto color mode">
     </div>
   </div>
 </div><div class="flex flex-col break-words justify-between">
-      <div class="min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
-        <article class="yue" role="main">
+      <div class="relative min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
+  <div class="copy-page-wrapper relative pb-4 lg:absolute lg:top-8 lg:right-6 xl:right-12">
+  <div id="copy-page-trigger">
+    <button
+      type="button"
+      class="js-copy px-3 py-1 inline-flex items-center gap-1"
+      data-url="https://raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/protocols/dnp3/api/transport.rst"
+    >
+      <i class="i-lucide" data-icon="copy"></i>
+      <span>Copy page</span>
+    </button>
+    <button class="js-menu px-2 py-1" type="button" aria-label="More actions"
+      aria-haspopup="menu" aria-expanded="false" aria-controls="copy-page-content">
+      <i class="i-lucide chevron-down"></i>
+    </button>
+  </div>
+  <div id="copy-page-content" role="menu" aria-orientation="vertical" aria-hidden="true">
+    <div role="presentation">
+      <div class="flex flex-col" role="group">
+        <button class="js-copy" type="button" role="menuitem"
+          data-url="https://raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/protocols/dnp3/api/transport.rst">
+          <span class="iconify-icon">
+            <i class="i-lucide" data-icon="copy"></i>
+          </span>
+          <span>Copy page</span>
+        </button>
+        <a role="menuitem" href="https://raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/protocols/dnp3/api/transport.rst" target="_blank" rel="nofollow"><iconify-icon icon="bi:code-slash"></iconify-icon>
+            <span>View Source</span></a><a role="menuitem" href="https://chatgpt.com/?hints=search&q=Read%20https%3A//raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/protocols/dnp3/api/transport.rst%20so%20I%20can%20ask%20questions%20about%20it." target="_blank" rel="nofollow">
+          <iconify-icon icon="bi:openai"></iconify-icon>
+          <span>Open in ChatGPT</span>
+        </a><a role="menuitem" href="https://claude.ai/new?q=Read%20https%3A//raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/protocols/dnp3/api/transport.rst%20so%20I%20can%20ask%20questions%20about%20it." target="_blank" rel="nofollow">
+          <iconify-icon icon="bi:claude"></iconify-icon>
+          <span>Open in Claude</span>
+        </a></div>
+    </div>
+  </div>
+</div><article class="yue" role="main">
           <section id="module-icspacket.proto.dnp3.transport">
-<span id="transport-layer"></span><span id="api-dnp3-transport"></span><h1>Transport Layer<a class="headerlink" href="#module-icspacket.proto.dnp3.transport" title="Link to this heading">¶</a></h1>
+<span id="transport-layer"></span><span id="api-dnp3-transport"></span><h1>Transport Layer<a class="headerlink" href="#module-icspacket.proto.dnp3.transport" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.transport.TPDU">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">icspacket.proto.dnp3.transport.</span></span><span class="sig-name descname"><span class="pre">TPDU</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">final_segment</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">first_segment</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sequence</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">app_fragment</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bytes</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">b''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/icspacket/proto/dnp3/transport.html#TPDU"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.dnp3.transport.TPDU" title="Link to this definition">¶</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">icspacket.proto.dnp3.transport.</span></span><span class="sig-name descname"><span class="pre">TPDU</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">final_segment</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">first_segment</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sequence</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">app_fragment</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bytes</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">b''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/icspacket/proto/dnp3/transport.html#TPDU"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.dnp3.transport.TPDU" title="Link to this definition">#</a></dt>
 <dd><p>Transport Protocol Data Unit (TPDU) representation for DNP3.</p>
 <p>This class implements the Transport Header defined in IEEE 1815
 (DNP3 Specification), Section 8.2.1. The header is the first byte
@@ -269,25 +305,25 @@ of every transport segment and precedes the Application Layer data.</p>
 and fragment reassembly for Application Layer messages.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.transport.TPDU.final_segment">
-<span class="sig-name descname"><span class="pre">final_segment</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#icspacket.proto.dnp3.transport.TPDU.final_segment" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">final_segment</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></span><a class="headerlink" href="#icspacket.proto.dnp3.transport.TPDU.final_segment" title="Link to this definition">#</a></dt>
 <dd><p>Indicates whether this is the final (last) transport segment.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.transport.TPDU.first_segment">
-<span class="sig-name descname"><span class="pre">first_segment</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#icspacket.proto.dnp3.transport.TPDU.first_segment" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">first_segment</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></span><a class="headerlink" href="#icspacket.proto.dnp3.transport.TPDU.first_segment" title="Link to this definition">#</a></dt>
 <dd><p>Indicates whether this is the first transport segment.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.transport.TPDU.sequence">
-<span class="sig-name descname"><span class="pre">sequence</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></em><a class="headerlink" href="#icspacket.proto.dnp3.transport.TPDU.sequence" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">sequence</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></span><a class="headerlink" href="#icspacket.proto.dnp3.transport.TPDU.sequence" title="Link to this definition">#</a></dt>
 <dd><p>6-bit sequence number for ordering transport segments.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.transport.TPDU.app_fragment">
-<span class="sig-name descname"><span class="pre">app_fragment</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bytes</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">b''</span></em><a class="headerlink" href="#icspacket.proto.dnp3.transport.TPDU.app_fragment" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">app_fragment</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bytes</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">b''</span></span><a class="headerlink" href="#icspacket.proto.dnp3.transport.TPDU.app_fragment" title="Link to this definition">#</a></dt>
 <dd><p>Application Layer fragment associated with this TPDU.</p>
 <div class="versionchanged">
 <p><span class="versionmodified changed">Changed in version 0.2.0: </span>Changed type to <code class="docutils literal notranslate"><span class="pre">bytes</span></code> in order to support segmentation.</p>
@@ -296,7 +332,7 @@ and fragment reassembly for Application Layer messages.</p>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.transport.TPDU.real_sequence">
-<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">real_sequence</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#icspacket.proto.dnp3.transport.TPDU.real_sequence" title="Link to this definition">¶</a></dt>
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">real_sequence</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><a class="headerlink" href="#icspacket.proto.dnp3.transport.TPDU.real_sequence" title="Link to this definition">#</a></dt>
 <dd><p>Compute the normalized sequence number modulo 64.</p>
 <p>This property ensures compliance with the rollover rule in
 Section 8.2.1.3 of the DNP3 specification.</p>
@@ -312,7 +348,7 @@ Section 8.2.1.3 of the DNP3 specification.</p>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.transport.TPDU.apdu">
-<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">apdu</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="application.html#icspacket.proto.dnp3.application.APDU" title="icspacket.proto.dnp3.application.APDU"><span class="pre">APDU</span></a></em><a class="headerlink" href="#icspacket.proto.dnp3.transport.TPDU.apdu" title="Link to this definition">¶</a></dt>
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">apdu</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="application.html#icspacket.proto.dnp3.application.APDU" title="icspacket.proto.dnp3.application.APDU"><span class="pre">APDU</span></a></span><a class="headerlink" href="#icspacket.proto.dnp3.transport.TPDU.apdu" title="Link to this definition">#</a></dt>
 <dd><p>Parses the APDU contained in the TPDU.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">Added in version 0.2.0.</span></p>
@@ -360,17 +396,17 @@ Section 8.2.1.3 of the DNP3 specification.</p>
   </p>
 </div>
       <div class="sy-foot-socials">
-<a href="https://github.com/MatrixEditor/icspacket" aria-label="GitHub">
-  <iconify-icon icon="simple-icons:github"></iconify-icon>
-</a></div>
+  <a href="https://github.com/MatrixEditor/icspacket" aria-label="GitHub">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </a></div>
     </div>
   </div>
 </footer>
-      <script src="../../../_static/documentation_options.js?v=53ae9ec8"></script>
-      <script src="../../../_static/doctools.js?v=9bcbadda"></script>
-      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../../_static/documentation_options.js?v=ded930d6"></script>
+      <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
       <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
       <script src="../../../_static/copybutton.js?v=f281be69"></script>
       <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
-      <script src="../../../_static/shibuya.js?v=e730760c"></script></body>
+      <script src="../../../_static/shibuya.js?v=50760d75"></script></body>
 </html>

@@ -2,12 +2,12 @@
 <html lang="en" data-accent-color="lime" data-content_root="../../">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Enumerating IEDs - icspacket 0.2.4 documentation</title><link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="Operating on IEDs" href="iedctrl.html" /><link rel="prev" title="Object Utilities" href="../dnp3/api/coding_utils.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Enumerating IEDs - icspacket 0.1.dev1+ga30386068 documentation</title><link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="Operating on IEDs" href="iedctrl.html" /><link rel="prev" title="Object Utilities" href="../dnp3/api/coding_utils.html" />
       <link rel="canonical" href="https://matrixeditor.github.io/icspacket/protocols/iec61850/iedmap.html" /><script>
     function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
     setColorMode(localStorage._theme||"dark");
-  </script><link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b1a1f93b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/shibuya.css?v=bb284d7b" />
+  </script><link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=e1a1ceaf" />
+    <link rel="stylesheet" type="text/css" href="../../_static/shibuya.css?v=2ceb65ce" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link media="print" rel="stylesheet" type="text/css" href="../../_static/print.css?v=20ff2c19" />
@@ -20,10 +20,11 @@
   --sy-f-heading: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
 }
 </style>
-    <meta property="og:type" content="website"/>
-<meta property="og:url" content="https://matrixeditor.github.io/icspacket/protocols/iec61850/iedmap.html"/>
-<meta property="og:title" content="Enumerating IEDs"/>
-<meta name="twitter:card" content="summary"/>
+    
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://matrixeditor.github.io/icspacket/protocols/iec61850/iedmap.html"/>
+  <meta property="og:title" content="Enumerating IEDs"/>
+    <meta name="twitter:card" content="summary"/>
   </head>
 <body><div class="sy-head">
   <div class="sy-head-blur"></div>
@@ -244,16 +245,51 @@ data-aria-dark="Switch to auto color mode">
     </div>
   </div>
 </div><div class="flex flex-col break-words justify-between">
-      <div class="min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
-        <article class="yue" role="main">
+      <div class="relative min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
+  <div class="copy-page-wrapper relative pb-4 lg:absolute lg:top-8 lg:right-6 xl:right-12">
+  <div id="copy-page-trigger">
+    <button
+      type="button"
+      class="js-copy px-3 py-1 inline-flex items-center gap-1"
+      data-url="https://raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/protocols/iec61850/iedmap.rst"
+    >
+      <i class="i-lucide" data-icon="copy"></i>
+      <span>Copy page</span>
+    </button>
+    <button class="js-menu px-2 py-1" type="button" aria-label="More actions"
+      aria-haspopup="menu" aria-expanded="false" aria-controls="copy-page-content">
+      <i class="i-lucide chevron-down"></i>
+    </button>
+  </div>
+  <div id="copy-page-content" role="menu" aria-orientation="vertical" aria-hidden="true">
+    <div role="presentation">
+      <div class="flex flex-col" role="group">
+        <button class="js-copy" type="button" role="menuitem"
+          data-url="https://raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/protocols/iec61850/iedmap.rst">
+          <span class="iconify-icon">
+            <i class="i-lucide" data-icon="copy"></i>
+          </span>
+          <span>Copy page</span>
+        </button>
+        <a role="menuitem" href="https://raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/protocols/iec61850/iedmap.rst" target="_blank" rel="nofollow"><iconify-icon icon="bi:code-slash"></iconify-icon>
+            <span>View Source</span></a><a role="menuitem" href="https://chatgpt.com/?hints=search&q=Read%20https%3A//raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/protocols/iec61850/iedmap.rst%20so%20I%20can%20ask%20questions%20about%20it." target="_blank" rel="nofollow">
+          <iconify-icon icon="bi:openai"></iconify-icon>
+          <span>Open in ChatGPT</span>
+        </a><a role="menuitem" href="https://claude.ai/new?q=Read%20https%3A//raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/protocols/iec61850/iedmap.rst%20so%20I%20can%20ask%20questions%20about%20it." target="_blank" rel="nofollow">
+          <iconify-icon icon="bi:claude"></iconify-icon>
+          <span>Open in Claude</span>
+        </a></div>
+    </div>
+  </div>
+</div><article class="yue" role="main">
           <section id="enumerating-ieds">
-<span id="iec61850-example-iedmap"></span><h1>Enumerating IEDs<a class="headerlink" href="#enumerating-ieds" title="Link to this heading">¶</a></h1>
+<span id="iec61850-example-iedmap"></span><h1>Enumerating IEDs<a class="headerlink" href="#enumerating-ieds" title="Link to this heading">#</a></h1>
 <p>The <code class="docutils literal notranslate"><span class="pre">iedmap</span></code> utility provides a structured way to <strong>enumerate and inspect
 Intelligent Electronic Devices (IEDs)</strong> using the IEC 61850 protocol together
 with MMS over TCP. It allows to traverse the hierarchical information model of
 an IED and extract details about its logical structure.</p>
 <section id="iec-61850-background">
-<h2>IEC 61850 Background<a class="headerlink" href="#iec-61850-background" title="Link to this heading">¶</a></h2>
+<h2>IEC 61850 Background<a class="headerlink" href="#iec-61850-background" title="Link to this heading">#</a></h2>
 <p>IEC 61850 defines a <strong>layered data model</strong> built around the following concepts:</p>
 <ul class="simple">
 <li><p><strong>Logical Devices (LDs)</strong>: Abstractions that represent major functional
@@ -268,7 +304,7 @@ variables and named variable lists.</p></li>
 can be displayed in either structured or flat form.</p>
 </section>
 <section id="usage">
-<h2>Usage<a class="headerlink" href="#usage" title="Link to this heading">¶</a></h2>
+<h2>Usage<a class="headerlink" href="#usage" title="Link to this heading">#</a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span data-line="1">iedmap.py<span class="w"> </span><span class="o">[</span>OPTIONS<span class="o">]</span><span class="w"> </span>&lt;host&gt;<span class="w"> </span><span class="o">[</span>-p<span class="w"> </span>&lt;port&gt;<span class="o">]</span>
 </span></pre></div>
 </div>
@@ -277,16 +313,16 @@ can be displayed in either structured or flat form.</p>
 <figure class="align-center" id="id1">
 <img alt="../../_images/iedmap-enum1.png" src="../../_images/iedmap-enum1.png" />
 <figcaption>
-<p><span class="caption-text">Sample output that displays only nodes at depth zero.</span><a class="headerlink" href="#id1" title="Link to this image">¶</a></p>
+<p><span class="caption-text">Sample output that displays only nodes at depth zero.</span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="output-options">
-<h2>Output Options<a class="headerlink" href="#output-options" title="Link to this heading">¶</a></h2>
+<h2>Output Options<a class="headerlink" href="#output-options" title="Link to this heading">#</a></h2>
 <p>The following arguments control how information is displayed:</p>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-L">
-<span id="cmdoption-list"></span><span class="sig-name descname"><span class="pre">-L</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--list</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-L" title="Link to this definition">¶</a></dt>
+<span id="cmdoption-list"></span><span class="sig-name descname"><span class="pre">-L</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--list</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-L" title="Link to this definition">#</a></dt>
 <dd><p>Output all discovered nodes as a <strong>flat list</strong> rather than a hierarchical table/tree.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -295,20 +331,20 @@ can be displayed in either structured or flat form.</p>
 <figure class="align-center" id="id2">
 <img alt="../../_images/iedmap-enum-list.png" src="../../_images/iedmap-enum-list.png" />
 <figcaption>
-<p><span class="caption-text">List output of all logical nodes within the device or the selected node.</span><a class="headerlink" href="#id2" title="Link to this image">¶</a></p>
+<p><span class="caption-text">List output of all logical nodes within the device or the selected node.</span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-maxdepth">
-<span class="sig-name descname"><span class="pre">--maxdepth</span></span><span class="sig-prename descclassname"> <span class="pre">DEPTH</span></span><a class="headerlink" href="#cmdoption-maxdepth" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">--maxdepth</span></span><span class="sig-prename descclassname"> <span class="pre">DEPTH</span></span><a class="headerlink" href="#cmdoption-maxdepth" title="Link to this definition">#</a></dt>
 <dd><p>Limit the displayed hierarchy to a maximum <strong>node depth</strong>.</p>
 </dd></dl>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-no-path">
-<span class="sig-name descname"><span class="pre">--no-path</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-no-path" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">--no-path</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-no-path" title="Link to this definition">#</a></dt>
 <dd><p>Suppress the display of <strong>fully qualified paths</strong> for nodes.
 Normally, paths such as <code class="docutils literal notranslate"><span class="pre">LD1/MMXU1.A.phsA</span></code> are shown.
 With this option, only the node name is displayed.</p>
@@ -316,7 +352,7 @@ With this option, only the node name is displayed.</p>
 
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-V">
-<span id="cmdoption-values"></span><span class="sig-name descname"><span class="pre">-V</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--values</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-V" title="Link to this definition">¶</a></dt>
+<span id="cmdoption-values"></span><span class="sig-name descname"><span class="pre">-V</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--values</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-V" title="Link to this definition">#</a></dt>
 <dd><p>Display the <strong>current values</strong> of nodes alongside their structure. This
 requires additional MMS <code class="docutils literal notranslate"><span class="pre">Read</span></code> requests to retrieve DataObject or
 DataAttribute values.</p>
@@ -365,17 +401,17 @@ DataAttribute values.</p>
   </p>
 </div>
       <div class="sy-foot-socials">
-<a href="https://github.com/MatrixEditor/icspacket" aria-label="GitHub">
-  <iconify-icon icon="simple-icons:github"></iconify-icon>
-</a></div>
+  <a href="https://github.com/MatrixEditor/icspacket" aria-label="GitHub">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </a></div>
     </div>
   </div>
 </footer>
-      <script src="../../_static/documentation_options.js?v=53ae9ec8"></script>
-      <script src="../../_static/doctools.js?v=9bcbadda"></script>
-      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/documentation_options.js?v=ded930d6"></script>
+      <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
       <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
       <script src="../../_static/copybutton.js?v=f281be69"></script>
       <script src="../../_static/design-tabs.js?v=f930bc37"></script>
-      <script src="../../_static/shibuya.js?v=e730760c"></script></body>
+      <script src="../../_static/shibuya.js?v=50760d75"></script></body>
 </html>

@@ -2,12 +2,12 @@
 <html lang="en" data-accent-color="lime" data-content_root="../">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Core API Reference - icspacket 0.2.4 documentation</title><link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Reading Objects" href="../protocols/dnp3/dnp3read.html" /><link rel="prev" title="Protocols Overview" href="protocols.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Core API Reference - icspacket 0.1.dev1+ga30386068 documentation</title><link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Reading Objects" href="../protocols/dnp3/dnp3read.html" /><link rel="prev" title="Protocols Overview" href="protocols.html" />
       <link rel="canonical" href="https://matrixeditor.github.io/icspacket/getting-started/coreapi.html" /><script>
     function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
     setColorMode(localStorage._theme||"dark");
-  </script><link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b1a1f93b" />
-    <link rel="stylesheet" type="text/css" href="../_static/shibuya.css?v=bb284d7b" />
+  </script><link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=e1a1ceaf" />
+    <link rel="stylesheet" type="text/css" href="../_static/shibuya.css?v=2ceb65ce" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link media="print" rel="stylesheet" type="text/css" href="../_static/print.css?v=20ff2c19" />
@@ -20,10 +20,11 @@
   --sy-f-heading: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
 }
 </style>
-    <meta property="og:type" content="website"/>
-<meta property="og:url" content="https://matrixeditor.github.io/icspacket/getting-started/coreapi.html"/>
-<meta property="og:title" content="Core API Reference"/>
-<meta name="twitter:card" content="summary"/>
+    
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://matrixeditor.github.io/icspacket/getting-started/coreapi.html"/>
+  <meta property="og:title" content="Core API Reference"/>
+    <meta name="twitter:card" content="summary"/>
   </head>
 <body><div class="sy-head">
   <div class="sy-head-blur"></div>
@@ -198,19 +199,19 @@ data-aria-dark="Switch to auto color mode">
 <li><a class="reference internal" href="#icspacket.core.connection.ConnectionNotEstablished"><code class="docutils literal notranslate"><span class="pre">ConnectionNotEstablished</span></code></a></li>
 <li><a class="reference internal" href="#icspacket.core.connection.ConnectionStateError"><code class="docutils literal notranslate"><span class="pre">ConnectionStateError</span></code></a></li>
 <li><a class="reference internal" href="#icspacket.core.connection.connection"><code class="docutils literal notranslate"><span class="pre">connection</span></code></a><ul>
-<li><a class="reference internal" href="#icspacket.core.connection.connection.is_connected"><code class="docutils literal notranslate">is_connected()</span></code></a></li>
-<li><a class="reference internal" href="#icspacket.core.connection.connection.is_valid"><code class="docutils literal notranslate">is_valid()</span></code></a></li>
-<li><a class="reference internal" href="#icspacket.core.connection.connection.connect"><code class="docutils literal notranslate">connect()</span></code></a></li>
-<li><a class="reference internal" href="#icspacket.core.connection.connection.close"><code class="docutils literal notranslate">close()</span></code></a></li>
-<li><a class="reference internal" href="#icspacket.core.connection.connection.send_data"><code class="docutils literal notranslate">send_data()</span></code></a></li>
-<li><a class="reference internal" href="#icspacket.core.connection.connection.recv_data"><code class="docutils literal notranslate">recv_data()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.core.connection.connection.is_connected"><code class="docutils literal notranslate"><span class="pre">connection.is_connected()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.core.connection.connection.is_valid"><code class="docutils literal notranslate"><span class="pre">connection.is_valid()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.core.connection.connection.connect"><code class="docutils literal notranslate"><span class="pre">connection.connect()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.core.connection.connection.close"><code class="docutils literal notranslate"><span class="pre">connection.close()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.core.connection.connection.send_data"><code class="docutils literal notranslate"><span class="pre">connection.send_data()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.core.connection.connection.recv_data"><code class="docutils literal notranslate"><span class="pre">connection.recv_data()</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#icspacket.core.logger.SAFE"><code class="docutils literal notranslate"><span class="pre">SAFE</span></code></a></li>
 <li><a class="reference internal" href="#icspacket.core.logger.TRACE"><code class="docutils literal notranslate"><span class="pre">TRACE</span></code></a></li>
 <li><a class="reference internal" href="#icspacket.core.logger.TRACE_PACKETS"><code class="docutils literal notranslate"><span class="pre">TRACE_PACKETS</span></code></a></li>
 <li><a class="reference internal" href="#icspacket.core.logger.PrefixFormatter"><code class="docutils literal notranslate"><span class="pre">PrefixFormatter</span></code></a><ul>
-<li><a class="reference internal" href="#icspacket.core.logger.PrefixFormatter.format"><code class="docutils literal notranslate">format()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.core.logger.PrefixFormatter.format"><code class="docutils literal notranslate"><span class="pre">PrefixFormatter.format()</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#icspacket.core.logger.init"><code class="docutils literal notranslate"><span class="pre">init()</span></code></a></li>
@@ -263,13 +264,48 @@ data-aria-dark="Switch to auto color mode">
     </div>
   </div>
 </div><div class="flex flex-col break-words justify-between">
-      <div class="min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
-        <article class="yue" role="main">
+      <div class="relative min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
+  <div class="copy-page-wrapper relative pb-4 lg:absolute lg:top-8 lg:right-6 xl:right-12">
+  <div id="copy-page-trigger">
+    <button
+      type="button"
+      class="js-copy px-3 py-1 inline-flex items-center gap-1"
+      data-url="https://raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/getting-started/coreapi.rst"
+    >
+      <i class="i-lucide" data-icon="copy"></i>
+      <span>Copy page</span>
+    </button>
+    <button class="js-menu px-2 py-1" type="button" aria-label="More actions"
+      aria-haspopup="menu" aria-expanded="false" aria-controls="copy-page-content">
+      <i class="i-lucide chevron-down"></i>
+    </button>
+  </div>
+  <div id="copy-page-content" role="menu" aria-orientation="vertical" aria-hidden="true">
+    <div role="presentation">
+      <div class="flex flex-col" role="group">
+        <button class="js-copy" type="button" role="menuitem"
+          data-url="https://raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/getting-started/coreapi.rst">
+          <span class="iconify-icon">
+            <i class="i-lucide" data-icon="copy"></i>
+          </span>
+          <span>Copy page</span>
+        </button>
+        <a role="menuitem" href="https://raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/getting-started/coreapi.rst" target="_blank" rel="nofollow"><iconify-icon icon="bi:code-slash"></iconify-icon>
+            <span>View Source</span></a><a role="menuitem" href="https://chatgpt.com/?hints=search&q=Read%20https%3A//raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/getting-started/coreapi.rst%20so%20I%20can%20ask%20questions%20about%20it." target="_blank" rel="nofollow">
+          <iconify-icon icon="bi:openai"></iconify-icon>
+          <span>Open in ChatGPT</span>
+        </a><a role="menuitem" href="https://claude.ai/new?q=Read%20https%3A//raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/getting-started/coreapi.rst%20so%20I%20can%20ask%20questions%20about%20it." target="_blank" rel="nofollow">
+          <iconify-icon icon="bi:claude"></iconify-icon>
+          <span>Open in Claude</span>
+        </a></div>
+    </div>
+  </div>
+</div><article class="yue" role="main">
           <section id="module-icspacket.core.connection">
-<span id="core-api-reference"></span><span id="core-api"></span><h1>Core API Reference<a class="headerlink" href="#module-icspacket.core.connection" title="Link to this heading">¶</a></h1>
+<span id="core-api-reference"></span><span id="core-api"></span><h1>Core API Reference<a class="headerlink" href="#module-icspacket.core.connection" title="Link to this heading">#</a></h1>
 <dl class="py exception">
 <dt class="sig sig-object py" id="icspacket.core.connection.ConnectionError">
-<em class="property"><span class="k"><span class="pre">exception</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">icspacket.core.connection.</span></span><span class="sig-name descname"><span class="pre">ConnectionError</span></span><a class="reference internal" href="../_modules/icspacket/core/connection.html#ConnectionError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.core.connection.ConnectionError" title="Link to this definition">¶</a></dt>
+<span class="property"><span class="k"><span class="pre">exception</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">icspacket.core.connection.</span></span><span class="sig-name descname"><span class="pre">ConnectionError</span></span><a class="reference internal" href="../_modules/icspacket/core/connection.html#ConnectionError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.core.connection.ConnectionError" title="Link to this definition">#</a></dt>
 <dd><p>Base exception for all connection-related errors.</p>
 <p>Subclasses provide more specific context, e.g. closed connections
 or invalid states. Intended for use by higher-level protocol
@@ -278,14 +314,14 @@ handlers to unify error handling across different transports.</p>
 
 <dl class="py exception">
 <dt class="sig sig-object py" id="icspacket.core.connection.ConnectionClosedError">
-<em class="property"><span class="k"><span class="pre">exception</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">icspacket.core.connection.</span></span><span class="sig-name descname"><span class="pre">ConnectionClosedError</span></span><a class="reference internal" href="../_modules/icspacket/core/connection.html#ConnectionClosedError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.core.connection.ConnectionClosedError" title="Link to this definition">¶</a></dt>
+<span class="property"><span class="k"><span class="pre">exception</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">icspacket.core.connection.</span></span><span class="sig-name descname"><span class="pre">ConnectionClosedError</span></span><a class="reference internal" href="../_modules/icspacket/core/connection.html#ConnectionClosedError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.core.connection.ConnectionClosedError" title="Link to this definition">#</a></dt>
 <dd><p>Raised when an operation is attempted on a connection that
 has already been cleanly or forcibly closed.</p>
 </dd></dl>
 
 <dl class="py exception">
 <dt class="sig sig-object py" id="icspacket.core.connection.ConnectionNotEstablished">
-<em class="property"><span class="k"><span class="pre">exception</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">icspacket.core.connection.</span></span><span class="sig-name descname"><span class="pre">ConnectionNotEstablished</span></span><a class="reference internal" href="../_modules/icspacket/core/connection.html#ConnectionNotEstablished"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.core.connection.ConnectionNotEstablished" title="Link to this definition">¶</a></dt>
+<span class="property"><span class="k"><span class="pre">exception</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">icspacket.core.connection.</span></span><span class="sig-name descname"><span class="pre">ConnectionNotEstablished</span></span><a class="reference internal" href="../_modules/icspacket/core/connection.html#ConnectionNotEstablished"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.core.connection.ConnectionNotEstablished" title="Link to this definition">#</a></dt>
 <dd><p>Raised when an operation requires an active connection but
 none has been established yet.</p>
 <p>Typically triggered by calling <code class="docutils literal notranslate"><span class="pre">send_data()</span></code> or <code class="docutils literal notranslate"><span class="pre">recv_data()</span></code>
@@ -294,7 +330,7 @@ before <code class="docutils literal notranslate"><span class="pre">connect()</s
 
 <dl class="py exception">
 <dt class="sig sig-object py" id="icspacket.core.connection.ConnectionStateError">
-<em class="property"><span class="k"><span class="pre">exception</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">icspacket.core.connection.</span></span><span class="sig-name descname"><span class="pre">ConnectionStateError</span></span><a class="reference internal" href="../_modules/icspacket/core/connection.html#ConnectionStateError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.core.connection.ConnectionStateError" title="Link to this definition">¶</a></dt>
+<span class="property"><span class="k"><span class="pre">exception</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">icspacket.core.connection.</span></span><span class="sig-name descname"><span class="pre">ConnectionStateError</span></span><a class="reference internal" href="../_modules/icspacket/core/connection.html#ConnectionStateError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.core.connection.ConnectionStateError" title="Link to this definition">#</a></dt>
 <dd><p>Raised when a connection is in an invalid state for the
 requested operation.</p>
 <dl class="simple">
@@ -308,7 +344,7 @@ requested operation.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="icspacket.core.connection.connection">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">icspacket.core.connection.</span></span><span class="sig-name descname"><span class="pre">connection</span></span><a class="reference internal" href="../_modules/icspacket/core/connection.html#connection"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.core.connection.connection" title="Link to this definition">¶</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">icspacket.core.connection.</span></span><span class="sig-name descname"><span class="pre">connection</span></span><a class="reference internal" href="../_modules/icspacket/core/connection.html#connection"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.core.connection.connection" title="Link to this definition">#</a></dt>
 <dd><p>Generic base class for connection-oriented protocols.</p>
 <p>Provides the essential API surface for establishing, validating,
 transmitting, and closing a connection. This base class does not
@@ -317,7 +353,7 @@ supply the mechanics (e.g., TCP sockets, serial lines, virtual
 channels).</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="icspacket.core.connection.connection.is_connected">
-<span class="sig-name descname"><span class="pre">is_connected</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/icspacket/core/connection.html#connection.is_connected"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.core.connection.connection.is_connected" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">is_connected</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/icspacket/core/connection.html#connection.is_connected"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.core.connection.connection.is_connected" title="Link to this definition">#</a></dt>
 <dd><p>Check if the connection is established.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -332,7 +368,7 @@ usable, <code class="docutils literal notranslate"><span class="pre">False</span
 
 <dl class="py method">
 <dt class="sig sig-object py" id="icspacket.core.connection.connection.is_valid">
-<span class="sig-name descname"><span class="pre">is_valid</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/icspacket/core/connection.html#connection.is_valid"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.core.connection.connection.is_valid" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">is_valid</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/icspacket/core/connection.html#connection.is_valid"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.core.connection.connection.is_valid" title="Link to this definition">#</a></dt>
 <dd><p>Verify whether the connection remains valid.</p>
 <p>This flag is set by subclasses to indicate that the
 underlying transport is still operational. By default
@@ -350,7 +386,7 @@ it returns the internal <code class="docutils literal notranslate"><span class="
 
 <dl class="py method">
 <dt class="sig sig-object py" id="icspacket.core.connection.connection.connect">
-<span class="sig-name descname"><span class="pre">connect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">address</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/icspacket/core/connection.html#connection.connect"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.core.connection.connection.connect" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">connect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">address</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/icspacket/core/connection.html#connection.connect"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.core.connection.connection.connect" title="Link to this definition">#</a></dt>
 <dd><p>Establish the underlying connection.</p>
 <p>Must be overridden by subclasses. Expected to perform
 protocol-specific setup such as TCP handshakes, serial
@@ -369,7 +405,7 @@ but may vary by protocol.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="icspacket.core.connection.connection.close">
-<span class="sig-name descname"><span class="pre">close</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/icspacket/core/connection.html#connection.close"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.core.connection.connection.close" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">close</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/icspacket/core/connection.html#connection.close"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.core.connection.connection.close" title="Link to this definition">#</a></dt>
 <dd><p>Close the connection and update state.</p>
 <p>Must be overridden by subclasses. Should ensure resources
 are released and internal flags are reset.</p>
@@ -382,7 +418,7 @@ are released and internal flags are reset.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="icspacket.core.connection.connection.send_data">
-<span class="sig-name descname"><span class="pre">send_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">octets</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bytes</span></span></em>, <em class="sig-param"><span class="positional-only-separator o"><abbr title="Positional-only parameter separator (PEP 570)"><span class="pre">/</span></abbr></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/icspacket/core/connection.html#connection.send_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.core.connection.connection.send_data" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">send_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">octets</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bytes</span></span></em>, <em class="sig-param"><span class="positional-only-separator o"><abbr title="Positional-only parameter separator (PEP 570)"><span class="pre">/</span></abbr></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/icspacket/core/connection.html#connection.send_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.core.connection.connection.send_data" title="Link to this definition">#</a></dt>
 <dd><p>Send raw data over the connection.</p>
 <p>Must be implemented by subclasses to handle transport-specific
 framing and transmission.</p>
@@ -402,7 +438,7 @@ during transmission.</p></li>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="icspacket.core.connection.connection.recv_data">
-<span class="sig-name descname"><span class="pre">recv_data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bytes</span></span></span><a class="reference internal" href="../_modules/icspacket/core/connection.html#connection.recv_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.core.connection.connection.recv_data" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">recv_data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bytes</span></span></span><a class="reference internal" href="../_modules/icspacket/core/connection.html#connection.recv_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.core.connection.connection.recv_data" title="Link to this definition">#</a></dt>
 <dd><p>Receive raw data from the connection.</p>
 <p>Must be implemented by subclasses. Expected to block or wait
 until at least one unit of data is available, depending on
@@ -429,21 +465,21 @@ while awaiting data.</p></li>
 
 <dl class="py data" id="module-icspacket.core.logger">
 <dt class="sig sig-object py" id="icspacket.core.logger.SAFE">
-<span class="sig-prename descclassname"><span class="pre">icspacket.core.logger.</span></span><span class="sig-name descname"><span class="pre">SAFE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;object</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#icspacket.core.logger.SAFE" title="Link to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">icspacket.core.logger.</span></span><span class="sig-name descname"><span class="pre">SAFE</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;object</span> <span class="pre">object&gt;</span></span><a class="headerlink" href="#icspacket.core.logger.SAFE" title="Link to this definition">#</a></dt>
 <dd><p>Sentinel object used to mark log messages that should be escaped to prevent
 Rich markup injection.</p>
 </dd></dl>
 
 <dl class="py data">
 <dt class="sig sig-object py" id="icspacket.core.logger.TRACE">
-<span class="sig-prename descclassname"><span class="pre">icspacket.core.logger.</span></span><span class="sig-name descname"><span class="pre">TRACE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">5</span></em><a class="headerlink" href="#icspacket.core.logger.TRACE" title="Link to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">icspacket.core.logger.</span></span><span class="sig-name descname"><span class="pre">TRACE</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">5</span></span><a class="headerlink" href="#icspacket.core.logger.TRACE" title="Link to this definition">#</a></dt>
 <dd><p>Custom logging level for trace messages, numerically below <code class="docutils literal notranslate"><span class="pre">DEBUG</span></code> (value =
 5). These messages will appear when using <code class="docutils literal notranslate"><span class="pre">-vvv</span></code> verbosity.</p>
 </dd></dl>
 
 <dl class="py data">
 <dt class="sig sig-object py" id="icspacket.core.logger.TRACE_PACKETS">
-<span class="sig-prename descclassname"><span class="pre">icspacket.core.logger.</span></span><span class="sig-name descname"><span class="pre">TRACE_PACKETS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">4</span></em><a class="headerlink" href="#icspacket.core.logger.TRACE_PACKETS" title="Link to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">icspacket.core.logger.</span></span><span class="sig-name descname"><span class="pre">TRACE_PACKETS</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">4</span></span><a class="headerlink" href="#icspacket.core.logger.TRACE_PACKETS" title="Link to this definition">#</a></dt>
 <dd><p>Custom logging level to trace packets, numerically below <code class="docutils literal notranslate"><span class="pre">TRACE</span></code> (value =
 4). These messages will appear when using <code class="docutils literal notranslate"><span class="pre">-vvvv</span></code> verbosity.</p>
 <div class="versionadded">
@@ -453,12 +489,12 @@ Rich markup injection.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="icspacket.core.logger.PrefixFormatter">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">icspacket.core.logger.</span></span><span class="sig-name descname"><span class="pre">PrefixFormatter</span></span><a class="reference internal" href="../_modules/icspacket/core/logger.html#PrefixFormatter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.core.logger.PrefixFormatter" title="Link to this definition">¶</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">icspacket.core.logger.</span></span><span class="sig-name descname"><span class="pre">PrefixFormatter</span></span><a class="reference internal" href="../_modules/icspacket/core/logger.html#PrefixFormatter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.core.logger.PrefixFormatter" title="Link to this definition">#</a></dt>
 <dd><p>Custom log formatter that injects colored prefixes and safely handles
 message escaping.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="icspacket.core.logger.PrefixFormatter.format">
-<span class="sig-name descname"><span class="pre">format</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">record</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/icspacket/core/logger.html#PrefixFormatter.format"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.core.logger.PrefixFormatter.format" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">format</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">record</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/icspacket/core/logger.html#PrefixFormatter.format"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.core.logger.PrefixFormatter.format" title="Link to this definition">#</a></dt>
 <dd><p>Format a log record by injecting a prefix and optionally escaping the message.</p>
 </dd></dl>
 
@@ -466,7 +502,7 @@ message escaping.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="icspacket.core.logger.init">
-<span class="sig-prename descclassname"><span class="pre">icspacket.core.logger.</span></span><span class="sig-name descname"><span class="pre">init</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ts</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">level</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">20</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/icspacket/core/logger.html#init"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.core.logger.init" title="Link to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">icspacket.core.logger.</span></span><span class="sig-name descname"><span class="pre">init</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ts</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">level</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">20</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/icspacket/core/logger.html#init"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.core.logger.init" title="Link to this definition">#</a></dt>
 <dd><p>Initialize the global logging system with Rich-based formatting.</p>
 <p>Can optionally show timestamps.</p>
 <dl class="field-list simple">
@@ -481,7 +517,7 @@ message escaping.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="icspacket.core.logger.init_from_args">
-<span class="sig-prename descclassname"><span class="pre">icspacket.core.logger.</span></span><span class="sig-name descname"><span class="pre">init_from_args</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">verbosity</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">quiet</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ts</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/icspacket/core/logger.html#init_from_args"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.core.logger.init_from_args" title="Link to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">icspacket.core.logger.</span></span><span class="sig-name descname"><span class="pre">init_from_args</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">verbosity</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">quiet</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ts</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/icspacket/core/logger.html#init_from_args"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.core.logger.init_from_args" title="Link to this definition">#</a></dt>
 <dd><p>Initialize logging from CLI-like verbosity/quiet flags.</p>
 <p>This helper interprets CLI verbosity levels into logging levels:</p>
 <ul class="simple">
@@ -541,17 +577,17 @@ message escaping.</p>
   </p>
 </div>
       <div class="sy-foot-socials">
-<a href="https://github.com/MatrixEditor/icspacket" aria-label="GitHub">
-  <iconify-icon icon="simple-icons:github"></iconify-icon>
-</a></div>
+  <a href="https://github.com/MatrixEditor/icspacket" aria-label="GitHub">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </a></div>
     </div>
   </div>
 </footer>
-      <script src="../_static/documentation_options.js?v=53ae9ec8"></script>
-      <script src="../_static/doctools.js?v=9bcbadda"></script>
-      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/documentation_options.js?v=ded930d6"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
       <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
       <script src="../_static/copybutton.js?v=f281be69"></script>
       <script src="../_static/design-tabs.js?v=f930bc37"></script>
-      <script src="../_static/shibuya.js?v=e730760c"></script></body>
+      <script src="../_static/shibuya.js?v=50760d75"></script></body>
 </html>
