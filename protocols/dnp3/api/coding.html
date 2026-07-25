@@ -2,7 +2,7 @@
 <html lang="en" data-accent-color="lime" data-content_root="../../../">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Encoding / Decoding - icspacket 0.1.dev1+gcaa5aba2d documentation</title><link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" /><link rel="next" title="Variations" href="variations.html" /><link rel="prev" title="Primitive Types" href="primitives.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Encoding / Decoding - icspacket 0.1.dev1+g0a5b28664 documentation</title><link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" /><link rel="next" title="Variations" href="variations.html" /><link rel="prev" title="Primitive Types" href="primitives.html" />
       <link rel="canonical" href="https://matrixeditor.github.io/icspacket/protocols/dnp3/api/coding.html" /><script>
     function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
     setColorMode(localStorage._theme||"dark");
@@ -318,16 +318,18 @@ data-aria-dark="Switch to auto color mode">
           <section id="module-icspacket.proto.dnp3.objects.coding">
 <span id="encoding-decoding"></span><span id="dnp3-obj-lib-coding"></span><h1>Encoding / Decoding<a class="headerlink" href="#module-icspacket.proto.dnp3.objects.coding" title="Link to this heading">#</a></h1>
 <p>This module implements parsing and serialization of <strong>DNP3 Application Layer
-objects</strong> as defined in section <em>4.2.2.7 Object Headers</em> of the DNP3
-specification.</p>
-<p>In DNP3, object headers describe data structures that cannot be conveyed
-through the application header alone. Each object header specifies:</p>
+objects</strong> according to section <em>4.2.2.7 Object Headers</em> of the DNP3
+Specification.</p>
+<p>Object headers carry information that a bare application header cannot
+express. This library models each header as four pieces:</p>
 <ul class="simple">
-<li><p><strong>Group</strong>: The type of data (e.g., binary inputs, analog outputs).</p></li>
-<li><p><strong>Variation</strong>: The representation of the data (e.g., packed, 16-bit, 32-bit).</p></li>
-<li><p><strong>Qualifier fields</strong>: Indicate how many objects follow and what range or
-prefixing mechanism is applied.</p></li>
-<li><p><strong>Objects</strong>: The actual data values.</p></li>
+<li><p><strong>Group</strong>: which data category is being carried (binary inputs, analog
+outputs, etc.).</p></li>
+<li><p><strong>Variation</strong>: which on-the-wire layout was chosen for that data (packed,
+16-bit, 32-bit, etc.).</p></li>
+<li><p><strong>Qualifier fields</strong>: how many objects to expect next, and which
+range/prefixing scheme locates them.</p></li>
+<li><p><strong>Objects</strong>: the decoded values themselves.</p></li>
 </ul>
 <section id="example-class0123-request">
 <h2>Example: Class0123 Request<a class="headerlink" href="#example-class0123-request" title="Link to this heading">#</a></h2>
@@ -346,35 +348,34 @@ prefixing mechanism is applied.</p></li>
 </section>
 <dl class="py class">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.objects.coding.ObjectHeader">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">icspacket.proto.dnp3.objects.coding.</span></span><span class="sig-name descname"><span class="pre">ObjectHeader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">group</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">variation</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reserved</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">obj_prefix</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="application.html#icspacket.proto.dnp3.const.ObjectPrefixCode" title="icspacket.proto.dnp3.const.ObjectPrefixCode"><span class="pre">ObjectPrefixCode</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">ObjectPrefixCode.NONE</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">range_spec</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="application.html#icspacket.proto.dnp3.const.RangeSpecifierCode" title="icspacket.proto.dnp3.const.RangeSpecifierCode"><span class="pre">RangeSpecifierCode</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">RangeSpecifierCode.NONE</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/icspacket/proto/dnp3/objects/coding.html#ObjectHeader"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.dnp3.objects.coding.ObjectHeader" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">icspacket.proto.dnp3.objects.coding.</span></span><span class="sig-name descname"><span class="pre">ObjectHeader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">group</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">variation</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reserved</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">obj_prefix</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="application.html#icspacket.proto.dnp3.const.ObjectPrefixCode" title="icspacket.proto.dnp3.const.ObjectPrefixCode"><span class="pre">ObjectPrefixCode</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">ObjectPrefixCode.NONE</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">range_spec</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="application.html#icspacket.proto.dnp3.const.RangeSpecifierCode" title="icspacket.proto.dnp3.const.RangeSpecifierCode"><span class="pre">RangeSpecifierCode</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">RangeSpecifierCode.NONE</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/icspacket/proto/dnp3/objects/coding.html#ObjectHeader"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.dnp3.objects.coding.ObjectHeader" title="Link to this definition">#</a></dt>
 <dd><p>Represents a <strong>DNP3 Object Header</strong>.</p>
-<p>Object headers provide additional context about a set of objects
-transmitted in the Application Layer. They define the group, variation,
-and addressing/range information for associated data objects.</p>
+<p>Each instance pins down the group and variation that the following
+objects belong to, along with the qualifier fields describing how many
+objects to expect and how they are addressed or prefixed.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.objects.coding.ObjectHeader.group">
 <span class="sig-name descname"><span class="pre">group</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><a class="headerlink" href="#icspacket.proto.dnp3.objects.coding.ObjectHeader.group" title="Link to this definition">#</a></dt>
 <dd><p>/4.2.2.7.1 Object group
-The object group specifies what data type or values are included in a
-master request or in an outstation response.</p>
+Identifies the data category the following objects belong to, whether
+this header is part of a master request or an outstation response.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.objects.coding.ObjectHeader.variation">
 <span class="sig-name descname"><span class="pre">variation</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><a class="headerlink" href="#icspacket.proto.dnp3.objects.coding.ObjectHeader.variation" title="Link to this definition">#</a></dt>
 <dd><p>/4.2.2.7.2 Object variation
-Specifies the data format of DNP3 objects. The object group and object variation
-together uniquely specify the structure of a DNP3 object and the type of data that
-it references.</p>
+Selects the on-the-wire layout for objects in this group. This
+library uses the (group, variation) pair to look up the matching
+struct definition and decode the data accordingly.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.objects.coding.ObjectHeader.obj_prefix">
 <span class="sig-name descname"><span class="pre">obj_prefix</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="application.html#icspacket.proto.dnp3.const.ObjectPrefixCode" title="icspacket.proto.dnp3.const.ObjectPrefixCode"><span class="pre">ObjectPrefixCode</span></a></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></span><a class="headerlink" href="#icspacket.proto.dnp3.objects.coding.ObjectHeader.obj_prefix" title="Link to this definition">#</a></dt>
 <dd><p>/4.2.2.7.3.2 Object prefix code
-Specifies what, if any, prefix value appears before each of the DNP3
-objects that follow the object header. Prefixes are either an index number
-or an object size.</p>
+Selects whether each following object is preceded by a small value
+(an index or a size) and, if so, which kind.</p>
 </dd></dl>
 
 <dl class="py attribute">
@@ -424,7 +425,7 @@ here for proper serialization.</p>
 </div>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.objects.coding.DNP3ObjectVariations.range_type">
-<span class="sig-name descname"><span class="pre">range_type</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="application.html#icspacket.proto.dnp3.const.RangeSpecifierCode" title="icspacket.proto.dnp3.const.RangeSpecifierCode"><span class="pre">RangeSpecifierCode</span></a></span><a class="headerlink" href="#icspacket.proto.dnp3.objects.coding.DNP3ObjectVariations.range_type" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">range_type</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="application.html#icspacket.proto.dnp3.const.RangeSpecifierCode" title="icspacket.proto.dnp3.const.RangeSpecifierCode"><span class="pre">RangeSpecifierCode</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#icspacket.proto.dnp3.objects.coding.DNP3ObjectVariations.range_type" title="Link to this definition">#</a></dt>
 <dd><p>Indicates the range encoding used for this variation (count or start/end).</p>
 </dd></dl>
 
@@ -437,7 +438,7 @@ an integer count, or <code class="docutils literal notranslate"><span class="pre
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.objects.coding.DNP3ObjectVariations.prefix_type">
-<span class="sig-name descname"><span class="pre">prefix_type</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="application.html#icspacket.proto.dnp3.const.ObjectPrefixCode" title="icspacket.proto.dnp3.const.ObjectPrefixCode"><span class="pre">ObjectPrefixCode</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#icspacket.proto.dnp3.objects.coding.DNP3ObjectVariations.prefix_type" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">prefix_type</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="application.html#icspacket.proto.dnp3.const.ObjectPrefixCode" title="icspacket.proto.dnp3.const.ObjectPrefixCode"><span class="pre">ObjectPrefixCode</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#icspacket.proto.dnp3.objects.coding.DNP3ObjectVariations.prefix_type" title="Link to this definition">#</a></dt>
 <dd><p>Prefix encoding used for the objects (e.g., none, 1-byte, 2-byte index).</p>
 </dd></dl>
 
@@ -487,7 +488,7 @@ object instances.</p>
 </div>
 <dl class="py method">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.objects.coding.DNP3Objects.get_variation">
-<span class="sig-name descname"><span class="pre">get_variation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">group</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">variation</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="positional-only-separator o"><abbr title="Positional-only parameter separator (PEP 570)"><span class="pre">/</span></abbr></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#icspacket.proto.dnp3.objects.coding.DNP3ObjectVariations" title="icspacket.proto.dnp3.objects.coding.DNP3ObjectVariations"><span class="pre">DNP3ObjectVariations</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="reference internal" href="../../../_modules/icspacket/proto/dnp3/objects/coding.html#DNP3Objects.get_variation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.dnp3.objects.coding.DNP3Objects.get_variation" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">get_variation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">group</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">variation</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="positional-only-separator o"><abbr title="Positional-only parameter separator (PEP 570)"><span class="pre">/</span></abbr></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#icspacket.proto.dnp3.objects.coding.DNP3ObjectVariations" title="icspacket.proto.dnp3.objects.coding.DNP3ObjectVariations"><span class="pre">DNP3ObjectVariations</span></a></span></span><a class="reference internal" href="../../../_modules/icspacket/proto/dnp3/objects/coding.html#DNP3Objects.get_variation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.dnp3.objects.coding.DNP3Objects.get_variation" title="Link to this definition">#</a></dt>
 <dd><p>Retrieve or create a variation container for the given group/variation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -604,7 +605,7 @@ apply when none is specified.</p></li>
     </div>
   </div>
 </footer>
-      <script src="../../../_static/documentation_options.js?v=3d9de00a"></script>
+      <script src="../../../_static/documentation_options.js?v=1f6bc116"></script>
       <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
       <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
       <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>

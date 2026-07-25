@@ -2,7 +2,7 @@
 <html lang="en" data-accent-color="lime" data-content_root="../../../">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Link Layer - icspacket 0.1.dev1+gcaa5aba2d documentation</title><link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" /><link rel="next" title="Transport Layer" href="transport.html" /><link rel="prev" title="API Reference" href="../api.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Link Layer - icspacket 0.1.dev1+g0a5b28664 documentation</title><link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" /><link rel="next" title="Transport Layer" href="transport.html" /><link rel="prev" title="API Reference" href="../api.html" />
       <link rel="canonical" href="https://matrixeditor.github.io/icspacket/protocols/dnp3/api/link.html" /><script>
     function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
     setColorMode(localStorage._theme||"dark");
@@ -354,18 +354,19 @@ data-aria-dark="Switch to auto color mode">
 <dl class="py class">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.link.LinkDirection">
 <span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">icspacket.proto.dnp3.link.</span></span><span class="sig-name descname"><span class="pre">LinkDirection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">values</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/icspacket/proto/dnp3/link.html#LinkDirection"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.dnp3.link.LinkDirection" title="Link to this definition">#</a></dt>
-<dd><p>Direction indicator bit for the DNP3 link layer (DIR field).</p>
+<dd><p>Values for the DNP3 link layer’s direction bit (DIR field), used by this
+library to tag which kind of station produced a frame.</p>
 <p>(See DNP3 Specification, Section 9.2.4.1.3.1)</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.link.LinkDirection.MASTER">
 <span class="sig-name descname"><span class="pre">MASTER</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></span><a class="headerlink" href="#icspacket.proto.dnp3.link.LinkDirection.MASTER" title="Link to this definition">#</a></dt>
-<dd><p>Indicates a frame sent from a Master device.</p>
+<dd><p>Marks a frame as originating from a Master device.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.link.LinkDirection.OUTSTATION">
 <span class="sig-name descname"><span class="pre">OUTSTATION</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></span><a class="headerlink" href="#icspacket.proto.dnp3.link.LinkDirection.OUTSTATION" title="Link to this definition">#</a></dt>
-<dd><p>Indicates a frame sent from an Outstation device.</p>
+<dd><p>Marks a frame as originating from an Outstation device.</p>
 </dd></dl>
 
 </dd></dl>
@@ -373,37 +374,38 @@ data-aria-dark="Switch to auto color mode">
 <dl class="py class">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.link.LinkPrimaryFunctionCode">
 <span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">icspacket.proto.dnp3.link.</span></span><span class="sig-name descname"><span class="pre">LinkPrimaryFunctionCode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">values</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/icspacket/proto/dnp3/link.html#LinkPrimaryFunctionCode"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.dnp3.link.LinkPrimaryFunctionCode" title="Link to this definition">#</a></dt>
-<dd><p>Primary-to-Secondary function codes for the Link Layer.</p>
+<dd><p>Function codes this library uses for frames traveling from a primary
+station to a secondary station.</p>
 <p>These codes are valid when the PRM bit is set (PRM = 1).
 (See DNP3 Specification, Table 9-1)</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.link.LinkPrimaryFunctionCode.RESET_LINK_STATES">
 <span class="sig-name descname"><span class="pre">RESET_LINK_STATES</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></span><a class="headerlink" href="#icspacket.proto.dnp3.link.LinkPrimaryFunctionCode.RESET_LINK_STATES" title="Link to this definition">#</a></dt>
-<dd><p>Reset link states.</p>
+<dd><p>Resets the secondary station’s link-layer state.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.link.LinkPrimaryFunctionCode.TEST_LINK_STATES">
 <span class="sig-name descname"><span class="pre">TEST_LINK_STATES</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2</span></span><a class="headerlink" href="#icspacket.proto.dnp3.link.LinkPrimaryFunctionCode.TEST_LINK_STATES" title="Link to this definition">#</a></dt>
-<dd><p>Test link states.</p>
+<dd><p>Tests whether the secondary station’s link layer is still responsive.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.link.LinkPrimaryFunctionCode.CONFIRMED_USER_DATA">
 <span class="sig-name descname"><span class="pre">CONFIRMED_USER_DATA</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">3</span></span><a class="headerlink" href="#icspacket.proto.dnp3.link.LinkPrimaryFunctionCode.CONFIRMED_USER_DATA" title="Link to this definition">#</a></dt>
-<dd><p>Confirmed user data transfer.</p>
+<dd><p>Carries user data that the secondary station must acknowledge.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.link.LinkPrimaryFunctionCode.UNCONFIRMED_USER_DATA">
 <span class="sig-name descname"><span class="pre">UNCONFIRMED_USER_DATA</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">4</span></span><a class="headerlink" href="#icspacket.proto.dnp3.link.LinkPrimaryFunctionCode.UNCONFIRMED_USER_DATA" title="Link to this definition">#</a></dt>
-<dd><p>Unconfirmed user data transfer.</p>
+<dd><p>Carries user data that does not require an acknowledgement.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.link.LinkPrimaryFunctionCode.REQUEST_LINK_STATUS">
 <span class="sig-name descname"><span class="pre">REQUEST_LINK_STATUS</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">9</span></span><a class="headerlink" href="#icspacket.proto.dnp3.link.LinkPrimaryFunctionCode.REQUEST_LINK_STATUS" title="Link to this definition">#</a></dt>
-<dd><p>Request link status.</p>
+<dd><p>Asks the secondary station to report its current link status.</p>
 </dd></dl>
 
 </dd></dl>
@@ -411,31 +413,33 @@ data-aria-dark="Switch to auto color mode">
 <dl class="py class">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.link.LinkSecondaryFunctionCode">
 <span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">icspacket.proto.dnp3.link.</span></span><span class="sig-name descname"><span class="pre">LinkSecondaryFunctionCode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">values</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/icspacket/proto/dnp3/link.html#LinkSecondaryFunctionCode"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.dnp3.link.LinkSecondaryFunctionCode" title="Link to this definition">#</a></dt>
-<dd><p>Secondary-to-Primary function codes for the Link Layer.</p>
+<dd><p>Function codes this library uses for frames traveling from a secondary
+station back to a primary station.</p>
 <p>These codes are valid when the PRM bit is clear (PRM = 0).
 (See DNP3 Specification, Table 9-2)</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.link.LinkSecondaryFunctionCode.ACK">
 <span class="sig-name descname"><span class="pre">ACK</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></span><a class="headerlink" href="#icspacket.proto.dnp3.link.LinkSecondaryFunctionCode.ACK" title="Link to this definition">#</a></dt>
-<dd><p>Acknowledgement.</p>
+<dd><p>Confirms that the previous frame from the primary station was accepted.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.link.LinkSecondaryFunctionCode.NACK">
 <span class="sig-name descname"><span class="pre">NACK</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></span><a class="headerlink" href="#icspacket.proto.dnp3.link.LinkSecondaryFunctionCode.NACK" title="Link to this definition">#</a></dt>
-<dd><p>Negative acknowledgement.</p>
+<dd><p>Reports that the previous frame from the primary station was rejected.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.link.LinkSecondaryFunctionCode.LINK_STATUS">
 <span class="sig-name descname"><span class="pre">LINK_STATUS</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">11</span></span><a class="headerlink" href="#icspacket.proto.dnp3.link.LinkSecondaryFunctionCode.LINK_STATUS" title="Link to this definition">#</a></dt>
-<dd><p>Report link status.</p>
+<dd><p>Carries the secondary station’s answer to a <cite>REQUEST_LINK_STATUS</cite> query.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.link.LinkSecondaryFunctionCode.NOT_SUPPORTED">
 <span class="sig-name descname"><span class="pre">NOT_SUPPORTED</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">15</span></span><a class="headerlink" href="#icspacket.proto.dnp3.link.LinkSecondaryFunctionCode.NOT_SUPPORTED" title="Link to this definition">#</a></dt>
-<dd><p>Function code not supported.</p>
+<dd><p>Tells the primary station that the requested link function code is
+not implemented.</p>
 </dd></dl>
 
 </dd></dl>
@@ -443,14 +447,15 @@ data-aria-dark="Switch to auto color mode">
 <dl class="py class">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.link.LinkControl">
 <span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">icspacket.proto.dnp3.link.</span></span><span class="sig-name descname"><span class="pre">LinkControl</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">direction</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#icspacket.proto.dnp3.link.LinkDirection" title="icspacket.proto.dnp3.link.LinkDirection"><span class="pre">LinkDirection</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">LinkDirection.MASTER</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">primary_message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frame_count_bit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frame_count_valid</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">function_code</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/icspacket/proto/dnp3/link.html#LinkControl"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.dnp3.link.LinkControl" title="Link to this definition">#</a></dt>
-<dd><p>Control field of the Link Layer Protocol Data Unit (LPDU).</p>
-<p>Stores metadata about the frame direction, initiator,
-error handling, and function code.
+<dd><p>This bitfield models the LPDU’s control octet, exposing a frame’s
+direction, transaction role, retry-detection flags, and function code
+as individual attributes instead of raw bits.
 (See DNP3 Specification, Section 9.2.4.1.3)</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.link.LinkControl.direction">
 <span class="sig-name descname"><span class="pre">direction</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#icspacket.proto.dnp3.link.LinkDirection" title="icspacket.proto.dnp3.link.LinkDirection"><span class="pre">LinkDirection</span></a></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></span><a class="headerlink" href="#icspacket.proto.dnp3.link.LinkControl.direction" title="Link to this definition">#</a></dt>
-<dd><p>DIR bit. Indicates the physical origin of the frame (Master/Outstation).</p>
+<dd><p>DIR bit. Records which kind of station - Master or Outstation -
+originated the frame.</p>
 </dd></dl>
 
 <dl class="py attribute">
@@ -458,34 +463,39 @@ error handling, and function code.
 <span class="sig-name descname"><span class="pre">primary_message</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></span><a class="headerlink" href="#icspacket.proto.dnp3.link.LinkControl.primary_message" title="Link to this definition">#</a></dt>
 <dd><p>PRM bit.</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">True</span></code> <svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-arrow-right" viewBox="0 0 16 16" aria-hidden="true"><path d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06Z"></path></svg> Frame initiates a transaction.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">False</span></code> <svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-arrow-right" viewBox="0 0 16 16" aria-hidden="true"><path d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06Z"></path></svg> Frame completes a transaction.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">True</span></code> <svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-arrow-right" viewBox="0 0 16 16" aria-hidden="true"><path d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06Z"></path></svg> This frame opens a new transaction.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">False</span></code> <svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-arrow-right" viewBox="0 0 16 16" aria-hidden="true"><path d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06Z"></path></svg> This frame completes an existing transaction.</p></li>
 </ul>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.link.LinkControl.frame_count_bit">
 <span class="sig-name descname"><span class="pre">frame_count_bit</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></span><a class="headerlink" href="#icspacket.proto.dnp3.link.LinkControl.frame_count_bit" title="Link to this definition">#</a></dt>
-<dd><p>FCB bit. Used in primary-to-secondary frames to detect loss or duplication.</p>
+<dd><p>FCB bit. Toggled on primary-to-secondary frames so the secondary
+station can detect lost or duplicated frames.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.link.LinkControl.frame_count_valid">
 <span class="sig-name descname"><span class="pre">frame_count_valid</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></span><a class="headerlink" href="#icspacket.proto.dnp3.link.LinkControl.frame_count_valid" title="Link to this definition">#</a></dt>
-<dd><p>FCV bit. Specifies whether the secondary station must examine the FCB.</p>
+<dd><p>FCV bit. Tells the secondary station whether it should pay attention
+to the FCB carried in this frame.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.link.LinkControl.function_code">
 <span class="sig-name descname"><span class="pre">function_code</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></span><a class="headerlink" href="#icspacket.proto.dnp3.link.LinkControl.function_code" title="Link to this definition">#</a></dt>
-<dd><p>Function code field identifying the service or command type.</p>
+<dd><p>Raw 4-bit function code; decode it with <a class="reference internal" href="#icspacket.proto.dnp3.link.LinkControl.pri2sec_code" title="icspacket.proto.dnp3.link.LinkControl.pri2sec_code"><code class="xref py py-attr docutils literal notranslate"><span class="pre">pri2sec_code</span></code></a> or
+<a class="reference internal" href="#icspacket.proto.dnp3.link.LinkControl.sec2pri_code" title="icspacket.proto.dnp3.link.LinkControl.sec2pri_code"><code class="xref py py-attr docutils literal notranslate"><span class="pre">sec2pri_code</span></code></a> depending on whether this is a primary or
+secondary frame.</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.link.LinkControl.data_flow_control">
 <span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">data_flow_control</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></span><a class="headerlink" href="#icspacket.proto.dnp3.link.LinkControl.data_flow_control" title="Link to this definition">#</a></dt>
-<dd><p>Report data flow availability (DFC bit).</p>
-<p>Indicates insufficient Data Link Layer buffer capacity.</p>
+<dd><p>Expose the DFC bit as a boolean.</p>
+<p>A <code class="docutils literal notranslate"><span class="pre">True</span></code> value signals that the sending station’s Data Link
+Layer receive buffer has too little free space to accept more data.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if buffer space is insufficient, <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise.</p>
@@ -528,53 +538,55 @@ error handling, and function code.
 
 <dl class="py class">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.link.LPDU">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">icspacket.proto.dnp3.link.</span></span><span class="sig-name descname"><span class="pre">LPDU</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bytes</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">b'\x05d'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">length</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">control</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#icspacket.proto.dnp3.link.LinkControl" title="icspacket.proto.dnp3.link.LinkControl"><span class="pre">LinkControl</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">destination</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">crc16</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bytes</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">b''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/icspacket/proto/dnp3/link.html#LPDU"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.dnp3.link.LPDU" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">icspacket.proto.dnp3.link.</span></span><span class="sig-name descname"><span class="pre">LPDU</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bytes</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">b'\x05d'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">length</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">control</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#icspacket.proto.dnp3.link.LinkControl" title="icspacket.proto.dnp3.link.LinkControl"><span class="pre">LinkControl</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">destination</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">crc16</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="transport.html#icspacket.proto.dnp3.transport.TPDU" title="icspacket.proto.dnp3.transport.TPDU"><span class="pre">TPDU</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/icspacket/proto/dnp3/link.html#LPDU"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.dnp3.link.LPDU" title="Link to this definition">#</a></dt>
 <dd><p>Link-layer Protocol Data Unit (LPDU).</p>
-<p>Each LPDU consists of a fixed header block and a variable-length
-sequence of data blocks, each terminated by a 16-bit CRC.
+<p>This struct models a complete LPDU as a fixed-size header followed by
+zero or more variable-length data blocks, each one closed off with its
+own 16-bit CRC.
 (See DNP3 Specification, Section 9.2.4)</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.link.LPDU.start">
 <span class="sig-name descname"><span class="pre">start</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bytes</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">b'\x05d'</span></span><a class="headerlink" href="#icspacket.proto.dnp3.link.LPDU.start" title="Link to this definition">#</a></dt>
-<dd><p>Sync bytes marking the start of every LPDU (0x05, 0x64).</p>
+<dd><p>Fixed two-byte sync sequence (0x05, 0x64) at the start of every LPDU.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.link.LPDU.length">
 <span class="sig-name descname"><span class="pre">length</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></span><a class="headerlink" href="#icspacket.proto.dnp3.link.LPDU.length" title="Link to this definition">#</a></dt>
-<dd><p>Length field.
-Number of non-CRC bytes following the header. Includes CONTROL,
-DESTINATION, SOURCE, and USER DATA fields.</p>
+<dd><p>Length field: count of the non-CRC bytes that follow it, spanning the
+CONTROL, DESTINATION, SOURCE, and USER DATA fields.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.link.LPDU.control">
 <span class="sig-name descname"><span class="pre">control</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#icspacket.proto.dnp3.link.LinkControl" title="icspacket.proto.dnp3.link.LinkControl"><span class="pre">LinkControl</span></a></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#icspacket.proto.dnp3.link.LPDU.control" title="Link to this definition">#</a></dt>
-<dd><p>Control field containing direction, function, and status flags.</p>
+<dd><p>Control octet for the frame, modeled by <a class="reference internal" href="#icspacket.proto.dnp3.link.LinkControl" title="icspacket.proto.dnp3.link.LinkControl"><code class="xref py py-class docutils literal notranslate"><span class="pre">LinkControl</span></code></a>, holding
+the direction, function code, and status flags.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.link.LPDU.destination">
 <span class="sig-name descname"><span class="pre">destination</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></span><a class="headerlink" href="#icspacket.proto.dnp3.link.LPDU.destination" title="Link to this definition">#</a></dt>
-<dd><p>Destination address of the data link frame.</p>
+<dd><p>Address of the data-link frame’s destination station.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.link.LPDU.source">
 <span class="sig-name descname"><span class="pre">source</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></span><a class="headerlink" href="#icspacket.proto.dnp3.link.LPDU.source" title="Link to this definition">#</a></dt>
-<dd><p>Source address of the data link frame.</p>
+<dd><p>Address of the data-link frame’s source station.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.link.LPDU.crc16">
 <span class="sig-name descname"><span class="pre">crc16</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></span><a class="headerlink" href="#icspacket.proto.dnp3.link.LPDU.crc16" title="Link to this definition">#</a></dt>
-<dd><p>CRC checksum for the LPDU header block.</p>
+<dd><p>Checksum protecting the LPDU header block.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.link.LPDU.user_data">
-<span class="sig-name descname"><span class="pre">user_data</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bytes</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">b''</span></span><a class="headerlink" href="#icspacket.proto.dnp3.link.LPDU.user_data" title="Link to this definition">#</a></dt>
-<dd><p>Payload data field containing one or more user data chunks.</p>
+<span class="sig-name descname"><span class="pre">user_data</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="transport.html#icspacket.proto.dnp3.transport.TPDU" title="icspacket.proto.dnp3.transport.TPDU"><span class="pre">TPDU</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#icspacket.proto.dnp3.link.LPDU.user_data" title="Link to this definition">#</a></dt>
+<dd><p>The frame’s payload, held as one or more user-data chunks via
+<code class="xref py py-class docutils literal notranslate"><span class="pre">LinkUserData</span></code>.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -670,7 +682,7 @@ DESTINATION, SOURCE, and USER DATA fields.</p>
     </div>
   </div>
 </footer>
-      <script src="../../../_static/documentation_options.js?v=3d9de00a"></script>
+      <script src="../../../_static/documentation_options.js?v=1f6bc116"></script>
       <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
       <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
       <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>

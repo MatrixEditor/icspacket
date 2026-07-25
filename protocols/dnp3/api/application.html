@@ -2,7 +2,7 @@
 <html lang="en" data-accent-color="lime" data-content_root="../../../">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Application Layer - icspacket 0.1.dev1+gcaa5aba2d documentation</title><link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" /><link rel="next" title="Master" href="master.html" /><link rel="prev" title="Transport Layer" href="transport.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Application Layer - icspacket 0.1.dev1+g0a5b28664 documentation</title><link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" /><link rel="next" title="Master" href="master.html" /><link rel="prev" title="Transport Layer" href="transport.html" />
       <link rel="canonical" href="https://matrixeditor.github.io/icspacket/protocols/dnp3/api/application.html" /><script>
     function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
     setColorMode(localStorage._theme||"dark");
@@ -400,41 +400,42 @@ data-aria-dark="Switch to auto color mode">
 <dl class="py class">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.application.ApplicationControl">
 <span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">icspacket.proto.dnp3.application.</span></span><span class="sig-name descname"><span class="pre">ApplicationControl</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">first_fragment</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">final_fragment</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">need_confirmation</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unsolicited_response</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sequence</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/icspacket/proto/dnp3/application.html#ApplicationControl"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.dnp3.application.ApplicationControl" title="Link to this definition">#</a></dt>
-<dd><p>Represents the DNP3 Application Control octet (see DNP3 standard §4.2.2.4).</p>
-<p>This octet carries control information required for managing multi-fragment
-Application Layer messages, including message boundaries, sequencing, and
-whether acknowledgments are required.</p>
+<dd><p>Represents the DNP3 Application Control octet (See DNP3 Specification, §4.2.2.4).</p>
+<p>This library models the octet as a bitfield so callers can read or set the
+fragmentation flags, the confirmation-request flag, and the rolling
+sequence number that accompany every application fragment exchanged
+between a master and an outstation.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.application.ApplicationControl.first_fragment">
 <span class="sig-name descname"><span class="pre">first_fragment</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></span><a class="headerlink" href="#icspacket.proto.dnp3.application.ApplicationControl.first_fragment" title="Link to this definition">#</a></dt>
-<dd><p>Indicates whether this is the <strong>first fragment</strong> of a multi-fragment message.</p>
+<dd><p>True when this fragment is the first piece of a multi-fragment message.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.application.ApplicationControl.final_fragment">
 <span class="sig-name descname"><span class="pre">final_fragment</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></span><a class="headerlink" href="#icspacket.proto.dnp3.application.ApplicationControl.final_fragment" title="Link to this definition">#</a></dt>
-<dd><p>Indicates whether this is the <strong>final fragment</strong> of a multi-fragment message.</p>
+<dd><p>True when this fragment is the last piece of a multi-fragment message.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.application.ApplicationControl.need_confirmation">
 <span class="sig-name descname"><span class="pre">need_confirmation</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></span><a class="headerlink" href="#icspacket.proto.dnp3.application.ApplicationControl.need_confirmation" title="Link to this definition">#</a></dt>
-<dd><p>Specifies whether the receiver’s Application Layer shall return an
-<strong>Application Layer confirmation message</strong>.</p>
+<dd><p>Requests that the peer’s Application Layer send back an
+<strong>Application Layer confirmation message</strong> once the fragment is processed.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.application.ApplicationControl.unsolicited_response">
 <span class="sig-name descname"><span class="pre">unsolicited_response</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></span><a class="headerlink" href="#icspacket.proto.dnp3.application.ApplicationControl.unsolicited_response" title="Link to this definition">#</a></dt>
-<dd><p>Marks the fragment as containing an <strong>unsolicited response</strong> or a
-confirmation of an unsolicited response.</p>
+<dd><p>True when the fragment is an <strong>unsolicited response</strong> (or the
+confirmation of one) rather than something the master asked for.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.application.ApplicationControl.sequence">
 <span class="sig-name descname"><span class="pre">sequence</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></span><a class="headerlink" href="#icspacket.proto.dnp3.application.ApplicationControl.sequence" title="Link to this definition">#</a></dt>
-<dd><p>Message <strong>sequence number</strong> used to verify fragment ordering and detect
-duplicate fragments. Values increment modulo 16.</p>
+<dd><p>Rolling <strong>sequence number</strong> (wraps modulo 16) that this library uses to
+line up fragments belonging to the same message and to catch duplicates.</p>
 </dd></dl>
 
 </dd></dl>
@@ -442,137 +443,152 @@ duplicate fragments. Values increment modulo 16.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.application.IIN">
 <span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">icspacket.proto.dnp3.application.</span></span><span class="sig-name descname"><span class="pre">IIN</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">device_restart</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device_trouble</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">local_control</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">need_time</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">class_3_events</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">class_2_events</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">class_1_events</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">broadcast</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reserved</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config_corrupt</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">already_executing</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">event_buffer_overflow</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameter_error</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">object_unknown</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">no_func_code_support</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/icspacket/proto/dnp3/application.html#IIN"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.dnp3.application.IIN" title="Link to this definition">#</a></dt>
-<dd><p>Represents the DNP3 Internal Indications (IIN) bitfield (§4.2.2.6).</p>
-<p>This 2-byte structure communicates the outstation’s internal states and
-error conditions, such as pending events, device restarts, or unsupported
-function codes.</p>
+<dd><p>Represents the DNP3 Internal Indications (IIN) bitfield (See DNP3 Specification, §4.2.2.6).</p>
+<p>This library exposes the two-byte IIN field as individual boolean flags so
+callers can inspect an outstation’s status and error conditions - such as
+pending events, a recent restart, or an unsupported function code -
+without manually decoding the raw bits.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.application.IIN.device_restart">
 <span class="sig-name descname"><span class="pre">device_restart</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></span><a class="headerlink" href="#icspacket.proto.dnp3.application.IIN.device_restart" title="Link to this definition">#</a></dt>
-<dd><p>Indicates that the outstation has <strong>restarted</strong>.</p>
+<dd><p>Set by the outstation after it has <strong>restarted</strong>, so the master can
+notice that a reset happened since the last exchange.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.application.IIN.device_trouble">
 <span class="sig-name descname"><span class="pre">device_trouble</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></span><a class="headerlink" href="#icspacket.proto.dnp3.application.IIN.device_trouble" title="Link to this definition">#</a></dt>
-<dd><p>An abnormal, device-specific condition exists in the outstation.</p>
+<dd><p>Flags an abnormal condition on the outstation whose exact meaning is
+device-specific (vendor-defined).</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.application.IIN.local_control">
 <span class="sig-name descname"><span class="pre">local_control</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></span><a class="headerlink" href="#icspacket.proto.dnp3.application.IIN.local_control" title="Link to this definition">#</a></dt>
-<dd><p>Indicates one or more of the outstation’s points are in <strong>local control
-mode</strong>.</p>
+<dd><p>Set when one or more of the outstation’s points are currently being
+driven by <strong>local control</strong> rather than by the master.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.application.IIN.need_time">
 <span class="sig-name descname"><span class="pre">need_time</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></span><a class="headerlink" href="#icspacket.proto.dnp3.application.IIN.need_time" title="Link to this definition">#</a></dt>
-<dd><p>Indicates that the outstation requires <strong>time synchronization</strong>.</p>
+<dd><p>Set by the outstation to ask the master to perform <strong>time
+synchronization</strong>.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.application.IIN.class_3_events">
 <span class="sig-name descname"><span class="pre">class_3_events</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></span><a class="headerlink" href="#icspacket.proto.dnp3.application.IIN.class_3_events" title="Link to this definition">#</a></dt>
-<dd><p>Indicates unreported <strong>Class 3 events</strong> are pending at the outstation.</p>
+<dd><p>Set while the outstation is holding <strong>Class 3 events</strong> that have not
+yet been reported.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.application.IIN.class_2_events">
 <span class="sig-name descname"><span class="pre">class_2_events</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></span><a class="headerlink" href="#icspacket.proto.dnp3.application.IIN.class_2_events" title="Link to this definition">#</a></dt>
-<dd><p>Indicates unreported <strong>Class 2 events</strong> are pending at the outstation.</p>
+<dd><p>Set while the outstation is holding <strong>Class 2 events</strong> that have not
+yet been reported.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.application.IIN.class_1_events">
 <span class="sig-name descname"><span class="pre">class_1_events</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></span><a class="headerlink" href="#icspacket.proto.dnp3.application.IIN.class_1_events" title="Link to this definition">#</a></dt>
-<dd><p>Indicates unreported <strong>Class 1 events</strong> are pending at the outstation.</p>
+<dd><p>Set while the outstation is holding <strong>Class 1 events</strong> that have not
+yet been reported.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.application.IIN.broadcast">
 <span class="sig-name descname"><span class="pre">broadcast</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></span><a class="headerlink" href="#icspacket.proto.dnp3.application.IIN.broadcast" title="Link to this definition">#</a></dt>
-<dd><p>A broadcast message was received.</p>
+<dd><p>Set when the request that triggered this response was sent to the
+broadcast address.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.application.IIN.config_corrupt">
 <span class="sig-name descname"><span class="pre">config_corrupt</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></span><a class="headerlink" href="#icspacket.proto.dnp3.application.IIN.config_corrupt" title="Link to this definition">#</a></dt>
-<dd><p>The outstation detected <strong>corrupt configuration data</strong>. Support is optional.</p>
+<dd><p>Set when the outstation finds its own <strong>configuration data</strong> to be
+corrupted; implementing this check is optional.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.application.IIN.already_executing">
 <span class="sig-name descname"><span class="pre">already_executing</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></span><a class="headerlink" href="#icspacket.proto.dnp3.application.IIN.already_executing" title="Link to this definition">#</a></dt>
-<dd><p>The requested operation is already executing. Support for this field is
-optional.</p>
+<dd><p>Set when the outstation is still carrying out a previously requested
+operation of the same kind; support for this flag is optional.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.application.IIN.event_buffer_overflow">
 <span class="sig-name descname"><span class="pre">event_buffer_overflow</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></span><a class="headerlink" href="#icspacket.proto.dnp3.application.IIN.event_buffer_overflow" title="Link to this definition">#</a></dt>
-<dd><p>An <strong>event buffer overflow</strong> occurred, and at least one unconfirmed
-event was lost.</p>
+<dd><p>Set when the outstation’s <strong>event buffer</strong> filled up and it had to
+discard at least one unconfirmed event.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.application.IIN.parameter_error">
 <span class="sig-name descname"><span class="pre">parameter_error</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></span><a class="headerlink" href="#icspacket.proto.dnp3.application.IIN.parameter_error" title="Link to this definition">#</a></dt>
-<dd><p>A <strong>parameter error</strong> was detected in the request.</p>
+<dd><p>Set when the outstation rejects the request because one of its
+<strong>parameters</strong> was invalid.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.application.IIN.object_unknown">
 <span class="sig-name descname"><span class="pre">object_unknown</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></span><a class="headerlink" href="#icspacket.proto.dnp3.application.IIN.object_unknown" title="Link to this definition">#</a></dt>
-<dd><p>The outstation does not support the requested <strong>object(s)</strong> in the request.</p>
+<dd><p>Set when the outstation cannot recognize or does not implement one or
+more of the <strong>objects</strong> referenced by the request.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.application.IIN.no_func_code_support">
 <span class="sig-name descname"><span class="pre">no_func_code_support</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></span><a class="headerlink" href="#icspacket.proto.dnp3.application.IIN.no_func_code_support" title="Link to this definition">#</a></dt>
-<dd><p>The outstation does not support the requested <strong>function code</strong>.</p>
+<dd><p>Set when the outstation has no implementation for the <strong>function
+code</strong> carried by the request.</p>
 </dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.application.APDU">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">icspacket.proto.dnp3.application.</span></span><span class="sig-name descname"><span class="pre">APDU</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">control</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#icspacket.proto.dnp3.application.ApplicationControl" title="icspacket.proto.dnp3.application.ApplicationControl"><span class="pre">ApplicationControl</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">function</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#icspacket.proto.dnp3.const.FunctionCode" title="icspacket.proto.dnp3.const.FunctionCode"><span class="pre">FunctionCode</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">FunctionCode.CONFIRM</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iin</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#icspacket.proto.dnp3.application.IIN" title="icspacket.proto.dnp3.application.IIN"><span class="pre">IIN</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">objects</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bytes</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">b''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/icspacket/proto/dnp3/application.html#APDU"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.dnp3.application.APDU" title="Link to this definition">#</a></dt>
-<dd><p>Represents the <strong>Application Protocol Data Unit (APDU)</strong> in DNP3 (§4.2.2).</p>
-<p>APDUs encapsulate Application Layer fragments exchanged between masters and
-outstations. Both request and response fragments share the same structural
-format, consisting of an application control octet, a function code, internal
-indications, and object headers.</p>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">icspacket.proto.dnp3.application.</span></span><span class="sig-name descname"><span class="pre">APDU</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">control</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#icspacket.proto.dnp3.application.ApplicationControl" title="icspacket.proto.dnp3.application.ApplicationControl"><span class="pre">ApplicationControl</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">function</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#icspacket.proto.dnp3.const.FunctionCode" title="icspacket.proto.dnp3.const.FunctionCode"><span class="pre">FunctionCode</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">FunctionCode.CONFIRM</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iin</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#icspacket.proto.dnp3.application.IIN" title="icspacket.proto.dnp3.application.IIN"><span class="pre">IIN</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">objects</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bytes</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">b''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/icspacket/proto/dnp3/application.html#APDU"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.dnp3.application.APDU" title="Link to this definition">#</a></dt>
+<dd><p>Represents the <strong>Application Protocol Data Unit (APDU)</strong> in DNP3 (See DNP3 Specification, §4.2.2).</p>
+<p>This struct models one application-layer fragment, regardless of whether
+it was sent by a master or an outstation - both directions reuse the same
+on-the-wire layout of a control octet, a function code, an optional
+internal-indications field, and the encoded application objects that
+follow.</p>
 <div class="versionchanged">
 <p><span class="versionmodified changed">Changed in version 0.2.0: </span>Added support for building an APDU using <code class="docutils literal notranslate"><span class="pre">bytes(obj)</span></code>.</p>
 </div>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.application.APDU.control">
-<span class="sig-name descname"><span class="pre">control</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#icspacket.proto.dnp3.application.ApplicationControl" title="icspacket.proto.dnp3.application.ApplicationControl"><span class="pre">ApplicationControl</span></a></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#icspacket.proto.dnp3.application.APDU.control" title="Link to this definition">#</a></dt>
-<dd><p>Application control octet providing fragment sequencing and acknowledgment
-control.</p>
+<span class="sig-name descname"><span class="pre">control</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#icspacket.proto.dnp3.application.ApplicationControl" title="icspacket.proto.dnp3.application.ApplicationControl"><span class="pre">ApplicationControl</span></a></span><a class="headerlink" href="#icspacket.proto.dnp3.application.APDU.control" title="Link to this definition">#</a></dt>
+<dd><p>The fragment’s control octet, modeled by <a class="reference internal" href="#icspacket.proto.dnp3.application.ApplicationControl" title="icspacket.proto.dnp3.application.ApplicationControl"><code class="xref py py-class docutils literal notranslate"><span class="pre">ApplicationControl</span></code></a>,
+holding the fragmentation/confirmation flags and the sequence number.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.application.APDU.function">
 <span class="sig-name descname"><span class="pre">function</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#icspacket.proto.dnp3.const.FunctionCode" title="icspacket.proto.dnp3.const.FunctionCode"><span class="pre">FunctionCode</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">int</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></span><a class="headerlink" href="#icspacket.proto.dnp3.application.APDU.function" title="Link to this definition">#</a></dt>
-<dd><p>Function code octet indicating the operation requested or responded to.
-Values range from <code class="docutils literal notranslate"><span class="pre">0-128</span></code> for requests and <code class="docutils literal notranslate"><span class="pre">129-255</span></code> for responses.</p>
+<dd><p>Single-octet operation code carried by this fragment. Request codes
+fall in <code class="docutils literal notranslate"><span class="pre">0-128</span></code>; response codes fall in <code class="docutils literal notranslate"><span class="pre">129-255</span></code>.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.application.APDU.iin">
 <span class="sig-name descname"><span class="pre">iin</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#icspacket.proto.dnp3.application.IIN" title="icspacket.proto.dnp3.application.IIN"><span class="pre">IIN</span></a></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#icspacket.proto.dnp3.application.APDU.iin" title="Link to this definition">#</a></dt>
-<dd><p>Internal indications (IIN) structure, included only in <strong>response APDUs</strong>.
-Encodes device states and error conditions.</p>
-<p>Parsing is conditional on the APDU being a response (function code ≥ 129).</p>
+<dd><p>Outstation status/error flags, modeled by <a class="reference internal" href="#icspacket.proto.dnp3.application.IIN" title="icspacket.proto.dnp3.application.IIN"><code class="xref py py-class docutils literal notranslate"><span class="pre">IIN</span></code></a>.</p>
+<p>Only response fragments carry this field, so it is left unset while
+decoding requests; parsing it is conditional on the function code
+indicating a response (≥ 129).</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.application.APDU.objects">
 <span class="sig-name descname"><span class="pre">objects</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bytes</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">b''</span></span><a class="headerlink" href="#icspacket.proto.dnp3.application.APDU.objects" title="Link to this definition">#</a></dt>
-<dd><p>Application objects included in the fragment. These represent the payload
-of the APDU and are parsed separately according to object headers.</p>
+<dd><p>Raw encoded application objects making up this fragment’s payload.</p>
+<p>This library keeps the objects as opaque bytes here; use the
+object-header parsing helpers to decode individual entries.</p>
 <dl class="field-list simple">
 </dl>
 </dd></dl>
@@ -613,230 +629,251 @@ of the APDU and are parsed separately according to object headers.</p>
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.const.FunctionCode">
 <span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">icspacket.proto.dnp3.const.</span></span><span class="sig-name descname"><span class="pre">FunctionCode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">values</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/icspacket/proto/dnp3/const.html#FunctionCode"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.dnp3.const.FunctionCode" title="Link to this definition">#</a></dt>
 <dd><p>Application Layer Function Codes.</p>
-<p>Function codes define the type of operation performed by the
-Application Layer. They are carried in the first octet of an
-Application Protocol Data Unit (APDU).</p>
+<p>Each member identifies one operation a master or outstation can invoke
+on its peer; this library writes the member’s numeric value into the
+first octet of an Application Protocol Data Unit (APDU) to say which
+operation a given fragment represents.</p>
 <p>(See DNP3 Specification, Section 4.2.2.5)</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.const.FunctionCode.CONFIRM">
 <span class="sig-name descname"><span class="pre">CONFIRM</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></span><a class="headerlink" href="#icspacket.proto.dnp3.const.FunctionCode.CONFIRM" title="Link to this definition">#</a></dt>
-<dd><p>Master confirms receipt of an Application Layer fragment.</p>
+<dd><p>Sent by the master to acknowledge that it received an application fragment.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.const.FunctionCode.READ">
 <span class="sig-name descname"><span class="pre">READ</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></span><a class="headerlink" href="#icspacket.proto.dnp3.const.FunctionCode.READ" title="Link to this definition">#</a></dt>
-<dd><p>Outstation shall return the data specified in the request.</p>
+<dd><p>Asks the outstation to return the data identified in the request.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.const.FunctionCode.WRITE">
 <span class="sig-name descname"><span class="pre">WRITE</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2</span></span><a class="headerlink" href="#icspacket.proto.dnp3.const.FunctionCode.WRITE" title="Link to this definition">#</a></dt>
-<dd><p>Outstation shall store the data specified in the request.</p>
+<dd><p>Asks the outstation to store the data supplied in the request.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.const.FunctionCode.SELECT">
 <span class="sig-name descname"><span class="pre">SELECT</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">3</span></span><a class="headerlink" href="#icspacket.proto.dnp3.const.FunctionCode.SELECT" title="Link to this definition">#</a></dt>
-<dd><p>Outstation selects output points in preparation for an <cite>OPERATE</cite> command.</p>
+<dd><p>Has the outstation prepare the requested output points, the first
+step of a select-before-operate sequence completed by <cite>OPERATE</cite>.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.const.FunctionCode.OPERATE">
 <span class="sig-name descname"><span class="pre">OPERATE</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">4</span></span><a class="headerlink" href="#icspacket.proto.dnp3.const.FunctionCode.OPERATE" title="Link to this definition">#</a></dt>
-<dd><p>Outstation activates output points selected by a prior <cite>SELECT</cite>.</p>
+<dd><p>Tells the outstation to activate the output points a prior <cite>SELECT</cite>
+already prepared.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.const.FunctionCode.DIRECT_OPERATE">
 <span class="sig-name descname"><span class="pre">DIRECT_OPERATE</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">5</span></span><a class="headerlink" href="#icspacket.proto.dnp3.const.FunctionCode.DIRECT_OPERATE" title="Link to this definition">#</a></dt>
-<dd><p>Outstation immediately actuates output points without requiring <cite>SELECT</cite>.</p>
+<dd><p>Tells the outstation to activate the named output points right away,
+skipping the <cite>SELECT</cite> step.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.const.FunctionCode.DIRECT_OPERATE_NR">
 <span class="sig-name descname"><span class="pre">DIRECT_OPERATE_NR</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">6</span></span><a class="headerlink" href="#icspacket.proto.dnp3.const.FunctionCode.DIRECT_OPERATE_NR" title="Link to this definition">#</a></dt>
-<dd><p>Same as <cite>DIRECT_OPERATE</cite> but without sending a response.</p>
+<dd><p>Behaves like <cite>DIRECT_OPERATE</cite>, except the outstation does not send
+back a response.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.const.FunctionCode.IMMED_FREEZE">
 <span class="sig-name descname"><span class="pre">IMMED_FREEZE</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">7</span></span><a class="headerlink" href="#icspacket.proto.dnp3.const.FunctionCode.IMMED_FREEZE" title="Link to this definition">#</a></dt>
-<dd><p>Outstation copies data values into a freeze buffer.</p>
+<dd><p>Tells the outstation to snapshot its current data values into a
+freeze buffer.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.const.FunctionCode.IMMED_FREEZE_NR">
 <span class="sig-name descname"><span class="pre">IMMED_FREEZE_NR</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">8</span></span><a class="headerlink" href="#icspacket.proto.dnp3.const.FunctionCode.IMMED_FREEZE_NR" title="Link to this definition">#</a></dt>
-<dd><p>Same as <cite>IMMED_FREEZE</cite> but without sending a response.</p>
+<dd><p>Behaves like <cite>IMMED_FREEZE</cite>, except the outstation does not send
+back a response.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.const.FunctionCode.FREEZE_CLEAR">
 <span class="sig-name descname"><span class="pre">FREEZE_CLEAR</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">9</span></span><a class="headerlink" href="#icspacket.proto.dnp3.const.FunctionCode.FREEZE_CLEAR" title="Link to this definition">#</a></dt>
-<dd><p>Outstation copies data values into a freeze buffer and clears originals.</p>
+<dd><p>Tells the outstation to snapshot its data values into a freeze buffer
+and then reset the originals.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.const.FunctionCode.FREEZE_CLEAR_NR">
 <span class="sig-name descname"><span class="pre">FREEZE_CLEAR_NR</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">10</span></span><a class="headerlink" href="#icspacket.proto.dnp3.const.FunctionCode.FREEZE_CLEAR_NR" title="Link to this definition">#</a></dt>
-<dd><p>Same as <cite>FREEZE_CLEAR</cite> but without sending a response.</p>
+<dd><p>Behaves like <cite>FREEZE_CLEAR</cite>, except the outstation does not send
+back a response.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.const.FunctionCode.FREEZE_AT_TIME">
 <span class="sig-name descname"><span class="pre">FREEZE_AT_TIME</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">11</span></span><a class="headerlink" href="#icspacket.proto.dnp3.const.FunctionCode.FREEZE_AT_TIME" title="Link to this definition">#</a></dt>
-<dd><p>Outstation freezes data values at a specified time/interval.</p>
+<dd><p>Schedules the outstation to freeze its data values at a time or on an
+interval given in the request.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.const.FunctionCode.FREEZE_AT_TIME_NR">
 <span class="sig-name descname"><span class="pre">FREEZE_AT_TIME_NR</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">12</span></span><a class="headerlink" href="#icspacket.proto.dnp3.const.FunctionCode.FREEZE_AT_TIME_NR" title="Link to this definition">#</a></dt>
-<dd><p>Same as <cite>FREEZE_AT_TIME</cite> but without sending a response.</p>
+<dd><p>Behaves like <cite>FREEZE_AT_TIME</cite>, except the outstation does not send
+back a response.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.const.FunctionCode.COLD_RESTART">
 <span class="sig-name descname"><span class="pre">COLD_RESTART</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">13</span></span><a class="headerlink" href="#icspacket.proto.dnp3.const.FunctionCode.COLD_RESTART" title="Link to this definition">#</a></dt>
-<dd><p>Outstation performs a full reset of hardware and software.</p>
+<dd><p>Asks the outstation to fully reset both its hardware and software.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.const.FunctionCode.WARM_RESTART">
 <span class="sig-name descname"><span class="pre">WARM_RESTART</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">14</span></span><a class="headerlink" href="#icspacket.proto.dnp3.const.FunctionCode.WARM_RESTART" title="Link to this definition">#</a></dt>
-<dd><p>Outstation performs a partial reset of the device.</p>
+<dd><p>Asks the outstation to perform a lighter, partial reset of the device.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.const.FunctionCode.INITIALIZE_DATA">
 <span class="sig-name descname"><span class="pre">INITIALIZE_DATA</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">15</span></span><a class="headerlink" href="#icspacket.proto.dnp3.const.FunctionCode.INITIALIZE_DATA" title="Link to this definition">#</a></dt>
-<dd><p>Obsolete - not to be used in new designs.</p>
+<dd><p>Obsolete; new designs must not send this code.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.const.FunctionCode.INITIALIZE_APPL">
 <span class="sig-name descname"><span class="pre">INITIALIZE_APPL</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">16</span></span><a class="headerlink" href="#icspacket.proto.dnp3.const.FunctionCode.INITIALIZE_APPL" title="Link to this definition">#</a></dt>
-<dd><p>Outstation places applications into ready-to-run state.</p>
+<dd><p>Asks the outstation to bring the named application(s) into a
+ready-to-run state.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.const.FunctionCode.START_APPL">
 <span class="sig-name descname"><span class="pre">START_APPL</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">17</span></span><a class="headerlink" href="#icspacket.proto.dnp3.const.FunctionCode.START_APPL" title="Link to this definition">#</a></dt>
-<dd><p>Outstation starts the specified applications.</p>
+<dd><p>Asks the outstation to start the application(s) named in the request.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.const.FunctionCode.STOP_APPL">
 <span class="sig-name descname"><span class="pre">STOP_APPL</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">18</span></span><a class="headerlink" href="#icspacket.proto.dnp3.const.FunctionCode.STOP_APPL" title="Link to this definition">#</a></dt>
-<dd><p>Outstation stops the specified applications.</p>
+<dd><p>Asks the outstation to stop the application(s) named in the request.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.const.FunctionCode.SAVE_CONFIG">
 <span class="sig-name descname"><span class="pre">SAVE_CONFIG</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">19</span></span><a class="headerlink" href="#icspacket.proto.dnp3.const.FunctionCode.SAVE_CONFIG" title="Link to this definition">#</a></dt>
-<dd><p>Deprecated - saving of configuration (do not use in new designs).</p>
+<dd><p>Deprecated request to save configuration; avoid using it in new designs.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.const.FunctionCode.ENABLE_UNSOLICITED">
 <span class="sig-name descname"><span class="pre">ENABLE_UNSOLICITED</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">20</span></span><a class="headerlink" href="#icspacket.proto.dnp3.const.FunctionCode.ENABLE_UNSOLICITED" title="Link to this definition">#</a></dt>
-<dd><p>Outstation enables unsolicited responses for specified points.</p>
+<dd><p>Asks the outstation to start sending unsolicited responses for the
+named points.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.const.FunctionCode.DISABLE_UNSOLICITED">
 <span class="sig-name descname"><span class="pre">DISABLE_UNSOLICITED</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">21</span></span><a class="headerlink" href="#icspacket.proto.dnp3.const.FunctionCode.DISABLE_UNSOLICITED" title="Link to this definition">#</a></dt>
-<dd><p>Outstation disables unsolicited responses for specified points.</p>
+<dd><p>Asks the outstation to stop sending unsolicited responses for the
+named points.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.const.FunctionCode.ASSIGN_CLASS">
 <span class="sig-name descname"><span class="pre">ASSIGN_CLASS</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">22</span></span><a class="headerlink" href="#icspacket.proto.dnp3.const.FunctionCode.ASSIGN_CLASS" title="Link to this definition">#</a></dt>
-<dd><p>Outstation assigns points/events to one of the defined classes.</p>
+<dd><p>Asks the outstation to assign the named points or events to one of
+its event classes.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.const.FunctionCode.DELAY_MESSAGE">
 <span class="sig-name descname"><span class="pre">DELAY_MESSAGE</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">23</span></span><a class="headerlink" href="#icspacket.proto.dnp3.const.FunctionCode.DELAY_MESSAGE" title="Link to this definition">#</a></dt>
-<dd><p>Outstation reports processing/transmission delay time.</p>
+<dd><p>Asks the outstation to report how much processing/transmission delay
+it is adding.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.const.FunctionCode.RECORD_CURRENT_TIME">
 <span class="sig-name descname"><span class="pre">RECORD_CURRENT_TIME</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">24</span></span><a class="headerlink" href="#icspacket.proto.dnp3.const.FunctionCode.RECORD_CURRENT_TIME" title="Link to this definition">#</a></dt>
-<dd><p>Outstation records the current time when the last octet is received.</p>
+<dd><p>Asks the outstation to note its own clock value at the instant it
+receives this request’s last octet.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.const.FunctionCode.OPEN_FILE">
 <span class="sig-name descname"><span class="pre">OPEN_FILE</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">25</span></span><a class="headerlink" href="#icspacket.proto.dnp3.const.FunctionCode.OPEN_FILE" title="Link to this definition">#</a></dt>
-<dd><p>Outstation opens a file.</p>
+<dd><p>Asks the outstation to open the file named in the request.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.const.FunctionCode.CLOSE_FILE">
 <span class="sig-name descname"><span class="pre">CLOSE_FILE</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">26</span></span><a class="headerlink" href="#icspacket.proto.dnp3.const.FunctionCode.CLOSE_FILE" title="Link to this definition">#</a></dt>
-<dd><p>Outstation closes a file.</p>
+<dd><p>Asks the outstation to close a previously opened file.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.const.FunctionCode.DELETE_FILE">
 <span class="sig-name descname"><span class="pre">DELETE_FILE</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">27</span></span><a class="headerlink" href="#icspacket.proto.dnp3.const.FunctionCode.DELETE_FILE" title="Link to this definition">#</a></dt>
-<dd><p>Outstation deletes a file.</p>
+<dd><p>Asks the outstation to delete the file named in the request.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.const.FunctionCode.GET_FILE_INFO">
 <span class="sig-name descname"><span class="pre">GET_FILE_INFO</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">28</span></span><a class="headerlink" href="#icspacket.proto.dnp3.const.FunctionCode.GET_FILE_INFO" title="Link to this definition">#</a></dt>
-<dd><p>Outstation retrieves information about a file.</p>
+<dd><p>Asks the outstation to report information describing a file.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.const.FunctionCode.AUTHENTICATE_FILE">
 <span class="sig-name descname"><span class="pre">AUTHENTICATE_FILE</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">29</span></span><a class="headerlink" href="#icspacket.proto.dnp3.const.FunctionCode.AUTHENTICATE_FILE" title="Link to this definition">#</a></dt>
-<dd><p>Outstation returns a file authentication key.</p>
+<dd><p>Asks the outstation to return a key used to authenticate file access.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.const.FunctionCode.ABORT_FILE">
 <span class="sig-name descname"><span class="pre">ABORT_FILE</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">30</span></span><a class="headerlink" href="#icspacket.proto.dnp3.const.FunctionCode.ABORT_FILE" title="Link to this definition">#</a></dt>
-<dd><p>Outstation aborts an ongoing file transfer.</p>
+<dd><p>Asks the outstation to cancel a file transfer already in progress.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.const.FunctionCode.ACTIVATE_CONFIG">
 <span class="sig-name descname"><span class="pre">ACTIVATE_CONFIG</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">31</span></span><a class="headerlink" href="#icspacket.proto.dnp3.const.FunctionCode.ACTIVATE_CONFIG" title="Link to this definition">#</a></dt>
-<dd><p>Outstation activates a configuration.</p>
+<dd><p>Asks the outstation to switch to (activate) a previously loaded
+configuration.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.const.FunctionCode.AUTHENTICATE_REQ">
 <span class="sig-name descname"><span class="pre">AUTHENTICATE_REQ</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">32</span></span><a class="headerlink" href="#icspacket.proto.dnp3.const.FunctionCode.AUTHENTICATE_REQ" title="Link to this definition">#</a></dt>
-<dd><p>Master sends an authentication request requiring acknowledgement.</p>
+<dd><p>Sent by the master to start an authentication exchange that expects
+an acknowledgement.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.const.FunctionCode.AUTH_REQ_NO_ACK">
 <span class="sig-name descname"><span class="pre">AUTH_REQ_NO_ACK</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">33</span></span><a class="headerlink" href="#icspacket.proto.dnp3.const.FunctionCode.AUTH_REQ_NO_ACK" title="Link to this definition">#</a></dt>
-<dd><p>Master sends an authentication request not requiring acknowledgement.</p>
+<dd><p>Sent by the master to start an authentication exchange that does not
+expect an acknowledgement.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.const.FunctionCode.RESPONSE">
 <span class="sig-name descname"><span class="pre">RESPONSE</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">129</span></span><a class="headerlink" href="#icspacket.proto.dnp3.const.FunctionCode.RESPONSE" title="Link to this definition">#</a></dt>
-<dd><p>Application Layer response to a master request.</p>
+<dd><p>Marks a fragment as the outstation’s reply to a master’s request.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.const.FunctionCode.UNSOLICITED_RESPONSE">
 <span class="sig-name descname"><span class="pre">UNSOLICITED_RESPONSE</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">130</span></span><a class="headerlink" href="#icspacket.proto.dnp3.const.FunctionCode.UNSOLICITED_RESPONSE" title="Link to this definition">#</a></dt>
-<dd><p>Unsolicited Application Layer response from the outstation.</p>
+<dd><p>Marks a fragment as a response the outstation generated on its own,
+with no matching request from the master.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.const.FunctionCode.AUTHENTICATE_RESP">
 <span class="sig-name descname"><span class="pre">AUTHENTICATE_RESP</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">131</span></span><a class="headerlink" href="#icspacket.proto.dnp3.const.FunctionCode.AUTHENTICATE_RESP" title="Link to this definition">#</a></dt>
-<dd><p>Outstation issues an authentication response to the master.</p>
+<dd><p>Sent by the outstation to answer a master’s authentication request.</p>
 </dd></dl>
 
 </dd></dl>
@@ -845,49 +882,49 @@ Application Protocol Data Unit (APDU).</p>
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.const.ObjectPrefixCode">
 <span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">icspacket.proto.dnp3.const.</span></span><span class="sig-name descname"><span class="pre">ObjectPrefixCode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">values</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/icspacket/proto/dnp3/const.html#ObjectPrefixCode"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.dnp3.const.ObjectPrefixCode" title="Link to this definition">#</a></dt>
 <dd><p>Object Prefix Codes.</p>
-<p>Define how objects are prefixed when encoded in an Application Layer
-message.
+<p>Selects how this library tags each object inside an encoded Application
+Layer message - with an index value, a size value, or no prefix at all.
 (See DNP3 Specification, Section 4.2.2.7.3.2)</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.const.ObjectPrefixCode.NONE">
 <span class="sig-name descname"><span class="pre">NONE</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></span><a class="headerlink" href="#icspacket.proto.dnp3.const.ObjectPrefixCode.NONE" title="Link to this definition">#</a></dt>
-<dd><p>Objects are encoded without any index prefix.</p>
+<dd><p>No prefix is written before each object.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.const.ObjectPrefixCode.INDEX_8">
 <span class="sig-name descname"><span class="pre">INDEX_8</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></span><a class="headerlink" href="#icspacket.proto.dnp3.const.ObjectPrefixCode.INDEX_8" title="Link to this definition">#</a></dt>
-<dd><p>Objects are prefixed with an 8-bit index.</p>
+<dd><p>Each object is preceded by an 8-bit index value.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.const.ObjectPrefixCode.INDEX_16">
 <span class="sig-name descname"><span class="pre">INDEX_16</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2</span></span><a class="headerlink" href="#icspacket.proto.dnp3.const.ObjectPrefixCode.INDEX_16" title="Link to this definition">#</a></dt>
-<dd><p>Objects are prefixed with a 16-bit index.</p>
+<dd><p>Each object is preceded by a 16-bit index value.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.const.ObjectPrefixCode.INDEX_32">
 <span class="sig-name descname"><span class="pre">INDEX_32</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">3</span></span><a class="headerlink" href="#icspacket.proto.dnp3.const.ObjectPrefixCode.INDEX_32" title="Link to this definition">#</a></dt>
-<dd><p>Objects are prefixed with a 32-bit index.</p>
+<dd><p>Each object is preceded by a 32-bit index value.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.const.ObjectPrefixCode.OBJECT_SIZE_8">
 <span class="sig-name descname"><span class="pre">OBJECT_SIZE_8</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">4</span></span><a class="headerlink" href="#icspacket.proto.dnp3.const.ObjectPrefixCode.OBJECT_SIZE_8" title="Link to this definition">#</a></dt>
-<dd><p>Objects are prefixed with an 8-bit object size.</p>
+<dd><p>Each object is preceded by its own size, encoded in 8 bits.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.const.ObjectPrefixCode.OBJECT_SIZE_16">
 <span class="sig-name descname"><span class="pre">OBJECT_SIZE_16</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">5</span></span><a class="headerlink" href="#icspacket.proto.dnp3.const.ObjectPrefixCode.OBJECT_SIZE_16" title="Link to this definition">#</a></dt>
-<dd><p>Objects are prefixed with a 16-bit object size.</p>
+<dd><p>Each object is preceded by its own size, encoded in 16 bits.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.const.ObjectPrefixCode.OBJECT_SIZE_32">
 <span class="sig-name descname"><span class="pre">OBJECT_SIZE_32</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">6</span></span><a class="headerlink" href="#icspacket.proto.dnp3.const.ObjectPrefixCode.OBJECT_SIZE_32" title="Link to this definition">#</a></dt>
-<dd><p>Objects are prefixed with a 32-bit object size.</p>
+<dd><p>Each object is preceded by its own size, encoded in 32 bits.</p>
 </dd></dl>
 
 <dl class="py attribute">
@@ -902,73 +939,78 @@ message.
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.const.RangeSpecifierCode">
 <span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">icspacket.proto.dnp3.const.</span></span><span class="sig-name descname"><span class="pre">RangeSpecifierCode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">values</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/icspacket/proto/dnp3/const.html#RangeSpecifierCode"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.dnp3.const.RangeSpecifierCode" title="Link to this definition">#</a></dt>
 <dd><p>Range Specifier Codes.</p>
-<p>Indicate how ranges of objects are expressed in a qualifier field,
-including start/stop indexes, virtual addresses, or counts.
+<p>Selects how this library encodes which objects a qualifier field
+addresses - as a start/stop index pair, a start/stop virtual-address
+pair, or a plain object count.
 (See DNP3 Specification, Section 4.2.2.7.3.3)</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.const.RangeSpecifierCode.RANGE_8">
 <span class="sig-name descname"><span class="pre">RANGE_8</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></span><a class="headerlink" href="#icspacket.proto.dnp3.const.RangeSpecifierCode.RANGE_8" title="Link to this definition">#</a></dt>
-<dd><p>Range field contains 1-octet start and stop indexes.</p>
+<dd><p>Range field holds a pair of 1-octet start/stop index values.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.const.RangeSpecifierCode.RANGE_16">
 <span class="sig-name descname"><span class="pre">RANGE_16</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></span><a class="headerlink" href="#icspacket.proto.dnp3.const.RangeSpecifierCode.RANGE_16" title="Link to this definition">#</a></dt>
-<dd><p>Range field contains 2-octet start and stop indexes.</p>
+<dd><p>Range field holds a pair of 2-octet start/stop index values.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.const.RangeSpecifierCode.RANGE_32">
 <span class="sig-name descname"><span class="pre">RANGE_32</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2</span></span><a class="headerlink" href="#icspacket.proto.dnp3.const.RangeSpecifierCode.RANGE_32" title="Link to this definition">#</a></dt>
-<dd><p>Range field contains 4-octet start and stop indexes.</p>
+<dd><p>Range field holds a pair of 4-octet start/stop index values.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.const.RangeSpecifierCode.RANGE_8_VIRTUAL">
 <span class="sig-name descname"><span class="pre">RANGE_8_VIRTUAL</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">3</span></span><a class="headerlink" href="#icspacket.proto.dnp3.const.RangeSpecifierCode.RANGE_8_VIRTUAL" title="Link to this definition">#</a></dt>
-<dd><p>Range field contains 1-octet start and stop virtual addresses.</p>
+<dd><p>Range field holds a pair of 1-octet start/stop virtual addresses.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.const.RangeSpecifierCode.RANGE_16_VIRTUAL">
 <span class="sig-name descname"><span class="pre">RANGE_16_VIRTUAL</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">4</span></span><a class="headerlink" href="#icspacket.proto.dnp3.const.RangeSpecifierCode.RANGE_16_VIRTUAL" title="Link to this definition">#</a></dt>
-<dd><p>Range field contains 2-octet start and stop virtual addresses.</p>
+<dd><p>Range field holds a pair of 2-octet start/stop virtual addresses.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.const.RangeSpecifierCode.RANGE_32_VIRTUAL">
 <span class="sig-name descname"><span class="pre">RANGE_32_VIRTUAL</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">5</span></span><a class="headerlink" href="#icspacket.proto.dnp3.const.RangeSpecifierCode.RANGE_32_VIRTUAL" title="Link to this definition">#</a></dt>
-<dd><p>Range field contains 4-octet start and stop virtual addresses.</p>
+<dd><p>Range field holds a pair of 4-octet start/stop virtual addresses.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.const.RangeSpecifierCode.NONE">
 <span class="sig-name descname"><span class="pre">NONE</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">6</span></span><a class="headerlink" href="#icspacket.proto.dnp3.const.RangeSpecifierCode.NONE" title="Link to this definition">#</a></dt>
-<dd><p>No range field is used (implies all values).</p>
+<dd><p>No range field follows; the request/response covers every value.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.const.RangeSpecifierCode.COUNT_8">
 <span class="sig-name descname"><span class="pre">COUNT_8</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">7</span></span><a class="headerlink" href="#icspacket.proto.dnp3.const.RangeSpecifierCode.COUNT_8" title="Link to this definition">#</a></dt>
-<dd><p>Range field contains a 1-octet count of objects.</p>
+<dd><p>Range field holds a single 1-octet object count instead of a
+start/stop pair.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.const.RangeSpecifierCode.COUNT_16">
 <span class="sig-name descname"><span class="pre">COUNT_16</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">8</span></span><a class="headerlink" href="#icspacket.proto.dnp3.const.RangeSpecifierCode.COUNT_16" title="Link to this definition">#</a></dt>
-<dd><p>Range field contains a 2-octet count of objects.</p>
+<dd><p>Range field holds a single 2-octet object count instead of a
+start/stop pair.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.const.RangeSpecifierCode.COUNT_32">
 <span class="sig-name descname"><span class="pre">COUNT_32</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">9</span></span><a class="headerlink" href="#icspacket.proto.dnp3.const.RangeSpecifierCode.COUNT_32" title="Link to this definition">#</a></dt>
-<dd><p>Range field contains a 4-octet count of objects.</p>
+<dd><p>Range field holds a single 4-octet object count instead of a
+start/stop pair.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="icspacket.proto.dnp3.const.RangeSpecifierCode.VARIABLE">
 <span class="sig-name descname"><span class="pre">VARIABLE</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">11</span></span><a class="headerlink" href="#icspacket.proto.dnp3.const.RangeSpecifierCode.VARIABLE" title="Link to this definition">#</a></dt>
-<dd><p>Variable format qualifier with a 1-octet object count.</p>
+<dd><p>Free-format qualifier whose range field is a single 1-octet object
+count.</p>
 </dd></dl>
 
 </dd></dl>
@@ -1018,7 +1060,7 @@ including start/stop indexes, virtual addresses, or counts.
     </div>
   </div>
 </footer>
-      <script src="../../../_static/documentation_options.js?v=3d9de00a"></script>
+      <script src="../../../_static/documentation_options.js?v=1f6bc116"></script>
       <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
       <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
       <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>

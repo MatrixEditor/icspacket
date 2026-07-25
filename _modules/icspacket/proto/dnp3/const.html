@@ -2,7 +2,7 @@
 <html lang="en" data-accent-color="lime" data-content_root="../../../../">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>icspacket.proto.dnp3.const - icspacket 0.1.dev1+gcaa5aba2d documentation</title><link rel="index" title="Index" href="../../../../genindex.html" /><link rel="search" title="Search" href="../../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>icspacket.proto.dnp3.const - icspacket 0.1.dev1+g0a5b28664 documentation</title><link rel="index" title="Index" href="../../../../genindex.html" /><link rel="search" title="Search" href="../../../../search.html" />
       <link rel="canonical" href="https://matrixeditor.github.io/icspacket/_modules/icspacket/proto/dnp3/const.html" /><script>
     function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
     setColorMode(localStorage._theme||"dark");
@@ -263,7 +263,7 @@ data-aria-dark="Switch to auto color mode">
 </span><span data-line="16"><span class="kn">import</span><span class="w"> </span><span class="nn">enum</span>
 </span><span data-line="17">
 </span><span data-line="18"><span class="kn">from</span><span class="w"> </span><span class="nn">caterpillar.byteorder</span><span class="w"> </span><span class="kn">import</span> <span class="n">LittleEndian</span>
-</span><span data-line="19"><span class="kn">from</span><span class="w"> </span><span class="nn">caterpillar.fields</span><span class="w"> </span><span class="kn">import</span> <span class="n">DEFAULT_OPTION</span><span class="p">,</span> <span class="n">uint8</span><span class="p">,</span> <span class="n">uint16</span><span class="p">,</span> <span class="n">uint32</span><span class="p">,</span> <span class="n">Pass</span>
+</span><span data-line="19"><span class="kn">from</span><span class="w"> </span><span class="nn">caterpillar.fields</span><span class="w"> </span><span class="kn">import</span> <span class="n">DEFAULT_OPTION</span><span class="p">,</span> <span class="n">Pass</span><span class="p">,</span> <span class="n">uint8</span><span class="p">,</span> <span class="n">uint16</span><span class="p">,</span> <span class="n">uint32</span>
 </span><span data-line="20">
 </span><span data-line="21"><span class="c1"># ============================================================================ #</span>
 </span><span data-line="22"><span class="c1"># DNP3 Constants and Enumerations</span>
@@ -288,234 +288,260 @@ data-aria-dark="Switch to auto color mode">
 </span><span data-line="39"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span data-line="40"><span class="sd">    Application Layer Function Codes.</span>
 </span><span data-line="41">
-</span><span data-line="42"><span class="sd">    Function codes define the type of operation performed by the</span>
-</span><span data-line="43"><span class="sd">    Application Layer. They are carried in the first octet of an</span>
-</span><span data-line="44"><span class="sd">    Application Protocol Data Unit (APDU).</span>
-</span><span data-line="45">
-</span><span data-line="46"><span class="sd">    (See DNP3 Specification, Section 4.2.2.5)</span>
-</span><span data-line="47"><span class="sd">    &quot;&quot;&quot;</span>
-</span><span data-line="48">
-</span><span data-line="49">    <span class="n">__struct__</span> <span class="o">=</span> <span class="n">uint8</span>
-</span><span data-line="50">
-</span><span data-line="51">    <span class="n">CONFIRM</span> <span class="o">=</span> <span class="mi">0</span>
-</span><span data-line="52"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Master confirms receipt of an Application Layer fragment.&quot;&quot;&quot;</span>
-</span><span data-line="53">
-</span><span data-line="54">    <span class="n">READ</span> <span class="o">=</span> <span class="mi">1</span>
-</span><span data-line="55"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Outstation shall return the data specified in the request.&quot;&quot;&quot;</span>
-</span><span data-line="56">
-</span><span data-line="57">    <span class="n">WRITE</span> <span class="o">=</span> <span class="mi">2</span>
-</span><span data-line="58"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Outstation shall store the data specified in the request.&quot;&quot;&quot;</span>
-</span><span data-line="59">
-</span><span data-line="60">    <span class="n">SELECT</span> <span class="o">=</span> <span class="mi">3</span>
-</span><span data-line="61"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Outstation selects output points in preparation for an `OPERATE` command.&quot;&quot;&quot;</span>
-</span><span data-line="62">
-</span><span data-line="63">    <span class="n">OPERATE</span> <span class="o">=</span> <span class="mi">4</span>
-</span><span data-line="64"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Outstation activates output points selected by a prior `SELECT`.&quot;&quot;&quot;</span>
-</span><span data-line="65">
-</span><span data-line="66">    <span class="n">DIRECT_OPERATE</span> <span class="o">=</span> <span class="mi">5</span>
-</span><span data-line="67"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Outstation immediately actuates output points without requiring `SELECT`.&quot;&quot;&quot;</span>
+</span><span data-line="42"><span class="sd">    Each member identifies one operation a master or outstation can invoke</span>
+</span><span data-line="43"><span class="sd">    on its peer; this library writes the member&#39;s numeric value into the</span>
+</span><span data-line="44"><span class="sd">    first octet of an Application Protocol Data Unit (APDU) to say which</span>
+</span><span data-line="45"><span class="sd">    operation a given fragment represents.</span>
+</span><span data-line="46">
+</span><span data-line="47"><span class="sd">    (See DNP3 Specification, Section 4.2.2.5)</span>
+</span><span data-line="48"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span data-line="49">
+</span><span data-line="50">    <span class="n">__struct__</span> <span class="o">=</span> <span class="n">uint8</span>
+</span><span data-line="51">
+</span><span data-line="52">    <span class="n">CONFIRM</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span data-line="53"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Sent by the master to acknowledge that it received an application fragment.&quot;&quot;&quot;</span>
+</span><span data-line="54">
+</span><span data-line="55">    <span class="n">READ</span> <span class="o">=</span> <span class="mi">1</span>
+</span><span data-line="56"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Asks the outstation to return the data identified in the request.&quot;&quot;&quot;</span>
+</span><span data-line="57">
+</span><span data-line="58">    <span class="n">WRITE</span> <span class="o">=</span> <span class="mi">2</span>
+</span><span data-line="59"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Asks the outstation to store the data supplied in the request.&quot;&quot;&quot;</span>
+</span><span data-line="60">
+</span><span data-line="61">    <span class="n">SELECT</span> <span class="o">=</span> <span class="mi">3</span>
+</span><span data-line="62"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Has the outstation prepare the requested output points, the first</span>
+</span><span data-line="63"><span class="sd">    step of a select-before-operate sequence completed by `OPERATE`.&quot;&quot;&quot;</span>
+</span><span data-line="64">
+</span><span data-line="65">    <span class="n">OPERATE</span> <span class="o">=</span> <span class="mi">4</span>
+</span><span data-line="66"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Tells the outstation to activate the output points a prior `SELECT`</span>
+</span><span data-line="67"><span class="sd">    already prepared.&quot;&quot;&quot;</span>
 </span><span data-line="68">
-</span><span data-line="69">    <span class="n">DIRECT_OPERATE_NR</span> <span class="o">=</span> <span class="mi">6</span>
-</span><span data-line="70"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Same as `DIRECT_OPERATE` but without sending a response.&quot;&quot;&quot;</span>
-</span><span data-line="71">
-</span><span data-line="72">    <span class="n">IMMED_FREEZE</span> <span class="o">=</span> <span class="mi">7</span>
-</span><span data-line="73"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Outstation copies data values into a freeze buffer.&quot;&quot;&quot;</span>
-</span><span data-line="74">
-</span><span data-line="75">    <span class="n">IMMED_FREEZE_NR</span> <span class="o">=</span> <span class="mi">8</span>
-</span><span data-line="76"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Same as `IMMED_FREEZE` but without sending a response.&quot;&quot;&quot;</span>
-</span><span data-line="77">
-</span><span data-line="78">    <span class="n">FREEZE_CLEAR</span> <span class="o">=</span> <span class="mi">9</span>
-</span><span data-line="79"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Outstation copies data values into a freeze buffer and clears originals.&quot;&quot;&quot;</span>
+</span><span data-line="69">    <span class="n">DIRECT_OPERATE</span> <span class="o">=</span> <span class="mi">5</span>
+</span><span data-line="70"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Tells the outstation to activate the named output points right away,</span>
+</span><span data-line="71"><span class="sd">    skipping the `SELECT` step.&quot;&quot;&quot;</span>
+</span><span data-line="72">
+</span><span data-line="73">    <span class="n">DIRECT_OPERATE_NR</span> <span class="o">=</span> <span class="mi">6</span>
+</span><span data-line="74"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Behaves like `DIRECT_OPERATE`, except the outstation does not send</span>
+</span><span data-line="75"><span class="sd">    back a response.&quot;&quot;&quot;</span>
+</span><span data-line="76">
+</span><span data-line="77">    <span class="n">IMMED_FREEZE</span> <span class="o">=</span> <span class="mi">7</span>
+</span><span data-line="78"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Tells the outstation to snapshot its current data values into a</span>
+</span><span data-line="79"><span class="sd">    freeze buffer.&quot;&quot;&quot;</span>
 </span><span data-line="80">
-</span><span data-line="81">    <span class="n">FREEZE_CLEAR_NR</span> <span class="o">=</span> <span class="mi">10</span>
-</span><span data-line="82"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Same as `FREEZE_CLEAR` but without sending a response.&quot;&quot;&quot;</span>
-</span><span data-line="83">
-</span><span data-line="84">    <span class="n">FREEZE_AT_TIME</span> <span class="o">=</span> <span class="mi">11</span>
-</span><span data-line="85"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Outstation freezes data values at a specified time/interval.&quot;&quot;&quot;</span>
-</span><span data-line="86">
-</span><span data-line="87">    <span class="n">FREEZE_AT_TIME_NR</span> <span class="o">=</span> <span class="mi">12</span>
-</span><span data-line="88"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Same as `FREEZE_AT_TIME` but without sending a response.&quot;&quot;&quot;</span>
-</span><span data-line="89">
-</span><span data-line="90">    <span class="n">COLD_RESTART</span> <span class="o">=</span> <span class="mi">13</span>
-</span><span data-line="91"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Outstation performs a full reset of hardware and software.&quot;&quot;&quot;</span>
+</span><span data-line="81">    <span class="n">IMMED_FREEZE_NR</span> <span class="o">=</span> <span class="mi">8</span>
+</span><span data-line="82"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Behaves like `IMMED_FREEZE`, except the outstation does not send</span>
+</span><span data-line="83"><span class="sd">    back a response.&quot;&quot;&quot;</span>
+</span><span data-line="84">
+</span><span data-line="85">    <span class="n">FREEZE_CLEAR</span> <span class="o">=</span> <span class="mi">9</span>
+</span><span data-line="86"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Tells the outstation to snapshot its data values into a freeze buffer</span>
+</span><span data-line="87"><span class="sd">    and then reset the originals.&quot;&quot;&quot;</span>
+</span><span data-line="88">
+</span><span data-line="89">    <span class="n">FREEZE_CLEAR_NR</span> <span class="o">=</span> <span class="mi">10</span>
+</span><span data-line="90"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Behaves like `FREEZE_CLEAR`, except the outstation does not send</span>
+</span><span data-line="91"><span class="sd">    back a response.&quot;&quot;&quot;</span>
 </span><span data-line="92">
-</span><span data-line="93">    <span class="n">WARM_RESTART</span> <span class="o">=</span> <span class="mi">14</span>
-</span><span data-line="94"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Outstation performs a partial reset of the device.&quot;&quot;&quot;</span>
-</span><span data-line="95">
-</span><span data-line="96">    <span class="n">INITIALIZE_DATA</span> <span class="o">=</span> <span class="mi">15</span>
-</span><span data-line="97"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Obsolete - not to be used in new designs.&quot;&quot;&quot;</span>
-</span><span data-line="98">
-</span><span data-line="99">    <span class="n">INITIALIZE_APPL</span> <span class="o">=</span> <span class="mi">16</span>
-</span><span data-line="100"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Outstation places applications into ready-to-run state.&quot;&quot;&quot;</span>
-</span><span data-line="101">
-</span><span data-line="102">    <span class="n">START_APPL</span> <span class="o">=</span> <span class="mi">17</span>
-</span><span data-line="103"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Outstation starts the specified applications.&quot;&quot;&quot;</span>
-</span><span data-line="104">
-</span><span data-line="105">    <span class="n">STOP_APPL</span> <span class="o">=</span> <span class="mi">18</span>
-</span><span data-line="106"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Outstation stops the specified applications.&quot;&quot;&quot;</span>
-</span><span data-line="107">
-</span><span data-line="108">    <span class="n">SAVE_CONFIG</span> <span class="o">=</span> <span class="mi">19</span>
-</span><span data-line="109"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Deprecated - saving of configuration (do not use in new designs).&quot;&quot;&quot;</span>
-</span><span data-line="110">
-</span><span data-line="111">    <span class="n">ENABLE_UNSOLICITED</span> <span class="o">=</span> <span class="mi">20</span>
-</span><span data-line="112"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Outstation enables unsolicited responses for specified points.&quot;&quot;&quot;</span>
+</span><span data-line="93">    <span class="n">FREEZE_AT_TIME</span> <span class="o">=</span> <span class="mi">11</span>
+</span><span data-line="94"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Schedules the outstation to freeze its data values at a time or on an</span>
+</span><span data-line="95"><span class="sd">    interval given in the request.&quot;&quot;&quot;</span>
+</span><span data-line="96">
+</span><span data-line="97">    <span class="n">FREEZE_AT_TIME_NR</span> <span class="o">=</span> <span class="mi">12</span>
+</span><span data-line="98"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Behaves like `FREEZE_AT_TIME`, except the outstation does not send</span>
+</span><span data-line="99"><span class="sd">    back a response.&quot;&quot;&quot;</span>
+</span><span data-line="100">
+</span><span data-line="101">    <span class="n">COLD_RESTART</span> <span class="o">=</span> <span class="mi">13</span>
+</span><span data-line="102"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Asks the outstation to fully reset both its hardware and software.&quot;&quot;&quot;</span>
+</span><span data-line="103">
+</span><span data-line="104">    <span class="n">WARM_RESTART</span> <span class="o">=</span> <span class="mi">14</span>
+</span><span data-line="105"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Asks the outstation to perform a lighter, partial reset of the device.&quot;&quot;&quot;</span>
+</span><span data-line="106">
+</span><span data-line="107">    <span class="n">INITIALIZE_DATA</span> <span class="o">=</span> <span class="mi">15</span>
+</span><span data-line="108"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Obsolete; new designs must not send this code.&quot;&quot;&quot;</span>
+</span><span data-line="109">
+</span><span data-line="110">    <span class="n">INITIALIZE_APPL</span> <span class="o">=</span> <span class="mi">16</span>
+</span><span data-line="111"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Asks the outstation to bring the named application(s) into a</span>
+</span><span data-line="112"><span class="sd">    ready-to-run state.&quot;&quot;&quot;</span>
 </span><span data-line="113">
-</span><span data-line="114">    <span class="n">DISABLE_UNSOLICITED</span> <span class="o">=</span> <span class="mi">21</span>
-</span><span data-line="115"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Outstation disables unsolicited responses for specified points.&quot;&quot;&quot;</span>
+</span><span data-line="114">    <span class="n">START_APPL</span> <span class="o">=</span> <span class="mi">17</span>
+</span><span data-line="115"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Asks the outstation to start the application(s) named in the request.&quot;&quot;&quot;</span>
 </span><span data-line="116">
-</span><span data-line="117">    <span class="n">ASSIGN_CLASS</span> <span class="o">=</span> <span class="mi">22</span>
-</span><span data-line="118"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Outstation assigns points/events to one of the defined classes.&quot;&quot;&quot;</span>
+</span><span data-line="117">    <span class="n">STOP_APPL</span> <span class="o">=</span> <span class="mi">18</span>
+</span><span data-line="118"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Asks the outstation to stop the application(s) named in the request.&quot;&quot;&quot;</span>
 </span><span data-line="119">
-</span><span data-line="120">    <span class="n">DELAY_MESSAGE</span> <span class="o">=</span> <span class="mi">23</span>
-</span><span data-line="121"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Outstation reports processing/transmission delay time.&quot;&quot;&quot;</span>
+</span><span data-line="120">    <span class="n">SAVE_CONFIG</span> <span class="o">=</span> <span class="mi">19</span>
+</span><span data-line="121"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Deprecated request to save configuration; avoid using it in new designs.&quot;&quot;&quot;</span>
 </span><span data-line="122">
-</span><span data-line="123">    <span class="n">RECORD_CURRENT_TIME</span> <span class="o">=</span> <span class="mi">24</span>
-</span><span data-line="124"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Outstation records the current time when the last octet is received.&quot;&quot;&quot;</span>
-</span><span data-line="125">
-</span><span data-line="126">    <span class="n">OPEN_FILE</span> <span class="o">=</span> <span class="mi">25</span>
-</span><span data-line="127"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Outstation opens a file.&quot;&quot;&quot;</span>
-</span><span data-line="128">
-</span><span data-line="129">    <span class="n">CLOSE_FILE</span> <span class="o">=</span> <span class="mi">26</span>
-</span><span data-line="130"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Outstation closes a file.&quot;&quot;&quot;</span>
-</span><span data-line="131">
-</span><span data-line="132">    <span class="n">DELETE_FILE</span> <span class="o">=</span> <span class="mi">27</span>
-</span><span data-line="133"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Outstation deletes a file.&quot;&quot;&quot;</span>
+</span><span data-line="123">    <span class="n">ENABLE_UNSOLICITED</span> <span class="o">=</span> <span class="mi">20</span>
+</span><span data-line="124"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Asks the outstation to start sending unsolicited responses for the</span>
+</span><span data-line="125"><span class="sd">    named points.&quot;&quot;&quot;</span>
+</span><span data-line="126">
+</span><span data-line="127">    <span class="n">DISABLE_UNSOLICITED</span> <span class="o">=</span> <span class="mi">21</span>
+</span><span data-line="128"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Asks the outstation to stop sending unsolicited responses for the</span>
+</span><span data-line="129"><span class="sd">    named points.&quot;&quot;&quot;</span>
+</span><span data-line="130">
+</span><span data-line="131">    <span class="n">ASSIGN_CLASS</span> <span class="o">=</span> <span class="mi">22</span>
+</span><span data-line="132"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Asks the outstation to assign the named points or events to one of</span>
+</span><span data-line="133"><span class="sd">    its event classes.&quot;&quot;&quot;</span>
 </span><span data-line="134">
-</span><span data-line="135">    <span class="n">GET_FILE_INFO</span> <span class="o">=</span> <span class="mi">28</span>
-</span><span data-line="136"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Outstation retrieves information about a file.&quot;&quot;&quot;</span>
-</span><span data-line="137">
-</span><span data-line="138">    <span class="n">AUTHENTICATE_FILE</span> <span class="o">=</span> <span class="mi">29</span>
-</span><span data-line="139"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Outstation returns a file authentication key.&quot;&quot;&quot;</span>
-</span><span data-line="140">
-</span><span data-line="141">    <span class="n">ABORT_FILE</span> <span class="o">=</span> <span class="mi">30</span>
-</span><span data-line="142"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Outstation aborts an ongoing file transfer.&quot;&quot;&quot;</span>
-</span><span data-line="143">
-</span><span data-line="144">    <span class="n">ACTIVATE_CONFIG</span> <span class="o">=</span> <span class="mi">31</span>
-</span><span data-line="145"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Outstation activates a configuration.&quot;&quot;&quot;</span>
-</span><span data-line="146">
-</span><span data-line="147">    <span class="n">AUTHENTICATE_REQ</span> <span class="o">=</span> <span class="mi">32</span>
-</span><span data-line="148"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Master sends an authentication request requiring acknowledgement.&quot;&quot;&quot;</span>
-</span><span data-line="149">
-</span><span data-line="150">    <span class="n">AUTH_REQ_NO_ACK</span> <span class="o">=</span> <span class="mi">33</span>
-</span><span data-line="151"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Master sends an authentication request not requiring acknowledgement.&quot;&quot;&quot;</span>
-</span><span data-line="152">
-</span><span data-line="153">    <span class="n">RESPONSE</span> <span class="o">=</span> <span class="mi">129</span>
-</span><span data-line="154"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Application Layer response to a master request.&quot;&quot;&quot;</span>
-</span><span data-line="155">
-</span><span data-line="156">    <span class="n">UNSOLICITED_RESPONSE</span> <span class="o">=</span> <span class="mi">130</span>
-</span><span data-line="157"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Unsolicited Application Layer response from the outstation.&quot;&quot;&quot;</span>
-</span><span data-line="158">
-</span><span data-line="159">    <span class="n">AUTHENTICATE_RESP</span> <span class="o">=</span> <span class="mi">131</span>
-</span><span data-line="160"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Outstation issues an authentication response to the master.&quot;&quot;&quot;</span></div>
+</span><span data-line="135">    <span class="n">DELAY_MESSAGE</span> <span class="o">=</span> <span class="mi">23</span>
+</span><span data-line="136"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Asks the outstation to report how much processing/transmission delay</span>
+</span><span data-line="137"><span class="sd">    it is adding.&quot;&quot;&quot;</span>
+</span><span data-line="138">
+</span><span data-line="139">    <span class="n">RECORD_CURRENT_TIME</span> <span class="o">=</span> <span class="mi">24</span>
+</span><span data-line="140"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Asks the outstation to note its own clock value at the instant it</span>
+</span><span data-line="141"><span class="sd">    receives this request&#39;s last octet.&quot;&quot;&quot;</span>
+</span><span data-line="142">
+</span><span data-line="143">    <span class="n">OPEN_FILE</span> <span class="o">=</span> <span class="mi">25</span>
+</span><span data-line="144"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Asks the outstation to open the file named in the request.&quot;&quot;&quot;</span>
+</span><span data-line="145">
+</span><span data-line="146">    <span class="n">CLOSE_FILE</span> <span class="o">=</span> <span class="mi">26</span>
+</span><span data-line="147"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Asks the outstation to close a previously opened file.&quot;&quot;&quot;</span>
+</span><span data-line="148">
+</span><span data-line="149">    <span class="n">DELETE_FILE</span> <span class="o">=</span> <span class="mi">27</span>
+</span><span data-line="150"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Asks the outstation to delete the file named in the request.&quot;&quot;&quot;</span>
+</span><span data-line="151">
+</span><span data-line="152">    <span class="n">GET_FILE_INFO</span> <span class="o">=</span> <span class="mi">28</span>
+</span><span data-line="153"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Asks the outstation to report information describing a file.&quot;&quot;&quot;</span>
+</span><span data-line="154">
+</span><span data-line="155">    <span class="n">AUTHENTICATE_FILE</span> <span class="o">=</span> <span class="mi">29</span>
+</span><span data-line="156"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Asks the outstation to return a key used to authenticate file access.&quot;&quot;&quot;</span>
+</span><span data-line="157">
+</span><span data-line="158">    <span class="n">ABORT_FILE</span> <span class="o">=</span> <span class="mi">30</span>
+</span><span data-line="159"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Asks the outstation to cancel a file transfer already in progress.&quot;&quot;&quot;</span>
+</span><span data-line="160">
+</span><span data-line="161">    <span class="n">ACTIVATE_CONFIG</span> <span class="o">=</span> <span class="mi">31</span>
+</span><span data-line="162"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Asks the outstation to switch to (activate) a previously loaded</span>
+</span><span data-line="163"><span class="sd">    configuration.&quot;&quot;&quot;</span>
+</span><span data-line="164">
+</span><span data-line="165">    <span class="n">AUTHENTICATE_REQ</span> <span class="o">=</span> <span class="mi">32</span>
+</span><span data-line="166"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Sent by the master to start an authentication exchange that expects</span>
+</span><span data-line="167"><span class="sd">    an acknowledgement.&quot;&quot;&quot;</span>
+</span><span data-line="168">
+</span><span data-line="169">    <span class="n">AUTH_REQ_NO_ACK</span> <span class="o">=</span> <span class="mi">33</span>
+</span><span data-line="170"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Sent by the master to start an authentication exchange that does not</span>
+</span><span data-line="171"><span class="sd">    expect an acknowledgement.&quot;&quot;&quot;</span>
+</span><span data-line="172">
+</span><span data-line="173">    <span class="n">RESPONSE</span> <span class="o">=</span> <span class="mi">129</span>
+</span><span data-line="174"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Marks a fragment as the outstation&#39;s reply to a master&#39;s request.&quot;&quot;&quot;</span>
+</span><span data-line="175">
+</span><span data-line="176">    <span class="n">UNSOLICITED_RESPONSE</span> <span class="o">=</span> <span class="mi">130</span>
+</span><span data-line="177"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Marks a fragment as a response the outstation generated on its own,</span>
+</span><span data-line="178"><span class="sd">    with no matching request from the master.&quot;&quot;&quot;</span>
+</span><span data-line="179">
+</span><span data-line="180">    <span class="n">AUTHENTICATE_RESP</span> <span class="o">=</span> <span class="mi">131</span>
+</span><span data-line="181"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Sent by the outstation to answer a master&#39;s authentication request.&quot;&quot;&quot;</span></div>
 
-</span><span data-line="161">
-</span><span data-line="162">
+</span><span data-line="182">
+</span><span data-line="183">
 <div class="viewcode-block" id="ObjectPrefixCode">
 <a class="viewcode-back" href="../../../../protocols/dnp3/api/application.html#icspacket.proto.dnp3.application.ObjectPrefixCode">[docs]</a>
-</span><span data-line="163"><span class="k">class</span><span class="w"> </span><span class="nc">ObjectPrefixCode</span><span class="p">(</span><span class="n">enum</span><span class="o">.</span><span class="n">IntEnum</span><span class="p">):</span>
-</span><span data-line="164"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span data-line="165"><span class="sd">    Object Prefix Codes.</span>
-</span><span data-line="166">
-</span><span data-line="167"><span class="sd">    Define how objects are prefixed when encoded in an Application Layer</span>
-</span><span data-line="168"><span class="sd">    message.</span>
-</span><span data-line="169"><span class="sd">    (See DNP3 Specification, Section 4.2.2.7.3.2)</span>
-</span><span data-line="170"><span class="sd">    &quot;&quot;&quot;</span>
-</span><span data-line="171">
-</span><span data-line="172">    <span class="n">NONE</span> <span class="o">=</span> <span class="mi">0</span>
-</span><span data-line="173"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Objects are encoded without any index prefix.&quot;&quot;&quot;</span>
-</span><span data-line="174">
-</span><span data-line="175">    <span class="n">INDEX_8</span> <span class="o">=</span> <span class="mi">1</span>
-</span><span data-line="176"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Objects are prefixed with an 8-bit index.&quot;&quot;&quot;</span>
-</span><span data-line="177">
-</span><span data-line="178">    <span class="n">INDEX_16</span> <span class="o">=</span> <span class="mi">2</span>
-</span><span data-line="179"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Objects are prefixed with a 16-bit index.&quot;&quot;&quot;</span>
-</span><span data-line="180">
-</span><span data-line="181">    <span class="n">INDEX_32</span> <span class="o">=</span> <span class="mi">3</span>
-</span><span data-line="182"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Objects are prefixed with a 32-bit index.&quot;&quot;&quot;</span>
-</span><span data-line="183">
-</span><span data-line="184">    <span class="n">OBJECT_SIZE_8</span> <span class="o">=</span> <span class="mi">4</span>
-</span><span data-line="185"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Objects are prefixed with an 8-bit object size.&quot;&quot;&quot;</span>
-</span><span data-line="186">
-</span><span data-line="187">    <span class="n">OBJECT_SIZE_16</span> <span class="o">=</span> <span class="mi">5</span>
-</span><span data-line="188"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Objects are prefixed with a 16-bit object size.&quot;&quot;&quot;</span>
-</span><span data-line="189">
-</span><span data-line="190">    <span class="n">OBJECT_SIZE_32</span> <span class="o">=</span> <span class="mi">6</span>
-</span><span data-line="191"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Objects are prefixed with a 32-bit object size.&quot;&quot;&quot;</span>
+</span><span data-line="184"><span class="k">class</span><span class="w"> </span><span class="nc">ObjectPrefixCode</span><span class="p">(</span><span class="n">enum</span><span class="o">.</span><span class="n">IntEnum</span><span class="p">):</span>
+</span><span data-line="185"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="186"><span class="sd">    Object Prefix Codes.</span>
+</span><span data-line="187">
+</span><span data-line="188"><span class="sd">    Selects how this library tags each object inside an encoded Application</span>
+</span><span data-line="189"><span class="sd">    Layer message - with an index value, a size value, or no prefix at all.</span>
+</span><span data-line="190"><span class="sd">    (See DNP3 Specification, Section 4.2.2.7.3.2)</span>
+</span><span data-line="191"><span class="sd">    &quot;&quot;&quot;</span>
 </span><span data-line="192">
-</span><span data-line="193">    <span class="n">RESERVED</span> <span class="o">=</span> <span class="mi">7</span>
-</span><span data-line="194"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Reserved for future use.&quot;&quot;&quot;</span></div>
-
+</span><span data-line="193">    <span class="n">NONE</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span data-line="194"><span class="w">    </span><span class="sd">&quot;&quot;&quot;No prefix is written before each object.&quot;&quot;&quot;</span>
 </span><span data-line="195">
-</span><span data-line="196">
+</span><span data-line="196">    <span class="n">INDEX_8</span> <span class="o">=</span> <span class="mi">1</span>
+</span><span data-line="197"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Each object is preceded by an 8-bit index value.&quot;&quot;&quot;</span>
+</span><span data-line="198">
+</span><span data-line="199">    <span class="n">INDEX_16</span> <span class="o">=</span> <span class="mi">2</span>
+</span><span data-line="200"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Each object is preceded by a 16-bit index value.&quot;&quot;&quot;</span>
+</span><span data-line="201">
+</span><span data-line="202">    <span class="n">INDEX_32</span> <span class="o">=</span> <span class="mi">3</span>
+</span><span data-line="203"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Each object is preceded by a 32-bit index value.&quot;&quot;&quot;</span>
+</span><span data-line="204">
+</span><span data-line="205">    <span class="n">OBJECT_SIZE_8</span> <span class="o">=</span> <span class="mi">4</span>
+</span><span data-line="206"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Each object is preceded by its own size, encoded in 8 bits.&quot;&quot;&quot;</span>
+</span><span data-line="207">
+</span><span data-line="208">    <span class="n">OBJECT_SIZE_16</span> <span class="o">=</span> <span class="mi">5</span>
+</span><span data-line="209"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Each object is preceded by its own size, encoded in 16 bits.&quot;&quot;&quot;</span>
+</span><span data-line="210">
+</span><span data-line="211">    <span class="n">OBJECT_SIZE_32</span> <span class="o">=</span> <span class="mi">6</span>
+</span><span data-line="212"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Each object is preceded by its own size, encoded in 32 bits.&quot;&quot;&quot;</span>
+</span><span data-line="213">
+</span><span data-line="214">    <span class="n">RESERVED</span> <span class="o">=</span> <span class="mi">7</span>
+</span><span data-line="215"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Reserved for future use.&quot;&quot;&quot;</span></div>
+
+</span><span data-line="216">
+</span><span data-line="217">
 <div class="viewcode-block" id="RangeSpecifierCode">
 <a class="viewcode-back" href="../../../../protocols/dnp3/api/application.html#icspacket.proto.dnp3.application.RangeSpecifierCode">[docs]</a>
-</span><span data-line="197"><span class="k">class</span><span class="w"> </span><span class="nc">RangeSpecifierCode</span><span class="p">(</span><span class="n">enum</span><span class="o">.</span><span class="n">IntEnum</span><span class="p">):</span>
-</span><span data-line="198"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span data-line="199"><span class="sd">    Range Specifier Codes.</span>
-</span><span data-line="200">
-</span><span data-line="201"><span class="sd">    Indicate how ranges of objects are expressed in a qualifier field,</span>
-</span><span data-line="202"><span class="sd">    including start/stop indexes, virtual addresses, or counts.</span>
-</span><span data-line="203"><span class="sd">    (See DNP3 Specification, Section 4.2.2.7.3.3)</span>
-</span><span data-line="204"><span class="sd">    &quot;&quot;&quot;</span>
-</span><span data-line="205">
-</span><span data-line="206">    <span class="n">RANGE_8</span> <span class="o">=</span> <span class="mi">0</span>
-</span><span data-line="207"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Range field contains 1-octet start and stop indexes.&quot;&quot;&quot;</span>
-</span><span data-line="208">
-</span><span data-line="209">    <span class="n">RANGE_16</span> <span class="o">=</span> <span class="mi">1</span>
-</span><span data-line="210"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Range field contains 2-octet start and stop indexes.&quot;&quot;&quot;</span>
-</span><span data-line="211">
-</span><span data-line="212">    <span class="n">RANGE_32</span> <span class="o">=</span> <span class="mi">2</span>
-</span><span data-line="213"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Range field contains 4-octet start and stop indexes.&quot;&quot;&quot;</span>
-</span><span data-line="214">
-</span><span data-line="215">    <span class="n">RANGE_8_VIRTUAL</span> <span class="o">=</span> <span class="mi">3</span>
-</span><span data-line="216"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Range field contains 1-octet start and stop virtual addresses.&quot;&quot;&quot;</span>
-</span><span data-line="217">
-</span><span data-line="218">    <span class="n">RANGE_16_VIRTUAL</span> <span class="o">=</span> <span class="mi">4</span>
-</span><span data-line="219"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Range field contains 2-octet start and stop virtual addresses.&quot;&quot;&quot;</span>
-</span><span data-line="220">
-</span><span data-line="221">    <span class="n">RANGE_32_VIRTUAL</span> <span class="o">=</span> <span class="mi">5</span>
-</span><span data-line="222"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Range field contains 4-octet start and stop virtual addresses.&quot;&quot;&quot;</span>
-</span><span data-line="223">
-</span><span data-line="224">    <span class="n">NONE</span> <span class="o">=</span> <span class="mi">6</span>
-</span><span data-line="225"><span class="w">    </span><span class="sd">&quot;&quot;&quot;No range field is used (implies all values).&quot;&quot;&quot;</span>
-</span><span data-line="226">
-</span><span data-line="227">    <span class="n">COUNT_8</span> <span class="o">=</span> <span class="mi">7</span>
-</span><span data-line="228"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Range field contains a 1-octet count of objects.&quot;&quot;&quot;</span>
-</span><span data-line="229">
-</span><span data-line="230">    <span class="n">COUNT_16</span> <span class="o">=</span> <span class="mi">8</span>
-</span><span data-line="231"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Range field contains a 2-octet count of objects.&quot;&quot;&quot;</span>
-</span><span data-line="232">
-</span><span data-line="233">    <span class="n">COUNT_32</span> <span class="o">=</span> <span class="mi">9</span>
-</span><span data-line="234"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Range field contains a 4-octet count of objects.&quot;&quot;&quot;</span>
-</span><span data-line="235">
-</span><span data-line="236">    <span class="n">VARIABLE</span> <span class="o">=</span> <span class="mi">11</span>
-</span><span data-line="237"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Variable format qualifier with a 1-octet object count.&quot;&quot;&quot;</span></div>
-
-</span><span data-line="238">
+</span><span data-line="218"><span class="k">class</span><span class="w"> </span><span class="nc">RangeSpecifierCode</span><span class="p">(</span><span class="n">enum</span><span class="o">.</span><span class="n">IntEnum</span><span class="p">):</span>
+</span><span data-line="219"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="220"><span class="sd">    Range Specifier Codes.</span>
+</span><span data-line="221">
+</span><span data-line="222"><span class="sd">    Selects how this library encodes which objects a qualifier field</span>
+</span><span data-line="223"><span class="sd">    addresses - as a start/stop index pair, a start/stop virtual-address</span>
+</span><span data-line="224"><span class="sd">    pair, or a plain object count.</span>
+</span><span data-line="225"><span class="sd">    (See DNP3 Specification, Section 4.2.2.7.3.3)</span>
+</span><span data-line="226"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span data-line="227">
+</span><span data-line="228">    <span class="n">RANGE_8</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span data-line="229"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Range field holds a pair of 1-octet start/stop index values.&quot;&quot;&quot;</span>
+</span><span data-line="230">
+</span><span data-line="231">    <span class="n">RANGE_16</span> <span class="o">=</span> <span class="mi">1</span>
+</span><span data-line="232"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Range field holds a pair of 2-octet start/stop index values.&quot;&quot;&quot;</span>
+</span><span data-line="233">
+</span><span data-line="234">    <span class="n">RANGE_32</span> <span class="o">=</span> <span class="mi">2</span>
+</span><span data-line="235"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Range field holds a pair of 4-octet start/stop index values.&quot;&quot;&quot;</span>
+</span><span data-line="236">
+</span><span data-line="237">    <span class="n">RANGE_8_VIRTUAL</span> <span class="o">=</span> <span class="mi">3</span>
+</span><span data-line="238"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Range field holds a pair of 1-octet start/stop virtual addresses.&quot;&quot;&quot;</span>
 </span><span data-line="239">
-</span><span data-line="240"><span class="n">APDU_RANGE_TYPES</span> <span class="o">=</span> <span class="p">{</span>
-</span><span data-line="241">    <span class="n">RangeSpecifierCode</span><span class="o">.</span><span class="n">COUNT_8</span><span class="p">:</span> <span class="n">uint8</span><span class="p">,</span>
-</span><span data-line="242">    <span class="n">RangeSpecifierCode</span><span class="o">.</span><span class="n">COUNT_16</span><span class="p">:</span> <span class="n">LittleEndian</span> <span class="o">+</span> <span class="n">uint16</span><span class="p">,</span>
-</span><span data-line="243">    <span class="n">RangeSpecifierCode</span><span class="o">.</span><span class="n">COUNT_32</span><span class="p">:</span> <span class="n">LittleEndian</span> <span class="o">+</span> <span class="n">uint32</span><span class="p">,</span>
-</span><span data-line="244">    <span class="n">RangeSpecifierCode</span><span class="o">.</span><span class="n">RANGE_8</span><span class="p">:</span> <span class="n">uint8</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span>
-</span><span data-line="245">    <span class="n">RangeSpecifierCode</span><span class="o">.</span><span class="n">RANGE_16</span><span class="p">:</span> <span class="n">LittleEndian</span> <span class="o">+</span> <span class="n">uint16</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span>
-</span><span data-line="246">    <span class="n">RangeSpecifierCode</span><span class="o">.</span><span class="n">RANGE_32</span><span class="p">:</span> <span class="n">LittleEndian</span> <span class="o">+</span> <span class="n">uint32</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span>
-</span><span data-line="247">    <span class="n">RangeSpecifierCode</span><span class="o">.</span><span class="n">RANGE_8_VIRTUAL</span><span class="p">:</span> <span class="n">uint8</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span>
-</span><span data-line="248">    <span class="n">RangeSpecifierCode</span><span class="o">.</span><span class="n">RANGE_16_VIRTUAL</span><span class="p">:</span> <span class="n">LittleEndian</span> <span class="o">+</span> <span class="n">uint16</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span>
-</span><span data-line="249">    <span class="n">RangeSpecifierCode</span><span class="o">.</span><span class="n">RANGE_32_VIRTUAL</span><span class="p">:</span> <span class="n">LittleEndian</span> <span class="o">+</span> <span class="n">uint32</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span>
-</span><span data-line="250">    <span class="n">DEFAULT_OPTION</span><span class="p">:</span> <span class="n">Pass</span><span class="p">,</span>
-</span><span data-line="251"><span class="p">}</span>
+</span><span data-line="240">    <span class="n">RANGE_16_VIRTUAL</span> <span class="o">=</span> <span class="mi">4</span>
+</span><span data-line="241"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Range field holds a pair of 2-octet start/stop virtual addresses.&quot;&quot;&quot;</span>
+</span><span data-line="242">
+</span><span data-line="243">    <span class="n">RANGE_32_VIRTUAL</span> <span class="o">=</span> <span class="mi">5</span>
+</span><span data-line="244"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Range field holds a pair of 4-octet start/stop virtual addresses.&quot;&quot;&quot;</span>
+</span><span data-line="245">
+</span><span data-line="246">    <span class="n">NONE</span> <span class="o">=</span> <span class="mi">6</span>
+</span><span data-line="247"><span class="w">    </span><span class="sd">&quot;&quot;&quot;No range field follows; the request/response covers every value.&quot;&quot;&quot;</span>
+</span><span data-line="248">
+</span><span data-line="249">    <span class="n">COUNT_8</span> <span class="o">=</span> <span class="mi">7</span>
+</span><span data-line="250"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Range field holds a single 1-octet object count instead of a</span>
+</span><span data-line="251"><span class="sd">    start/stop pair.&quot;&quot;&quot;</span>
 </span><span data-line="252">
-</span><span data-line="253"><span class="n">APDU_PREFIX_TYPES</span> <span class="o">=</span> <span class="p">{</span>
-</span><span data-line="254">    <span class="n">ObjectPrefixCode</span><span class="o">.</span><span class="n">INDEX_8</span><span class="p">:</span> <span class="n">uint8</span><span class="p">,</span>
-</span><span data-line="255">    <span class="n">ObjectPrefixCode</span><span class="o">.</span><span class="n">INDEX_16</span><span class="p">:</span> <span class="n">LittleEndian</span> <span class="o">+</span> <span class="n">uint16</span><span class="p">,</span>
-</span><span data-line="256">    <span class="n">ObjectPrefixCode</span><span class="o">.</span><span class="n">INDEX_32</span><span class="p">:</span> <span class="n">LittleEndian</span> <span class="o">+</span> <span class="n">uint32</span><span class="p">,</span>
-</span><span data-line="257">    <span class="n">ObjectPrefixCode</span><span class="o">.</span><span class="n">OBJECT_SIZE_8</span><span class="p">:</span> <span class="n">uint8</span><span class="p">,</span>
-</span><span data-line="258">    <span class="n">ObjectPrefixCode</span><span class="o">.</span><span class="n">OBJECT_SIZE_16</span><span class="p">:</span> <span class="n">LittleEndian</span> <span class="o">+</span> <span class="n">uint16</span><span class="p">,</span>
-</span><span data-line="259">    <span class="n">ObjectPrefixCode</span><span class="o">.</span><span class="n">OBJECT_SIZE_32</span><span class="p">:</span> <span class="n">LittleEndian</span> <span class="o">+</span> <span class="n">uint32</span><span class="p">,</span>
-</span><span data-line="260">    <span class="c1"># Objects are packed without an index prefix.</span>
-</span><span data-line="261">    <span class="n">DEFAULT_OPTION</span><span class="p">:</span> <span class="n">Pass</span><span class="p">,</span>
-</span><span data-line="262"><span class="p">}</span>
+</span><span data-line="253">    <span class="n">COUNT_16</span> <span class="o">=</span> <span class="mi">8</span>
+</span><span data-line="254"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Range field holds a single 2-octet object count instead of a</span>
+</span><span data-line="255"><span class="sd">    start/stop pair.&quot;&quot;&quot;</span>
+</span><span data-line="256">
+</span><span data-line="257">    <span class="n">COUNT_32</span> <span class="o">=</span> <span class="mi">9</span>
+</span><span data-line="258"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Range field holds a single 4-octet object count instead of a</span>
+</span><span data-line="259"><span class="sd">    start/stop pair.&quot;&quot;&quot;</span>
+</span><span data-line="260">
+</span><span data-line="261">    <span class="n">VARIABLE</span> <span class="o">=</span> <span class="mi">11</span>
+</span><span data-line="262"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Free-format qualifier whose range field is a single 1-octet object</span>
+</span><span data-line="263"><span class="sd">    count.&quot;&quot;&quot;</span></div>
+
+</span><span data-line="264">
+</span><span data-line="265">
+</span><span data-line="266"><span class="n">APDU_RANGE_TYPES</span> <span class="o">=</span> <span class="p">{</span>
+</span><span data-line="267">    <span class="n">RangeSpecifierCode</span><span class="o">.</span><span class="n">COUNT_8</span><span class="p">:</span> <span class="n">uint8</span><span class="p">,</span>
+</span><span data-line="268">    <span class="n">RangeSpecifierCode</span><span class="o">.</span><span class="n">COUNT_16</span><span class="p">:</span> <span class="n">LittleEndian</span> <span class="o">+</span> <span class="n">uint16</span><span class="p">,</span>
+</span><span data-line="269">    <span class="n">RangeSpecifierCode</span><span class="o">.</span><span class="n">COUNT_32</span><span class="p">:</span> <span class="n">LittleEndian</span> <span class="o">+</span> <span class="n">uint32</span><span class="p">,</span>
+</span><span data-line="270">    <span class="n">RangeSpecifierCode</span><span class="o">.</span><span class="n">RANGE_8</span><span class="p">:</span> <span class="n">uint8</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span>
+</span><span data-line="271">    <span class="n">RangeSpecifierCode</span><span class="o">.</span><span class="n">RANGE_16</span><span class="p">:</span> <span class="n">LittleEndian</span> <span class="o">+</span> <span class="n">uint16</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span>
+</span><span data-line="272">    <span class="n">RangeSpecifierCode</span><span class="o">.</span><span class="n">RANGE_32</span><span class="p">:</span> <span class="n">LittleEndian</span> <span class="o">+</span> <span class="n">uint32</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span>
+</span><span data-line="273">    <span class="n">RangeSpecifierCode</span><span class="o">.</span><span class="n">RANGE_8_VIRTUAL</span><span class="p">:</span> <span class="n">uint8</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span>
+</span><span data-line="274">    <span class="n">RangeSpecifierCode</span><span class="o">.</span><span class="n">RANGE_16_VIRTUAL</span><span class="p">:</span> <span class="n">LittleEndian</span> <span class="o">+</span> <span class="n">uint16</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span>
+</span><span data-line="275">    <span class="n">RangeSpecifierCode</span><span class="o">.</span><span class="n">RANGE_32_VIRTUAL</span><span class="p">:</span> <span class="n">LittleEndian</span> <span class="o">+</span> <span class="n">uint32</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span>
+</span><span data-line="276">    <span class="n">DEFAULT_OPTION</span><span class="p">:</span> <span class="n">Pass</span><span class="p">,</span>
+</span><span data-line="277"><span class="p">}</span>
+</span><span data-line="278">
+</span><span data-line="279"><span class="n">APDU_PREFIX_TYPES</span> <span class="o">=</span> <span class="p">{</span>
+</span><span data-line="280">    <span class="n">ObjectPrefixCode</span><span class="o">.</span><span class="n">INDEX_8</span><span class="p">:</span> <span class="n">uint8</span><span class="p">,</span>
+</span><span data-line="281">    <span class="n">ObjectPrefixCode</span><span class="o">.</span><span class="n">INDEX_16</span><span class="p">:</span> <span class="n">LittleEndian</span> <span class="o">+</span> <span class="n">uint16</span><span class="p">,</span>
+</span><span data-line="282">    <span class="n">ObjectPrefixCode</span><span class="o">.</span><span class="n">INDEX_32</span><span class="p">:</span> <span class="n">LittleEndian</span> <span class="o">+</span> <span class="n">uint32</span><span class="p">,</span>
+</span><span data-line="283">    <span class="n">ObjectPrefixCode</span><span class="o">.</span><span class="n">OBJECT_SIZE_8</span><span class="p">:</span> <span class="n">uint8</span><span class="p">,</span>
+</span><span data-line="284">    <span class="n">ObjectPrefixCode</span><span class="o">.</span><span class="n">OBJECT_SIZE_16</span><span class="p">:</span> <span class="n">LittleEndian</span> <span class="o">+</span> <span class="n">uint16</span><span class="p">,</span>
+</span><span data-line="285">    <span class="n">ObjectPrefixCode</span><span class="o">.</span><span class="n">OBJECT_SIZE_32</span><span class="p">:</span> <span class="n">LittleEndian</span> <span class="o">+</span> <span class="n">uint32</span><span class="p">,</span>
+</span><span data-line="286">    <span class="c1"># Objects are packed without an index prefix.</span>
+</span><span data-line="287">    <span class="n">DEFAULT_OPTION</span><span class="p">:</span> <span class="n">Pass</span><span class="p">,</span>
+</span><span data-line="288"><span class="p">}</span>
 </span></pre></div>
         </article><button class="back-to-top" type="button">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -546,7 +572,7 @@ data-aria-dark="Switch to auto color mode">
     </div>
   </div>
 </footer>
-      <script src="../../../../_static/documentation_options.js?v=3d9de00a"></script>
+      <script src="../../../../_static/documentation_options.js?v=1f6bc116"></script>
       <script src="../../../../_static/doctools.js?v=fd6eb6e6"></script>
       <script src="../../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
       <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
