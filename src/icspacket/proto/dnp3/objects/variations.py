@@ -13,28 +13,33 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
-# pyright: reportGeneralTypeIssues=false, reportUninitializedInstanceVariable=false, reportInvalidTypeForm=false
+# pyright: reportIndexIssue=false
+import datetime
 from collections import defaultdict
-from typing_extensions import override
+
 from caterpillar.abc import _StructLike
-from caterpillar.fields import Transformer, Pass
+from caterpillar.fields import Pass, Transformer
 from caterpillar.shared import getstruct
-from caterpillar.shortcuts import bitfield, struct, this, G, LittleEndian
+from caterpillar.shortcuts import G, LittleEndian, bitfield, f, struct, this
+from caterpillar.types import (
+    float32_t,
+    float64_t,
+    int16_t,
+    int32_t,
+    uint8_t,
+    uint16_t,
+    uint24_t,
+    uint32_t,
+)
+from typing_extensions import override
+
 from icspacket.proto.dnp3.objects.primitive import (
-    UINT8,
-    UINT16,
-    UINT32,
-    INT16,
-    INT32,
+    BCD,
     DNP3TIME,
-    FLT32,
-    FLT64,
+    OSTR,
+    VSTR,
     BSTRn,
     DBSTRn,
-    UINT24,
-    VSTR,
-    OSTR,
-    BCD,
 )
 
 
@@ -62,9 +67,9 @@ class DNP3ObjectVariation(Transformer):
         packed: bool = False,
     ) -> None:
         super().__init__(getstruct(struct_ty, struct_ty))
-        self.__packed = packed
-        self.group = group
-        self.variation = variation
+        self.__packed: bool = packed
+        self.group: int = group
+        self.variation: int = variation
 
     @property
     def is_packed(self) -> bool:
@@ -171,48 +176,48 @@ __groups__[1][1] = DNP3ObjectVariation(1, 1, DNP3ObjectG1V1, packed=True)
 
 @bitfield(order=LittleEndian)
 class DNP3ObjectG1V2:
-    state: 1 = False
-    reserved: 1 = False
-    chatter_filter: 1 = False
-    local_forced: 1 = False
-    remote_forced: 1 = False
-    comm_lost: 1 = False
-    restart: 1 = False
-    online: 1 = False
+    state: f[bool, 1] = False
+    reserved: f[bool, 1] = False
+    chatter_filter: f[bool, 1] = False
+    local_forced: f[bool, 1] = False
+    remote_forced: f[bool, 1] = False
+    comm_lost: f[bool, 1] = False
+    restart: f[bool, 1] = False
+    online: f[bool, 1] = False
 
 __groups__[1][2] = DNP3ObjectVariation(1, 2, DNP3ObjectG1V2, packed=False)
 
 @struct(order=LittleEndian)
 class DNP3ObjectG2V1:
-    state: UINT8
+    state: uint8_t
 
 __groups__[2][1] = DNP3ObjectVariation(2, 1, DNP3ObjectG2V1, packed=False)
 
 @bitfield(order=LittleEndian)
 class DNP3ObjectG2V2:
-    state: 1 = False
-    reserved: 1 = False
-    chatter_filter: 1 = False
-    local_forced: 1 = False
-    remote_forced: 1 = False
-    comm_lost: 1 = False
-    restart: 1 = False
-    online: 1 = False
-    timestamp: DNP3TIME
+    state: f[bool, 1] = False
+    reserved: f[bool, 1] = False
+    chatter_filter: f[bool, 1] = False
+    local_forced: f[bool, 1] = False
+    remote_forced: f[bool, 1] = False
+    comm_lost: f[bool, 1] = False
+    restart: f[bool, 1] = False
+    online: f[bool, 1] = False
+    timestamp: f[datetime.datetime | int, DNP3TIME]
 
 __groups__[2][2] = DNP3ObjectVariation(2, 2, DNP3ObjectG2V2, packed=False)
 
 @bitfield(order=LittleEndian)
 class DNP3ObjectG2V3:
-    state: 1 = False
-    reserved: 1 = False
-    chatter_filter: 1 = False
-    local_forced: 1 = False
-    remote_forced: 1 = False
-    comm_lost: 1 = False
-    restart: 1 = False
-    online: 1 = False
-    timestamp: UINT16
+    state: f[bool, 1] = False
+    reserved: f[bool, 1] = False
+    chatter_filter: f[bool, 1] = False
+    local_forced: f[bool, 1] = False
+    remote_forced: f[bool, 1] = False
+    comm_lost: f[bool, 1] = False
+    restart: f[bool, 1] = False
+    online: f[bool, 1] = False
+    timestamp: uint16_t
 
 __groups__[2][3] = DNP3ObjectVariation(2, 3, DNP3ObjectG2V3, packed=False)
 
@@ -221,51 +226,51 @@ __groups__[3][1] = DNP3ObjectVariation(3, 1, DNP3ObjectG3V1, packed=True)
 
 @bitfield(order=LittleEndian)
 class DNP3ObjectG3V2:
-    state: 2 = 0
-    chatter_filter: 1 = False
-    local_forced: 1 = False
-    remote_forced: 1 = False
-    comm_lost: 1 = False
-    restart: 1 = False
-    online: 1 = False
+    state: f[int, 2] = 0
+    chatter_filter: f[bool, 1] = False
+    local_forced: f[bool, 1] = False
+    remote_forced: f[bool, 1] = False
+    comm_lost: f[bool, 1] = False
+    restart: f[bool, 1] = False
+    online: f[bool, 1] = False
 
 __groups__[3][2] = DNP3ObjectVariation(3, 2, DNP3ObjectG3V2, packed=False)
 
 @bitfield(order=LittleEndian)
 class DNP3ObjectG4V1:
-    state: 2 = 0
-    chatter_filter: 1 = False
-    local_forced: 1 = False
-    remote_forced: 1 = False
-    comm_lost: 1 = False
-    restart: 1 = False
-    online: 1 = False
+    state: f[int, 2] = 0
+    chatter_filter: f[bool, 1] = False
+    local_forced: f[bool, 1] = False
+    remote_forced: f[bool, 1] = False
+    comm_lost: f[bool, 1] = False
+    restart: f[bool, 1] = False
+    online: f[bool, 1] = False
 
 __groups__[4][1] = DNP3ObjectVariation(4, 1, DNP3ObjectG4V1, packed=False)
 
 @bitfield(order=LittleEndian)
 class DNP3ObjectG4V2:
-    state: 2 = 0
-    chatter_filter: 1 = False
-    local_forced: 1 = False
-    remote_forced: 1 = False
-    comm_lost: 1 = False
-    restart: 1 = False
-    online: 1 = False
-    timestamp: DNP3TIME
+    state: f[int, 2] = 0
+    chatter_filter: f[bool, 1] = False
+    local_forced: f[bool, 1] = False
+    remote_forced: f[bool, 1] = False
+    comm_lost: f[bool, 1] = False
+    restart: f[bool, 1] = False
+    online: f[bool, 1] = False
+    timestamp: f[datetime.datetime | int, DNP3TIME]
 
 __groups__[4][2] = DNP3ObjectVariation(4, 2, DNP3ObjectG4V2, packed=False)
 
 @bitfield(order=LittleEndian)
 class DNP3ObjectG4V3:
-    state: 2 = 0
-    chatter_filter: 1 = False
-    local_forced: 1 = False
-    remote_forced: 1 = False
-    comm_lost: 1 = False
-    restart: 1 = False
-    online: 1 = False
-    relative_time_ms: UINT16
+    state: f[int, 2] = 0
+    chatter_filter: f[bool, 1] = False
+    local_forced: f[bool, 1] = False
+    remote_forced: f[bool, 1] = False
+    comm_lost: f[bool, 1] = False
+    restart: f[bool, 1] = False
+    online: f[bool, 1] = False
+    relative_time_ms: uint16_t
 
 __groups__[4][3] = DNP3ObjectVariation(4, 3, DNP3ObjectG4V3, packed=False)
 
@@ -274,69 +279,69 @@ __groups__[10][1] = DNP3ObjectVariation(10, 1, DNP3ObjectG10V1, packed=True)
 
 @bitfield(order=LittleEndian)
 class DNP3ObjectG10V2:
-    state: 1 = False
-    reserved1: 1 = False
-    reserved0: 1 = False
-    local_forced: 1 = False
-    remote_forced: 1 = False
-    comm_lost: 1 = False
-    restart: 1 = False
-    online: 1 = False
+    state: f[bool, 1] = False
+    reserved1: f[bool, 1] = False
+    reserved0: f[bool, 1] = False
+    local_forced: f[bool, 1] = False
+    remote_forced: f[bool, 1] = False
+    comm_lost: f[bool, 1] = False
+    restart: f[bool, 1] = False
+    online: f[bool, 1] = False
 
 __groups__[10][2] = DNP3ObjectVariation(10, 2, DNP3ObjectG10V2, packed=False)
 
 @bitfield(order=LittleEndian)
 class DNP3ObjectG11V1:
-    state: 1 = False
-    reserved1: 1 = False
-    reserved0: 1 = False
-    local_forced: 1 = False
-    remote_forced: 1 = False
-    comm_lost: 1 = False
-    restart: 1 = False
-    online: 1 = False
+    state: f[bool, 1] = False
+    reserved1: f[bool, 1] = False
+    reserved0: f[bool, 1] = False
+    local_forced: f[bool, 1] = False
+    remote_forced: f[bool, 1] = False
+    comm_lost: f[bool, 1] = False
+    restart: f[bool, 1] = False
+    online: f[bool, 1] = False
 
 __groups__[11][1] = DNP3ObjectVariation(11, 1, DNP3ObjectG11V1, packed=False)
 
 @bitfield(order=LittleEndian)
 class DNP3ObjectG11V2:
-    state: 1 = False
-    reserved1: 1 = False
-    reserved0: 1 = False
-    local_forced: 1 = False
-    remote_forced: 1 = False
-    comm_lost: 1 = False
-    restart: 1 = False
-    online: 1 = False
-    timestamp: DNP3TIME
+    state: f[bool, 1] = False
+    reserved1: f[bool, 1] = False
+    reserved0: f[bool, 1] = False
+    local_forced: f[bool, 1] = False
+    remote_forced: f[bool, 1] = False
+    comm_lost: f[bool, 1] = False
+    restart: f[bool, 1] = False
+    online: f[bool, 1] = False
+    timestamp: f[datetime.datetime | int, DNP3TIME]
 
 __groups__[11][2] = DNP3ObjectVariation(11, 2, DNP3ObjectG11V2, packed=False)
 
 @bitfield(order=LittleEndian)
 class DNP3ObjectG12V1:
-    tcc: 2 = 0
-    cr: 1 = False
-    qu: 1 = False
-    op_type: 4 = 0
-    count: UINT8
-    ontime: UINT32
-    offtime: UINT32
-    reserved: 1 = False
-    status_code: 7 = 0
+    tcc: f[int, 2] = 0
+    cr: f[bool, 1] = False
+    qu: f[bool, 1] = False
+    op_type: f[int, 4] = 0
+    count: uint8_t
+    ontime: uint32_t
+    offtime: uint32_t
+    reserved: f[bool, 1] = False
+    status_code: f[int, 7] = 0
 
 __groups__[12][1] = DNP3ObjectVariation(12, 1, DNP3ObjectG12V1, packed=False)
 
 @bitfield(order=LittleEndian)
 class DNP3ObjectG12V2:
-    tcc: 2 = 0
-    cr: 1 = False
-    qu: 1 = False
-    op_type: 4 = 0
-    count: UINT8
-    ontime: UINT32
-    offtime: UINT32
-    reserved: 1 = False
-    status_code: 7 = 0
+    tcc: f[int, 2] = 0
+    cr: f[bool, 1] = False
+    qu: f[bool, 1] = False
+    op_type: f[int, 4] = 0
+    count: uint8_t
+    ontime: uint32_t
+    offtime: uint32_t
+    reserved: f[bool, 1] = False
+    status_code: f[int, 7] = 0
 
 __groups__[12][2] = DNP3ObjectVariation(12, 2, DNP3ObjectG12V2, packed=False)
 
@@ -345,1203 +350,1203 @@ __groups__[12][3] = DNP3ObjectVariation(12, 3, DNP3ObjectG12V3, packed=True)
 
 @bitfield(order=LittleEndian)
 class DNP3ObjectG13V1:
-    commanded_state: 1 = False
-    status_code: 7 = 0
+    commanded_state: f[bool, 1] = False
+    status_code: f[int, 7] = 0
 
 __groups__[13][1] = DNP3ObjectVariation(13, 1, DNP3ObjectG13V1, packed=False)
 
 @bitfield(order=LittleEndian)
 class DNP3ObjectG13V2:
-    commanded_state: 1 = False
-    status_code: 7 = 0
-    timestamp: DNP3TIME
+    commanded_state: f[bool, 1] = False
+    status_code: f[int, 7] = 0
+    timestamp: f[datetime.datetime | int, DNP3TIME]
 
 __groups__[13][2] = DNP3ObjectVariation(13, 2, DNP3ObjectG13V2, packed=False)
 
 @bitfield(order=LittleEndian)
 class DNP3ObjectG20V1:
-    reserved0: 1 = False
-    discontinuity: 1 = False
-    rollover: 1 = False
-    local_forced: 1 = False
-    remote_forced: 1 = False
-    comm_lost: 1 = False
-    restart: 1 = False
-    online: 1 = False
-    count: UINT32
+    reserved0: f[bool, 1] = False
+    discontinuity: f[bool, 1] = False
+    rollover: f[bool, 1] = False
+    local_forced: f[bool, 1] = False
+    remote_forced: f[bool, 1] = False
+    comm_lost: f[bool, 1] = False
+    restart: f[bool, 1] = False
+    online: f[bool, 1] = False
+    count: uint32_t
 
 __groups__[20][1] = DNP3ObjectVariation(20, 1, DNP3ObjectG20V1, packed=False)
 
 @bitfield(order=LittleEndian)
 class DNP3ObjectG20V2:
-    reserved0: 1 = False
-    discontinuity: 1 = False
-    rollover: 1 = False
-    local_forced: 1 = False
-    remote_forced: 1 = False
-    comm_lost: 1 = False
-    restart: 1 = False
-    online: 1 = False
-    count: UINT16
+    reserved0: f[bool, 1] = False
+    discontinuity: f[bool, 1] = False
+    rollover: f[bool, 1] = False
+    local_forced: f[bool, 1] = False
+    remote_forced: f[bool, 1] = False
+    comm_lost: f[bool, 1] = False
+    restart: f[bool, 1] = False
+    online: f[bool, 1] = False
+    count: uint16_t
 
 __groups__[20][2] = DNP3ObjectVariation(20, 2, DNP3ObjectG20V2, packed=False)
 
 @bitfield(order=LittleEndian)
 class DNP3ObjectG20V3:
-    reserved1: 1 = False
-    reserved0: 1 = False
-    rollover: 1 = False
-    local_forced: 1 = False
-    remote_forced: 1 = False
-    comm_lost: 1 = False
-    restart: 1 = False
-    online: 1 = False
-    count: UINT32
+    reserved1: f[bool, 1] = False
+    reserved0: f[bool, 1] = False
+    rollover: f[bool, 1] = False
+    local_forced: f[bool, 1] = False
+    remote_forced: f[bool, 1] = False
+    comm_lost: f[bool, 1] = False
+    restart: f[bool, 1] = False
+    online: f[bool, 1] = False
+    count: uint32_t
 
 __groups__[20][3] = DNP3ObjectVariation(20, 3, DNP3ObjectG20V3, packed=False)
 
 @bitfield(order=LittleEndian)
 class DNP3ObjectG20V4:
-    reserved1: 1 = False
-    reserved0: 1 = False
-    rollover: 1 = False
-    local_forced: 1 = False
-    remote_forced: 1 = False
-    comm_lost: 1 = False
-    restart: 1 = False
-    online: 1 = False
-    count: UINT16
+    reserved1: f[bool, 1] = False
+    reserved0: f[bool, 1] = False
+    rollover: f[bool, 1] = False
+    local_forced: f[bool, 1] = False
+    remote_forced: f[bool, 1] = False
+    comm_lost: f[bool, 1] = False
+    restart: f[bool, 1] = False
+    online: f[bool, 1] = False
+    count: uint16_t
 
 __groups__[20][4] = DNP3ObjectVariation(20, 4, DNP3ObjectG20V4, packed=False)
 
 @struct(order=LittleEndian)
 class DNP3ObjectG20V5:
-    count: UINT32
+    count: uint32_t
 
 __groups__[20][5] = DNP3ObjectVariation(20, 5, DNP3ObjectG20V5, packed=False)
 
 @struct(order=LittleEndian)
 class DNP3ObjectG20V6:
-    count: UINT16
+    count: uint16_t
 
 __groups__[20][6] = DNP3ObjectVariation(20, 6, DNP3ObjectG20V6, packed=False)
 
 @struct(order=LittleEndian)
 class DNP3ObjectG20V7:
-    count: UINT32
+    count: uint32_t
 
 __groups__[20][7] = DNP3ObjectVariation(20, 7, DNP3ObjectG20V7, packed=False)
 
 @struct(order=LittleEndian)
 class DNP3ObjectG20V8:
-    count: UINT16
+    count: uint16_t
 
 __groups__[20][8] = DNP3ObjectVariation(20, 8, DNP3ObjectG20V8, packed=False)
 
 @bitfield(order=LittleEndian)
 class DNP3ObjectG21V1:
-    reserved0: 1 = False
-    discontinuity: 1 = False
-    rollover: 1 = False
-    local_forced: 1 = False
-    remote_forced: 1 = False
-    comm_lost: 1 = False
-    restart: 1 = False
-    online: 1 = False
-    count: UINT32
+    reserved0: f[bool, 1] = False
+    discontinuity: f[bool, 1] = False
+    rollover: f[bool, 1] = False
+    local_forced: f[bool, 1] = False
+    remote_forced: f[bool, 1] = False
+    comm_lost: f[bool, 1] = False
+    restart: f[bool, 1] = False
+    online: f[bool, 1] = False
+    count: uint32_t
 
 __groups__[21][1] = DNP3ObjectVariation(21, 1, DNP3ObjectG21V1, packed=False)
 
 @bitfield(order=LittleEndian)
 class DNP3ObjectG21V2:
-    reserved0: 1 = False
-    discontinuity: 1 = False
-    rollover: 1 = False
-    local_forced: 1 = False
-    remote_forced: 1 = False
-    comm_lost: 1 = False
-    restart: 1 = False
-    online: 1 = False
-    count: UINT16
+    reserved0: f[bool, 1] = False
+    discontinuity: f[bool, 1] = False
+    rollover: f[bool, 1] = False
+    local_forced: f[bool, 1] = False
+    remote_forced: f[bool, 1] = False
+    comm_lost: f[bool, 1] = False
+    restart: f[bool, 1] = False
+    online: f[bool, 1] = False
+    count: uint16_t
 
 __groups__[21][2] = DNP3ObjectVariation(21, 2, DNP3ObjectG21V2, packed=False)
 
 @bitfield(order=LittleEndian)
 class DNP3ObjectG21V3:
-    reserved1: 1 = False
-    reserved0: 1 = False
-    rollover: 1 = False
-    local_forced: 1 = False
-    remote_forced: 1 = False
-    comm_lost: 1 = False
-    restart: 1 = False
-    online: 1 = False
-    count: UINT32
+    reserved1: f[bool, 1] = False
+    reserved0: f[bool, 1] = False
+    rollover: f[bool, 1] = False
+    local_forced: f[bool, 1] = False
+    remote_forced: f[bool, 1] = False
+    comm_lost: f[bool, 1] = False
+    restart: f[bool, 1] = False
+    online: f[bool, 1] = False
+    count: uint32_t
 
 __groups__[21][3] = DNP3ObjectVariation(21, 3, DNP3ObjectG21V3, packed=False)
 
 @bitfield(order=LittleEndian)
 class DNP3ObjectG21V4:
-    reserved1: 1 = False
-    reserved0: 1 = False
-    rollover: 1 = False
-    local_forced: 1 = False
-    remote_forced: 1 = False
-    comm_lost: 1 = False
-    restart: 1 = False
-    online: 1 = False
-    count: UINT16
+    reserved1: f[bool, 1] = False
+    reserved0: f[bool, 1] = False
+    rollover: f[bool, 1] = False
+    local_forced: f[bool, 1] = False
+    remote_forced: f[bool, 1] = False
+    comm_lost: f[bool, 1] = False
+    restart: f[bool, 1] = False
+    online: f[bool, 1] = False
+    count: uint16_t
 
 __groups__[21][4] = DNP3ObjectVariation(21, 4, DNP3ObjectG21V4, packed=False)
 
 @bitfield(order=LittleEndian)
 class DNP3ObjectG21V5:
-    reserved1: 1 = False
-    discontinuity: 1 = False
-    rollover: 1 = False
-    local_forced: 1 = False
-    remote_forced: 1 = False
-    comm_lost: 1 = False
-    restart: 1 = False
-    online: 1 = False
-    count: UINT32
-    timestamp: DNP3TIME
+    reserved1: f[bool, 1] = False
+    discontinuity: f[bool, 1] = False
+    rollover: f[bool, 1] = False
+    local_forced: f[bool, 1] = False
+    remote_forced: f[bool, 1] = False
+    comm_lost: f[bool, 1] = False
+    restart: f[bool, 1] = False
+    online: f[bool, 1] = False
+    count: uint32_t
+    timestamp: f[datetime.datetime | int, DNP3TIME]
 
 __groups__[21][5] = DNP3ObjectVariation(21, 5, DNP3ObjectG21V5, packed=False)
 
 @bitfield(order=LittleEndian)
 class DNP3ObjectG21V6:
-    reserved1: 1 = False
-    discontinuity: 1 = False
-    rollover: 1 = False
-    local_forced: 1 = False
-    remote_forced: 1 = False
-    comm_lost: 1 = False
-    restart: 1 = False
-    online: 1 = False
-    count: UINT16
-    timestamp: DNP3TIME
+    reserved1: f[bool, 1] = False
+    discontinuity: f[bool, 1] = False
+    rollover: f[bool, 1] = False
+    local_forced: f[bool, 1] = False
+    remote_forced: f[bool, 1] = False
+    comm_lost: f[bool, 1] = False
+    restart: f[bool, 1] = False
+    online: f[bool, 1] = False
+    count: uint16_t
+    timestamp: f[datetime.datetime | int, DNP3TIME]
 
 __groups__[21][6] = DNP3ObjectVariation(21, 6, DNP3ObjectG21V6, packed=False)
 
 @bitfield(order=LittleEndian)
 class DNP3ObjectG21V7:
-    reserved1: 1 = False
-    reserved0: 1 = False
-    rollover: 1 = False
-    local_forced: 1 = False
-    remote_forced: 1 = False
-    comm_lost: 1 = False
-    restart: 1 = False
-    online: 1 = False
-    count: UINT32
-    timestamp: DNP3TIME
+    reserved1: f[bool, 1] = False
+    reserved0: f[bool, 1] = False
+    rollover: f[bool, 1] = False
+    local_forced: f[bool, 1] = False
+    remote_forced: f[bool, 1] = False
+    comm_lost: f[bool, 1] = False
+    restart: f[bool, 1] = False
+    online: f[bool, 1] = False
+    count: uint32_t
+    timestamp: f[datetime.datetime | int, DNP3TIME]
 
 __groups__[21][7] = DNP3ObjectVariation(21, 7, DNP3ObjectG21V7, packed=False)
 
 @bitfield(order=LittleEndian)
 class DNP3ObjectG21V8:
-    reserved1: 1 = False
-    reserved0: 1 = False
-    rollover: 1 = False
-    local_forced: 1 = False
-    remote_forced: 1 = False
-    comm_lost: 1 = False
-    restart: 1 = False
-    online: 1 = False
-    count: UINT16
-    timestamp: DNP3TIME
+    reserved1: f[bool, 1] = False
+    reserved0: f[bool, 1] = False
+    rollover: f[bool, 1] = False
+    local_forced: f[bool, 1] = False
+    remote_forced: f[bool, 1] = False
+    comm_lost: f[bool, 1] = False
+    restart: f[bool, 1] = False
+    online: f[bool, 1] = False
+    count: uint16_t
+    timestamp: f[datetime.datetime | int, DNP3TIME]
 
 __groups__[21][8] = DNP3ObjectVariation(21, 8, DNP3ObjectG21V8, packed=False)
 
 @struct(order=LittleEndian)
 class DNP3ObjectG21V9:
-    count: UINT32
+    count: uint32_t
 
 __groups__[21][9] = DNP3ObjectVariation(21, 9, DNP3ObjectG21V9, packed=False)
 
 @struct(order=LittleEndian)
 class DNP3ObjectG21V10:
-    count: UINT16
+    count: uint16_t
 
 __groups__[21][10] = DNP3ObjectVariation(21, 10, DNP3ObjectG21V10, packed=False)
 
 @struct(order=LittleEndian)
 class DNP3ObjectG21V11:
-    count: UINT32
+    count: uint32_t
 
 __groups__[21][11] = DNP3ObjectVariation(21, 11, DNP3ObjectG21V11, packed=False)
 
 @struct(order=LittleEndian)
 class DNP3ObjectG21V12:
-    count: UINT16
+    count: uint16_t
 
 __groups__[21][12] = DNP3ObjectVariation(21, 12, DNP3ObjectG21V12, packed=False)
 
 @bitfield(order=LittleEndian)
 class DNP3ObjectG22V1:
-    reserved0: 1 = False
-    discontinuity: 1 = False
-    rollover: 1 = False
-    local_forced: 1 = False
-    remote_forced: 1 = False
-    comm_lost: 1 = False
-    restart: 1 = False
-    online: 1 = False
-    count: UINT32
+    reserved0: f[bool, 1] = False
+    discontinuity: f[bool, 1] = False
+    rollover: f[bool, 1] = False
+    local_forced: f[bool, 1] = False
+    remote_forced: f[bool, 1] = False
+    comm_lost: f[bool, 1] = False
+    restart: f[bool, 1] = False
+    online: f[bool, 1] = False
+    count: uint32_t
 
 __groups__[22][1] = DNP3ObjectVariation(22, 1, DNP3ObjectG22V1, packed=False)
 
 @bitfield(order=LittleEndian)
 class DNP3ObjectG22V2:
-    reserved0: 1 = False
-    discontinuity: 1 = False
-    rollover: 1 = False
-    local_forced: 1 = False
-    remote_forced: 1 = False
-    comm_lost: 1 = False
-    restart: 1 = False
-    online: 1 = False
-    count: UINT16
+    reserved0: f[bool, 1] = False
+    discontinuity: f[bool, 1] = False
+    rollover: f[bool, 1] = False
+    local_forced: f[bool, 1] = False
+    remote_forced: f[bool, 1] = False
+    comm_lost: f[bool, 1] = False
+    restart: f[bool, 1] = False
+    online: f[bool, 1] = False
+    count: uint16_t
 
 __groups__[22][2] = DNP3ObjectVariation(22, 2, DNP3ObjectG22V2, packed=False)
 
 @bitfield(order=LittleEndian)
 class DNP3ObjectG22V3:
-    reserved1: 1 = False
-    reserved0: 1 = False
-    rollover: 1 = False
-    local_forced: 1 = False
-    remote_forced: 1 = False
-    comm_lost: 1 = False
-    restart: 1 = False
-    online: 1 = False
-    count: UINT32
+    reserved1: f[bool, 1] = False
+    reserved0: f[bool, 1] = False
+    rollover: f[bool, 1] = False
+    local_forced: f[bool, 1] = False
+    remote_forced: f[bool, 1] = False
+    comm_lost: f[bool, 1] = False
+    restart: f[bool, 1] = False
+    online: f[bool, 1] = False
+    count: uint32_t
 
 __groups__[22][3] = DNP3ObjectVariation(22, 3, DNP3ObjectG22V3, packed=False)
 
 @bitfield(order=LittleEndian)
 class DNP3ObjectG22V4:
-    reserved1: 1 = False
-    reserved0: 1 = False
-    rollover: 1 = False
-    local_forced: 1 = False
-    remote_forced: 1 = False
-    comm_lost: 1 = False
-    restart: 1 = False
-    online: 1 = False
-    count: UINT16
+    reserved1: f[bool, 1] = False
+    reserved0: f[bool, 1] = False
+    rollover: f[bool, 1] = False
+    local_forced: f[bool, 1] = False
+    remote_forced: f[bool, 1] = False
+    comm_lost: f[bool, 1] = False
+    restart: f[bool, 1] = False
+    online: f[bool, 1] = False
+    count: uint16_t
 
 __groups__[22][4] = DNP3ObjectVariation(22, 4, DNP3ObjectG22V4, packed=False)
 
 @bitfield(order=LittleEndian)
 class DNP3ObjectG22V5:
-    reserved1: 1 = False
-    reserved0: 1 = False
-    rollover: 1 = False
-    local_forced: 1 = False
-    remote_forced: 1 = False
-    comm_lost: 1 = False
-    restart: 1 = False
-    online: 1 = False
-    count: UINT32
-    timestamp: DNP3TIME
+    reserved1: f[bool, 1] = False
+    reserved0: f[bool, 1] = False
+    rollover: f[bool, 1] = False
+    local_forced: f[bool, 1] = False
+    remote_forced: f[bool, 1] = False
+    comm_lost: f[bool, 1] = False
+    restart: f[bool, 1] = False
+    online: f[bool, 1] = False
+    count: uint32_t
+    timestamp: f[datetime.datetime | int, DNP3TIME]
 
 __groups__[22][5] = DNP3ObjectVariation(22, 5, DNP3ObjectG22V5, packed=False)
 
 @bitfield(order=LittleEndian)
 class DNP3ObjectG22V6:
-    reserved0: 1 = False
-    discontinuity: 1 = False
-    rollover: 1 = False
-    local_forced: 1 = False
-    remote_forced: 1 = False
-    comm_lost: 1 = False
-    restart: 1 = False
-    online: 1 = False
-    count: UINT16
-    timestamp: DNP3TIME
+    reserved0: f[bool, 1] = False
+    discontinuity: f[bool, 1] = False
+    rollover: f[bool, 1] = False
+    local_forced: f[bool, 1] = False
+    remote_forced: f[bool, 1] = False
+    comm_lost: f[bool, 1] = False
+    restart: f[bool, 1] = False
+    online: f[bool, 1] = False
+    count: uint16_t
+    timestamp: f[datetime.datetime | int, DNP3TIME]
 
 __groups__[22][6] = DNP3ObjectVariation(22, 6, DNP3ObjectG22V6, packed=False)
 
 @bitfield(order=LittleEndian)
 class DNP3ObjectG22V7:
-    reserved1: 1 = False
-    reserved0: 1 = False
-    rollover: 1 = False
-    local_forced: 1 = False
-    remote_forced: 1 = False
-    comm_lost: 1 = False
-    restart: 1 = False
-    online: 1 = False
-    count: UINT32
-    timestamp: DNP3TIME
+    reserved1: f[bool, 1] = False
+    reserved0: f[bool, 1] = False
+    rollover: f[bool, 1] = False
+    local_forced: f[bool, 1] = False
+    remote_forced: f[bool, 1] = False
+    comm_lost: f[bool, 1] = False
+    restart: f[bool, 1] = False
+    online: f[bool, 1] = False
+    count: uint32_t
+    timestamp: f[datetime.datetime | int, DNP3TIME]
 
 __groups__[22][7] = DNP3ObjectVariation(22, 7, DNP3ObjectG22V7, packed=False)
 
 @bitfield(order=LittleEndian)
 class DNP3ObjectG22V8:
-    reserved1: 1 = False
-    reserved0: 1 = False
-    rollover: 1 = False
-    local_forced: 1 = False
-    remote_forced: 1 = False
-    comm_lost: 1 = False
-    restart: 1 = False
-    online: 1 = False
-    count: UINT16
-    timestamp: DNP3TIME
+    reserved1: f[bool, 1] = False
+    reserved0: f[bool, 1] = False
+    rollover: f[bool, 1] = False
+    local_forced: f[bool, 1] = False
+    remote_forced: f[bool, 1] = False
+    comm_lost: f[bool, 1] = False
+    restart: f[bool, 1] = False
+    online: f[bool, 1] = False
+    count: uint16_t
+    timestamp: f[datetime.datetime | int, DNP3TIME]
 
 __groups__[22][8] = DNP3ObjectVariation(22, 8, DNP3ObjectG22V8, packed=False)
 
 @bitfield(order=LittleEndian)
 class DNP3ObjectG23V1:
-    reserved0: 1 = False
-    discontinuity: 1 = False
-    rollover: 1 = False
-    local_forced: 1 = False
-    remote_forced: 1 = False
-    comm_lost: 1 = False
-    restart: 1 = False
-    online: 1 = False
-    count: UINT32
+    reserved0: f[bool, 1] = False
+    discontinuity: f[bool, 1] = False
+    rollover: f[bool, 1] = False
+    local_forced: f[bool, 1] = False
+    remote_forced: f[bool, 1] = False
+    comm_lost: f[bool, 1] = False
+    restart: f[bool, 1] = False
+    online: f[bool, 1] = False
+    count: uint32_t
 
 __groups__[23][1] = DNP3ObjectVariation(23, 1, DNP3ObjectG23V1, packed=False)
 
 @bitfield(order=LittleEndian)
 class DNP3ObjectG23V2:
-    reserved1: 1 = False
-    reserved0: 1 = False
-    rollover: 1 = False
-    local_forced: 1 = False
-    remote_forced: 1 = False
-    comm_lost: 1 = False
-    restart: 1 = False
-    online: 1 = False
-    count: UINT16
+    reserved1: f[bool, 1] = False
+    reserved0: f[bool, 1] = False
+    rollover: f[bool, 1] = False
+    local_forced: f[bool, 1] = False
+    remote_forced: f[bool, 1] = False
+    comm_lost: f[bool, 1] = False
+    restart: f[bool, 1] = False
+    online: f[bool, 1] = False
+    count: uint16_t
 
 __groups__[23][2] = DNP3ObjectVariation(23, 2, DNP3ObjectG23V2, packed=False)
 
 @bitfield(order=LittleEndian)
 class DNP3ObjectG23V3:
-    reserved1: 1 = False
-    reserved0: 1 = False
-    rollover: 1 = False
-    local_forced: 1 = False
-    remote_forced: 1 = False
-    comm_lost: 1 = False
-    restart: 1 = False
-    online: 1 = False
-    count: UINT32
+    reserved1: f[bool, 1] = False
+    reserved0: f[bool, 1] = False
+    rollover: f[bool, 1] = False
+    local_forced: f[bool, 1] = False
+    remote_forced: f[bool, 1] = False
+    comm_lost: f[bool, 1] = False
+    restart: f[bool, 1] = False
+    online: f[bool, 1] = False
+    count: uint32_t
 
 __groups__[23][3] = DNP3ObjectVariation(23, 3, DNP3ObjectG23V3, packed=False)
 
 @bitfield(order=LittleEndian)
 class DNP3ObjectG23V4:
-    reserved1: 1 = False
-    reserved0: 1 = False
-    rollover: 1 = False
-    local_forced: 1 = False
-    remote_forced: 1 = False
-    comm_lost: 1 = False
-    restart: 1 = False
-    online: 1 = False
-    count: UINT16
+    reserved1: f[bool, 1] = False
+    reserved0: f[bool, 1] = False
+    rollover: f[bool, 1] = False
+    local_forced: f[bool, 1] = False
+    remote_forced: f[bool, 1] = False
+    comm_lost: f[bool, 1] = False
+    restart: f[bool, 1] = False
+    online: f[bool, 1] = False
+    count: uint16_t
 
 __groups__[23][4] = DNP3ObjectVariation(23, 4, DNP3ObjectG23V4, packed=False)
 
 @bitfield(order=LittleEndian)
 class DNP3ObjectG23V5:
-    reserved0: 1 = False
-    discontinuity: 1 = False
-    rollover: 1 = False
-    local_forced: 1 = False
-    remote_forced: 1 = False
-    comm_lost: 1 = False
-    restart: 1 = False
-    online: 1 = False
-    count: UINT32
-    timestamp: DNP3TIME
+    reserved0: f[bool, 1] = False
+    discontinuity: f[bool, 1] = False
+    rollover: f[bool, 1] = False
+    local_forced: f[bool, 1] = False
+    remote_forced: f[bool, 1] = False
+    comm_lost: f[bool, 1] = False
+    restart: f[bool, 1] = False
+    online: f[bool, 1] = False
+    count: uint32_t
+    timestamp: f[datetime.datetime | int, DNP3TIME]
 
 __groups__[23][5] = DNP3ObjectVariation(23, 5, DNP3ObjectG23V5, packed=False)
 
 @bitfield(order=LittleEndian)
 class DNP3ObjectG23V6:
-    reserved0: 1 = False
-    discontinuity: 1 = False
-    rollover: 1 = False
-    local_forced: 1 = False
-    remote_forced: 1 = False
-    comm_lost: 1 = False
-    restart: 1 = False
-    online: 1 = False
-    count: UINT16
-    timestamp: DNP3TIME
+    reserved0: f[bool, 1] = False
+    discontinuity: f[bool, 1] = False
+    rollover: f[bool, 1] = False
+    local_forced: f[bool, 1] = False
+    remote_forced: f[bool, 1] = False
+    comm_lost: f[bool, 1] = False
+    restart: f[bool, 1] = False
+    online: f[bool, 1] = False
+    count: uint16_t
+    timestamp: f[datetime.datetime | int, DNP3TIME]
 
 __groups__[23][6] = DNP3ObjectVariation(23, 6, DNP3ObjectG23V6, packed=False)
 
 @bitfield(order=LittleEndian)
 class DNP3ObjectG23V7:
-    reserved1: 1 = False
-    reserved0: 1 = False
-    rollover: 1 = False
-    local_forced: 1 = False
-    remote_forced: 1 = False
-    comm_lost: 1 = False
-    restart: 1 = False
-    online: 1 = False
-    count: UINT32
-    timestamp: DNP3TIME
+    reserved1: f[bool, 1] = False
+    reserved0: f[bool, 1] = False
+    rollover: f[bool, 1] = False
+    local_forced: f[bool, 1] = False
+    remote_forced: f[bool, 1] = False
+    comm_lost: f[bool, 1] = False
+    restart: f[bool, 1] = False
+    online: f[bool, 1] = False
+    count: uint32_t
+    timestamp: f[datetime.datetime | int, DNP3TIME]
 
 __groups__[23][7] = DNP3ObjectVariation(23, 7, DNP3ObjectG23V7, packed=False)
 
 @bitfield(order=LittleEndian)
 class DNP3ObjectG23V8:
-    reserved1: 1 = False
-    reserved0: 1 = False
-    rollover: 1 = False
-    local_forced: 1 = False
-    remote_forced: 1 = False
-    comm_lost: 1 = False
-    restart: 1 = False
-    online: 1 = False
-    count: UINT16
-    timestamp: DNP3TIME
+    reserved1: f[bool, 1] = False
+    reserved0: f[bool, 1] = False
+    rollover: f[bool, 1] = False
+    local_forced: f[bool, 1] = False
+    remote_forced: f[bool, 1] = False
+    comm_lost: f[bool, 1] = False
+    restart: f[bool, 1] = False
+    online: f[bool, 1] = False
+    count: uint16_t
+    timestamp: f[datetime.datetime | int, DNP3TIME]
 
 __groups__[23][8] = DNP3ObjectVariation(23, 8, DNP3ObjectG23V8, packed=False)
 
 @bitfield(order=LittleEndian)
 class DNP3ObjectG30V1:
-    reserved0: 1 = False
-    reference_err: 1 = False
-    over_range: 1 = False
-    local_forced: 1 = False
-    remote_forced: 1 = False
-    comm_lost: 1 = False
-    restart: 1 = False
-    online: 1 = False
-    value: INT32
+    reserved0: f[bool, 1] = False
+    reference_err: f[bool, 1] = False
+    over_range: f[bool, 1] = False
+    local_forced: f[bool, 1] = False
+    remote_forced: f[bool, 1] = False
+    comm_lost: f[bool, 1] = False
+    restart: f[bool, 1] = False
+    online: f[bool, 1] = False
+    value: int32_t
 
 __groups__[30][1] = DNP3ObjectVariation(30, 1, DNP3ObjectG30V1, packed=False)
 
 @bitfield(order=LittleEndian)
 class DNP3ObjectG30V2:
-    reserved0: 1 = False
-    reference_err: 1 = False
-    over_range: 1 = False
-    local_forced: 1 = False
-    remote_forced: 1 = False
-    comm_lost: 1 = False
-    restart: 1 = False
-    online: 1 = False
-    value: INT16
+    reserved0: f[bool, 1] = False
+    reference_err: f[bool, 1] = False
+    over_range: f[bool, 1] = False
+    local_forced: f[bool, 1] = False
+    remote_forced: f[bool, 1] = False
+    comm_lost: f[bool, 1] = False
+    restart: f[bool, 1] = False
+    online: f[bool, 1] = False
+    value: int16_t
 
 __groups__[30][2] = DNP3ObjectVariation(30, 2, DNP3ObjectG30V2, packed=False)
 
 @struct(order=LittleEndian)
 class DNP3ObjectG30V3:
-    value: INT32
+    value: int32_t
 
 __groups__[30][3] = DNP3ObjectVariation(30, 3, DNP3ObjectG30V3, packed=False)
 
 @struct(order=LittleEndian)
 class DNP3ObjectG30V4:
-    value: INT16
+    value: int16_t
 
 __groups__[30][4] = DNP3ObjectVariation(30, 4, DNP3ObjectG30V4, packed=False)
 
 @bitfield(order=LittleEndian)
 class DNP3ObjectG30V5:
-    reserved0: 1 = False
-    reference_err: 1 = False
-    over_range: 1 = False
-    local_forced: 1 = False
-    remote_forced: 1 = False
-    comm_lost: 1 = False
-    restart: 1 = False
-    online: 1 = False
-    value: FLT32
+    reserved0: f[bool, 1] = False
+    reference_err: f[bool, 1] = False
+    over_range: f[bool, 1] = False
+    local_forced: f[bool, 1] = False
+    remote_forced: f[bool, 1] = False
+    comm_lost: f[bool, 1] = False
+    restart: f[bool, 1] = False
+    online: f[bool, 1] = False
+    value: float32_t
 
 __groups__[30][5] = DNP3ObjectVariation(30, 5, DNP3ObjectG30V5, packed=False)
 
 @bitfield(order=LittleEndian)
 class DNP3ObjectG30V6:
-    reserved0: 1 = False
-    reference_err: 1 = False
-    over_range: 1 = False
-    local_forced: 1 = False
-    remote_forced: 1 = False
-    comm_lost: 1 = False
-    restart: 1 = False
-    online: 1 = False
-    value: FLT64
+    reserved0: f[bool, 1] = False
+    reference_err: f[bool, 1] = False
+    over_range: f[bool, 1] = False
+    local_forced: f[bool, 1] = False
+    remote_forced: f[bool, 1] = False
+    comm_lost: f[bool, 1] = False
+    restart: f[bool, 1] = False
+    online: f[bool, 1] = False
+    value: float64_t
 
 __groups__[30][6] = DNP3ObjectVariation(30, 6, DNP3ObjectG30V6, packed=False)
 
 @bitfield(order=LittleEndian)
 class DNP3ObjectG31V1:
-    reserved0: 1 = False
-    reference_err: 1 = False
-    over_range: 1 = False
-    local_forced: 1 = False
-    remote_forced: 1 = False
-    comm_lost: 1 = False
-    restart: 1 = False
-    online: 1 = False
-    value: INT32
+    reserved0: f[bool, 1] = False
+    reference_err: f[bool, 1] = False
+    over_range: f[bool, 1] = False
+    local_forced: f[bool, 1] = False
+    remote_forced: f[bool, 1] = False
+    comm_lost: f[bool, 1] = False
+    restart: f[bool, 1] = False
+    online: f[bool, 1] = False
+    value: int32_t
 
 __groups__[31][1] = DNP3ObjectVariation(31, 1, DNP3ObjectG31V1, packed=False)
 
 @bitfield(order=LittleEndian)
 class DNP3ObjectG31V2:
-    reserved0: 1 = False
-    reference_err: 1 = False
-    over_range: 1 = False
-    local_forced: 1 = False
-    remote_forced: 1 = False
-    comm_lost: 1 = False
-    restart: 1 = False
-    online: 1 = False
-    value: INT16
+    reserved0: f[bool, 1] = False
+    reference_err: f[bool, 1] = False
+    over_range: f[bool, 1] = False
+    local_forced: f[bool, 1] = False
+    remote_forced: f[bool, 1] = False
+    comm_lost: f[bool, 1] = False
+    restart: f[bool, 1] = False
+    online: f[bool, 1] = False
+    value: int16_t
 
 __groups__[31][2] = DNP3ObjectVariation(31, 2, DNP3ObjectG31V2, packed=False)
 
 @bitfield(order=LittleEndian)
 class DNP3ObjectG31V3:
-    reserved0: 1 = False
-    reference_err: 1 = False
-    over_range: 1 = False
-    local_forced: 1 = False
-    remote_forced: 1 = False
-    comm_lost: 1 = False
-    restart: 1 = False
-    online: 1 = False
-    value: INT32
-    timestamp: DNP3TIME
+    reserved0: f[bool, 1] = False
+    reference_err: f[bool, 1] = False
+    over_range: f[bool, 1] = False
+    local_forced: f[bool, 1] = False
+    remote_forced: f[bool, 1] = False
+    comm_lost: f[bool, 1] = False
+    restart: f[bool, 1] = False
+    online: f[bool, 1] = False
+    value: int32_t
+    timestamp: f[datetime.datetime | int, DNP3TIME]
 
 __groups__[31][3] = DNP3ObjectVariation(31, 3, DNP3ObjectG31V3, packed=False)
 
 @bitfield(order=LittleEndian)
 class DNP3ObjectG31V4:
-    reserved0: 1 = False
-    reference_err: 1 = False
-    over_range: 1 = False
-    local_forced: 1 = False
-    remote_forced: 1 = False
-    comm_lost: 1 = False
-    restart: 1 = False
-    online: 1 = False
-    value: INT16
-    timestamp: DNP3TIME
+    reserved0: f[bool, 1] = False
+    reference_err: f[bool, 1] = False
+    over_range: f[bool, 1] = False
+    local_forced: f[bool, 1] = False
+    remote_forced: f[bool, 1] = False
+    comm_lost: f[bool, 1] = False
+    restart: f[bool, 1] = False
+    online: f[bool, 1] = False
+    value: int16_t
+    timestamp: f[datetime.datetime | int, DNP3TIME]
 
 __groups__[31][4] = DNP3ObjectVariation(31, 4, DNP3ObjectG31V4, packed=False)
 
 @struct(order=LittleEndian)
 class DNP3ObjectG31V5:
-    value: INT32
+    value: int32_t
 
 __groups__[31][5] = DNP3ObjectVariation(31, 5, DNP3ObjectG31V5, packed=False)
 
 @struct(order=LittleEndian)
 class DNP3ObjectG31V6:
-    value: INT16
+    value: int16_t
 
 __groups__[31][6] = DNP3ObjectVariation(31, 6, DNP3ObjectG31V6, packed=False)
 
 @bitfield(order=LittleEndian)
 class DNP3ObjectG31V7:
-    reserved0: 1 = False
-    reference_err: 1 = False
-    over_range: 1 = False
-    local_forced: 1 = False
-    remote_forced: 1 = False
-    comm_lost: 1 = False
-    restart: 1 = False
-    online: 1 = False
-    value: FLT32
+    reserved0: f[bool, 1] = False
+    reference_err: f[bool, 1] = False
+    over_range: f[bool, 1] = False
+    local_forced: f[bool, 1] = False
+    remote_forced: f[bool, 1] = False
+    comm_lost: f[bool, 1] = False
+    restart: f[bool, 1] = False
+    online: f[bool, 1] = False
+    value: float32_t
 
 __groups__[31][7] = DNP3ObjectVariation(31, 7, DNP3ObjectG31V7, packed=False)
 
 @bitfield(order=LittleEndian)
 class DNP3ObjectG31V8:
-    reserved0: 1 = False
-    reference_err: 1 = False
-    over_range: 1 = False
-    local_forced: 1 = False
-    remote_forced: 1 = False
-    comm_lost: 1 = False
-    restart: 1 = False
-    online: 1 = False
-    value: FLT64
+    reserved0: f[bool, 1] = False
+    reference_err: f[bool, 1] = False
+    over_range: f[bool, 1] = False
+    local_forced: f[bool, 1] = False
+    remote_forced: f[bool, 1] = False
+    comm_lost: f[bool, 1] = False
+    restart: f[bool, 1] = False
+    online: f[bool, 1] = False
+    value: float64_t
 
 __groups__[31][8] = DNP3ObjectVariation(31, 8, DNP3ObjectG31V8, packed=False)
 
 @bitfield(order=LittleEndian)
 class DNP3ObjectG32V1:
-    reserved0: 1 = False
-    reference_err: 1 = False
-    over_range: 1 = False
-    local_forced: 1 = False
-    remote_forced: 1 = False
-    comm_lost: 1 = False
-    restart: 1 = False
-    online: 1 = False
-    value: INT32
+    reserved0: f[bool, 1] = False
+    reference_err: f[bool, 1] = False
+    over_range: f[bool, 1] = False
+    local_forced: f[bool, 1] = False
+    remote_forced: f[bool, 1] = False
+    comm_lost: f[bool, 1] = False
+    restart: f[bool, 1] = False
+    online: f[bool, 1] = False
+    value: int32_t
 
 __groups__[32][1] = DNP3ObjectVariation(32, 1, DNP3ObjectG32V1, packed=False)
 
 @bitfield(order=LittleEndian)
 class DNP3ObjectG32V2:
-    reserved0: 1 = False
-    reference_err: 1 = False
-    over_range: 1 = False
-    local_forced: 1 = False
-    remote_forced: 1 = False
-    comm_lost: 1 = False
-    restart: 1 = False
-    online: 1 = False
-    value: INT16
+    reserved0: f[bool, 1] = False
+    reference_err: f[bool, 1] = False
+    over_range: f[bool, 1] = False
+    local_forced: f[bool, 1] = False
+    remote_forced: f[bool, 1] = False
+    comm_lost: f[bool, 1] = False
+    restart: f[bool, 1] = False
+    online: f[bool, 1] = False
+    value: int16_t
 
 __groups__[32][2] = DNP3ObjectVariation(32, 2, DNP3ObjectG32V2, packed=False)
 
 @bitfield(order=LittleEndian)
 class DNP3ObjectG32V3:
-    reserved0: 1 = False
-    reference_err: 1 = False
-    over_range: 1 = False
-    local_forced: 1 = False
-    remote_forced: 1 = False
-    comm_lost: 1 = False
-    restart: 1 = False
-    online: 1 = False
-    value: INT32
-    timestamp: DNP3TIME
+    reserved0: f[bool, 1] = False
+    reference_err: f[bool, 1] = False
+    over_range: f[bool, 1] = False
+    local_forced: f[bool, 1] = False
+    remote_forced: f[bool, 1] = False
+    comm_lost: f[bool, 1] = False
+    restart: f[bool, 1] = False
+    online: f[bool, 1] = False
+    value: int32_t
+    timestamp: f[datetime.datetime | int, DNP3TIME]
 
 __groups__[32][3] = DNP3ObjectVariation(32, 3, DNP3ObjectG32V3, packed=False)
 
 @bitfield(order=LittleEndian)
 class DNP3ObjectG32V4:
-    reserved0: 1 = False
-    reference_err: 1 = False
-    over_range: 1 = False
-    local_forced: 1 = False
-    remote_forced: 1 = False
-    comm_lost: 1 = False
-    restart: 1 = False
-    online: 1 = False
-    value: INT16
-    timestamp: DNP3TIME
+    reserved0: f[bool, 1] = False
+    reference_err: f[bool, 1] = False
+    over_range: f[bool, 1] = False
+    local_forced: f[bool, 1] = False
+    remote_forced: f[bool, 1] = False
+    comm_lost: f[bool, 1] = False
+    restart: f[bool, 1] = False
+    online: f[bool, 1] = False
+    value: int16_t
+    timestamp: f[datetime.datetime | int, DNP3TIME]
 
 __groups__[32][4] = DNP3ObjectVariation(32, 4, DNP3ObjectG32V4, packed=False)
 
 @bitfield(order=LittleEndian)
 class DNP3ObjectG32V5:
-    reserved0: 1 = False
-    reference_err: 1 = False
-    over_range: 1 = False
-    local_forced: 1 = False
-    remote_forced: 1 = False
-    comm_lost: 1 = False
-    restart: 1 = False
-    online: 1 = False
-    value: FLT32
+    reserved0: f[bool, 1] = False
+    reference_err: f[bool, 1] = False
+    over_range: f[bool, 1] = False
+    local_forced: f[bool, 1] = False
+    remote_forced: f[bool, 1] = False
+    comm_lost: f[bool, 1] = False
+    restart: f[bool, 1] = False
+    online: f[bool, 1] = False
+    value: float32_t
 
 __groups__[32][5] = DNP3ObjectVariation(32, 5, DNP3ObjectG32V5, packed=False)
 
 @bitfield(order=LittleEndian)
 class DNP3ObjectG32V6:
-    reserved0: 1 = False
-    reference_err: 1 = False
-    over_range: 1 = False
-    local_forced: 1 = False
-    remote_forced: 1 = False
-    comm_lost: 1 = False
-    restart: 1 = False
-    online: 1 = False
-    value: FLT64
+    reserved0: f[bool, 1] = False
+    reference_err: f[bool, 1] = False
+    over_range: f[bool, 1] = False
+    local_forced: f[bool, 1] = False
+    remote_forced: f[bool, 1] = False
+    comm_lost: f[bool, 1] = False
+    restart: f[bool, 1] = False
+    online: f[bool, 1] = False
+    value: float64_t
 
 __groups__[32][6] = DNP3ObjectVariation(32, 6, DNP3ObjectG32V6, packed=False)
 
 @bitfield(order=LittleEndian)
 class DNP3ObjectG32V7:
-    reserved0: 1 = False
-    reference_err: 1 = False
-    over_range: 1 = False
-    local_forced: 1 = False
-    remote_forced: 1 = False
-    comm_lost: 1 = False
-    restart: 1 = False
-    online: 1 = False
-    value: FLT32
-    timestamp: DNP3TIME
+    reserved0: f[bool, 1] = False
+    reference_err: f[bool, 1] = False
+    over_range: f[bool, 1] = False
+    local_forced: f[bool, 1] = False
+    remote_forced: f[bool, 1] = False
+    comm_lost: f[bool, 1] = False
+    restart: f[bool, 1] = False
+    online: f[bool, 1] = False
+    value: float32_t
+    timestamp: f[datetime.datetime | int, DNP3TIME]
 
 __groups__[32][7] = DNP3ObjectVariation(32, 7, DNP3ObjectG32V7, packed=False)
 
 @bitfield(order=LittleEndian)
 class DNP3ObjectG32V8:
-    reserved0: 1 = False
-    reference_err: 1 = False
-    over_range: 1 = False
-    local_forced: 1 = False
-    remote_forced: 1 = False
-    comm_lost: 1 = False
-    restart: 1 = False
-    online: 1 = False
-    value: FLT64
-    timestamp: DNP3TIME
+    reserved0: f[bool, 1] = False
+    reference_err: f[bool, 1] = False
+    over_range: f[bool, 1] = False
+    local_forced: f[bool, 1] = False
+    remote_forced: f[bool, 1] = False
+    comm_lost: f[bool, 1] = False
+    restart: f[bool, 1] = False
+    online: f[bool, 1] = False
+    value: float64_t
+    timestamp: f[datetime.datetime | int, DNP3TIME]
 
 __groups__[32][8] = DNP3ObjectVariation(32, 8, DNP3ObjectG32V8, packed=False)
 
 @bitfield(order=LittleEndian)
 class DNP3ObjectG33V1:
-    reserved0: 1 = False
-    reference_err: 1 = False
-    over_range: 1 = False
-    local_forced: 1 = False
-    remote_forced: 1 = False
-    comm_lost: 1 = False
-    restart: 1 = False
-    online: 1 = False
-    value: INT32
+    reserved0: f[bool, 1] = False
+    reference_err: f[bool, 1] = False
+    over_range: f[bool, 1] = False
+    local_forced: f[bool, 1] = False
+    remote_forced: f[bool, 1] = False
+    comm_lost: f[bool, 1] = False
+    restart: f[bool, 1] = False
+    online: f[bool, 1] = False
+    value: int32_t
 
 __groups__[33][1] = DNP3ObjectVariation(33, 1, DNP3ObjectG33V1, packed=False)
 
 @bitfield(order=LittleEndian)
 class DNP3ObjectG33V2:
-    reserved0: 1 = False
-    reference_err: 1 = False
-    over_range: 1 = False
-    local_forced: 1 = False
-    remote_forced: 1 = False
-    comm_lost: 1 = False
-    restart: 1 = False
-    online: 1 = False
-    value: INT16
+    reserved0: f[bool, 1] = False
+    reference_err: f[bool, 1] = False
+    over_range: f[bool, 1] = False
+    local_forced: f[bool, 1] = False
+    remote_forced: f[bool, 1] = False
+    comm_lost: f[bool, 1] = False
+    restart: f[bool, 1] = False
+    online: f[bool, 1] = False
+    value: int16_t
 
 __groups__[33][2] = DNP3ObjectVariation(33, 2, DNP3ObjectG33V2, packed=False)
 
 @bitfield(order=LittleEndian)
 class DNP3ObjectG33V3:
-    reserved0: 1 = False
-    reference_err: 1 = False
-    over_range: 1 = False
-    local_forced: 1 = False
-    remote_forced: 1 = False
-    comm_lost: 1 = False
-    restart: 1 = False
-    online: 1 = False
-    value: INT32
-    timestamp: DNP3TIME
+    reserved0: f[bool, 1] = False
+    reference_err: f[bool, 1] = False
+    over_range: f[bool, 1] = False
+    local_forced: f[bool, 1] = False
+    remote_forced: f[bool, 1] = False
+    comm_lost: f[bool, 1] = False
+    restart: f[bool, 1] = False
+    online: f[bool, 1] = False
+    value: int32_t
+    timestamp: f[datetime.datetime | int, DNP3TIME]
 
 __groups__[33][3] = DNP3ObjectVariation(33, 3, DNP3ObjectG33V3, packed=False)
 
 @bitfield(order=LittleEndian)
 class DNP3ObjectG33V4:
-    reserved0: 1 = False
-    reference_err: 1 = False
-    over_range: 1 = False
-    local_forced: 1 = False
-    remote_forced: 1 = False
-    comm_lost: 1 = False
-    restart: 1 = False
-    online: 1 = False
-    value: INT16
-    timestamp: DNP3TIME
+    reserved0: f[bool, 1] = False
+    reference_err: f[bool, 1] = False
+    over_range: f[bool, 1] = False
+    local_forced: f[bool, 1] = False
+    remote_forced: f[bool, 1] = False
+    comm_lost: f[bool, 1] = False
+    restart: f[bool, 1] = False
+    online: f[bool, 1] = False
+    value: int16_t
+    timestamp: f[datetime.datetime | int, DNP3TIME]
 
 __groups__[33][4] = DNP3ObjectVariation(33, 4, DNP3ObjectG33V4, packed=False)
 
 @bitfield(order=LittleEndian)
 class DNP3ObjectG33V5:
-    reserved0: 1 = False
-    reference_err: 1 = False
-    over_range: 1 = False
-    local_forced: 1 = False
-    remote_forced: 1 = False
-    comm_lost: 1 = False
-    restart: 1 = False
-    online: 1 = False
-    value: FLT32
+    reserved0: f[bool, 1] = False
+    reference_err: f[bool, 1] = False
+    over_range: f[bool, 1] = False
+    local_forced: f[bool, 1] = False
+    remote_forced: f[bool, 1] = False
+    comm_lost: f[bool, 1] = False
+    restart: f[bool, 1] = False
+    online: f[bool, 1] = False
+    value: float32_t
 
 __groups__[33][5] = DNP3ObjectVariation(33, 5, DNP3ObjectG33V5, packed=False)
 
 @bitfield(order=LittleEndian)
 class DNP3ObjectG33V6:
-    reserved0: 1 = False
-    reference_err: 1 = False
-    over_range: 1 = False
-    local_forced: 1 = False
-    remote_forced: 1 = False
-    comm_lost: 1 = False
-    restart: 1 = False
-    online: 1 = False
-    value: FLT64
+    reserved0: f[bool, 1] = False
+    reference_err: f[bool, 1] = False
+    over_range: f[bool, 1] = False
+    local_forced: f[bool, 1] = False
+    remote_forced: f[bool, 1] = False
+    comm_lost: f[bool, 1] = False
+    restart: f[bool, 1] = False
+    online: f[bool, 1] = False
+    value: float64_t
 
 __groups__[33][6] = DNP3ObjectVariation(33, 6, DNP3ObjectG33V6, packed=False)
 
 @bitfield(order=LittleEndian)
 class DNP3ObjectG33V7:
-    reserved0: 1 = False
-    reference_err: 1 = False
-    over_range: 1 = False
-    local_forced: 1 = False
-    remote_forced: 1 = False
-    comm_lost: 1 = False
-    restart: 1 = False
-    online: 1 = False
-    value: FLT32
-    timestamp: DNP3TIME
+    reserved0: f[bool, 1] = False
+    reference_err: f[bool, 1] = False
+    over_range: f[bool, 1] = False
+    local_forced: f[bool, 1] = False
+    remote_forced: f[bool, 1] = False
+    comm_lost: f[bool, 1] = False
+    restart: f[bool, 1] = False
+    online: f[bool, 1] = False
+    value: float32_t
+    timestamp: f[datetime.datetime | int, DNP3TIME]
 
 __groups__[33][7] = DNP3ObjectVariation(33, 7, DNP3ObjectG33V7, packed=False)
 
 @bitfield(order=LittleEndian)
 class DNP3ObjectG33V8:
-    reserved0: 1 = False
-    reference_err: 1 = False
-    over_range: 1 = False
-    local_forced: 1 = False
-    remote_forced: 1 = False
-    comm_lost: 1 = False
-    restart: 1 = False
-    online: 1 = False
-    value: FLT64
-    timestamp: DNP3TIME
+    reserved0: f[bool, 1] = False
+    reference_err: f[bool, 1] = False
+    over_range: f[bool, 1] = False
+    local_forced: f[bool, 1] = False
+    remote_forced: f[bool, 1] = False
+    comm_lost: f[bool, 1] = False
+    restart: f[bool, 1] = False
+    online: f[bool, 1] = False
+    value: float64_t
+    timestamp: f[datetime.datetime | int, DNP3TIME]
 
 __groups__[33][8] = DNP3ObjectVariation(33, 8, DNP3ObjectG33V8, packed=False)
 
 @struct(order=LittleEndian)
 class DNP3ObjectG34V1:
-    deadband_value: UINT16
+    deadband_value: uint16_t
 
 __groups__[34][1] = DNP3ObjectVariation(34, 1, DNP3ObjectG34V1, packed=False)
 
 @struct(order=LittleEndian)
 class DNP3ObjectG34V2:
-    deadband_value: UINT32
+    deadband_value: uint32_t
 
 __groups__[34][2] = DNP3ObjectVariation(34, 2, DNP3ObjectG34V2, packed=False)
 
 @struct(order=LittleEndian)
 class DNP3ObjectG34V3:
-    deadband_value: FLT32
+    deadband_value: float32_t
 
 __groups__[34][3] = DNP3ObjectVariation(34, 3, DNP3ObjectG34V3, packed=False)
 
 @bitfield(order=LittleEndian)
 class DNP3ObjectG40V1:
-    reserved0: 1 = False
-    reference_err: 1 = False
-    over_range: 1 = False
-    local_forced: 1 = False
-    remote_forced: 1 = False
-    comm_lost: 1 = False
-    restart: 1 = False
-    online: 1 = False
-    value: INT32
+    reserved0: f[bool, 1] = False
+    reference_err: f[bool, 1] = False
+    over_range: f[bool, 1] = False
+    local_forced: f[bool, 1] = False
+    remote_forced: f[bool, 1] = False
+    comm_lost: f[bool, 1] = False
+    restart: f[bool, 1] = False
+    online: f[bool, 1] = False
+    value: int32_t
 
 __groups__[40][1] = DNP3ObjectVariation(40, 1, DNP3ObjectG40V1, packed=False)
 
 @bitfield(order=LittleEndian)
 class DNP3ObjectG40V2:
-    reserved0: 1 = False
-    reference_err: 1 = False
-    over_range: 1 = False
-    local_forced: 1 = False
-    remote_forced: 1 = False
-    comm_lost: 1 = False
-    restart: 1 = False
-    online: 1 = False
-    value: INT16
+    reserved0: f[bool, 1] = False
+    reference_err: f[bool, 1] = False
+    over_range: f[bool, 1] = False
+    local_forced: f[bool, 1] = False
+    remote_forced: f[bool, 1] = False
+    comm_lost: f[bool, 1] = False
+    restart: f[bool, 1] = False
+    online: f[bool, 1] = False
+    value: int16_t
 
 __groups__[40][2] = DNP3ObjectVariation(40, 2, DNP3ObjectG40V2, packed=False)
 
 @bitfield(order=LittleEndian)
 class DNP3ObjectG40V3:
-    reserved0: 1 = False
-    reference_err: 1 = False
-    over_range: 1 = False
-    local_forced: 1 = False
-    remote_forced: 1 = False
-    comm_lost: 1 = False
-    restart: 1 = False
-    online: 1 = False
-    value: FLT32
+    reserved0: f[bool, 1] = False
+    reference_err: f[bool, 1] = False
+    over_range: f[bool, 1] = False
+    local_forced: f[bool, 1] = False
+    remote_forced: f[bool, 1] = False
+    comm_lost: f[bool, 1] = False
+    restart: f[bool, 1] = False
+    online: f[bool, 1] = False
+    value: float32_t
 
 __groups__[40][3] = DNP3ObjectVariation(40, 3, DNP3ObjectG40V3, packed=False)
 
 @bitfield(order=LittleEndian)
 class DNP3ObjectG40V4:
-    reserved0: 1 = False
-    reference_err: 1 = False
-    over_range: 1 = False
-    local_forced: 1 = False
-    remote_forced: 1 = False
-    comm_lost: 1 = False
-    restart: 1 = False
-    online: 1 = False
-    value: FLT64
+    reserved0: f[bool, 1] = False
+    reference_err: f[bool, 1] = False
+    over_range: f[bool, 1] = False
+    local_forced: f[bool, 1] = False
+    remote_forced: f[bool, 1] = False
+    comm_lost: f[bool, 1] = False
+    restart: f[bool, 1] = False
+    online: f[bool, 1] = False
+    value: float64_t
 
 __groups__[40][4] = DNP3ObjectVariation(40, 4, DNP3ObjectG40V4, packed=False)
 
 @struct(order=LittleEndian)
 class DNP3ObjectG41V1:
-    value: INT32
-    control_status: UINT8
+    value: int32_t
+    control_status: uint8_t
 
 __groups__[41][1] = DNP3ObjectVariation(41, 1, DNP3ObjectG41V1, packed=False)
 
 @struct(order=LittleEndian)
 class DNP3ObjectG41V2:
-    value: INT16
-    control_status: UINT8
+    value: int16_t
+    control_status: uint8_t
 
 __groups__[41][2] = DNP3ObjectVariation(41, 2, DNP3ObjectG41V2, packed=False)
 
 @struct(order=LittleEndian)
 class DNP3ObjectG41V3:
-    value: FLT32
-    control_status: UINT8
+    value: float32_t
+    control_status: uint8_t
 
 __groups__[41][3] = DNP3ObjectVariation(41, 3, DNP3ObjectG41V3, packed=False)
 
 @struct(order=LittleEndian)
 class DNP3ObjectG41V4:
-    value: FLT64
-    control_status: UINT8
+    value: float64_t
+    control_status: uint8_t
 
 __groups__[41][4] = DNP3ObjectVariation(41, 4, DNP3ObjectG41V4, packed=False)
 
 @bitfield(order=LittleEndian)
 class DNP3ObjectG42V1:
-    reserved0: 1 = False
-    reference_err: 1 = False
-    over_range: 1 = False
-    local_forced: 1 = False
-    remote_forced: 1 = False
-    comm_lost: 1 = False
-    restart: 1 = False
-    online: 1 = False
-    value: INT32
+    reserved0: f[bool, 1] = False
+    reference_err: f[bool, 1] = False
+    over_range: f[bool, 1] = False
+    local_forced: f[bool, 1] = False
+    remote_forced: f[bool, 1] = False
+    comm_lost: f[bool, 1] = False
+    restart: f[bool, 1] = False
+    online: f[bool, 1] = False
+    value: int32_t
 
 __groups__[42][1] = DNP3ObjectVariation(42, 1, DNP3ObjectG42V1, packed=False)
 
 @bitfield(order=LittleEndian)
 class DNP3ObjectG42V2:
-    reserved0: 1 = False
-    reference_err: 1 = False
-    over_range: 1 = False
-    local_forced: 1 = False
-    remote_forced: 1 = False
-    comm_lost: 1 = False
-    restart: 1 = False
-    online: 1 = False
-    value: INT16
+    reserved0: f[bool, 1] = False
+    reference_err: f[bool, 1] = False
+    over_range: f[bool, 1] = False
+    local_forced: f[bool, 1] = False
+    remote_forced: f[bool, 1] = False
+    comm_lost: f[bool, 1] = False
+    restart: f[bool, 1] = False
+    online: f[bool, 1] = False
+    value: int16_t
 
 __groups__[42][2] = DNP3ObjectVariation(42, 2, DNP3ObjectG42V2, packed=False)
 
 @bitfield(order=LittleEndian)
 class DNP3ObjectG42V3:
-    reserved0: 1 = False
-    reference_err: 1 = False
-    over_range: 1 = False
-    local_forced: 1 = False
-    remote_forced: 1 = False
-    comm_lost: 1 = False
-    restart: 1 = False
-    online: 1 = False
-    value: INT32
-    timestamp: DNP3TIME
+    reserved0: f[bool, 1] = False
+    reference_err: f[bool, 1] = False
+    over_range: f[bool, 1] = False
+    local_forced: f[bool, 1] = False
+    remote_forced: f[bool, 1] = False
+    comm_lost: f[bool, 1] = False
+    restart: f[bool, 1] = False
+    online: f[bool, 1] = False
+    value: int32_t
+    timestamp: f[datetime.datetime | int, DNP3TIME]
 
 __groups__[42][3] = DNP3ObjectVariation(42, 3, DNP3ObjectG42V3, packed=False)
 
 @bitfield(order=LittleEndian)
 class DNP3ObjectG42V4:
-    reserved0: 1 = False
-    reference_err: 1 = False
-    over_range: 1 = False
-    local_forced: 1 = False
-    remote_forced: 1 = False
-    comm_lost: 1 = False
-    restart: 1 = False
-    online: 1 = False
-    value: INT16
-    timestamp: DNP3TIME
+    reserved0: f[bool, 1] = False
+    reference_err: f[bool, 1] = False
+    over_range: f[bool, 1] = False
+    local_forced: f[bool, 1] = False
+    remote_forced: f[bool, 1] = False
+    comm_lost: f[bool, 1] = False
+    restart: f[bool, 1] = False
+    online: f[bool, 1] = False
+    value: int16_t
+    timestamp: f[datetime.datetime | int, DNP3TIME]
 
 __groups__[42][4] = DNP3ObjectVariation(42, 4, DNP3ObjectG42V4, packed=False)
 
 @bitfield(order=LittleEndian)
 class DNP3ObjectG42V5:
-    reserved0: 1 = False
-    reference_err: 1 = False
-    over_range: 1 = False
-    local_forced: 1 = False
-    remote_forced: 1 = False
-    comm_lost: 1 = False
-    restart: 1 = False
-    online: 1 = False
-    value: FLT32
+    reserved0: f[bool, 1] = False
+    reference_err: f[bool, 1] = False
+    over_range: f[bool, 1] = False
+    local_forced: f[bool, 1] = False
+    remote_forced: f[bool, 1] = False
+    comm_lost: f[bool, 1] = False
+    restart: f[bool, 1] = False
+    online: f[bool, 1] = False
+    value: float32_t
 
 __groups__[42][5] = DNP3ObjectVariation(42, 5, DNP3ObjectG42V5, packed=False)
 
 @bitfield(order=LittleEndian)
 class DNP3ObjectG42V6:
-    reserved0: 1 = False
-    reference_err: 1 = False
-    over_range: 1 = False
-    local_forced: 1 = False
-    remote_forced: 1 = False
-    comm_lost: 1 = False
-    restart: 1 = False
-    online: 1 = False
-    value: FLT64
+    reserved0: f[bool, 1] = False
+    reference_err: f[bool, 1] = False
+    over_range: f[bool, 1] = False
+    local_forced: f[bool, 1] = False
+    remote_forced: f[bool, 1] = False
+    comm_lost: f[bool, 1] = False
+    restart: f[bool, 1] = False
+    online: f[bool, 1] = False
+    value: float64_t
 
 __groups__[42][6] = DNP3ObjectVariation(42, 6, DNP3ObjectG42V6, packed=False)
 
 @bitfield(order=LittleEndian)
 class DNP3ObjectG42V7:
-    reserved0: 1 = False
-    reference_err: 1 = False
-    over_range: 1 = False
-    local_forced: 1 = False
-    remote_forced: 1 = False
-    comm_lost: 1 = False
-    restart: 1 = False
-    online: 1 = False
-    value: FLT32
-    timestamp: DNP3TIME
+    reserved0: f[bool, 1] = False
+    reference_err: f[bool, 1] = False
+    over_range: f[bool, 1] = False
+    local_forced: f[bool, 1] = False
+    remote_forced: f[bool, 1] = False
+    comm_lost: f[bool, 1] = False
+    restart: f[bool, 1] = False
+    online: f[bool, 1] = False
+    value: float32_t
+    timestamp: f[datetime.datetime | int, DNP3TIME]
 
 __groups__[42][7] = DNP3ObjectVariation(42, 7, DNP3ObjectG42V7, packed=False)
 
 @bitfield(order=LittleEndian)
 class DNP3ObjectG42V8:
-    reserved0: 1 = False
-    reference_err: 1 = False
-    over_range: 1 = False
-    local_forced: 1 = False
-    remote_forced: 1 = False
-    comm_lost: 1 = False
-    restart: 1 = False
-    online: 1 = False
-    value: FLT64
-    timestamp: DNP3TIME
+    reserved0: f[bool, 1] = False
+    reference_err: f[bool, 1] = False
+    over_range: f[bool, 1] = False
+    local_forced: f[bool, 1] = False
+    remote_forced: f[bool, 1] = False
+    comm_lost: f[bool, 1] = False
+    restart: f[bool, 1] = False
+    online: f[bool, 1] = False
+    value: float64_t
+    timestamp: f[datetime.datetime | int, DNP3TIME]
 
 __groups__[42][8] = DNP3ObjectVariation(42, 8, DNP3ObjectG42V8, packed=False)
 
 @bitfield(order=LittleEndian)
 class DNP3ObjectG43V1:
-    reserved0: 1 = False
-    status_code: 7 = 0
-    commanded_value: INT32
+    reserved0: f[bool, 1] = False
+    status_code: f[int, 7] = 0
+    commanded_value: int32_t
 
 __groups__[43][1] = DNP3ObjectVariation(43, 1, DNP3ObjectG43V1, packed=False)
 
 @bitfield(order=LittleEndian)
 class DNP3ObjectG43V2:
-    reserved0: 1 = False
-    status_code: 7 = 0
-    commanded_value: INT16
+    reserved0: f[bool, 1] = False
+    status_code: f[int, 7] = 0
+    commanded_value: int16_t
 
 __groups__[43][2] = DNP3ObjectVariation(43, 2, DNP3ObjectG43V2, packed=False)
 
 @bitfield(order=LittleEndian)
 class DNP3ObjectG43V3:
-    reserved0: 1 = False
-    status_code: 7 = 0
-    commanded_value: INT32
-    timestamp: DNP3TIME
+    reserved0: f[bool, 1] = False
+    status_code: f[int, 7] = 0
+    commanded_value: int32_t
+    timestamp: f[datetime.datetime | int, DNP3TIME]
 
 __groups__[43][3] = DNP3ObjectVariation(43, 3, DNP3ObjectG43V3, packed=False)
 
 @bitfield(order=LittleEndian)
 class DNP3ObjectG43V4:
-    reserved0: 1 = False
-    status_code: 7 = 0
-    commanded_value: INT16
-    timestamp: DNP3TIME
+    reserved0: f[bool, 1] = False
+    status_code: f[int, 7] = 0
+    commanded_value: int16_t
+    timestamp: f[datetime.datetime | int, DNP3TIME]
 
 __groups__[43][4] = DNP3ObjectVariation(43, 4, DNP3ObjectG43V4, packed=False)
 
 @bitfield(order=LittleEndian)
 class DNP3ObjectG43V5:
-    reserved0: 1 = False
-    status_code: 7 = 0
-    commanded_value: FLT32
+    reserved0: f[bool, 1] = False
+    status_code: f[int, 7] = 0
+    commanded_value: float32_t
 
 __groups__[43][5] = DNP3ObjectVariation(43, 5, DNP3ObjectG43V5, packed=False)
 
 @bitfield(order=LittleEndian)
 class DNP3ObjectG43V6:
-    reserved0: 1 = False
-    status_code: 7 = 0
-    commanded_value: FLT64
+    reserved0: f[bool, 1] = False
+    status_code: f[int, 7] = 0
+    commanded_value: float64_t
 
 __groups__[43][6] = DNP3ObjectVariation(43, 6, DNP3ObjectG43V6, packed=False)
 
 @bitfield(order=LittleEndian)
 class DNP3ObjectG43V7:
-    reserved0: 1 = False
-    status_code: 7 = 0
-    commanded_value: FLT32
-    timestamp: DNP3TIME
+    reserved0: f[bool, 1] = False
+    status_code: f[int, 7] = 0
+    commanded_value: float32_t
+    timestamp: f[datetime.datetime | int, DNP3TIME]
 
 __groups__[43][7] = DNP3ObjectVariation(43, 7, DNP3ObjectG43V7, packed=False)
 
 @bitfield(order=LittleEndian)
 class DNP3ObjectG43V8:
-    reserved0: 1 = False
-    status_code: 7 = 0
-    commanded_value: FLT64
-    timestamp: DNP3TIME
+    reserved0: f[bool, 1] = False
+    status_code: f[int, 7] = 0
+    commanded_value: float64_t
+    timestamp: f[datetime.datetime | int, DNP3TIME]
 
 __groups__[43][8] = DNP3ObjectVariation(43, 8, DNP3ObjectG43V8, packed=False)
 
 @struct(order=LittleEndian)
 class DNP3ObjectG50V1:
-    timestamp: DNP3TIME
+    timestamp: f[datetime.datetime | int, DNP3TIME]
 
 __groups__[50][1] = DNP3ObjectVariation(50, 1, DNP3ObjectG50V1, packed=False)
 
 @struct(order=LittleEndian)
 class DNP3ObjectG50V2:
-    timestamp: DNP3TIME
-    interval: UINT32
+    timestamp: f[datetime.datetime | int, DNP3TIME]
+    interval: uint32_t
 
 __groups__[50][2] = DNP3ObjectVariation(50, 2, DNP3ObjectG50V2, packed=False)
 
 @struct(order=LittleEndian)
 class DNP3ObjectG50V3:
-    timestamp: DNP3TIME
+    timestamp: f[datetime.datetime | int, DNP3TIME]
 
 __groups__[50][3] = DNP3ObjectVariation(50, 3, DNP3ObjectG50V3, packed=False)
 
 @struct(order=LittleEndian)
 class DNP3ObjectG50V4:
-    timestamp: DNP3TIME
-    interval_count: UINT32
-    interval_units: UINT8
+    timestamp: f[datetime.datetime | int, DNP3TIME]
+    interval_count: uint32_t
+    interval_units: uint8_t
 
 __groups__[50][4] = DNP3ObjectVariation(50, 4, DNP3ObjectG50V4, packed=False)
 
 @struct(order=LittleEndian)
 class DNP3ObjectG51V1:
-    timestamp: DNP3TIME
+    timestamp: f[datetime.datetime | int, DNP3TIME]
 
 __groups__[51][1] = DNP3ObjectVariation(51, 1, DNP3ObjectG51V1, packed=False)
 
 @struct(order=LittleEndian)
 class DNP3ObjectG51V2:
-    timestamp: DNP3TIME
+    timestamp: f[datetime.datetime | int, DNP3TIME]
 
 __groups__[51][2] = DNP3ObjectVariation(51, 2, DNP3ObjectG51V2, packed=False)
 
 @struct(order=LittleEndian)
 class DNP3ObjectG52V1:
-    delay_secs: UINT16
+    delay_secs: uint16_t
 
 __groups__[52][1] = DNP3ObjectVariation(52, 1, DNP3ObjectG52V1, packed=False)
 
 @struct(order=LittleEndian)
 class DNP3ObjectG52V2:
-    delay_ms: UINT16
+    delay_ms: uint16_t
 
 __groups__[52][2] = DNP3ObjectVariation(52, 2, DNP3ObjectG52V2, packed=False)
 
@@ -1551,96 +1556,96 @@ __groups__[60][3] = DNP3ObjectVariation(60, 3, Pass, packed=True)
 __groups__[60][4] = DNP3ObjectVariation(60, 4, Pass, packed=True)
 @struct(order=LittleEndian)
 class DNP3ObjectG70V1:
-    filename_size: UINT16
-    filetype_code: UINT8
-    attribute_code: UINT8
-    start_record: UINT16
-    end_record: UINT16
-    file_size: UINT32
-    created_timestamp: DNP3TIME
-    permission: UINT16
-    file_id: UINT32
-    owner_id: UINT32
-    group_id: UINT32
-    file_function_code: UINT8
-    status_code: UINT8
-    filename: VSTR(this.filename_size)
-    data_size: UINT16
-    data: VSTR(this.data_size)
+    filename_size: uint16_t
+    filetype_code: uint8_t
+    attribute_code: uint8_t
+    start_record: uint16_t
+    end_record: uint16_t
+    file_size: uint32_t
+    created_timestamp: f[datetime.datetime | int, DNP3TIME]
+    permission: uint16_t
+    file_id: uint32_t
+    owner_id: uint32_t
+    group_id: uint32_t
+    file_function_code: uint8_t
+    status_code: uint8_t
+    filename: f[str, VSTR(this.filename_size)]
+    data_size: uint16_t
+    data: f[str, VSTR(this.data_size)]
 
 __groups__[70][1] = DNP3ObjectVariation(70, 1, DNP3ObjectG70V1, packed=False)
 
 @struct(order=LittleEndian)
 class DNP3ObjectG70V2:
-    username_offset: UINT16
-    username_size: UINT16
-    password_offset: UINT16
-    password_size: UINT16
-    authentication_key: UINT32
-    username: VSTR(this.username_size)
-    password: VSTR(this.password_size)
+    username_offset: uint16_t
+    username_size: uint16_t
+    password_offset: uint16_t
+    password_size: uint16_t
+    authentication_key: uint32_t
+    username: f[str, VSTR(this.username_size)]
+    password: f[str, VSTR(this.password_size)]
 
 __groups__[70][2] = DNP3ObjectVariation(70, 2, DNP3ObjectG70V2, packed=False)
 
 @struct(order=LittleEndian)
 class DNP3ObjectG70V3:
-    filename_offset: UINT16
-    filename_size: UINT16
-    created: DNP3TIME
-    permissions: UINT16
-    authentication_key: UINT32
-    file_size: UINT32
-    operational_mode: UINT16
-    maximum_block_size: UINT16
-    request_id: UINT16
-    filename: VSTR(this.filename_size)
+    filename_offset: uint16_t
+    filename_size: uint16_t
+    created: f[datetime.datetime | int, DNP3TIME]
+    permissions: uint16_t
+    authentication_key: uint32_t
+    file_size: uint32_t
+    operational_mode: uint16_t
+    maximum_block_size: uint16_t
+    request_id: uint16_t
+    filename: f[str, VSTR(this.filename_size)]
 
 __groups__[70][3] = DNP3ObjectVariation(70, 3, DNP3ObjectG70V3, packed=False)
 
 @struct(order=LittleEndian)
 class DNP3ObjectG70V4:
-    file_handle: UINT32
-    file_size: UINT32
-    maximum_block_size: UINT16
-    request_id: UINT16
-    status_code: UINT8
-    optional_text: VSTR(G.prefix)
+    file_handle: uint32_t
+    file_size: uint32_t
+    maximum_block_size: uint16_t
+    request_id: uint16_t
+    status_code: uint8_t
+    optional_text: f[str, VSTR(G.prefix)]
 
 __groups__[70][4] = DNP3ObjectVariation(70, 4, DNP3ObjectG70V4, packed=False)
 
 @struct(order=LittleEndian)
 class DNP3ObjectG70V5:
-    file_handle: UINT32
-    block_number: UINT32
-    file_data: VSTR(G.prefix)
+    file_handle: uint32_t
+    block_number: uint32_t
+    file_data: f[str, VSTR(G.prefix)]
 
 __groups__[70][5] = DNP3ObjectVariation(70, 5, DNP3ObjectG70V5, packed=False)
 
 @struct(order=LittleEndian)
 class DNP3ObjectG70V6:
-    file_handle: UINT32
-    block_number: UINT32
-    status_code: UINT8
-    optional_text: VSTR(G.prefix)
+    file_handle: uint32_t
+    block_number: uint32_t
+    status_code: uint8_t
+    optional_text: f[str, VSTR(G.prefix)]
 
 __groups__[70][6] = DNP3ObjectVariation(70, 6, DNP3ObjectG70V6, packed=False)
 
 @struct(order=LittleEndian)
 class DNP3ObjectG70V7:
-    filename_offset: UINT16
-    filename_size: UINT16
-    file_type: UINT16
-    file_size: UINT32
-    created_timestamp: DNP3TIME
-    permissions: UINT16
-    request_id: UINT16
-    filename: VSTR(this.filename_size)
+    filename_offset: uint16_t
+    filename_size: uint16_t
+    file_type: uint16_t
+    file_size: uint32_t
+    created_timestamp: f[datetime.datetime | int, DNP3TIME]
+    permissions: uint16_t
+    request_id: uint16_t
+    filename: f[str, VSTR(this.filename_size)]
 
 __groups__[70][7] = DNP3ObjectVariation(70, 7, DNP3ObjectG70V7, packed=False)
 
 @struct(order=LittleEndian)
 class DNP3ObjectG70V8:
-    file_specification: VSTR(G.prefix)
+    file_specification: f[str, VSTR(G.prefix)]
 
 __groups__[70][8] = DNP3ObjectVariation(70, 8, DNP3ObjectG70V8, packed=False)
 
@@ -1649,20 +1654,20 @@ __groups__[80][1] = DNP3ObjectVariation(80, 1, DNP3ObjectG80V1, packed=True)
 
 @bitfield(order=LittleEndian)
 class DNP3ObjectG81V1:
-    overflow_state: 1 = False
-    fill_percentage: 7 = 0
-    group: UINT8
-    variation: UINT8
+    overflow_state: f[bool, 1] = False
+    fill_percentage: f[int, 7] = 0
+    group: uint8_t
+    variation: uint8_t
 
 __groups__[81][1] = DNP3ObjectVariation(81, 1, DNP3ObjectG81V1, packed=False)
 
 # DNP3ObjectG82V1 NOT IMPLEMENTED
 @struct(order=LittleEndian)
 class DNP3ObjectG83V1:
-    vendor_code: VSTR(4)
-    object_id: UINT16
-    length: UINT16
-    data_objects: OSTR(this.length)
+    vendor_code: f[str, VSTR(4)]
+    object_id: uint16_t
+    length: uint16_t
+    data_objects: f[bytes, OSTR(this.length)]
 
 __groups__[83][1] = DNP3ObjectVariation(83, 1, DNP3ObjectG83V1, packed=False)
 
@@ -1671,14 +1676,14 @@ __groups__[83][1] = DNP3ObjectVariation(83, 1, DNP3ObjectG83V1, packed=False)
 # DNP3ObjectG86V1 NOT IMPLEMENTED
 @bitfield(order=LittleEndian)
 class DNP3ObjectG86V2:
-    padding2: 1 = False
-    padding1: 1 = False
-    padding0: 1 = False
-    df: 1 = False
-    ev: 1 = False
-    st: 1 = False
-    wr: 1 = False
-    rd: 1 = False
+    padding2: f[bool, 1] = False
+    padding1: f[bool, 1] = False
+    padding0: f[bool, 1] = False
+    df: f[bool, 1] = False
+    ev: f[bool, 1] = False
+    st: f[bool, 1] = False
+    wr: f[bool, 1] = False
+    rd: f[bool, 1] = False
 
 __groups__[86][2] = DNP3ObjectVariation(86, 2, DNP3ObjectG86V2, packed=False)
 
@@ -1690,25 +1695,25 @@ __groups__[86][2] = DNP3ObjectVariation(86, 2, DNP3ObjectG86V2, packed=False)
 # DNP3ObjectG100V* NOT IMPLEMENTED
 @struct(order=LittleEndian)
 class DNP3ObjectG101V1:
-    value: BCD(4)
+    value: f[str, BCD(4)]
 
 __groups__[101][1] = DNP3ObjectVariation(101, 1, DNP3ObjectG101V1, packed=False)
 
 @struct(order=LittleEndian)
 class DNP3ObjectG101V2:
-    value: BCD(8)
+    value: f[str, BCD(8)]
 
 __groups__[101][2] = DNP3ObjectVariation(101, 2, DNP3ObjectG101V2, packed=False)
 
 @struct(order=LittleEndian)
 class DNP3ObjectG101V3:
-    value: BCD(16)
+    value: f[str, BCD(16)]
 
 __groups__[101][3] = DNP3ObjectVariation(101, 3, DNP3ObjectG101V3, packed=False)
 
 @struct(order=LittleEndian)
 class DNP3ObjectG102V1:
-    value: UINT8
+    value: uint8_t
 
 __groups__[102][1] = DNP3ObjectVariation(102, 1, DNP3ObjectG102V1, packed=False)
 
@@ -1726,180 +1731,180 @@ for i in range(1, 256):
 
 @struct(order=LittleEndian)
 class DNP3ObjectG120V1:
-    csq: UINT32
-    usr: UINT16
-    mal: UINT8
-    reason: UINT8
-    challenge_data: OSTR(G.prefix)
+    csq: uint32_t
+    usr: uint16_t
+    mal: uint8_t
+    reason: uint8_t
+    challenge_data: f[bytes, OSTR(G.prefix)]
 
 __groups__[120][1] = DNP3ObjectVariation(120, 1, DNP3ObjectG120V1, packed=False)
 
 @struct(order=LittleEndian)
 class DNP3ObjectG120V2:
-    csq: UINT32
-    usr: UINT16
-    mac_value: OSTR(G.prefix)
+    csq: uint32_t
+    usr: uint16_t
+    mac_value: f[bytes, OSTR(G.prefix)]
 
 __groups__[120][2] = DNP3ObjectVariation(120, 2, DNP3ObjectG120V2, packed=False)
 
 @struct(order=LittleEndian)
 class DNP3ObjectG120V3:
-    csq: UINT32
-    user_number: UINT16
+    csq: uint32_t
+    user_number: uint16_t
 
 __groups__[120][3] = DNP3ObjectVariation(120, 3, DNP3ObjectG120V3, packed=False)
 
 @struct(order=LittleEndian)
 class DNP3ObjectG120V4:
-    user_number: UINT16
+    user_number: uint16_t
 
 __groups__[120][4] = DNP3ObjectVariation(120, 4, DNP3ObjectG120V4, packed=False)
 
 @struct(order=LittleEndian)
 class DNP3ObjectG120V5:
-    ksq: UINT32
-    user_number: UINT16
-    key_wrap_alg: UINT8
-    key_status: UINT8
-    mal: UINT8
-    challenge_data_len: UINT16
-    challenge_data: OSTR(this.challenge_data_len)
-    mac_value: OSTR(G.prefix)
+    ksq: uint32_t
+    user_number: uint16_t
+    key_wrap_alg: uint8_t
+    key_status: uint8_t
+    mal: uint8_t
+    challenge_data_len: uint16_t
+    challenge_data: f[bytes, OSTR(this.challenge_data_len)]
+    mac_value: f[bytes, OSTR(G.prefix)]
 
 __groups__[120][5] = DNP3ObjectVariation(120, 5, DNP3ObjectG120V5, packed=False)
 
 @struct(order=LittleEndian)
 class DNP3ObjectG120V6:
-    ksq: UINT24
-    usr: UINT16
-    wrapped_key_data: OSTR(G.prefix)
+    ksq: uint24_t
+    usr: uint16_t
+    wrapped_key_data: f[bytes, OSTR(G.prefix)]
 
 __groups__[120][6] = DNP3ObjectVariation(120, 6, DNP3ObjectG120V6, packed=False)
 
 @struct(order=LittleEndian)
 class DNP3ObjectG120V7:
-    sequence_number: UINT32
-    usr: UINT16
-    association_id: UINT16
-    error_code: UINT8
-    time_of_error: DNP3TIME
-    error_text: VSTR(G.prefix)
+    sequence_number: uint32_t
+    usr: uint16_t
+    association_id: uint16_t
+    error_code: uint8_t
+    time_of_error: f[datetime.datetime | int, DNP3TIME]
+    error_text: f[str, VSTR(G.prefix)]
 
 __groups__[120][7] = DNP3ObjectVariation(120, 7, DNP3ObjectG120V7, packed=False)
 
 @struct(order=LittleEndian)
 class DNP3ObjectG120V8:
-    key_change_method: UINT8
-    certificate_type: UINT8
-    certificate: OSTR(G.prefix - 1)
+    key_change_method: uint8_t
+    certificate_type: uint8_t
+    certificate: f[bytes, OSTR(G.prefix - 1)]
 
 __groups__[120][8] = DNP3ObjectVariation(120, 8, DNP3ObjectG120V8, packed=False)
 
 @struct(order=LittleEndian)
 class DNP3ObjectG120V9:
-    mac_value: OSTR(G.prefix)
+    mac_value: f[bytes, OSTR(G.prefix)]
 
 __groups__[120][9] = DNP3ObjectVariation(120, 9, DNP3ObjectG120V9, packed=False)
 
 @struct(order=LittleEndian)
 class DNP3ObjectG120V10:
-    key_change_method: UINT8
-    operation: UINT8
-    scs: UINT32
-    user_role: UINT16
-    user_role_expiry_interval: UINT16
-    username_len: UINT16
-    user_public_key_len: UINT16
-    certification_data_len: UINT16
-    username: VSTR(this.username_len)
-    user_public_key: OSTR(this.user_public_key_len)
-    certification_data: OSTR(this.certification_data_len)
+    key_change_method: uint8_t
+    operation: uint8_t
+    scs: uint32_t
+    user_role: uint16_t
+    user_role_expiry_interval: uint16_t
+    username_len: uint16_t
+    user_public_key_len: uint16_t
+    certification_data_len: uint16_t
+    username: f[str, VSTR(this.username_len)]
+    user_public_key: f[bytes, OSTR(this.user_public_key_len)]
+    certification_data: f[bytes, OSTR(this.certification_data_len)]
 
 __groups__[120][10] = DNP3ObjectVariation(120, 10, DNP3ObjectG120V10, packed=False)
 
 @struct(order=LittleEndian)
 class DNP3ObjectG120V11:
-    key_change_method: UINT8
-    username_len: UINT16
-    master_challenge_data_len: UINT16
-    username: VSTR(this.username_len)
-    master_challenge_data: OSTR(this.master_challenge_data_len)
+    key_change_method: uint8_t
+    username_len: uint16_t
+    master_challenge_data_len: uint16_t
+    username: f[str, VSTR(this.username_len)]
+    master_challenge_data: f[bytes, OSTR(this.master_challenge_data_len)]
 
 __groups__[120][11] = DNP3ObjectVariation(120, 11, DNP3ObjectG120V11, packed=False)
 
 @struct(order=LittleEndian)
 class DNP3ObjectG120V12:
-    ksq: UINT32
-    user_number: UINT16
-    challenge_data_len: UINT16
-    challenge_data: OSTR(this.challenge_data_len)
+    ksq: uint32_t
+    user_number: uint16_t
+    challenge_data_len: uint16_t
+    challenge_data: f[bytes, OSTR(this.challenge_data_len)]
 
 __groups__[120][12] = DNP3ObjectVariation(120, 12, DNP3ObjectG120V12, packed=False)
 
 @struct(order=LittleEndian)
 class DNP3ObjectG120V13:
-    ksq: UINT32
-    user_number: UINT16
-    encrypted_update_key_len: UINT16
-    encrypted_update_key_data: OSTR(this.encrypted_update_key_len)
+    ksq: uint32_t
+    user_number: uint16_t
+    encrypted_update_key_len: uint16_t
+    encrypted_update_key_data: f[bytes, OSTR(this.encrypted_update_key_len)]
 
 __groups__[120][13] = DNP3ObjectVariation(120, 13, DNP3ObjectG120V13, packed=False)
 
 @struct(order=LittleEndian)
 class DNP3ObjectG120V14:
-    digital_signature: OSTR(G.prefix)
+    digital_signature: f[bytes, OSTR(G.prefix)]
 
 __groups__[120][14] = DNP3ObjectVariation(120, 14, DNP3ObjectG120V14, packed=False)
 
 @struct(order=LittleEndian)
 class DNP3ObjectG120V15:
-    mac: OSTR(G.prefix)
+    mac: f[bytes, OSTR(G.prefix)]
 
 __groups__[120][15] = DNP3ObjectVariation(120, 15, DNP3ObjectG120V15, packed=False)
 
 @bitfield(order=LittleEndian)
 class DNP3ObjectG121V1:
-    reserved1: 1 = False
-    discontinuity: 1 = False
-    reserved0: 1 = False
-    local_forced: 1 = False
-    remote_forced: 1 = False
-    comm_lost: 1 = False
-    restart: 1 = False
-    online: 1 = False
-    association_id: UINT16
-    count_value: UINT32
+    reserved1: f[bool, 1] = False
+    discontinuity: f[bool, 1] = False
+    reserved0: f[bool, 1] = False
+    local_forced: f[bool, 1] = False
+    remote_forced: f[bool, 1] = False
+    comm_lost: f[bool, 1] = False
+    restart: f[bool, 1] = False
+    online: f[bool, 1] = False
+    association_id: uint16_t
+    count_value: uint32_t
 
 __groups__[121][1] = DNP3ObjectVariation(121, 1, DNP3ObjectG121V1, packed=False)
 
 @bitfield(order=LittleEndian)
 class DNP3ObjectG122V1:
-    reserved1: 1 = False
-    discontinuity: 1 = False
-    reserved0: 1 = False
-    local_forced: 1 = False
-    remote_forced: 1 = False
-    comm_lost: 1 = False
-    restart: 1 = False
-    online: 1 = False
-    association_id: UINT16
-    count_value: UINT32
+    reserved1: f[bool, 1] = False
+    discontinuity: f[bool, 1] = False
+    reserved0: f[bool, 1] = False
+    local_forced: f[bool, 1] = False
+    remote_forced: f[bool, 1] = False
+    comm_lost: f[bool, 1] = False
+    restart: f[bool, 1] = False
+    online: f[bool, 1] = False
+    association_id: uint16_t
+    count_value: uint32_t
 
 __groups__[122][1] = DNP3ObjectVariation(122, 1, DNP3ObjectG122V1, packed=False)
 
 @bitfield(order=LittleEndian)
 class DNP3ObjectG122V2:
-    reserved1: 1 = False
-    discontinuity: 1 = False
-    reserved0: 1 = False
-    local_forced: 1 = False
-    remote_forced: 1 = False
-    comm_lost: 1 = False
-    restart: 1 = False
-    online: 1 = False
-    association_id: UINT16
-    count_value: UINT32
-    timestamp: DNP3TIME
+    reserved1: f[bool, 1] = False
+    discontinuity: f[bool, 1] = False
+    reserved0: f[bool, 1] = False
+    local_forced: f[bool, 1] = False
+    remote_forced: f[bool, 1] = False
+    comm_lost: f[bool, 1] = False
+    restart: f[bool, 1] = False
+    online: f[bool, 1] = False
+    association_id: uint16_t
+    count_value: uint32_t
+    timestamp: f[datetime.datetime | int, DNP3TIME]
 
 __groups__[122][2] = DNP3ObjectVariation(122, 2, DNP3ObjectG122V2, packed=False)
 

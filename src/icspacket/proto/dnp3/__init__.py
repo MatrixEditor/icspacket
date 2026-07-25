@@ -16,12 +16,13 @@
 """\
 **IEEE 1815 - Distributed Network Protocol (DNP3)**
 
-    Abstract: The DNP3 protocol structure, functions, and interoperable application
-    options (subset levels) are specified. The simplest application level is
-    intended for low-cost distribution feeder devices, and the most complex for
-    full-featured systems.
-
-    -- IEEE 1815
+This package provides a pure-Python implementation of DNP3 as defined by
+IEEE 1815, covering the protocol's layered message structure together with
+the application-layer functions used to exchange data between masters and
+outstations. DNP3 defines a range of interoperable subset levels so that a
+device only needs to implement the functionality it requires: the smallest
+level targets inexpensive distribution feeder equipment, while the largest
+supports full-featured implementations.
 
 .. versionadded:: 0.2.0
 """

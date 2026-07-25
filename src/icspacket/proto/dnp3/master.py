@@ -13,19 +13,25 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
-from curses import noecho
-from queue import Queue
+import logging
 import socket
 import threading
-import logging
+from collections.abc import Callable, Collection
+from queue import Queue
+from typing import Generic, Literal
 
-from collections.abc import Collection
-from typing import Callable
-from typing_extensions import overload, override
+from typing_extensions import TypeVar, override, overload
 
-from icspacket.core.connection import ConnectionNotEstablished, connection
-from icspacket.core.logger import TRACE, TRACE_PACKETS
+from icspacket.core.connection import (
+    ConnectionClosedError,
+    ConnectionNotEstablished,
+    connection,
+)
+from icspacket.core.connection import (
+    ConnectionError as ICSConnectionError,
+)
 from icspacket.core.hexdump import hexdump
+from icspacket.core.logger import TRACE, TRACE_PACKETS
 from icspacket.proto.dnp3.application import APDU, APDU_SEQ_MAX
 from icspacket.proto.dnp3.const import FunctionCode
 from icspacket.proto.dnp3.link import (
@@ -34,19 +40,19 @@ from icspacket.proto.dnp3.link import (
     LinkPrimaryFunctionCode,
     LinkSecondaryFunctionCode,
 )
+from icspacket.proto.dnp3.objects.coding import (
+    DNP3Objects,
+    pack_objects,
+)
 from icspacket.proto.dnp3.transport import (
     TPDU,
     TPDU_APPLICATION_MAX_LENGTH,
     TPDU_SEQUENCE_MAX,
 )
-from icspacket.proto.dnp3.objects.coding import (
-    pack_objects,
-    unpack_objects,
-    DNP3Objects,
-)
-
 
 logger = logging.getLogger(__name__)
+
+DEFAULT_RESPONSE_TIMEOUT = 30.0
 
 
 _UnsolicitedResponseCallback = Callable[[APDU], None]
@@ -72,7 +78,7 @@ class DNP3_Task:
 
     def __init__(self) -> None:
         """Initialize a new DNP3 task with an unset sequence number."""
-        self.sequence = -1
+        self.sequence: int = -1
 
     def prepare_transmit(self, master: "DNP3_Master") -> APDU:
         """Prepare the APDU for transmission.
@@ -129,9 +135,9 @@ class BlockingTask(DNP3_Task):
         :type event: threading.Event
         """
         super().__init__()
-        self.event = event
-        self.request = request
-        self.message = None
+        self.event: threading.Event = event
+        self.request: APDU = request
+        self.message: APDU | None = None
 
     @override
     def on_message(self, master: "DNP3_Master", message: APDU) -> None:
@@ -156,12 +162,17 @@ class BlockingTask(DNP3_Task):
         """
         return self.request
 
-    def wait(self) -> None:
+    def wait(self, timeout: float | None = None) -> bool:
         """Block until the response event is set.
 
         This method waits for the outstation's response to arrive.
+
+        :param timeout: Optional timeout in seconds.
+        :type timeout: float | None
+        :return: ``True`` if a response arrived, otherwise ``False``.
+        :rtype: bool
         """
-        _ = self.event.wait()
+        return self.event.wait(timeout)
 
 
 class NonBlockingTask(DNP3_Task):
@@ -189,8 +200,8 @@ class NonBlockingTask(DNP3_Task):
         :type callback: _APDUCallback | None
         """
         super().__init__()
-        self.callback = callback
-        self.request = request
+        self.callback: _APDUCallback | None = callback
+        self.request: APDU = request
 
     @override
     def prepare_transmit(self, master: "DNP3_Master") -> APDU:
@@ -219,16 +230,16 @@ class NonBlockingTask(DNP3_Task):
         try:
             if self.callback:
                 self.callback(master, message)
-        except Exception as e:
-            logger.exception(e)
+        except Exception:
+            logger.exception("Uncaught callback exception")
 
 
 class DNP3_Link(connection):
     """Implements the DNP3 Link Layer.
 
-    The Link Layer provides reliable delivery of Link Protocol Data Units (LPDUs)
-    between a DNP3 master and outstation over a transport medium such as TCP.
-    This class is responsible for:
+    This class drives one endpoint of a DNP3 link connection, moving Link
+    Protocol Data Units (LPDUs) between a master and an outstation over a
+    transport medium such as TCP. It is responsible for:
 
     - Encapsulation of octet streams into LPDUs.
     - Validation of source/destination addresses.
@@ -258,14 +269,15 @@ class DNP3_Link(connection):
         mode: LinkDirection = LinkDirection.MASTER,
     ) -> None:
         super().__init__()
-        self.__src = src
-        self.__dst = dst
-        self.__dir = mode
-        self.__in_queue = Queue()
+        self.__src: int = src
+        self.__dst: int = dst
+        self.__dir: LinkDirection = mode
+        self.__in_queue: Queue[LPDU] = Queue()
+        self.__rx_buffer: bytearray = bytearray()
 
-        self.sock = sock
-        if not self.sock:
-            self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        if sock is None:
+            sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        self.sock: socket.socket = sock
 
     @property
     def in_queue(self) -> Queue[LPDU]:
@@ -306,6 +318,7 @@ class DNP3_Link(connection):
     def destination(self, dst: int) -> None:
         self.__dst = dst
 
+    @override
     def send_data(self, octets: bytes, /) -> None:
         """Send user data as an unconfirmed LPDU.
 
@@ -321,6 +334,7 @@ class DNP3_Link(connection):
         lpdu.control.function_code = LinkPrimaryFunctionCode.UNCONFIRMED_USER_DATA
         lpdu.control.direction = LinkDirection.MASTER
         lpdu.control.primary_message = True
+        # raw bytes assignment is possible too
         lpdu.user_data = octets
         self.send_lpdu(lpdu)
 
@@ -339,11 +353,12 @@ class DNP3_Link(connection):
         lpdu.destination = self.destination
         self.sock.sendall(lpdu.build())
 
+    @override
     def recv_data(self) -> bytes:
         """Receive raw LPDU octets from the socket.
 
         Reads up to 292 bytes, which is the maximum LPDU size
-        (per Link Layer specification, length field max 255
+        (according to the Link Layer specification, length field max 255
         plus headers).
 
         :return: Raw bytes read from the socket.
@@ -351,11 +366,25 @@ class DNP3_Link(connection):
         :raises ConnectionError: If the socket is not connected.
         """
         self._assert_connected()
-        # from Link Layer 9.2.4.1.2 LENGTH field
-        # The minimum value for this field is 5, indicating only the header is
-        # present, and the maximum value is 255. The maximum length however is
-        # always 292
-        return self.sock.recv(292)
+        # Link Layer LENGTH field (Section 9.2.4.1.2): its encoded range runs
+        # from 5 (header only, no user data) up to 255, which is why the
+        # largest complete LPDU - header plus CRCs - tops out at 292 bytes.
+        octets = self.sock.recv(292)
+        if octets == b"":
+            self._connected: bool = False
+            self._valid: bool = False
+            raise ConnectionClosedError("Socket closed while receiving DNP3 data")
+
+        return octets
+
+    def send_ack(self) -> None:
+        """Send a link-layer ACK response."""
+        self._assert_connected()
+        lpdu = LPDU()
+        lpdu.control.function_code = LinkSecondaryFunctionCode.ACK
+        lpdu.control.direction = LinkDirection.MASTER
+        lpdu.control.primary_message = False
+        self.send_lpdu(lpdu)
 
     def send_link_status(self, request: LPDU) -> None:
         """Send a link status response.
@@ -410,9 +439,11 @@ class DNP3_Link(connection):
         if lpdu.control.direction == self.mode:
             logger.log(
                 TRACE,
-                "[LINK] Received master-to-master LPDU"
-                if self.mode == LinkDirection.MASTER
-                else "Received secondary-to-secondary LPDU",
+                (
+                    "[LINK] Received master-to-master LPDU"
+                    if self.mode == LinkDirection.MASTER
+                    else "Received secondary-to-secondary LPDU"
+                ),
                 lpdu,
             )
             return False
@@ -435,27 +466,100 @@ class DNP3_Link(connection):
             )
             return False
 
-        code = lpdu.control.pri2sec_code
-        logger.log(
-            TRACE_PACKETS,
-            "[LINK] Received secondary-to-master LPDU with code %s\n%s",
-            code.name,
-            hexdump(raw_octets),
-        )
-        match code:
-            case LinkPrimaryFunctionCode.UNCONFIRMED_USER_DATA:
-                return True
-            case LinkPrimaryFunctionCode.REQUEST_LINK_STATUS:
-                logger.log(TRACE, "Peer requested link status")
-                self.send_link_status(lpdu)
-            case _:
+        if lpdu.control.primary_message:
+            try:
+                code = lpdu.control.pri2sec_code
+            except ValueError:
                 logger.log(
                     TRACE_PACKETS,
-                    "Function code <%s> not supported:\n%s",
+                    "[LINK] Primary function code not supported:\n%s",
                     hexdump(raw_octets),
                 )
                 self.send_not_supported()
+                return False
+
+            logger.log(
+                TRACE_PACKETS,
+                "[LINK] Received primary LPDU with code %s\n%s",
+                code.name,
+                hexdump(raw_octets),
+            )
+            match code:
+                case LinkPrimaryFunctionCode.UNCONFIRMED_USER_DATA:
+                    return True
+                case LinkPrimaryFunctionCode.CONFIRMED_USER_DATA:
+                    self.send_ack()
+                    return True
+                case (
+                    LinkPrimaryFunctionCode.RESET_LINK_STATES
+                    | LinkPrimaryFunctionCode.TEST_LINK_STATES
+                ):
+                    self.send_ack()
+                case LinkPrimaryFunctionCode.REQUEST_LINK_STATUS:
+                    logger.log(TRACE, "Peer requested link status")
+                    self.send_link_status(lpdu)
+                case _:  # pyright: ignore[reportUnnecessaryComparison]
+                    logger.log(
+                        TRACE_PACKETS,
+                        "Function code <%s> not supported:\n%s",
+                        code.name,
+                        hexdump(raw_octets),
+                    )
+                    self.send_not_supported()
+            return False
+
+        try:
+            code = lpdu.control.sec2pri_code
+        except ValueError:
+            logger.log(
+                TRACE_PACKETS,
+                "[LINK] Ignoring unknown secondary function code:\n%s",
+                hexdump(raw_octets),
+            )
+            return False
+
+        logger.log(
+            TRACE_PACKETS,
+            "[LINK] Received secondary LPDU with code %s\n%s",
+            code.name,
+            hexdump(raw_octets),
+        )
+        if code == LinkSecondaryFunctionCode.NACK:
+            logger.log(TRACE, "[LINK] Peer returned link-layer NACK")
+        elif code == LinkSecondaryFunctionCode.NOT_SUPPORTED:
+            logger.log(
+                TRACE, "[LINK] Peer does not support the requested link function"
+            )
         return False
+
+    def _read_until_buffered(self, min_size: int) -> None:
+        while len(self.__rx_buffer) < min_size:
+            self.__rx_buffer.extend(self.recv_data())
+
+    def _next_raw_lpdu(self) -> bytes:
+        sync = b"\x05\x64"
+        while True:
+            self._read_until_buffered(3)
+
+            sync_offset = self.__rx_buffer.find(sync)
+            if sync_offset < 0:
+                del self.__rx_buffer[:-1]
+                continue
+
+            if sync_offset > 0:
+                del self.__rx_buffer[:sync_offset]
+
+            self._read_until_buffered(3)
+            if self.__rx_buffer[2] < 5:
+                del self.__rx_buffer[:2]
+                continue
+
+            length = LPDU.full_length(self.__rx_buffer[2])
+            self._read_until_buffered(length)
+
+            raw_lpdu = bytes(self.__rx_buffer[:length])
+            del self.__rx_buffer[:length]
+            return raw_lpdu
 
     def recv_lpdu(self) -> LPDU:
         """Receive and parse the next valid LPDU.
@@ -469,37 +573,24 @@ class DNP3_Link(connection):
         :raises ConnectionError: If the socket is not connected.
         """
         while self.in_queue.empty():
-            octets = self.recv_data()
-            length = LPDU.full_length(octets[2])
-
-            raw_first_lpdu = octets[:length]
-            lpdu = LPDU.from_octets(raw_first_lpdu)
-            if self._process_lpdu(lpdu, raw_first_lpdu):
-                self.in_queue.put(lpdu)
-
-            if length == len(octets):
-                continue
-
-            remaining = octets[length:]
-            remaining_full_length = LPDU.full_length(remaining[2])
-            if len(remaining) < remaining_full_length:
+            raw_lpdu = self._next_raw_lpdu()
+            try:
+                lpdu = LPDU.from_octets(raw_lpdu)
+            except Exception as e:
                 logger.log(
                     TRACE,
-                    "[LINK] Received incomplete second LPDU with expected length %d, current length %d",
-                    remaining_full_length,
-                    len(remaining),
+                    "[LINK] Ignoring invalid LPDU: %s\n%s",
+                    e,
+                    hexdump(raw_lpdu),
                 )
-                raw_second_lpdu = self.sock.recv(remaining_full_length - len(remaining))
-                raw_second_lpdu = remaining + raw_second_lpdu
-            else:
-                raw_second_lpdu = remaining
+                continue
 
-            lpdu = LPDU.from_octets(raw_second_lpdu)
-            if self._process_lpdu(lpdu, raw_second_lpdu):
+            if self._process_lpdu(lpdu, raw_lpdu):
                 self.in_queue.put(lpdu)
 
         return self.in_queue.get()
 
+    @override
     def connect(self, address: tuple[str, int]) -> None:
         """Connect the socket to the specified peer address.
 
@@ -513,6 +604,7 @@ class DNP3_Link(connection):
         self._connected = True
         self._valid = True
 
+    @override
     def close(self) -> None:
         """Close the underlying socket connection."""
         if self.is_connected():
@@ -521,7 +613,10 @@ class DNP3_Link(connection):
             self._valid = False
 
 
-class DNP3_Transport(connection):
+_LinkT = TypeVar("_LinkT", bound=DNP3_Link, default=DNP3_Link)
+
+
+class DNP3_Transport(connection, Generic[_LinkT]):
     """DNP3 Transport Layer implementation.
 
     This class implements the transport layer of the DNP3 protocol, providing
@@ -547,18 +642,18 @@ class DNP3_Transport(connection):
 
     def __init__(
         self,
-        link: DNP3_Link,
+        link: _LinkT,
         unsolicited_callback: _UnsolicitedResponseCallback | None = None,
     ) -> None:
         super().__init__()
-        self.__link = link
-        self.callback = unsolicited_callback
-        self.sequence = 0
-        self._connected = self.link.is_connected()
-        self._valid = self.link.is_valid()
+        self.__link: _LinkT = link
+        self.callback: _UnsolicitedResponseCallback | None = unsolicited_callback
+        self.sequence: int = 0
+        self._connected: bool = self.link.is_connected()
+        self._valid: bool = self.link.is_valid()
 
     @property
-    def link(self) -> DNP3_Link:
+    def link(self) -> _LinkT:
         """Return the underlying link layer object.
 
         :return: The active :class:`DNP3_Link` instance.
@@ -566,6 +661,7 @@ class DNP3_Transport(connection):
         """
         return self.__link
 
+    @override
     def connect(self, address: tuple[str, int]) -> None:
         """Establish a connection through the link layer.
 
@@ -579,6 +675,7 @@ class DNP3_Transport(connection):
         self._connected = self.link.is_connected()
         self._valid = self.link.is_valid()
 
+    @override
     def close(self) -> None:
         """Close the transport connection.
 
@@ -603,6 +700,7 @@ class DNP3_Transport(connection):
         self.sequence = (self.sequence + 1) % TPDU_SEQUENCE_MAX
         return sequence
 
+    @override
     def send_data(self, octets: bytes, /) -> None:
         """Send application data through the transport layer.
 
@@ -616,7 +714,8 @@ class DNP3_Transport(connection):
         :raises ConnectionError: If the transport connection is not established.
         """
         self._assert_connected()
-        # Rule 1: Each transport segment may contain 1 to 249 Application Layer data octets.
+        # Cap each segment at TPDU_APPLICATION_MAX_LENGTH (249) octets of
+        # application data, splitting larger payloads across several segments.
         if len(octets) > TPDU_APPLICATION_MAX_LENGTH:
             fragments = [
                 octets[i : min(len(octets), i + TPDU_APPLICATION_MAX_LENGTH)]
@@ -633,6 +732,7 @@ class DNP3_Transport(connection):
             tpdu.app_fragment = fragment
             self.link.send_data(bytes(tpdu))
 
+    @override
     def recv_data(self) -> bytes:
         """Receive and reassemble application data from the transport layer.
 
@@ -645,65 +745,93 @@ class DNP3_Transport(connection):
         :rtype: bytes
         :raises ConnectionError: If the transport connection is not established.
         """
-        fragments = []
-        more_follows = True
-        sequence = None
-        while more_follows:
-            lpdu = self.link.recv_lpdu()
-            tpdu = lpdu.tpdu
-            if tpdu.first_segment and tpdu.final_segment:
-                if tpdu.apdu.control.unsolicited_response:
-                    logger.log(
-                        TRACE,
-                        "[TRANSPORT] Received unsolicited response with sequence "
-                        + "%d - ignoring...",
-                        tpdu.sequence,
-                    )
-                    if self.callback:
-                        try:
-                            self.callback(tpdu.apdu)
-                        except Exception as e:
-                            logger.warning(
-                                "[TRANSPORT] Error while processing unsolicited "
-                                + "response: %s",
-                                e,
-                            )
+        self._assert_connected()
+        while True:
+            fragments: list[bytes] = []
+            expected_sequence = None
+            while True:
+                lpdu = self.link.recv_lpdu()
+                tpdu = lpdu.user_data
+                if tpdu is None:
                     continue
 
-            logger.log(
-                TRACE,
-                "[TRANSPORT] Received TPDU with sequence %d, FIR: %s, FIN: %s, "
-                + "size: %d",
-                tpdu.sequence,
-                tpdu.first_segment,
-                tpdu.final_segment,
-                len(tpdu.app_fragment),
-            )
-            if sequence is None:
-                sequence = tpdu.sequence
-
-            if tpdu.sequence != sequence:
                 logger.log(
                     TRACE,
-                    "[TRANSPORT] Received unexpected TPDU with sequence %d, "
-                    + "expected %d",
+                    "[TRANSPORT] Received TPDU with sequence %d, FIR: %s, FIN: %s, "
+                    + "size: %d",
                     tpdu.sequence,
-                    sequence,
+                    tpdu.first_segment,
+                    tpdu.final_segment,
+                    len(tpdu.app_fragment),
                 )
-                continue
 
-            if tpdu.final_segment:
-                more_follows = False
+                if expected_sequence is None:
+                    if not tpdu.first_segment:
+                        logger.log(
+                            TRACE,
+                            "[TRANSPORT] Ignoring TPDU without first-segment flag",
+                        )
+                        continue
+                    expected_sequence = tpdu.sequence
+                elif tpdu.first_segment:
+                    logger.log(
+                        TRACE,
+                        "[TRANSPORT] Restarting reassembly on unexpected FIR segment",
+                    )
+                    fragments.clear()
+                    expected_sequence = tpdu.sequence
 
-            fragments.append(tpdu.app_fragment)
-            sequence += 1
+                if tpdu.sequence != expected_sequence:
+                    logger.log(
+                        TRACE,
+                        "[TRANSPORT] Received unexpected TPDU with sequence %d, "
+                        + "expected %d",
+                        tpdu.sequence,
+                        expected_sequence,
+                    )
+                    fragments.clear()
+                    expected_sequence = None
+                    continue
 
-        apdu_octets = b"".join(fragments)
-        logger.log(TRACE, "[TRANSPORT] Reassembled APDU in %d bytes", len(apdu_octets))
-        return apdu_octets
+                fragments.append(tpdu.app_fragment)
+                expected_sequence = (expected_sequence + 1) % TPDU_SEQUENCE_MAX
+                if tpdu.final_segment:
+                    break
+
+            apdu_octets = b"".join(fragments)
+            logger.log(
+                TRACE, "[TRANSPORT] Reassembled APDU in %d bytes", len(apdu_octets)
+            )
+
+            if self.callback:
+                try:
+                    apdu = APDU.from_octets(apdu_octets)
+                except Exception:
+                    return apdu_octets
+
+                if (
+                    apdu.control.unsolicited_response
+                    or apdu.function == FunctionCode.UNSOLICITED_RESPONSE
+                ):
+                    logger.log(
+                        TRACE,
+                        "[TRANSPORT] Received unsolicited response with sequence %d",
+                        apdu.control.sequence,
+                    )
+                    try:
+                        self.callback(apdu)
+                    except Exception as e:
+                        logger.warning(
+                            "[TRANSPORT] Error while processing unsolicited "
+                            + "response: %s",
+                            e,
+                        )
+                    continue
+
+            return apdu_octets
 
 
-class DNP3_Master:
+class DNP3_Master(Generic[_LinkT]):
     """DNP3 Master (Application Layer interface).
 
     This class provides the master-side interface of the DNP3 protocol stack,
@@ -742,16 +870,24 @@ class DNP3_Master:
     """
 
     def __init__(
-        self, link_addr: int, initial_seq: int | None = None, sock: socket.socket = None
+        self,
+        link_addr: int,
+        initial_seq: int | None = None,
+        sock: socket.socket | None = None,
+        link_cls: type[_LinkT] | None = None,
     ) -> None:
+        # fmt: off
         super().__init__()
-        self.__link_addr = link_addr
-        self.__transport = None
-        self.__tasks = {}
-        self.__sequence = initial_seq or 0
-        self.__background = DNP3_Background(self)
-        self.__socket = sock
-        self._valid = False
+        self.__link_addr: int = link_addr
+        self.__transport: DNP3_Transport[_LinkT] | None = None
+        self.__tasks: dict[int, DNP3_Task] = {}
+        self.__sequence: int = initial_seq or 0
+        self.__background: DNP3_Background = DNP3_Background(self)  # pyright: ignore[reportArgumentType]
+        self.__socket: socket.socket | None = sock
+        self._valid: bool = False
+        self.link_cls: type[_LinkT] = (
+            link_cls or DNP3_Link
+        )  # pyright: ignore[reportAttributeAccessIssue]
 
     @property
     def tasks(self) -> Collection[DNP3_Task]:
@@ -763,12 +899,15 @@ class DNP3_Master:
         return self.__tasks.values()
 
     @property
-    def transport(self) -> DNP3_Transport:
+    def transport(self) -> DNP3_Transport[_LinkT]:
         """Return the transport layer instance.
 
         :return: The active :class:`DNP3_Transport` object.
         :rtype: DNP3_Transport
         """
+        if self.__transport is None:
+            raise ValueError("No DNP3 Transport set!")
+
         return self.__transport
 
     @property
@@ -806,7 +945,7 @@ class DNP3_Master:
     def associate(
         self,
         address: tuple[int, str, int],
-        link_cls: type[DNP3_Link] | None = None,
+        link_cls: type[_LinkT] | None = None,
     ) -> None:
         """Establish an association with an outstation.
 
@@ -830,11 +969,12 @@ class DNP3_Master:
         if len(address) != 3:
             raise ValueError("Invalid address - expected (link_addr, host, port)")
 
+        if link_cls:
+            self.link_cls = link_cls
+
         link_dst, host, port = address
         self.__transport = DNP3_Transport(
-            (link_cls or DNP3_Link)(
-                sock=self.__socket, src=self.__link_addr, dst=link_dst
-            )
+            (self.link_cls)(sock=self.__socket, src=self.__link_addr, dst=link_dst)
         )
         self.__transport.connect((host, port))
         self._valid = True
@@ -851,10 +991,18 @@ class DNP3_Master:
         :type timeout: float | None
         """
         if not self._valid:
-            self.__background.stop.set()
-            self.__background.join(timeout)
+            return
+
+        self.__background.stop.set()
+        self.__background.join(timeout)
+        if self.__transport is not None:
             self.__transport.close()
-            self._valid = False
+        for task in self.__tasks.values():
+            if isinstance(task, BlockingTask):
+                task.event.set()
+        self.__tasks.clear()
+        self._valid = False
+        self.__background = DNP3_Background(self)
 
     def submit_task(self, task: DNP3_Task) -> None:
         """Submit a task and register it for response handling.
@@ -870,15 +1018,20 @@ class DNP3_Master:
         if not self._valid:
             raise ConnectionNotEstablished("Not associated with an outstation")
 
-        self.__tasks[self.sequence] = task
-        task.sequence = self.sequence
+        sequence = self.sequence
+        task.sequence = sequence
         apdu = task.prepare_transmit(self)
         if apdu is None:
             raise ConnectionError("Unable to build APDU for task")
 
-        apdu.control.sequence = self.sequence
-        self.__sequence = (self.sequence + 1) % APDU_SEQ_MAX
-        self.transport.send_data(bytes(apdu))
+        apdu.control.sequence = sequence
+        self.__tasks[sequence] = task
+        try:
+            self.transport.send_data(bytes(apdu))
+        except Exception:
+            _ = self.pop_task(sequence)
+            raise
+        self.__sequence = (sequence + 1) % APDU_SEQ_MAX
 
     def submit_noreturn(self, task: DNP3_Task) -> None:
         """Submit a task without expecting a response.
@@ -897,8 +1050,28 @@ class DNP3_Master:
         if apdu is None:
             raise ConnectionError("Unable to build APDU for task")
 
-        apdu.control.sequence = self.sequence
-        self.__sequence = (self.sequence + 1) % APDU_SEQ_MAX
+        sequence = self.sequence
+        apdu.control.sequence = sequence
+        self.__sequence = (sequence + 1) % APDU_SEQ_MAX
+        self.transport.send_data(bytes(apdu))
+
+    def send_confirm(self, sequence: int, unsolicited: bool = False) -> None:
+        """Send an application-layer confirmation APDU.
+
+        :param sequence: Application sequence number being confirmed.
+        :type sequence: int
+        :param unsolicited: Whether this confirms an unsolicited response.
+        :type unsolicited: bool
+        """
+        if not self._valid:
+            raise ConnectionNotEstablished("Not associated with an outstation")
+
+        apdu = APDU()
+        apdu.control.first_fragment = True
+        apdu.control.final_fragment = True
+        apdu.control.unsolicited_response = unsolicited
+        apdu.control.sequence = sequence % APDU_SEQ_MAX
+        apdu.function = FunctionCode.CONFIRM
         self.transport.send_data(bytes(apdu))
 
     def transmit(
@@ -907,6 +1080,7 @@ class DNP3_Master:
         block: bool = True,
         callback: _APDUCallback | None = None,
         noreturn: bool = False,
+        timeout: float | None = DEFAULT_RESPONSE_TIMEOUT,
     ) -> APDU | None:
         """Transmit a request APDU to the outstation.
 
@@ -925,14 +1099,19 @@ class DNP3_Master:
         :param noreturn: If ``True``, the request is sent without expecting
             a response.
         :type noreturn: bool
+        :param timeout: Optional blocking response timeout in seconds.
+        :type timeout: float | None
         :return: The received APDU if in blocking mode, otherwise ``None``.
         :rtype: APDU | None
+        :raises TimeoutError: If blocking mode times out.
         """
         if block:
             message_received = threading.Event()
             task = BlockingTask(request, message_received)
             self.submit_task(task)
-            task.wait()
+            if not task.wait(timeout):
+                self.pop_task(task.sequence)
+                raise TimeoutError("Timed out waiting for DNP3 response")
             return task.message
 
         task = NonBlockingTask(request, callback)
@@ -949,6 +1128,7 @@ class DNP3_Master:
         block: bool = True,
         callback: _APDUCallback | None = None,
         noreturn: bool = False,
+        timeout: float | None = DEFAULT_RESPONSE_TIMEOUT,
     ) -> APDU | None:
         """Build and transmit a request APDU.
 
@@ -968,6 +1148,8 @@ class DNP3_Master:
         :type callback: Callable[["DNP3_Master", APDU], None] | None
         :param noreturn: If ``True``, send without expecting a response.
         :type noreturn: bool
+        :param timeout: Optional blocking response timeout in seconds.
+        :type timeout: float | None
         :return: The APDU response in blocking mode, otherwise ``None``.
         :rtype: APDU | None
         :raises ValueError: If both ``need_confirm`` and ``noreturn`` are set.
@@ -985,9 +1167,9 @@ class DNP3_Master:
             apdu.objects = pack_objects(objects)
 
         if block:
-            return self.transmit(apdu)
+            return self.transmit(apdu, timeout=timeout)
         else:
-            self.transmit(apdu, block=False, callback=callback, noreturn=noreturn)
+            _ = self.transmit(apdu, block=False, callback=callback, noreturn=noreturn)
             return None
 
 
@@ -1010,10 +1192,10 @@ class DNP3_Background(threading.Thread):
 
     def __init__(self, master: DNP3_Master) -> None:
         super().__init__(daemon=True)
-        self.master = master
+        self.master: DNP3_Master = master
         #: Event flag used to signal termination of the thread.
         #: :type: threading.Event
-        self.stop = threading.Event()
+        self.stop: threading.Event = threading.Event()
 
     @override
     def run(self) -> None:
@@ -1028,12 +1210,22 @@ class DNP3_Background(threading.Thread):
         while not self.stop.is_set():
             try:
                 octets = self.master.transport.recv_data()
-            except (OSError, ConnectionError):
+            except (OSError, ICSConnectionError):
                 self.stop.set()
                 break
 
             apdu = APDU.from_octets(octets)
-            if apdu.function != FunctionCode.UNSOLICITED_RESPONSE:
+            if apdu.control.need_confirmation:
+                self.master.send_confirm(
+                    apdu.control.sequence,
+                    apdu.control.unsolicited_response
+                    or apdu.function == FunctionCode.UNSOLICITED_RESPONSE,
+                )
+
+            if (
+                apdu.function != FunctionCode.UNSOLICITED_RESPONSE
+                and not apdu.control.unsolicited_response
+            ):
                 task = self.master.pop_task(apdu.control.sequence)
                 if task:
                     task.on_message(self.master, apdu)
