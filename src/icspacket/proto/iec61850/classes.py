@@ -193,27 +193,30 @@ class FC(enum.Enum):  # Functional Constraint
 
 class ControlModel(enum.IntEnum):
     """
-    IEC 61850 control models for logical nodes and control blocks.
+    Decoded value of a control object's ``ctlModel`` attribute.
 
-    These values define the operational semantics of control actions
-    such as status-only operation, direct control, or "select-before-operate"
-    (SBO) modes. They are used to configure how client applications interact
-    with controllable data objects.
+    This tells the client which interaction pattern the server expects for
+    issuing a command against that object: whether it can only be observed,
+    whether an operate request may be sent directly, or whether it must be
+    preceded by a separate select step, together with which of the two
+    security levels applies.
 
     .. versionadded:: 0.2.4
     """
 
     STATUS_ONLY = 0
-    """Status-only mode."""
+    """Indicates the control point is limited to status reporting."""
 
     DIRECT_NORMAL = 1
-    """Direct-control with normal security."""
+    """Indicates commands are issued directly, under the normal security profile."""
 
     SBO_NORMAL = 2
-    """Select-Before-Operate (SBO) with normal security."""
+    """Indicates a select-before-operate sequence is required, under the
+    normal security profile."""
 
     DIRECT_ENHANCED = 3
-    """Direct-control with enhanced security."""
+    """Indicates commands are issued directly, under the enhanced security profile."""
 
     SBO_ENHANCED = 4
-    """Select-Before-Operate with enhanced security."""
+    """Indicates a select-before-operate sequence is required, under the
+    enhanced security profile."""

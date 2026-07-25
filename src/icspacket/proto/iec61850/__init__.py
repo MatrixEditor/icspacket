@@ -20,23 +20,21 @@ IEC61850
 Basic Information Models
 ------------------------
 
-a) SERVER - represents the external visible behaviour of a device. All other
-   ACSI models are part of the server.
+This package works with four nested layers of ACSI objects, from the
+outside in:
 
-b) LOGICAL-DEVICE (LD) - contains the information produced and consumed by a
-   group of domain-specific application functions; functions are defined as
-   LOGICAL-NODEs.
+- **Server** - the whole addressable device as seen by a client; every other
+  layer below lives inside it.
+- **Logical Device (LD)** - a container grouping the data produced and
+  consumed by a related set of application functions, each represented by a
+  Logical Node.
+- **Logical Node (LN)** - the unit modeling one specific application
+  function, such as overvoltage protection or circuit-breaker.
+- **Data** - a typed piece of information owned by a Logical Node, e.g. a
+  switch position together with its quality and timestamp.
 
-c) LOGICAL-NODE (LN) - contains the information produced and consumed by a
-   domain-specific application function, for example, overvoltage protection or
-   circuit-breaker.
-
-d) DATA - provide means to specify typed information, for example, position of a
-   switch with quality information and timestamp, contained in LOGICAL-NODEs
-
-
-Example: In an implementation the logical device, logical node, data, and data
-attribute have each an object name (:class:`ObjectName`).
+In this implementation, every level - logical device, logical node, data,
+and data attribute - is identified by its own :class:`ObjectName`.
 
 -- IEC61850 7-2
 """

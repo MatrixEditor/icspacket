@@ -13,33 +13,31 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
-# pyright: reportInvalidTypeForm=false, reportGeneralTypeIssues=false, reportAssignmentType=false
 import logging
-
+from collections.abc import Callable
 from queue import Queue
 from threading import Event
-from typing import Any, Callable, TypeVar
+from typing import Any, TypeVar
 
-from caterpillar.fields import Bytes, uint16
-from caterpillar.model import pack, unpack
-
-from caterpillar.shortcuts import struct, BigEndian, this
+from caterpillar.py import BigEndian, Bytes, f, pack, struct, this, unpack
+from caterpillar.types import uint16_t
 from scapy.arch import get_if_hwaddr
 from scapy.error import Scapy_Exception
 from scapy.layers.l2 import Dot1Q, Ether
-from scapy.packet import Raw
-from scapy.sendrecv import AsyncSniffer, sendp, sendpfast
+from scapy.sendrecv import AsyncSniffer, sendp
+from typing_extensions import Self
 
-from icspacket.core.logger import TRACE, TRACE_PACKETS
 from icspacket.core.hexdump import hexdump
-from icspacket.proto.iec61850._iec61850 import *  # noqa
+from icspacket.core.logger import TRACE, TRACE_PACKETS
+from icspacket.proto.iec61850._iec61850 import *
 
 _T = TypeVar("_T")
 
 GOOSE_ETHER_TYPE = 0x88B8
 """
-EtherType value assigned to IEC 61850 GOOSE (Generic Object Oriented Substation
-Event)
+Ethernet frames carrying GOOSE (Generic Object Oriented Substation Event)
+traffic use this EtherType, letting the sniffer/filter below recognize them
+on the wire.
 """
 
 # private
@@ -49,34 +47,36 @@ _DOT1Q_ETHER_TYPE = 0x8100
 @struct(order=BigEndian)
 class PDU:
     """
-    Protocol Data Unit (PDU) representing the ISO/IEC 8802-3 frame structure
-    used for GSE management and GOOSE communication.
+    Binary layout this library reads from and writes to the Ethernet
+    (ISO/IEC 8802-3) payload for both GOOSE and GSE management traffic.
 
-    The PDU wraps the **Application Protocol Data Unit (APDU)** carried in an
-    Ethernet frame. The frame contains reserved fields in addition to the
-    application identifier and APDU payload.
+    Every instance corresponds to one on-the-wire frame: a short fixed
+    header (application identifier plus two reserved words) followed by the
+    **Application Protocol Data Unit (APDU)** that actually carries the
+    GOOSE or GSE management data.
 
     """
 
-    app_id: uint16 = 0
+    app_id: uint16_t = 0
     """
-    Application identifier (AppID). This field uniquely identifies the
-    application instance for which the message is intended.
-    """
-
-    length: uint16 = 0
-    """
-    Total length of the PDU in bytes, including the 8-byte header (AppID,
-    Length, Reserved1, Reserved2).
+    AppID header word identifying which application instance this frame is
+    intended for.
     """
 
-    reserved1: uint16 = 0
-    reserved2: uint16 = 0
-
-    raw_apdu: Bytes(this.length - 8) = b""
+    length: uint16_t = 0
     """
-    Encoded APDU (Application Protocol Data Unit). This may contain ASN.1
-    BER-encoded payloads or raw bytes depending on context.
+    Total on-the-wire byte count for this PDU, covering the 8-byte header
+    made up of ``app_id``, ``length``, ``reserved1``, and ``reserved2``.
+    """
+
+    reserved1: uint16_t = 0
+    reserved2: uint16_t = 0
+
+    raw_apdu: f[bytes, Bytes(this.length - 8)] = b""
+    """
+    Raw bytes of the APDU payload. Depending on how the PDU was produced or
+    decoded, this may already be ASN.1 BER-encoded, or still be a plain
+    ``bytes`` object awaiting encoding.
     """
 
     def build(self) -> bytes:
@@ -192,7 +192,7 @@ class GOOSE_Client:
         app_id: int | None = None,
         vlan_id: int | None = None,
     ) -> None:
-        args = {
+        args: dict[str, Any] = {
             "prn": self._process_pkt,
             "store": 0,
             "lfilter": self._filter_pkt,
@@ -201,18 +201,18 @@ class GOOSE_Client:
             args["iface"] = iface
         if inputs:
             args["offline"] = inputs
-        self.__sniffer = AsyncSniffer(**args)
-        self.__stop = Event()
-        self.__pkt_in = Queue()
-        self.__ether_type = ether_type
-        self.__iface = iface
+        self.__sniffer: AsyncSniffer = AsyncSniffer(**args)
+        self.__stop: Event = Event()
+        self.__pkt_in: Queue[PDU] = Queue()
+        self.__ether_type: int = ether_type
+        self.__iface: list[str] | str | None = iface
 
-        self.app_id = app_id or 0
-        self.vlan_id = vlan_id
-        self.callback = callback
-        self.logger = logging.getLogger(__name__)
+        self.app_id: int = app_id or 0
+        self.vlan_id: int | None = vlan_id
+        self.callback: Callable[[Ether, PDU], None] | None = callback
+        self.logger: logging.Logger = logging.getLogger(__name__)
 
-    def __enter__(self) -> "GOOSE_Client":
+    def __enter__(self) -> Self:
         return self
 
     def __exit__(self, exc_type, exc_value, traceback):
