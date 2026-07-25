@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+<html lang="en" data-accent-color="lime" data-content_root="../../../../">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>icspacket.proto.iec104.master - icspacket 0.1.dev1+ge2da2242a documentation</title><link rel="index" title="Index" href="../../../../genindex.html" /><link rel="search" title="Search" href="../../../../search.html" />
+      <link rel="canonical" href="https://matrixeditor.github.io/icspacket/_modules/icspacket/proto/iec104/master.html" /><script>
+    function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
+    setColorMode(localStorage._theme||"dark");
+  </script><link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=e1a1ceaf" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/shibuya.css?v=2ceb65ce" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link media="print" rel="stylesheet" type="text/css" href="../../../../_static/print.css?v=20ff2c19" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --sy-f-text: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+  --sy-f-heading: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+}
+</style>
+    
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://matrixeditor.github.io/icspacket/_modules/icspacket/proto/iec104/master.html"/>
+  <meta property="og:title" content="icspacket.proto.iec104.master"/>
+    <meta name="twitter:card" content="summary"/>
+  </head>
+<body><div class="sy-head">
+  <div class="sy-head-blur"></div>
+  <div class="sy-head-inner sy-container mx-auto">
+    <a class="sy-head-brand" href="../../../../index.html">
+      
+      
+      <strong>icspacket</strong>
+    </a>
+    <div class="sy-head-nav" id="head-nav">
+      <nav class="sy-head-links"><ul>
+      <li class="link"><a class="js-menu" href="../../../../getting-started/protocols.html" id="nav-trigger-1" aria-controls="nav-children-1">
+            <span>Examples</span>
+            <i class="i-lucide chevron-down"></i>
+          </a>
+        <ul id="nav-children-1" aria-labelledby="nav-trigger-1"><li><a href="../../../../protocols/mms/examples.html">
+                <span>MMS Utilities</span>
+                <small>Manufacturing Message Specification tools</small>
+              </a></li><li><a href="../../../../protocols/dnp3/examples.html">
+                <span>DNP3 Tools</span>
+                <small>DNP3 utilities and tools</small>
+              </a></li><li><a href="../../../../protocols/iec61850/iedmap.html">
+                <span>IED Enumeration Tool</span>
+                <small>Logical Device enumeration and more</small>
+              </a></li></ul>
+      </li><li class="link"><a href="../../../../changelog.html">Changelog</a></li></ul></nav>
+      <div class="sy-head-extra flex items-center print:hidden"><form class="searchbox flex items-center" action="../../../../search.html" method="get">
+  <input type="text" name="q" placeholder="Search" />
+  <kbd>/</kbd>
+</form><div class="sy-head-socials">
+  <a href="https://github.com/MatrixEditor/icspacket" aria-label="GitHub">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </a></div></div>
+    </div>
+    <div class="sy-head-actions flex items-center shrink-0 print:hidden"><button class="js-theme theme-switch flex items-center"
+data-aria-auto="Switch to light color mode"
+data-aria-light="Switch to dark color mode"
+data-aria-dark="Switch to auto color mode">
+<i class="i-lucide theme-icon"></i>
+</button><button class="md:hidden flex items-center js-menu" aria-label="Menu" type="button" aria-controls="head-nav" aria-expanded="false">
+        <div class="hamburger">
+          <span class="hamburger_1"></span>
+          <span class="hamburger_2"></span>
+          <span class="hamburger_3"></span>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>
+<div class="sy-page sy-container flex mx-auto">
+  <aside id="lside" class="sy-lside md:w-72 md:shrink-0 print:hidden">
+    <div class="sy-lside-inner md:sticky">
+      <div class="sy-scrollbar p-6"><div class="sidebar-links">
+  <ul>
+    <li><a class="icon-link" href="https://github.com/MatrixEditor/icspacket/discussions">
+  <span class="icon">
+    <svg viewBox="0 0 24 24" fill="none">
+      <path fill="var(--accent-9)" fill-rule="evenodd" clip-rule="evenodd" d="M11 5a6 6 0 0 0-4.687 9.746c.215.27.315.62.231.954l-.514 2.058a1 1 0 0 0 1.485 1.1l2.848-1.71c.174-.104.374-.15.576-.148H13a6 6 0 0 0 0-12h-2Z"/>
+      <circle fill="white" cx="12" cy="11" r="1"/>
+      <circle fill="white" cx="9" cy="11" r="1"/>
+      <circle fill="white" cx="15" cy="11" r="1"/>
+    </svg>
+  </span>
+  <span class="text">Discussion</span>
+</a></li>
+  </ul>
+</div>
+        <div class="globaltoc" data-expand-depth="1"><p class="caption" role="heading" aria-level="3"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../getting-started/installation.html">Installation</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../getting-started/protocols.html">Protocols Overview</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../getting-started/coreapi.html">Core API Reference</a></li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">DNP3 / IEEE 1815</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../protocols/dnp3/dnp3read.html">Reading Objects</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../protocols/dnp3/dnp3dump.html">Dumping Objects</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../protocols/dnp3/dnp3resolve.html">Resolve Link Addresses</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../protocols/dnp3/api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../protocols/dnp3/api/link.html">Link Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../protocols/dnp3/api/transport.html">Transport Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../protocols/dnp3/api/application.html">Application Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../protocols/dnp3/api/master.html">Master</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../protocols/dnp3/api/object_library.html">Object Library</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../protocols/dnp3/api/primitives.html">Primitive Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../protocols/dnp3/api/coding.html">Encoding / Decoding</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../protocols/dnp3/api/variations.html">Variations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../protocols/dnp3/api/coding_utils.html">Object Utilities</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">IEC 61850</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../protocols/iec61850/iedmap.html">Enumerating IEDs</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../protocols/iec61850/iedctrl.html">Operating on IEDs</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../protocols/iec61850/api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../protocols/iec61850/api_data_classes.html">Data Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../protocols/iec61850/api_path.html">Object / Data References</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../protocols/iec61850/api_control.html">Control / Operation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../protocols/iec61850/api_client.html">IED Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../protocols/iec61850/api_goose.html">GOOSE Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../protocols/iec61850/api_sv.html">SampledValues Client</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">MMS / ISO 9506</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../protocols/mms/demo_vars.html">Variable Target Format</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../protocols/mms/demo_vars.html#variableaccess-service-rwq">VariableAccess Service (rwq)</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../protocols/mms/demo_files.html">FileManagement Service</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../protocols/mms/api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../protocols/mms/api_conn.html">MMS Connection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../protocols/mms/api_data.html">Data Conversion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../protocols/mms/api_utils.html">Protocol Utilities</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">IEC 60870-5-104</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../protocols/iec104/iec104read.html">Reading Data via Interrogation</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../protocols/iec104/api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../protocols/iec104/api/apci.html">APCI - Framing Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../protocols/iec104/api/asdu.html">ASDU - Application Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../protocols/iec104/api/master.html">Master (Client)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../protocols/iec104/api/objects.html">Information Object Library</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">ACSE / X.227</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../protocols/acse/api.html">API Reference</a></li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">COPP / X.226 / ISO 8823</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../protocols/copp/api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../protocols/copp/presentation.html">ISO Presentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../protocols/copp/utils.html">Protocol Utilities</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">COSP / X.225 / ISO 8237-1</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../protocols/cosp/api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../protocols/cosp/tsdu.html">TSDU</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../protocols/cosp/spdu.html">SPDU Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../protocols/cosp/values.html">Parameter Values (PV)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../protocols/cosp/session.html">ISO Session</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../protocols/cosp/utils.html">Protocol Utilities</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">COTP / X.224</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../protocols/cotp/api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../protocols/cotp/structs.html">TPDU Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../protocols/cotp/connection.html">Connection</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">TPKT Protocol (RFC1006)</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../protocols/tpkt/usage.html">Using a TPKT Wrapper</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../protocols/tpkt/api.html">API Reference</a></li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../changelog.html">Changelog</a></li>
+</ul>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="lside-overlay js-menu" role="button" aria-label="Close left sidebar" aria-controls="lside" aria-expanded="false"></div>
+  <aside id="rside" class="sy-rside pb-3 w-64 shrink-0 order-last">
+    <button class="rside-close js-menu xl:hidden" aria-label="Close Table of Contents" type="button" aria-controls="rside" aria-expanded="false">
+      <i class="i-lucide close"></i>
+    </button>
+    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><a class="js-repo-stats repo-stats flex items-center" href="https://github.com/MatrixEditor/icspacket"
+  data-type="github" data-user="MatrixEditor" data-repo="icspacket">
+  <span class="w-8 flex items-center justify-around shrink-0 text-3xl">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </span>
+  <span class="flex-grow px-2 break-all">
+    <span style="font-size: small;">MatrixEditor/icspacket</span>
+    <span class="flex text-sm repo-stats-count">
+      <span class="flex items-center pr-3">
+        <iconify-icon icon="lucide:star"></iconify-icon>
+        <strong class="js-repo-stars ml-1">0</strong>
+      </span>
+      <span class="flex items-center">
+        <iconify-icon icon="lucide:git-fork"></iconify-icon>
+        <strong class="js-repo-forks ml-1">0</strong>
+      </span>
+    </span>
+  </span>
+</a></div>
+  </aside>
+  <div class="rside-overlay js-menu" role="button" aria-label="Close Table of Contents" aria-controls="rside" aria-expanded="false"></div>
+  <main class="sy-main w-full max-sm:max-w-full print:pt-6">
+<div class="sy-breadcrumbs" role="navigation">
+  <div class="sy-breadcrumbs-inner flex items-center">
+    <div class="md:hidden mr-3">
+      <button class="js-menu" aria-label="Menu" type="button" aria-controls="lside" aria-expanded="false">
+        <i class="i-lucide menu"></i>
+      </button>
+    </div>
+    <ol class="flex-1" itemscope itemtype="https://schema.org/BreadcrumbList"><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="../../../../index.html"><span itemprop="name">icspacket</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="1" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="../../../index.html"><span itemprop="name">Module code</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="2" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <strong itemprop="name">icspacket.proto.iec104.master</strong>
+        <meta itemprop="position" content="3" />
+      </li></ol>
+    <div class="xl:hidden ml-1">
+      <button class="js-menu" aria-label="Show table of contents" type="button" aria-controls="rside"
+        aria-expanded="false">
+        <i class="i-lucide outdent"></i>
+      </button>
+    </div>
+  </div>
+</div><div class="flex flex-col break-words justify-between">
+      <div class="relative min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
+  <article class="yue" role="main">
+          <h1>Source code for icspacket.proto.iec104.master</h1><div class="highlight"><pre>
+<span></span><span data-line="1"><span class="c1"># This file is part of icspacket.</span>
+</span><span data-line="2"><span class="c1"># Copyright (C) 2025-present  MatrixEditor @ github</span>
+</span><span data-line="3"><span class="c1">#</span>
+</span><span data-line="4"><span class="c1"># This program is free software: you can redistribute it and/or modify</span>
+</span><span data-line="5"><span class="c1"># it under the terms of the GNU General Public License as published by</span>
+</span><span data-line="6"><span class="c1"># the Free Software Foundation, either version 3 of the License, or</span>
+</span><span data-line="7"><span class="c1"># (at your option) any later version.</span>
+</span><span data-line="8"><span class="c1">#</span>
+</span><span data-line="9"><span class="c1"># This program is distributed in the hope that it will be useful,</span>
+</span><span data-line="10"><span class="c1"># but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+</span><span data-line="11"><span class="c1"># MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+</span><span data-line="12"><span class="c1"># GNU General Public License for more details.</span>
+</span><span data-line="13"><span class="c1">#</span>
+</span><span data-line="14"><span class="c1"># You should have received a copy of the GNU General Public License</span>
+</span><span data-line="15"><span class="c1"># along with this program.  If not, see &lt;https://www.gnu.org/licenses/&gt;.</span>
+</span><span data-line="16"><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="17"><span class="sd">IEC104_Master - client API layered over :class:`~icspacket.proto.iec104.connection.IEC104_Connection`.</span>
+</span><span data-line="18">
+</span><span data-line="19"><span class="sd">Cause Of Transmission conventions:</span>
+</span><span data-line="20">
+</span><span data-line="21"><span class="sd">- General/counter interrogation and every command (``C_SC_NA_1`` etc.) are</span>
+</span><span data-line="22"><span class="sd">  sent with :data:`~icspacket.proto.iec104.const.CauseOfTransmission.ACTIVATION`</span>
+</span><span data-line="23"><span class="sd">  and confirmed with ``ACTIVATION_CON``; interrogation additionally streams</span>
+</span><span data-line="24"><span class="sd">  monitor data and finishes with ``ACTIVATION_TERMINATION``.</span>
+</span><span data-line="25"><span class="sd">- The read command (``C_RD_NA_1``) is the one exception: both the request</span>
+</span><span data-line="26"><span class="sd">  and its reply use :data:`~icspacket.proto.iec104.const.CauseOfTransmission.REQUEST`</span>
+</span><span data-line="27"><span class="sd">  instead.</span>
+</span><span data-line="28">
+</span><span data-line="29"><span class="sd">Unsolicited/spontaneous monitor-direction ASDUs (``COT=SPONTANEOUS``) can</span>
+</span><span data-line="30"><span class="sd">arrive at any time, including interleaved with a pending request&#39;s replies.</span>
+</span><span data-line="31"><span class="sd">Rather than silently dropping them, blocking methods forward any</span>
+</span><span data-line="32"><span class="sd">non-matching ASDU seen while waiting to the optional ``on_unsolicited``</span>
+</span><span data-line="33"><span class="sd">callback (or log it at :data:`~icspacket.core.logger.TRACE` level if unset).</span>
+</span><span data-line="34"><span class="sd">When no request is pending, simply iterate a :class:`IEC104_Master` instance</span>
+</span><span data-line="35"><span class="sd">(``for asdu in master: ...``) to consume the incoming ASDU stream directly.</span>
+</span><span data-line="36"><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="37"><span class="kn">import</span><span class="w"> </span><span class="nn">datetime</span>
+</span><span data-line="38"><span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
+</span><span data-line="39"><span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+</span><span data-line="40"><span class="kn">from</span><span class="w"> </span><span class="nn">collections.abc</span><span class="w"> </span><span class="kn">import</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">Iterator</span>
+</span><span data-line="41">
+</span><span data-line="42"><span class="kn">from</span><span class="w"> </span><span class="nn">typing_extensions</span><span class="w"> </span><span class="kn">import</span> <span class="n">Self</span>
+</span><span data-line="43">
+</span><span data-line="44"><span class="kn">from</span><span class="w"> </span><span class="nn">icspacket.core.connection</span><span class="w"> </span><span class="kn">import</span> <span class="n">ConnectionClosedError</span>
+</span><span data-line="45"><span class="kn">from</span><span class="w"> </span><span class="nn">icspacket.core.logger</span><span class="w"> </span><span class="kn">import</span> <span class="n">TRACE</span>
+</span><span data-line="46"><span class="kn">from</span><span class="w"> </span><span class="nn">icspacket.proto.iec104.asdu</span><span class="w"> </span><span class="kn">import</span> <span class="n">ASDU</span><span class="p">,</span> <span class="n">ASDU_Header</span>
+</span><span data-line="47"><span class="kn">from</span><span class="w"> </span><span class="nn">icspacket.proto.iec104.connection</span><span class="w"> </span><span class="kn">import</span> <span class="n">IEC104_Connection</span><span class="p">,</span> <span class="n">IEC104ProtocolError</span>
+</span><span data-line="48"><span class="kn">from</span><span class="w"> </span><span class="nn">icspacket.proto.iec104.const</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+</span><span data-line="49">    <span class="n">QOC</span><span class="p">,</span>
+</span><span data-line="50">    <span class="n">QOI</span><span class="p">,</span>
+</span><span data-line="51">    <span class="n">QRP</span><span class="p">,</span>
+</span><span data-line="52">    <span class="n">CauseOfTransmission</span><span class="p">,</span>
+</span><span data-line="53">    <span class="n">DoublePointValue</span><span class="p">,</span>
+</span><span data-line="54">    <span class="n">QCC_Freeze</span><span class="p">,</span>
+</span><span data-line="55">    <span class="n">QCC_Request</span><span class="p">,</span>
+</span><span data-line="56">    <span class="n">StepCommandValue</span><span class="p">,</span>
+</span><span data-line="57">    <span class="n">TypeID</span><span class="p">,</span>
+</span><span data-line="58"><span class="p">)</span>
+</span><span data-line="59"><span class="kn">from</span><span class="w"> </span><span class="nn">icspacket.proto.iec104.objects.coding</span><span class="w"> </span><span class="kn">import</span> <span class="n">InformationObject</span>
+</span><span data-line="60"><span class="kn">from</span><span class="w"> </span><span class="nn">icspacket.proto.iec104.objects.elements</span><span class="w"> </span><span class="kn">import</span> <span class="n">DCO</span><span class="p">,</span> <span class="n">QOS</span><span class="p">,</span> <span class="n">RCO</span><span class="p">,</span> <span class="n">SCO</span><span class="p">,</span> <span class="n">CP56Time2a</span>
+</span><span data-line="61"><span class="kn">from</span><span class="w"> </span><span class="nn">icspacket.proto.iec104.objects.information</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+</span><span data-line="62">    <span class="n">ClockSynchronizationCommand</span><span class="p">,</span>
+</span><span data-line="63">    <span class="n">CounterInterrogationCommand</span><span class="p">,</span>
+</span><span data-line="64">    <span class="n">DoubleCommand</span><span class="p">,</span>
+</span><span data-line="65">    <span class="n">InterrogationCommand</span><span class="p">,</span>
+</span><span data-line="66">    <span class="n">ReadCommand</span><span class="p">,</span>
+</span><span data-line="67">    <span class="n">ResetProcessCommand</span><span class="p">,</span>
+</span><span data-line="68">    <span class="n">SetpointCommandNormalized</span><span class="p">,</span>
+</span><span data-line="69">    <span class="n">SetpointCommandScaled</span><span class="p">,</span>
+</span><span data-line="70">    <span class="n">SetpointCommandShort</span><span class="p">,</span>
+</span><span data-line="71">    <span class="n">SingleCommand</span><span class="p">,</span>
+</span><span data-line="72">    <span class="n">StepCommand</span><span class="p">,</span>
+</span><span data-line="73">    <span class="n">TestCommand</span><span class="p">,</span>
+</span><span data-line="74"><span class="p">)</span>
+</span><span data-line="75">
+</span><span data-line="76"><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;IEC104_Master&quot;</span><span class="p">]</span>
+</span><span data-line="77">
+</span><span data-line="78"><span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+</span><span data-line="79">
+</span><span data-line="80">
+<div class="viewcode-block" id="IEC104_Master">
+<a class="viewcode-back" href="../../../../protocols/iec104/api/master.html#icspacket.proto.iec104.master.IEC104_Master">[docs]</a>
+</span><span data-line="81"><span class="k">class</span><span class="w"> </span><span class="nc">IEC104_Master</span><span class="p">:</span>
+</span><span data-line="82"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="83"><span class="sd">    Ergonomic IEC 60870-5-104 client (controlling station) API.</span>
+</span><span data-line="84">
+</span><span data-line="85"><span class="sd">    :param connection: Existing :class:`~icspacket.proto.iec104.connection.IEC104_Connection`</span>
+</span><span data-line="86"><span class="sd">        to use; a new one (with default timers) is created if omitted.</span>
+</span><span data-line="87"><span class="sd">    :type connection: IEC104_Connection | None</span>
+</span><span data-line="88"><span class="sd">    :param on_unsolicited: Optional callback invoked with any ASDU observed</span>
+</span><span data-line="89"><span class="sd">        while a blocking method is waiting for its own reply, but which does</span>
+</span><span data-line="90"><span class="sd">        not match that reply (e.g. a spontaneous data change interleaved</span>
+</span><span data-line="91"><span class="sd">        with a pending general interrogation). If omitted, such ASDUs are</span>
+</span><span data-line="92"><span class="sd">        only logged at :data:`~icspacket.core.logger.TRACE` level.</span>
+</span><span data-line="93"><span class="sd">    :type on_unsolicited: Callable[[~icspacket.proto.iec104.asdu.ASDU], None] | None</span>
+</span><span data-line="94"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span data-line="95">
+</span><span data-line="96">    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+</span><span data-line="97">        <span class="bp">self</span><span class="p">,</span>
+</span><span data-line="98">        <span class="n">connection</span><span class="p">:</span> <span class="n">IEC104_Connection</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span data-line="99">        <span class="o">*</span><span class="p">,</span>
+</span><span data-line="100">        <span class="n">on_unsolicited</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">ASDU</span><span class="p">],</span> <span class="kc">None</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span data-line="101">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="102">        <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="p">:</span> <span class="n">IEC104_Connection</span> <span class="o">=</span> <span class="n">connection</span> <span class="ow">or</span> <span class="n">IEC104_Connection</span><span class="p">()</span>
+</span><span data-line="103">        <span class="bp">self</span><span class="o">.</span><span class="n">on_unsolicited</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">ASDU</span><span class="p">],</span> <span class="kc">None</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="n">on_unsolicited</span>
+</span><span data-line="104">
+</span><span data-line="105">    <span class="c1"># -- connection lifecycle passthroughs --------------------------------- #</span>
+</span><span data-line="106">
+<div class="viewcode-block" id="IEC104_Master.connect">
+<a class="viewcode-back" href="../../../../protocols/iec104/api/master.html#icspacket.proto.iec104.master.IEC104_Master.connect">[docs]</a>
+</span><span data-line="107">    <span class="k">def</span><span class="w"> </span><span class="nf">connect</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">address</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="108"><span class="w">        </span><span class="sd">&quot;&quot;&quot;Connect and perform the ``STARTDT`` handshake; see</span>
+</span><span data-line="109"><span class="sd">        :meth:`~icspacket.proto.iec104.connection.IEC104_Connection.connect`.&quot;&quot;&quot;</span>
+</span><span data-line="110">        <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">address</span><span class="p">)</span></div>
+
+</span><span data-line="111">
+<div class="viewcode-block" id="IEC104_Master.close">
+<a class="viewcode-back" href="../../../../protocols/iec104/api/master.html#icspacket.proto.iec104.master.IEC104_Master.close">[docs]</a>
+</span><span data-line="112">    <span class="k">def</span><span class="w"> </span><span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="113"><span class="w">        </span><span class="sd">&quot;&quot;&quot;Perform the ``STOPDT`` handshake and close the connection; see</span>
+</span><span data-line="114"><span class="sd">        :meth:`~icspacket.proto.iec104.connection.IEC104_Connection.close`.&quot;&quot;&quot;</span>
+</span><span data-line="115">        <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></div>
+
+</span><span data-line="116">
+</span><span data-line="117">    <span class="k">def</span><span class="w"> </span><span class="fm">__enter__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Self</span><span class="p">:</span>
+</span><span data-line="118">        <span class="k">return</span> <span class="bp">self</span>
+</span><span data-line="119">
+</span><span data-line="120">    <span class="k">def</span><span class="w"> </span><span class="fm">__exit__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">_exc_info</span><span class="p">:</span> <span class="nb">object</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="121">        <span class="bp">self</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</span><span data-line="122">
+</span><span data-line="123">    <span class="c1"># -- unsolicited/spontaneous ASDU stream -------------------------------- #</span>
+</span><span data-line="124">
+</span><span data-line="125">    <span class="k">def</span><span class="w"> </span><span class="fm">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Iterator</span><span class="p">[</span><span class="n">ASDU</span><span class="p">]:</span>
+</span><span data-line="126">        <span class="k">return</span> <span class="bp">self</span>
+</span><span data-line="127">
+</span><span data-line="128">    <span class="k">def</span><span class="w"> </span><span class="fm">__next__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ASDU</span><span class="p">:</span>
+</span><span data-line="129">        <span class="k">try</span><span class="p">:</span>
+</span><span data-line="130">            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">recv_asdu</span><span class="p">()</span>
+</span><span data-line="131">        <span class="k">except</span> <span class="n">ConnectionClosedError</span><span class="p">:</span>
+</span><span data-line="132">            <span class="k">raise</span> <span class="ne">StopIteration</span> <span class="kn">from</span><span class="w"> </span><span class="kc">None</span>
+</span><span data-line="133">
+<div class="viewcode-block" id="IEC104_Master.read_next">
+<a class="viewcode-back" href="../../../../protocols/iec104/api/master.html#icspacket.proto.iec104.master.IEC104_Master.read_next">[docs]</a>
+</span><span data-line="134">    <span class="k">def</span><span class="w"> </span><span class="nf">read_next</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">timeout</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ASDU</span><span class="p">:</span>
+</span><span data-line="135"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="136"><span class="sd">        Return the next incoming ASDU, whatever it is.</span>
+</span><span data-line="137">
+</span><span data-line="138"><span class="sd">        Only meaningful when no other blocking method (interrogation,</span>
+</span><span data-line="139"><span class="sd">        command, ...) is concurrently waiting on the same connection - both</span>
+</span><span data-line="140"><span class="sd">        ultimately consume the same single incoming-ASDU queue.</span>
+</span><span data-line="141">
+</span><span data-line="142"><span class="sd">        :param timeout: Maximum seconds to wait, or ``None`` to block forever.</span>
+</span><span data-line="143"><span class="sd">        :type timeout: float | None</span>
+</span><span data-line="144"><span class="sd">        :raises TimeoutError: If no ASDU arrives within ``timeout`` seconds.</span>
+</span><span data-line="145"><span class="sd">        :raises ConnectionClosedError: If the connection closes while waiting.</span>
+</span><span data-line="146"><span class="sd">        &quot;&quot;&quot;</span>
+</span><span data-line="147">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">recv_asdu</span><span class="p">(</span><span class="n">timeout</span><span class="p">)</span></div>
+
+</span><span data-line="148">
+</span><span data-line="149">    <span class="c1"># -- internal helpers ---------------------------------------------------- #</span>
+</span><span data-line="150">
+</span><span data-line="151">    <span class="k">def</span><span class="w"> </span><span class="nf">_send</span><span class="p">(</span>
+</span><span data-line="152">        <span class="bp">self</span><span class="p">,</span>
+</span><span data-line="153">        <span class="n">type_id</span><span class="p">:</span> <span class="n">TypeID</span><span class="p">,</span>
+</span><span data-line="154">        <span class="n">common_address</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+</span><span data-line="155">        <span class="n">element</span><span class="p">:</span> <span class="nb">object</span><span class="p">,</span>
+</span><span data-line="156">        <span class="o">*</span><span class="p">,</span>
+</span><span data-line="157">        <span class="n">ioa</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+</span><span data-line="158">        <span class="n">cot</span><span class="p">:</span> <span class="n">CauseOfTransmission</span> <span class="o">=</span> <span class="n">CauseOfTransmission</span><span class="o">.</span><span class="n">ACTIVATION</span><span class="p">,</span>
+</span><span data-line="159">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="160"><span class="w">        </span><span class="sd">&quot;&quot;&quot;Build a single-object ASDU and send it as I-format data.&quot;&quot;&quot;</span>
+</span><span data-line="161">        <span class="n">asdu</span> <span class="o">=</span> <span class="n">ASDU</span><span class="p">(</span><span class="n">header</span><span class="o">=</span><span class="n">ASDU_Header</span><span class="p">(</span><span class="n">type_id</span><span class="o">=</span><span class="n">type_id</span><span class="p">,</span> <span class="n">common_address</span><span class="o">=</span><span class="n">common_address</span><span class="p">))</span>
+</span><span data-line="162">        <span class="n">asdu</span><span class="o">.</span><span class="n">header</span><span class="o">.</span><span class="n">cot</span><span class="o">.</span><span class="n">cause</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">cot</span><span class="p">)</span>
+</span><span data-line="163">        <span class="n">octets</span> <span class="o">=</span> <span class="n">asdu</span><span class="o">.</span><span class="n">build</span><span class="p">([</span><span class="n">InformationObject</span><span class="p">(</span><span class="n">ioa</span><span class="o">=</span><span class="n">ioa</span><span class="p">,</span> <span class="n">element</span><span class="o">=</span><span class="n">element</span><span class="p">)])</span>
+</span><span data-line="164">        <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">send_data</span><span class="p">(</span><span class="n">octets</span><span class="p">)</span>
+</span><span data-line="165">
+</span><span data-line="166">    <span class="k">def</span><span class="w"> </span><span class="nf">_await_match</span><span class="p">(</span>
+</span><span data-line="167">        <span class="bp">self</span><span class="p">,</span> <span class="n">timeout</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span> <span class="n">predicate</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">ASDU</span><span class="p">],</span> <span class="nb">bool</span><span class="p">]</span>
+</span><span data-line="168">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ASDU</span><span class="p">:</span>
+</span><span data-line="169"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="170"><span class="sd">        Block until an ASDU satisfying ``predicate`` is received.</span>
+</span><span data-line="171">
+</span><span data-line="172"><span class="sd">        Any ASDU seen that does not satisfy ``predicate`` is forwarded to</span>
+</span><span data-line="173"><span class="sd">        ``on_unsolicited`` (or logged and discarded) rather than lost.</span>
+</span><span data-line="174">
+</span><span data-line="175"><span class="sd">        :raises TimeoutError: If no matching ASDU arrives within ``timeout``.</span>
+</span><span data-line="176"><span class="sd">        :raises ConnectionClosedError: If the connection closes while waiting.</span>
+</span><span data-line="177"><span class="sd">        &quot;&quot;&quot;</span>
+</span><span data-line="178">        <span class="n">deadline</span> <span class="o">=</span> <span class="kc">None</span> <span class="k">if</span> <span class="n">timeout</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">time</span><span class="o">.</span><span class="n">monotonic</span><span class="p">()</span> <span class="o">+</span> <span class="n">timeout</span>
+</span><span data-line="179">        <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+</span><span data-line="180">            <span class="n">remaining</span> <span class="o">=</span> <span class="kc">None</span>
+</span><span data-line="181">            <span class="k">if</span> <span class="n">deadline</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="182">                <span class="n">remaining</span> <span class="o">=</span> <span class="n">deadline</span> <span class="o">-</span> <span class="n">time</span><span class="o">.</span><span class="n">monotonic</span><span class="p">()</span>
+</span><span data-line="183">                <span class="k">if</span> <span class="n">remaining</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+</span><span data-line="184">                    <span class="k">raise</span> <span class="ne">TimeoutError</span><span class="p">(</span><span class="s2">&quot;Timed out waiting for a matching ASDU reply&quot;</span><span class="p">)</span>
+</span><span data-line="185">
+</span><span data-line="186">            <span class="n">asdu</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">recv_asdu</span><span class="p">(</span><span class="n">timeout</span><span class="o">=</span><span class="n">remaining</span><span class="p">)</span>
+</span><span data-line="187">            <span class="k">if</span> <span class="n">predicate</span><span class="p">(</span><span class="n">asdu</span><span class="p">):</span>
+</span><span data-line="188">                <span class="k">return</span> <span class="n">asdu</span>
+</span><span data-line="189">
+</span><span data-line="190">            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_unsolicited</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="191">                <span class="bp">self</span><span class="o">.</span><span class="n">on_unsolicited</span><span class="p">(</span><span class="n">asdu</span><span class="p">)</span>
+</span><span data-line="192">            <span class="k">else</span><span class="p">:</span>
+</span><span data-line="193">                <span class="n">logger</span><span class="o">.</span><span class="n">log</span><span class="p">(</span>
+</span><span data-line="194">                    <span class="n">TRACE</span><span class="p">,</span>
+</span><span data-line="195">                    <span class="s2">&quot;[IEC104] Discarding unrelated </span><span class="si">%s</span><span class="s2"> ASDU while awaiting a reply&quot;</span><span class="p">,</span>
+</span><span data-line="196">                    <span class="n">asdu</span><span class="o">.</span><span class="n">header</span><span class="o">.</span><span class="n">type_id</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+</span><span data-line="197">                <span class="p">)</span>
+</span><span data-line="198">
+</span><span data-line="199">    <span class="nd">@staticmethod</span>
+</span><span data-line="200">    <span class="k">def</span><span class="w"> </span><span class="nf">_raise_if_negative</span><span class="p">(</span><span class="n">asdu</span><span class="p">:</span> <span class="n">ASDU</span><span class="p">,</span> <span class="n">operation</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ASDU</span><span class="p">:</span>
+</span><span data-line="201">        <span class="k">if</span> <span class="n">asdu</span><span class="o">.</span><span class="n">header</span><span class="o">.</span><span class="n">cot</span><span class="o">.</span><span class="n">negative</span><span class="p">:</span>
+</span><span data-line="202">            <span class="k">raise</span> <span class="n">IEC104ProtocolError</span><span class="p">(</span>
+</span><span data-line="203">                <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">operation</span><span class="si">}</span><span class="s2"> was negatively confirmed by the outstation &quot;</span>
+</span><span data-line="204">                <span class="o">+</span> <span class="sa">f</span><span class="s2">&quot;(common address </span><span class="si">{</span><span class="n">asdu</span><span class="o">.</span><span class="n">header</span><span class="o">.</span><span class="n">common_address</span><span class="si">}</span><span class="s2">)&quot;</span>
+</span><span data-line="205">            <span class="p">)</span>
+</span><span data-line="206">        <span class="k">return</span> <span class="n">asdu</span>
+</span><span data-line="207">
+</span><span data-line="208">    <span class="k">def</span><span class="w"> </span><span class="nf">_activation_confirm</span><span class="p">(</span>
+</span><span data-line="209">        <span class="bp">self</span><span class="p">,</span> <span class="n">type_id</span><span class="p">:</span> <span class="n">TypeID</span><span class="p">,</span> <span class="n">operation</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">timeout</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span>
+</span><span data-line="210">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ASDU</span><span class="p">:</span>
+</span><span data-line="211"><span class="w">        </span><span class="sd">&quot;&quot;&quot;Wait for ``type_id``&#39;s ``ACTIVATION_CON``, raising on a negative</span>
+</span><span data-line="212"><span class="sd">        confirmation.&quot;&quot;&quot;</span>
+</span><span data-line="213">        <span class="n">confirm_cot</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">CauseOfTransmission</span><span class="o">.</span><span class="n">ACTIVATION_CON</span><span class="p">)</span>
+</span><span data-line="214">        <span class="n">asdu</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_await_match</span><span class="p">(</span>
+</span><span data-line="215">            <span class="n">timeout</span><span class="p">,</span>
+</span><span data-line="216">            <span class="k">lambda</span> <span class="n">a</span><span class="p">:</span> <span class="n">a</span><span class="o">.</span><span class="n">header</span><span class="o">.</span><span class="n">type_id</span> <span class="o">==</span> <span class="n">type_id</span> <span class="ow">and</span> <span class="n">a</span><span class="o">.</span><span class="n">header</span><span class="o">.</span><span class="n">cot</span><span class="o">.</span><span class="n">cause</span> <span class="o">==</span> <span class="n">confirm_cot</span><span class="p">,</span>
+</span><span data-line="217">        <span class="p">)</span>
+</span><span data-line="218">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_raise_if_negative</span><span class="p">(</span><span class="n">asdu</span><span class="p">,</span> <span class="n">operation</span><span class="p">)</span>
+</span><span data-line="219">
+</span><span data-line="220">    <span class="k">def</span><span class="w"> </span><span class="nf">_activation_sequence</span><span class="p">(</span>
+</span><span data-line="221">        <span class="bp">self</span><span class="p">,</span> <span class="n">type_id</span><span class="p">:</span> <span class="n">TypeID</span><span class="p">,</span> <span class="n">operation</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">timeout</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span>
+</span><span data-line="222">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Iterator</span><span class="p">[</span><span class="n">ASDU</span><span class="p">]:</span>
+</span><span data-line="223"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="224"><span class="sd">        Wait for ``type_id``&#39;s ``ACTIVATION_CON``, then yield every</span>
+</span><span data-line="225"><span class="sd">        subsequently received ASDU (monitor data - and any interleaved</span>
+</span><span data-line="226"><span class="sd">        spontaneous data - included) up to and including the matching</span>
+</span><span data-line="227"><span class="sd">        ``ACTIVATION_TERMINATION``.</span>
+</span><span data-line="228">
+</span><span data-line="229"><span class="sd">        Used by :meth:`general_interrogation`/:meth:`counter_interrogation`,</span>
+</span><span data-line="230"><span class="sd">        the only two request types in this API that have a data-streaming</span>
+</span><span data-line="231"><span class="sd">        phase between confirmation and termination.</span>
+</span><span data-line="232"><span class="sd">        &quot;&quot;&quot;</span>
+</span><span data-line="233">        <span class="n">deadline</span> <span class="o">=</span> <span class="kc">None</span> <span class="k">if</span> <span class="n">timeout</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">time</span><span class="o">.</span><span class="n">monotonic</span><span class="p">()</span> <span class="o">+</span> <span class="n">timeout</span>
+</span><span data-line="234">
+</span><span data-line="235">        <span class="k">def</span><span class="w"> </span><span class="nf">_remaining</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="236">            <span class="k">return</span> <span class="kc">None</span> <span class="k">if</span> <span class="n">deadline</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="nb">max</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">deadline</span> <span class="o">-</span> <span class="n">time</span><span class="o">.</span><span class="n">monotonic</span><span class="p">())</span>
+</span><span data-line="237">
+</span><span data-line="238">        <span class="k">yield</span> <span class="bp">self</span><span class="o">.</span><span class="n">_activation_confirm</span><span class="p">(</span><span class="n">type_id</span><span class="p">,</span> <span class="n">operation</span><span class="p">,</span> <span class="n">_remaining</span><span class="p">())</span>
+</span><span data-line="239">
+</span><span data-line="240">        <span class="n">terminate_cot</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">CauseOfTransmission</span><span class="o">.</span><span class="n">ACTIVATION_TERMINATION</span><span class="p">)</span>
+</span><span data-line="241">        <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+</span><span data-line="242">            <span class="n">asdu</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">recv_asdu</span><span class="p">(</span><span class="n">timeout</span><span class="o">=</span><span class="n">_remaining</span><span class="p">())</span>
+</span><span data-line="243">            <span class="k">yield</span> <span class="n">asdu</span>
+</span><span data-line="244">            <span class="k">if</span> <span class="n">asdu</span><span class="o">.</span><span class="n">header</span><span class="o">.</span><span class="n">type_id</span> <span class="o">==</span> <span class="n">type_id</span> <span class="ow">and</span> <span class="n">asdu</span><span class="o">.</span><span class="n">header</span><span class="o">.</span><span class="n">cot</span><span class="o">.</span><span class="n">cause</span> <span class="o">==</span> <span class="n">terminate_cot</span><span class="p">:</span>
+</span><span data-line="245">                <span class="k">return</span>
+</span><span data-line="246">
+</span><span data-line="247">    <span class="c1"># -- system commands ---------------------------------------------------- #</span>
+</span><span data-line="248">
+<div class="viewcode-block" id="IEC104_Master.general_interrogation">
+<a class="viewcode-back" href="../../../../protocols/iec104/api/master.html#icspacket.proto.iec104.master.IEC104_Master.general_interrogation">[docs]</a>
+</span><span data-line="249">    <span class="k">def</span><span class="w"> </span><span class="nf">general_interrogation</span><span class="p">(</span>
+</span><span data-line="250">        <span class="bp">self</span><span class="p">,</span>
+</span><span data-line="251">        <span class="n">common_address</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+</span><span data-line="252">        <span class="n">qoi</span><span class="p">:</span> <span class="n">QOI</span> <span class="o">=</span> <span class="n">QOI</span><span class="o">.</span><span class="n">STATION</span><span class="p">,</span>
+</span><span data-line="253">        <span class="n">timeout</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span data-line="254">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Iterator</span><span class="p">[</span><span class="n">ASDU</span><span class="p">]:</span>
+</span><span data-line="255"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="256"><span class="sd">        Issue a general (or group) interrogation and stream back the reply.</span>
+</span><span data-line="257">
+</span><span data-line="258"><span class="sd">        :param common_address: Target station address.</span>
+</span><span data-line="259"><span class="sd">        :type common_address: int</span>
+</span><span data-line="260"><span class="sd">        :param qoi: Interrogation scope (default: whole station).</span>
+</span><span data-line="261"><span class="sd">        :type qoi: ~icspacket.proto.iec104.const.QOI</span>
+</span><span data-line="262"><span class="sd">        :param timeout: Maximum seconds to wait for each successive reply</span>
+</span><span data-line="263"><span class="sd">            ASDU, or ``None`` to block forever.</span>
+</span><span data-line="264"><span class="sd">        :type timeout: float | None</span>
+</span><span data-line="265"><span class="sd">        :raises IEC104ProtocolError: If the activation is negatively confirmed.</span>
+</span><span data-line="266"><span class="sd">        :raises TimeoutError: If a reply does not arrive in time.</span>
+</span><span data-line="267"><span class="sd">        :return: An iterator yielding the ``ACTIVATION_CON`` first, then</span>
+</span><span data-line="268"><span class="sd">            every monitor-direction ASDU as it arrives, ending with (and</span>
+</span><span data-line="269"><span class="sd">            including) the ``ACTIVATION_TERMINATION`` ASDU.</span>
+</span><span data-line="270"><span class="sd">        :rtype: Iterator[~icspacket.proto.iec104.asdu.ASDU]</span>
+</span><span data-line="271"><span class="sd">        &quot;&quot;&quot;</span>
+</span><span data-line="272">        <span class="bp">self</span><span class="o">.</span><span class="n">_send</span><span class="p">(</span>
+</span><span data-line="273">            <span class="n">TypeID</span><span class="o">.</span><span class="n">C_IC_NA_1</span><span class="p">,</span>
+</span><span data-line="274">            <span class="n">common_address</span><span class="p">,</span>
+</span><span data-line="275">            <span class="n">InterrogationCommand</span><span class="p">(</span><span class="n">qualifier</span><span class="o">=</span><span class="n">qoi</span><span class="p">),</span>
+</span><span data-line="276">        <span class="p">)</span>
+</span><span data-line="277">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_activation_sequence</span><span class="p">(</span>
+</span><span data-line="278">            <span class="n">TypeID</span><span class="o">.</span><span class="n">C_IC_NA_1</span><span class="p">,</span> <span class="s2">&quot;General interrogation&quot;</span><span class="p">,</span> <span class="n">timeout</span>
+</span><span data-line="279">        <span class="p">)</span></div>
+
+</span><span data-line="280">
+<div class="viewcode-block" id="IEC104_Master.counter_interrogation">
+<a class="viewcode-back" href="../../../../protocols/iec104/api/master.html#icspacket.proto.iec104.master.IEC104_Master.counter_interrogation">[docs]</a>
+</span><span data-line="281">    <span class="k">def</span><span class="w"> </span><span class="nf">counter_interrogation</span><span class="p">(</span>
+</span><span data-line="282">        <span class="bp">self</span><span class="p">,</span>
+</span><span data-line="283">        <span class="n">common_address</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+</span><span data-line="284">        <span class="n">request</span><span class="p">:</span> <span class="n">QCC_Request</span> <span class="o">=</span> <span class="n">QCC_Request</span><span class="o">.</span><span class="n">GENERAL</span><span class="p">,</span>
+</span><span data-line="285">        <span class="n">freeze</span><span class="p">:</span> <span class="n">QCC_Freeze</span> <span class="o">=</span> <span class="n">QCC_Freeze</span><span class="o">.</span><span class="n">READ</span><span class="p">,</span>
+</span><span data-line="286">        <span class="n">timeout</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span data-line="287">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Iterator</span><span class="p">[</span><span class="n">ASDU</span><span class="p">]:</span>
+</span><span data-line="288"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="289"><span class="sd">        Issue a counter interrogation and stream back the reply.</span>
+</span><span data-line="290">
+</span><span data-line="291"><span class="sd">        :param common_address: Target station address.</span>
+</span><span data-line="292"><span class="sd">        :type common_address: int</span>
+</span><span data-line="293"><span class="sd">        :param request: Counter group to request (default: all groups).</span>
+</span><span data-line="294"><span class="sd">        :type request: ~icspacket.proto.iec104.const.QCC_Request</span>
+</span><span data-line="295"><span class="sd">        :param freeze: Freeze/reset behavior (default: read without freezing).</span>
+</span><span data-line="296"><span class="sd">        :type freeze: ~icspacket.proto.iec104.const.QCC_Freeze</span>
+</span><span data-line="297"><span class="sd">        :param timeout: Maximum seconds to wait for each successive reply</span>
+</span><span data-line="298"><span class="sd">            ASDU, or ``None`` to block forever.</span>
+</span><span data-line="299"><span class="sd">        :type timeout: float | None</span>
+</span><span data-line="300"><span class="sd">        :raises IEC104ProtocolError: If the activation is negatively confirmed.</span>
+</span><span data-line="301"><span class="sd">        :raises TimeoutError: If a reply does not arrive in time.</span>
+</span><span data-line="302"><span class="sd">        :return: An iterator yielding the ``ACTIVATION_CON`` first, then</span>
+</span><span data-line="303"><span class="sd">            every counter-value ASDU as it arrives, ending with (and</span>
+</span><span data-line="304"><span class="sd">            including) the ``ACTIVATION_TERMINATION`` ASDU.</span>
+</span><span data-line="305"><span class="sd">        :rtype: Iterator[~icspacket.proto.iec104.asdu.ASDU]</span>
+</span><span data-line="306"><span class="sd">        &quot;&quot;&quot;</span>
+</span><span data-line="307">        <span class="bp">self</span><span class="o">.</span><span class="n">_send</span><span class="p">(</span>
+</span><span data-line="308">            <span class="n">TypeID</span><span class="o">.</span><span class="n">C_CI_NA_1</span><span class="p">,</span>
+</span><span data-line="309">            <span class="n">common_address</span><span class="p">,</span>
+</span><span data-line="310">            <span class="n">CounterInterrogationCommand</span><span class="p">(</span><span class="n">qualifier</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">freeze</span><span class="p">)</span> <span class="o">|</span> <span class="nb">int</span><span class="p">(</span><span class="n">request</span><span class="p">)),</span>
+</span><span data-line="311">        <span class="p">)</span>
+</span><span data-line="312">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_activation_sequence</span><span class="p">(</span>
+</span><span data-line="313">            <span class="n">TypeID</span><span class="o">.</span><span class="n">C_CI_NA_1</span><span class="p">,</span> <span class="s2">&quot;Counter interrogation&quot;</span><span class="p">,</span> <span class="n">timeout</span>
+</span><span data-line="314">        <span class="p">)</span></div>
+
+</span><span data-line="315">
+<div class="viewcode-block" id="IEC104_Master.clock_sync">
+<a class="viewcode-back" href="../../../../protocols/iec104/api/master.html#icspacket.proto.iec104.master.IEC104_Master.clock_sync">[docs]</a>
+</span><span data-line="316">    <span class="k">def</span><span class="w"> </span><span class="nf">clock_sync</span><span class="p">(</span>
+</span><span data-line="317">        <span class="bp">self</span><span class="p">,</span>
+</span><span data-line="318">        <span class="n">common_address</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+</span><span data-line="319">        <span class="n">when</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span data-line="320">        <span class="n">timeout</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span data-line="321">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ASDU</span><span class="p">:</span>
+</span><span data-line="322"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="323"><span class="sd">        Synchronize the outstation&#39;s clock.</span>
+</span><span data-line="324">
+</span><span data-line="325"><span class="sd">        Unlike interrogation, a clock sync only ever produces a single</span>
+</span><span data-line="326"><span class="sd">        ``ACTIVATION_CON`` reply - there is no termination/streaming phase.</span>
+</span><span data-line="327">
+</span><span data-line="328"><span class="sd">        :param common_address: Target station address.</span>
+</span><span data-line="329"><span class="sd">        :type common_address: int</span>
+</span><span data-line="330"><span class="sd">        :param when: Timestamp to send; defaults to the current local time.</span>
+</span><span data-line="331"><span class="sd">        :type when: datetime.datetime | None</span>
+</span><span data-line="332"><span class="sd">        :param timeout: Maximum seconds to wait for the confirmation.</span>
+</span><span data-line="333"><span class="sd">        :type timeout: float | None</span>
+</span><span data-line="334"><span class="sd">        :raises IEC104ProtocolError: If the activation is negatively confirmed.</span>
+</span><span data-line="335"><span class="sd">        :raises TimeoutError: If the confirmation does not arrive in time.</span>
+</span><span data-line="336"><span class="sd">        :return: The ``ACTIVATION_CON`` ASDU (its decoded object carries the</span>
+</span><span data-line="337"><span class="sd">            timestamp actually applied, per some outstations&#39; behavior).</span>
+</span><span data-line="338"><span class="sd">        :rtype: ~icspacket.proto.iec104.asdu.ASDU</span>
+</span><span data-line="339"><span class="sd">        &quot;&quot;&quot;</span>
+</span><span data-line="340">        <span class="n">when</span> <span class="o">=</span> <span class="n">when</span> <span class="ow">or</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+</span><span data-line="341">        <span class="bp">self</span><span class="o">.</span><span class="n">_send</span><span class="p">(</span>
+</span><span data-line="342">            <span class="n">TypeID</span><span class="o">.</span><span class="n">C_CS_NA_1</span><span class="p">,</span>
+</span><span data-line="343">            <span class="n">common_address</span><span class="p">,</span>
+</span><span data-line="344">            <span class="n">ClockSynchronizationCommand</span><span class="p">(</span><span class="n">timestamp</span><span class="o">=</span><span class="n">CP56Time2a</span><span class="o">.</span><span class="n">from_datetime</span><span class="p">(</span><span class="n">when</span><span class="p">)),</span>
+</span><span data-line="345">        <span class="p">)</span>
+</span><span data-line="346">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_activation_confirm</span><span class="p">(</span><span class="n">TypeID</span><span class="o">.</span><span class="n">C_CS_NA_1</span><span class="p">,</span> <span class="s2">&quot;Clock synchronization&quot;</span><span class="p">,</span> <span class="n">timeout</span><span class="p">)</span></div>
+
+</span><span data-line="347">
+<div class="viewcode-block" id="IEC104_Master.test_command">
+<a class="viewcode-back" href="../../../../protocols/iec104/api/master.html#icspacket.proto.iec104.master.IEC104_Master.test_command">[docs]</a>
+</span><span data-line="348">    <span class="k">def</span><span class="w"> </span><span class="nf">test_command</span><span class="p">(</span>
+</span><span data-line="349">        <span class="bp">self</span><span class="p">,</span> <span class="n">common_address</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">timeout</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+</span><span data-line="350">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ASDU</span><span class="p">:</span>
+</span><span data-line="351"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="352"><span class="sd">        Send a test command (exercises the link without side effects).</span>
+</span><span data-line="353">
+</span><span data-line="354"><span class="sd">        :param common_address: Target station address.</span>
+</span><span data-line="355"><span class="sd">        :type common_address: int</span>
+</span><span data-line="356"><span class="sd">        :param timeout: Maximum seconds to wait for the confirmation.</span>
+</span><span data-line="357"><span class="sd">        :type timeout: float | None</span>
+</span><span data-line="358"><span class="sd">        :raises IEC104ProtocolError: If the activation is negatively confirmed,</span>
+</span><span data-line="359"><span class="sd">            or the confirmation&#39;s fixed test pattern does not match.</span>
+</span><span data-line="360"><span class="sd">        :raises TimeoutError: If the confirmation does not arrive in time.</span>
+</span><span data-line="361"><span class="sd">        :return: The ``ACTIVATION_CON`` ASDU.</span>
+</span><span data-line="362"><span class="sd">        :rtype: ~icspacket.proto.iec104.asdu.ASDU</span>
+</span><span data-line="363"><span class="sd">        &quot;&quot;&quot;</span>
+</span><span data-line="364">        <span class="bp">self</span><span class="o">.</span><span class="n">_send</span><span class="p">(</span><span class="n">TypeID</span><span class="o">.</span><span class="n">C_TS_NA_1</span><span class="p">,</span> <span class="n">common_address</span><span class="p">,</span> <span class="n">TestCommand</span><span class="p">())</span>
+</span><span data-line="365">        <span class="n">asdu</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_activation_confirm</span><span class="p">(</span><span class="n">TypeID</span><span class="o">.</span><span class="n">C_TS_NA_1</span><span class="p">,</span> <span class="s2">&quot;Test command&quot;</span><span class="p">,</span> <span class="n">timeout</span><span class="p">)</span>
+</span><span data-line="366">        <span class="n">fbp</span> <span class="o">=</span> <span class="n">asdu</span><span class="o">.</span><span class="n">decode_objects</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">element</span><span class="o">.</span><span class="n">fbp</span>
+</span><span data-line="367">        <span class="k">if</span> <span class="n">fbp</span> <span class="o">!=</span> <span class="mh">0x55AA</span><span class="p">:</span>
+</span><span data-line="368">            <span class="k">raise</span> <span class="n">IEC104ProtocolError</span><span class="p">(</span>
+</span><span data-line="369">                <span class="s2">&quot;Test command confirmation carried an unexpected fixed test &quot;</span>
+</span><span data-line="370">                <span class="o">+</span> <span class="sa">f</span><span class="s2">&quot;bit pattern: </span><span class="si">{</span><span class="n">fbp</span><span class="si">:</span><span class="s2">#06x</span><span class="si">}</span><span class="s2"> (expected 0x55aa)&quot;</span>
+</span><span data-line="371">            <span class="p">)</span>
+</span><span data-line="372">        <span class="k">return</span> <span class="n">asdu</span></div>
+
+</span><span data-line="373">
+<div class="viewcode-block" id="IEC104_Master.reset_process">
+<a class="viewcode-back" href="../../../../protocols/iec104/api/master.html#icspacket.proto.iec104.master.IEC104_Master.reset_process">[docs]</a>
+</span><span data-line="374">    <span class="k">def</span><span class="w"> </span><span class="nf">reset_process</span><span class="p">(</span>
+</span><span data-line="375">        <span class="bp">self</span><span class="p">,</span>
+</span><span data-line="376">        <span class="n">common_address</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+</span><span data-line="377">        <span class="n">qualifier</span><span class="p">:</span> <span class="n">QRP</span> <span class="o">=</span> <span class="n">QRP</span><span class="o">.</span><span class="n">GENERAL_RESET</span><span class="p">,</span>
+</span><span data-line="378">        <span class="n">timeout</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span data-line="379">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ASDU</span><span class="p">:</span>
+</span><span data-line="380"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="381"><span class="sd">        Send a reset process command.</span>
+</span><span data-line="382">
+</span><span data-line="383"><span class="sd">        :param common_address: Target station address.</span>
+</span><span data-line="384"><span class="sd">        :type common_address: int</span>
+</span><span data-line="385"><span class="sd">        :param qualifier: Reset scope (default: reset the entire process).</span>
+</span><span data-line="386"><span class="sd">        :type qualifier: ~icspacket.proto.iec104.const.QRP</span>
+</span><span data-line="387"><span class="sd">        :param timeout: Maximum seconds to wait for the confirmation.</span>
+</span><span data-line="388"><span class="sd">        :type timeout: float | None</span>
+</span><span data-line="389"><span class="sd">        :raises IEC104ProtocolError: If the activation is negatively confirmed.</span>
+</span><span data-line="390"><span class="sd">        :raises TimeoutError: If the confirmation does not arrive in time.</span>
+</span><span data-line="391"><span class="sd">        :return: The ``ACTIVATION_CON`` ASDU.</span>
+</span><span data-line="392"><span class="sd">        :rtype: ~icspacket.proto.iec104.asdu.ASDU</span>
+</span><span data-line="393"><span class="sd">        &quot;&quot;&quot;</span>
+</span><span data-line="394">        <span class="bp">self</span><span class="o">.</span><span class="n">_send</span><span class="p">(</span>
+</span><span data-line="395">            <span class="n">TypeID</span><span class="o">.</span><span class="n">C_RP_NA_1</span><span class="p">,</span> <span class="n">common_address</span><span class="p">,</span> <span class="n">ResetProcessCommand</span><span class="p">(</span><span class="n">qualifier</span><span class="o">=</span><span class="n">qualifier</span><span class="p">)</span>
+</span><span data-line="396">        <span class="p">)</span>
+</span><span data-line="397">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_activation_confirm</span><span class="p">(</span><span class="n">TypeID</span><span class="o">.</span><span class="n">C_RP_NA_1</span><span class="p">,</span> <span class="s2">&quot;Reset process&quot;</span><span class="p">,</span> <span class="n">timeout</span><span class="p">)</span></div>
+
+</span><span data-line="398">
+<div class="viewcode-block" id="IEC104_Master.read">
+<a class="viewcode-back" href="../../../../protocols/iec104/api/master.html#icspacket.proto.iec104.master.IEC104_Master.read">[docs]</a>
+</span><span data-line="399">    <span class="k">def</span><span class="w"> </span><span class="nf">read</span><span class="p">(</span>
+</span><span data-line="400">        <span class="bp">self</span><span class="p">,</span> <span class="n">common_address</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">ioa</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">timeout</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+</span><span data-line="401">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ASDU</span><span class="p">:</span>
+</span><span data-line="402"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="403"><span class="sd">        Poll the current value of a single information object.</span>
+</span><span data-line="404">
+</span><span data-line="405"><span class="sd">        :param common_address: Target station address.</span>
+</span><span data-line="406"><span class="sd">        :type common_address: int</span>
+</span><span data-line="407"><span class="sd">        :param ioa: Information Object Address to read.</span>
+</span><span data-line="408"><span class="sd">        :type ioa: int</span>
+</span><span data-line="409"><span class="sd">        :param timeout: Maximum seconds to wait for the reply.</span>
+</span><span data-line="410"><span class="sd">        :type timeout: float | None</span>
+</span><span data-line="411"><span class="sd">        :raises IEC104ProtocolError: If the read is negatively confirmed</span>
+</span><span data-line="412"><span class="sd">            (e.g. unknown IOA).</span>
+</span><span data-line="413"><span class="sd">        :raises TimeoutError: If the reply does not arrive in time.</span>
+</span><span data-line="414"><span class="sd">        :return: The reply ASDU (its type depends on the point being read;</span>
+</span><span data-line="415"><span class="sd">            decode with :meth:`~icspacket.proto.iec104.asdu.ASDU.decode_objects`).</span>
+</span><span data-line="416"><span class="sd">        :rtype: ~icspacket.proto.iec104.asdu.ASDU</span>
+</span><span data-line="417"><span class="sd">        &quot;&quot;&quot;</span>
+</span><span data-line="418">        <span class="bp">self</span><span class="o">.</span><span class="n">_send</span><span class="p">(</span>
+</span><span data-line="419">            <span class="n">TypeID</span><span class="o">.</span><span class="n">C_RD_NA_1</span><span class="p">,</span>
+</span><span data-line="420">            <span class="n">common_address</span><span class="p">,</span>
+</span><span data-line="421">            <span class="n">ReadCommand</span><span class="p">(),</span>
+</span><span data-line="422">            <span class="n">ioa</span><span class="o">=</span><span class="n">ioa</span><span class="p">,</span>
+</span><span data-line="423">            <span class="n">cot</span><span class="o">=</span><span class="n">CauseOfTransmission</span><span class="o">.</span><span class="n">REQUEST</span><span class="p">,</span>
+</span><span data-line="424">        <span class="p">)</span>
+</span><span data-line="425">        <span class="n">request_cot</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">CauseOfTransmission</span><span class="o">.</span><span class="n">REQUEST</span><span class="p">)</span>
+</span><span data-line="426">        <span class="n">asdu</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_await_match</span><span class="p">(</span>
+</span><span data-line="427">            <span class="n">timeout</span><span class="p">,</span>
+</span><span data-line="428">            <span class="k">lambda</span> <span class="n">a</span><span class="p">:</span> <span class="n">a</span><span class="o">.</span><span class="n">header</span><span class="o">.</span><span class="n">common_address</span> <span class="o">==</span> <span class="n">common_address</span>
+</span><span data-line="429">            <span class="ow">and</span> <span class="n">a</span><span class="o">.</span><span class="n">header</span><span class="o">.</span><span class="n">cot</span><span class="o">.</span><span class="n">cause</span> <span class="o">==</span> <span class="n">request_cot</span>
+</span><span data-line="430">            <span class="ow">and</span> <span class="nb">any</span><span class="p">(</span><span class="n">o</span><span class="o">.</span><span class="n">ioa</span> <span class="o">==</span> <span class="n">ioa</span> <span class="k">for</span> <span class="n">o</span> <span class="ow">in</span> <span class="n">a</span><span class="o">.</span><span class="n">decode_objects</span><span class="p">()),</span>
+</span><span data-line="431">        <span class="p">)</span>
+</span><span data-line="432">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_raise_if_negative</span><span class="p">(</span><span class="n">asdu</span><span class="p">,</span> <span class="s2">&quot;Read command&quot;</span><span class="p">)</span></div>
+
+</span><span data-line="433">
+</span><span data-line="434">    <span class="c1"># -- control-direction commands ------------------------------------------ #</span>
+</span><span data-line="435">
+<div class="viewcode-block" id="IEC104_Master.single_command">
+<a class="viewcode-back" href="../../../../protocols/iec104/api/master.html#icspacket.proto.iec104.master.IEC104_Master.single_command">[docs]</a>
+</span><span data-line="436">    <span class="k">def</span><span class="w"> </span><span class="nf">single_command</span><span class="p">(</span>
+</span><span data-line="437">        <span class="bp">self</span><span class="p">,</span>
+</span><span data-line="438">        <span class="n">common_address</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+</span><span data-line="439">        <span class="n">ioa</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+</span><span data-line="440">        <span class="n">value</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span>
+</span><span data-line="441">        <span class="o">*</span><span class="p">,</span>
+</span><span data-line="442">        <span class="n">select</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span data-line="443">        <span class="n">qu</span><span class="p">:</span> <span class="n">QOC</span> <span class="o">=</span> <span class="n">QOC</span><span class="o">.</span><span class="n">NO_ADDITIONAL_DEFINITION</span><span class="p">,</span>
+</span><span data-line="444">        <span class="n">timeout</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span data-line="445">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ASDU</span><span class="p">:</span>
+</span><span data-line="446"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="447"><span class="sd">        Send a single command (on/off).</span>
+</span><span data-line="448">
+</span><span data-line="449"><span class="sd">        Only performs one step of the select-before-operate sequence; call</span>
+</span><span data-line="450"><span class="sd">        twice (``select=True`` then ``select=False``) to select then execute.</span>
+</span><span data-line="451">
+</span><span data-line="452"><span class="sd">        :param common_address: Target station address.</span>
+</span><span data-line="453"><span class="sd">        :type common_address: int</span>
+</span><span data-line="454"><span class="sd">        :param ioa: Information Object Address to command.</span>
+</span><span data-line="455"><span class="sd">        :type ioa: int</span>
+</span><span data-line="456"><span class="sd">        :param value: Commanded state.</span>
+</span><span data-line="457"><span class="sd">        :type value: bool</span>
+</span><span data-line="458"><span class="sd">        :param select: ``True`` to select rather than directly execute.</span>
+</span><span data-line="459"><span class="sd">        :type select: bool</span>
+</span><span data-line="460"><span class="sd">        :param qu: Qualifier of command (pulse duration behavior).</span>
+</span><span data-line="461"><span class="sd">        :type qu: ~icspacket.proto.iec104.const.QOC</span>
+</span><span data-line="462"><span class="sd">        :param timeout: Maximum seconds to wait for the confirmation.</span>
+</span><span data-line="463"><span class="sd">        :type timeout: float | None</span>
+</span><span data-line="464"><span class="sd">        :raises IEC104ProtocolError: If the activation is negatively confirmed.</span>
+</span><span data-line="465"><span class="sd">        :raises TimeoutError: If the confirmation does not arrive in time.</span>
+</span><span data-line="466"><span class="sd">        :return: The ``ACTIVATION_CON`` ASDU.</span>
+</span><span data-line="467"><span class="sd">        :rtype: ~icspacket.proto.iec104.asdu.ASDU</span>
+</span><span data-line="468"><span class="sd">        &quot;&quot;&quot;</span>
+</span><span data-line="469">        <span class="bp">self</span><span class="o">.</span><span class="n">_send</span><span class="p">(</span>
+</span><span data-line="470">            <span class="n">TypeID</span><span class="o">.</span><span class="n">C_SC_NA_1</span><span class="p">,</span>
+</span><span data-line="471">            <span class="n">common_address</span><span class="p">,</span>
+</span><span data-line="472">            <span class="n">SingleCommand</span><span class="p">(</span><span class="n">command</span><span class="o">=</span><span class="n">SCO</span><span class="p">(</span><span class="n">se</span><span class="o">=</span><span class="n">select</span><span class="p">,</span> <span class="n">qu</span><span class="o">=</span><span class="n">qu</span><span class="p">,</span> <span class="n">scs</span><span class="o">=</span><span class="n">value</span><span class="p">)),</span>
+</span><span data-line="473">            <span class="n">ioa</span><span class="o">=</span><span class="n">ioa</span><span class="p">,</span>
+</span><span data-line="474">        <span class="p">)</span>
+</span><span data-line="475">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_activation_confirm</span><span class="p">(</span><span class="n">TypeID</span><span class="o">.</span><span class="n">C_SC_NA_1</span><span class="p">,</span> <span class="s2">&quot;Single command&quot;</span><span class="p">,</span> <span class="n">timeout</span><span class="p">)</span></div>
+
+</span><span data-line="476">
+<div class="viewcode-block" id="IEC104_Master.double_command">
+<a class="viewcode-back" href="../../../../protocols/iec104/api/master.html#icspacket.proto.iec104.master.IEC104_Master.double_command">[docs]</a>
+</span><span data-line="477">    <span class="k">def</span><span class="w"> </span><span class="nf">double_command</span><span class="p">(</span>
+</span><span data-line="478">        <span class="bp">self</span><span class="p">,</span>
+</span><span data-line="479">        <span class="n">common_address</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+</span><span data-line="480">        <span class="n">ioa</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+</span><span data-line="481">        <span class="n">value</span><span class="p">:</span> <span class="n">DoublePointValue</span><span class="p">,</span>
+</span><span data-line="482">        <span class="o">*</span><span class="p">,</span>
+</span><span data-line="483">        <span class="n">select</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span data-line="484">        <span class="n">qu</span><span class="p">:</span> <span class="n">QOC</span> <span class="o">=</span> <span class="n">QOC</span><span class="o">.</span><span class="n">NO_ADDITIONAL_DEFINITION</span><span class="p">,</span>
+</span><span data-line="485">        <span class="n">timeout</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span data-line="486">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ASDU</span><span class="p">:</span>
+</span><span data-line="487"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="488"><span class="sd">        Send a double command (on/off/intermediate).</span>
+</span><span data-line="489">
+</span><span data-line="490"><span class="sd">        Only performs one step of the select-before-operate sequence; call</span>
+</span><span data-line="491"><span class="sd">        twice (``select=True`` then ``select=False``) to select then execute.</span>
+</span><span data-line="492">
+</span><span data-line="493"><span class="sd">        :param common_address: Target station address.</span>
+</span><span data-line="494"><span class="sd">        :type common_address: int</span>
+</span><span data-line="495"><span class="sd">        :param ioa: Information Object Address to command.</span>
+</span><span data-line="496"><span class="sd">        :type ioa: int</span>
+</span><span data-line="497"><span class="sd">        :param value: Commanded state.</span>
+</span><span data-line="498"><span class="sd">        :type value: ~icspacket.proto.iec104.const.DoublePointValue</span>
+</span><span data-line="499"><span class="sd">        :param select: ``True`` to select rather than directly execute.</span>
+</span><span data-line="500"><span class="sd">        :type select: bool</span>
+</span><span data-line="501"><span class="sd">        :param qu: Qualifier of command (pulse duration behavior).</span>
+</span><span data-line="502"><span class="sd">        :type qu: ~icspacket.proto.iec104.const.QOC</span>
+</span><span data-line="503"><span class="sd">        :param timeout: Maximum seconds to wait for the confirmation.</span>
+</span><span data-line="504"><span class="sd">        :type timeout: float | None</span>
+</span><span data-line="505"><span class="sd">        :raises IEC104ProtocolError: If the activation is negatively confirmed.</span>
+</span><span data-line="506"><span class="sd">        :raises TimeoutError: If the confirmation does not arrive in time.</span>
+</span><span data-line="507"><span class="sd">        :return: The ``ACTIVATION_CON`` ASDU.</span>
+</span><span data-line="508"><span class="sd">        :rtype: ~icspacket.proto.iec104.asdu.ASDU</span>
+</span><span data-line="509"><span class="sd">        &quot;&quot;&quot;</span>
+</span><span data-line="510">        <span class="bp">self</span><span class="o">.</span><span class="n">_send</span><span class="p">(</span>
+</span><span data-line="511">            <span class="n">TypeID</span><span class="o">.</span><span class="n">C_DC_NA_1</span><span class="p">,</span>
+</span><span data-line="512">            <span class="n">common_address</span><span class="p">,</span>
+</span><span data-line="513">            <span class="n">DoubleCommand</span><span class="p">(</span><span class="n">command</span><span class="o">=</span><span class="n">DCO</span><span class="p">(</span><span class="n">se</span><span class="o">=</span><span class="n">select</span><span class="p">,</span> <span class="n">qu</span><span class="o">=</span><span class="n">qu</span><span class="p">,</span> <span class="n">dcs</span><span class="o">=</span><span class="n">value</span><span class="p">)),</span>
+</span><span data-line="514">            <span class="n">ioa</span><span class="o">=</span><span class="n">ioa</span><span class="p">,</span>
+</span><span data-line="515">        <span class="p">)</span>
+</span><span data-line="516">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_activation_confirm</span><span class="p">(</span><span class="n">TypeID</span><span class="o">.</span><span class="n">C_DC_NA_1</span><span class="p">,</span> <span class="s2">&quot;Double command&quot;</span><span class="p">,</span> <span class="n">timeout</span><span class="p">)</span></div>
+
+</span><span data-line="517">
+<div class="viewcode-block" id="IEC104_Master.step_command">
+<a class="viewcode-back" href="../../../../protocols/iec104/api/master.html#icspacket.proto.iec104.master.IEC104_Master.step_command">[docs]</a>
+</span><span data-line="518">    <span class="k">def</span><span class="w"> </span><span class="nf">step_command</span><span class="p">(</span>
+</span><span data-line="519">        <span class="bp">self</span><span class="p">,</span>
+</span><span data-line="520">        <span class="n">common_address</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+</span><span data-line="521">        <span class="n">ioa</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+</span><span data-line="522">        <span class="n">value</span><span class="p">:</span> <span class="n">StepCommandValue</span><span class="p">,</span>
+</span><span data-line="523">        <span class="o">*</span><span class="p">,</span>
+</span><span data-line="524">        <span class="n">select</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span data-line="525">        <span class="n">qu</span><span class="p">:</span> <span class="n">QOC</span> <span class="o">=</span> <span class="n">QOC</span><span class="o">.</span><span class="n">NO_ADDITIONAL_DEFINITION</span><span class="p">,</span>
+</span><span data-line="526">        <span class="n">timeout</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span data-line="527">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ASDU</span><span class="p">:</span>
+</span><span data-line="528"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="529"><span class="sd">        Send a regulating step command (step up/down).</span>
+</span><span data-line="530">
+</span><span data-line="531"><span class="sd">        Only performs one step of the select-before-operate sequence; call</span>
+</span><span data-line="532"><span class="sd">        twice (``select=True`` then ``select=False``) to select then execute.</span>
+</span><span data-line="533">
+</span><span data-line="534"><span class="sd">        :param common_address: Target station address.</span>
+</span><span data-line="535"><span class="sd">        :type common_address: int</span>
+</span><span data-line="536"><span class="sd">        :param ioa: Information Object Address to command.</span>
+</span><span data-line="537"><span class="sd">        :type ioa: int</span>
+</span><span data-line="538"><span class="sd">        :param value: Commanded step direction.</span>
+</span><span data-line="539"><span class="sd">        :type value: ~icspacket.proto.iec104.const.StepCommandValue</span>
+</span><span data-line="540"><span class="sd">        :param select: ``True`` to select rather than directly execute.</span>
+</span><span data-line="541"><span class="sd">        :type select: bool</span>
+</span><span data-line="542"><span class="sd">        :param qu: Qualifier of command (pulse duration behavior).</span>
+</span><span data-line="543"><span class="sd">        :type qu: ~icspacket.proto.iec104.const.QOC</span>
+</span><span data-line="544"><span class="sd">        :param timeout: Maximum seconds to wait for the confirmation.</span>
+</span><span data-line="545"><span class="sd">        :type timeout: float | None</span>
+</span><span data-line="546"><span class="sd">        :raises IEC104ProtocolError: If the activation is negatively confirmed.</span>
+</span><span data-line="547"><span class="sd">        :raises TimeoutError: If the confirmation does not arrive in time.</span>
+</span><span data-line="548"><span class="sd">        :return: The ``ACTIVATION_CON`` ASDU.</span>
+</span><span data-line="549"><span class="sd">        :rtype: ~icspacket.proto.iec104.asdu.ASDU</span>
+</span><span data-line="550"><span class="sd">        &quot;&quot;&quot;</span>
+</span><span data-line="551">        <span class="bp">self</span><span class="o">.</span><span class="n">_send</span><span class="p">(</span>
+</span><span data-line="552">            <span class="n">TypeID</span><span class="o">.</span><span class="n">C_RC_NA_1</span><span class="p">,</span>
+</span><span data-line="553">            <span class="n">common_address</span><span class="p">,</span>
+</span><span data-line="554">            <span class="n">StepCommand</span><span class="p">(</span><span class="n">command</span><span class="o">=</span><span class="n">RCO</span><span class="p">(</span><span class="n">se</span><span class="o">=</span><span class="n">select</span><span class="p">,</span> <span class="n">qu</span><span class="o">=</span><span class="n">qu</span><span class="p">,</span> <span class="n">rcs</span><span class="o">=</span><span class="n">value</span><span class="p">)),</span>
+</span><span data-line="555">            <span class="n">ioa</span><span class="o">=</span><span class="n">ioa</span><span class="p">,</span>
+</span><span data-line="556">        <span class="p">)</span>
+</span><span data-line="557">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_activation_confirm</span><span class="p">(</span><span class="n">TypeID</span><span class="o">.</span><span class="n">C_RC_NA_1</span><span class="p">,</span> <span class="s2">&quot;Regulating step command&quot;</span><span class="p">,</span> <span class="n">timeout</span><span class="p">)</span></div>
+
+</span><span data-line="558">
+<div class="viewcode-block" id="IEC104_Master.setpoint_command_normalized">
+<a class="viewcode-back" href="../../../../protocols/iec104/api/master.html#icspacket.proto.iec104.master.IEC104_Master.setpoint_command_normalized">[docs]</a>
+</span><span data-line="559">    <span class="k">def</span><span class="w"> </span><span class="nf">setpoint_command_normalized</span><span class="p">(</span>
+</span><span data-line="560">        <span class="bp">self</span><span class="p">,</span>
+</span><span data-line="561">        <span class="n">common_address</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+</span><span data-line="562">        <span class="n">ioa</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+</span><span data-line="563">        <span class="n">value</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+</span><span data-line="564">        <span class="o">*</span><span class="p">,</span>
+</span><span data-line="565">        <span class="n">select</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span data-line="566">        <span class="n">ql</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+</span><span data-line="567">        <span class="n">timeout</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span data-line="568">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ASDU</span><span class="p">:</span>
+</span><span data-line="569"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="570"><span class="sd">        Send a set-point command with a normalized (fixed-point) value.</span>
+</span><span data-line="571">
+</span><span data-line="572"><span class="sd">        :param common_address: Target station address.</span>
+</span><span data-line="573"><span class="sd">        :type common_address: int</span>
+</span><span data-line="574"><span class="sd">        :param ioa: Information Object Address to command.</span>
+</span><span data-line="575"><span class="sd">        :type ioa: int</span>
+</span><span data-line="576"><span class="sd">        :param value: Normalized value, see</span>
+</span><span data-line="577"><span class="sd">            :class:`~icspacket.proto.iec104.objects.elements.NVA`.</span>
+</span><span data-line="578"><span class="sd">        :type value: int</span>
+</span><span data-line="579"><span class="sd">        :param select: ``True`` to select rather than directly execute.</span>
+</span><span data-line="580"><span class="sd">        :type select: bool</span>
+</span><span data-line="581"><span class="sd">        :param ql: Qualifier value (``0``: default).</span>
+</span><span data-line="582"><span class="sd">        :type ql: int</span>
+</span><span data-line="583"><span class="sd">        :param timeout: Maximum seconds to wait for the confirmation.</span>
+</span><span data-line="584"><span class="sd">        :type timeout: float | None</span>
+</span><span data-line="585"><span class="sd">        :raises IEC104ProtocolError: If the activation is negatively confirmed.</span>
+</span><span data-line="586"><span class="sd">        :raises TimeoutError: If the confirmation does not arrive in time.</span>
+</span><span data-line="587"><span class="sd">        :return: The ``ACTIVATION_CON`` ASDU.</span>
+</span><span data-line="588"><span class="sd">        :rtype: ~icspacket.proto.iec104.asdu.ASDU</span>
+</span><span data-line="589"><span class="sd">        &quot;&quot;&quot;</span>
+</span><span data-line="590">        <span class="bp">self</span><span class="o">.</span><span class="n">_send</span><span class="p">(</span>
+</span><span data-line="591">            <span class="n">TypeID</span><span class="o">.</span><span class="n">C_SE_NA_1</span><span class="p">,</span>
+</span><span data-line="592">            <span class="n">common_address</span><span class="p">,</span>
+</span><span data-line="593">            <span class="n">SetpointCommandNormalized</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="n">value</span><span class="p">,</span> <span class="n">qualifier</span><span class="o">=</span><span class="n">QOS</span><span class="p">(</span><span class="n">se</span><span class="o">=</span><span class="n">select</span><span class="p">,</span> <span class="n">ql</span><span class="o">=</span><span class="n">ql</span><span class="p">)),</span>
+</span><span data-line="594">            <span class="n">ioa</span><span class="o">=</span><span class="n">ioa</span><span class="p">,</span>
+</span><span data-line="595">        <span class="p">)</span>
+</span><span data-line="596">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_activation_confirm</span><span class="p">(</span>
+</span><span data-line="597">            <span class="n">TypeID</span><span class="o">.</span><span class="n">C_SE_NA_1</span><span class="p">,</span> <span class="s2">&quot;Set-point command (normalized)&quot;</span><span class="p">,</span> <span class="n">timeout</span>
+</span><span data-line="598">        <span class="p">)</span></div>
+
+</span><span data-line="599">
+<div class="viewcode-block" id="IEC104_Master.setpoint_command_scaled">
+<a class="viewcode-back" href="../../../../protocols/iec104/api/master.html#icspacket.proto.iec104.master.IEC104_Master.setpoint_command_scaled">[docs]</a>
+</span><span data-line="600">    <span class="k">def</span><span class="w"> </span><span class="nf">setpoint_command_scaled</span><span class="p">(</span>
+</span><span data-line="601">        <span class="bp">self</span><span class="p">,</span>
+</span><span data-line="602">        <span class="n">common_address</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+</span><span data-line="603">        <span class="n">ioa</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+</span><span data-line="604">        <span class="n">value</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+</span><span data-line="605">        <span class="o">*</span><span class="p">,</span>
+</span><span data-line="606">        <span class="n">select</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span data-line="607">        <span class="n">ql</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+</span><span data-line="608">        <span class="n">timeout</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span data-line="609">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ASDU</span><span class="p">:</span>
+</span><span data-line="610"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="611"><span class="sd">        Send a set-point command with a scaled (16-bit signed integer) value.</span>
+</span><span data-line="612">
+</span><span data-line="613"><span class="sd">        :param common_address: Target station address.</span>
+</span><span data-line="614"><span class="sd">        :type common_address: int</span>
+</span><span data-line="615"><span class="sd">        :param ioa: Information Object Address to command.</span>
+</span><span data-line="616"><span class="sd">        :type ioa: int</span>
+</span><span data-line="617"><span class="sd">        :param value: Scaled value, see</span>
+</span><span data-line="618"><span class="sd">            :class:`~icspacket.proto.iec104.objects.elements.SVA`.</span>
+</span><span data-line="619"><span class="sd">        :type value: int</span>
+</span><span data-line="620"><span class="sd">        :param select: ``True`` to select rather than directly execute.</span>
+</span><span data-line="621"><span class="sd">        :type select: bool</span>
+</span><span data-line="622"><span class="sd">        :param ql: Qualifier value (``0``: default).</span>
+</span><span data-line="623"><span class="sd">        :type ql: int</span>
+</span><span data-line="624"><span class="sd">        :param timeout: Maximum seconds to wait for the confirmation.</span>
+</span><span data-line="625"><span class="sd">        :type timeout: float | None</span>
+</span><span data-line="626"><span class="sd">        :raises IEC104ProtocolError: If the activation is negatively confirmed.</span>
+</span><span data-line="627"><span class="sd">        :raises TimeoutError: If the confirmation does not arrive in time.</span>
+</span><span data-line="628"><span class="sd">        :return: The ``ACTIVATION_CON`` ASDU.</span>
+</span><span data-line="629"><span class="sd">        :rtype: ~icspacket.proto.iec104.asdu.ASDU</span>
+</span><span data-line="630"><span class="sd">        &quot;&quot;&quot;</span>
+</span><span data-line="631">        <span class="bp">self</span><span class="o">.</span><span class="n">_send</span><span class="p">(</span>
+</span><span data-line="632">            <span class="n">TypeID</span><span class="o">.</span><span class="n">C_SE_NB_1</span><span class="p">,</span>
+</span><span data-line="633">            <span class="n">common_address</span><span class="p">,</span>
+</span><span data-line="634">            <span class="n">SetpointCommandScaled</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="n">value</span><span class="p">,</span> <span class="n">qualifier</span><span class="o">=</span><span class="n">QOS</span><span class="p">(</span><span class="n">se</span><span class="o">=</span><span class="n">select</span><span class="p">,</span> <span class="n">ql</span><span class="o">=</span><span class="n">ql</span><span class="p">)),</span>
+</span><span data-line="635">            <span class="n">ioa</span><span class="o">=</span><span class="n">ioa</span><span class="p">,</span>
+</span><span data-line="636">        <span class="p">)</span>
+</span><span data-line="637">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_activation_confirm</span><span class="p">(</span>
+</span><span data-line="638">            <span class="n">TypeID</span><span class="o">.</span><span class="n">C_SE_NB_1</span><span class="p">,</span> <span class="s2">&quot;Set-point command (scaled)&quot;</span><span class="p">,</span> <span class="n">timeout</span>
+</span><span data-line="639">        <span class="p">)</span></div>
+
+</span><span data-line="640">
+<div class="viewcode-block" id="IEC104_Master.setpoint_command_short">
+<a class="viewcode-back" href="../../../../protocols/iec104/api/master.html#icspacket.proto.iec104.master.IEC104_Master.setpoint_command_short">[docs]</a>
+</span><span data-line="641">    <span class="k">def</span><span class="w"> </span><span class="nf">setpoint_command_short</span><span class="p">(</span>
+</span><span data-line="642">        <span class="bp">self</span><span class="p">,</span>
+</span><span data-line="643">        <span class="n">common_address</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+</span><span data-line="644">        <span class="n">ioa</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+</span><span data-line="645">        <span class="n">value</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+</span><span data-line="646">        <span class="o">*</span><span class="p">,</span>
+</span><span data-line="647">        <span class="n">select</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span data-line="648">        <span class="n">ql</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+</span><span data-line="649">        <span class="n">timeout</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span data-line="650">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ASDU</span><span class="p">:</span>
+</span><span data-line="651"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="652"><span class="sd">        Send a set-point command with a short floating point value.</span>
+</span><span data-line="653">
+</span><span data-line="654"><span class="sd">        :param common_address: Target station address.</span>
+</span><span data-line="655"><span class="sd">        :type common_address: int</span>
+</span><span data-line="656"><span class="sd">        :param ioa: Information Object Address to command.</span>
+</span><span data-line="657"><span class="sd">        :type ioa: int</span>
+</span><span data-line="658"><span class="sd">        :param value: IEEE 754 single-precision value, see</span>
+</span><span data-line="659"><span class="sd">            :class:`~icspacket.proto.iec104.objects.elements.R32`.</span>
+</span><span data-line="660"><span class="sd">        :type value: float</span>
+</span><span data-line="661"><span class="sd">        :param select: ``True`` to select rather than directly execute.</span>
+</span><span data-line="662"><span class="sd">        :type select: bool</span>
+</span><span data-line="663"><span class="sd">        :param ql: Qualifier value (``0``: default).</span>
+</span><span data-line="664"><span class="sd">        :type ql: int</span>
+</span><span data-line="665"><span class="sd">        :param timeout: Maximum seconds to wait for the confirmation.</span>
+</span><span data-line="666"><span class="sd">        :type timeout: float | None</span>
+</span><span data-line="667"><span class="sd">        :raises IEC104ProtocolError: If the activation is negatively confirmed.</span>
+</span><span data-line="668"><span class="sd">        :raises TimeoutError: If the confirmation does not arrive in time.</span>
+</span><span data-line="669"><span class="sd">        :return: The ``ACTIVATION_CON`` ASDU.</span>
+</span><span data-line="670"><span class="sd">        :rtype: ~icspacket.proto.iec104.asdu.ASDU</span>
+</span><span data-line="671"><span class="sd">        &quot;&quot;&quot;</span>
+</span><span data-line="672">        <span class="bp">self</span><span class="o">.</span><span class="n">_send</span><span class="p">(</span>
+</span><span data-line="673">            <span class="n">TypeID</span><span class="o">.</span><span class="n">C_SE_NC_1</span><span class="p">,</span>
+</span><span data-line="674">            <span class="n">common_address</span><span class="p">,</span>
+</span><span data-line="675">            <span class="n">SetpointCommandShort</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="n">value</span><span class="p">,</span> <span class="n">qualifier</span><span class="o">=</span><span class="n">QOS</span><span class="p">(</span><span class="n">se</span><span class="o">=</span><span class="n">select</span><span class="p">,</span> <span class="n">ql</span><span class="o">=</span><span class="n">ql</span><span class="p">)),</span>
+</span><span data-line="676">            <span class="n">ioa</span><span class="o">=</span><span class="n">ioa</span><span class="p">,</span>
+</span><span data-line="677">        <span class="p">)</span>
+</span><span data-line="678">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_activation_confirm</span><span class="p">(</span>
+</span><span data-line="679">            <span class="n">TypeID</span><span class="o">.</span><span class="n">C_SE_NC_1</span><span class="p">,</span> <span class="s2">&quot;Set-point command (short)&quot;</span><span class="p">,</span> <span class="n">timeout</span>
+</span><span data-line="680">        <span class="p">)</span></div>
+</div>
+
+</span></pre></div>
+        </article><button class="back-to-top" type="button">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+  </svg>
+  <span>Back to top</span>
+</button><div class="navigation flex print:hidden"></div></div>
+    </div>
+  </main>
+</div>
+<footer class="sy-foot">
+  <div class="sy-foot-inner sy-container mx-auto">
+    <div class="sy-foot-reserved md:flex justify-between items-center">
+      <div class="sy-foot-copyright"><p>2025, MatrixEditor</p>
+  
+  <p>
+    Made with
+    
+    <a href="https://www.sphinx-doc.org/">Sphinx</a> and
+    
+    <a href="https://shibuya.lepture.com">Shibuya theme</a>.
+  </p>
+</div>
+      <div class="sy-foot-socials">
+  <a href="https://github.com/MatrixEditor/icspacket" aria-label="GitHub">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </a></div>
+    </div>
+  </div>
+</footer>
+      <script src="../../../../_static/documentation_options.js?v=32763ad6"></script>
+      <script src="../../../../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../../../_static/design-tabs.js?v=f930bc37"></script>
+      <script src="../../../../_static/shibuya.js?v=50760d75"></script></body>
+</html>

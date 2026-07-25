@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en" data-accent-color="lime" data-content_root="../../../../../">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>icspacket.proto.iec104.objects.coding - icspacket 0.1.dev1+ge2da2242a documentation</title><link rel="index" title="Index" href="../../../../../genindex.html" /><link rel="search" title="Search" href="../../../../../search.html" />
+      <link rel="canonical" href="https://matrixeditor.github.io/icspacket/_modules/icspacket/proto/iec104/objects/coding.html" /><script>
+    function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
+    setColorMode(localStorage._theme||"dark");
+  </script><link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=e1a1ceaf" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/shibuya.css?v=2ceb65ce" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link media="print" rel="stylesheet" type="text/css" href="../../../../../_static/print.css?v=20ff2c19" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --sy-f-text: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+  --sy-f-heading: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+}
+</style>
+    
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://matrixeditor.github.io/icspacket/_modules/icspacket/proto/iec104/objects/coding.html"/>
+  <meta property="og:title" content="icspacket.proto.iec104.objects.coding"/>
+    <meta name="twitter:card" content="summary"/>
+  </head>
+<body><div class="sy-head">
+  <div class="sy-head-blur"></div>
+  <div class="sy-head-inner sy-container mx-auto">
+    <a class="sy-head-brand" href="../../../../../index.html">
+      
+      
+      <strong>icspacket</strong>
+    </a>
+    <div class="sy-head-nav" id="head-nav">
+      <nav class="sy-head-links"><ul>
+      <li class="link"><a class="js-menu" href="../../../../../getting-started/protocols.html" id="nav-trigger-1" aria-controls="nav-children-1">
+            <span>Examples</span>
+            <i class="i-lucide chevron-down"></i>
+          </a>
+        <ul id="nav-children-1" aria-labelledby="nav-trigger-1"><li><a href="../../../../../protocols/mms/examples.html">
+                <span>MMS Utilities</span>
+                <small>Manufacturing Message Specification tools</small>
+              </a></li><li><a href="../../../../../protocols/dnp3/examples.html">
+                <span>DNP3 Tools</span>
+                <small>DNP3 utilities and tools</small>
+              </a></li><li><a href="../../../../../protocols/iec61850/iedmap.html">
+                <span>IED Enumeration Tool</span>
+                <small>Logical Device enumeration and more</small>
+              </a></li></ul>
+      </li><li class="link"><a href="../../../../../changelog.html">Changelog</a></li></ul></nav>
+      <div class="sy-head-extra flex items-center print:hidden"><form class="searchbox flex items-center" action="../../../../../search.html" method="get">
+  <input type="text" name="q" placeholder="Search" />
+  <kbd>/</kbd>
+</form><div class="sy-head-socials">
+  <a href="https://github.com/MatrixEditor/icspacket" aria-label="GitHub">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </a></div></div>
+    </div>
+    <div class="sy-head-actions flex items-center shrink-0 print:hidden"><button class="js-theme theme-switch flex items-center"
+data-aria-auto="Switch to light color mode"
+data-aria-light="Switch to dark color mode"
+data-aria-dark="Switch to auto color mode">
+<i class="i-lucide theme-icon"></i>
+</button><button class="md:hidden flex items-center js-menu" aria-label="Menu" type="button" aria-controls="head-nav" aria-expanded="false">
+        <div class="hamburger">
+          <span class="hamburger_1"></span>
+          <span class="hamburger_2"></span>
+          <span class="hamburger_3"></span>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>
+<div class="sy-page sy-container flex mx-auto">
+  <aside id="lside" class="sy-lside md:w-72 md:shrink-0 print:hidden">
+    <div class="sy-lside-inner md:sticky">
+      <div class="sy-scrollbar p-6"><div class="sidebar-links">
+  <ul>
+    <li><a class="icon-link" href="https://github.com/MatrixEditor/icspacket/discussions">
+  <span class="icon">
+    <svg viewBox="0 0 24 24" fill="none">
+      <path fill="var(--accent-9)" fill-rule="evenodd" clip-rule="evenodd" d="M11 5a6 6 0 0 0-4.687 9.746c.215.27.315.62.231.954l-.514 2.058a1 1 0 0 0 1.485 1.1l2.848-1.71c.174-.104.374-.15.576-.148H13a6 6 0 0 0 0-12h-2Z"/>
+      <circle fill="white" cx="12" cy="11" r="1"/>
+      <circle fill="white" cx="9" cy="11" r="1"/>
+      <circle fill="white" cx="15" cy="11" r="1"/>
+    </svg>
+  </span>
+  <span class="text">Discussion</span>
+</a></li>
+  </ul>
+</div>
+        <div class="globaltoc" data-expand-depth="1"><p class="caption" role="heading" aria-level="3"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../getting-started/installation.html">Installation</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../getting-started/protocols.html">Protocols Overview</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../getting-started/coreapi.html">Core API Reference</a></li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">DNP3 / IEEE 1815</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../protocols/dnp3/dnp3read.html">Reading Objects</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../protocols/dnp3/dnp3dump.html">Dumping Objects</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../protocols/dnp3/dnp3resolve.html">Resolve Link Addresses</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../protocols/dnp3/api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/dnp3/api/link.html">Link Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/dnp3/api/transport.html">Transport Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/dnp3/api/application.html">Application Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/dnp3/api/master.html">Master</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/dnp3/api/object_library.html">Object Library</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../protocols/dnp3/api/primitives.html">Primitive Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../protocols/dnp3/api/coding.html">Encoding / Decoding</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../protocols/dnp3/api/variations.html">Variations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../protocols/dnp3/api/coding_utils.html">Object Utilities</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">IEC 61850</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../protocols/iec61850/iedmap.html">Enumerating IEDs</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../protocols/iec61850/iedctrl.html">Operating on IEDs</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../protocols/iec61850/api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/iec61850/api_data_classes.html">Data Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/iec61850/api_path.html">Object / Data References</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/iec61850/api_control.html">Control / Operation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/iec61850/api_client.html">IED Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/iec61850/api_goose.html">GOOSE Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/iec61850/api_sv.html">SampledValues Client</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">MMS / ISO 9506</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../protocols/mms/demo_vars.html">Variable Target Format</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../protocols/mms/demo_vars.html#variableaccess-service-rwq">VariableAccess Service (rwq)</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../protocols/mms/demo_files.html">FileManagement Service</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../protocols/mms/api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/mms/api_conn.html">MMS Connection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/mms/api_data.html">Data Conversion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/mms/api_utils.html">Protocol Utilities</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">IEC 60870-5-104</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../protocols/iec104/iec104read.html">Reading Data via Interrogation</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../protocols/iec104/api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/iec104/api/apci.html">APCI - Framing Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/iec104/api/asdu.html">ASDU - Application Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/iec104/api/master.html">Master (Client)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/iec104/api/objects.html">Information Object Library</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">ACSE / X.227</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../protocols/acse/api.html">API Reference</a></li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">COPP / X.226 / ISO 8823</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../protocols/copp/api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/copp/presentation.html">ISO Presentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/copp/utils.html">Protocol Utilities</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">COSP / X.225 / ISO 8237-1</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../protocols/cosp/api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/cosp/tsdu.html">TSDU</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/cosp/spdu.html">SPDU Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/cosp/values.html">Parameter Values (PV)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/cosp/session.html">ISO Session</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/cosp/utils.html">Protocol Utilities</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">COTP / X.224</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../protocols/cotp/api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/cotp/structs.html">TPDU Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/cotp/connection.html">Connection</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">TPKT Protocol (RFC1006)</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../protocols/tpkt/usage.html">Using a TPKT Wrapper</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../protocols/tpkt/api.html">API Reference</a></li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../changelog.html">Changelog</a></li>
+</ul>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="lside-overlay js-menu" role="button" aria-label="Close left sidebar" aria-controls="lside" aria-expanded="false"></div>
+  <aside id="rside" class="sy-rside pb-3 w-64 shrink-0 order-last">
+    <button class="rside-close js-menu xl:hidden" aria-label="Close Table of Contents" type="button" aria-controls="rside" aria-expanded="false">
+      <i class="i-lucide close"></i>
+    </button>
+    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><a class="js-repo-stats repo-stats flex items-center" href="https://github.com/MatrixEditor/icspacket"
+  data-type="github" data-user="MatrixEditor" data-repo="icspacket">
+  <span class="w-8 flex items-center justify-around shrink-0 text-3xl">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </span>
+  <span class="flex-grow px-2 break-all">
+    <span style="font-size: small;">MatrixEditor/icspacket</span>
+    <span class="flex text-sm repo-stats-count">
+      <span class="flex items-center pr-3">
+        <iconify-icon icon="lucide:star"></iconify-icon>
+        <strong class="js-repo-stars ml-1">0</strong>
+      </span>
+      <span class="flex items-center">
+        <iconify-icon icon="lucide:git-fork"></iconify-icon>
+        <strong class="js-repo-forks ml-1">0</strong>
+      </span>
+    </span>
+  </span>
+</a></div>
+  </aside>
+  <div class="rside-overlay js-menu" role="button" aria-label="Close Table of Contents" aria-controls="rside" aria-expanded="false"></div>
+  <main class="sy-main w-full max-sm:max-w-full print:pt-6">
+<div class="sy-breadcrumbs" role="navigation">
+  <div class="sy-breadcrumbs-inner flex items-center">
+    <div class="md:hidden mr-3">
+      <button class="js-menu" aria-label="Menu" type="button" aria-controls="lside" aria-expanded="false">
+        <i class="i-lucide menu"></i>
+      </button>
+    </div>
+    <ol class="flex-1" itemscope itemtype="https://schema.org/BreadcrumbList"><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="../../../../../index.html"><span itemprop="name">icspacket</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="1" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="../../../../index.html"><span itemprop="name">Module code</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="2" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <strong itemprop="name">icspacket.proto.iec104.objects.coding</strong>
+        <meta itemprop="position" content="3" />
+      </li></ol>
+    <div class="xl:hidden ml-1">
+      <button class="js-menu" aria-label="Show table of contents" type="button" aria-controls="rside"
+        aria-expanded="false">
+        <i class="i-lucide outdent"></i>
+      </button>
+    </div>
+  </div>
+</div><div class="flex flex-col break-words justify-between">
+      <div class="relative min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
+  <article class="yue" role="main">
+          <h1>Source code for icspacket.proto.iec104.objects.coding</h1><div class="highlight"><pre>
+<span></span><span data-line="1"><span class="c1"># This file is part of icspacket.</span>
+</span><span data-line="2"><span class="c1"># Copyright (C) 2025-present  MatrixEditor @ github</span>
+</span><span data-line="3"><span class="c1">#</span>
+</span><span data-line="4"><span class="c1"># This program is free software: you can redistribute it and/or modify</span>
+</span><span data-line="5"><span class="c1"># it under the terms of the GNU General Public License as published by</span>
+</span><span data-line="6"><span class="c1"># the Free Software Foundation, either version 3 of the License, or</span>
+</span><span data-line="7"><span class="c1"># (at your option) any later version.</span>
+</span><span data-line="8"><span class="c1">#</span>
+</span><span data-line="9"><span class="c1"># This program is distributed in the hope that it will be useful,</span>
+</span><span data-line="10"><span class="c1"># but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+</span><span data-line="11"><span class="c1"># MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+</span><span data-line="12"><span class="c1"># GNU General Public License for more details.</span>
+</span><span data-line="13"><span class="c1">#</span>
+</span><span data-line="14"><span class="c1"># You should have received a copy of the GNU General Public License</span>
+</span><span data-line="15"><span class="c1"># along with this program.  If not, see &lt;https://www.gnu.org/licenses/&gt;.</span>
+</span><span data-line="16"><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="17"><span class="sd">This module implements the registry that maps an ASDU</span>
+</span><span data-line="18"><span class="sd">:class:`~icspacket.proto.iec104.const.TypeID` to the information-element</span>
+</span><span data-line="19"><span class="sd">struct used to encode/decode its objects, together with the SQ-aware</span>
+</span><span data-line="20"><span class="sd">(:attr:`~icspacket.proto.iec104.asdu.VariableStructureQualifier.sq`)</span>
+</span><span data-line="21"><span class="sd">packing/unpacking of a whole information-object list.</span>
+</span><span data-line="22">
+</span><span data-line="23"><span class="sd">Every IEC 60870-5-101/104 ASDU Type-ID has exactly one on-the-wire</span>
+</span><span data-line="24"><span class="sd">information-element layout, so the registry is keyed by a single</span>
+</span><span data-line="25"><span class="sd">``type_id`` value.</span>
+</span><span data-line="26"><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="27">
+</span><span data-line="28"><span class="kn">import</span><span class="w"> </span><span class="nn">io</span>
+</span><span data-line="29"><span class="kn">from</span><span class="w"> </span><span class="nn">collections.abc</span><span class="w"> </span><span class="kn">import</span> <span class="n">Callable</span>
+</span><span data-line="30"><span class="kn">from</span><span class="w"> </span><span class="nn">dataclasses</span><span class="w"> </span><span class="kn">import</span> <span class="n">dataclass</span>
+</span><span data-line="31"><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span>
+</span><span data-line="32">
+</span><span data-line="33"><span class="kn">from</span><span class="w"> </span><span class="nn">caterpillar.abc</span><span class="w"> </span><span class="kn">import</span> <span class="n">_StructLike</span>
+</span><span data-line="34"><span class="kn">from</span><span class="w"> </span><span class="nn">caterpillar.py</span><span class="w"> </span><span class="kn">import</span> <span class="n">pack_into</span><span class="p">,</span> <span class="n">uint24</span><span class="p">,</span> <span class="n">unpack</span>
+</span><span data-line="35"><span class="kn">from</span><span class="w"> </span><span class="nn">caterpillar.shared</span><span class="w"> </span><span class="kn">import</span> <span class="n">getstruct</span>
+</span><span data-line="36"><span class="kn">from</span><span class="w"> </span><span class="nn">typing_extensions</span><span class="w"> </span><span class="kn">import</span> <span class="n">TypeVar</span><span class="p">,</span> <span class="n">overload</span><span class="p">,</span> <span class="n">override</span>
+</span><span data-line="37">
+</span><span data-line="38"><span class="kn">from</span><span class="w"> </span><span class="nn">icspacket.proto.iec104.const</span><span class="w"> </span><span class="kn">import</span> <span class="n">TypeID</span>
+</span><span data-line="39">
+</span><span data-line="40"><span class="n">IOA_STRUCT</span> <span class="o">=</span> <span class="n">uint24</span>
+</span><span data-line="41"><span class="sd">&quot;&quot;&quot;Wire format of an Information Object Address: an unsigned 24-bit</span>
+</span><span data-line="42"><span class="sd">little-endian integer.</span>
+</span><span data-line="43"><span class="sd">(See IEC 60870-5-101, clause 7.2.5)</span>
+</span><span data-line="44"><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="45">
+</span><span data-line="46">
+<div class="viewcode-block" id="InformationObject">
+<a class="viewcode-back" href="../../../../../protocols/iec104/api/objects.html#icspacket.proto.iec104.asdu.InformationObject">[docs]</a>
+</span><span data-line="47"><span class="nd">@dataclass</span>
+</span><span data-line="48"><span class="k">class</span><span class="w"> </span><span class="nc">InformationObject</span><span class="p">:</span>
+</span><span data-line="49"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="50"><span class="sd">    A single decoded information object: its address plus payload.</span>
+</span><span data-line="51">
+</span><span data-line="52"><span class="sd">    :attr:`element` holds whatever struct instance is registered for the</span>
+</span><span data-line="53"><span class="sd">    owning ASDU&#39;s Type-ID (e.g. an :class:`~icspacket.proto.iec104.objects.elements.SIQ`</span>
+</span><span data-line="54"><span class="sd">    for :data:`~icspacket.proto.iec104.const.TypeID.M_SP_NA_1`).</span>
+</span><span data-line="55"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span data-line="56">
+</span><span data-line="57">    <span class="n">ioa</span><span class="p">:</span> <span class="nb">int</span>
+</span><span data-line="58"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Information Object Address (0 - 16777215).&quot;&quot;&quot;</span>
+</span><span data-line="59">
+</span><span data-line="60">    <span class="n">element</span><span class="p">:</span> <span class="n">Any</span>
+</span><span data-line="61"><span class="w">    </span><span class="sd">&quot;&quot;&quot;The decoded information element, or ``None``/opaque bytes for</span>
+</span><span data-line="62"><span class="sd">    unregistered Type-IDs.&quot;&quot;&quot;</span></div>
+
+</span><span data-line="63">
+</span><span data-line="64">
+<div class="viewcode-block" id="ASDUType">
+<a class="viewcode-back" href="../../../../../protocols/iec104/api/objects.html#icspacket.proto.iec104.asdu.ASDUType">[docs]</a>
+</span><span data-line="65"><span class="k">class</span><span class="w"> </span><span class="nc">ASDUType</span><span class="p">:</span>
+</span><span data-line="66"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="67"><span class="sd">    A single registered Type-ID -&gt; information-element struct mapping.</span>
+</span><span data-line="68">
+</span><span data-line="69"><span class="sd">    :param type_id: The ASDU Type-ID this entry describes.</span>
+</span><span data-line="70"><span class="sd">    :param struct_ty: The struct type/instance used to encode/decode a</span>
+</span><span data-line="71"><span class="sd">        single information element for this Type-ID.</span>
+</span><span data-line="72"><span class="sd">    :param desc: Human-readable description (e.g. ``&quot;Single-point</span>
+</span><span data-line="73"><span class="sd">        information&quot;``).</span>
+</span><span data-line="74"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span data-line="75">
+</span><span data-line="76">    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+</span><span data-line="77">        <span class="bp">self</span><span class="p">,</span> <span class="n">type_id</span><span class="p">:</span> <span class="n">TypeID</span><span class="p">,</span> <span class="n">struct_ty</span><span class="p">:</span> <span class="nb">type</span> <span class="o">|</span> <span class="n">_StructLike</span><span class="p">,</span> <span class="n">desc</span><span class="p">:</span> <span class="nb">str</span>
+</span><span data-line="78">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="79">        <span class="bp">self</span><span class="o">.</span><span class="n">type_id</span><span class="p">:</span> <span class="n">TypeID</span> <span class="o">=</span> <span class="n">type_id</span>
+</span><span data-line="80">        <span class="bp">self</span><span class="o">.</span><span class="n">struct</span> <span class="o">=</span> <span class="n">getstruct</span><span class="p">(</span><span class="n">struct_ty</span><span class="p">,</span> <span class="n">struct_ty</span><span class="p">)</span>
+</span><span data-line="81">        <span class="bp">self</span><span class="o">.</span><span class="n">desc</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">desc</span>
+</span><span data-line="82">
+</span><span data-line="83">    <span class="nd">@override</span>
+</span><span data-line="84">    <span class="k">def</span><span class="w"> </span><span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+</span><span data-line="85">        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;&lt;ASDUType </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">type_id</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&gt;&quot;</span></div>
+
+</span><span data-line="86">
+</span><span data-line="87">
+</span><span data-line="88"><span class="c1">#: Registry of information-element structs by ASDU Type-ID.</span>
+</span><span data-line="89"><span class="n">__asdu_types__</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="n">TypeID</span><span class="p">,</span> <span class="n">ASDUType</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+</span><span data-line="90">
+</span><span data-line="91"><span class="c1">#: Registry of human-readable Type-ID descriptions.</span>
+</span><span data-line="92"><span class="n">__asdu_type_desc__</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="n">TypeID</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+</span><span data-line="93">
+</span><span data-line="94">
+<div class="viewcode-block" id="get_asdu_type">
+<a class="viewcode-back" href="../../../../../protocols/iec104/api/objects.html#icspacket.proto.iec104.asdu.get_asdu_type">[docs]</a>
+</span><span data-line="95"><span class="k">def</span><span class="w"> </span><span class="nf">get_asdu_type</span><span class="p">(</span><span class="n">type_id</span><span class="p">:</span> <span class="n">TypeID</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ASDUType</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="96"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="97"><span class="sd">    Look up a registered information-element struct by Type-ID.</span>
+</span><span data-line="98">
+</span><span data-line="99"><span class="sd">    :param type_id: The ASDU Type-ID to look up.</span>
+</span><span data-line="100"><span class="sd">    :return: The registered entry, or ``None`` if ``type_id`` is not</span>
+</span><span data-line="101"><span class="sd">        (yet) implemented.</span>
+</span><span data-line="102"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span data-line="103">    <span class="k">return</span> <span class="n">__asdu_types__</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">type_id</span><span class="p">)</span></div>
+
+</span><span data-line="104">
+</span><span data-line="105">
+<div class="viewcode-block" id="get_asdu_type_desc">
+<a class="viewcode-back" href="../../../../../protocols/iec104/api/objects.html#icspacket.proto.iec104.asdu.get_asdu_type_desc">[docs]</a>
+</span><span data-line="106"><span class="k">def</span><span class="w"> </span><span class="nf">get_asdu_type_desc</span><span class="p">(</span><span class="n">type_id</span><span class="p">:</span> <span class="n">TypeID</span> <span class="o">|</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="107"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Retrieve the human-readable description of a Type-ID, if registered.&quot;&quot;&quot;</span>
+</span><span data-line="108">    <span class="k">return</span> <span class="n">__asdu_type_desc__</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">type_id</span><span class="p">)</span>  <span class="c1"># pyright: ignore[reportArgumentType]</span></div>
+
+</span><span data-line="109">
+</span><span data-line="110">
+<div class="viewcode-block" id="register_asdu_type">
+<a class="viewcode-back" href="../../../../../protocols/iec104/api/objects.html#icspacket.proto.iec104.asdu.register_asdu_type">[docs]</a>
+</span><span data-line="111"><span class="k">def</span><span class="w"> </span><span class="nf">register_asdu_type</span><span class="p">(</span>
+</span><span data-line="112">    <span class="n">type_id</span><span class="p">:</span> <span class="n">TypeID</span><span class="p">,</span> <span class="n">struct_ty</span><span class="p">:</span> <span class="nb">type</span> <span class="o">|</span> <span class="n">_StructLike</span><span class="p">,</span> <span class="n">desc</span><span class="p">:</span> <span class="nb">str</span>
+</span><span data-line="113"><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ASDUType</span><span class="p">:</span>
+</span><span data-line="114"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="115"><span class="sd">    Register the information-element struct used for a given Type-ID.</span>
+</span><span data-line="116">
+</span><span data-line="117"><span class="sd">    Most callers should use the :func:`asdu_type` decorator instead, which</span>
+</span><span data-line="118"><span class="sd">    derives ``desc`` automatically and calls this function under the hood;</span>
+</span><span data-line="119"><span class="sd">    this is exposed directly for cases where a struct is registered without</span>
+</span><span data-line="120"><span class="sd">    also being decorated (e.g. reusing one struct for several Type-IDs).</span>
+</span><span data-line="121">
+</span><span data-line="122"><span class="sd">    :param type_id: The ASDU Type-ID this entry describes.</span>
+</span><span data-line="123"><span class="sd">    :param struct_ty: The struct type/instance used to encode/decode a</span>
+</span><span data-line="124"><span class="sd">        single information element for this Type-ID.</span>
+</span><span data-line="125"><span class="sd">    :param desc: Human-readable description.</span>
+</span><span data-line="126"><span class="sd">    :return: The created registry entry.</span>
+</span><span data-line="127"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span data-line="128">    <span class="n">entry</span> <span class="o">=</span> <span class="n">ASDUType</span><span class="p">(</span><span class="n">type_id</span><span class="p">,</span> <span class="n">struct_ty</span><span class="p">,</span> <span class="n">desc</span><span class="p">)</span>
+</span><span data-line="129">    <span class="n">__asdu_types__</span><span class="p">[</span><span class="n">type_id</span><span class="p">]</span> <span class="o">=</span> <span class="n">entry</span>
+</span><span data-line="130">    <span class="n">__asdu_type_desc__</span><span class="p">[</span><span class="n">type_id</span><span class="p">]</span> <span class="o">=</span> <span class="n">desc</span>
+</span><span data-line="131">    <span class="k">return</span> <span class="n">entry</span></div>
+
+</span><span data-line="132">
+</span><span data-line="133">
+</span><span data-line="134"><span class="n">_T</span> <span class="o">=</span> <span class="n">TypeVar</span><span class="p">(</span><span class="s2">&quot;_T&quot;</span><span class="p">)</span>
+</span><span data-line="135">
+</span><span data-line="136">
+</span><span data-line="137"><span class="nd">@overload</span>
+</span><span data-line="138"><span class="k">def</span><span class="w"> </span><span class="nf">asdu_type</span><span class="p">(</span><span class="bp">cls</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">_T</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">type</span><span class="p">[</span><span class="n">_T</span><span class="p">]:</span> <span class="o">...</span>
+</span><span data-line="139"><span class="nd">@overload</span>
+</span><span data-line="140"><span class="k">def</span><span class="w"> </span><span class="nf">asdu_type</span><span class="p">(</span><span class="bp">cls</span><span class="p">:</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">[[</span><span class="nb">type</span><span class="p">[</span><span class="n">_T</span><span class="p">]],</span> <span class="nb">type</span><span class="p">[</span><span class="n">_T</span><span class="p">]]:</span> <span class="o">...</span>
+<div class="viewcode-block" id="asdu_type">
+<a class="viewcode-back" href="../../../../../protocols/iec104/api/objects.html#icspacket.proto.iec104.asdu.asdu_type">[docs]</a>
+</span><span data-line="141"><span class="k">def</span><span class="w"> </span><span class="nf">asdu_type</span><span class="p">(</span><span class="bp">cls</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">_T</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">type</span><span class="p">[</span><span class="n">_T</span><span class="p">]</span> <span class="o">|</span> <span class="n">Callable</span><span class="p">[[</span><span class="nb">type</span><span class="p">[</span><span class="n">_T</span><span class="p">]],</span> <span class="nb">type</span><span class="p">[</span><span class="n">_T</span><span class="p">]]:</span>
+</span><span data-line="142"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="143"><span class="sd">    Decorator to register an information-object struct for its Type-ID.</span>
+</span><span data-line="144">
+</span><span data-line="145"><span class="sd">    Reads the Type-ID from the decorated class&#39; ``TYPE_ID`` attribute and</span>
+</span><span data-line="146"><span class="sd">    the registry description from the first sentence of its docstring, then</span>
+</span><span data-line="147"><span class="sd">    registers both via :func:`register_asdu_type`.</span>
+</span><span data-line="148"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span data-line="149">
+</span><span data-line="150">    <span class="k">def</span><span class="w"> </span><span class="nf">decorator</span><span class="p">(</span><span class="n">struct_cls</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">_T</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">type</span><span class="p">[</span><span class="n">_T</span><span class="p">]:</span>
+</span><span data-line="151">        <span class="n">type_id</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">struct_cls</span><span class="p">,</span> <span class="s2">&quot;TYPE_ID&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+</span><span data-line="152">        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">type_id</span><span class="p">,</span> <span class="n">TypeID</span><span class="p">):</span>
+</span><span data-line="153">            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span>
+</span><span data-line="154">                <span class="sa">f</span><span class="s2">&quot;ASDU information object class </span><span class="si">{</span><span class="n">struct_cls</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2"> must define TYPE_ID&quot;</span>
+</span><span data-line="155">            <span class="p">)</span>
+</span><span data-line="156">
+</span><span data-line="157">        <span class="n">doc</span> <span class="o">=</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+</span><span data-line="158">            <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="p">(</span><span class="n">struct_cls</span><span class="o">.</span><span class="vm">__doc__</span> <span class="ow">or</span> <span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span data-line="159">        <span class="p">)</span>
+</span><span data-line="160">        <span class="n">desc</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">partition</span><span class="p">(</span><span class="s2">&quot;. &quot;</span><span class="p">)</span>
+</span><span data-line="161">        <span class="n">_</span> <span class="o">=</span> <span class="n">register_asdu_type</span><span class="p">(</span><span class="n">type_id</span><span class="p">,</span> <span class="n">struct_cls</span><span class="p">,</span> <span class="n">desc</span><span class="o">.</span><span class="n">rstrip</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">))</span>
+</span><span data-line="162">        <span class="k">return</span> <span class="n">struct_cls</span>
+</span><span data-line="163">
+</span><span data-line="164">    <span class="k">if</span> <span class="bp">cls</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="165">        <span class="k">return</span> <span class="n">decorator</span>
+</span><span data-line="166">    <span class="k">return</span> <span class="n">decorator</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span></div>
+
+</span><span data-line="167">
+</span><span data-line="168">
+<div class="viewcode-block" id="unpack_information_objects">
+<a class="viewcode-back" href="../../../../../protocols/iec104/api/objects.html#icspacket.proto.iec104.asdu.unpack_information_objects">[docs]</a>
+</span><span data-line="169"><span class="k">def</span><span class="w"> </span><span class="nf">unpack_information_objects</span><span class="p">(</span>
+</span><span data-line="170">    <span class="n">type_id</span><span class="p">:</span> <span class="n">TypeID</span><span class="p">,</span> <span class="n">sq</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span> <span class="n">number</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="nb">bytes</span>
+</span><span data-line="171"><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">InformationObject</span><span class="p">]:</span>
+</span><span data-line="172"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="173"><span class="sd">    Decode the information-object list carried by an ASDU.</span>
+</span><span data-line="174">
+</span><span data-line="175"><span class="sd">    (See IEC 60870-5-101, clause 7.2.1 - structure of ASDU, for the SQ bit&#39;s</span>
+</span><span data-line="176"><span class="sd">    effect on Information Object Address repetition.)</span>
+</span><span data-line="177">
+</span><span data-line="178"><span class="sd">    :param type_id: The owning ASDU&#39;s Type-ID, selects which registered</span>
+</span><span data-line="179"><span class="sd">        struct decodes each element.</span>
+</span><span data-line="180"><span class="sd">    :param sq: The owning ASDU&#39;s VSQ ``sq`` bit. When ``False``, every</span>
+</span><span data-line="181"><span class="sd">        object carries its own 3-octet IOA; when ``True``, only the first</span>
+</span><span data-line="182"><span class="sd">        object does and subsequent objects use ``ioa + 1``, ``ioa + 2``, ...</span>
+</span><span data-line="183"><span class="sd">    :param number: The owning ASDU&#39;s VSQ ``number`` field - how many</span>
+</span><span data-line="184"><span class="sd">        objects to decode.</span>
+</span><span data-line="185"><span class="sd">    :param data: Raw object bytes (an ASDU&#39;s payload after its 6-octet</span>
+</span><span data-line="186"><span class="sd">        header).</span>
+</span><span data-line="187"><span class="sd">    :raises ValueError: If ``type_id`` has no registered information</span>
+</span><span data-line="188"><span class="sd">        element struct.</span>
+</span><span data-line="189"><span class="sd">    :return: The decoded objects, always as a flat list regardless of the</span>
+</span><span data-line="190"><span class="sd">        wire-level ``sq`` grouping.</span>
+</span><span data-line="191"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span data-line="192">    <span class="n">entry</span> <span class="o">=</span> <span class="n">get_asdu_type</span><span class="p">(</span><span class="n">type_id</span><span class="p">)</span>
+</span><span data-line="193">    <span class="k">if</span> <span class="n">entry</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="194">        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;No information object registered for </span><span class="si">{</span><span class="n">type_id</span><span class="si">!r}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span data-line="195">
+</span><span data-line="196">    <span class="n">stream</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">BytesIO</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</span><span data-line="197">    <span class="n">objects</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">InformationObject</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span data-line="198">    <span class="n">ioa</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span data-line="199">    <span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">number</span><span class="p">):</span>
+</span><span data-line="200">        <span class="k">if</span> <span class="n">index</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">sq</span><span class="p">:</span>
+</span><span data-line="201">            <span class="n">ioa</span> <span class="o">=</span> <span class="n">unpack</span><span class="p">(</span><span class="n">IOA_STRUCT</span><span class="p">,</span> <span class="n">stream</span><span class="p">,</span> <span class="n">as_field</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span data-line="202">        <span class="k">else</span><span class="p">:</span>
+</span><span data-line="203">            <span class="n">ioa</span> <span class="o">+=</span> <span class="mi">1</span>
+</span><span data-line="204">        <span class="n">element</span> <span class="o">=</span> <span class="n">unpack</span><span class="p">(</span><span class="n">entry</span><span class="o">.</span><span class="n">struct</span><span class="p">,</span> <span class="n">stream</span><span class="p">)</span>
+</span><span data-line="205">        <span class="n">objects</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">InformationObject</span><span class="p">(</span><span class="n">ioa</span><span class="o">=</span><span class="n">ioa</span><span class="p">,</span> <span class="n">element</span><span class="o">=</span><span class="n">element</span><span class="p">))</span>
+</span><span data-line="206">    <span class="k">return</span> <span class="n">objects</span></div>
+
+</span><span data-line="207">
+</span><span data-line="208">
+<div class="viewcode-block" id="pack_information_objects">
+<a class="viewcode-back" href="../../../../../protocols/iec104/api/objects.html#icspacket.proto.iec104.asdu.pack_information_objects">[docs]</a>
+</span><span data-line="209"><span class="k">def</span><span class="w"> </span><span class="nf">pack_information_objects</span><span class="p">(</span>
+</span><span data-line="210">    <span class="n">type_id</span><span class="p">:</span> <span class="n">TypeID</span><span class="p">,</span> <span class="n">objects</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">InformationObject</span><span class="p">],</span> <span class="n">sq</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+</span><span data-line="211"><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bytes</span><span class="p">:</span>
+</span><span data-line="212"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="213"><span class="sd">    Encode an information-object list the way an ASDU carries it.</span>
+</span><span data-line="214">
+</span><span data-line="215"><span class="sd">    This is the inverse of :func:`unpack_information_objects`; callers are</span>
+</span><span data-line="216"><span class="sd">    responsible for keeping the owning ASDU&#39;s ``vsq.number``/``vsq.sq``</span>
+</span><span data-line="217"><span class="sd">    fields in sync with ``objects``/``sq`` (see</span>
+</span><span data-line="218"><span class="sd">    :meth:`~icspacket.proto.iec104.asdu.ASDU.build`, which does this</span>
+</span><span data-line="219"><span class="sd">    automatically).</span>
+</span><span data-line="220">
+</span><span data-line="221"><span class="sd">    :param type_id: The owning ASDU&#39;s Type-ID, selects which registered</span>
+</span><span data-line="222"><span class="sd">        struct encodes each element.</span>
+</span><span data-line="223"><span class="sd">    :param objects: The objects to encode, in wire order.</span>
+</span><span data-line="224"><span class="sd">    :param sq: Whether to use the sequential-address form (``True``: only</span>
+</span><span data-line="225"><span class="sd">        the first object&#39;s IOA is written; every other object must have</span>
+</span><span data-line="226"><span class="sd">        ``ioa == objects[0].ioa + index``) or the individually-addressed</span>
+</span><span data-line="227"><span class="sd">        form (``False``: every object writes its own IOA).</span>
+</span><span data-line="228"><span class="sd">    :raises ValueError: If ``type_id`` has no registered information</span>
+</span><span data-line="229"><span class="sd">        element struct, or (when ``sq`` is ``True``) if ``objects``&#39; IOAs</span>
+</span><span data-line="230"><span class="sd">        are not contiguous.</span>
+</span><span data-line="231"><span class="sd">    :return: The encoded raw object bytes.</span>
+</span><span data-line="232"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span data-line="233">    <span class="n">entry</span> <span class="o">=</span> <span class="n">get_asdu_type</span><span class="p">(</span><span class="n">type_id</span><span class="p">)</span>
+</span><span data-line="234">    <span class="k">if</span> <span class="n">entry</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="235">        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;No information object registered for </span><span class="si">{</span><span class="n">type_id</span><span class="si">!r}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span data-line="236">
+</span><span data-line="237">    <span class="n">stream</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">BytesIO</span><span class="p">()</span>
+</span><span data-line="238">    <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">obj</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">objects</span><span class="p">):</span>
+</span><span data-line="239">        <span class="k">if</span> <span class="n">index</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">sq</span><span class="p">:</span>
+</span><span data-line="240">            <span class="n">pack_into</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">ioa</span><span class="p">,</span> <span class="n">stream</span><span class="p">,</span> <span class="n">IOA_STRUCT</span><span class="p">,</span> <span class="n">as_field</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span data-line="241">        <span class="k">elif</span> <span class="n">obj</span><span class="o">.</span><span class="n">ioa</span> <span class="o">!=</span> <span class="n">objects</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">ioa</span> <span class="o">+</span> <span class="n">index</span><span class="p">:</span>
+</span><span data-line="242">            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+</span><span data-line="243">                <span class="s2">&quot;Non-contiguous IOA &quot;</span>
+</span><span data-line="244">                <span class="o">+</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">obj</span><span class="o">.</span><span class="n">ioa</span><span class="si">}</span><span class="s2"> at index </span><span class="si">{</span><span class="n">index</span><span class="si">}</span><span class="s2"> (expected &quot;</span>
+</span><span data-line="245">                <span class="o">+</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">objects</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">ioa</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">index</span><span class="si">}</span><span class="s2">) while sq=True&quot;</span>
+</span><span data-line="246">            <span class="p">)</span>
+</span><span data-line="247">        <span class="n">pack_into</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">element</span><span class="p">,</span> <span class="n">stream</span><span class="p">,</span> <span class="n">entry</span><span class="o">.</span><span class="n">struct</span><span class="p">)</span>
+</span><span data-line="248">    <span class="k">return</span> <span class="n">stream</span><span class="o">.</span><span class="n">getvalue</span><span class="p">()</span></div>
+
+</span></pre></div>
+        </article><button class="back-to-top" type="button">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+  </svg>
+  <span>Back to top</span>
+</button><div class="navigation flex print:hidden"></div></div>
+    </div>
+  </main>
+</div>
+<footer class="sy-foot">
+  <div class="sy-foot-inner sy-container mx-auto">
+    <div class="sy-foot-reserved md:flex justify-between items-center">
+      <div class="sy-foot-copyright"><p>2025, MatrixEditor</p>
+  
+  <p>
+    Made with
+    
+    <a href="https://www.sphinx-doc.org/">Sphinx</a> and
+    
+    <a href="https://shibuya.lepture.com">Shibuya theme</a>.
+  </p>
+</div>
+      <div class="sy-foot-socials">
+  <a href="https://github.com/MatrixEditor/icspacket" aria-label="GitHub">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </a></div>
+    </div>
+  </div>
+</footer>
+      <script src="../../../../../_static/documentation_options.js?v=32763ad6"></script>
+      <script src="../../../../../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../../../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="../../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../../../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../../../../_static/design-tabs.js?v=f930bc37"></script>
+      <script src="../../../../../_static/shibuya.js?v=50760d75"></script></body>
+</html>

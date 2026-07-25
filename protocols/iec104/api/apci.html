@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en" data-accent-color="lime" data-content_root="../../../">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>APCI - Framing Layer - icspacket 0.1.dev1+ge2da2242a documentation</title><link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" /><link rel="next" title="ASDU - Application Layer" href="asdu.html" /><link rel="prev" title="API Reference" href="../api.html" />
+      <link rel="canonical" href="https://matrixeditor.github.io/icspacket/protocols/iec104/api/apci.html" /><script>
+    function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
+    setColorMode(localStorage._theme||"dark");
+  </script><link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=e1a1ceaf" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/shibuya.css?v=2ceb65ce" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link media="print" rel="stylesheet" type="text/css" href="../../../_static/print.css?v=20ff2c19" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --sy-f-text: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+  --sy-f-heading: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+}
+</style>
+    
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://matrixeditor.github.io/icspacket/protocols/iec104/api/apci.html"/>
+  <meta property="og:title" content="APCI - Framing Layer"/>
+    <meta name="twitter:card" content="summary"/>
+  </head>
+<body><div class="sy-head">
+  <div class="sy-head-blur"></div>
+  <div class="sy-head-inner sy-container mx-auto">
+    <a class="sy-head-brand" href="../../../index.html">
+      
+      
+      <strong>icspacket</strong>
+    </a>
+    <div class="sy-head-nav" id="head-nav">
+      <nav class="sy-head-links"><ul>
+      <li class="link"><a class="js-menu" href="../../../getting-started/protocols.html" id="nav-trigger-1" aria-controls="nav-children-1">
+            <span>Examples</span>
+            <i class="i-lucide chevron-down"></i>
+          </a>
+        <ul id="nav-children-1" aria-labelledby="nav-trigger-1"><li><a href="../../mms/examples.html">
+                <span>MMS Utilities</span>
+                <small>Manufacturing Message Specification tools</small>
+              </a></li><li><a href="../../dnp3/examples.html">
+                <span>DNP3 Tools</span>
+                <small>DNP3 utilities and tools</small>
+              </a></li><li><a href="../../iec61850/iedmap.html">
+                <span>IED Enumeration Tool</span>
+                <small>Logical Device enumeration and more</small>
+              </a></li></ul>
+      </li><li class="link"><a href="../../../changelog.html">Changelog</a></li></ul></nav>
+      <div class="sy-head-extra flex items-center print:hidden"><form class="searchbox flex items-center" action="../../../search.html" method="get">
+  <input type="text" name="q" placeholder="Search" />
+  <kbd>/</kbd>
+</form><div class="sy-head-socials">
+  <a href="https://github.com/MatrixEditor/icspacket" aria-label="GitHub">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </a></div></div>
+    </div>
+    <div class="sy-head-actions flex items-center shrink-0 print:hidden"><button class="js-theme theme-switch flex items-center"
+data-aria-auto="Switch to light color mode"
+data-aria-light="Switch to dark color mode"
+data-aria-dark="Switch to auto color mode">
+<i class="i-lucide theme-icon"></i>
+</button><button class="md:hidden flex items-center js-menu" aria-label="Menu" type="button" aria-controls="head-nav" aria-expanded="false">
+        <div class="hamburger">
+          <span class="hamburger_1"></span>
+          <span class="hamburger_2"></span>
+          <span class="hamburger_3"></span>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>
+<div class="sy-page sy-container flex mx-auto">
+  <aside id="lside" class="sy-lside md:w-72 md:shrink-0 print:hidden">
+    <div class="sy-lside-inner md:sticky">
+      <div class="sy-scrollbar p-6"><div class="sidebar-links">
+  <ul>
+    <li><a class="icon-link" href="https://github.com/MatrixEditor/icspacket/discussions">
+  <span class="icon">
+    <svg viewBox="0 0 24 24" fill="none">
+      <path fill="var(--accent-9)" fill-rule="evenodd" clip-rule="evenodd" d="M11 5a6 6 0 0 0-4.687 9.746c.215.27.315.62.231.954l-.514 2.058a1 1 0 0 0 1.485 1.1l2.848-1.71c.174-.104.374-.15.576-.148H13a6 6 0 0 0 0-12h-2Z"/>
+      <circle fill="white" cx="12" cy="11" r="1"/>
+      <circle fill="white" cx="9" cy="11" r="1"/>
+      <circle fill="white" cx="15" cy="11" r="1"/>
+    </svg>
+  </span>
+  <span class="text">Discussion</span>
+</a></li>
+  </ul>
+</div>
+        <div class="globaltoc" data-expand-depth="1"><p class="caption" role="heading" aria-level="3"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../getting-started/installation.html">Installation</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../getting-started/protocols.html">Protocols Overview</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../getting-started/coreapi.html">Core API Reference</a></li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">DNP3 / IEEE 1815</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../dnp3/dnp3read.html">Reading Objects</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../dnp3/dnp3dump.html">Dumping Objects</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../dnp3/dnp3resolve.html">Resolve Link Addresses</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../dnp3/api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../dnp3/api/link.html">Link Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dnp3/api/transport.html">Transport Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dnp3/api/application.html">Application Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dnp3/api/master.html">Master</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dnp3/api/object_library.html">Object Library</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../dnp3/api/primitives.html">Primitive Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../dnp3/api/coding.html">Encoding / Decoding</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../dnp3/api/variations.html">Variations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../dnp3/api/coding_utils.html">Object Utilities</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">IEC 61850</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../iec61850/iedmap.html">Enumerating IEDs</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../iec61850/iedctrl.html">Operating on IEDs</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../iec61850/api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../iec61850/api_data_classes.html">Data Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../iec61850/api_path.html">Object / Data References</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../iec61850/api_control.html">Control / Operation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../iec61850/api_client.html">IED Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../iec61850/api_goose.html">GOOSE Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../iec61850/api_sv.html">SampledValues Client</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">MMS / ISO 9506</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../mms/demo_vars.html">Variable Target Format</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../mms/demo_vars.html#variableaccess-service-rwq">VariableAccess Service (rwq)</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../mms/demo_files.html">FileManagement Service</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../mms/api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../mms/api_conn.html">MMS Connection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../mms/api_data.html">Data Conversion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../mms/api_utils.html">Protocol Utilities</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">IEC 60870-5-104</span></p>
+<ul class="current">
+<li class="toctree-l1 _expand"><a class="reference internal" href="../iec104read.html">Reading Data via Interrogation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../api.html">API Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">APCI - Framing Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="asdu.html">ASDU - Application Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="master.html">Master (Client)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="objects.html">Information Object Library</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">ACSE / X.227</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../acse/api.html">API Reference</a></li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">COPP / X.226 / ISO 8823</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../copp/api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../copp/presentation.html">ISO Presentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../copp/utils.html">Protocol Utilities</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">COSP / X.225 / ISO 8237-1</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../cosp/api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../cosp/tsdu.html">TSDU</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cosp/spdu.html">SPDU Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cosp/values.html">Parameter Values (PV)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cosp/session.html">ISO Session</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cosp/utils.html">Protocol Utilities</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">COTP / X.224</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../cotp/api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../cotp/structs.html">TPDU Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cotp/connection.html">Connection</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">TPKT Protocol (RFC1006)</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../tpkt/usage.html">Using a TPKT Wrapper</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../tpkt/api.html">API Reference</a></li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../changelog.html">Changelog</a></li>
+</ul>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="lside-overlay js-menu" role="button" aria-label="Close left sidebar" aria-controls="lside" aria-expanded="false"></div>
+  <aside id="rside" class="sy-rside pb-3 w-64 shrink-0 order-last">
+    <button class="rside-close js-menu xl:hidden" aria-label="Close Table of Contents" type="button" aria-controls="rside" aria-expanded="false">
+      <i class="i-lucide close"></i>
+    </button>
+    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div class="localtoc"><h3>On this page</h3><ul>
+<li><a class="reference internal" href="#icspacket.proto.iec104.apci.APCI_MAX_ASDU_LENGTH"><code class="docutils literal notranslate"><span class="pre">APCI_MAX_ASDU_LENGTH</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec104.apci.ControlField"><code class="docutils literal notranslate"><span class="pre">ControlField</span></code></a><ul>
+<li><a class="reference internal" href="#icspacket.proto.iec104.apci.ControlField.format"><code class="docutils literal notranslate"><span class="pre">ControlField.format</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec104.apci.ControlField.send_seq"><code class="docutils literal notranslate"><span class="pre">ControlField.send_seq</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec104.apci.ControlField.recv_seq"><code class="docutils literal notranslate"><span class="pre">ControlField.recv_seq</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec104.apci.ControlField.function"><code class="docutils literal notranslate"><span class="pre">ControlField.function</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec104.apci.ControlField.new_i"><code class="docutils literal notranslate"><span class="pre">ControlField.new_i()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec104.apci.ControlField.new_s"><code class="docutils literal notranslate"><span class="pre">ControlField.new_s()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec104.apci.ControlField.new_u"><code class="docutils literal notranslate"><span class="pre">ControlField.new_u()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#icspacket.proto.iec104.apci.APDU_Frame"><code class="docutils literal notranslate"><span class="pre">APDU_Frame</span></code></a><ul>
+<li><a class="reference internal" href="#icspacket.proto.iec104.apci.APDU_Frame.control"><code class="docutils literal notranslate"><span class="pre">APDU_Frame.control</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec104.apci.APDU_Frame.asdu"><code class="docutils literal notranslate"><span class="pre">APDU_Frame.asdu</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#icspacket.proto.iec104.apci.APCI"><code class="docutils literal notranslate"><span class="pre">APCI</span></code></a><ul>
+<li><a class="reference internal" href="#icspacket.proto.iec104.apci.APCI.start"><code class="docutils literal notranslate"><span class="pre">APCI.start</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec104.apci.APCI.frame"><code class="docutils literal notranslate"><span class="pre">APCI.frame</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec104.apci.APCI.control"><code class="docutils literal notranslate"><span class="pre">APCI.control</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec104.apci.APCI.format"><code class="docutils literal notranslate"><span class="pre">APCI.format</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec104.apci.APCI.asdu"><code class="docutils literal notranslate"><span class="pre">APCI.asdu</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec104.apci.APCI.i_format"><code class="docutils literal notranslate"><span class="pre">APCI.i_format()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec104.apci.APCI.s_format"><code class="docutils literal notranslate"><span class="pre">APCI.s_format()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec104.apci.APCI.u_format"><code class="docutils literal notranslate"><span class="pre">APCI.u_format()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec104.apci.APCI.startdt_act"><code class="docutils literal notranslate"><span class="pre">APCI.startdt_act()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec104.apci.APCI.startdt_con"><code class="docutils literal notranslate"><span class="pre">APCI.startdt_con()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec104.apci.APCI.stopdt_act"><code class="docutils literal notranslate"><span class="pre">APCI.stopdt_act()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec104.apci.APCI.stopdt_con"><code class="docutils literal notranslate"><span class="pre">APCI.stopdt_con()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec104.apci.APCI.testfr_act"><code class="docutils literal notranslate"><span class="pre">APCI.testfr_act()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec104.apci.APCI.testfr_con"><code class="docutils literal notranslate"><span class="pre">APCI.testfr_con()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</div><a class="js-repo-stats repo-stats flex items-center" href="https://github.com/MatrixEditor/icspacket"
+  data-type="github" data-user="MatrixEditor" data-repo="icspacket">
+  <span class="w-8 flex items-center justify-around shrink-0 text-3xl">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </span>
+  <span class="flex-grow px-2 break-all">
+    <span style="font-size: small;">MatrixEditor/icspacket</span>
+    <span class="flex text-sm repo-stats-count">
+      <span class="flex items-center pr-3">
+        <iconify-icon icon="lucide:star"></iconify-icon>
+        <strong class="js-repo-stars ml-1">0</strong>
+      </span>
+      <span class="flex items-center">
+        <iconify-icon icon="lucide:git-fork"></iconify-icon>
+        <strong class="js-repo-forks ml-1">0</strong>
+      </span>
+    </span>
+  </span>
+</a><div class="edit-this-page">
+  <a href="https://github.com/MatrixEditor/icspacket/blob/main/docs/protocols/iec104/api/apci.rst">Edit this page</a>
+</div></div>
+  </aside>
+  <div class="rside-overlay js-menu" role="button" aria-label="Close Table of Contents" aria-controls="rside" aria-expanded="false"></div>
+  <main class="sy-main w-full max-sm:max-w-full print:pt-6">
+<div class="sy-breadcrumbs" role="navigation">
+  <div class="sy-breadcrumbs-inner flex items-center">
+    <div class="md:hidden mr-3">
+      <button class="js-menu" aria-label="Menu" type="button" aria-controls="lside" aria-expanded="false">
+        <i class="i-lucide menu"></i>
+      </button>
+    </div>
+    <ol class="flex-1" itemscope itemtype="https://schema.org/BreadcrumbList"><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="../../../index.html"><span itemprop="name">icspacket</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="1" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="../api.html"><span itemprop="name">API Reference</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="2" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <strong itemprop="name">APCI - Framing Layer</strong>
+        <meta itemprop="position" content="3" />
+      </li></ol>
+    <div class="xl:hidden ml-1">
+      <button class="js-menu" aria-label="Show table of contents" type="button" aria-controls="rside"
+        aria-expanded="false">
+        <i class="i-lucide outdent"></i>
+      </button>
+    </div>
+  </div>
+</div><div class="flex flex-col break-words justify-between">
+      <div class="relative min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
+  <div class="copy-page-wrapper relative pb-4 lg:absolute lg:top-8 lg:right-6 xl:right-12">
+  <div id="copy-page-trigger">
+    <button
+      type="button"
+      class="js-copy px-3 py-1 inline-flex items-center gap-1"
+      data-url="https://raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/protocols/iec104/api/apci.rst"
+    >
+      <i class="i-lucide" data-icon="copy"></i>
+      <span>Copy page</span>
+    </button>
+    <button class="js-menu px-2 py-1" type="button" aria-label="More actions"
+      aria-haspopup="menu" aria-expanded="false" aria-controls="copy-page-content">
+      <i class="i-lucide chevron-down"></i>
+    </button>
+  </div>
+  <div id="copy-page-content" role="menu" aria-orientation="vertical" aria-hidden="true">
+    <div role="presentation">
+      <div class="flex flex-col" role="group">
+        <button class="js-copy" type="button" role="menuitem"
+          data-url="https://raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/protocols/iec104/api/apci.rst">
+          <span class="iconify-icon">
+            <i class="i-lucide" data-icon="copy"></i>
+          </span>
+          <span>Copy page</span>
+        </button>
+        <a role="menuitem" href="https://raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/protocols/iec104/api/apci.rst" target="_blank" rel="nofollow"><iconify-icon icon="bi:code-slash"></iconify-icon>
+            <span>View Source</span></a><a role="menuitem" href="https://chatgpt.com/?hints=search&q=Read%20https%3A//raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/protocols/iec104/api/apci.rst%20so%20I%20can%20ask%20questions%20about%20it." target="_blank" rel="nofollow">
+          <iconify-icon icon="bi:openai"></iconify-icon>
+          <span>Open in ChatGPT</span>
+        </a><a role="menuitem" href="https://claude.ai/new?q=Read%20https%3A//raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/protocols/iec104/api/apci.rst%20so%20I%20can%20ask%20questions%20about%20it." target="_blank" rel="nofollow">
+          <iconify-icon icon="bi:claude"></iconify-icon>
+          <span>Open in Claude</span>
+        </a></div>
+    </div>
+  </div>
+</div><article class="yue" role="main">
+          <section id="apci-framing-layer">
+<span id="api-iec104-apci"></span><h1>APCI - Framing Layer<a class="headerlink" href="#apci-framing-layer" title="Link to this heading">#</a></h1>
+<p>Application Protocol Control Information: the I/S/U-format control field,
+sequence-number bookkeeping, and the fixed APCI frame header shared by
+every IEC 60870-5-104 message.</p>
+<p id="module-icspacket.proto.iec104.apci">APCI - Application Protocol Control Information (IEC 60870-5-104 framing).</p>
+<p>(See IEC 60870-5-104, clause 5 - APCI structure)</p>
+<p>Every message exchanged over an IEC 60870-5-104 TCP connection is wrapped in
+an APCI frame: a fixed start byte, an automatically-computed length octet,
+and a 4-octet control field whose own low bits pick one of three formats -</p>
+<ul class="simple">
+<li><p><strong>I-format</strong> (Information transfer): carries an ASDU and both a send and
+a receive sequence number.</p></li>
+<li><p><strong>S-format</strong> (Numbered supervisory function): a bare acknowledgment,
+carrying only a receive sequence number.</p></li>
+<li><p><strong>U-format</strong> (Unnumbered control function): the <code class="docutils literal notranslate"><span class="pre">STARTDT</span></code>/<code class="docutils literal notranslate"><span class="pre">STOPDT</span></code>/
+<code class="docutils literal notranslate"><span class="pre">TESTFR</span></code> connection handshake.</p></li>
+</ul>
+<dl class="py data">
+<dt class="sig sig-object py" id="icspacket.proto.iec104.apci.APCI_MAX_ASDU_LENGTH">
+<span class="sig-prename descclassname"><span class="pre">icspacket.proto.iec104.apci.</span></span><span class="sig-name descname"><span class="pre">APCI_MAX_ASDU_LENGTH</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">249</span></span><a class="headerlink" href="#icspacket.proto.iec104.apci.APCI_MAX_ASDU_LENGTH" title="Link to this definition">#</a></dt>
+<dd><p>Largest ASDU payload (in octets) an I-format APCI frame should carry.</p>
+<p>The length octet is a single byte (max 255), of which 4 octets are always
+spent on the control field; 249 is the conservative, commonly used ceiling
+for the 104 profile, leaving a small safety margin below the theoretical
+<code class="docutils literal notranslate"><span class="pre">255</span> <span class="pre">-</span> <span class="pre">4</span> <span class="pre">=</span> <span class="pre">251</span></code>.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="icspacket.proto.iec104.apci.ControlField">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">icspacket.proto.iec104.apci.</span></span><span class="sig-name descname"><span class="pre">ControlField</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">octet1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">octet2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">octet3</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">octet4</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/icspacket/proto/iec104/apci.html#ControlField"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iec104.apci.ControlField" title="Link to this definition">#</a></dt>
+<dd><p>Raw 4-octet APCI control field.</p>
+<p>(See IEC 60870-5-104, clause 5.2)</p>
+<dl class="py property">
+<dt class="sig sig-object py" id="icspacket.proto.iec104.apci.ControlField.format">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">format</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="master.html#icspacket.proto.iec104.const.APCIFormat" title="icspacket.proto.iec104.const.APCIFormat"><span class="pre">APCIFormat</span></a></span><a class="headerlink" href="#icspacket.proto.iec104.apci.ControlField.format" title="Link to this definition">#</a></dt>
+<dd><p>Which of the three APCI formats this control field follows.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="icspacket.proto.iec104.apci.ControlField.send_seq">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">send_seq</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><a class="headerlink" href="#icspacket.proto.iec104.apci.ControlField.send_seq" title="Link to this definition">#</a></dt>
+<dd><p><code class="docutils literal notranslate"><span class="pre">N(S)</span></code>: this frame’s send sequence number (I-format only), a
+counter modulo 2**15.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="icspacket.proto.iec104.apci.ControlField.recv_seq">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">recv_seq</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><a class="headerlink" href="#icspacket.proto.iec104.apci.ControlField.recv_seq" title="Link to this definition">#</a></dt>
+<dd><p><code class="docutils literal notranslate"><span class="pre">N(R)</span></code>: the last send sequence number acknowledged by the
+sender of this frame (I-format and S-format), a counter modulo
+2**15.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="icspacket.proto.iec104.apci.ControlField.function">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">function</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="master.html#icspacket.proto.iec104.const.UFormatFunction" title="icspacket.proto.iec104.const.UFormatFunction"><span class="pre">UFormatFunction</span></a></span><a class="headerlink" href="#icspacket.proto.iec104.apci.ControlField.function" title="Link to this definition">#</a></dt>
+<dd><p>U-format handshake function flags (<code class="docutils literal notranslate"><span class="pre">STARTDT</span></code>/<code class="docutils literal notranslate"><span class="pre">STOPDT</span></code>/
+<code class="docutils literal notranslate"><span class="pre">TESTFR</span></code>, U-format only).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.iec104.apci.ControlField.new_i">
+<span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">new_i</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">send_seq</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">recv_seq</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#icspacket.proto.iec104.apci.ControlField" title="icspacket.proto.iec104.apci.ControlField"><span class="pre">ControlField</span></a></span></span><a class="reference internal" href="../../../_modules/icspacket/proto/iec104/apci.html#ControlField.new_i"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iec104.apci.ControlField.new_i" title="Link to this definition">#</a></dt>
+<dd><p>Builds an I-format control field with the given sequence numbers.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.iec104.apci.ControlField.new_s">
+<span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">new_s</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">recv_seq</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#icspacket.proto.iec104.apci.ControlField" title="icspacket.proto.iec104.apci.ControlField"><span class="pre">ControlField</span></a></span></span><a class="reference internal" href="../../../_modules/icspacket/proto/iec104/apci.html#ControlField.new_s"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iec104.apci.ControlField.new_s" title="Link to this definition">#</a></dt>
+<dd><p>Builds an S-format control field acknowledging <code class="docutils literal notranslate"><span class="pre">recv_seq</span></code>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.iec104.apci.ControlField.new_u">
+<span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">new_u</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">function</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="master.html#icspacket.proto.iec104.const.UFormatFunction" title="icspacket.proto.iec104.const.UFormatFunction"><span class="pre">UFormatFunction</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#icspacket.proto.iec104.apci.ControlField" title="icspacket.proto.iec104.apci.ControlField"><span class="pre">ControlField</span></a></span></span><a class="reference internal" href="../../../_modules/icspacket/proto/iec104/apci.html#ControlField.new_u"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iec104.apci.ControlField.new_u" title="Link to this definition">#</a></dt>
+<dd><p>Builds a U-format control field carrying <code class="docutils literal notranslate"><span class="pre">function</span></code>.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="icspacket.proto.iec104.apci.APDU_Frame">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">icspacket.proto.iec104.apci.</span></span><span class="sig-name descname"><span class="pre">APDU_Frame</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">control</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#icspacket.proto.iec104.apci.ControlField" title="icspacket.proto.iec104.apci.ControlField"><span class="pre">ControlField</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">asdu</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bytes</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">b''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/icspacket/proto/iec104/apci.html#APDU_Frame"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iec104.apci.APDU_Frame" title="Link to this definition">#</a></dt>
+<dd><p>The variable-length part of an APCI frame: the control field plus,
+for I-format frames only, the raw encoded ASDU payload.</p>
+<p>This struct only exists to be wrapped by <a class="reference internal" href="#icspacket.proto.iec104.apci.APCI" title="icspacket.proto.iec104.apci.APCI"><code class="xref py py-class docutils literal notranslate"><span class="pre">APCI</span></code></a>’s
+<code class="xref py py-class docutils literal notranslate"><span class="pre">Prefixed</span></code> length field - use <a class="reference internal" href="#icspacket.proto.iec104.apci.APCI" title="icspacket.proto.iec104.apci.APCI"><code class="xref py py-class docutils literal notranslate"><span class="pre">APCI</span></code></a>
+directly instead of this class.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec104.apci.APDU_Frame.control">
+<span class="sig-name descname"><span class="pre">control</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#icspacket.proto.iec104.apci.ControlField" title="icspacket.proto.iec104.apci.ControlField"><span class="pre">ControlField</span></a></span><a class="headerlink" href="#icspacket.proto.iec104.apci.APDU_Frame.control" title="Link to this definition">#</a></dt>
+<dd><p>The 4-octet control field, see <a class="reference internal" href="#icspacket.proto.iec104.apci.ControlField" title="icspacket.proto.iec104.apci.ControlField"><code class="xref py py-class docutils literal notranslate"><span class="pre">ControlField</span></code></a>.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec104.apci.APDU_Frame.asdu">
+<span class="sig-name descname"><span class="pre">asdu</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bytes</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">b''</span></span><a class="headerlink" href="#icspacket.proto.iec104.apci.APDU_Frame.asdu" title="Link to this definition">#</a></dt>
+<dd><p>Raw encoded ASDU bytes. Only meaningful when <code class="docutils literal notranslate"><span class="pre">control.format</span></code> is
+<a class="reference internal" href="master.html#icspacket.proto.iec104.const.APCIFormat.I_FORMAT" title="icspacket.proto.iec104.const.APCIFormat.I_FORMAT"><code class="xref py py-attr docutils literal notranslate"><span class="pre">I_FORMAT</span></code></a>; empty for
+S-format and U-format frames.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="icspacket.proto.iec104.apci.APCI">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">icspacket.proto.iec104.apci.</span></span><span class="sig-name descname"><span class="pre">APCI</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bytes</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">b'h'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frame</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#icspacket.proto.iec104.apci.APDU_Frame" title="icspacket.proto.iec104.apci.APDU_Frame"><span class="pre">APDU_Frame</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">&lt;factory&gt;</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/icspacket/proto/iec104/apci.html#APCI"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iec104.apci.APCI" title="Link to this definition">#</a></dt>
+<dd><p>Application Protocol Control Information - the top-level TCP frame
+every IEC 60870-5-104 message is wrapped in.</p>
+<p>(See IEC 60870-5-104, clause 5.1)</p>
+<p>Because this class inherits <code class="xref py py-class docutils literal notranslate"><span class="pre">StructDefMixin</span></code>,
+it can be read straight off a socket with <code class="xref py py-meth docutils literal notranslate"><span class="pre">from_bytes()</span></code>, and an
+outgoing frame just needs <code class="xref py py-meth docutils literal notranslate"><span class="pre">to_bytes()</span></code> - the length octet is
+always computed automatically, there is no <code class="docutils literal notranslate"><span class="pre">build()</span></code> step.</p>
+<section id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Link to this heading">#</a></h2>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="gp">&gt;&gt;&gt; </span><span class="n">APCI</span><span class="o">.</span><span class="n">startdt_act</span><span class="p">()</span><span class="o">.</span><span class="n">to_bytes</span><span class="p">()</span>
+</span><span data-line="2"><span class="go">b&#39;h\x04\x07\x00\x00\x00&#39;</span>
+</span><span data-line="3"><span class="gp">&gt;&gt;&gt; </span><span class="n">APCI</span><span class="o">.</span><span class="n">i_format</span><span class="p">(</span><span class="n">send_seq</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">recv_seq</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">asdu</span><span class="o">=</span><span class="sa">b</span><span class="s2">&quot;...&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">to_bytes</span><span class="p">()</span>
+</span></pre></div>
+</div>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec104.apci.APCI.start">
+<span class="sig-name descname"><span class="pre">start</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bytes</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">b'h'</span></span><a class="headerlink" href="#icspacket.proto.iec104.apci.APCI.start" title="Link to this definition">#</a></dt>
+<dd><p>Fixed start byte (<code class="docutils literal notranslate"><span class="pre">0x68</span></code>); not part of the constructor/repr since
+its value never varies.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec104.apci.APCI.frame">
+<span class="sig-name descname"><span class="pre">frame</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#icspacket.proto.iec104.apci.APDU_Frame" title="icspacket.proto.iec104.apci.APDU_Frame"><span class="pre">APDU_Frame</span></a></span><a class="headerlink" href="#icspacket.proto.iec104.apci.APCI.frame" title="Link to this definition">#</a></dt>
+<dd><p>The control field and (I-format only) ASDU payload, automatically
+length-prefixed. See <a class="reference internal" href="#icspacket.proto.iec104.apci.APDU_Frame" title="icspacket.proto.iec104.apci.APDU_Frame"><code class="xref py py-class docutils literal notranslate"><span class="pre">APDU_Frame</span></code></a>.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="icspacket.proto.iec104.apci.APCI.control">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">control</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#icspacket.proto.iec104.apci.ControlField" title="icspacket.proto.iec104.apci.ControlField"><span class="pre">ControlField</span></a></span><a class="headerlink" href="#icspacket.proto.iec104.apci.APCI.control" title="Link to this definition">#</a></dt>
+<dd><p>Shortcut for <code class="docutils literal notranslate"><span class="pre">self.frame.control</span></code>.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="icspacket.proto.iec104.apci.APCI.format">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">format</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="master.html#icspacket.proto.iec104.const.APCIFormat" title="icspacket.proto.iec104.const.APCIFormat"><span class="pre">APCIFormat</span></a></span><a class="headerlink" href="#icspacket.proto.iec104.apci.APCI.format" title="Link to this definition">#</a></dt>
+<dd><p>Shortcut for <code class="docutils literal notranslate"><span class="pre">self.frame.control.format</span></code>.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="icspacket.proto.iec104.apci.APCI.asdu">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">asdu</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bytes</span></span><a class="headerlink" href="#icspacket.proto.iec104.apci.APCI.asdu" title="Link to this definition">#</a></dt>
+<dd><p>Shortcut for <code class="docutils literal notranslate"><span class="pre">self.frame.asdu</span></code>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.iec104.apci.APCI.i_format">
+<span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">i_format</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">send_seq</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">recv_seq</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">asdu</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bytes</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#icspacket.proto.iec104.apci.APCI" title="icspacket.proto.iec104.apci.APCI"><span class="pre">APCI</span></a></span></span><a class="reference internal" href="../../../_modules/icspacket/proto/iec104/apci.html#APCI.i_format"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iec104.apci.APCI.i_format" title="Link to this definition">#</a></dt>
+<dd><p>Builds an I-format APCI frame carrying <code class="docutils literal notranslate"><span class="pre">asdu</span></code>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.iec104.apci.APCI.s_format">
+<span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">s_format</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">recv_seq</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#icspacket.proto.iec104.apci.APCI" title="icspacket.proto.iec104.apci.APCI"><span class="pre">APCI</span></a></span></span><a class="reference internal" href="../../../_modules/icspacket/proto/iec104/apci.html#APCI.s_format"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iec104.apci.APCI.s_format" title="Link to this definition">#</a></dt>
+<dd><p>Builds an S-format (bare acknowledgment) APCI frame.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.iec104.apci.APCI.u_format">
+<span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">u_format</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">function</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="master.html#icspacket.proto.iec104.const.UFormatFunction" title="icspacket.proto.iec104.const.UFormatFunction"><span class="pre">UFormatFunction</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#icspacket.proto.iec104.apci.APCI" title="icspacket.proto.iec104.apci.APCI"><span class="pre">APCI</span></a></span></span><a class="reference internal" href="../../../_modules/icspacket/proto/iec104/apci.html#APCI.u_format"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iec104.apci.APCI.u_format" title="Link to this definition">#</a></dt>
+<dd><p>Builds a U-format (handshake) APCI frame carrying <code class="docutils literal notranslate"><span class="pre">function</span></code>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.iec104.apci.APCI.startdt_act">
+<span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">startdt_act</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#icspacket.proto.iec104.apci.APCI" title="icspacket.proto.iec104.apci.APCI"><span class="pre">APCI</span></a></span></span><a class="reference internal" href="../../../_modules/icspacket/proto/iec104/apci.html#APCI.startdt_act"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iec104.apci.APCI.startdt_act" title="Link to this definition">#</a></dt>
+<dd><p>Builds a <code class="docutils literal notranslate"><span class="pre">STARTDT</span></code> activation frame (client to server).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.iec104.apci.APCI.startdt_con">
+<span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">startdt_con</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#icspacket.proto.iec104.apci.APCI" title="icspacket.proto.iec104.apci.APCI"><span class="pre">APCI</span></a></span></span><a class="reference internal" href="../../../_modules/icspacket/proto/iec104/apci.html#APCI.startdt_con"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iec104.apci.APCI.startdt_con" title="Link to this definition">#</a></dt>
+<dd><p>Builds a <code class="docutils literal notranslate"><span class="pre">STARTDT</span></code> confirmation frame (server to client).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.iec104.apci.APCI.stopdt_act">
+<span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">stopdt_act</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#icspacket.proto.iec104.apci.APCI" title="icspacket.proto.iec104.apci.APCI"><span class="pre">APCI</span></a></span></span><a class="reference internal" href="../../../_modules/icspacket/proto/iec104/apci.html#APCI.stopdt_act"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iec104.apci.APCI.stopdt_act" title="Link to this definition">#</a></dt>
+<dd><p>Builds a <code class="docutils literal notranslate"><span class="pre">STOPDT</span></code> activation frame (client to server).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.iec104.apci.APCI.stopdt_con">
+<span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">stopdt_con</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#icspacket.proto.iec104.apci.APCI" title="icspacket.proto.iec104.apci.APCI"><span class="pre">APCI</span></a></span></span><a class="reference internal" href="../../../_modules/icspacket/proto/iec104/apci.html#APCI.stopdt_con"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iec104.apci.APCI.stopdt_con" title="Link to this definition">#</a></dt>
+<dd><p>Builds a <code class="docutils literal notranslate"><span class="pre">STOPDT</span></code> confirmation frame (server to client).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.iec104.apci.APCI.testfr_act">
+<span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">testfr_act</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#icspacket.proto.iec104.apci.APCI" title="icspacket.proto.iec104.apci.APCI"><span class="pre">APCI</span></a></span></span><a class="reference internal" href="../../../_modules/icspacket/proto/iec104/apci.html#APCI.testfr_act"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iec104.apci.APCI.testfr_act" title="Link to this definition">#</a></dt>
+<dd><p>Builds a <code class="docutils literal notranslate"><span class="pre">TESTFR</span></code> activation frame (either direction).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.iec104.apci.APCI.testfr_con">
+<span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">testfr_con</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#icspacket.proto.iec104.apci.APCI" title="icspacket.proto.iec104.apci.APCI"><span class="pre">APCI</span></a></span></span><a class="reference internal" href="../../../_modules/icspacket/proto/iec104/apci.html#APCI.testfr_con"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iec104.apci.APCI.testfr_con" title="Link to this definition">#</a></dt>
+<dd><p>Builds a <code class="docutils literal notranslate"><span class="pre">TESTFR</span></code> confirmation frame (either direction).</p>
+</dd></dl>
+
+</section>
+</dd></dl>
+
+</section>
+
+        </article><button class="back-to-top" type="button">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+  </svg>
+  <span>Back to top</span>
+</button><div class="navigation flex print:hidden"><div class="navigation-prev">
+    <a href="../api.html">
+      <i class="i-lucide chevron-left"></i>
+      <div class="page-info">
+        <span>Previous</span><div class="title">API Reference</div></div>
+    </a>
+  </div><div class="navigation-next">
+    <a href="asdu.html">
+      <div class="page-info">
+        <span>Next</span>
+        <div class="title">ASDU - Application Layer</div>
+      </div>
+      <i class="i-lucide chevron-right"></i>
+    </a>
+  </div></div></div>
+    </div>
+  </main>
+</div>
+<footer class="sy-foot">
+  <div class="sy-foot-inner sy-container mx-auto">
+    <div class="sy-foot-reserved md:flex justify-between items-center">
+      <div class="sy-foot-copyright"><p>2025, MatrixEditor</p>
+  
+  <p>
+    Made with
+    
+    <a href="https://www.sphinx-doc.org/">Sphinx</a> and
+    
+    <a href="https://shibuya.lepture.com">Shibuya theme</a>.
+  </p>
+</div>
+      <div class="sy-foot-socials">
+  <a href="https://github.com/MatrixEditor/icspacket" aria-label="GitHub">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </a></div>
+    </div>
+  </div>
+</footer>
+      <script src="../../../_static/documentation_options.js?v=32763ad6"></script>
+      <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+      <script src="../../../_static/shibuya.js?v=50760d75"></script></body>
+</html>

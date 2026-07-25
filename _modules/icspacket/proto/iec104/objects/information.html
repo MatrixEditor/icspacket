@@ -1,0 +1,1263 @@
+<!DOCTYPE html>
+<html lang="en" data-accent-color="lime" data-content_root="../../../../../">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>icspacket.proto.iec104.objects.information - icspacket 0.1.dev1+ge2da2242a documentation</title><link rel="index" title="Index" href="../../../../../genindex.html" /><link rel="search" title="Search" href="../../../../../search.html" />
+      <link rel="canonical" href="https://matrixeditor.github.io/icspacket/_modules/icspacket/proto/iec104/objects/information.html" /><script>
+    function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
+    setColorMode(localStorage._theme||"dark");
+  </script><link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=e1a1ceaf" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/shibuya.css?v=2ceb65ce" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link media="print" rel="stylesheet" type="text/css" href="../../../../../_static/print.css?v=20ff2c19" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --sy-f-text: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+  --sy-f-heading: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+}
+</style>
+    
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://matrixeditor.github.io/icspacket/_modules/icspacket/proto/iec104/objects/information.html"/>
+  <meta property="og:title" content="icspacket.proto.iec104.objects.information"/>
+    <meta name="twitter:card" content="summary"/>
+  </head>
+<body><div class="sy-head">
+  <div class="sy-head-blur"></div>
+  <div class="sy-head-inner sy-container mx-auto">
+    <a class="sy-head-brand" href="../../../../../index.html">
+      
+      
+      <strong>icspacket</strong>
+    </a>
+    <div class="sy-head-nav" id="head-nav">
+      <nav class="sy-head-links"><ul>
+      <li class="link"><a class="js-menu" href="../../../../../getting-started/protocols.html" id="nav-trigger-1" aria-controls="nav-children-1">
+            <span>Examples</span>
+            <i class="i-lucide chevron-down"></i>
+          </a>
+        <ul id="nav-children-1" aria-labelledby="nav-trigger-1"><li><a href="../../../../../protocols/mms/examples.html">
+                <span>MMS Utilities</span>
+                <small>Manufacturing Message Specification tools</small>
+              </a></li><li><a href="../../../../../protocols/dnp3/examples.html">
+                <span>DNP3 Tools</span>
+                <small>DNP3 utilities and tools</small>
+              </a></li><li><a href="../../../../../protocols/iec61850/iedmap.html">
+                <span>IED Enumeration Tool</span>
+                <small>Logical Device enumeration and more</small>
+              </a></li></ul>
+      </li><li class="link"><a href="../../../../../changelog.html">Changelog</a></li></ul></nav>
+      <div class="sy-head-extra flex items-center print:hidden"><form class="searchbox flex items-center" action="../../../../../search.html" method="get">
+  <input type="text" name="q" placeholder="Search" />
+  <kbd>/</kbd>
+</form><div class="sy-head-socials">
+  <a href="https://github.com/MatrixEditor/icspacket" aria-label="GitHub">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </a></div></div>
+    </div>
+    <div class="sy-head-actions flex items-center shrink-0 print:hidden"><button class="js-theme theme-switch flex items-center"
+data-aria-auto="Switch to light color mode"
+data-aria-light="Switch to dark color mode"
+data-aria-dark="Switch to auto color mode">
+<i class="i-lucide theme-icon"></i>
+</button><button class="md:hidden flex items-center js-menu" aria-label="Menu" type="button" aria-controls="head-nav" aria-expanded="false">
+        <div class="hamburger">
+          <span class="hamburger_1"></span>
+          <span class="hamburger_2"></span>
+          <span class="hamburger_3"></span>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>
+<div class="sy-page sy-container flex mx-auto">
+  <aside id="lside" class="sy-lside md:w-72 md:shrink-0 print:hidden">
+    <div class="sy-lside-inner md:sticky">
+      <div class="sy-scrollbar p-6"><div class="sidebar-links">
+  <ul>
+    <li><a class="icon-link" href="https://github.com/MatrixEditor/icspacket/discussions">
+  <span class="icon">
+    <svg viewBox="0 0 24 24" fill="none">
+      <path fill="var(--accent-9)" fill-rule="evenodd" clip-rule="evenodd" d="M11 5a6 6 0 0 0-4.687 9.746c.215.27.315.62.231.954l-.514 2.058a1 1 0 0 0 1.485 1.1l2.848-1.71c.174-.104.374-.15.576-.148H13a6 6 0 0 0 0-12h-2Z"/>
+      <circle fill="white" cx="12" cy="11" r="1"/>
+      <circle fill="white" cx="9" cy="11" r="1"/>
+      <circle fill="white" cx="15" cy="11" r="1"/>
+    </svg>
+  </span>
+  <span class="text">Discussion</span>
+</a></li>
+  </ul>
+</div>
+        <div class="globaltoc" data-expand-depth="1"><p class="caption" role="heading" aria-level="3"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../getting-started/installation.html">Installation</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../getting-started/protocols.html">Protocols Overview</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../getting-started/coreapi.html">Core API Reference</a></li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">DNP3 / IEEE 1815</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../protocols/dnp3/dnp3read.html">Reading Objects</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../protocols/dnp3/dnp3dump.html">Dumping Objects</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../protocols/dnp3/dnp3resolve.html">Resolve Link Addresses</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../protocols/dnp3/api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/dnp3/api/link.html">Link Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/dnp3/api/transport.html">Transport Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/dnp3/api/application.html">Application Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/dnp3/api/master.html">Master</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/dnp3/api/object_library.html">Object Library</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../protocols/dnp3/api/primitives.html">Primitive Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../protocols/dnp3/api/coding.html">Encoding / Decoding</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../protocols/dnp3/api/variations.html">Variations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../protocols/dnp3/api/coding_utils.html">Object Utilities</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">IEC 61850</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../protocols/iec61850/iedmap.html">Enumerating IEDs</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../protocols/iec61850/iedctrl.html">Operating on IEDs</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../protocols/iec61850/api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/iec61850/api_data_classes.html">Data Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/iec61850/api_path.html">Object / Data References</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/iec61850/api_control.html">Control / Operation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/iec61850/api_client.html">IED Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/iec61850/api_goose.html">GOOSE Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/iec61850/api_sv.html">SampledValues Client</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">MMS / ISO 9506</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../protocols/mms/demo_vars.html">Variable Target Format</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../protocols/mms/demo_vars.html#variableaccess-service-rwq">VariableAccess Service (rwq)</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../protocols/mms/demo_files.html">FileManagement Service</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../protocols/mms/api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/mms/api_conn.html">MMS Connection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/mms/api_data.html">Data Conversion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/mms/api_utils.html">Protocol Utilities</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">IEC 60870-5-104</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../protocols/iec104/iec104read.html">Reading Data via Interrogation</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../protocols/iec104/api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/iec104/api/apci.html">APCI - Framing Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/iec104/api/asdu.html">ASDU - Application Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/iec104/api/master.html">Master (Client)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/iec104/api/objects.html">Information Object Library</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">ACSE / X.227</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../protocols/acse/api.html">API Reference</a></li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">COPP / X.226 / ISO 8823</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../protocols/copp/api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/copp/presentation.html">ISO Presentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/copp/utils.html">Protocol Utilities</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">COSP / X.225 / ISO 8237-1</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../protocols/cosp/api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/cosp/tsdu.html">TSDU</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/cosp/spdu.html">SPDU Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/cosp/values.html">Parameter Values (PV)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/cosp/session.html">ISO Session</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/cosp/utils.html">Protocol Utilities</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">COTP / X.224</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../protocols/cotp/api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/cotp/structs.html">TPDU Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/cotp/connection.html">Connection</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">TPKT Protocol (RFC1006)</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../protocols/tpkt/usage.html">Using a TPKT Wrapper</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../protocols/tpkt/api.html">API Reference</a></li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../changelog.html">Changelog</a></li>
+</ul>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="lside-overlay js-menu" role="button" aria-label="Close left sidebar" aria-controls="lside" aria-expanded="false"></div>
+  <aside id="rside" class="sy-rside pb-3 w-64 shrink-0 order-last">
+    <button class="rside-close js-menu xl:hidden" aria-label="Close Table of Contents" type="button" aria-controls="rside" aria-expanded="false">
+      <i class="i-lucide close"></i>
+    </button>
+    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><a class="js-repo-stats repo-stats flex items-center" href="https://github.com/MatrixEditor/icspacket"
+  data-type="github" data-user="MatrixEditor" data-repo="icspacket">
+  <span class="w-8 flex items-center justify-around shrink-0 text-3xl">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </span>
+  <span class="flex-grow px-2 break-all">
+    <span style="font-size: small;">MatrixEditor/icspacket</span>
+    <span class="flex text-sm repo-stats-count">
+      <span class="flex items-center pr-3">
+        <iconify-icon icon="lucide:star"></iconify-icon>
+        <strong class="js-repo-stars ml-1">0</strong>
+      </span>
+      <span class="flex items-center">
+        <iconify-icon icon="lucide:git-fork"></iconify-icon>
+        <strong class="js-repo-forks ml-1">0</strong>
+      </span>
+    </span>
+  </span>
+</a></div>
+  </aside>
+  <div class="rside-overlay js-menu" role="button" aria-label="Close Table of Contents" aria-controls="rside" aria-expanded="false"></div>
+  <main class="sy-main w-full max-sm:max-w-full print:pt-6">
+<div class="sy-breadcrumbs" role="navigation">
+  <div class="sy-breadcrumbs-inner flex items-center">
+    <div class="md:hidden mr-3">
+      <button class="js-menu" aria-label="Menu" type="button" aria-controls="lside" aria-expanded="false">
+        <i class="i-lucide menu"></i>
+      </button>
+    </div>
+    <ol class="flex-1" itemscope itemtype="https://schema.org/BreadcrumbList"><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="../../../../../index.html"><span itemprop="name">icspacket</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="1" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="../../../../index.html"><span itemprop="name">Module code</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="2" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <strong itemprop="name">icspacket.proto.iec104.objects.information</strong>
+        <meta itemprop="position" content="3" />
+      </li></ol>
+    <div class="xl:hidden ml-1">
+      <button class="js-menu" aria-label="Show table of contents" type="button" aria-controls="rside"
+        aria-expanded="false">
+        <i class="i-lucide outdent"></i>
+      </button>
+    </div>
+  </div>
+</div><div class="flex flex-col break-words justify-between">
+      <div class="relative min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
+  <article class="yue" role="main">
+          <h1>Source code for icspacket.proto.iec104.objects.information</h1><div class="highlight"><pre>
+<span></span><span data-line="1"><span class="c1"># This file is part of icspacket.</span>
+</span><span data-line="2"><span class="c1"># Copyright (C) 2025-present  MatrixEditor @ github</span>
+</span><span data-line="3"><span class="c1">#</span>
+</span><span data-line="4"><span class="c1"># This program is free software: you can redistribute it and/or modify</span>
+</span><span data-line="5"><span class="c1"># it under the terms of the GNU General Public License as published by</span>
+</span><span data-line="6"><span class="c1"># the Free Software Foundation, either version 3 of the License, or</span>
+</span><span data-line="7"><span class="c1"># (at your option) any later version.</span>
+</span><span data-line="8"><span class="c1">#</span>
+</span><span data-line="9"><span class="c1"># This program is distributed in the hope that it will be useful,</span>
+</span><span data-line="10"><span class="c1"># but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+</span><span data-line="11"><span class="c1"># MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+</span><span data-line="12"><span class="c1"># GNU General Public License for more details.</span>
+</span><span data-line="13"><span class="c1">#</span>
+</span><span data-line="14"><span class="c1"># You should have received a copy of the GNU General Public License</span>
+</span><span data-line="15"><span class="c1"># along with this program.  If not, see &lt;https://www.gnu.org/licenses/&gt;.</span>
+</span><span data-line="16"><span class="c1"># pyright: reportUnannotatedClassAttribute=false</span>
+</span><span data-line="17"><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="18"><span class="sd">Per-Type-ID information-object structs.</span>
+</span><span data-line="19">
+</span><span data-line="20"><span class="sd">Each class here models the information-object payload of exactly one ASDU</span>
+</span><span data-line="21"><span class="sd">Type-ID (see :class:`icspacket.proto.iec104.const.TypeID`), composed from</span>
+</span><span data-line="22"><span class="sd">the reusable primitives in :mod:`icspacket.proto.iec104.objects.elements`.</span>
+</span><span data-line="23"><span class="sd">Every class self-registers with</span>
+</span><span data-line="24"><span class="sd">:func:`icspacket.proto.iec104.objects.coding.asdu_type` at import time.</span>
+</span><span data-line="25">
+</span><span data-line="26"><span class="sd">Field order matches wire order: a value/status element first, its</span>
+</span><span data-line="27"><span class="sd">:class:`~icspacket.proto.iec104.objects.elements.QDS` quality descriptor</span>
+</span><span data-line="28"><span class="sd">(when the standard keeps it separate) second, and a time tag</span>
+</span><span data-line="29"><span class="sd">(:class:`~icspacket.proto.iec104.objects.elements.CP56Time2a` or</span>
+</span><span data-line="30"><span class="sd">:class:`~icspacket.proto.iec104.objects.elements.CP16Time2a`) last.</span>
+</span><span data-line="31">
+</span><span data-line="32"><span class="sd">Not implemented yet:</span>
+</span><span data-line="33"><span class="sd">file-transfer types (``F_*``, 120-126), the ``S_*`` security-extension</span>
+</span><span data-line="34"><span class="sd">types, and legacy CP24Time2a-tagged monitor types (``M_*_TA_1``, the</span>
+</span><span data-line="35"><span class="sd">101-only time form superseded by CP56Time2a in 104 deployments).</span>
+</span><span data-line="36"><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="37"><span class="kn">from</span><span class="w"> </span><span class="nn">dataclasses</span><span class="w"> </span><span class="kn">import</span> <span class="n">field</span>
+</span><span data-line="38">
+</span><span data-line="39"><span class="kn">from</span><span class="w"> </span><span class="nn">caterpillar.py</span><span class="w"> </span><span class="kn">import</span> <span class="n">LittleEndian</span><span class="p">,</span> <span class="n">StructDefMixin</span><span class="p">,</span> <span class="n">struct</span>
+</span><span data-line="40"><span class="kn">from</span><span class="w"> </span><span class="nn">caterpillar.types</span><span class="w"> </span><span class="kn">import</span> <span class="n">uint16_t</span>
+</span><span data-line="41">
+</span><span data-line="42"><span class="kn">from</span><span class="w"> </span><span class="nn">icspacket.proto.iec104.const</span><span class="w"> </span><span class="kn">import</span> <span class="n">QOI</span><span class="p">,</span> <span class="n">QPA</span><span class="p">,</span> <span class="n">QRP</span><span class="p">,</span> <span class="n">TypeID</span>
+</span><span data-line="43"><span class="kn">from</span><span class="w"> </span><span class="nn">icspacket.proto.iec104.objects.coding</span><span class="w"> </span><span class="kn">import</span> <span class="n">asdu_type</span>
+</span><span data-line="44"><span class="kn">from</span><span class="w"> </span><span class="nn">icspacket.proto.iec104.objects.elements</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+</span><span data-line="45">    <span class="n">BCR</span><span class="p">,</span>
+</span><span data-line="46">    <span class="n">BSI32</span><span class="p">,</span>
+</span><span data-line="47">    <span class="n">COI</span><span class="p">,</span>
+</span><span data-line="48">    <span class="n">DCO</span><span class="p">,</span>
+</span><span data-line="49">    <span class="n">DIQ</span><span class="p">,</span>
+</span><span data-line="50">    <span class="n">NVA</span><span class="p">,</span>
+</span><span data-line="51">    <span class="n">QCC</span><span class="p">,</span>
+</span><span data-line="52">    <span class="n">QDP</span><span class="p">,</span>
+</span><span data-line="53">    <span class="n">QDS</span><span class="p">,</span>
+</span><span data-line="54">    <span class="n">QOS</span><span class="p">,</span>
+</span><span data-line="55">    <span class="n">QPM</span><span class="p">,</span>
+</span><span data-line="56">    <span class="n">R32</span><span class="p">,</span>
+</span><span data-line="57">    <span class="n">RCO</span><span class="p">,</span>
+</span><span data-line="58">    <span class="n">SCD</span><span class="p">,</span>
+</span><span data-line="59">    <span class="n">SCO</span><span class="p">,</span>
+</span><span data-line="60">    <span class="n">SEP</span><span class="p">,</span>
+</span><span data-line="61">    <span class="n">SIQ</span><span class="p">,</span>
+</span><span data-line="62">    <span class="n">SVA</span><span class="p">,</span>
+</span><span data-line="63">    <span class="n">VTI</span><span class="p">,</span>
+</span><span data-line="64">    <span class="n">CP16Time2a</span><span class="p">,</span>
+</span><span data-line="65">    <span class="n">CP56Time2a</span><span class="p">,</span>
+</span><span data-line="66">    <span class="n">OutputCircuitInfo</span><span class="p">,</span>
+</span><span data-line="67">    <span class="n">StartEvent</span><span class="p">,</span>
+</span><span data-line="68"><span class="p">)</span>
+</span><span data-line="69">
+</span><span data-line="70"><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span data-line="71">    <span class="s2">&quot;Bitstring32&quot;</span><span class="p">,</span>
+</span><span data-line="72">    <span class="s2">&quot;Bitstring32Command&quot;</span><span class="p">,</span>
+</span><span data-line="73">    <span class="s2">&quot;Bitstring32CommandWithCP56Time2a&quot;</span><span class="p">,</span>
+</span><span data-line="74">    <span class="s2">&quot;Bitstring32WithCP56Time2a&quot;</span><span class="p">,</span>
+</span><span data-line="75">    <span class="s2">&quot;ClockSynchronizationCommand&quot;</span><span class="p">,</span>
+</span><span data-line="76">    <span class="s2">&quot;CounterInterrogationCommand&quot;</span><span class="p">,</span>
+</span><span data-line="77">    <span class="s2">&quot;DelayAcquisitionCommand&quot;</span><span class="p">,</span>
+</span><span data-line="78">    <span class="s2">&quot;DoubleCommand&quot;</span><span class="p">,</span>
+</span><span data-line="79">    <span class="s2">&quot;DoubleCommandWithCP56Time2a&quot;</span><span class="p">,</span>
+</span><span data-line="80">    <span class="s2">&quot;DoublePointInformation&quot;</span><span class="p">,</span>
+</span><span data-line="81">    <span class="s2">&quot;DoublePointWithCP56Time2a&quot;</span><span class="p">,</span>
+</span><span data-line="82">    <span class="s2">&quot;EndOfInitialization&quot;</span><span class="p">,</span>
+</span><span data-line="83">    <span class="s2">&quot;EventOfProtectionEquipment&quot;</span><span class="p">,</span>
+</span><span data-line="84">    <span class="s2">&quot;IntegratedTotals&quot;</span><span class="p">,</span>
+</span><span data-line="85">    <span class="s2">&quot;IntegratedTotalsWithCP56Time2a&quot;</span><span class="p">,</span>
+</span><span data-line="86">    <span class="s2">&quot;InterrogationCommand&quot;</span><span class="p">,</span>
+</span><span data-line="87">    <span class="s2">&quot;MeasuredValueNormalized&quot;</span><span class="p">,</span>
+</span><span data-line="88">    <span class="s2">&quot;MeasuredValueNormalizedNoQuality&quot;</span><span class="p">,</span>
+</span><span data-line="89">    <span class="s2">&quot;MeasuredValueNormalizedWithCP56Time2a&quot;</span><span class="p">,</span>
+</span><span data-line="90">    <span class="s2">&quot;MeasuredValueScaled&quot;</span><span class="p">,</span>
+</span><span data-line="91">    <span class="s2">&quot;MeasuredValueScaledWithCP56Time2a&quot;</span><span class="p">,</span>
+</span><span data-line="92">    <span class="s2">&quot;MeasuredValueShort&quot;</span><span class="p">,</span>
+</span><span data-line="93">    <span class="s2">&quot;MeasuredValueShortWithCP56Time2a&quot;</span><span class="p">,</span>
+</span><span data-line="94">    <span class="s2">&quot;PackedOutputCircuitInfo&quot;</span><span class="p">,</span>
+</span><span data-line="95">    <span class="s2">&quot;PackedSinglePointWithSCD&quot;</span><span class="p">,</span>
+</span><span data-line="96">    <span class="s2">&quot;PackedStartEventsOfProtectionEquipment&quot;</span><span class="p">,</span>
+</span><span data-line="97">    <span class="s2">&quot;ParameterActivation&quot;</span><span class="p">,</span>
+</span><span data-line="98">    <span class="s2">&quot;ParameterNormalizedValue&quot;</span><span class="p">,</span>
+</span><span data-line="99">    <span class="s2">&quot;ParameterScaledValue&quot;</span><span class="p">,</span>
+</span><span data-line="100">    <span class="s2">&quot;ParameterShortValue&quot;</span><span class="p">,</span>
+</span><span data-line="101">    <span class="s2">&quot;ReadCommand&quot;</span><span class="p">,</span>
+</span><span data-line="102">    <span class="s2">&quot;ResetProcessCommand&quot;</span><span class="p">,</span>
+</span><span data-line="103">    <span class="s2">&quot;SetpointCommandNormalized&quot;</span><span class="p">,</span>
+</span><span data-line="104">    <span class="s2">&quot;SetpointCommandNormalizedWithCP56Time2a&quot;</span><span class="p">,</span>
+</span><span data-line="105">    <span class="s2">&quot;SetpointCommandScaled&quot;</span><span class="p">,</span>
+</span><span data-line="106">    <span class="s2">&quot;SetpointCommandScaledWithCP56Time2a&quot;</span><span class="p">,</span>
+</span><span data-line="107">    <span class="s2">&quot;SetpointCommandShort&quot;</span><span class="p">,</span>
+</span><span data-line="108">    <span class="s2">&quot;SetpointCommandShortWithCP56Time2a&quot;</span><span class="p">,</span>
+</span><span data-line="109">    <span class="s2">&quot;SingleCommand&quot;</span><span class="p">,</span>
+</span><span data-line="110">    <span class="s2">&quot;SingleCommandWithCP56Time2a&quot;</span><span class="p">,</span>
+</span><span data-line="111">    <span class="s2">&quot;SinglePointInformation&quot;</span><span class="p">,</span>
+</span><span data-line="112">    <span class="s2">&quot;SinglePointWithCP56Time2a&quot;</span><span class="p">,</span>
+</span><span data-line="113">    <span class="s2">&quot;StepCommand&quot;</span><span class="p">,</span>
+</span><span data-line="114">    <span class="s2">&quot;StepCommandWithCP56Time2a&quot;</span><span class="p">,</span>
+</span><span data-line="115">    <span class="s2">&quot;StepPositionInformation&quot;</span><span class="p">,</span>
+</span><span data-line="116">    <span class="s2">&quot;StepPositionWithCP56Time2a&quot;</span><span class="p">,</span>
+</span><span data-line="117">    <span class="s2">&quot;TestCommand&quot;</span><span class="p">,</span>
+</span><span data-line="118">    <span class="s2">&quot;TestCommandWithCP56Time2a&quot;</span><span class="p">,</span>
+</span><span data-line="119"><span class="p">]</span>
+</span><span data-line="120">
+</span><span data-line="121">
+</span><span data-line="122"><span class="c1"># ============================================================================ #</span>
+</span><span data-line="123"><span class="c1"># Phase A - monitor direction, without time tag</span>
+</span><span data-line="124"><span class="c1"># ============================================================================ #</span>
+<div class="viewcode-block" id="SinglePointInformation">
+<a class="viewcode-back" href="../../../../../protocols/iec104/api/objects.html#icspacket.proto.iec104.objects.information.SinglePointInformation">[docs]</a>
+</span><span data-line="125"><span class="nd">@asdu_type</span>
+</span><span data-line="126"><span class="nd">@struct</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="n">LittleEndian</span><span class="p">,</span> <span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span data-line="127"><span class="k">class</span><span class="w"> </span><span class="nc">SinglePointInformation</span><span class="p">(</span><span class="n">StructDefMixin</span><span class="p">):</span>
+</span><span data-line="128"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Single-point information.&quot;&quot;&quot;</span>
+</span><span data-line="129">
+</span><span data-line="130">    <span class="n">TYPE_ID</span> <span class="o">=</span> <span class="n">TypeID</span><span class="o">.</span><span class="n">M_SP_NA_1</span>
+</span><span data-line="131">
+</span><span data-line="132">    <span class="n">status</span><span class="p">:</span> <span class="n">SIQ</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="n">SIQ</span><span class="p">)</span>
+</span><span data-line="133"><span class="w">    </span><span class="sd">&quot;&quot;&quot;See :class:`~icspacket.proto.iec104.objects.elements.SIQ`.&quot;&quot;&quot;</span></div>
+
+</span><span data-line="134">
+</span><span data-line="135">
+<div class="viewcode-block" id="DoublePointInformation">
+<a class="viewcode-back" href="../../../../../protocols/iec104/api/objects.html#icspacket.proto.iec104.objects.information.DoublePointInformation">[docs]</a>
+</span><span data-line="136"><span class="nd">@asdu_type</span>
+</span><span data-line="137"><span class="nd">@struct</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="n">LittleEndian</span><span class="p">,</span> <span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span data-line="138"><span class="k">class</span><span class="w"> </span><span class="nc">DoublePointInformation</span><span class="p">(</span><span class="n">StructDefMixin</span><span class="p">):</span>
+</span><span data-line="139"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Double-point information.&quot;&quot;&quot;</span>
+</span><span data-line="140">
+</span><span data-line="141">    <span class="n">TYPE_ID</span> <span class="o">=</span> <span class="n">TypeID</span><span class="o">.</span><span class="n">M_DP_NA_1</span>
+</span><span data-line="142">
+</span><span data-line="143">    <span class="n">status</span><span class="p">:</span> <span class="n">DIQ</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="n">DIQ</span><span class="p">)</span>
+</span><span data-line="144"><span class="w">    </span><span class="sd">&quot;&quot;&quot;See :class:`~icspacket.proto.iec104.objects.elements.DIQ`.&quot;&quot;&quot;</span></div>
+
+</span><span data-line="145">
+</span><span data-line="146">
+<div class="viewcode-block" id="StepPositionInformation">
+<a class="viewcode-back" href="../../../../../protocols/iec104/api/objects.html#icspacket.proto.iec104.objects.information.StepPositionInformation">[docs]</a>
+</span><span data-line="147"><span class="nd">@asdu_type</span>
+</span><span data-line="148"><span class="nd">@struct</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="n">LittleEndian</span><span class="p">,</span> <span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span data-line="149"><span class="k">class</span><span class="w"> </span><span class="nc">StepPositionInformation</span><span class="p">(</span><span class="n">StructDefMixin</span><span class="p">):</span>
+</span><span data-line="150"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Step position information (transformer/tap-changer position).&quot;&quot;&quot;</span>
+</span><span data-line="151">
+</span><span data-line="152">    <span class="n">TYPE_ID</span> <span class="o">=</span> <span class="n">TypeID</span><span class="o">.</span><span class="n">M_ST_NA_1</span>
+</span><span data-line="153">
+</span><span data-line="154">    <span class="n">value</span><span class="p">:</span> <span class="n">VTI</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="n">VTI</span><span class="p">)</span>
+</span><span data-line="155"><span class="w">    </span><span class="sd">&quot;&quot;&quot;See :class:`~icspacket.proto.iec104.objects.elements.VTI`.&quot;&quot;&quot;</span>
+</span><span data-line="156">
+</span><span data-line="157">    <span class="n">quality</span><span class="p">:</span> <span class="n">QDS</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="n">QDS</span><span class="p">)</span>
+</span><span data-line="158"><span class="w">    </span><span class="sd">&quot;&quot;&quot;See :class:`~icspacket.proto.iec104.objects.elements.QDS`.&quot;&quot;&quot;</span></div>
+
+</span><span data-line="159">
+</span><span data-line="160">
+<div class="viewcode-block" id="Bitstring32">
+<a class="viewcode-back" href="../../../../../protocols/iec104/api/objects.html#icspacket.proto.iec104.objects.information.Bitstring32">[docs]</a>
+</span><span data-line="161"><span class="nd">@asdu_type</span>
+</span><span data-line="162"><span class="nd">@struct</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="n">LittleEndian</span><span class="p">,</span> <span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span data-line="163"><span class="k">class</span><span class="w"> </span><span class="nc">Bitstring32</span><span class="p">(</span><span class="n">StructDefMixin</span><span class="p">):</span>
+</span><span data-line="164"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Bitstring of 32 bit.&quot;&quot;&quot;</span>
+</span><span data-line="165">
+</span><span data-line="166">    <span class="n">TYPE_ID</span> <span class="o">=</span> <span class="n">TypeID</span><span class="o">.</span><span class="n">M_BO_NA_1</span>
+</span><span data-line="167">
+</span><span data-line="168">    <span class="n">value</span><span class="p">:</span> <span class="n">BSI32</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span data-line="169"><span class="w">    </span><span class="sd">&quot;&quot;&quot;See :class:`~icspacket.proto.iec104.objects.elements.BSI32`.&quot;&quot;&quot;</span>
+</span><span data-line="170">
+</span><span data-line="171">    <span class="n">quality</span><span class="p">:</span> <span class="n">QDS</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="n">QDS</span><span class="p">)</span>
+</span><span data-line="172"><span class="w">    </span><span class="sd">&quot;&quot;&quot;See :class:`~icspacket.proto.iec104.objects.elements.QDS`.&quot;&quot;&quot;</span></div>
+
+</span><span data-line="173">
+</span><span data-line="174">
+<div class="viewcode-block" id="MeasuredValueNormalized">
+<a class="viewcode-back" href="../../../../../protocols/iec104/api/objects.html#icspacket.proto.iec104.objects.information.MeasuredValueNormalized">[docs]</a>
+</span><span data-line="175"><span class="nd">@asdu_type</span>
+</span><span data-line="176"><span class="nd">@struct</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="n">LittleEndian</span><span class="p">,</span> <span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span data-line="177"><span class="k">class</span><span class="w"> </span><span class="nc">MeasuredValueNormalized</span><span class="p">(</span><span class="n">StructDefMixin</span><span class="p">):</span>
+</span><span data-line="178"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Measured value, normalized value.&quot;&quot;&quot;</span>
+</span><span data-line="179">
+</span><span data-line="180">    <span class="n">TYPE_ID</span> <span class="o">=</span> <span class="n">TypeID</span><span class="o">.</span><span class="n">M_ME_NA_1</span>
+</span><span data-line="181">
+</span><span data-line="182">    <span class="n">value</span><span class="p">:</span> <span class="n">NVA</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span data-line="183"><span class="w">    </span><span class="sd">&quot;&quot;&quot;See :class:`~icspacket.proto.iec104.objects.elements.NVA`.&quot;&quot;&quot;</span>
+</span><span data-line="184">
+</span><span data-line="185">    <span class="n">quality</span><span class="p">:</span> <span class="n">QDS</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="n">QDS</span><span class="p">)</span>
+</span><span data-line="186"><span class="w">    </span><span class="sd">&quot;&quot;&quot;See :class:`~icspacket.proto.iec104.objects.elements.QDS`.&quot;&quot;&quot;</span></div>
+
+</span><span data-line="187">
+</span><span data-line="188">
+<div class="viewcode-block" id="MeasuredValueScaled">
+<a class="viewcode-back" href="../../../../../protocols/iec104/api/objects.html#icspacket.proto.iec104.objects.information.MeasuredValueScaled">[docs]</a>
+</span><span data-line="189"><span class="nd">@asdu_type</span>
+</span><span data-line="190"><span class="nd">@struct</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="n">LittleEndian</span><span class="p">,</span> <span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span data-line="191"><span class="k">class</span><span class="w"> </span><span class="nc">MeasuredValueScaled</span><span class="p">(</span><span class="n">StructDefMixin</span><span class="p">):</span>
+</span><span data-line="192"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Measured value, scaled value.&quot;&quot;&quot;</span>
+</span><span data-line="193">
+</span><span data-line="194">    <span class="n">TYPE_ID</span> <span class="o">=</span> <span class="n">TypeID</span><span class="o">.</span><span class="n">M_ME_NB_1</span>
+</span><span data-line="195">
+</span><span data-line="196">    <span class="n">value</span><span class="p">:</span> <span class="n">SVA</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span data-line="197"><span class="w">    </span><span class="sd">&quot;&quot;&quot;See :class:`~icspacket.proto.iec104.objects.elements.SVA`.&quot;&quot;&quot;</span>
+</span><span data-line="198">
+</span><span data-line="199">    <span class="n">quality</span><span class="p">:</span> <span class="n">QDS</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="n">QDS</span><span class="p">)</span>
+</span><span data-line="200"><span class="w">    </span><span class="sd">&quot;&quot;&quot;See :class:`~icspacket.proto.iec104.objects.elements.QDS`.&quot;&quot;&quot;</span></div>
+
+</span><span data-line="201">
+</span><span data-line="202">
+<div class="viewcode-block" id="MeasuredValueShort">
+<a class="viewcode-back" href="../../../../../protocols/iec104/api/objects.html#icspacket.proto.iec104.objects.information.MeasuredValueShort">[docs]</a>
+</span><span data-line="203"><span class="nd">@asdu_type</span>
+</span><span data-line="204"><span class="nd">@struct</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="n">LittleEndian</span><span class="p">,</span> <span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span data-line="205"><span class="k">class</span><span class="w"> </span><span class="nc">MeasuredValueShort</span><span class="p">(</span><span class="n">StructDefMixin</span><span class="p">):</span>
+</span><span data-line="206"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Measured value, short floating point number.&quot;&quot;&quot;</span>
+</span><span data-line="207">
+</span><span data-line="208">    <span class="n">TYPE_ID</span> <span class="o">=</span> <span class="n">TypeID</span><span class="o">.</span><span class="n">M_ME_NC_1</span>
+</span><span data-line="209">
+</span><span data-line="210">    <span class="n">value</span><span class="p">:</span> <span class="n">R32</span> <span class="o">=</span> <span class="mf">0.0</span>
+</span><span data-line="211"><span class="w">    </span><span class="sd">&quot;&quot;&quot;See :class:`~icspacket.proto.iec104.objects.elements.R32`.&quot;&quot;&quot;</span>
+</span><span data-line="212">
+</span><span data-line="213">    <span class="n">quality</span><span class="p">:</span> <span class="n">QDS</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="n">QDS</span><span class="p">)</span>
+</span><span data-line="214"><span class="w">    </span><span class="sd">&quot;&quot;&quot;See :class:`~icspacket.proto.iec104.objects.elements.QDS`.&quot;&quot;&quot;</span></div>
+
+</span><span data-line="215">
+</span><span data-line="216">
+<div class="viewcode-block" id="IntegratedTotals">
+<a class="viewcode-back" href="../../../../../protocols/iec104/api/objects.html#icspacket.proto.iec104.objects.information.IntegratedTotals">[docs]</a>
+</span><span data-line="217"><span class="nd">@asdu_type</span>
+</span><span data-line="218"><span class="nd">@struct</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="n">LittleEndian</span><span class="p">,</span> <span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span data-line="219"><span class="k">class</span><span class="w"> </span><span class="nc">IntegratedTotals</span><span class="p">(</span><span class="n">StructDefMixin</span><span class="p">):</span>
+</span><span data-line="220"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Integrated totals.&quot;&quot;&quot;</span>
+</span><span data-line="221">
+</span><span data-line="222">    <span class="n">TYPE_ID</span> <span class="o">=</span> <span class="n">TypeID</span><span class="o">.</span><span class="n">M_IT_NA_1</span>
+</span><span data-line="223">
+</span><span data-line="224">    <span class="n">value</span><span class="p">:</span> <span class="n">BCR</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="n">BCR</span><span class="p">)</span>
+</span><span data-line="225"><span class="w">    </span><span class="sd">&quot;&quot;&quot;See :class:`~icspacket.proto.iec104.objects.elements.BCR`. Unlike the</span>
+</span><span data-line="226"><span class="sd">    other Phase A monitor types, BCR already carries its own flags, so no</span>
+</span><span data-line="227"><span class="sd">    separate :class:`QDS` follows it on the wire.&quot;&quot;&quot;</span></div>
+
+</span><span data-line="228">
+</span><span data-line="229">
+<div class="viewcode-block" id="PackedSinglePointWithSCD">
+<a class="viewcode-back" href="../../../../../protocols/iec104/api/objects.html#icspacket.proto.iec104.objects.information.PackedSinglePointWithSCD">[docs]</a>
+</span><span data-line="230"><span class="nd">@asdu_type</span>
+</span><span data-line="231"><span class="nd">@struct</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="n">LittleEndian</span><span class="p">,</span> <span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span data-line="232"><span class="k">class</span><span class="w"> </span><span class="nc">PackedSinglePointWithSCD</span><span class="p">(</span><span class="n">StructDefMixin</span><span class="p">):</span>
+</span><span data-line="233"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Packed single-point information with status change detection.&quot;&quot;&quot;</span>
+</span><span data-line="234">
+</span><span data-line="235">    <span class="n">TYPE_ID</span> <span class="o">=</span> <span class="n">TypeID</span><span class="o">.</span><span class="n">M_PS_NA_1</span>
+</span><span data-line="236">
+</span><span data-line="237">    <span class="n">status</span><span class="p">:</span> <span class="n">SCD</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="n">SCD</span><span class="p">)</span>
+</span><span data-line="238"><span class="w">    </span><span class="sd">&quot;&quot;&quot;See :class:`~icspacket.proto.iec104.objects.elements.SCD`.&quot;&quot;&quot;</span>
+</span><span data-line="239">
+</span><span data-line="240">    <span class="n">quality</span><span class="p">:</span> <span class="n">QDS</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="n">QDS</span><span class="p">)</span>
+</span><span data-line="241"><span class="w">    </span><span class="sd">&quot;&quot;&quot;See :class:`~icspacket.proto.iec104.objects.elements.QDS`.&quot;&quot;&quot;</span></div>
+
+</span><span data-line="242">
+</span><span data-line="243">
+<div class="viewcode-block" id="MeasuredValueNormalizedNoQuality">
+<a class="viewcode-back" href="../../../../../protocols/iec104/api/objects.html#icspacket.proto.iec104.objects.information.MeasuredValueNormalizedNoQuality">[docs]</a>
+</span><span data-line="244"><span class="nd">@asdu_type</span>
+</span><span data-line="245"><span class="nd">@struct</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="n">LittleEndian</span><span class="p">,</span> <span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span data-line="246"><span class="k">class</span><span class="w"> </span><span class="nc">MeasuredValueNormalizedNoQuality</span><span class="p">(</span><span class="n">StructDefMixin</span><span class="p">):</span>
+</span><span data-line="247"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Measured value, normalized value without quality descriptor.&quot;&quot;&quot;</span>
+</span><span data-line="248">
+</span><span data-line="249">    <span class="n">TYPE_ID</span> <span class="o">=</span> <span class="n">TypeID</span><span class="o">.</span><span class="n">M_ME_ND_1</span>
+</span><span data-line="250">
+</span><span data-line="251">    <span class="n">value</span><span class="p">:</span> <span class="n">NVA</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span data-line="252"><span class="w">    </span><span class="sd">&quot;&quot;&quot;See :class:`~icspacket.proto.iec104.objects.elements.NVA`. Bare - no</span>
+</span><span data-line="253"><span class="sd">    :class:`QDS` follows (the ``_ND_1`` variant exists specifically to save</span>
+</span><span data-line="254"><span class="sd">    bandwidth by omitting it).&quot;&quot;&quot;</span></div>
+
+</span><span data-line="255">
+</span><span data-line="256">
+</span><span data-line="257"><span class="c1"># ============================================================================ #</span>
+</span><span data-line="258"><span class="c1"># Phase B - monitor direction, with CP56Time2a tag (104-preferred)</span>
+</span><span data-line="259"><span class="c1"># ============================================================================ #</span>
+<div class="viewcode-block" id="SinglePointWithCP56Time2a">
+<a class="viewcode-back" href="../../../../../protocols/iec104/api/objects.html#icspacket.proto.iec104.objects.information.SinglePointWithCP56Time2a">[docs]</a>
+</span><span data-line="260"><span class="nd">@asdu_type</span>
+</span><span data-line="261"><span class="nd">@struct</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="n">LittleEndian</span><span class="p">,</span> <span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span data-line="262"><span class="k">class</span><span class="w"> </span><span class="nc">SinglePointWithCP56Time2a</span><span class="p">(</span><span class="n">StructDefMixin</span><span class="p">):</span>
+</span><span data-line="263"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Single-point information with CP56Time2a time tag.&quot;&quot;&quot;</span>
+</span><span data-line="264">
+</span><span data-line="265">    <span class="n">TYPE_ID</span> <span class="o">=</span> <span class="n">TypeID</span><span class="o">.</span><span class="n">M_SP_TB_1</span>
+</span><span data-line="266">
+</span><span data-line="267">    <span class="n">status</span><span class="p">:</span> <span class="n">SIQ</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="n">SIQ</span><span class="p">)</span>
+</span><span data-line="268"><span class="w">    </span><span class="sd">&quot;&quot;&quot;See :class:`~icspacket.proto.iec104.objects.elements.SIQ`.&quot;&quot;&quot;</span>
+</span><span data-line="269">
+</span><span data-line="270">    <span class="n">timestamp</span><span class="p">:</span> <span class="n">CP56Time2a</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="n">CP56Time2a</span><span class="p">)</span>
+</span><span data-line="271"><span class="w">    </span><span class="sd">&quot;&quot;&quot;See :class:`~icspacket.proto.iec104.objects.elements.CP56Time2a`.&quot;&quot;&quot;</span></div>
+
+</span><span data-line="272">
+</span><span data-line="273">
+<div class="viewcode-block" id="DoublePointWithCP56Time2a">
+<a class="viewcode-back" href="../../../../../protocols/iec104/api/objects.html#icspacket.proto.iec104.objects.information.DoublePointWithCP56Time2a">[docs]</a>
+</span><span data-line="274"><span class="nd">@asdu_type</span>
+</span><span data-line="275"><span class="nd">@struct</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="n">LittleEndian</span><span class="p">,</span> <span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span data-line="276"><span class="k">class</span><span class="w"> </span><span class="nc">DoublePointWithCP56Time2a</span><span class="p">(</span><span class="n">StructDefMixin</span><span class="p">):</span>
+</span><span data-line="277"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Double-point information with CP56Time2a time tag.&quot;&quot;&quot;</span>
+</span><span data-line="278">
+</span><span data-line="279">    <span class="n">TYPE_ID</span> <span class="o">=</span> <span class="n">TypeID</span><span class="o">.</span><span class="n">M_DP_TB_1</span>
+</span><span data-line="280">
+</span><span data-line="281">    <span class="n">status</span><span class="p">:</span> <span class="n">DIQ</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="n">DIQ</span><span class="p">)</span>
+</span><span data-line="282"><span class="w">    </span><span class="sd">&quot;&quot;&quot;See :class:`~icspacket.proto.iec104.objects.elements.DIQ`.&quot;&quot;&quot;</span>
+</span><span data-line="283">
+</span><span data-line="284">    <span class="n">timestamp</span><span class="p">:</span> <span class="n">CP56Time2a</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="n">CP56Time2a</span><span class="p">)</span>
+</span><span data-line="285"><span class="w">    </span><span class="sd">&quot;&quot;&quot;See :class:`~icspacket.proto.iec104.objects.elements.CP56Time2a`.&quot;&quot;&quot;</span></div>
+
+</span><span data-line="286">
+</span><span data-line="287">
+<div class="viewcode-block" id="StepPositionWithCP56Time2a">
+<a class="viewcode-back" href="../../../../../protocols/iec104/api/objects.html#icspacket.proto.iec104.objects.information.StepPositionWithCP56Time2a">[docs]</a>
+</span><span data-line="288"><span class="nd">@asdu_type</span>
+</span><span data-line="289"><span class="nd">@struct</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="n">LittleEndian</span><span class="p">,</span> <span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span data-line="290"><span class="k">class</span><span class="w"> </span><span class="nc">StepPositionWithCP56Time2a</span><span class="p">(</span><span class="n">StructDefMixin</span><span class="p">):</span>
+</span><span data-line="291"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Step position information with CP56Time2a time tag.&quot;&quot;&quot;</span>
+</span><span data-line="292">
+</span><span data-line="293">    <span class="n">TYPE_ID</span> <span class="o">=</span> <span class="n">TypeID</span><span class="o">.</span><span class="n">M_ST_TB_1</span>
+</span><span data-line="294">
+</span><span data-line="295">    <span class="n">value</span><span class="p">:</span> <span class="n">VTI</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="n">VTI</span><span class="p">)</span>
+</span><span data-line="296"><span class="w">    </span><span class="sd">&quot;&quot;&quot;See :class:`~icspacket.proto.iec104.objects.elements.VTI`.&quot;&quot;&quot;</span>
+</span><span data-line="297">
+</span><span data-line="298">    <span class="n">quality</span><span class="p">:</span> <span class="n">QDS</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="n">QDS</span><span class="p">)</span>
+</span><span data-line="299"><span class="w">    </span><span class="sd">&quot;&quot;&quot;See :class:`~icspacket.proto.iec104.objects.elements.QDS`.&quot;&quot;&quot;</span>
+</span><span data-line="300">
+</span><span data-line="301">    <span class="n">timestamp</span><span class="p">:</span> <span class="n">CP56Time2a</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="n">CP56Time2a</span><span class="p">)</span>
+</span><span data-line="302"><span class="w">    </span><span class="sd">&quot;&quot;&quot;See :class:`~icspacket.proto.iec104.objects.elements.CP56Time2a`.&quot;&quot;&quot;</span></div>
+
+</span><span data-line="303">
+</span><span data-line="304">
+<div class="viewcode-block" id="Bitstring32WithCP56Time2a">
+<a class="viewcode-back" href="../../../../../protocols/iec104/api/objects.html#icspacket.proto.iec104.objects.information.Bitstring32WithCP56Time2a">[docs]</a>
+</span><span data-line="305"><span class="nd">@asdu_type</span>
+</span><span data-line="306"><span class="nd">@struct</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="n">LittleEndian</span><span class="p">,</span> <span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span data-line="307"><span class="k">class</span><span class="w"> </span><span class="nc">Bitstring32WithCP56Time2a</span><span class="p">(</span><span class="n">StructDefMixin</span><span class="p">):</span>
+</span><span data-line="308"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Bitstring of 32 bit with CP56Time2a time tag.&quot;&quot;&quot;</span>
+</span><span data-line="309">
+</span><span data-line="310">    <span class="n">TYPE_ID</span> <span class="o">=</span> <span class="n">TypeID</span><span class="o">.</span><span class="n">M_BO_TB_1</span>
+</span><span data-line="311">
+</span><span data-line="312">    <span class="n">value</span><span class="p">:</span> <span class="n">BSI32</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span data-line="313"><span class="w">    </span><span class="sd">&quot;&quot;&quot;See :class:`~icspacket.proto.iec104.objects.elements.BSI32`.&quot;&quot;&quot;</span>
+</span><span data-line="314">
+</span><span data-line="315">    <span class="n">quality</span><span class="p">:</span> <span class="n">QDS</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="n">QDS</span><span class="p">)</span>
+</span><span data-line="316"><span class="w">    </span><span class="sd">&quot;&quot;&quot;See :class:`~icspacket.proto.iec104.objects.elements.QDS`.&quot;&quot;&quot;</span>
+</span><span data-line="317">
+</span><span data-line="318">    <span class="n">timestamp</span><span class="p">:</span> <span class="n">CP56Time2a</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="n">CP56Time2a</span><span class="p">)</span>
+</span><span data-line="319"><span class="w">    </span><span class="sd">&quot;&quot;&quot;See :class:`~icspacket.proto.iec104.objects.elements.CP56Time2a`.&quot;&quot;&quot;</span></div>
+
+</span><span data-line="320">
+</span><span data-line="321">
+<div class="viewcode-block" id="MeasuredValueNormalizedWithCP56Time2a">
+<a class="viewcode-back" href="../../../../../protocols/iec104/api/objects.html#icspacket.proto.iec104.objects.information.MeasuredValueNormalizedWithCP56Time2a">[docs]</a>
+</span><span data-line="322"><span class="nd">@asdu_type</span>
+</span><span data-line="323"><span class="nd">@struct</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="n">LittleEndian</span><span class="p">,</span> <span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span data-line="324"><span class="k">class</span><span class="w"> </span><span class="nc">MeasuredValueNormalizedWithCP56Time2a</span><span class="p">(</span><span class="n">StructDefMixin</span><span class="p">):</span>
+</span><span data-line="325"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Measured value, normalized value with CP56Time2a time tag.&quot;&quot;&quot;</span>
+</span><span data-line="326">
+</span><span data-line="327">    <span class="n">TYPE_ID</span> <span class="o">=</span> <span class="n">TypeID</span><span class="o">.</span><span class="n">M_ME_TD_1</span>
+</span><span data-line="328">
+</span><span data-line="329">    <span class="n">value</span><span class="p">:</span> <span class="n">NVA</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span data-line="330"><span class="w">    </span><span class="sd">&quot;&quot;&quot;See :class:`~icspacket.proto.iec104.objects.elements.NVA`.&quot;&quot;&quot;</span>
+</span><span data-line="331">
+</span><span data-line="332">    <span class="n">quality</span><span class="p">:</span> <span class="n">QDS</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="n">QDS</span><span class="p">)</span>
+</span><span data-line="333"><span class="w">    </span><span class="sd">&quot;&quot;&quot;See :class:`~icspacket.proto.iec104.objects.elements.QDS`.&quot;&quot;&quot;</span>
+</span><span data-line="334">
+</span><span data-line="335">    <span class="n">timestamp</span><span class="p">:</span> <span class="n">CP56Time2a</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="n">CP56Time2a</span><span class="p">)</span>
+</span><span data-line="336"><span class="w">    </span><span class="sd">&quot;&quot;&quot;See :class:`~icspacket.proto.iec104.objects.elements.CP56Time2a`.&quot;&quot;&quot;</span></div>
+
+</span><span data-line="337">
+</span><span data-line="338">
+<div class="viewcode-block" id="MeasuredValueScaledWithCP56Time2a">
+<a class="viewcode-back" href="../../../../../protocols/iec104/api/objects.html#icspacket.proto.iec104.objects.information.MeasuredValueScaledWithCP56Time2a">[docs]</a>
+</span><span data-line="339"><span class="nd">@asdu_type</span>
+</span><span data-line="340"><span class="nd">@struct</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="n">LittleEndian</span><span class="p">,</span> <span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span data-line="341"><span class="k">class</span><span class="w"> </span><span class="nc">MeasuredValueScaledWithCP56Time2a</span><span class="p">(</span><span class="n">StructDefMixin</span><span class="p">):</span>
+</span><span data-line="342"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Measured value, scaled value with CP56Time2a time tag.&quot;&quot;&quot;</span>
+</span><span data-line="343">
+</span><span data-line="344">    <span class="n">TYPE_ID</span> <span class="o">=</span> <span class="n">TypeID</span><span class="o">.</span><span class="n">M_ME_TE_1</span>
+</span><span data-line="345">
+</span><span data-line="346">    <span class="n">value</span><span class="p">:</span> <span class="n">SVA</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span data-line="347"><span class="w">    </span><span class="sd">&quot;&quot;&quot;See :class:`~icspacket.proto.iec104.objects.elements.SVA`.&quot;&quot;&quot;</span>
+</span><span data-line="348">
+</span><span data-line="349">    <span class="n">quality</span><span class="p">:</span> <span class="n">QDS</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="n">QDS</span><span class="p">)</span>
+</span><span data-line="350"><span class="w">    </span><span class="sd">&quot;&quot;&quot;See :class:`~icspacket.proto.iec104.objects.elements.QDS`.&quot;&quot;&quot;</span>
+</span><span data-line="351">
+</span><span data-line="352">    <span class="n">timestamp</span><span class="p">:</span> <span class="n">CP56Time2a</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="n">CP56Time2a</span><span class="p">)</span>
+</span><span data-line="353"><span class="w">    </span><span class="sd">&quot;&quot;&quot;See :class:`~icspacket.proto.iec104.objects.elements.CP56Time2a`.&quot;&quot;&quot;</span></div>
+
+</span><span data-line="354">
+</span><span data-line="355">
+<div class="viewcode-block" id="MeasuredValueShortWithCP56Time2a">
+<a class="viewcode-back" href="../../../../../protocols/iec104/api/objects.html#icspacket.proto.iec104.objects.information.MeasuredValueShortWithCP56Time2a">[docs]</a>
+</span><span data-line="356"><span class="nd">@asdu_type</span>
+</span><span data-line="357"><span class="nd">@struct</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="n">LittleEndian</span><span class="p">,</span> <span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span data-line="358"><span class="k">class</span><span class="w"> </span><span class="nc">MeasuredValueShortWithCP56Time2a</span><span class="p">(</span><span class="n">StructDefMixin</span><span class="p">):</span>
+</span><span data-line="359"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Measured value, short floating point number with CP56Time2a time</span>
+</span><span data-line="360"><span class="sd">    tag.&quot;&quot;&quot;</span>
+</span><span data-line="361">
+</span><span data-line="362">    <span class="n">TYPE_ID</span> <span class="o">=</span> <span class="n">TypeID</span><span class="o">.</span><span class="n">M_ME_TF_1</span>
+</span><span data-line="363">
+</span><span data-line="364">    <span class="n">value</span><span class="p">:</span> <span class="n">R32</span> <span class="o">=</span> <span class="mf">0.0</span>
+</span><span data-line="365"><span class="w">    </span><span class="sd">&quot;&quot;&quot;See :class:`~icspacket.proto.iec104.objects.elements.R32`.&quot;&quot;&quot;</span>
+</span><span data-line="366">
+</span><span data-line="367">    <span class="n">quality</span><span class="p">:</span> <span class="n">QDS</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="n">QDS</span><span class="p">)</span>
+</span><span data-line="368"><span class="w">    </span><span class="sd">&quot;&quot;&quot;See :class:`~icspacket.proto.iec104.objects.elements.QDS`.&quot;&quot;&quot;</span>
+</span><span data-line="369">
+</span><span data-line="370">    <span class="n">timestamp</span><span class="p">:</span> <span class="n">CP56Time2a</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="n">CP56Time2a</span><span class="p">)</span>
+</span><span data-line="371"><span class="w">    </span><span class="sd">&quot;&quot;&quot;See :class:`~icspacket.proto.iec104.objects.elements.CP56Time2a`.&quot;&quot;&quot;</span></div>
+
+</span><span data-line="372">
+</span><span data-line="373">
+<div class="viewcode-block" id="IntegratedTotalsWithCP56Time2a">
+<a class="viewcode-back" href="../../../../../protocols/iec104/api/objects.html#icspacket.proto.iec104.objects.information.IntegratedTotalsWithCP56Time2a">[docs]</a>
+</span><span data-line="374"><span class="nd">@asdu_type</span>
+</span><span data-line="375"><span class="nd">@struct</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="n">LittleEndian</span><span class="p">,</span> <span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span data-line="376"><span class="k">class</span><span class="w"> </span><span class="nc">IntegratedTotalsWithCP56Time2a</span><span class="p">(</span><span class="n">StructDefMixin</span><span class="p">):</span>
+</span><span data-line="377"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Integrated totals with CP56Time2a time tag.&quot;&quot;&quot;</span>
+</span><span data-line="378">
+</span><span data-line="379">    <span class="n">TYPE_ID</span> <span class="o">=</span> <span class="n">TypeID</span><span class="o">.</span><span class="n">M_IT_TB_1</span>
+</span><span data-line="380">
+</span><span data-line="381">    <span class="n">value</span><span class="p">:</span> <span class="n">BCR</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="n">BCR</span><span class="p">)</span>
+</span><span data-line="382"><span class="w">    </span><span class="sd">&quot;&quot;&quot;See :class:`~icspacket.proto.iec104.objects.elements.BCR`.&quot;&quot;&quot;</span>
+</span><span data-line="383">
+</span><span data-line="384">    <span class="n">timestamp</span><span class="p">:</span> <span class="n">CP56Time2a</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="n">CP56Time2a</span><span class="p">)</span>
+</span><span data-line="385"><span class="w">    </span><span class="sd">&quot;&quot;&quot;See :class:`~icspacket.proto.iec104.objects.elements.CP56Time2a`.&quot;&quot;&quot;</span></div>
+
+</span><span data-line="386">
+</span><span data-line="387">
+<div class="viewcode-block" id="EventOfProtectionEquipment">
+<a class="viewcode-back" href="../../../../../protocols/iec104/api/objects.html#icspacket.proto.iec104.objects.information.EventOfProtectionEquipment">[docs]</a>
+</span><span data-line="388"><span class="nd">@asdu_type</span>
+</span><span data-line="389"><span class="nd">@struct</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="n">LittleEndian</span><span class="p">,</span> <span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span data-line="390"><span class="k">class</span><span class="w"> </span><span class="nc">EventOfProtectionEquipment</span><span class="p">(</span><span class="n">StructDefMixin</span><span class="p">):</span>
+</span><span data-line="391"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Event of protection equipment with CP56Time2a time tag.&quot;&quot;&quot;</span>
+</span><span data-line="392">
+</span><span data-line="393">    <span class="n">TYPE_ID</span> <span class="o">=</span> <span class="n">TypeID</span><span class="o">.</span><span class="n">M_EP_TD_1</span>
+</span><span data-line="394">
+</span><span data-line="395">    <span class="n">status</span><span class="p">:</span> <span class="n">SEP</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="n">SEP</span><span class="p">)</span>
+</span><span data-line="396"><span class="w">    </span><span class="sd">&quot;&quot;&quot;See :class:`~icspacket.proto.iec104.objects.elements.SEP`.&quot;&quot;&quot;</span>
+</span><span data-line="397">
+</span><span data-line="398">    <span class="n">elapsed_time</span><span class="p">:</span> <span class="n">CP16Time2a</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span data-line="399"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Relay operating/elapsed time, see</span>
+</span><span data-line="400"><span class="sd">    :class:`~icspacket.proto.iec104.objects.elements.CP16Time2a`.&quot;&quot;&quot;</span>
+</span><span data-line="401">
+</span><span data-line="402">    <span class="n">timestamp</span><span class="p">:</span> <span class="n">CP56Time2a</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="n">CP56Time2a</span><span class="p">)</span>
+</span><span data-line="403"><span class="w">    </span><span class="sd">&quot;&quot;&quot;See :class:`~icspacket.proto.iec104.objects.elements.CP56Time2a`.&quot;&quot;&quot;</span></div>
+
+</span><span data-line="404">
+</span><span data-line="405">
+<div class="viewcode-block" id="PackedStartEventsOfProtectionEquipment">
+<a class="viewcode-back" href="../../../../../protocols/iec104/api/objects.html#icspacket.proto.iec104.objects.information.PackedStartEventsOfProtectionEquipment">[docs]</a>
+</span><span data-line="406"><span class="nd">@asdu_type</span>
+</span><span data-line="407"><span class="nd">@struct</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="n">LittleEndian</span><span class="p">,</span> <span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span data-line="408"><span class="k">class</span><span class="w"> </span><span class="nc">PackedStartEventsOfProtectionEquipment</span><span class="p">(</span><span class="n">StructDefMixin</span><span class="p">):</span>
+</span><span data-line="409"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Packed start events of protection equipment with CP56Time2a time</span>
+</span><span data-line="410"><span class="sd">    tag.&quot;&quot;&quot;</span>
+</span><span data-line="411">
+</span><span data-line="412">    <span class="n">TYPE_ID</span> <span class="o">=</span> <span class="n">TypeID</span><span class="o">.</span><span class="n">M_EP_TE_1</span>
+</span><span data-line="413">
+</span><span data-line="414">    <span class="n">events</span><span class="p">:</span> <span class="n">StartEvent</span> <span class="o">=</span> <span class="n">StartEvent</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</span><span data-line="415"><span class="w">    </span><span class="sd">&quot;&quot;&quot;See :class:`~icspacket.proto.iec104.objects.elements.StartEvent`.&quot;&quot;&quot;</span>
+</span><span data-line="416">
+</span><span data-line="417">    <span class="n">quality</span><span class="p">:</span> <span class="n">QDP</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="n">QDP</span><span class="p">)</span>
+</span><span data-line="418"><span class="w">    </span><span class="sd">&quot;&quot;&quot;See :class:`~icspacket.proto.iec104.objects.elements.QDP`.&quot;&quot;&quot;</span>
+</span><span data-line="419">
+</span><span data-line="420">    <span class="n">relay_duration</span><span class="p">:</span> <span class="n">CP16Time2a</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span data-line="421"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Relay duration time, see</span>
+</span><span data-line="422"><span class="sd">    :class:`~icspacket.proto.iec104.objects.elements.CP16Time2a`.&quot;&quot;&quot;</span>
+</span><span data-line="423">
+</span><span data-line="424">    <span class="n">timestamp</span><span class="p">:</span> <span class="n">CP56Time2a</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="n">CP56Time2a</span><span class="p">)</span>
+</span><span data-line="425"><span class="w">    </span><span class="sd">&quot;&quot;&quot;See :class:`~icspacket.proto.iec104.objects.elements.CP56Time2a`.&quot;&quot;&quot;</span></div>
+
+</span><span data-line="426">
+</span><span data-line="427">
+<div class="viewcode-block" id="PackedOutputCircuitInfo">
+<a class="viewcode-back" href="../../../../../protocols/iec104/api/objects.html#icspacket.proto.iec104.objects.information.PackedOutputCircuitInfo">[docs]</a>
+</span><span data-line="428"><span class="nd">@asdu_type</span>
+</span><span data-line="429"><span class="nd">@struct</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="n">LittleEndian</span><span class="p">,</span> <span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span data-line="430"><span class="k">class</span><span class="w"> </span><span class="nc">PackedOutputCircuitInfo</span><span class="p">(</span><span class="n">StructDefMixin</span><span class="p">):</span>
+</span><span data-line="431"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Packed output circuit information of protection equipment with</span>
+</span><span data-line="432"><span class="sd">    CP56Time2a time tag.&quot;&quot;&quot;</span>
+</span><span data-line="433">
+</span><span data-line="434">    <span class="n">TYPE_ID</span> <span class="o">=</span> <span class="n">TypeID</span><span class="o">.</span><span class="n">M_EP_TF_1</span>
+</span><span data-line="435">
+</span><span data-line="436">    <span class="n">info</span><span class="p">:</span> <span class="n">OutputCircuitInfo</span> <span class="o">=</span> <span class="n">OutputCircuitInfo</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</span><span data-line="437"><span class="w">    </span><span class="sd">&quot;&quot;&quot;See</span>
+</span><span data-line="438"><span class="sd">    :class:`~icspacket.proto.iec104.objects.elements.OutputCircuitInfo`.&quot;&quot;&quot;</span>
+</span><span data-line="439">
+</span><span data-line="440">    <span class="n">quality</span><span class="p">:</span> <span class="n">QDP</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="n">QDP</span><span class="p">)</span>
+</span><span data-line="441"><span class="w">    </span><span class="sd">&quot;&quot;&quot;See :class:`~icspacket.proto.iec104.objects.elements.QDP`.&quot;&quot;&quot;</span>
+</span><span data-line="442">
+</span><span data-line="443">    <span class="n">operating_time</span><span class="p">:</span> <span class="n">CP16Time2a</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span data-line="444"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Relay operating time, see</span>
+</span><span data-line="445"><span class="sd">    :class:`~icspacket.proto.iec104.objects.elements.CP16Time2a`.&quot;&quot;&quot;</span>
+</span><span data-line="446">
+</span><span data-line="447">    <span class="n">timestamp</span><span class="p">:</span> <span class="n">CP56Time2a</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="n">CP56Time2a</span><span class="p">)</span>
+</span><span data-line="448"><span class="w">    </span><span class="sd">&quot;&quot;&quot;See :class:`~icspacket.proto.iec104.objects.elements.CP56Time2a`.&quot;&quot;&quot;</span></div>
+
+</span><span data-line="449">
+</span><span data-line="450">
+</span><span data-line="451"><span class="c1"># ============================================================================ #</span>
+</span><span data-line="452"><span class="c1"># Phase C - command direction</span>
+</span><span data-line="453"><span class="c1"># ============================================================================ #</span>
+<div class="viewcode-block" id="SingleCommand">
+<a class="viewcode-back" href="../../../../../protocols/iec104/api/objects.html#icspacket.proto.iec104.objects.information.SingleCommand">[docs]</a>
+</span><span data-line="454"><span class="nd">@asdu_type</span>
+</span><span data-line="455"><span class="nd">@struct</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="n">LittleEndian</span><span class="p">,</span> <span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span data-line="456"><span class="k">class</span><span class="w"> </span><span class="nc">SingleCommand</span><span class="p">(</span><span class="n">StructDefMixin</span><span class="p">):</span>
+</span><span data-line="457"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Single command.&quot;&quot;&quot;</span>
+</span><span data-line="458">
+</span><span data-line="459">    <span class="n">TYPE_ID</span> <span class="o">=</span> <span class="n">TypeID</span><span class="o">.</span><span class="n">C_SC_NA_1</span>
+</span><span data-line="460">
+</span><span data-line="461">    <span class="n">command</span><span class="p">:</span> <span class="n">SCO</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="n">SCO</span><span class="p">)</span>
+</span><span data-line="462"><span class="w">    </span><span class="sd">&quot;&quot;&quot;See :class:`~icspacket.proto.iec104.objects.elements.SCO`.&quot;&quot;&quot;</span></div>
+
+</span><span data-line="463">
+</span><span data-line="464">
+<div class="viewcode-block" id="DoubleCommand">
+<a class="viewcode-back" href="../../../../../protocols/iec104/api/objects.html#icspacket.proto.iec104.objects.information.DoubleCommand">[docs]</a>
+</span><span data-line="465"><span class="nd">@asdu_type</span>
+</span><span data-line="466"><span class="nd">@struct</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="n">LittleEndian</span><span class="p">,</span> <span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span data-line="467"><span class="k">class</span><span class="w"> </span><span class="nc">DoubleCommand</span><span class="p">(</span><span class="n">StructDefMixin</span><span class="p">):</span>
+</span><span data-line="468"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Double command.&quot;&quot;&quot;</span>
+</span><span data-line="469">
+</span><span data-line="470">    <span class="n">TYPE_ID</span> <span class="o">=</span> <span class="n">TypeID</span><span class="o">.</span><span class="n">C_DC_NA_1</span>
+</span><span data-line="471">
+</span><span data-line="472">    <span class="n">command</span><span class="p">:</span> <span class="n">DCO</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="n">DCO</span><span class="p">)</span>
+</span><span data-line="473"><span class="w">    </span><span class="sd">&quot;&quot;&quot;See :class:`~icspacket.proto.iec104.objects.elements.DCO`.&quot;&quot;&quot;</span></div>
+
+</span><span data-line="474">
+</span><span data-line="475">
+<div class="viewcode-block" id="StepCommand">
+<a class="viewcode-back" href="../../../../../protocols/iec104/api/objects.html#icspacket.proto.iec104.objects.information.StepCommand">[docs]</a>
+</span><span data-line="476"><span class="nd">@asdu_type</span>
+</span><span data-line="477"><span class="nd">@struct</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="n">LittleEndian</span><span class="p">,</span> <span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span data-line="478"><span class="k">class</span><span class="w"> </span><span class="nc">StepCommand</span><span class="p">(</span><span class="n">StructDefMixin</span><span class="p">):</span>
+</span><span data-line="479"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Regulating step command.&quot;&quot;&quot;</span>
+</span><span data-line="480">
+</span><span data-line="481">    <span class="n">TYPE_ID</span> <span class="o">=</span> <span class="n">TypeID</span><span class="o">.</span><span class="n">C_RC_NA_1</span>
+</span><span data-line="482">
+</span><span data-line="483">    <span class="n">command</span><span class="p">:</span> <span class="n">RCO</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="n">RCO</span><span class="p">)</span>
+</span><span data-line="484"><span class="w">    </span><span class="sd">&quot;&quot;&quot;See :class:`~icspacket.proto.iec104.objects.elements.RCO`.&quot;&quot;&quot;</span></div>
+
+</span><span data-line="485">
+</span><span data-line="486">
+<div class="viewcode-block" id="SetpointCommandNormalized">
+<a class="viewcode-back" href="../../../../../protocols/iec104/api/objects.html#icspacket.proto.iec104.objects.information.SetpointCommandNormalized">[docs]</a>
+</span><span data-line="487"><span class="nd">@asdu_type</span>
+</span><span data-line="488"><span class="nd">@struct</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="n">LittleEndian</span><span class="p">,</span> <span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span data-line="489"><span class="k">class</span><span class="w"> </span><span class="nc">SetpointCommandNormalized</span><span class="p">(</span><span class="n">StructDefMixin</span><span class="p">):</span>
+</span><span data-line="490"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Set-point command, normalized value.&quot;&quot;&quot;</span>
+</span><span data-line="491">
+</span><span data-line="492">    <span class="n">TYPE_ID</span> <span class="o">=</span> <span class="n">TypeID</span><span class="o">.</span><span class="n">C_SE_NA_1</span>
+</span><span data-line="493">
+</span><span data-line="494">    <span class="n">value</span><span class="p">:</span> <span class="n">NVA</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span data-line="495"><span class="w">    </span><span class="sd">&quot;&quot;&quot;See :class:`~icspacket.proto.iec104.objects.elements.NVA`.&quot;&quot;&quot;</span>
+</span><span data-line="496">
+</span><span data-line="497">    <span class="n">qualifier</span><span class="p">:</span> <span class="n">QOS</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="n">QOS</span><span class="p">)</span>
+</span><span data-line="498"><span class="w">    </span><span class="sd">&quot;&quot;&quot;See :class:`~icspacket.proto.iec104.objects.elements.QOS`.&quot;&quot;&quot;</span></div>
+
+</span><span data-line="499">
+</span><span data-line="500">
+<div class="viewcode-block" id="SetpointCommandScaled">
+<a class="viewcode-back" href="../../../../../protocols/iec104/api/objects.html#icspacket.proto.iec104.objects.information.SetpointCommandScaled">[docs]</a>
+</span><span data-line="501"><span class="nd">@asdu_type</span>
+</span><span data-line="502"><span class="nd">@struct</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="n">LittleEndian</span><span class="p">,</span> <span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span data-line="503"><span class="k">class</span><span class="w"> </span><span class="nc">SetpointCommandScaled</span><span class="p">(</span><span class="n">StructDefMixin</span><span class="p">):</span>
+</span><span data-line="504"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Set-point command, scaled value.&quot;&quot;&quot;</span>
+</span><span data-line="505">
+</span><span data-line="506">    <span class="n">TYPE_ID</span> <span class="o">=</span> <span class="n">TypeID</span><span class="o">.</span><span class="n">C_SE_NB_1</span>
+</span><span data-line="507">
+</span><span data-line="508">    <span class="n">value</span><span class="p">:</span> <span class="n">SVA</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span data-line="509"><span class="w">    </span><span class="sd">&quot;&quot;&quot;See :class:`~icspacket.proto.iec104.objects.elements.SVA`.&quot;&quot;&quot;</span>
+</span><span data-line="510">
+</span><span data-line="511">    <span class="n">qualifier</span><span class="p">:</span> <span class="n">QOS</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="n">QOS</span><span class="p">)</span>
+</span><span data-line="512"><span class="w">    </span><span class="sd">&quot;&quot;&quot;See :class:`~icspacket.proto.iec104.objects.elements.QOS`.&quot;&quot;&quot;</span></div>
+
+</span><span data-line="513">
+</span><span data-line="514">
+<div class="viewcode-block" id="SetpointCommandShort">
+<a class="viewcode-back" href="../../../../../protocols/iec104/api/objects.html#icspacket.proto.iec104.objects.information.SetpointCommandShort">[docs]</a>
+</span><span data-line="515"><span class="nd">@asdu_type</span>
+</span><span data-line="516"><span class="nd">@struct</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="n">LittleEndian</span><span class="p">,</span> <span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span data-line="517"><span class="k">class</span><span class="w"> </span><span class="nc">SetpointCommandShort</span><span class="p">(</span><span class="n">StructDefMixin</span><span class="p">):</span>
+</span><span data-line="518"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Set-point command, short floating point number.&quot;&quot;&quot;</span>
+</span><span data-line="519">
+</span><span data-line="520">    <span class="n">TYPE_ID</span> <span class="o">=</span> <span class="n">TypeID</span><span class="o">.</span><span class="n">C_SE_NC_1</span>
+</span><span data-line="521">
+</span><span data-line="522">    <span class="n">value</span><span class="p">:</span> <span class="n">R32</span> <span class="o">=</span> <span class="mf">0.0</span>
+</span><span data-line="523"><span class="w">    </span><span class="sd">&quot;&quot;&quot;See :class:`~icspacket.proto.iec104.objects.elements.R32`.&quot;&quot;&quot;</span>
+</span><span data-line="524">
+</span><span data-line="525">    <span class="n">qualifier</span><span class="p">:</span> <span class="n">QOS</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="n">QOS</span><span class="p">)</span>
+</span><span data-line="526"><span class="w">    </span><span class="sd">&quot;&quot;&quot;See :class:`~icspacket.proto.iec104.objects.elements.QOS`.&quot;&quot;&quot;</span></div>
+
+</span><span data-line="527">
+</span><span data-line="528">
+<div class="viewcode-block" id="Bitstring32Command">
+<a class="viewcode-back" href="../../../../../protocols/iec104/api/objects.html#icspacket.proto.iec104.objects.information.Bitstring32Command">[docs]</a>
+</span><span data-line="529"><span class="nd">@asdu_type</span>
+</span><span data-line="530"><span class="nd">@struct</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="n">LittleEndian</span><span class="p">,</span> <span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span data-line="531"><span class="k">class</span><span class="w"> </span><span class="nc">Bitstring32Command</span><span class="p">(</span><span class="n">StructDefMixin</span><span class="p">):</span>
+</span><span data-line="532"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Bitstring of 32 bit command.&quot;&quot;&quot;</span>
+</span><span data-line="533">
+</span><span data-line="534">    <span class="n">TYPE_ID</span> <span class="o">=</span> <span class="n">TypeID</span><span class="o">.</span><span class="n">C_BO_NA_1</span>
+</span><span data-line="535">
+</span><span data-line="536">    <span class="n">value</span><span class="p">:</span> <span class="n">BSI32</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span data-line="537"><span class="w">    </span><span class="sd">&quot;&quot;&quot;See :class:`~icspacket.proto.iec104.objects.elements.BSI32`. Bare -</span>
+</span><span data-line="538"><span class="sd">    unlike :class:`Bitstring32`, no :class:`QDS` follows for this</span>
+</span><span data-line="539"><span class="sd">    Type-ID.&quot;&quot;&quot;</span></div>
+
+</span><span data-line="540">
+</span><span data-line="541">
+<div class="viewcode-block" id="SingleCommandWithCP56Time2a">
+<a class="viewcode-back" href="../../../../../protocols/iec104/api/objects.html#icspacket.proto.iec104.objects.information.SingleCommandWithCP56Time2a">[docs]</a>
+</span><span data-line="542"><span class="nd">@asdu_type</span>
+</span><span data-line="543"><span class="nd">@struct</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="n">LittleEndian</span><span class="p">,</span> <span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span data-line="544"><span class="k">class</span><span class="w"> </span><span class="nc">SingleCommandWithCP56Time2a</span><span class="p">(</span><span class="n">StructDefMixin</span><span class="p">):</span>
+</span><span data-line="545"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Single command with CP56Time2a time tag.&quot;&quot;&quot;</span>
+</span><span data-line="546">
+</span><span data-line="547">    <span class="n">TYPE_ID</span> <span class="o">=</span> <span class="n">TypeID</span><span class="o">.</span><span class="n">C_SC_TA_1</span>
+</span><span data-line="548">
+</span><span data-line="549">    <span class="n">command</span><span class="p">:</span> <span class="n">SCO</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="n">SCO</span><span class="p">)</span>
+</span><span data-line="550"><span class="w">    </span><span class="sd">&quot;&quot;&quot;See :class:`~icspacket.proto.iec104.objects.elements.SCO`.&quot;&quot;&quot;</span>
+</span><span data-line="551">
+</span><span data-line="552">    <span class="n">timestamp</span><span class="p">:</span> <span class="n">CP56Time2a</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="n">CP56Time2a</span><span class="p">)</span>
+</span><span data-line="553"><span class="w">    </span><span class="sd">&quot;&quot;&quot;See :class:`~icspacket.proto.iec104.objects.elements.CP56Time2a`.&quot;&quot;&quot;</span></div>
+
+</span><span data-line="554">
+</span><span data-line="555">
+<div class="viewcode-block" id="DoubleCommandWithCP56Time2a">
+<a class="viewcode-back" href="../../../../../protocols/iec104/api/objects.html#icspacket.proto.iec104.objects.information.DoubleCommandWithCP56Time2a">[docs]</a>
+</span><span data-line="556"><span class="nd">@asdu_type</span>
+</span><span data-line="557"><span class="nd">@struct</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="n">LittleEndian</span><span class="p">,</span> <span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span data-line="558"><span class="k">class</span><span class="w"> </span><span class="nc">DoubleCommandWithCP56Time2a</span><span class="p">(</span><span class="n">StructDefMixin</span><span class="p">):</span>
+</span><span data-line="559"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Double command with CP56Time2a time tag.&quot;&quot;&quot;</span>
+</span><span data-line="560">
+</span><span data-line="561">    <span class="n">TYPE_ID</span> <span class="o">=</span> <span class="n">TypeID</span><span class="o">.</span><span class="n">C_DC_TA_1</span>
+</span><span data-line="562">
+</span><span data-line="563">    <span class="n">command</span><span class="p">:</span> <span class="n">DCO</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="n">DCO</span><span class="p">)</span>
+</span><span data-line="564"><span class="w">    </span><span class="sd">&quot;&quot;&quot;See :class:`~icspacket.proto.iec104.objects.elements.DCO`.&quot;&quot;&quot;</span>
+</span><span data-line="565">
+</span><span data-line="566">    <span class="n">timestamp</span><span class="p">:</span> <span class="n">CP56Time2a</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="n">CP56Time2a</span><span class="p">)</span>
+</span><span data-line="567"><span class="w">    </span><span class="sd">&quot;&quot;&quot;See :class:`~icspacket.proto.iec104.objects.elements.CP56Time2a`.&quot;&quot;&quot;</span></div>
+
+</span><span data-line="568">
+</span><span data-line="569">
+<div class="viewcode-block" id="StepCommandWithCP56Time2a">
+<a class="viewcode-back" href="../../../../../protocols/iec104/api/objects.html#icspacket.proto.iec104.objects.information.StepCommandWithCP56Time2a">[docs]</a>
+</span><span data-line="570"><span class="nd">@asdu_type</span>
+</span><span data-line="571"><span class="nd">@struct</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="n">LittleEndian</span><span class="p">,</span> <span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span data-line="572"><span class="k">class</span><span class="w"> </span><span class="nc">StepCommandWithCP56Time2a</span><span class="p">(</span><span class="n">StructDefMixin</span><span class="p">):</span>
+</span><span data-line="573"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Regulating step command with CP56Time2a time tag.&quot;&quot;&quot;</span>
+</span><span data-line="574">
+</span><span data-line="575">    <span class="n">TYPE_ID</span> <span class="o">=</span> <span class="n">TypeID</span><span class="o">.</span><span class="n">C_RC_TA_1</span>
+</span><span data-line="576">
+</span><span data-line="577">    <span class="n">command</span><span class="p">:</span> <span class="n">RCO</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="n">RCO</span><span class="p">)</span>
+</span><span data-line="578"><span class="w">    </span><span class="sd">&quot;&quot;&quot;See :class:`~icspacket.proto.iec104.objects.elements.RCO`.&quot;&quot;&quot;</span>
+</span><span data-line="579">
+</span><span data-line="580">    <span class="n">timestamp</span><span class="p">:</span> <span class="n">CP56Time2a</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="n">CP56Time2a</span><span class="p">)</span>
+</span><span data-line="581"><span class="w">    </span><span class="sd">&quot;&quot;&quot;See :class:`~icspacket.proto.iec104.objects.elements.CP56Time2a`.&quot;&quot;&quot;</span></div>
+
+</span><span data-line="582">
+</span><span data-line="583">
+<div class="viewcode-block" id="SetpointCommandNormalizedWithCP56Time2a">
+<a class="viewcode-back" href="../../../../../protocols/iec104/api/objects.html#icspacket.proto.iec104.objects.information.SetpointCommandNormalizedWithCP56Time2a">[docs]</a>
+</span><span data-line="584"><span class="nd">@asdu_type</span>
+</span><span data-line="585"><span class="nd">@struct</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="n">LittleEndian</span><span class="p">,</span> <span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span data-line="586"><span class="k">class</span><span class="w"> </span><span class="nc">SetpointCommandNormalizedWithCP56Time2a</span><span class="p">(</span><span class="n">StructDefMixin</span><span class="p">):</span>
+</span><span data-line="587"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Set-point command, normalized value with CP56Time2a time tag.&quot;&quot;&quot;</span>
+</span><span data-line="588">
+</span><span data-line="589">    <span class="n">TYPE_ID</span> <span class="o">=</span> <span class="n">TypeID</span><span class="o">.</span><span class="n">C_SE_TA_1</span>
+</span><span data-line="590">
+</span><span data-line="591">    <span class="n">value</span><span class="p">:</span> <span class="n">NVA</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span data-line="592"><span class="w">    </span><span class="sd">&quot;&quot;&quot;See :class:`~icspacket.proto.iec104.objects.elements.NVA`.&quot;&quot;&quot;</span>
+</span><span data-line="593">
+</span><span data-line="594">    <span class="n">qualifier</span><span class="p">:</span> <span class="n">QOS</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="n">QOS</span><span class="p">)</span>
+</span><span data-line="595"><span class="w">    </span><span class="sd">&quot;&quot;&quot;See :class:`~icspacket.proto.iec104.objects.elements.QOS`.&quot;&quot;&quot;</span>
+</span><span data-line="596">
+</span><span data-line="597">    <span class="n">timestamp</span><span class="p">:</span> <span class="n">CP56Time2a</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="n">CP56Time2a</span><span class="p">)</span>
+</span><span data-line="598"><span class="w">    </span><span class="sd">&quot;&quot;&quot;See :class:`~icspacket.proto.iec104.objects.elements.CP56Time2a`.&quot;&quot;&quot;</span></div>
+
+</span><span data-line="599">
+</span><span data-line="600">
+<div class="viewcode-block" id="SetpointCommandScaledWithCP56Time2a">
+<a class="viewcode-back" href="../../../../../protocols/iec104/api/objects.html#icspacket.proto.iec104.objects.information.SetpointCommandScaledWithCP56Time2a">[docs]</a>
+</span><span data-line="601"><span class="nd">@asdu_type</span>
+</span><span data-line="602"><span class="nd">@struct</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="n">LittleEndian</span><span class="p">,</span> <span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span data-line="603"><span class="k">class</span><span class="w"> </span><span class="nc">SetpointCommandScaledWithCP56Time2a</span><span class="p">(</span><span class="n">StructDefMixin</span><span class="p">):</span>
+</span><span data-line="604"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Set-point command, scaled value with CP56Time2a time tag.&quot;&quot;&quot;</span>
+</span><span data-line="605">
+</span><span data-line="606">    <span class="n">TYPE_ID</span> <span class="o">=</span> <span class="n">TypeID</span><span class="o">.</span><span class="n">C_SE_TB_1</span>
+</span><span data-line="607">
+</span><span data-line="608">    <span class="n">value</span><span class="p">:</span> <span class="n">SVA</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span data-line="609"><span class="w">    </span><span class="sd">&quot;&quot;&quot;See :class:`~icspacket.proto.iec104.objects.elements.SVA`.&quot;&quot;&quot;</span>
+</span><span data-line="610">
+</span><span data-line="611">    <span class="n">qualifier</span><span class="p">:</span> <span class="n">QOS</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="n">QOS</span><span class="p">)</span>
+</span><span data-line="612"><span class="w">    </span><span class="sd">&quot;&quot;&quot;See :class:`~icspacket.proto.iec104.objects.elements.QOS`.&quot;&quot;&quot;</span>
+</span><span data-line="613">
+</span><span data-line="614">    <span class="n">timestamp</span><span class="p">:</span> <span class="n">CP56Time2a</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="n">CP56Time2a</span><span class="p">)</span>
+</span><span data-line="615"><span class="w">    </span><span class="sd">&quot;&quot;&quot;See :class:`~icspacket.proto.iec104.objects.elements.CP56Time2a`.&quot;&quot;&quot;</span></div>
+
+</span><span data-line="616">
+</span><span data-line="617">
+<div class="viewcode-block" id="SetpointCommandShortWithCP56Time2a">
+<a class="viewcode-back" href="../../../../../protocols/iec104/api/objects.html#icspacket.proto.iec104.objects.information.SetpointCommandShortWithCP56Time2a">[docs]</a>
+</span><span data-line="618"><span class="nd">@asdu_type</span>
+</span><span data-line="619"><span class="nd">@struct</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="n">LittleEndian</span><span class="p">,</span> <span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span data-line="620"><span class="k">class</span><span class="w"> </span><span class="nc">SetpointCommandShortWithCP56Time2a</span><span class="p">(</span><span class="n">StructDefMixin</span><span class="p">):</span>
+</span><span data-line="621"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Set-point command, short floating point number with CP56Time2a time</span>
+</span><span data-line="622"><span class="sd">    tag.&quot;&quot;&quot;</span>
+</span><span data-line="623">
+</span><span data-line="624">    <span class="n">TYPE_ID</span> <span class="o">=</span> <span class="n">TypeID</span><span class="o">.</span><span class="n">C_SE_TC_1</span>
+</span><span data-line="625">
+</span><span data-line="626">    <span class="n">value</span><span class="p">:</span> <span class="n">R32</span> <span class="o">=</span> <span class="mf">0.0</span>
+</span><span data-line="627"><span class="w">    </span><span class="sd">&quot;&quot;&quot;See :class:`~icspacket.proto.iec104.objects.elements.R32`.&quot;&quot;&quot;</span>
+</span><span data-line="628">
+</span><span data-line="629">    <span class="n">qualifier</span><span class="p">:</span> <span class="n">QOS</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="n">QOS</span><span class="p">)</span>
+</span><span data-line="630"><span class="w">    </span><span class="sd">&quot;&quot;&quot;See :class:`~icspacket.proto.iec104.objects.elements.QOS`.&quot;&quot;&quot;</span>
+</span><span data-line="631">
+</span><span data-line="632">    <span class="n">timestamp</span><span class="p">:</span> <span class="n">CP56Time2a</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="n">CP56Time2a</span><span class="p">)</span>
+</span><span data-line="633"><span class="w">    </span><span class="sd">&quot;&quot;&quot;See :class:`~icspacket.proto.iec104.objects.elements.CP56Time2a`.&quot;&quot;&quot;</span></div>
+
+</span><span data-line="634">
+</span><span data-line="635">
+<div class="viewcode-block" id="Bitstring32CommandWithCP56Time2a">
+<a class="viewcode-back" href="../../../../../protocols/iec104/api/objects.html#icspacket.proto.iec104.objects.information.Bitstring32CommandWithCP56Time2a">[docs]</a>
+</span><span data-line="636"><span class="nd">@asdu_type</span>
+</span><span data-line="637"><span class="nd">@struct</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="n">LittleEndian</span><span class="p">,</span> <span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span data-line="638"><span class="k">class</span><span class="w"> </span><span class="nc">Bitstring32CommandWithCP56Time2a</span><span class="p">(</span><span class="n">StructDefMixin</span><span class="p">):</span>
+</span><span data-line="639"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Bitstring of 32 bit command with CP56Time2a time tag.&quot;&quot;&quot;</span>
+</span><span data-line="640">
+</span><span data-line="641">    <span class="n">TYPE_ID</span> <span class="o">=</span> <span class="n">TypeID</span><span class="o">.</span><span class="n">C_BO_TA_1</span>
+</span><span data-line="642">
+</span><span data-line="643">    <span class="n">value</span><span class="p">:</span> <span class="n">BSI32</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span data-line="644"><span class="w">    </span><span class="sd">&quot;&quot;&quot;See :class:`~icspacket.proto.iec104.objects.elements.BSI32`. Bare,</span>
+</span><span data-line="645"><span class="sd">    see :class:`Bitstring32Command`.&quot;&quot;&quot;</span>
+</span><span data-line="646">
+</span><span data-line="647">    <span class="n">timestamp</span><span class="p">:</span> <span class="n">CP56Time2a</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="n">CP56Time2a</span><span class="p">)</span>
+</span><span data-line="648"><span class="w">    </span><span class="sd">&quot;&quot;&quot;See :class:`~icspacket.proto.iec104.objects.elements.CP56Time2a`.&quot;&quot;&quot;</span></div>
+
+</span><span data-line="649">
+</span><span data-line="650">
+</span><span data-line="651"><span class="c1"># ============================================================================ #</span>
+</span><span data-line="652"><span class="c1"># Phase D - system information &amp; parameter commands</span>
+</span><span data-line="653"><span class="c1"># ============================================================================ #</span>
+<div class="viewcode-block" id="EndOfInitialization">
+<a class="viewcode-back" href="../../../../../protocols/iec104/api/objects.html#icspacket.proto.iec104.objects.information.EndOfInitialization">[docs]</a>
+</span><span data-line="654"><span class="nd">@asdu_type</span>
+</span><span data-line="655"><span class="nd">@struct</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="n">LittleEndian</span><span class="p">,</span> <span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span data-line="656"><span class="k">class</span><span class="w"> </span><span class="nc">EndOfInitialization</span><span class="p">(</span><span class="n">StructDefMixin</span><span class="p">):</span>
+</span><span data-line="657"><span class="w">    </span><span class="sd">&quot;&quot;&quot;End of initialization.&quot;&quot;&quot;</span>
+</span><span data-line="658">
+</span><span data-line="659">    <span class="n">TYPE_ID</span> <span class="o">=</span> <span class="n">TypeID</span><span class="o">.</span><span class="n">M_EI_NA_1</span>
+</span><span data-line="660">
+</span><span data-line="661">    <span class="n">cause</span><span class="p">:</span> <span class="n">COI</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="n">COI</span><span class="p">)</span>
+</span><span data-line="662"><span class="w">    </span><span class="sd">&quot;&quot;&quot;See :class:`~icspacket.proto.iec104.objects.elements.COI`.&quot;&quot;&quot;</span></div>
+
+</span><span data-line="663">
+</span><span data-line="664">
+<div class="viewcode-block" id="InterrogationCommand">
+<a class="viewcode-back" href="../../../../../protocols/iec104/api/objects.html#icspacket.proto.iec104.objects.information.InterrogationCommand">[docs]</a>
+</span><span data-line="665"><span class="nd">@asdu_type</span>
+</span><span data-line="666"><span class="nd">@struct</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="n">LittleEndian</span><span class="p">,</span> <span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span data-line="667"><span class="k">class</span><span class="w"> </span><span class="nc">InterrogationCommand</span><span class="p">(</span><span class="n">StructDefMixin</span><span class="p">):</span>
+</span><span data-line="668"><span class="w">    </span><span class="sd">&quot;&quot;&quot;General interrogation command.&quot;&quot;&quot;</span>
+</span><span data-line="669">
+</span><span data-line="670">    <span class="n">TYPE_ID</span> <span class="o">=</span> <span class="n">TypeID</span><span class="o">.</span><span class="n">C_IC_NA_1</span>
+</span><span data-line="671">
+</span><span data-line="672">    <span class="n">qualifier</span><span class="p">:</span> <span class="n">QOI</span> <span class="o">=</span> <span class="n">QOI</span><span class="o">.</span><span class="n">STATION</span>
+</span><span data-line="673"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Qualifier Of Interrogation, see</span>
+</span><span data-line="674"><span class="sd">    :class:`~icspacket.proto.iec104.const.QOI`.&quot;&quot;&quot;</span></div>
+
+</span><span data-line="675">
+</span><span data-line="676">
+<div class="viewcode-block" id="CounterInterrogationCommand">
+<a class="viewcode-back" href="../../../../../protocols/iec104/api/objects.html#icspacket.proto.iec104.objects.information.CounterInterrogationCommand">[docs]</a>
+</span><span data-line="677"><span class="nd">@asdu_type</span>
+</span><span data-line="678"><span class="nd">@struct</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="n">LittleEndian</span><span class="p">,</span> <span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span data-line="679"><span class="k">class</span><span class="w"> </span><span class="nc">CounterInterrogationCommand</span><span class="p">(</span><span class="n">StructDefMixin</span><span class="p">):</span>
+</span><span data-line="680"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Counter interrogation command.&quot;&quot;&quot;</span>
+</span><span data-line="681">
+</span><span data-line="682">    <span class="n">TYPE_ID</span> <span class="o">=</span> <span class="n">TypeID</span><span class="o">.</span><span class="n">C_CI_NA_1</span>
+</span><span data-line="683">
+</span><span data-line="684">    <span class="n">qualifier</span><span class="p">:</span> <span class="n">QCC</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span data-line="685"><span class="w">    </span><span class="sd">&quot;&quot;&quot;See :class:`~icspacket.proto.iec104.objects.elements.QCC`.&quot;&quot;&quot;</span></div>
+
+</span><span data-line="686">
+</span><span data-line="687">
+<div class="viewcode-block" id="ReadCommand">
+<a class="viewcode-back" href="../../../../../protocols/iec104/api/objects.html#icspacket.proto.iec104.objects.information.ReadCommand">[docs]</a>
+</span><span data-line="688"><span class="nd">@asdu_type</span>
+</span><span data-line="689"><span class="nd">@struct</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="n">LittleEndian</span><span class="p">,</span> <span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span data-line="690"><span class="k">class</span><span class="w"> </span><span class="nc">ReadCommand</span><span class="p">(</span><span class="n">StructDefMixin</span><span class="p">):</span>
+</span><span data-line="691"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="692"><span class="sd">    Read command.</span>
+</span><span data-line="693">
+</span><span data-line="694"><span class="sd">    Carries no element payload at all - only the Information Object</span>
+</span><span data-line="695"><span class="sd">    Address of the point being polled (modeled by the enclosing</span>
+</span><span data-line="696"><span class="sd">    :class:`~icspacket.proto.iec104.objects.coding.InformationObject`, not</span>
+</span><span data-line="697"><span class="sd">    by this class).</span>
+</span><span data-line="698"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span data-line="699">
+</span><span data-line="700">    <span class="n">TYPE_ID</span> <span class="o">=</span> <span class="n">TypeID</span><span class="o">.</span><span class="n">C_RD_NA_1</span></div>
+
+</span><span data-line="701">
+</span><span data-line="702">
+<div class="viewcode-block" id="ClockSynchronizationCommand">
+<a class="viewcode-back" href="../../../../../protocols/iec104/api/objects.html#icspacket.proto.iec104.objects.information.ClockSynchronizationCommand">[docs]</a>
+</span><span data-line="703"><span class="nd">@asdu_type</span>
+</span><span data-line="704"><span class="nd">@struct</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="n">LittleEndian</span><span class="p">,</span> <span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span data-line="705"><span class="k">class</span><span class="w"> </span><span class="nc">ClockSynchronizationCommand</span><span class="p">(</span><span class="n">StructDefMixin</span><span class="p">):</span>
+</span><span data-line="706"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Clock synchronization command.&quot;&quot;&quot;</span>
+</span><span data-line="707">
+</span><span data-line="708">    <span class="n">TYPE_ID</span> <span class="o">=</span> <span class="n">TypeID</span><span class="o">.</span><span class="n">C_CS_NA_1</span>
+</span><span data-line="709">
+</span><span data-line="710">    <span class="n">timestamp</span><span class="p">:</span> <span class="n">CP56Time2a</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="n">CP56Time2a</span><span class="p">)</span>
+</span><span data-line="711"><span class="w">    </span><span class="sd">&quot;&quot;&quot;See :class:`~icspacket.proto.iec104.objects.elements.CP56Time2a`.&quot;&quot;&quot;</span></div>
+
+</span><span data-line="712">
+</span><span data-line="713">
+<div class="viewcode-block" id="TestCommand">
+<a class="viewcode-back" href="../../../../../protocols/iec104/api/objects.html#icspacket.proto.iec104.objects.information.TestCommand">[docs]</a>
+</span><span data-line="714"><span class="nd">@asdu_type</span>
+</span><span data-line="715"><span class="nd">@struct</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="n">LittleEndian</span><span class="p">,</span> <span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span data-line="716"><span class="k">class</span><span class="w"> </span><span class="nc">TestCommand</span><span class="p">(</span><span class="n">StructDefMixin</span><span class="p">):</span>
+</span><span data-line="717"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="718"><span class="sd">    Test command.</span>
+</span><span data-line="719">
+</span><span data-line="720"><span class="sd">    Carries a Fixed test Bit Pattern (FBP) rather than any real value -</span>
+</span><span data-line="721"><span class="sd">    used only to exercise the link without side effects.</span>
+</span><span data-line="722"><span class="sd">    (See IEC 60870-5-101, clause 7.2.6.14)</span>
+</span><span data-line="723"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span data-line="724">
+</span><span data-line="725">    <span class="n">TYPE_ID</span> <span class="o">=</span> <span class="n">TypeID</span><span class="o">.</span><span class="n">C_TS_NA_1</span>
+</span><span data-line="726">
+</span><span data-line="727">    <span class="n">fbp</span><span class="p">:</span> <span class="n">uint16_t</span> <span class="o">=</span> <span class="mh">0x55AA</span>
+</span><span data-line="728"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Fixed test bit pattern; conventionally ``0x55AA`` (wire bytes</span>
+</span><span data-line="729"><span class="sd">    ``AA 55``, little-endian) on both activation and confirmation.&quot;&quot;&quot;</span></div>
+
+</span><span data-line="730">
+</span><span data-line="731">
+<div class="viewcode-block" id="ResetProcessCommand">
+<a class="viewcode-back" href="../../../../../protocols/iec104/api/objects.html#icspacket.proto.iec104.objects.information.ResetProcessCommand">[docs]</a>
+</span><span data-line="732"><span class="nd">@asdu_type</span>
+</span><span data-line="733"><span class="nd">@struct</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="n">LittleEndian</span><span class="p">,</span> <span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span data-line="734"><span class="k">class</span><span class="w"> </span><span class="nc">ResetProcessCommand</span><span class="p">(</span><span class="n">StructDefMixin</span><span class="p">):</span>
+</span><span data-line="735"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Reset process command.&quot;&quot;&quot;</span>
+</span><span data-line="736">
+</span><span data-line="737">    <span class="n">TYPE_ID</span> <span class="o">=</span> <span class="n">TypeID</span><span class="o">.</span><span class="n">C_RP_NA_1</span>
+</span><span data-line="738">
+</span><span data-line="739">    <span class="n">qualifier</span><span class="p">:</span> <span class="n">QRP</span> <span class="o">=</span> <span class="n">QRP</span><span class="o">.</span><span class="n">NOT_USED</span>
+</span><span data-line="740"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Qualifier Of Reset Process, see</span>
+</span><span data-line="741"><span class="sd">    :class:`~icspacket.proto.iec104.const.QRP`.&quot;&quot;&quot;</span></div>
+
+</span><span data-line="742">
+</span><span data-line="743">
+<div class="viewcode-block" id="DelayAcquisitionCommand">
+<a class="viewcode-back" href="../../../../../protocols/iec104/api/objects.html#icspacket.proto.iec104.objects.information.DelayAcquisitionCommand">[docs]</a>
+</span><span data-line="744"><span class="nd">@asdu_type</span>
+</span><span data-line="745"><span class="nd">@struct</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="n">LittleEndian</span><span class="p">,</span> <span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span data-line="746"><span class="k">class</span><span class="w"> </span><span class="nc">DelayAcquisitionCommand</span><span class="p">(</span><span class="n">StructDefMixin</span><span class="p">):</span>
+</span><span data-line="747"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Delay acquisition command.&quot;&quot;&quot;</span>
+</span><span data-line="748">
+</span><span data-line="749">    <span class="n">TYPE_ID</span> <span class="o">=</span> <span class="n">TypeID</span><span class="o">.</span><span class="n">C_CD_NA_1</span>
+</span><span data-line="750">
+</span><span data-line="751">    <span class="n">delay</span><span class="p">:</span> <span class="n">CP16Time2a</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span data-line="752"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Transmission delay in milliseconds, see</span>
+</span><span data-line="753"><span class="sd">    :class:`~icspacket.proto.iec104.objects.elements.CP16Time2a`.&quot;&quot;&quot;</span></div>
+
+</span><span data-line="754">
+</span><span data-line="755">
+<div class="viewcode-block" id="TestCommandWithCP56Time2a">
+<a class="viewcode-back" href="../../../../../protocols/iec104/api/objects.html#icspacket.proto.iec104.objects.information.TestCommandWithCP56Time2a">[docs]</a>
+</span><span data-line="756"><span class="nd">@asdu_type</span>
+</span><span data-line="757"><span class="nd">@struct</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="n">LittleEndian</span><span class="p">,</span> <span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span data-line="758"><span class="k">class</span><span class="w"> </span><span class="nc">TestCommandWithCP56Time2a</span><span class="p">(</span><span class="n">StructDefMixin</span><span class="p">):</span>
+</span><span data-line="759"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Test command with CP56Time2a time tag.&quot;&quot;&quot;</span>
+</span><span data-line="760">
+</span><span data-line="761">    <span class="n">TYPE_ID</span> <span class="o">=</span> <span class="n">TypeID</span><span class="o">.</span><span class="n">C_TS_TA_1</span>
+</span><span data-line="762">
+</span><span data-line="763">    <span class="n">fbp</span><span class="p">:</span> <span class="n">uint16_t</span> <span class="o">=</span> <span class="mh">0x55AA</span>
+</span><span data-line="764"><span class="w">    </span><span class="sd">&quot;&quot;&quot;See :class:`TestCommand`.&quot;&quot;&quot;</span>
+</span><span data-line="765">
+</span><span data-line="766">    <span class="n">timestamp</span><span class="p">:</span> <span class="n">CP56Time2a</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="n">CP56Time2a</span><span class="p">)</span>
+</span><span data-line="767"><span class="w">    </span><span class="sd">&quot;&quot;&quot;See :class:`~icspacket.proto.iec104.objects.elements.CP56Time2a`.&quot;&quot;&quot;</span></div>
+
+</span><span data-line="768">
+</span><span data-line="769">
+<div class="viewcode-block" id="ParameterNormalizedValue">
+<a class="viewcode-back" href="../../../../../protocols/iec104/api/objects.html#icspacket.proto.iec104.objects.information.ParameterNormalizedValue">[docs]</a>
+</span><span data-line="770"><span class="nd">@asdu_type</span>
+</span><span data-line="771"><span class="nd">@struct</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="n">LittleEndian</span><span class="p">,</span> <span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span data-line="772"><span class="k">class</span><span class="w"> </span><span class="nc">ParameterNormalizedValue</span><span class="p">(</span><span class="n">StructDefMixin</span><span class="p">):</span>
+</span><span data-line="773"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Parameter of measured value, normalized value.&quot;&quot;&quot;</span>
+</span><span data-line="774">
+</span><span data-line="775">    <span class="n">TYPE_ID</span> <span class="o">=</span> <span class="n">TypeID</span><span class="o">.</span><span class="n">P_ME_NA_1</span>
+</span><span data-line="776">
+</span><span data-line="777">    <span class="n">value</span><span class="p">:</span> <span class="n">NVA</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span data-line="778"><span class="w">    </span><span class="sd">&quot;&quot;&quot;See :class:`~icspacket.proto.iec104.objects.elements.NVA`.&quot;&quot;&quot;</span>
+</span><span data-line="779">
+</span><span data-line="780">    <span class="n">qualifier</span><span class="p">:</span> <span class="n">QPM</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="n">QPM</span><span class="p">)</span>
+</span><span data-line="781"><span class="w">    </span><span class="sd">&quot;&quot;&quot;See :class:`~icspacket.proto.iec104.objects.elements.QPM`.&quot;&quot;&quot;</span></div>
+
+</span><span data-line="782">
+</span><span data-line="783">
+<div class="viewcode-block" id="ParameterScaledValue">
+<a class="viewcode-back" href="../../../../../protocols/iec104/api/objects.html#icspacket.proto.iec104.objects.information.ParameterScaledValue">[docs]</a>
+</span><span data-line="784"><span class="nd">@asdu_type</span>
+</span><span data-line="785"><span class="nd">@struct</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="n">LittleEndian</span><span class="p">,</span> <span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span data-line="786"><span class="k">class</span><span class="w"> </span><span class="nc">ParameterScaledValue</span><span class="p">(</span><span class="n">StructDefMixin</span><span class="p">):</span>
+</span><span data-line="787"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Parameter of measured value, scaled value.&quot;&quot;&quot;</span>
+</span><span data-line="788">
+</span><span data-line="789">    <span class="n">TYPE_ID</span> <span class="o">=</span> <span class="n">TypeID</span><span class="o">.</span><span class="n">P_ME_NB_1</span>
+</span><span data-line="790">
+</span><span data-line="791">    <span class="n">value</span><span class="p">:</span> <span class="n">SVA</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span data-line="792"><span class="w">    </span><span class="sd">&quot;&quot;&quot;See :class:`~icspacket.proto.iec104.objects.elements.SVA`.&quot;&quot;&quot;</span>
+</span><span data-line="793">
+</span><span data-line="794">    <span class="n">qualifier</span><span class="p">:</span> <span class="n">QPM</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="n">QPM</span><span class="p">)</span>
+</span><span data-line="795"><span class="w">    </span><span class="sd">&quot;&quot;&quot;See :class:`~icspacket.proto.iec104.objects.elements.QPM`.&quot;&quot;&quot;</span></div>
+
+</span><span data-line="796">
+</span><span data-line="797">
+<div class="viewcode-block" id="ParameterShortValue">
+<a class="viewcode-back" href="../../../../../protocols/iec104/api/objects.html#icspacket.proto.iec104.objects.information.ParameterShortValue">[docs]</a>
+</span><span data-line="798"><span class="nd">@asdu_type</span>
+</span><span data-line="799"><span class="nd">@struct</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="n">LittleEndian</span><span class="p">,</span> <span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span data-line="800"><span class="k">class</span><span class="w"> </span><span class="nc">ParameterShortValue</span><span class="p">(</span><span class="n">StructDefMixin</span><span class="p">):</span>
+</span><span data-line="801"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Parameter of measured value, short floating point number.&quot;&quot;&quot;</span>
+</span><span data-line="802">
+</span><span data-line="803">    <span class="n">TYPE_ID</span> <span class="o">=</span> <span class="n">TypeID</span><span class="o">.</span><span class="n">P_ME_NC_1</span>
+</span><span data-line="804">
+</span><span data-line="805">    <span class="n">value</span><span class="p">:</span> <span class="n">R32</span> <span class="o">=</span> <span class="mf">0.0</span>
+</span><span data-line="806"><span class="w">    </span><span class="sd">&quot;&quot;&quot;See :class:`~icspacket.proto.iec104.objects.elements.R32`.&quot;&quot;&quot;</span>
+</span><span data-line="807">
+</span><span data-line="808">    <span class="n">qualifier</span><span class="p">:</span> <span class="n">QPM</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="n">QPM</span><span class="p">)</span>
+</span><span data-line="809"><span class="w">    </span><span class="sd">&quot;&quot;&quot;See :class:`~icspacket.proto.iec104.objects.elements.QPM`.&quot;&quot;&quot;</span></div>
+
+</span><span data-line="810">
+</span><span data-line="811">
+<div class="viewcode-block" id="ParameterActivation">
+<a class="viewcode-back" href="../../../../../protocols/iec104/api/objects.html#icspacket.proto.iec104.objects.information.ParameterActivation">[docs]</a>
+</span><span data-line="812"><span class="nd">@asdu_type</span>
+</span><span data-line="813"><span class="nd">@struct</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="n">LittleEndian</span><span class="p">,</span> <span class="n">kw_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span data-line="814"><span class="k">class</span><span class="w"> </span><span class="nc">ParameterActivation</span><span class="p">(</span><span class="n">StructDefMixin</span><span class="p">):</span>
+</span><span data-line="815"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Parameter activation.&quot;&quot;&quot;</span>
+</span><span data-line="816">
+</span><span data-line="817">    <span class="n">TYPE_ID</span> <span class="o">=</span> <span class="n">TypeID</span><span class="o">.</span><span class="n">P_AC_NA_1</span>
+</span><span data-line="818">
+</span><span data-line="819">    <span class="n">qualifier</span><span class="p">:</span> <span class="n">QPA</span> <span class="o">=</span> <span class="n">QPA</span><span class="o">.</span><span class="n">NOT_USED</span>
+</span><span data-line="820"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Qualifier Of Parameter Activation, see</span>
+</span><span data-line="821"><span class="sd">    :class:`~icspacket.proto.iec104.const.QPA`.&quot;&quot;&quot;</span></div>
+
+</span><span data-line="822">
+</span><span data-line="823">
+</span></pre></div>
+        </article><button class="back-to-top" type="button">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+  </svg>
+  <span>Back to top</span>
+</button><div class="navigation flex print:hidden"></div></div>
+    </div>
+  </main>
+</div>
+<footer class="sy-foot">
+  <div class="sy-foot-inner sy-container mx-auto">
+    <div class="sy-foot-reserved md:flex justify-between items-center">
+      <div class="sy-foot-copyright"><p>2025, MatrixEditor</p>
+  
+  <p>
+    Made with
+    
+    <a href="https://www.sphinx-doc.org/">Sphinx</a> and
+    
+    <a href="https://shibuya.lepture.com">Shibuya theme</a>.
+  </p>
+</div>
+      <div class="sy-foot-socials">
+  <a href="https://github.com/MatrixEditor/icspacket" aria-label="GitHub">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </a></div>
+    </div>
+  </div>
+</footer>
+      <script src="../../../../../_static/documentation_options.js?v=32763ad6"></script>
+      <script src="../../../../../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../../../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="../../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../../../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../../../../_static/design-tabs.js?v=f930bc37"></script>
+      <script src="../../../../../_static/shibuya.js?v=50760d75"></script></body>
+</html>

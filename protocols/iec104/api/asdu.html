@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en" data-accent-color="lime" data-content_root="../../../">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>ASDU - Application Layer - icspacket 0.1.dev1+ge2da2242a documentation</title><link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" /><link rel="next" title="Master (Client)" href="master.html" /><link rel="prev" title="APCI - Framing Layer" href="apci.html" />
+      <link rel="canonical" href="https://matrixeditor.github.io/icspacket/protocols/iec104/api/asdu.html" /><script>
+    function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
+    setColorMode(localStorage._theme||"dark");
+  </script><link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=e1a1ceaf" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/shibuya.css?v=2ceb65ce" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link media="print" rel="stylesheet" type="text/css" href="../../../_static/print.css?v=20ff2c19" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --sy-f-text: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+  --sy-f-heading: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+}
+</style>
+    
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://matrixeditor.github.io/icspacket/protocols/iec104/api/asdu.html"/>
+  <meta property="og:title" content="ASDU - Application Layer"/>
+    <meta name="twitter:card" content="summary"/>
+  </head>
+<body><div class="sy-head">
+  <div class="sy-head-blur"></div>
+  <div class="sy-head-inner sy-container mx-auto">
+    <a class="sy-head-brand" href="../../../index.html">
+      
+      
+      <strong>icspacket</strong>
+    </a>
+    <div class="sy-head-nav" id="head-nav">
+      <nav class="sy-head-links"><ul>
+      <li class="link"><a class="js-menu" href="../../../getting-started/protocols.html" id="nav-trigger-1" aria-controls="nav-children-1">
+            <span>Examples</span>
+            <i class="i-lucide chevron-down"></i>
+          </a>
+        <ul id="nav-children-1" aria-labelledby="nav-trigger-1"><li><a href="../../mms/examples.html">
+                <span>MMS Utilities</span>
+                <small>Manufacturing Message Specification tools</small>
+              </a></li><li><a href="../../dnp3/examples.html">
+                <span>DNP3 Tools</span>
+                <small>DNP3 utilities and tools</small>
+              </a></li><li><a href="../../iec61850/iedmap.html">
+                <span>IED Enumeration Tool</span>
+                <small>Logical Device enumeration and more</small>
+              </a></li></ul>
+      </li><li class="link"><a href="../../../changelog.html">Changelog</a></li></ul></nav>
+      <div class="sy-head-extra flex items-center print:hidden"><form class="searchbox flex items-center" action="../../../search.html" method="get">
+  <input type="text" name="q" placeholder="Search" />
+  <kbd>/</kbd>
+</form><div class="sy-head-socials">
+  <a href="https://github.com/MatrixEditor/icspacket" aria-label="GitHub">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </a></div></div>
+    </div>
+    <div class="sy-head-actions flex items-center shrink-0 print:hidden"><button class="js-theme theme-switch flex items-center"
+data-aria-auto="Switch to light color mode"
+data-aria-light="Switch to dark color mode"
+data-aria-dark="Switch to auto color mode">
+<i class="i-lucide theme-icon"></i>
+</button><button class="md:hidden flex items-center js-menu" aria-label="Menu" type="button" aria-controls="head-nav" aria-expanded="false">
+        <div class="hamburger">
+          <span class="hamburger_1"></span>
+          <span class="hamburger_2"></span>
+          <span class="hamburger_3"></span>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>
+<div class="sy-page sy-container flex mx-auto">
+  <aside id="lside" class="sy-lside md:w-72 md:shrink-0 print:hidden">
+    <div class="sy-lside-inner md:sticky">
+      <div class="sy-scrollbar p-6"><div class="sidebar-links">
+  <ul>
+    <li><a class="icon-link" href="https://github.com/MatrixEditor/icspacket/discussions">
+  <span class="icon">
+    <svg viewBox="0 0 24 24" fill="none">
+      <path fill="var(--accent-9)" fill-rule="evenodd" clip-rule="evenodd" d="M11 5a6 6 0 0 0-4.687 9.746c.215.27.315.62.231.954l-.514 2.058a1 1 0 0 0 1.485 1.1l2.848-1.71c.174-.104.374-.15.576-.148H13a6 6 0 0 0 0-12h-2Z"/>
+      <circle fill="white" cx="12" cy="11" r="1"/>
+      <circle fill="white" cx="9" cy="11" r="1"/>
+      <circle fill="white" cx="15" cy="11" r="1"/>
+    </svg>
+  </span>
+  <span class="text">Discussion</span>
+</a></li>
+  </ul>
+</div>
+        <div class="globaltoc" data-expand-depth="1"><p class="caption" role="heading" aria-level="3"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../getting-started/installation.html">Installation</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../getting-started/protocols.html">Protocols Overview</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../getting-started/coreapi.html">Core API Reference</a></li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">DNP3 / IEEE 1815</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../dnp3/dnp3read.html">Reading Objects</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../dnp3/dnp3dump.html">Dumping Objects</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../dnp3/dnp3resolve.html">Resolve Link Addresses</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../dnp3/api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../dnp3/api/link.html">Link Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dnp3/api/transport.html">Transport Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dnp3/api/application.html">Application Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dnp3/api/master.html">Master</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dnp3/api/object_library.html">Object Library</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../dnp3/api/primitives.html">Primitive Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../dnp3/api/coding.html">Encoding / Decoding</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../dnp3/api/variations.html">Variations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../dnp3/api/coding_utils.html">Object Utilities</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">IEC 61850</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../iec61850/iedmap.html">Enumerating IEDs</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../iec61850/iedctrl.html">Operating on IEDs</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../iec61850/api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../iec61850/api_data_classes.html">Data Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../iec61850/api_path.html">Object / Data References</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../iec61850/api_control.html">Control / Operation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../iec61850/api_client.html">IED Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../iec61850/api_goose.html">GOOSE Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../iec61850/api_sv.html">SampledValues Client</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">MMS / ISO 9506</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../mms/demo_vars.html">Variable Target Format</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../mms/demo_vars.html#variableaccess-service-rwq">VariableAccess Service (rwq)</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../mms/demo_files.html">FileManagement Service</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../mms/api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../mms/api_conn.html">MMS Connection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../mms/api_data.html">Data Conversion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../mms/api_utils.html">Protocol Utilities</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">IEC 60870-5-104</span></p>
+<ul class="current">
+<li class="toctree-l1 _expand"><a class="reference internal" href="../iec104read.html">Reading Data via Interrogation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../api.html">API Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="apci.html">APCI - Framing Layer</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">ASDU - Application Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="master.html">Master (Client)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="objects.html">Information Object Library</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">ACSE / X.227</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../acse/api.html">API Reference</a></li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">COPP / X.226 / ISO 8823</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../copp/api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../copp/presentation.html">ISO Presentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../copp/utils.html">Protocol Utilities</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">COSP / X.225 / ISO 8237-1</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../cosp/api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../cosp/tsdu.html">TSDU</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cosp/spdu.html">SPDU Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cosp/values.html">Parameter Values (PV)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cosp/session.html">ISO Session</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cosp/utils.html">Protocol Utilities</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">COTP / X.224</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../cotp/api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../cotp/structs.html">TPDU Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cotp/connection.html">Connection</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">TPKT Protocol (RFC1006)</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../tpkt/usage.html">Using a TPKT Wrapper</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../tpkt/api.html">API Reference</a></li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../changelog.html">Changelog</a></li>
+</ul>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="lside-overlay js-menu" role="button" aria-label="Close left sidebar" aria-controls="lside" aria-expanded="false"></div>
+  <aside id="rside" class="sy-rside pb-3 w-64 shrink-0 order-last">
+    <button class="rside-close js-menu xl:hidden" aria-label="Close Table of Contents" type="button" aria-controls="rside" aria-expanded="false">
+      <i class="i-lucide close"></i>
+    </button>
+    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div class="localtoc"><h3>On this page</h3><ul>
+<li><a class="reference internal" href="#icspacket.proto.iec104.asdu.ASDU"><code class="docutils literal notranslate"><span class="pre">ASDU</span></code></a><ul>
+<li><a class="reference internal" href="#icspacket.proto.iec104.asdu.ASDU.header"><code class="docutils literal notranslate"><span class="pre">ASDU.header</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec104.asdu.ASDU.objects"><code class="docutils literal notranslate"><span class="pre">ASDU.objects</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec104.asdu.ASDU.build"><code class="docutils literal notranslate"><span class="pre">ASDU.build()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec104.asdu.ASDU.decode_objects"><code class="docutils literal notranslate"><span class="pre">ASDU.decode_objects()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#icspacket.proto.iec104.asdu.ASDU_Header"><code class="docutils literal notranslate"><span class="pre">ASDU_Header</span></code></a><ul>
+<li><a class="reference internal" href="#icspacket.proto.iec104.asdu.ASDU_Header.type_id"><code class="docutils literal notranslate"><span class="pre">ASDU_Header.type_id</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec104.asdu.ASDU_Header.vsq"><code class="docutils literal notranslate"><span class="pre">ASDU_Header.vsq</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec104.asdu.ASDU_Header.cot"><code class="docutils literal notranslate"><span class="pre">ASDU_Header.cot</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec104.asdu.ASDU_Header.originator_address"><code class="docutils literal notranslate"><span class="pre">ASDU_Header.originator_address</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec104.asdu.ASDU_Header.common_address"><code class="docutils literal notranslate"><span class="pre">ASDU_Header.common_address</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#icspacket.proto.iec104.asdu.CauseOfTransmissionField"><code class="docutils literal notranslate"><span class="pre">CauseOfTransmissionField</span></code></a><ul>
+<li><a class="reference internal" href="#icspacket.proto.iec104.asdu.CauseOfTransmissionField.test"><code class="docutils literal notranslate"><span class="pre">CauseOfTransmissionField.test</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec104.asdu.CauseOfTransmissionField.negative"><code class="docutils literal notranslate"><span class="pre">CauseOfTransmissionField.negative</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec104.asdu.CauseOfTransmissionField.cause"><code class="docutils literal notranslate"><span class="pre">CauseOfTransmissionField.cause</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#icspacket.proto.iec104.asdu.InformationObject"><code class="docutils literal notranslate"><span class="pre">InformationObject</span></code></a><ul>
+<li><a class="reference internal" href="#icspacket.proto.iec104.asdu.InformationObject.ioa"><code class="docutils literal notranslate"><span class="pre">InformationObject.ioa</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec104.asdu.InformationObject.element"><code class="docutils literal notranslate"><span class="pre">InformationObject.element</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#icspacket.proto.iec104.asdu.VariableStructureQualifier"><code class="docutils literal notranslate"><span class="pre">VariableStructureQualifier</span></code></a><ul>
+<li><a class="reference internal" href="#icspacket.proto.iec104.asdu.VariableStructureQualifier.sq"><code class="docutils literal notranslate"><span class="pre">VariableStructureQualifier.sq</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.iec104.asdu.VariableStructureQualifier.number"><code class="docutils literal notranslate"><span class="pre">VariableStructureQualifier.number</span></code></a></li>
+</ul>
+</li>
+</ul>
+</div><a class="js-repo-stats repo-stats flex items-center" href="https://github.com/MatrixEditor/icspacket"
+  data-type="github" data-user="MatrixEditor" data-repo="icspacket">
+  <span class="w-8 flex items-center justify-around shrink-0 text-3xl">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </span>
+  <span class="flex-grow px-2 break-all">
+    <span style="font-size: small;">MatrixEditor/icspacket</span>
+    <span class="flex text-sm repo-stats-count">
+      <span class="flex items-center pr-3">
+        <iconify-icon icon="lucide:star"></iconify-icon>
+        <strong class="js-repo-stars ml-1">0</strong>
+      </span>
+      <span class="flex items-center">
+        <iconify-icon icon="lucide:git-fork"></iconify-icon>
+        <strong class="js-repo-forks ml-1">0</strong>
+      </span>
+    </span>
+  </span>
+</a><div class="edit-this-page">
+  <a href="https://github.com/MatrixEditor/icspacket/blob/main/docs/protocols/iec104/api/asdu.rst">Edit this page</a>
+</div></div>
+  </aside>
+  <div class="rside-overlay js-menu" role="button" aria-label="Close Table of Contents" aria-controls="rside" aria-expanded="false"></div>
+  <main class="sy-main w-full max-sm:max-w-full print:pt-6">
+<div class="sy-breadcrumbs" role="navigation">
+  <div class="sy-breadcrumbs-inner flex items-center">
+    <div class="md:hidden mr-3">
+      <button class="js-menu" aria-label="Menu" type="button" aria-controls="lside" aria-expanded="false">
+        <i class="i-lucide menu"></i>
+      </button>
+    </div>
+    <ol class="flex-1" itemscope itemtype="https://schema.org/BreadcrumbList"><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="../../../index.html"><span itemprop="name">icspacket</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="1" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="../api.html"><span itemprop="name">API Reference</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="2" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <strong itemprop="name">ASDU - Application Layer</strong>
+        <meta itemprop="position" content="3" />
+      </li></ol>
+    <div class="xl:hidden ml-1">
+      <button class="js-menu" aria-label="Show table of contents" type="button" aria-controls="rside"
+        aria-expanded="false">
+        <i class="i-lucide outdent"></i>
+      </button>
+    </div>
+  </div>
+</div><div class="flex flex-col break-words justify-between">
+      <div class="relative min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
+  <div class="copy-page-wrapper relative pb-4 lg:absolute lg:top-8 lg:right-6 xl:right-12">
+  <div id="copy-page-trigger">
+    <button
+      type="button"
+      class="js-copy px-3 py-1 inline-flex items-center gap-1"
+      data-url="https://raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/protocols/iec104/api/asdu.rst"
+    >
+      <i class="i-lucide" data-icon="copy"></i>
+      <span>Copy page</span>
+    </button>
+    <button class="js-menu px-2 py-1" type="button" aria-label="More actions"
+      aria-haspopup="menu" aria-expanded="false" aria-controls="copy-page-content">
+      <i class="i-lucide chevron-down"></i>
+    </button>
+  </div>
+  <div id="copy-page-content" role="menu" aria-orientation="vertical" aria-hidden="true">
+    <div role="presentation">
+      <div class="flex flex-col" role="group">
+        <button class="js-copy" type="button" role="menuitem"
+          data-url="https://raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/protocols/iec104/api/asdu.rst">
+          <span class="iconify-icon">
+            <i class="i-lucide" data-icon="copy"></i>
+          </span>
+          <span>Copy page</span>
+        </button>
+        <a role="menuitem" href="https://raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/protocols/iec104/api/asdu.rst" target="_blank" rel="nofollow"><iconify-icon icon="bi:code-slash"></iconify-icon>
+            <span>View Source</span></a><a role="menuitem" href="https://chatgpt.com/?hints=search&q=Read%20https%3A//raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/protocols/iec104/api/asdu.rst%20so%20I%20can%20ask%20questions%20about%20it." target="_blank" rel="nofollow">
+          <iconify-icon icon="bi:openai"></iconify-icon>
+          <span>Open in ChatGPT</span>
+        </a><a role="menuitem" href="https://claude.ai/new?q=Read%20https%3A//raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/protocols/iec104/api/asdu.rst%20so%20I%20can%20ask%20questions%20about%20it." target="_blank" rel="nofollow">
+          <iconify-icon icon="bi:claude"></iconify-icon>
+          <span>Open in Claude</span>
+        </a></div>
+    </div>
+  </div>
+</div><article class="yue" role="main">
+          <section id="asdu-application-layer">
+<span id="api-iec104-asdu"></span><h1>ASDU - Application Layer<a class="headerlink" href="#asdu-application-layer" title="Link to this heading">#</a></h1>
+<p>The Application Service Data Unit: the common data unit identifier (type
+ID, cause of transmission, common address) that wraps every information
+object exchanged over IEC 60870-5-104.</p>
+<p id="module-icspacket.proto.iec104.asdu">ASDU - Application Service Data Unit (IEC 60870-5-104 application layer).</p>
+<p>(See IEC 60870-5-101, clause 7.2 - Application Service Data Unit)</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="icspacket.proto.iec104.asdu.ASDU">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">icspacket.proto.iec104.asdu.</span></span><span class="sig-name descname"><span class="pre">ASDU</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">header</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#icspacket.proto.iec104.asdu.ASDU_Header" title="icspacket.proto.iec104.asdu.ASDU_Header"><span class="pre">ASDU_Header</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">objects</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bytes</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">b''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/icspacket/proto/iec104/asdu.html#ASDU"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iec104.asdu.ASDU" title="Link to this definition">#</a></dt>
+<dd><p>Application Service Data Unit (ASDU).</p>
+<p>(See IEC 60870-5-101, clause 7.2)</p>
+<p>Carries a <a class="reference internal" href="#icspacket.proto.iec104.asdu.ASDU_Header" title="icspacket.proto.iec104.asdu.ASDU_Header"><code class="xref py py-class docutils literal notranslate"><span class="pre">ASDU_Header</span></code></a> plus the raw, not-yet-decoded
+information-object bytes; use <a class="reference internal" href="#icspacket.proto.iec104.asdu.ASDU.build" title="icspacket.proto.iec104.asdu.ASDU.build"><code class="xref py py-meth docutils literal notranslate"><span class="pre">build()</span></code></a>/<a class="reference internal" href="#icspacket.proto.iec104.asdu.ASDU.decode_objects" title="icspacket.proto.iec104.asdu.ASDU.decode_objects"><code class="xref py py-meth docutils literal notranslate"><span class="pre">decode_objects()</span></code></a> to
+go from/to a <a class="reference internal" href="objects.html#icspacket.proto.iec104.objects.coding.InformationObject" title="icspacket.proto.iec104.objects.coding.InformationObject"><code class="xref py py-class docutils literal notranslate"><span class="pre">InformationObject</span></code></a>
+list.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec104.asdu.ASDU.header">
+<span class="sig-name descname"><span class="pre">header</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#icspacket.proto.iec104.asdu.ASDU_Header" title="icspacket.proto.iec104.asdu.ASDU_Header"><span class="pre">ASDU_Header</span></a></span><a class="headerlink" href="#icspacket.proto.iec104.asdu.ASDU.header" title="Link to this definition">#</a></dt>
+<dd><p>The fixed 6-octet header, see <a class="reference internal" href="#icspacket.proto.iec104.asdu.ASDU_Header" title="icspacket.proto.iec104.asdu.ASDU_Header"><code class="xref py py-class docutils literal notranslate"><span class="pre">ASDU_Header</span></code></a>.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec104.asdu.ASDU.objects">
+<span class="sig-name descname"><span class="pre">objects</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bytes</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">b''</span></span><a class="headerlink" href="#icspacket.proto.iec104.asdu.ASDU.objects" title="Link to this definition">#</a></dt>
+<dd><p>Raw, undecoded information-object bytes. Populated/consumed via
+<a class="reference internal" href="#icspacket.proto.iec104.asdu.ASDU.build" title="icspacket.proto.iec104.asdu.ASDU.build"><code class="xref py py-meth docutils literal notranslate"><span class="pre">build()</span></code></a>/<a class="reference internal" href="#icspacket.proto.iec104.asdu.ASDU.decode_objects" title="icspacket.proto.iec104.asdu.ASDU.decode_objects"><code class="xref py py-meth docutils literal notranslate"><span class="pre">decode_objects()</span></code></a>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.iec104.asdu.ASDU.build">
+<span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">objects</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="objects.html#icspacket.proto.iec104.objects.coding.InformationObject" title="icspacket.proto.iec104.objects.coding.InformationObject"><span class="pre">InformationObject</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sq</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bytes</span></span></span><a class="reference internal" href="../../../_modules/icspacket/proto/iec104/asdu.html#ASDU.build"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iec104.asdu.ASDU.build" title="Link to this definition">#</a></dt>
+<dd><p>Encode <code class="docutils literal notranslate"><span class="pre">objects</span></code> and serialize the whole ASDU.</p>
+<p>Keeps <a class="reference internal" href="#icspacket.proto.iec104.asdu.ASDU_Header.vsq" title="icspacket.proto.iec104.asdu.ASDU_Header.vsq"><code class="xref py py-attr docutils literal notranslate"><span class="pre">ASDU_Header.vsq</span></code></a>’s <code class="docutils literal notranslate"><span class="pre">number</span></code>/<code class="docutils literal notranslate"><span class="pre">sq</span></code> fields in sync
+with <code class="docutils literal notranslate"><span class="pre">objects</span></code>/<code class="docutils literal notranslate"><span class="pre">sq</span></code> before packing, recomputing these derived
+header fields immediately before packing.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>objects</strong> – The information objects to encode, in wire order.</p></li>
+<li><p><strong>sq</strong> – Whether to use the sequential-address form: see
+<a class="reference internal" href="#icspacket.proto.iec104.asdu.VariableStructureQualifier.sq" title="icspacket.proto.iec104.asdu.VariableStructureQualifier.sq"><code class="xref py py-attr docutils literal notranslate"><span class="pre">VariableStructureQualifier.sq</span></code></a>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If <code class="docutils literal notranslate"><span class="pre">len(objects)</span></code> does not fit in the VSQ’s
+7-bit <code class="docutils literal notranslate"><span class="pre">number</span></code> field (i.e. more than 127 objects).</p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The fully encoded ASDU bytes.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.iec104.asdu.ASDU.decode_objects">
+<span class="sig-name descname"><span class="pre">decode_objects</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="objects.html#icspacket.proto.iec104.objects.coding.InformationObject" title="icspacket.proto.iec104.objects.coding.InformationObject"><span class="pre">InformationObject</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../../../_modules/icspacket/proto/iec104/asdu.html#ASDU.decode_objects"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iec104.asdu.ASDU.decode_objects" title="Link to this definition">#</a></dt>
+<dd><p>Decode <a class="reference internal" href="#icspacket.proto.iec104.asdu.ASDU.objects" title="icspacket.proto.iec104.asdu.ASDU.objects"><code class="xref py py-attr docutils literal notranslate"><span class="pre">objects</span></code></a> according to the header’s Type-ID/VSQ.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ValueError</strong> – If the header’s Type-ID has no registered
+information-element struct (see
+<a class="reference internal" href="objects.html#icspacket.proto.iec104.objects.coding.asdu_type" title="icspacket.proto.iec104.objects.coding.asdu_type"><code class="xref py py-func docutils literal notranslate"><span class="pre">asdu_type()</span></code></a>).</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The decoded information objects.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="icspacket.proto.iec104.asdu.ASDU_Header">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">icspacket.proto.iec104.asdu.</span></span><span class="sig-name descname"><span class="pre">ASDU_Header</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="master.html#icspacket.proto.iec104.const.TypeID" title="icspacket.proto.iec104.const.TypeID"><span class="pre">TypeID</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">TypeID.M_SP_NA_1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vsq</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#icspacket.proto.iec104.asdu.VariableStructureQualifier" title="icspacket.proto.iec104.asdu.VariableStructureQualifier"><span class="pre">VariableStructureQualifier</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cot</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#icspacket.proto.iec104.asdu.CauseOfTransmissionField" title="icspacket.proto.iec104.asdu.CauseOfTransmissionField"><span class="pre">CauseOfTransmissionField</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">originator_address</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">common_address</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/icspacket/proto/iec104/asdu.html#ASDU_Header"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iec104.asdu.ASDU_Header" title="Link to this definition">#</a></dt>
+<dd><p>Fixed 6-octet ASDU header.</p>
+<p>(See IEC 60870-5-101, clause 7.2 and clause 7.2.4 - Common address of
+ASDU)</p>
+<p>The 104 profile always uses the 2-octet forms of both the Cause Of
+Transmission’s originator address and the Common Address of ASDU
+(unlike 101, where 1-octet forms are also legal) - this struct only
+implements the 104 forms, matching this module’s TCP-only scope.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec104.asdu.ASDU_Header.type_id">
+<span class="sig-name descname"><span class="pre">type_id</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="master.html#icspacket.proto.iec104.const.TypeID" title="icspacket.proto.iec104.const.TypeID"><span class="pre">TypeID</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">int</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></span><a class="headerlink" href="#icspacket.proto.iec104.asdu.ASDU_Header.type_id" title="Link to this definition">#</a></dt>
+<dd><p>Identifies the structure and semantics of the objects that follow,
+see <a class="reference internal" href="master.html#icspacket.proto.iec104.const.TypeID" title="icspacket.proto.iec104.const.TypeID"><code class="xref py py-class docutils literal notranslate"><span class="pre">TypeID</span></code></a>.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec104.asdu.ASDU_Header.vsq">
+<span class="sig-name descname"><span class="pre">vsq</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#icspacket.proto.iec104.asdu.VariableStructureQualifier" title="icspacket.proto.iec104.asdu.VariableStructureQualifier"><span class="pre">VariableStructureQualifier</span></a></span><a class="headerlink" href="#icspacket.proto.iec104.asdu.ASDU_Header.vsq" title="Link to this definition">#</a></dt>
+<dd><p>Variable Structure Qualifier, see <a class="reference internal" href="#icspacket.proto.iec104.asdu.VariableStructureQualifier" title="icspacket.proto.iec104.asdu.VariableStructureQualifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">VariableStructureQualifier</span></code></a>.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec104.asdu.ASDU_Header.cot">
+<span class="sig-name descname"><span class="pre">cot</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#icspacket.proto.iec104.asdu.CauseOfTransmissionField" title="icspacket.proto.iec104.asdu.CauseOfTransmissionField"><span class="pre">CauseOfTransmissionField</span></a></span><a class="headerlink" href="#icspacket.proto.iec104.asdu.ASDU_Header.cot" title="Link to this definition">#</a></dt>
+<dd><p>Cause Of Transmission, see <a class="reference internal" href="#icspacket.proto.iec104.asdu.CauseOfTransmissionField" title="icspacket.proto.iec104.asdu.CauseOfTransmissionField"><code class="xref py py-class docutils literal notranslate"><span class="pre">CauseOfTransmissionField</span></code></a>.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec104.asdu.ASDU_Header.originator_address">
+<span class="sig-name descname"><span class="pre">originator_address</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></span><a class="headerlink" href="#icspacket.proto.iec104.asdu.ASDU_Header.originator_address" title="Link to this definition">#</a></dt>
+<dd><p>Identifies the originating controlling station in multi-master
+setups; <code class="docutils literal notranslate"><span class="pre">0</span></code> when only one master is used.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec104.asdu.ASDU_Header.common_address">
+<span class="sig-name descname"><span class="pre">common_address</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></span><a class="headerlink" href="#icspacket.proto.iec104.asdu.ASDU_Header.common_address" title="Link to this definition">#</a></dt>
+<dd><p>Station (sector) address this ASDU concerns; <code class="docutils literal notranslate"><span class="pre">0xFFFF</span></code> addresses
+all stations (global/broadcast, only valid for select ASDU types).</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="icspacket.proto.iec104.asdu.CauseOfTransmissionField">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">icspacket.proto.iec104.asdu.</span></span><span class="sig-name descname"><span class="pre">CauseOfTransmissionField</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">test</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">negative</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cause</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/icspacket/proto/iec104/asdu.html#CauseOfTransmissionField"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iec104.asdu.CauseOfTransmissionField" title="Link to this definition">#</a></dt>
+<dd><p>Cause Of Transmission (COT) octet.</p>
+<p>Wraps a <a class="reference internal" href="master.html#icspacket.proto.iec104.const.CauseOfTransmission" title="icspacket.proto.iec104.const.CauseOfTransmission"><code class="xref py py-class docutils literal notranslate"><span class="pre">CauseOfTransmission</span></code></a>
+value together with the test and negative-confirmation flags.
+(See IEC 60870-5-101, clause 7.2.3)</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec104.asdu.CauseOfTransmissionField.test">
+<span class="sig-name descname"><span class="pre">test</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></span><a class="headerlink" href="#icspacket.proto.iec104.asdu.CauseOfTransmissionField.test" title="Link to this definition">#</a></dt>
+<dd><p>Marks the ASDU as a test frame - the outstation processes it
+normally but the master should not act on the result.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec104.asdu.CauseOfTransmissionField.negative">
+<span class="sig-name descname"><span class="pre">negative</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></span><a class="headerlink" href="#icspacket.proto.iec104.asdu.CauseOfTransmissionField.negative" title="Link to this definition">#</a></dt>
+<dd><p><code class="docutils literal notranslate"><span class="pre">P/N</span></code>: <code class="docutils literal notranslate"><span class="pre">True</span></code> marks a negative confirmation (the requested
+activation/command could not be performed).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec104.asdu.CauseOfTransmissionField.cause">
+<span class="sig-name descname"><span class="pre">cause</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></span><a class="headerlink" href="#icspacket.proto.iec104.asdu.CauseOfTransmissionField.cause" title="Link to this definition">#</a></dt>
+<dd><p>The reason this ASDU was sent; interpret with
+<a class="reference internal" href="master.html#icspacket.proto.iec104.const.CauseOfTransmission" title="icspacket.proto.iec104.const.CauseOfTransmission"><code class="xref py py-class docutils literal notranslate"><span class="pre">CauseOfTransmission</span></code></a>.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="icspacket.proto.iec104.asdu.InformationObject">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">icspacket.proto.iec104.asdu.</span></span><span class="sig-name descname"><span class="pre">InformationObject</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ioa</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">element</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/icspacket/proto/iec104/objects/coding.html#InformationObject"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iec104.asdu.InformationObject" title="Link to this definition">#</a></dt>
+<dd><p>A single decoded information object: its address plus payload.</p>
+<p><a class="reference internal" href="#icspacket.proto.iec104.asdu.InformationObject.element" title="icspacket.proto.iec104.asdu.InformationObject.element"><code class="xref py py-attr docutils literal notranslate"><span class="pre">element</span></code></a> holds whatever struct instance is registered for the
+owning ASDU’s Type-ID (e.g. an <a class="reference internal" href="objects.html#icspacket.proto.iec104.objects.elements.SIQ" title="icspacket.proto.iec104.objects.elements.SIQ"><code class="xref py py-class docutils literal notranslate"><span class="pre">SIQ</span></code></a>
+for <a class="reference internal" href="master.html#icspacket.proto.iec104.const.TypeID.M_SP_NA_1" title="icspacket.proto.iec104.const.TypeID.M_SP_NA_1"><code class="xref py py-data docutils literal notranslate"><span class="pre">M_SP_NA_1</span></code></a>).</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec104.asdu.InformationObject.ioa">
+<span class="sig-name descname"><span class="pre">ioa</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><a class="headerlink" href="#icspacket.proto.iec104.asdu.InformationObject.ioa" title="Link to this definition">#</a></dt>
+<dd><p>Information Object Address (0 - 16777215).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec104.asdu.InformationObject.element">
+<span class="sig-name descname"><span class="pre">element</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Any</span></span><a class="headerlink" href="#icspacket.proto.iec104.asdu.InformationObject.element" title="Link to this definition">#</a></dt>
+<dd><p>The decoded information element, or <code class="docutils literal notranslate"><span class="pre">None</span></code>/opaque bytes for
+unregistered Type-IDs.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="icspacket.proto.iec104.asdu.VariableStructureQualifier">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">icspacket.proto.iec104.asdu.</span></span><span class="sig-name descname"><span class="pre">VariableStructureQualifier</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sq</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">number</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/icspacket/proto/iec104/asdu.html#VariableStructureQualifier"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.iec104.asdu.VariableStructureQualifier" title="Link to this definition">#</a></dt>
+<dd><p>Variable Structure Qualifier (VSQ).</p>
+<p>Tells a decoder how many information objects follow the ASDU header
+and whether they share one implicit, incrementing address or each
+carry their own.
+(See IEC 60870-5-101, clause 7.2.2)</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec104.asdu.VariableStructureQualifier.sq">
+<span class="sig-name descname"><span class="pre">sq</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></span><a class="headerlink" href="#icspacket.proto.iec104.asdu.VariableStructureQualifier.sq" title="Link to this definition">#</a></dt>
+<dd><p><code class="docutils literal notranslate"><span class="pre">SQ</span></code> bit. When <code class="docutils literal notranslate"><span class="pre">True</span></code>, only the first information object
+carries an explicit Information Object Address; the rest are
+implicitly addressed <code class="docutils literal notranslate"><span class="pre">ioa</span> <span class="pre">+</span> <span class="pre">1</span></code>, <code class="docutils literal notranslate"><span class="pre">ioa</span> <span class="pre">+</span> <span class="pre">2</span></code>, etc. (“sequence” of
+same-kind objects, e.g. a contiguous block of measured values). When
+<code class="docutils literal notranslate"><span class="pre">False</span></code>, every object carries its own address.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.iec104.asdu.VariableStructureQualifier.number">
+<span class="sig-name descname"><span class="pre">number</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></span><a class="headerlink" href="#icspacket.proto.iec104.asdu.VariableStructureQualifier.number" title="Link to this definition">#</a></dt>
+<dd><p>Number of information objects (or, when <code class="docutils literal notranslate"><span class="pre">sq</span></code> is set, elements
+within the single addressed sequence) following the header.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+        </article><button class="back-to-top" type="button">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+  </svg>
+  <span>Back to top</span>
+</button><div class="navigation flex print:hidden"><div class="navigation-prev">
+    <a href="apci.html">
+      <i class="i-lucide chevron-left"></i>
+      <div class="page-info">
+        <span>Previous</span><div class="title">APCI - Framing Layer</div></div>
+    </a>
+  </div><div class="navigation-next">
+    <a href="master.html">
+      <div class="page-info">
+        <span>Next</span>
+        <div class="title">Master (Client)</div>
+      </div>
+      <i class="i-lucide chevron-right"></i>
+    </a>
+  </div></div></div>
+    </div>
+  </main>
+</div>
+<footer class="sy-foot">
+  <div class="sy-foot-inner sy-container mx-auto">
+    <div class="sy-foot-reserved md:flex justify-between items-center">
+      <div class="sy-foot-copyright"><p>2025, MatrixEditor</p>
+  
+  <p>
+    Made with
+    
+    <a href="https://www.sphinx-doc.org/">Sphinx</a> and
+    
+    <a href="https://shibuya.lepture.com">Shibuya theme</a>.
+  </p>
+</div>
+      <div class="sy-foot-socials">
+  <a href="https://github.com/MatrixEditor/icspacket" aria-label="GitHub">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </a></div>
+    </div>
+  </div>
+</footer>
+      <script src="../../../_static/documentation_options.js?v=32763ad6"></script>
+      <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+      <script src="../../../_static/shibuya.js?v=50760d75"></script></body>
+</html>
