@@ -104,6 +104,11 @@ html_theme_options = {
                     "url": "protocols/iec104/examples",
                     "summary": "IEC 60870-5-104 interrogation and read tools",
                 },
+                {
+                    "title": "BACnet/IP Tools",
+                    "url": "protocols/bacnet/examples",
+                    "summary": "BACnet/IP discovery, read/write and COV tools",
+                },
             ],
         },
         {

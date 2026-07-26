@@ -105,3 +105,8 @@ Protocols Overview
 
         Platform-independent SCADA/industrial-automation communication.
 
+    .. grid-item-card:: :octicon:`flame` BACnet/IP
+        :link: bacnet_index
+        :link-type: ref
+
+        Building automation and control networking (ASHRAE 135), via BACpypes3.

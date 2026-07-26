@@ -69,7 +69,6 @@ and MacOS. Any other Python version is not officially supported::
     :hidden:
 
     protocols/iec104/iec104read
-    protocols/iec104/examples
     protocols/iec104/api
 
 .. toctree::
@@ -77,7 +76,6 @@ and MacOS. Any other Python version is not officially supported::
     :hidden:
 
     protocols/cip/cipclient
-    protocols/cip/examples
     protocols/cip/api
 
 .. toctree::
@@ -93,6 +91,13 @@ and MacOS. Any other Python version is not officially supported::
 
     protocols/opcua/opcuaclient
     protocols/opcua/api
+
+.. toctree::
+    :caption: BACnet
+    :hidden:
+
+    protocols/bacnet/bacnetclient
+    protocols/bacnet/api
 
 .. toctree::
     :caption: ACSE / X.227
