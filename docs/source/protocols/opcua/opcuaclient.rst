@@ -49,11 +49,6 @@ The ``browse`` (alias ``b``) command lists the children of a node (default:
 the ``Objects`` folder) as a tree, showing each child's display name, node
 class (``Object``, ``Variable``, ``Method``, ...) and NodeId.
 
-.. figure:: _images/opcuaclient-browse.png
-    :align: center
-
-    ``opcuaclient.py browse <host>`` -- a single-level listing of the
-    ``Objects`` folder on the lab server.
 
 .. option:: -r, --recursive
 
