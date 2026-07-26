@@ -93,7 +93,17 @@ html_theme_options = {
                     "title": "IED Enumeration Tool",
                     "url": "protocols/iec61850/iedmap",
                     "summary": "Logical Device enumeration and more",
-                }
+                },
+                {
+                    "title": "CIP / EtherNet-IP Tools",
+                    "url": "protocols/cip/examples",
+                    "summary": "EtherNet/IP discovery, explicit messaging and I/O tools",
+                },
+                {
+                    "title": "IEC 60870-5-104 Tools",
+                    "url": "protocols/iec104/examples",
+                    "summary": "IEC 60870-5-104 interrogation and read tools",
+                },
             ],
         },
         {
