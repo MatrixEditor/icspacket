@@ -43,6 +43,7 @@ dependencies = [
   # --- protocol dependencies
   "pymodbus>=3.8.6",
   "asyncua>=1.1",
+  "bacpypes3==0.0.106",
   # ---  dependencies for examples
   "rich",   # colored terminal output and logging
   "cmd2",   # advanced command shells (cmd 2.0)
