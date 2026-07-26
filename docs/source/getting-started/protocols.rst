@@ -17,6 +17,9 @@ Protocols Overview
     dnp3
     iec104
     iec61850
+    modbus
+    opcua
+    cip
 
 
 **Protocol references**
@@ -89,4 +92,16 @@ Protocols Overview
 
         Common Industrial Protocol: discovery, explicit messaging, and
         Class 0/1 I/O over EtherNet/IP.
+
+    .. grid-item-card:: :octicon:`cpu` Modbus
+        :link: modbus_index
+        :link-type: ref
+
+        Modbus TCP/UDP coils, discrete inputs and registers.
+
+    .. grid-item-card:: :octicon:`globe` OPC-UA
+        :link: opcua_index
+        :link-type: ref
+
+        Platform-independent SCADA/industrial-automation communication.
 
