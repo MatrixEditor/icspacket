@@ -23,18 +23,23 @@
 #   - Domain: list, and list variables
 #   - identify
 import datetime
+import logging
 import pathlib
 import shlex
 import sys
-import logging
 import textwrap
 
+from rich import box, pretty
 from rich.markup import escape
 from rich.table import Table
-from rich import box, pretty
 
 from icspacket.core.connection import ConnectionClosedError
 from icspacket.examples.util import add_logging_options
+from icspacket.examples.util.mms import (
+    add_mms_connection_options,
+    init_mms_connection,
+    parse_variable_target,
+)
 from icspacket.proto.mms._mms import DataAccessError, TypeDescription
 from icspacket.proto.mms.asn1types import (
     Data,
@@ -42,23 +47,17 @@ from icspacket.proto.mms.asn1types import (
     ServiceError,
 )
 from icspacket.proto.mms.connection import MMS_Connection
-from icspacket.proto.mms.exceptions import MMSConnectionError
 from icspacket.proto.mms.data import (
     Timestamp,
-    get_floating_point_value,
     create_floating_point_value,
+    get_floating_point_value,
 )
+from icspacket.proto.mms.exceptions import MMSConnectionError
 from icspacket.proto.mms.util import (
     ObjectScope,
     VariableAccessItem,
     basic_object_class,
     object_name_to_string,
-)
-
-from icspacket.examples.util.mms import (
-    add_mms_connection_options,
-    init_mms_connection,
-    parse_variable_target,
 )
 
 
@@ -126,7 +125,7 @@ def str_to_data(value: str) -> Data | None:
         case "uint":
             return Data(unsigned=int(value))
         case "bool":
-            return Data(boolean=bool(value))
+            return Data(boolean=value.strip().lower() in ("1", "true", "yes", "on"))
         case "bits":
             if path.is_file():
                 return Data(bit_string=path.read_bytes())

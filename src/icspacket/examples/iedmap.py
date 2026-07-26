@@ -76,10 +76,6 @@ class IED_Discover:
                 )
                 self.nodes.extend(["$".join(node.parts[1:]) for node in nodes])
 
-        top_level_nodes = [
-            ObjectReference(self.device, node) for node in self.nodes if "$" not in node
-        ]
-        logging.debug("Collected %d top level logical node(s)", len(top_level_nodes))
         try:
             nodes = self.client.mms_conn.get_name_list(
                 basic_object_class(BasicObjectClassType.V_namedVariableList),
@@ -112,7 +108,12 @@ class IED_Discover:
                 self.dump_nodes(tree, self.datasets, is_data=False)
 
     def dump_nodes(self, tree: Tree, nodes: list[str], is_data: bool = True):
-        trees = [None]
+        # Map each already-rendered node's full "$"-separated path to its
+        # rich Tree node, so children can always look up their real parent
+        # by path instead of relying on positional/depth bookkeeping (which
+        # breaks if the server does not return entries strictly grouped by
+        # logical node, e.g. interleaved dataset/RCB names across LNs).
+        subtrees: dict[str, Tree] = {}
         for node in nodes:
             node_ref = ObjectReference.from_mmsref(f"{self.device}/{node}")
             if "$" not in node:
@@ -125,18 +126,30 @@ class IED_Discover:
                     label = label.ljust(100 - 8, ".")
                     label = f"{label} {node_ref}"
 
-                subtree = tree.add(label)
-                trees[0] = subtree
+                subtrees[node] = tree.add(label)
                 continue
 
             depth = node.count("$")
             if depth > self.max_depth:
                 continue
 
-            if node.count("$") == 1 and is_data:
-                fc = FC[node_ref.name(2)]
-                label = f"[{fc.name}] ({fc.value})"
-                trees.insert(depth, trees[0].add(label))
+            parent_key = node.rsplit("$", 1)[0]
+            parent = subtrees.get(parent_key)
+            if parent is None:
+                logging.warning(
+                    "Skipping node %r: parent node %r was not discovered",
+                    node,
+                    parent_key,
+                )
+                continue
+
+            if depth == 1 and is_data:
+                try:
+                    fc = FC[node_ref.name(2)]
+                    label = f"[{fc.name}] ({fc.value})"
+                except KeyError:
+                    label = f"[{node_ref.name(2)}] (unknown FC)"
+                subtrees[node] = parent.add(label)
                 continue
             else:
                 name = node_ref.name(-1)
@@ -161,7 +174,7 @@ class IED_Discover:
 
                 if value is not None:
                     text = text.append("\n").append(value)
-                trees.insert(depth, trees[depth - 1].add(text))
+                subtrees[node] = parent.add(text)
 
     def get_node_value(self, node_ref: ObjectReference) -> Text | None:
         if len(node_ref.parts) < 4:
@@ -214,13 +227,33 @@ class IED_Discover:
                     text.append("\n").append(hexdump.hexdump(data.utc_time.value))
                     do_highlight = False
                 else:
-                    return None
+                    text.append("<EMPTY>")
             case _:
                 return None
 
         if do_highlight:
             highlighter.highlight(text)
         return text
+
+
+def do_create_dataset(acsi: IED_Client, args) -> None:
+    """Handle the `create-dataset` subcommand: dynamically create a data set."""
+    dataset_ref = ObjectReference.from_mmsref(f"{args.device}/{args.dataset}")
+    members = [
+        ObjectReference.from_mmsref(f"{args.device}/{member}")
+        for member in args.members
+    ]
+    acsi.create_dataset(dataset_ref, members)
+    logging.info("Created data set: %s (%d member(s))", dataset_ref, len(members))
+
+
+def do_delete_dataset(acsi: IED_Client, args) -> None:
+    """Handle the `delete-dataset` subcommand: dynamically delete a data set."""
+    dataset_ref = ObjectReference.from_mmsref(f"{args.device}/{args.dataset}")
+    if acsi.delete_dataset(dataset_ref):
+        logging.info("Deleted data set: %s", dataset_ref)
+    else:
+        logging.error("Data set not deleted (not found or not deletable): %s", dataset_ref)
 
 
 def cli_main():
@@ -243,6 +276,15 @@ def cli_main():
     # fmt; on
     add_mms_connection_options(parser)
     add_logging_options(parser)
+
+    actions = parser.add_subparsers(title="Actions", description="Additional data set management operations (default: discover/display nodes)", dest="action", metavar="ACTION")
+
+    create_dataset = actions.add_parser("create-dataset", help="Dynamically create a new data set on the target device")
+    create_dataset.add_argument("dataset", type=str, metavar="LN.DATASET", help="Data set to create, e.g. 'LLN0.events'")
+    create_dataset.add_argument("members", nargs="+", type=str, metavar="LN.DO[.DA]", help="Member reference(s) to include, e.g. 'LLN0.Mod.stVal'")
+
+    delete_dataset = actions.add_parser("delete-dataset", help="Dynamically delete an existing data set on the target device")
+    delete_dataset.add_argument("dataset", type=str, metavar="LN.DATASET", help="Data set to delete, e.g. 'LLN0.events'")
 
     args = parser.parse_args()
 
@@ -276,8 +318,15 @@ def cli_main():
             else:
                 logging.info("Automatically selecting IED: %s", devices[0])
                 args.device = str(devices[0])
-        discover = IED_Discover(acsi, args)
-        discover.discover()
+
+        match getattr(args, "action", None):
+            case "create-dataset":
+                do_create_dataset(acsi, args)
+            case "delete-dataset":
+                do_delete_dataset(acsi, args)
+            case _:
+                discover = IED_Discover(acsi, args)
+                discover.discover()
         # scan_remote(acsi, args)
     except KeyboardInterrupt:
         logging.error("Aborted by user")

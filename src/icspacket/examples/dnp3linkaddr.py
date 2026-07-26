@@ -31,19 +31,18 @@ tool currently tries two methods:
 Important: Make sure to set the right local link address (default is 1).
 Sometimes the outstation will only accepts certain master link addresses.
 """
+import argparse
 import logging
 import sys
-import argparse
-from threading import Event
 import timeit
+from threading import Event
 
 from rich.console import Console
 
 from icspacket.core import logger
+from icspacket.examples.util import add_logging_options
 from icspacket.proto.dnp3.link import LPDU, LinkDirection, LinkPrimaryFunctionCode
 from icspacket.proto.dnp3.master import DNP3_Link, DNP3_Master
-
-from icspacket.examples.util import add_logging_options
 
 
 class CustomDNP3_Link(DNP3_Link):
@@ -83,12 +82,12 @@ def cli_main():
     if args.verbosity > 0:
         print(f"icspacket v{__version__}\n")
 
-    master = DNP3_Master(link_addr=args.listen)
+    master = DNP3_Master(link_addr=args.listen, link_cls=CustomDNP3_Link)
     # as we don't know the outstation's link address, we can't it here
     remote_addr = (0, args.host, args.port)
     try:
         logging.info("Connecting to outstation (%04d) at %s:%d...", *remote_addr)
-        master.associate(remote_addr, link_cls=CustomDNP3_Link)
+        master.associate(remote_addr)
     except ConnectionError as e:
         logging.error("Could not connect to outstation: %s", e)
         sys.exit(1)

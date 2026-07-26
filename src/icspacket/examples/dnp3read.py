@@ -209,8 +209,8 @@ def cli_main():
         reader.run(args)
     except KeyboardInterrupt:
         logging.warning("Operation cancelled by user")
-    except Exception as e:
-        logging.exception("Encountered an unexpected exception:", e)
+    except Exception:
+        logging.exception("Encountered an unexpected exception:")
     finally:
         logging.debug("Disconnecting from outstation...")
         master.release(0.1)
