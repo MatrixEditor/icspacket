@@ -45,6 +45,8 @@ dependencies = [
   "caterpillar-py>=2.9.1", # binary protocols
   "bitarray",              # asn1c-python extensions
   "typing-extensions",     # compatibility with 3.10
+  # --- protocol dependencies
+  "pymodbus>=3.8.6",
   # ---  dependencies for examples
   "rich",   # colored terminal output and logging
   "cmd2",   # advanced command shells (cmd 2.0)

@@ -81,6 +81,13 @@ and MacOS. Any other Python version is not officially supported::
     protocols/cip/api
 
 .. toctree::
+    :caption: Modbus
+    :hidden:
+
+    protocols/modbus/modbusclient
+    protocols/modbus/api
+
+.. toctree::
     :caption: ACSE / X.227
     :hidden:
 
