@@ -88,6 +88,13 @@ and MacOS. Any other Python version is not officially supported::
     protocols/modbus/api
 
 .. toctree::
+    :caption: OPC-UA
+    :hidden:
+
+    protocols/opcua/opcuaclient
+    protocols/opcua/api
+
+.. toctree::
     :caption: ACSE / X.227
     :hidden:
 

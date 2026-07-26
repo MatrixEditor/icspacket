@@ -12,9 +12,6 @@ name = "icspacket"
 dynamic = ["version"]
 description = "Python classes to interact with industrial control systems (ICS) using various protocols."
 readme = "README.md"
-# Currently, Python 3.11 is NOT supported due to breaking changes within the
-# typing module. Caterpillar-py requires at least Python 3.12 because of these
-# changes.
 requires-python = ">=3.10"
 keywords = [
   "ics",
@@ -35,8 +32,6 @@ classifiers = [
   "Programming Language :: Python :: 3.11",
   "Programming Language :: Python :: 3.12",
   "Programming Language :: Python :: 3.13",
-  # Python 3.14 installation works but CI is not configured yet, so installation
-  # must be performed manually.
   "Programming Language :: Python :: 3.14",
   "Programming Language :: Python :: Implementation :: CPython",
   "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
@@ -47,6 +42,7 @@ dependencies = [
   "typing-extensions",     # compatibility with 3.10
   # --- protocol dependencies
   "pymodbus>=3.8.6",
+  "asyncua>=1.1",
   # ---  dependencies for examples
   "rich",   # colored terminal output and logging
   "cmd2",   # advanced command shells (cmd 2.0)
