@@ -18,11 +18,18 @@ keywords = [
   "ics-security",
   "libiec61850",
   "iec61850",
+  "bacnet",
   "iso8823",
   "iso8237",
   "cotp",
   "tpkt",
   "goose",
+  "modbus",
+  "iec104",
+  "iec60870",
+  "opcua",
+  "cip",
+  "ethernetip",
 ]
 authors = [{ name = "MatrixEditor" }]
 classifiers = [
