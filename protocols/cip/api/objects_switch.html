@@ -1,0 +1,1494 @@
+<!DOCTYPE html>
+<html lang="en" data-accent-color="lime" data-content_root="../../../">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Switch Management Objects - icspacket 0.1.dev1+g198be51b5 documentation</title><link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" /><link rel="next" title="Diagnostics Objects" href="objects_diagnostics.html" /><link rel="prev" title="Motion, Drive, and Semiconductor Objects" href="objects_motion.html" />
+      <link rel="canonical" href="https://matrixeditor.github.io/icspacket/protocols/cip/api/objects_switch.html" /><script>
+    function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
+    setColorMode(localStorage._theme||"dark");
+  </script><link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=e1a1ceaf" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/shibuya.css?v=2ceb65ce" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link media="print" rel="stylesheet" type="text/css" href="../../../_static/print.css?v=20ff2c19" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --sy-f-text: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+  --sy-f-heading: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+}
+</style>
+    
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://matrixeditor.github.io/icspacket/protocols/cip/api/objects_switch.html"/>
+  <meta property="og:title" content="Switch Management Objects"/>
+    <meta name="twitter:card" content="summary"/>
+  </head>
+<body><div class="sy-head">
+  <div class="sy-head-blur"></div>
+  <div class="sy-head-inner sy-container mx-auto">
+    <a class="sy-head-brand" href="../../../index.html">
+      
+      
+      <strong>icspacket</strong>
+    </a>
+    <div class="sy-head-nav" id="head-nav">
+      <nav class="sy-head-links"><ul>
+      <li class="link"><a class="js-menu" href="../../../getting-started/protocols.html" id="nav-trigger-1" aria-controls="nav-children-1">
+            <span>Examples</span>
+            <i class="i-lucide chevron-down"></i>
+          </a>
+        <ul id="nav-children-1" aria-labelledby="nav-trigger-1"><li><a href="../../mms/examples.html">
+                <span>MMS Utilities</span>
+                <small>Manufacturing Message Specification tools</small>
+              </a></li><li><a href="../../dnp3/examples.html">
+                <span>DNP3 Tools</span>
+                <small>DNP3 utilities and tools</small>
+              </a></li><li><a href="../../iec61850/iedmap.html">
+                <span>IED Enumeration Tool</span>
+                <small>Logical Device enumeration and more</small>
+              </a></li><li><a href="../examples.html">
+                <span>CIP / EtherNet-IP Tools</span>
+                <small>EtherNet/IP discovery, explicit messaging and I/O tools</small>
+              </a></li><li><a href="../../iec104/examples.html">
+                <span>IEC 60870-5-104 Tools</span>
+                <small>IEC 60870-5-104 interrogation and read tools</small>
+              </a></li></ul>
+      </li><li class="link"><a href="../../../changelog.html">Changelog</a></li></ul></nav>
+      <div class="sy-head-extra flex items-center print:hidden"><form class="searchbox flex items-center" action="../../../search.html" method="get">
+  <input type="text" name="q" placeholder="Search" />
+  <kbd>/</kbd>
+</form><div class="sy-head-socials">
+  <a href="https://github.com/MatrixEditor/icspacket" aria-label="GitHub">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </a></div></div>
+    </div>
+    <div class="sy-head-actions flex items-center shrink-0 print:hidden"><button class="js-theme theme-switch flex items-center"
+data-aria-auto="Switch to light color mode"
+data-aria-light="Switch to dark color mode"
+data-aria-dark="Switch to auto color mode">
+<i class="i-lucide theme-icon"></i>
+</button><button class="md:hidden flex items-center js-menu" aria-label="Menu" type="button" aria-controls="head-nav" aria-expanded="false">
+        <div class="hamburger">
+          <span class="hamburger_1"></span>
+          <span class="hamburger_2"></span>
+          <span class="hamburger_3"></span>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>
+<div class="sy-page sy-container flex mx-auto">
+  <aside id="lside" class="sy-lside md:w-72 md:shrink-0 print:hidden">
+    <div class="sy-lside-inner md:sticky">
+      <div class="sy-scrollbar p-6"><div class="sidebar-links">
+  <ul>
+    <li><a class="icon-link" href="https://github.com/MatrixEditor/icspacket/discussions">
+  <span class="icon">
+    <svg viewBox="0 0 24 24" fill="none">
+      <path fill="var(--accent-9)" fill-rule="evenodd" clip-rule="evenodd" d="M11 5a6 6 0 0 0-4.687 9.746c.215.27.315.62.231.954l-.514 2.058a1 1 0 0 0 1.485 1.1l2.848-1.71c.174-.104.374-.15.576-.148H13a6 6 0 0 0 0-12h-2Z"/>
+      <circle fill="white" cx="12" cy="11" r="1"/>
+      <circle fill="white" cx="9" cy="11" r="1"/>
+      <circle fill="white" cx="15" cy="11" r="1"/>
+    </svg>
+  </span>
+  <span class="text">Discussion</span>
+</a></li>
+  </ul>
+</div>
+        <div class="globaltoc" data-expand-depth="1"><p class="caption" role="heading" aria-level="3"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../getting-started/installation.html">Installation</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../getting-started/protocols.html">Protocols Overview</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../getting-started/coreapi.html">Core API Reference</a></li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">DNP3 / IEEE 1815</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../dnp3/dnp3read.html">Reading Objects</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../dnp3/dnp3dump.html">Dumping Objects</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../dnp3/dnp3resolve.html">Resolve Link Addresses</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../dnp3/api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../dnp3/api/link.html">Link Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dnp3/api/transport.html">Transport Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dnp3/api/application.html">Application Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dnp3/api/master.html">Master</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dnp3/api/object_library.html">Object Library</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../dnp3/api/primitives.html">Primitive Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../dnp3/api/coding.html">Encoding / Decoding</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../dnp3/api/variations.html">Variations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../dnp3/api/coding_utils.html">Object Utilities</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">IEC 61850</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../iec61850/iedmap.html">Enumerating IEDs</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../iec61850/iedctrl.html">Operating on IEDs</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../iec61850/api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../iec61850/api_data_classes.html">Data Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../iec61850/api_path.html">Object / Data References</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../iec61850/api_control.html">Control / Operation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../iec61850/api_client.html">IED Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../iec61850/api_goose.html">GOOSE Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../iec61850/api_sv.html">SampledValues Client</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">MMS / ISO 9506</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../mms/demo_vars.html">Variable Target Format</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../mms/demo_vars.html#variableaccess-service-rwq">VariableAccess Service (rwq)</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../mms/demo_files.html">FileManagement Service</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../mms/api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../mms/api_conn.html">MMS Connection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../mms/api_data.html">Data Conversion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../mms/api_utils.html">Protocol Utilities</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">IEC 60870-5-104</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../iec104/iec104read.html">Reading Data via Interrogation</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../iec104/api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../iec104/api/apci.html">APCI - Framing Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../iec104/api/asdu.html">ASDU - Application Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../iec104/api/master.html">Master (Client)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../iec104/api/objects.html">Information Object Library</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">CIP / EtherNet-IP</span></p>
+<ul class="current">
+<li class="toctree-l1 _expand"><a class="reference internal" href="../cipclient.html">Operating via CIP / EtherNet-IP</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../api.html">API Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="connection.html">Connection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="encapsulation.html">EtherNet/IP Encapsulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="messaging.html">Messaging</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="objects.html">Object Library</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="objects_core.html">Core Objects</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects_network.html">Network Objects</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects_io.html">I/O and Parameter Objects</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects_motion.html">Motion, Drive, and Semiconductor Objects</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Switch Management Objects</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects_diagnostics.html">Diagnostics Objects</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">ACSE / X.227</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../acse/api.html">API Reference</a></li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">COPP / X.226 / ISO 8823</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../copp/api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../copp/presentation.html">ISO Presentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../copp/utils.html">Protocol Utilities</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">COSP / X.225 / ISO 8237-1</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../cosp/api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../cosp/tsdu.html">TSDU</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cosp/spdu.html">SPDU Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cosp/values.html">Parameter Values (PV)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cosp/session.html">ISO Session</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cosp/utils.html">Protocol Utilities</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">COTP / X.224</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../cotp/api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../cotp/structs.html">TPDU Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cotp/connection.html">Connection</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">TPKT Protocol (RFC1006)</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../tpkt/usage.html">Using a TPKT Wrapper</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../tpkt/api.html">API Reference</a></li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../changelog.html">Changelog</a></li>
+</ul>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="lside-overlay js-menu" role="button" aria-label="Close left sidebar" aria-controls="lside" aria-expanded="false"></div>
+  <aside id="rside" class="sy-rside pb-3 w-64 shrink-0 order-last">
+    <button class="rside-close js-menu xl:hidden" aria-label="Close Table of Contents" type="button" aria-controls="rside" aria-expanded="false">
+      <i class="i-lucide close"></i>
+    </button>
+    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div class="localtoc"><h3>On this page</h3><ul>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.BaseSwitchObject"><code class="docutils literal notranslate"><span class="pre">BaseSwitchObject</span></code></a><ul>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.BaseSwitchObject.device_up_time"><code class="docutils literal notranslate"><span class="pre">BaseSwitchObject.device_up_time</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.BaseSwitchObject.total_port_count"><code class="docutils literal notranslate"><span class="pre">BaseSwitchObject.total_port_count</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.BaseSwitchObject.system_firmware_version"><code class="docutils literal notranslate"><span class="pre">BaseSwitchObject.system_firmware_version</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.BaseSwitchObject.power_source"><code class="docutils literal notranslate"><span class="pre">BaseSwitchObject.power_source</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.BaseSwitchObject.port_mask_size"><code class="docutils literal notranslate"><span class="pre">BaseSwitchObject.port_mask_size</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.BaseSwitchObject.existing_ports"><code class="docutils literal notranslate"><span class="pre">BaseSwitchObject.existing_ports</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.BaseSwitchObject.global_port_admin_state"><code class="docutils literal notranslate"><span class="pre">BaseSwitchObject.global_port_admin_state</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.BaseSwitchObject.global_port_link_status"><code class="docutils literal notranslate"><span class="pre">BaseSwitchObject.global_port_link_status</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.BaseSwitchObject.system_boot_loader_version"><code class="docutils literal notranslate"><span class="pre">BaseSwitchObject.system_boot_loader_version</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.BaseSwitchObject.contact_status"><code class="docutils literal notranslate"><span class="pre">BaseSwitchObject.contact_status</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.BaseSwitchObject.aging_time"><code class="docutils literal notranslate"><span class="pre">BaseSwitchObject.aging_time</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.BaseSwitchObject.temperature_c"><code class="docutils literal notranslate"><span class="pre">BaseSwitchObject.temperature_c</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.BaseSwitchObject.temperature_f"><code class="docutils literal notranslate"><span class="pre">BaseSwitchObject.temperature_f</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.BaseSwitchObject.resiliency_protocol_list"><code class="docutils literal notranslate"><span class="pre">BaseSwitchObject.resiliency_protocol_list</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.BaseSwitchObject.get_class_attribute"><code class="docutils literal notranslate"><span class="pre">BaseSwitchObject.get_class_attribute()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.BridgeIdentifier"><code class="docutils literal notranslate"><span class="pre">BridgeIdentifier</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.DLRObject"><code class="docutils literal notranslate"><span class="pre">DLRObject</span></code></a><ul>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.DLRObject.network_topology"><code class="docutils literal notranslate"><span class="pre">DLRObject.network_topology</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.DLRObject.network_status"><code class="docutils literal notranslate"><span class="pre">DLRObject.network_status</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.DLRObject.ring_supervisor_status"><code class="docutils literal notranslate"><span class="pre">DLRObject.ring_supervisor_status</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.DLRObject.ring_supervisor_config"><code class="docutils literal notranslate"><span class="pre">DLRObject.ring_supervisor_config</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.DLRObject.ring_faults_count"><code class="docutils literal notranslate"><span class="pre">DLRObject.ring_faults_count</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.DLRObject.last_active_node_on_port_1"><code class="docutils literal notranslate"><span class="pre">DLRObject.last_active_node_on_port_1</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.DLRObject.last_active_node_on_port_2"><code class="docutils literal notranslate"><span class="pre">DLRObject.last_active_node_on_port_2</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.DLRObject.ring_protocol_participants_count"><code class="docutils literal notranslate"><span class="pre">DLRObject.ring_protocol_participants_count</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.DLRObject.active_supervisor_address"><code class="docutils literal notranslate"><span class="pre">DLRObject.active_supervisor_address</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.DLRObject.active_supervisor_precedence"><code class="docutils literal notranslate"><span class="pre">DLRObject.active_supervisor_precedence</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.DLRObject.capability_flags"><code class="docutils literal notranslate"><span class="pre">DLRObject.capability_flags</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.DLRObject.redundant_gateway_config"><code class="docutils literal notranslate"><span class="pre">DLRObject.redundant_gateway_config</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.DLRObject.redundant_gateway_status"><code class="docutils literal notranslate"><span class="pre">DLRObject.redundant_gateway_status</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.DLRObject.active_gateway_address"><code class="docutils literal notranslate"><span class="pre">DLRObject.active_gateway_address</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.DLRObject.active_gateway_precedence"><code class="docutils literal notranslate"><span class="pre">DLRObject.active_gateway_precedence</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.DLRObject.get_class_attribute"><code class="docutils literal notranslate"><span class="pre">DLRObject.get_class_attribute()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.DLRObject.verify_fault_location"><code class="docutils literal notranslate"><span class="pre">DLRObject.verify_fault_location()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.DLRObject.clear_rapid_faults"><code class="docutils literal notranslate"><span class="pre">DLRObject.clear_rapid_faults()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.DLRObject.restart_sign_on"><code class="docutils literal notranslate"><span class="pre">DLRObject.restart_sign_on()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.DLRObject.clear_gateway_partial_fault"><code class="docutils literal notranslate"><span class="pre">DLRObject.clear_gateway_partial_fault()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.NetworkManagerIdentifier"><code class="docutils literal notranslate"><span class="pre">NetworkManagerIdentifier</span></code></a><ul>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.NetworkManagerIdentifier.identifier_format"><code class="docutils literal notranslate"><span class="pre">NetworkManagerIdentifier.identifier_format</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.NetworkManagerIdentifier.identifier"><code class="docutils literal notranslate"><span class="pre">NetworkManagerIdentifier.identifier</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.NodeAddress"><code class="docutils literal notranslate"><span class="pre">NodeAddress</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.PRPNodesTableObject"><code class="docutils literal notranslate"><span class="pre">PRPNodesTableObject</span></code></a><ul>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.PRPNodesTableObject.prp_nodes_table_count"><code class="docutils literal notranslate"><span class="pre">PRPNodesTableObject.prp_nodes_table_count</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.PRPNodesTableObject.prp_nodes_table"><code class="docutils literal notranslate"><span class="pre">PRPNodesTableObject.prp_nodes_table</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.PRPNodesTableObject.get_class_attribute"><code class="docutils literal notranslate"><span class="pre">PRPNodesTableObject.get_class_attribute()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.PRPObject"><code class="docutils literal notranslate"><span class="pre">PRPObject</span></code></a><ul>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.PRPObject.prp_enable"><code class="docutils literal notranslate"><span class="pre">PRPObject.prp_enable</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.PRPObject.node_type"><code class="docutils literal notranslate"><span class="pre">PRPObject.node_type</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.PRPObject.node_name"><code class="docutils literal notranslate"><span class="pre">PRPObject.node_name</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.PRPObject.version_name"><code class="docutils literal notranslate"><span class="pre">PRPObject.version_name</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.PRPObject.prp_mac_address"><code class="docutils literal notranslate"><span class="pre">PRPObject.prp_mac_address</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.PRPObject.duplicate_discard"><code class="docutils literal notranslate"><span class="pre">PRPObject.duplicate_discard</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.PRPObject.transparent_reception"><code class="docutils literal notranslate"><span class="pre">PRPObject.transparent_reception</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.PRPObject.prp_interface_counters"><code class="docutils literal notranslate"><span class="pre">PRPObject.prp_interface_counters</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.PRPObject.prp_duplicate_detection_counters"><code class="docutils literal notranslate"><span class="pre">PRPObject.prp_duplicate_detection_counters</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.PRPObject.prp_proxy_nodes_count"><code class="docutils literal notranslate"><span class="pre">PRPObject.prp_proxy_nodes_count</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.PRPObject.proxy_nodes_table"><code class="docutils literal notranslate"><span class="pre">PRPObject.proxy_nodes_table</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.PRPObject.prp_nodes_table_path"><code class="docutils literal notranslate"><span class="pre">PRPObject.prp_nodes_table_path</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.PRPObject.get_class_attribute"><code class="docutils literal notranslate"><span class="pre">PRPObject.get_class_attribute()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.PowerManagementObject"><code class="docutils literal notranslate"><span class="pre">PowerManagementObject</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.PrpDuplicateDetectionCounters"><code class="docutils literal notranslate"><span class="pre">PrpDuplicateDetectionCounters</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.PrpInterfaceCounters"><code class="docutils literal notranslate"><span class="pre">PrpInterfaceCounters</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.PrpNodeEntry"><code class="docutils literal notranslate"><span class="pre">PrpNodeEntry</span></code></a><ul>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.PrpNodeEntry.mac"><code class="docutils literal notranslate"><span class="pre">PrpNodeEntry.mac</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.PrpNodeEntry.time_last_seen_a"><code class="docutils literal notranslate"><span class="pre">PrpNodeEntry.time_last_seen_a</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.PrpNodeEntry.time_last_seen_b"><code class="docutils literal notranslate"><span class="pre">PrpNodeEntry.time_last_seen_b</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.QoSObject"><code class="docutils literal notranslate"><span class="pre">QoSObject</span></code></a><ul>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.QoSObject.dot1q_tag_enable"><code class="docutils literal notranslate"><span class="pre">QoSObject.dot1q_tag_enable</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.QoSObject.dscp_ptp_event"><code class="docutils literal notranslate"><span class="pre">QoSObject.dscp_ptp_event</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.QoSObject.dscp_ptp_general"><code class="docutils literal notranslate"><span class="pre">QoSObject.dscp_ptp_general</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.QoSObject.dscp_urgent"><code class="docutils literal notranslate"><span class="pre">QoSObject.dscp_urgent</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.QoSObject.dscp_scheduled"><code class="docutils literal notranslate"><span class="pre">QoSObject.dscp_scheduled</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.QoSObject.dscp_high"><code class="docutils literal notranslate"><span class="pre">QoSObject.dscp_high</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.QoSObject.dscp_low"><code class="docutils literal notranslate"><span class="pre">QoSObject.dscp_low</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.QoSObject.dscp_explicit"><code class="docutils literal notranslate"><span class="pre">QoSObject.dscp_explicit</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.QoSObject.get_class_attribute"><code class="docutils literal notranslate"><span class="pre">QoSObject.get_class_attribute()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.RSTPBridgeObject"><code class="docutils literal notranslate"><span class="pre">RSTPBridgeObject</span></code></a><ul>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.RSTPBridgeObject.bridge_object_identification"><code class="docutils literal notranslate"><span class="pre">RSTPBridgeObject.bridge_object_identification</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.RSTPBridgeObject.bridge_identifier_priority"><code class="docutils literal notranslate"><span class="pre">RSTPBridgeObject.bridge_identifier_priority</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.RSTPBridgeObject.transmit_hold_count"><code class="docutils literal notranslate"><span class="pre">RSTPBridgeObject.transmit_hold_count</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.RSTPBridgeObject.number_of_rstp_ports"><code class="docutils literal notranslate"><span class="pre">RSTPBridgeObject.number_of_rstp_ports</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.RSTPBridgeObject.list_of_rstp_ports"><code class="docutils literal notranslate"><span class="pre">RSTPBridgeObject.list_of_rstp_ports</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.RSTPBridgeObject.force_protocol_version"><code class="docutils literal notranslate"><span class="pre">RSTPBridgeObject.force_protocol_version</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.RSTPBridgeObject.bridge_max_age"><code class="docutils literal notranslate"><span class="pre">RSTPBridgeObject.bridge_max_age</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.RSTPBridgeObject.bridge_hello_time"><code class="docutils literal notranslate"><span class="pre">RSTPBridgeObject.bridge_hello_time</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.RSTPBridgeObject.bridge_forward_delay"><code class="docutils literal notranslate"><span class="pre">RSTPBridgeObject.bridge_forward_delay</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.RSTPBridgeObject.time_since_topology_change"><code class="docutils literal notranslate"><span class="pre">RSTPBridgeObject.time_since_topology_change</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.RSTPBridgeObject.topology_change_count"><code class="docutils literal notranslate"><span class="pre">RSTPBridgeObject.topology_change_count</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.RSTPBridgeObject.designated_root"><code class="docutils literal notranslate"><span class="pre">RSTPBridgeObject.designated_root</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.RSTPBridgeObject.root_cost"><code class="docutils literal notranslate"><span class="pre">RSTPBridgeObject.root_cost</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.RSTPBridgeObject.root_port"><code class="docutils literal notranslate"><span class="pre">RSTPBridgeObject.root_port</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.RSTPBridgeObject.max_age"><code class="docutils literal notranslate"><span class="pre">RSTPBridgeObject.max_age</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.RSTPBridgeObject.hello_time"><code class="docutils literal notranslate"><span class="pre">RSTPBridgeObject.hello_time</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.RSTPBridgeObject.forward_delay"><code class="docutils literal notranslate"><span class="pre">RSTPBridgeObject.forward_delay</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.RSTPBridgeObject.get_class_attribute"><code class="docutils literal notranslate"><span class="pre">RSTPBridgeObject.get_class_attribute()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.RSTPPortObject"><code class="docutils literal notranslate"><span class="pre">RSTPPortObject</span></code></a><ul>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.RSTPPortObject.bridge_object_instance"><code class="docutils literal notranslate"><span class="pre">RSTPPortObject.bridge_object_instance</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.RSTPPortObject.ethernet_link_instance"><code class="docutils literal notranslate"><span class="pre">RSTPPortObject.ethernet_link_instance</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.RSTPPortObject.reference_bridge_identifier"><code class="docutils literal notranslate"><span class="pre">RSTPPortObject.reference_bridge_identifier</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.RSTPPortObject.port_mac_address"><code class="docutils literal notranslate"><span class="pre">RSTPPortObject.port_mac_address</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.RSTPPortObject.rstp_port_enable"><code class="docutils literal notranslate"><span class="pre">RSTPPortObject.rstp_port_enable</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.RSTPPortObject.port_identifier_priority"><code class="docutils literal notranslate"><span class="pre">RSTPPortObject.port_identifier_priority</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.RSTPPortObject.oper_edge_port"><code class="docutils literal notranslate"><span class="pre">RSTPPortObject.oper_edge_port</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.RSTPPortObject.port_state"><code class="docutils literal notranslate"><span class="pre">RSTPPortObject.port_state</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.RSTPPortObject.mcheck"><code class="docutils literal notranslate"><span class="pre">RSTPPortObject.mcheck</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.RSTPPortObject.port_path_cost"><code class="docutils literal notranslate"><span class="pre">RSTPPortObject.port_path_cost</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.RSTPPortObject.port_admin_edge_port"><code class="docutils literal notranslate"><span class="pre">RSTPPortObject.port_admin_edge_port</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.RSTPPortObject.admin_point_to_point_mac"><code class="docutils literal notranslate"><span class="pre">RSTPPortObject.admin_point_to_point_mac</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.RSTPPortObject.oper_point_to_point_mac"><code class="docutils literal notranslate"><span class="pre">RSTPPortObject.oper_point_to_point_mac</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.RSTPPortObject.port_role"><code class="docutils literal notranslate"><span class="pre">RSTPPortObject.port_role</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.RSTPPortObject.designated_root"><code class="docutils literal notranslate"><span class="pre">RSTPPortObject.designated_root</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.RSTPPortObject.designated_root_path_cost"><code class="docutils literal notranslate"><span class="pre">RSTPPortObject.designated_root_path_cost</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.RSTPPortObject.designated_bridge_identifier"><code class="docutils literal notranslate"><span class="pre">RSTPPortObject.designated_bridge_identifier</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.RSTPPortObject.designated_port"><code class="docutils literal notranslate"><span class="pre">RSTPPortObject.designated_port</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.RSTPPortObject.forward_transitions_count"><code class="docutils literal notranslate"><span class="pre">RSTPPortObject.forward_transitions_count</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.RSTPPortObject.get_class_attribute"><code class="docutils literal notranslate"><span class="pre">RSTPPortObject.get_class_attribute()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.RedundantGatewayConfig"><code class="docutils literal notranslate"><span class="pre">RedundantGatewayConfig</span></code></a><ul>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.RedundantGatewayConfig.enable"><code class="docutils literal notranslate"><span class="pre">RedundantGatewayConfig.enable</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.RedundantGatewayConfig.gateway_precedence"><code class="docutils literal notranslate"><span class="pre">RedundantGatewayConfig.gateway_precedence</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.RedundantGatewayConfig.advertise_interval"><code class="docutils literal notranslate"><span class="pre">RedundantGatewayConfig.advertise_interval</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.RedundantGatewayConfig.advertise_timeout"><code class="docutils literal notranslate"><span class="pre">RedundantGatewayConfig.advertise_timeout</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.RedundantGatewayConfig.learning_update_enable"><code class="docutils literal notranslate"><span class="pre">RedundantGatewayConfig.learning_update_enable</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.RingSupervisorConfig"><code class="docutils literal notranslate"><span class="pre">RingSupervisorConfig</span></code></a><ul>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.RingSupervisorConfig.enable"><code class="docutils literal notranslate"><span class="pre">RingSupervisorConfig.enable</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.RingSupervisorConfig.precedence"><code class="docutils literal notranslate"><span class="pre">RingSupervisorConfig.precedence</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.RingSupervisorConfig.beacon_interval"><code class="docutils literal notranslate"><span class="pre">RingSupervisorConfig.beacon_interval</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.RingSupervisorConfig.beacon_timeout"><code class="docutils literal notranslate"><span class="pre">RingSupervisorConfig.beacon_timeout</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.RingSupervisorConfig.vlan_id"><code class="docutils literal notranslate"><span class="pre">RingSupervisorConfig.vlan_id</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.SNMPObject"><code class="docutils literal notranslate"><span class="pre">SNMPObject</span></code></a><ul>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.SNMPObject.snmp_agent"><code class="docutils literal notranslate"><span class="pre">SNMPObject.snmp_agent</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.SNMPObject.snmp_agent_version"><code class="docutils literal notranslate"><span class="pre">SNMPObject.snmp_agent_version</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.SNMPObject.primary_network_manager"><code class="docutils literal notranslate"><span class="pre">SNMPObject.primary_network_manager</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.SNMPObject.secondary_network_manager"><code class="docutils literal notranslate"><span class="pre">SNMPObject.secondary_network_manager</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.SNMPObject.notifications"><code class="docutils literal notranslate"><span class="pre">SNMPObject.notifications</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.SNMPObject.trap_type"><code class="docutils literal notranslate"><span class="pre">SNMPObject.trap_type</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.switch.SNMPObject.get_class_attribute"><code class="docutils literal notranslate"><span class="pre">SNMPObject.get_class_attribute()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</div><a class="js-repo-stats repo-stats flex items-center" href="https://github.com/MatrixEditor/icspacket"
+  data-type="github" data-user="MatrixEditor" data-repo="icspacket">
+  <span class="w-8 flex items-center justify-around shrink-0 text-3xl">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </span>
+  <span class="flex-grow px-2 break-all">
+    <span style="font-size: small;">MatrixEditor/icspacket</span>
+    <span class="flex text-sm repo-stats-count">
+      <span class="flex items-center pr-3">
+        <iconify-icon icon="lucide:star"></iconify-icon>
+        <strong class="js-repo-stars ml-1">0</strong>
+      </span>
+      <span class="flex items-center">
+        <iconify-icon icon="lucide:git-fork"></iconify-icon>
+        <strong class="js-repo-forks ml-1">0</strong>
+      </span>
+    </span>
+  </span>
+</a><div class="edit-this-page">
+  <a href="https://github.com/MatrixEditor/icspacket/blob/main/docs/protocols/cip/api/objects_switch.rst">Edit this page</a>
+</div></div>
+  </aside>
+  <div class="rside-overlay js-menu" role="button" aria-label="Close Table of Contents" aria-controls="rside" aria-expanded="false"></div>
+  <main class="sy-main w-full max-sm:max-w-full print:pt-6">
+<div class="sy-breadcrumbs" role="navigation">
+  <div class="sy-breadcrumbs-inner flex items-center">
+    <div class="md:hidden mr-3">
+      <button class="js-menu" aria-label="Menu" type="button" aria-controls="lside" aria-expanded="false">
+        <i class="i-lucide menu"></i>
+      </button>
+    </div>
+    <ol class="flex-1" itemscope itemtype="https://schema.org/BreadcrumbList"><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="../../../index.html"><span itemprop="name">icspacket</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="1" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="../api.html"><span itemprop="name">API Reference</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="2" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="objects.html"><span itemprop="name">Object Library</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="3" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <strong itemprop="name">Switch Management Objects</strong>
+        <meta itemprop="position" content="4" />
+      </li></ol>
+    <div class="xl:hidden ml-1">
+      <button class="js-menu" aria-label="Show table of contents" type="button" aria-controls="rside"
+        aria-expanded="false">
+        <i class="i-lucide outdent"></i>
+      </button>
+    </div>
+  </div>
+</div><div class="flex flex-col break-words justify-between">
+      <div class="relative min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
+  <div class="copy-page-wrapper relative pb-4 lg:absolute lg:top-8 lg:right-6 xl:right-12">
+  <div id="copy-page-trigger">
+    <button
+      type="button"
+      class="js-copy px-3 py-1 inline-flex items-center gap-1"
+      data-url="https://raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/protocols/cip/api/objects_switch.rst"
+    >
+      <i class="i-lucide" data-icon="copy"></i>
+      <span>Copy page</span>
+    </button>
+    <button class="js-menu px-2 py-1" type="button" aria-label="More actions"
+      aria-haspopup="menu" aria-expanded="false" aria-controls="copy-page-content">
+      <i class="i-lucide chevron-down"></i>
+    </button>
+  </div>
+  <div id="copy-page-content" role="menu" aria-orientation="vertical" aria-hidden="true">
+    <div role="presentation">
+      <div class="flex flex-col" role="group">
+        <button class="js-copy" type="button" role="menuitem"
+          data-url="https://raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/protocols/cip/api/objects_switch.rst">
+          <span class="iconify-icon">
+            <i class="i-lucide" data-icon="copy"></i>
+          </span>
+          <span>Copy page</span>
+        </button>
+        <a role="menuitem" href="https://raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/protocols/cip/api/objects_switch.rst" target="_blank" rel="nofollow"><iconify-icon icon="bi:code-slash"></iconify-icon>
+            <span>View Source</span></a><a role="menuitem" href="https://chatgpt.com/?hints=search&q=Read%20https%3A//raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/protocols/cip/api/objects_switch.rst%20so%20I%20can%20ask%20questions%20about%20it." target="_blank" rel="nofollow">
+          <iconify-icon icon="bi:openai"></iconify-icon>
+          <span>Open in ChatGPT</span>
+        </a><a role="menuitem" href="https://claude.ai/new?q=Read%20https%3A//raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/protocols/cip/api/objects_switch.rst%20so%20I%20can%20ask%20questions%20about%20it." target="_blank" rel="nofollow">
+          <iconify-icon icon="bi:claude"></iconify-icon>
+          <span>Open in Claude</span>
+        </a></div>
+    </div>
+  </div>
+</div><article class="yue" role="main">
+          <section id="switch-management-objects">
+<span id="api-cip-objects-switch"></span><h1>Switch Management Objects<a class="headerlink" href="#switch-management-objects" title="Link to this heading">#</a></h1>
+<p>EtherNet/IP switch management: Device Level Ring (DLR), QoS, Base Switch,
+SNMP, Power Management, RSTP (Bridge/Port), and Parallel Redundancy
+Protocol (PRP).</p>
+<p id="module-icspacket.proto.cip.objects.switch">[ODVA CIP Vol 2] Wrappers for EtherNet/IP switch management objects:
+Device Level Ring (class 0x47, §5-6), QoS (class 0x48, §5-7), Base Switch
+(class 0x51, §5-8), Simple Network Management (SNMP) (class 0x52, §5-9),
+Power Management (class 0x53, §5-10), RSTP Bridge (class 0x54, §5-11), RSTP
+Port (class 0x55, §5-12), Parallel Redundancy Protocol (PRP) (class 0x56,
+§5-13), and PRP Nodes Table (class 0x57, §5-14).</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.BaseSwitchObject">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">icspacket.proto.cip.objects.switch.</span></span><span class="sig-name descname"><span class="pre">BaseSwitchObject</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">connection</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="connection.html#icspacket.proto.cip.connection.CIP_Connection" title="icspacket.proto.cip.connection.CIP_Connection"><span class="pre">CIP_Connection</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">instance</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/icspacket/proto/cip/objects/switch.html#BaseSwitchObject"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.cip.objects.switch.BaseSwitchObject" title="Link to this definition">#</a></dt>
+<dd><p>Basic status information for a managed Ethernet switch device (See CIP
+Vol 2, §5-8).</p>
+<p>Devices implement no more than one instance. Attributes 6-8 are bitmaps
+packed across <code class="docutils literal notranslate"><span class="pre">port_mask_size</span></code> DWORDs (one bit per port) and attribute
+14 is a nested, variably-sized structure whose inner port-mask array is
+itself sized by <code class="docutils literal notranslate"><span class="pre">port_mask_size</span></code>; all four are exposed as raw bytes
+rather than a fixed schema.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.BaseSwitchObject.device_up_time">
+<span class="sig-name descname"><span class="pre">device_up_time</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.switch.BaseSwitchObject.device_up_time" title="Link to this definition">#</a></dt>
+<dd><p>Seconds since the device was powered up (attribute 1).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.BaseSwitchObject.total_port_count">
+<span class="sig-name descname"><span class="pre">total_port_count</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.switch.BaseSwitchObject.total_port_count" title="Link to this definition">#</a></dt>
+<dd><p>Number of physical ports available (attribute 2).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.BaseSwitchObject.system_firmware_version">
+<span class="sig-name descname"><span class="pre">system_firmware_version</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.switch.BaseSwitchObject.system_firmware_version" title="Link to this definition">#</a></dt>
+<dd><p>Human-readable System Firmware Version, empty if not configured
+(attribute 3).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.BaseSwitchObject.power_source">
+<span class="sig-name descname"><span class="pre">power_source</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.switch.BaseSwitchObject.power_source" title="Link to this definition">#</a></dt>
+<dd><p>Bitmap of power source/supply status, 2 bits per source (attribute 4,
+See Table 5-8.4).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.BaseSwitchObject.port_mask_size">
+<span class="sig-name descname"><span class="pre">port_mask_size</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.switch.BaseSwitchObject.port_mask_size" title="Link to this definition">#</a></dt>
+<dd><p>Number of DWORDs in each port-mask bitmap attribute, minimum 4
+(attribute 5).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.BaseSwitchObject.existing_ports">
+<span class="sig-name descname"><span class="pre">existing_ports</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">bytes</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.switch.BaseSwitchObject.existing_ports" title="Link to this definition">#</a></dt>
+<dd><p>Bitmap (one bit per port) of ports physically present in the switch
+housing; size in DWORDs given by port_mask_size (attribute 6, optional).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.BaseSwitchObject.global_port_admin_state">
+<span class="sig-name descname"><span class="pre">global_port_admin_state</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">bytes</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.switch.BaseSwitchObject.global_port_admin_state" title="Link to this definition">#</a></dt>
+<dd><p>Bitmap of each port’s Admin state; size in DWORDs given by
+port_mask_size (attribute 7, optional).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.BaseSwitchObject.global_port_link_status">
+<span class="sig-name descname"><span class="pre">global_port_link_status</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">bytes</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.switch.BaseSwitchObject.global_port_link_status" title="Link to this definition">#</a></dt>
+<dd><p>Bitmap of each port’s link status; size in DWORDs given by
+port_mask_size (attribute 8).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.BaseSwitchObject.system_boot_loader_version">
+<span class="sig-name descname"><span class="pre">system_boot_loader_version</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.switch.BaseSwitchObject.system_boot_loader_version" title="Link to this definition">#</a></dt>
+<dd><p>Human-readable System Boot Loader Version, empty if not configured
+(attribute 9, optional).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.BaseSwitchObject.contact_status">
+<span class="sig-name descname"><span class="pre">contact_status</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.switch.BaseSwitchObject.contact_status" title="Link to this definition">#</a></dt>
+<dd><p>Bitmap of switch contact closure status, 2 bits per contact (attribute
+10, optional, See Table 5-8.8).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.BaseSwitchObject.aging_time">
+<span class="sig-name descname"><span class="pre">aging_time</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.switch.BaseSwitchObject.aging_time" title="Link to this definition">#</a></dt>
+<dd><p>Timeout in seconds for aging out dynamically-learned forwarding
+information, 0 = learning off, default 300 (attribute 11, optional).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.BaseSwitchObject.temperature_c">
+<span class="sig-name descname"><span class="pre">temperature_c</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.switch.BaseSwitchObject.temperature_c" title="Link to this definition">#</a></dt>
+<dd><p>Switch temperature in degrees Celsius (attribute 12, optional).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.BaseSwitchObject.temperature_f">
+<span class="sig-name descname"><span class="pre">temperature_f</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.switch.BaseSwitchObject.temperature_f" title="Link to this definition">#</a></dt>
+<dd><p>Switch temperature in degrees Fahrenheit (attribute 13, optional).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.BaseSwitchObject.resiliency_protocol_list">
+<span class="sig-name descname"><span class="pre">resiliency_protocol_list</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">bytes</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.switch.BaseSwitchObject.resiliency_protocol_list" title="Link to this definition">#</a></dt>
+<dd><p>List of resiliency protocol entities used by the switch: a UINT count
+followed by, for each entry, a Resiliency Protocol Select value, a
+port-mask bitmap sized by port_mask_size, and a path to the protocol’s
+own object (attribute 14, optional, See §5-8.3.3.7).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.BaseSwitchObject.get_class_attribute">
+<span class="sig-name descname"><span class="pre">get_class_attribute</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">attribute</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bytes</span></span></span><a class="reference internal" href="../../../_modules/icspacket/proto/cip/objects/switch.html#BaseSwitchObject.get_class_attribute"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.cip.objects.switch.BaseSwitchObject.get_class_attribute" title="Link to this definition">#</a></dt>
+<dd><p>Read a Base Switch class attribute from instance 0 (See §5-8.3.1,
+Table 5-8.2).</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.BridgeIdentifier">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">icspacket.proto.cip.objects.switch.</span></span><span class="sig-name descname"><span class="pre">BridgeIdentifier</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">priority</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mac</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/icspacket/proto/cip/objects/switch.html#BridgeIdentifier"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.cip.objects.switch.BridgeIdentifier" title="Link to this definition">#</a></dt>
+<dd><p>Combined 2-byte priority + 6-byte MAC bridge identifier (RSTP Bridge
+Object attribute 12; RSTP Port Object attributes 3, 15, and 17, See IEEE
+802.1D-2004 §17.18.6).</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.DLRObject">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">icspacket.proto.cip.objects.switch.</span></span><span class="sig-name descname"><span class="pre">DLRObject</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">connection</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="connection.html#icspacket.proto.cip.connection.CIP_Connection" title="icspacket.proto.cip.connection.CIP_Connection"><span class="pre">CIP_Connection</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">instance</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/icspacket/proto/cip/objects/switch.html#DLRObject"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.cip.objects.switch.DLRObject" title="Link to this definition">#</a></dt>
+<dd><p>Configures and monitors a Device Level Ring (DLR) network node (See CIP
+Vol 2, §5-6).</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.DLRObject.network_topology">
+<span class="sig-name descname"><span class="pre">network_topology</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.switch.DLRObject.network_topology" title="Link to this definition">#</a></dt>
+<dd><p>0 = Linear, 1 = Ring (attribute 1).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.DLRObject.network_status">
+<span class="sig-name descname"><span class="pre">network_status</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.switch.DLRObject.network_status" title="Link to this definition">#</a></dt>
+<dd><p>Current DLR network status (attribute 2, See Table 5-6.3).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.DLRObject.ring_supervisor_status">
+<span class="sig-name descname"><span class="pre">ring_supervisor_status</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.switch.DLRObject.ring_supervisor_status" title="Link to this definition">#</a></dt>
+<dd><p>Current Ring Supervisor status; valid only while
+ring_supervisor_config.enable is set (attribute 3).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.DLRObject.ring_supervisor_config">
+<span class="sig-name descname"><span class="pre">ring_supervisor_config</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#icspacket.proto.cip.objects.switch.RingSupervisorConfig" title="icspacket.proto.cip.objects.switch.RingSupervisorConfig"><span class="pre">RingSupervisorConfig</span></a><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.switch.DLRObject.ring_supervisor_config" title="Link to this definition">#</a></dt>
+<dd><p>Ring Supervisor configuration (attribute 4).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.DLRObject.ring_faults_count">
+<span class="sig-name descname"><span class="pre">ring_faults_count</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.switch.DLRObject.ring_faults_count" title="Link to this definition">#</a></dt>
+<dd><p>Number of times the ring has transitioned from Normal to Ring Fault
+state (attribute 5).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.DLRObject.last_active_node_on_port_1">
+<span class="sig-name descname"><span class="pre">last_active_node_on_port_1</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#icspacket.proto.cip.objects.switch.NodeAddress" title="icspacket.proto.cip.objects.switch.NodeAddress"><span class="pre">NodeAddress</span></a><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.switch.DLRObject.last_active_node_on_port_1" title="Link to this definition">#</a></dt>
+<dd><p>IP/MAC address of the last node this device detected on Port 1
+(attribute 6).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.DLRObject.last_active_node_on_port_2">
+<span class="sig-name descname"><span class="pre">last_active_node_on_port_2</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#icspacket.proto.cip.objects.switch.NodeAddress" title="icspacket.proto.cip.objects.switch.NodeAddress"><span class="pre">NodeAddress</span></a><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.switch.DLRObject.last_active_node_on_port_2" title="Link to this definition">#</a></dt>
+<dd><p>IP/MAC address of the last node this device detected on Port 2
+(attribute 7).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.DLRObject.ring_protocol_participants_count">
+<span class="sig-name descname"><span class="pre">ring_protocol_participants_count</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.switch.DLRObject.ring_protocol_participants_count" title="Link to this definition">#</a></dt>
+<dd><p>Number of nodes that responded to the last Discover_Topology sequence
+(attribute 8).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.DLRObject.active_supervisor_address">
+<span class="sig-name descname"><span class="pre">active_supervisor_address</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#icspacket.proto.cip.objects.switch.NodeAddress" title="icspacket.proto.cip.objects.switch.NodeAddress"><span class="pre">NodeAddress</span></a><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.switch.DLRObject.active_supervisor_address" title="Link to this definition">#</a></dt>
+<dd><p>IP/MAC address of the active Ring Supervisor (attribute 10).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.DLRObject.active_supervisor_precedence">
+<span class="sig-name descname"><span class="pre">active_supervisor_precedence</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.switch.DLRObject.active_supervisor_precedence" title="Link to this definition">#</a></dt>
+<dd><p>Precedence value of the active Ring Supervisor (attribute 11).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.DLRObject.capability_flags">
+<span class="sig-name descname"><span class="pre">capability_flags</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.switch.DLRObject.capability_flags" title="Link to this definition">#</a></dt>
+<dd><p>Bitmap of DLR capabilities supported by this device (attribute 12, See
+Table 5-6.10).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.DLRObject.redundant_gateway_config">
+<span class="sig-name descname"><span class="pre">redundant_gateway_config</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#icspacket.proto.cip.objects.switch.RedundantGatewayConfig" title="icspacket.proto.cip.objects.switch.RedundantGatewayConfig"><span class="pre">RedundantGatewayConfig</span></a><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.switch.DLRObject.redundant_gateway_config" title="Link to this definition">#</a></dt>
+<dd><p>Redundant Gateway configuration (attribute 13).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.DLRObject.redundant_gateway_status">
+<span class="sig-name descname"><span class="pre">redundant_gateway_status</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.switch.DLRObject.redundant_gateway_status" title="Link to this definition">#</a></dt>
+<dd><p>Current Redundant Gateway status (attribute 14, See Table 5-6.11).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.DLRObject.active_gateway_address">
+<span class="sig-name descname"><span class="pre">active_gateway_address</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#icspacket.proto.cip.objects.switch.NodeAddress" title="icspacket.proto.cip.objects.switch.NodeAddress"><span class="pre">NodeAddress</span></a><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.switch.DLRObject.active_gateway_address" title="Link to this definition">#</a></dt>
+<dd><p>IP/MAC address of the active gateway (attribute 15).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.DLRObject.active_gateway_precedence">
+<span class="sig-name descname"><span class="pre">active_gateway_precedence</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.switch.DLRObject.active_gateway_precedence" title="Link to this definition">#</a></dt>
+<dd><p>Precedence value of the active gateway (attribute 16).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.DLRObject.get_class_attribute">
+<span class="sig-name descname"><span class="pre">get_class_attribute</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">attribute</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bytes</span></span></span><a class="reference internal" href="../../../_modules/icspacket/proto/cip/objects/switch.html#DLRObject.get_class_attribute"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.cip.objects.switch.DLRObject.get_class_attribute" title="Link to this definition">#</a></dt>
+<dd><p>Read a DLR class attribute from instance 0 (See §5-6.2, Table
+5-6.1).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.DLRObject.verify_fault_location">
+<span class="sig-name descname"><span class="pre">verify_fault_location</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bytes</span></span></span><a class="reference internal" href="../../../_modules/icspacket/proto/cip/objects/switch.html#DLRObject.verify_fault_location"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.cip.objects.switch.DLRObject.verify_fault_location" title="Link to this definition">#</a></dt>
+<dd><p>Invoke Verify_Fault_Location (service 0x4B), requesting a beacon-
+based ring fault check.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.DLRObject.clear_rapid_faults">
+<span class="sig-name descname"><span class="pre">clear_rapid_faults</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bytes</span></span></span><a class="reference internal" href="../../../_modules/icspacket/proto/cip/objects/switch.html#DLRObject.clear_rapid_faults"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.cip.objects.switch.DLRObject.clear_rapid_faults" title="Link to this definition">#</a></dt>
+<dd><p>Invoke Clear_Rapid_Faults (service 0x4C), re-arming rapid fault/
+restart counters.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.DLRObject.restart_sign_on">
+<span class="sig-name descname"><span class="pre">restart_sign_on</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bytes</span></span></span><a class="reference internal" href="../../../_modules/icspacket/proto/cip/objects/switch.html#DLRObject.restart_sign_on"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.cip.objects.switch.DLRObject.restart_sign_on" title="Link to this definition">#</a></dt>
+<dd><p>Invoke Restart_Sign_On (service 0x4D), restarting the Sign_On
+sequence used to build the ring node list.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.DLRObject.clear_gateway_partial_fault">
+<span class="sig-name descname"><span class="pre">clear_gateway_partial_fault</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bytes</span></span></span><a class="reference internal" href="../../../_modules/icspacket/proto/cip/objects/switch.html#DLRObject.clear_gateway_partial_fault"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.cip.objects.switch.DLRObject.clear_gateway_partial_fault" title="Link to this definition">#</a></dt>
+<dd><p>Invoke Clear_Gateway_Partial_Fault (service 0x4E), clearing a
+Redundant Gateway partial fault condition.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.NetworkManagerIdentifier">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">icspacket.proto.cip.objects.switch.</span></span><span class="sig-name descname"><span class="pre">NetworkManagerIdentifier</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">identifier_format</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">identifier</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/icspacket/proto/cip/objects/switch.html#NetworkManagerIdentifier"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.cip.objects.switch.NetworkManagerIdentifier" title="Link to this definition">#</a></dt>
+<dd><p>Network manager address (SNMP Object attributes 3 and 4, See
+§5-9.3.2.3).</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.NetworkManagerIdentifier.identifier_format">
+<span class="sig-name descname"><span class="pre">identifier_format</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><a class="headerlink" href="#icspacket.proto.cip.objects.switch.NetworkManagerIdentifier.identifier_format" title="Link to this definition">#</a></dt>
+<dd><p>0 = unconfigured, 1 = IPv4 dotted-decimal, 2 = domain name.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.NetworkManagerIdentifier.identifier">
+<span class="sig-name descname"><span class="pre">identifier</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><a class="headerlink" href="#icspacket.proto.cip.objects.switch.NetworkManagerIdentifier.identifier" title="Link to this definition">#</a></dt>
+<dd><p>Address value; empty when identifier_format is 0.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.NodeAddress">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">icspacket.proto.cip.objects.switch.</span></span><span class="sig-name descname"><span class="pre">NodeAddress</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ip</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">IPv4Address</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mac</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/icspacket/proto/cip/objects/switch.html#NodeAddress"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.cip.objects.switch.NodeAddress" title="Link to this definition">#</a></dt>
+<dd><p>IP/MAC address pair identifying a node on the ring (DLR Object
+attributes 6, 7, 10, and 15, See §5-6.3.2.1).</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.PRPNodesTableObject">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">icspacket.proto.cip.objects.switch.</span></span><span class="sig-name descname"><span class="pre">PRPNodesTableObject</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">connection</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="connection.html#icspacket.proto.cip.connection.CIP_Connection" title="icspacket.proto.cip.connection.CIP_Connection"><span class="pre">CIP_Connection</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">instance</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/icspacket/proto/cip/objects/switch.html#PRPNodesTableObject"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.cip.objects.switch.PRPNodesTableObject" title="Link to this definition">#</a></dt>
+<dd><p>Records PRP-capable nodes detected on the network (See CIP Vol 2,
+§5-14).</p>
+<p>Devices may implement one or more instances.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.PRPNodesTableObject.prp_nodes_table_count">
+<span class="sig-name descname"><span class="pre">prp_nodes_table_count</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.switch.PRPNodesTableObject.prp_nodes_table_count" title="Link to this definition">#</a></dt>
+<dd><p>Number of nodes in the PRP Nodes Table (attribute 1).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.PRPNodesTableObject.prp_nodes_table">
+<span class="sig-name descname"><span class="pre">prp_nodes_table</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">Collection</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#icspacket.proto.cip.objects.switch.PrpNodeEntry" title="icspacket.proto.cip.objects.switch.PrpNodeEntry"><span class="pre">PrpNodeEntry</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.switch.PRPNodesTableObject.prp_nodes_table" title="Link to this definition">#</a></dt>
+<dd><p>PRP node entries, one per prp_nodes_table_count (attribute 2).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.PRPNodesTableObject.get_class_attribute">
+<span class="sig-name descname"><span class="pre">get_class_attribute</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">attribute</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bytes</span></span></span><a class="reference internal" href="../../../_modules/icspacket/proto/cip/objects/switch.html#PRPNodesTableObject.get_class_attribute"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.cip.objects.switch.PRPNodesTableObject.get_class_attribute" title="Link to this definition">#</a></dt>
+<dd><p>Read a PRP Nodes Table class attribute from instance 0 (See
+§5-14.3.1, Table 5-14.1).</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.PRPObject">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">icspacket.proto.cip.objects.switch.</span></span><span class="sig-name descname"><span class="pre">PRPObject</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">connection</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="connection.html#icspacket.proto.cip.connection.CIP_Connection" title="icspacket.proto.cip.connection.CIP_Connection"><span class="pre">CIP_Connection</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">instance</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/icspacket/proto/cip/objects/switch.html#PRPObject"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.cip.objects.switch.PRPObject" title="Link to this definition">#</a></dt>
+<dd><p>Configuration and diagnostic interface for Parallel Redundancy
+Protocol (PRP) dual-LAN operation (See CIP Vol 2, §5-13, IEC 62439-3
+clause 4).</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.PRPObject.prp_enable">
+<span class="sig-name descname"><span class="pre">prp_enable</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.switch.PRPObject.prp_enable" title="Link to this definition">#</a></dt>
+<dd><p>1 = PRP enabled, 0 = disabled (default) (attribute 1).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.PRPObject.node_type">
+<span class="sig-name descname"><span class="pre">node_type</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.switch.PRPObject.node_type" title="Link to this definition">#</a></dt>
+<dd><p>0 = deprecated PRP Mode 0, 1 = PRP Mode 1 (default) (attribute 2).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.PRPObject.node_name">
+<span class="sig-name descname"><span class="pre">node_name</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.switch.PRPObject.node_name" title="Link to this definition">#</a></dt>
+<dd><p>Human-readable name of the PRP Link Redundancy Entity, empty if
+unconfigured (attribute 3).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.PRPObject.version_name">
+<span class="sig-name descname"><span class="pre">version_name</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.switch.PRPObject.version_name" title="Link to this definition">#</a></dt>
+<dd><p>Human-readable version name of the PRP Link Redundancy Entity
+(attribute 4).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.PRPObject.prp_mac_address">
+<span class="sig-name descname"><span class="pre">prp_mac_address</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.switch.PRPObject.prp_mac_address" title="Link to this definition">#</a></dt>
+<dd><p>MAC address used by PRP (attribute 5).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.PRPObject.duplicate_discard">
+<span class="sig-name descname"><span class="pre">duplicate_discard</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.switch.PRPObject.duplicate_discard" title="Link to this definition">#</a></dt>
+<dd><p>0 = doNotDiscard, 1 = discard (default) (attribute 6).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.PRPObject.transparent_reception">
+<span class="sig-name descname"><span class="pre">transparent_reception</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.switch.PRPObject.transparent_reception" title="Link to this definition">#</a></dt>
+<dd><p>0 = removeRCT (default), 1 = passRCT (attribute 7).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.PRPObject.prp_interface_counters">
+<span class="sig-name descname"><span class="pre">prp_interface_counters</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#icspacket.proto.cip.objects.switch.PrpInterfaceCounters" title="icspacket.proto.cip.objects.switch.PrpInterfaceCounters"><span class="pre">PrpInterfaceCounters</span></a><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.switch.PRPObject.prp_interface_counters" title="Link to this definition">#</a></dt>
+<dd><p>Frame counters for Ports A/B and the interlink/DANP interface
+(attribute 8).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.PRPObject.prp_duplicate_detection_counters">
+<span class="sig-name descname"><span class="pre">prp_duplicate_detection_counters</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#icspacket.proto.cip.objects.switch.PrpDuplicateDetectionCounters" title="icspacket.proto.cip.objects.switch.PrpDuplicateDetectionCounters"><span class="pre">PrpDuplicateDetectionCounters</span></a><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.switch.PRPObject.prp_duplicate_detection_counters" title="Link to this definition">#</a></dt>
+<dd><p>Duplicate-detection entry counters for Ports A/B (attribute 9).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.PRPObject.prp_proxy_nodes_count">
+<span class="sig-name descname"><span class="pre">prp_proxy_nodes_count</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.switch.PRPObject.prp_proxy_nodes_count" title="Link to this definition">#</a></dt>
+<dd><p>Number of nodes in the Proxy Nodes Table (attribute 10).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.PRPObject.proxy_nodes_table">
+<span class="sig-name descname"><span class="pre">proxy_nodes_table</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">Collection</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.switch.PRPObject.proxy_nodes_table" title="Link to this definition">#</a></dt>
+<dd><p>MAC addresses of nodes this device proxies for, one per
+prp_proxy_nodes_count (attribute 11); the Get_Member service (0x18) is
+required by the spec for indexed access but is not implemented here.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.PRPObject.prp_nodes_table_path">
+<span class="sig-name descname"><span class="pre">prp_nodes_table_path</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="messaging.html#icspacket.proto.cip.epath.EPATH" title="icspacket.proto.cip.epath.EPATH"><span class="pre">EPATH</span></a><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.switch.PRPObject.prp_nodes_table_path" title="Link to this definition">#</a></dt>
+<dd><p>Path to this device’s PRP Nodes Table object instance (attribute 12,
+optional).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.PRPObject.get_class_attribute">
+<span class="sig-name descname"><span class="pre">get_class_attribute</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">attribute</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bytes</span></span></span><a class="reference internal" href="../../../_modules/icspacket/proto/cip/objects/switch.html#PRPObject.get_class_attribute"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.cip.objects.switch.PRPObject.get_class_attribute" title="Link to this definition">#</a></dt>
+<dd><p>Read a PRP class attribute from instance 0 (See §5-13.3.1, Table
+5-13.2).</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.PowerManagementObject">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">icspacket.proto.cip.objects.switch.</span></span><span class="sig-name descname"><span class="pre">PowerManagementObject</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">connection</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="connection.html#icspacket.proto.cip.connection.CIP_Connection" title="icspacket.proto.cip.connection.CIP_Connection"><span class="pre">CIP_Connection</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">instance</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/icspacket/proto/cip/objects/switch.html#PowerManagementObject"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.cip.objects.switch.PowerManagementObject" title="Link to this definition">#</a></dt>
+<dd><p>Marker wrapper for the Power Management Object (See CIP Vol 2, §5-10).</p>
+<p>Volume 2 defines no attributes or services of its own beyond the base
+object described in Volume 1: only the behavioral requirement that a
+device whose Sleeping state support is enabled (base object attribute 6)
+must accept Wake-on-LAN “Magic Packets” to exit that state. This class
+exists so <a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects.registry.object_for" title="icspacket.proto.cip.objects.registry.object_for"><code class="xref py py-func docutils literal notranslate"><span class="pre">object_for()</span></code></a> can
+resolve class 0x53; the base Volume 1 attributes/services are out of
+scope here.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.PrpDuplicateDetectionCounters">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">icspacket.proto.cip.objects.switch.</span></span><span class="sig-name descname"><span class="pre">PrpDuplicateDetectionCounters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">entries_unique_count_a</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">entries_unique_count_b</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">entries_duplicate_count_a</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">entries_duplicate_count_b</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">entries_multiple_count_a</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">entries_multiple_count_b</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/icspacket/proto/cip/objects/switch.html#PrpDuplicateDetectionCounters"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.cip.objects.switch.PrpDuplicateDetectionCounters" title="Link to this definition">#</a></dt>
+<dd><p>PRP Object attribute 9 payload (See §5-13.3.3.3, IEC 62439-3).</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.PrpInterfaceCounters">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">icspacket.proto.cip.objects.switch.</span></span><span class="sig-name descname"><span class="pre">PrpInterfaceCounters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">transmit_count_a</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transmit_count_b</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transmit_count_c</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">receive_count_a</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">receive_count_b</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">receive_count_c</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wrong_lan_a_count</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wrong_lan_b_count</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/icspacket/proto/cip/objects/switch.html#PrpInterfaceCounters"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.cip.objects.switch.PrpInterfaceCounters" title="Link to this definition">#</a></dt>
+<dd><p>PRP Object attribute 8 payload (See §5-13.3.3.2, IEC 62439-3).</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.PrpNodeEntry">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">icspacket.proto.cip.objects.switch.</span></span><span class="sig-name descname"><span class="pre">PrpNodeEntry</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mac</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_last_seen_a</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_last_seen_b</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/icspacket/proto/cip/objects/switch.html#PrpNodeEntry"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.cip.objects.switch.PrpNodeEntry" title="Link to this definition">#</a></dt>
+<dd><p>One entry in the PRP Nodes Table (PRP Nodes Table Object attribute 2,
+See §5-14.3.2, Table 5-14.2).</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.PrpNodeEntry.mac">
+<span class="sig-name descname"><span class="pre">mac</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><a class="headerlink" href="#icspacket.proto.cip.objects.switch.PrpNodeEntry.mac" title="Link to this definition">#</a></dt>
+<dd><p>MAC address of the source node, as advertised by its PRP Supervision
+frames.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.PrpNodeEntry.time_last_seen_a">
+<span class="sig-name descname"><span class="pre">time_last_seen_a</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><a class="headerlink" href="#icspacket.proto.cip.objects.switch.PrpNodeEntry.time_last_seen_a" title="Link to this definition">#</a></dt>
+<dd><p>TimeTicks (1/100s) since the last frame from this node was received
+over LAN A, 0 upon registration.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.PrpNodeEntry.time_last_seen_b">
+<span class="sig-name descname"><span class="pre">time_last_seen_b</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><a class="headerlink" href="#icspacket.proto.cip.objects.switch.PrpNodeEntry.time_last_seen_b" title="Link to this definition">#</a></dt>
+<dd><p>TimeTicks (1/100s) since the last frame from this node was received
+over LAN B, 0 upon registration.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.QoSObject">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">icspacket.proto.cip.objects.switch.</span></span><span class="sig-name descname"><span class="pre">QoSObject</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">connection</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="connection.html#icspacket.proto.cip.connection.CIP_Connection" title="icspacket.proto.cip.connection.CIP_Connection"><span class="pre">CIP_Connection</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">instance</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/icspacket/proto/cip/objects/switch.html#QoSObject"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.cip.objects.switch.QoSObject" title="Link to this definition">#</a></dt>
+<dd><p>Configures 802.1Q tagging and DSCP values for EtherNet/IP traffic (See
+CIP Vol 2, §5-7).</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.QoSObject.dot1q_tag_enable">
+<span class="sig-name descname"><span class="pre">dot1q_tag_enable</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.switch.QoSObject.dot1q_tag_enable" title="Link to this definition">#</a></dt>
+<dd><p>1 = send 802.1Q tagged frames for CIP and IEEE 1588 messages, default 0
+(attribute 1, conditional).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.QoSObject.dscp_ptp_event">
+<span class="sig-name descname"><span class="pre">dscp_ptp_event</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.switch.QoSObject.dscp_ptp_event" title="Link to this definition">#</a></dt>
+<dd><p>DSCP value for PTP (IEEE 1588) event messages, default 59 (attribute 2,
+conditional).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.QoSObject.dscp_ptp_general">
+<span class="sig-name descname"><span class="pre">dscp_ptp_general</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.switch.QoSObject.dscp_ptp_general" title="Link to this definition">#</a></dt>
+<dd><p>DSCP value for PTP (IEEE 1588) general messages, default 47 (attribute
+3, conditional).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.QoSObject.dscp_urgent">
+<span class="sig-name descname"><span class="pre">dscp_urgent</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.switch.QoSObject.dscp_urgent" title="Link to this definition">#</a></dt>
+<dd><p>DSCP value for CIP transport class 0/1 Urgent priority messages,
+default 55 (attribute 4).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.QoSObject.dscp_scheduled">
+<span class="sig-name descname"><span class="pre">dscp_scheduled</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.switch.QoSObject.dscp_scheduled" title="Link to this definition">#</a></dt>
+<dd><p>DSCP value for CIP transport class 0/1 Scheduled priority messages,
+default 47 (attribute 5).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.QoSObject.dscp_high">
+<span class="sig-name descname"><span class="pre">dscp_high</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.switch.QoSObject.dscp_high" title="Link to this definition">#</a></dt>
+<dd><p>DSCP value for CIP transport class 0/1 High priority messages, default
+43 (attribute 6).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.QoSObject.dscp_low">
+<span class="sig-name descname"><span class="pre">dscp_low</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.switch.QoSObject.dscp_low" title="Link to this definition">#</a></dt>
+<dd><p>DSCP value for CIP transport class 0/1 Low priority messages, default
+31 (attribute 7).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.QoSObject.dscp_explicit">
+<span class="sig-name descname"><span class="pre">dscp_explicit</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.switch.QoSObject.dscp_explicit" title="Link to this definition">#</a></dt>
+<dd><p>DSCP value for CIP UCMM, transport class 2/3, and all other
+EtherNet/IP encapsulation messages, default 27 (attribute 8).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.QoSObject.get_class_attribute">
+<span class="sig-name descname"><span class="pre">get_class_attribute</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">attribute</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bytes</span></span></span><a class="reference internal" href="../../../_modules/icspacket/proto/cip/objects/switch.html#QoSObject.get_class_attribute"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.cip.objects.switch.QoSObject.get_class_attribute" title="Link to this definition">#</a></dt>
+<dd><p>Read a QoS class attribute from instance 0 (See §5-7.3, Table
+5-7.2).</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.RSTPBridgeObject">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">icspacket.proto.cip.objects.switch.</span></span><span class="sig-name descname"><span class="pre">RSTPBridgeObject</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">connection</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="connection.html#icspacket.proto.cip.connection.CIP_Connection" title="icspacket.proto.cip.connection.CIP_Connection"><span class="pre">CIP_Connection</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">instance</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/icspacket/proto/cip/objects/switch.html#RSTPBridgeObject"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.cip.objects.switch.RSTPBridgeObject" title="Link to this definition">#</a></dt>
+<dd><p>Configuration and diagnostic interface for RSTP at the bridge level
+(See CIP Vol 2, §5-11, IEEE 802.1D-2004 clause 17).</p>
+<p>Devices may implement multiple instances (e.g. one per VLAN).
+<code class="docutils literal notranslate"><span class="pre">list_of_rstp_ports</span></code> decodes greedily from its own Get_Attribute_Single
+response; its true length equals <code class="docutils literal notranslate"><span class="pre">number_of_rstp_ports</span></code>.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.RSTPBridgeObject.bridge_object_identification">
+<span class="sig-name descname"><span class="pre">bridge_object_identification</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.switch.RSTPBridgeObject.bridge_object_identification" title="Link to this definition">#</a></dt>
+<dd><p>Vendor-defined identification for this Bridge Object instance, empty
+if unused (attribute 1).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.RSTPBridgeObject.bridge_identifier_priority">
+<span class="sig-name descname"><span class="pre">bridge_identifier_priority</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.switch.RSTPBridgeObject.bridge_identifier_priority" title="Link to this definition">#</a></dt>
+<dd><p>Manageable component of the Bridge Identifier, range 0-61440 in steps
+of 4096, default 32768 (attribute 2).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.RSTPBridgeObject.transmit_hold_count">
+<span class="sig-name descname"><span class="pre">transmit_hold_count</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.switch.RSTPBridgeObject.transmit_hold_count" title="Link to this definition">#</a></dt>
+<dd><p>Limits the Port Transmit state machine’s transmission rate, range
+1-10, default 6 (attribute 3).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.RSTPBridgeObject.number_of_rstp_ports">
+<span class="sig-name descname"><span class="pre">number_of_rstp_ports</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.switch.RSTPBridgeObject.number_of_rstp_ports" title="Link to this definition">#</a></dt>
+<dd><p>Number of RSTP ports associated with this bridge, default 2 (attribute
+4).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.RSTPBridgeObject.list_of_rstp_ports">
+<span class="sig-name descname"><span class="pre">list_of_rstp_ports</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">Collection</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.switch.RSTPBridgeObject.list_of_rstp_ports" title="Link to this definition">#</a></dt>
+<dd><p>RSTP Port Object instance numbers associated with this bridge, one per
+number_of_rstp_ports (attribute 5).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.RSTPBridgeObject.force_protocol_version">
+<span class="sig-name descname"><span class="pre">force_protocol_version</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.switch.RSTPBridgeObject.force_protocol_version" title="Link to this definition">#</a></dt>
+<dd><p>0 = STP compatibility mode, 2 = normal operation (default) (attribute
+6, optional).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.RSTPBridgeObject.bridge_max_age">
+<span class="sig-name descname"><span class="pre">bridge_max_age</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.switch.RSTPBridgeObject.bridge_max_age" title="Link to this definition">#</a></dt>
+<dd><p>Maximum age (in 1/256s units) of information transmitted by this
+bridge while Root, range 6.0-40.0s, default 20.0s (attribute 7,
+optional).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.RSTPBridgeObject.bridge_hello_time">
+<span class="sig-name descname"><span class="pre">bridge_hello_time</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.switch.RSTPBridgeObject.bridge_hello_time" title="Link to this definition">#</a></dt>
+<dd><p>Interval (in 1/256s units) between Configuration Message transmissions
+by Designated Ports, range 1.0-2.0s, default 2.0s (attribute 8,
+optional).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.RSTPBridgeObject.bridge_forward_delay">
+<span class="sig-name descname"><span class="pre">bridge_forward_delay</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.switch.RSTPBridgeObject.bridge_forward_delay" title="Link to this definition">#</a></dt>
+<dd><p>Delay (in 1/256s units) used to transition Root/Designated Ports to
+Forwarding, range 4.0-30.0s, default 15.0s (attribute 9, optional).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.RSTPBridgeObject.time_since_topology_change">
+<span class="sig-name descname"><span class="pre">time_since_topology_change</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.switch.RSTPBridgeObject.time_since_topology_change" title="Link to this definition">#</a></dt>
+<dd><p>Time (in 1/256s units) since the last topology change (attribute 10,
+optional).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.RSTPBridgeObject.topology_change_count">
+<span class="sig-name descname"><span class="pre">topology_change_count</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.switch.RSTPBridgeObject.topology_change_count" title="Link to this definition">#</a></dt>
+<dd><p>Total number of topology changes detected since last reset (attribute
+11, optional).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.RSTPBridgeObject.designated_root">
+<span class="sig-name descname"><span class="pre">designated_root</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#icspacket.proto.cip.objects.switch.BridgeIdentifier" title="icspacket.proto.cip.objects.switch.BridgeIdentifier"><span class="pre">BridgeIdentifier</span></a><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.switch.RSTPBridgeObject.designated_root" title="Link to this definition">#</a></dt>
+<dd><p>Bridge Identifier of the root of the spanning tree (attribute 12,
+optional).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.RSTPBridgeObject.root_cost">
+<span class="sig-name descname"><span class="pre">root_cost</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.switch.RSTPBridgeObject.root_cost" title="Link to this definition">#</a></dt>
+<dd><p>Cost of the path to the root as seen from this bridge, default 200,000
+for 100Mbps (attribute 13, optional).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.RSTPBridgeObject.root_port">
+<span class="sig-name descname"><span class="pre">root_port</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.switch.RSTPBridgeObject.root_port" title="Link to this definition">#</a></dt>
+<dd><p>Port identifier of the port offering the lowest-cost path to the root,
+0 = undefined (attribute 14, optional).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.RSTPBridgeObject.max_age">
+<span class="sig-name descname"><span class="pre">max_age</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.switch.RSTPBridgeObject.max_age" title="Link to this definition">#</a></dt>
+<dd><p>Actual Max Age value currently in use by this bridge (in 1/256s
+units), range 6.0-40.0s, default 20.0s (attribute 15, optional).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.RSTPBridgeObject.hello_time">
+<span class="sig-name descname"><span class="pre">hello_time</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.switch.RSTPBridgeObject.hello_time" title="Link to this definition">#</a></dt>
+<dd><p>Actual Hello Time value currently in use by this bridge (in 1/256s
+units), range 1.0-2.0s, default 2.0s (attribute 16, optional).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.RSTPBridgeObject.forward_delay">
+<span class="sig-name descname"><span class="pre">forward_delay</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.switch.RSTPBridgeObject.forward_delay" title="Link to this definition">#</a></dt>
+<dd><p>Actual Forward Delay value currently in use by this bridge (in 1/256s
+units), range 4.0-30.0s, default 15.0s (attribute 17, optional).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.RSTPBridgeObject.get_class_attribute">
+<span class="sig-name descname"><span class="pre">get_class_attribute</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">attribute</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bytes</span></span></span><a class="reference internal" href="../../../_modules/icspacket/proto/cip/objects/switch.html#RSTPBridgeObject.get_class_attribute"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.cip.objects.switch.RSTPBridgeObject.get_class_attribute" title="Link to this definition">#</a></dt>
+<dd><p>Read an RSTP Bridge class attribute from instance 0 (See
+§5-11.3.1, Table 5-11.2).</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.RSTPPortObject">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">icspacket.proto.cip.objects.switch.</span></span><span class="sig-name descname"><span class="pre">RSTPPortObject</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">connection</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="connection.html#icspacket.proto.cip.connection.CIP_Connection" title="icspacket.proto.cip.connection.CIP_Connection"><span class="pre">CIP_Connection</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">instance</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/icspacket/proto/cip/objects/switch.html#RSTPPortObject"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.cip.objects.switch.RSTPPortObject" title="Link to this definition">#</a></dt>
+<dd><p>Configuration and diagnostic interface for RSTP at the port level (See
+CIP Vol 2, §5-12, IEEE 802.1D-2004 clause 17).</p>
+<p>At least 2 instances are required wherever <a class="reference internal" href="#icspacket.proto.cip.objects.switch.RSTPBridgeObject" title="icspacket.proto.cip.objects.switch.RSTPBridgeObject"><code class="xref py py-class docutils literal notranslate"><span class="pre">RSTPBridgeObject</span></code></a> is
+implemented.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.RSTPPortObject.bridge_object_instance">
+<span class="sig-name descname"><span class="pre">bridge_object_instance</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.switch.RSTPPortObject.bridge_object_instance" title="Link to this definition">#</a></dt>
+<dd><p>RSTP Bridge Object instance associated with this port, default 1
+(attribute 1).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.RSTPPortObject.ethernet_link_instance">
+<span class="sig-name descname"><span class="pre">ethernet_link_instance</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.switch.RSTPPortObject.ethernet_link_instance" title="Link to this definition">#</a></dt>
+<dd><p>Ethernet Link Object instance associated with this port, default 0
+(attribute 2).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.RSTPPortObject.reference_bridge_identifier">
+<span class="sig-name descname"><span class="pre">reference_bridge_identifier</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#icspacket.proto.cip.objects.switch.BridgeIdentifier" title="icspacket.proto.cip.objects.switch.BridgeIdentifier"><span class="pre">BridgeIdentifier</span></a><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.switch.RSTPPortObject.reference_bridge_identifier" title="Link to this definition">#</a></dt>
+<dd><p>Bridge Identifier of the bridge this port is associated with
+(attribute 3).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.RSTPPortObject.port_mac_address">
+<span class="sig-name descname"><span class="pre">port_mac_address</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.switch.RSTPPortObject.port_mac_address" title="Link to this definition">#</a></dt>
+<dd><p>MAC address unique to this port instance (attribute 4).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.RSTPPortObject.rstp_port_enable">
+<span class="sig-name descname"><span class="pre">rstp_port_enable</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.switch.RSTPPortObject.rstp_port_enable" title="Link to this definition">#</a></dt>
+<dd><p>0 = RSTP disabled (default), 1 = RSTP enabled (attribute 5).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.RSTPPortObject.port_identifier_priority">
+<span class="sig-name descname"><span class="pre">port_identifier_priority</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.switch.RSTPPortObject.port_identifier_priority" title="Link to this definition">#</a></dt>
+<dd><p>Manageable component of the Port Identifier, range 0-240 in steps of
+16, default 128 (attribute 6).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.RSTPPortObject.oper_edge_port">
+<span class="sig-name descname"><span class="pre">oper_edge_port</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.switch.RSTPPortObject.oper_edge_port" title="Link to this definition">#</a></dt>
+<dd><p>Current operEdgePort value as determined by the Bridge Detection state
+machine, default 1/True (attribute 7).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.RSTPPortObject.port_state">
+<span class="sig-name descname"><span class="pre">port_state</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.switch.RSTPPortObject.port_state" title="Link to this definition">#</a></dt>
+<dd><p>1=Disabled (default), 2=Blocking, 3=Listening, 4=Learning,
+5=Forwarding, 6=Broken (attribute 8).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.RSTPPortObject.mcheck">
+<span class="sig-name descname"><span class="pre">mcheck</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.switch.RSTPPortObject.mcheck" title="Link to this definition">#</a></dt>
+<dd><p>Set by management to force the Port Protocol Migration state machine
+to transmit RST BPDUs, default 0/False (attribute 9, optional).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.RSTPPortObject.port_path_cost">
+<span class="sig-name descname"><span class="pre">port_path_cost</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.switch.RSTPPortObject.port_path_cost" title="Link to this definition">#</a></dt>
+<dd><p>Contribution of this port to the path cost of paths toward the
+spanning tree root, 0 = use automatically calculated default (attribute
+10, optional).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.RSTPPortObject.port_admin_edge_port">
+<span class="sig-name descname"><span class="pre">port_admin_edge_port</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.switch.RSTPPortObject.port_admin_edge_port" title="Link to this definition">#</a></dt>
+<dd><p>Administrative value of the Edge Port parameter, default 0/False
+(attribute 11, optional).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.RSTPPortObject.admin_point_to_point_mac">
+<span class="sig-name descname"><span class="pre">admin_point_to_point_mac</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.switch.RSTPPortObject.admin_point_to_point_mac" title="Link to this definition">#</a></dt>
+<dd><p>0=forceTrue, 1=forceFalse, 2=auto (default) (attribute 12, optional).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.RSTPPortObject.oper_point_to_point_mac">
+<span class="sig-name descname"><span class="pre">oper_point_to_point_mac</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.switch.RSTPPortObject.oper_point_to_point_mac" title="Link to this definition">#</a></dt>
+<dd><p>Operational point-to-point status of the attached LAN segment, default
+0/False (attribute 13, optional).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.RSTPPortObject.port_role">
+<span class="sig-name descname"><span class="pre">port_role</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.switch.RSTPPortObject.port_role" title="Link to this definition">#</a></dt>
+<dd><p>0=Unknown (default), 1=Alternate/Backup, 2=Root, 3=Designated
+(attribute 14, optional).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.RSTPPortObject.designated_root">
+<span class="sig-name descname"><span class="pre">designated_root</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#icspacket.proto.cip.objects.switch.BridgeIdentifier" title="icspacket.proto.cip.objects.switch.BridgeIdentifier"><span class="pre">BridgeIdentifier</span></a><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.switch.RSTPPortObject.designated_root" title="Link to this definition">#</a></dt>
+<dd><p>Bridge Identifier recorded as Root in Configuration BPDUs for this
+port’s segment (attribute 15, optional).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.RSTPPortObject.designated_root_path_cost">
+<span class="sig-name descname"><span class="pre">designated_root_path_cost</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.switch.RSTPPortObject.designated_root_path_cost" title="Link to this definition">#</a></dt>
+<dd><p>Path cost of the Designated Port of this port’s segment, default
+200,000 (attribute 16, optional).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.RSTPPortObject.designated_bridge_identifier">
+<span class="sig-name descname"><span class="pre">designated_bridge_identifier</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#icspacket.proto.cip.objects.switch.BridgeIdentifier" title="icspacket.proto.cip.objects.switch.BridgeIdentifier"><span class="pre">BridgeIdentifier</span></a><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.switch.RSTPPortObject.designated_bridge_identifier" title="Link to this definition">#</a></dt>
+<dd><p>Bridge Identifier this port considers the Designated Bridge for its
+segment (attribute 17, optional).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.RSTPPortObject.designated_port">
+<span class="sig-name descname"><span class="pre">designated_port</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.switch.RSTPPortObject.designated_port" title="Link to this definition">#</a></dt>
+<dd><p>Port Identifier of the port on the Designated Bridge for this port’s
+segment, default 0 (attribute 18, optional).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.RSTPPortObject.forward_transitions_count">
+<span class="sig-name descname"><span class="pre">forward_transitions_count</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.switch.RSTPPortObject.forward_transitions_count" title="Link to this definition">#</a></dt>
+<dd><p>Number of times this port transitioned from Learning to Forwarding
+(attribute 19, optional).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.RSTPPortObject.get_class_attribute">
+<span class="sig-name descname"><span class="pre">get_class_attribute</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">attribute</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bytes</span></span></span><a class="reference internal" href="../../../_modules/icspacket/proto/cip/objects/switch.html#RSTPPortObject.get_class_attribute"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.cip.objects.switch.RSTPPortObject.get_class_attribute" title="Link to this definition">#</a></dt>
+<dd><p>Read an RSTP Port class attribute from instance 0 (See §5-12.3.1,
+Table 5-12.2).</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.RedundantGatewayConfig">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">icspacket.proto.cip.objects.switch.</span></span><span class="sig-name descname"><span class="pre">RedundantGatewayConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">enable</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gateway_precedence</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">advertise_interval</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">advertise_timeout</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">learning_update_enable</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/icspacket/proto/cip/objects/switch.html#RedundantGatewayConfig"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.cip.objects.switch.RedundantGatewayConfig" title="Link to this definition">#</a></dt>
+<dd><p>DLR Object attribute 13 payload (See §5-6.3.2.1, Table 5-6.9).</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.RedundantGatewayConfig.enable">
+<span class="sig-name descname"><span class="pre">enable</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><a class="headerlink" href="#icspacket.proto.cip.objects.switch.RedundantGatewayConfig.enable" title="Link to this definition">#</a></dt>
+<dd><p>1 = Redundant Gateway capability enabled for this device.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.RedundantGatewayConfig.gateway_precedence">
+<span class="sig-name descname"><span class="pre">gateway_precedence</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><a class="headerlink" href="#icspacket.proto.cip.objects.switch.RedundantGatewayConfig.gateway_precedence" title="Link to this definition">#</a></dt>
+<dd><p>Priority used to select the active gateway; 0 = highest.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.RedundantGatewayConfig.advertise_interval">
+<span class="sig-name descname"><span class="pre">advertise_interval</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><a class="headerlink" href="#icspacket.proto.cip.objects.switch.RedundantGatewayConfig.advertise_interval" title="Link to this definition">#</a></dt>
+<dd><p>Advertise frame transmission interval, in microseconds.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.RedundantGatewayConfig.advertise_timeout">
+<span class="sig-name descname"><span class="pre">advertise_timeout</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><a class="headerlink" href="#icspacket.proto.cip.objects.switch.RedundantGatewayConfig.advertise_timeout" title="Link to this definition">#</a></dt>
+<dd><p>Time without receiving an Advertise frame before declaring a fault, in
+microseconds.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.RedundantGatewayConfig.learning_update_enable">
+<span class="sig-name descname"><span class="pre">learning_update_enable</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><a class="headerlink" href="#icspacket.proto.cip.objects.switch.RedundantGatewayConfig.learning_update_enable" title="Link to this definition">#</a></dt>
+<dd><p>1 = send a Link_Status/Neighbor_Check frame to speed up address-table
+updates on failover.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.RingSupervisorConfig">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">icspacket.proto.cip.objects.switch.</span></span><span class="sig-name descname"><span class="pre">RingSupervisorConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">enable</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">precedence</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beacon_interval</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beacon_timeout</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vlan_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/icspacket/proto/cip/objects/switch.html#RingSupervisorConfig"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.cip.objects.switch.RingSupervisorConfig" title="Link to this definition">#</a></dt>
+<dd><p>DLR Object attribute 4 payload (See §5-6.3.2.1, Table 5-6.4).</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.RingSupervisorConfig.enable">
+<span class="sig-name descname"><span class="pre">enable</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><a class="headerlink" href="#icspacket.proto.cip.objects.switch.RingSupervisorConfig.enable" title="Link to this definition">#</a></dt>
+<dd><p>1 = Ring Supervisor capability enabled for this device.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.RingSupervisorConfig.precedence">
+<span class="sig-name descname"><span class="pre">precedence</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><a class="headerlink" href="#icspacket.proto.cip.objects.switch.RingSupervisorConfig.precedence" title="Link to this definition">#</a></dt>
+<dd><p>Priority used to select the active Ring Supervisor; 0 = highest.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.RingSupervisorConfig.beacon_interval">
+<span class="sig-name descname"><span class="pre">beacon_interval</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><a class="headerlink" href="#icspacket.proto.cip.objects.switch.RingSupervisorConfig.beacon_interval" title="Link to this definition">#</a></dt>
+<dd><p>Beacon frame transmission interval, in microseconds.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.RingSupervisorConfig.beacon_timeout">
+<span class="sig-name descname"><span class="pre">beacon_timeout</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><a class="headerlink" href="#icspacket.proto.cip.objects.switch.RingSupervisorConfig.beacon_timeout" title="Link to this definition">#</a></dt>
+<dd><p>Time without receiving a Beacon frame before declaring a ring fault, in
+microseconds.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.RingSupervisorConfig.vlan_id">
+<span class="sig-name descname"><span class="pre">vlan_id</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><a class="headerlink" href="#icspacket.proto.cip.objects.switch.RingSupervisorConfig.vlan_id" title="Link to this definition">#</a></dt>
+<dd><p>VLAN ID used for DLR protocol frames.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.SNMPObject">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">icspacket.proto.cip.objects.switch.</span></span><span class="sig-name descname"><span class="pre">SNMPObject</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">connection</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="connection.html#icspacket.proto.cip.connection.CIP_Connection" title="icspacket.proto.cip.connection.CIP_Connection"><span class="pre">CIP_Connection</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">instance</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/icspacket/proto/cip/objects/switch.html#SNMPObject"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.cip.objects.switch.SNMPObject" title="Link to this definition">#</a></dt>
+<dd><p>Configures the SNMP Agent embedded in a device (See CIP Vol 2, §5-9).</p>
+<p>A device implementing this object provides exactly one instance.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.SNMPObject.snmp_agent">
+<span class="sig-name descname"><span class="pre">snmp_agent</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.switch.SNMPObject.snmp_agent" title="Link to this definition">#</a></dt>
+<dd><p>1 = SNMP Agent enabled (default), 0 = disabled (attribute 1).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.SNMPObject.snmp_agent_version">
+<span class="sig-name descname"><span class="pre">snmp_agent_version</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.switch.SNMPObject.snmp_agent_version" title="Link to this definition">#</a></dt>
+<dd><p>1 = SNMPv1, 3 = SNMPv3, 31 = bilingual SNMPv1+v3 (attribute 2).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.SNMPObject.primary_network_manager">
+<span class="sig-name descname"><span class="pre">primary_network_manager</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#icspacket.proto.cip.objects.switch.NetworkManagerIdentifier" title="icspacket.proto.cip.objects.switch.NetworkManagerIdentifier"><span class="pre">NetworkManagerIdentifier</span></a><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.switch.SNMPObject.primary_network_manager" title="Link to this definition">#</a></dt>
+<dd><p>Primary Network Manager address that TrapPdus are sent to (attribute
+3).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.SNMPObject.secondary_network_manager">
+<span class="sig-name descname"><span class="pre">secondary_network_manager</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#icspacket.proto.cip.objects.switch.NetworkManagerIdentifier" title="icspacket.proto.cip.objects.switch.NetworkManagerIdentifier"><span class="pre">NetworkManagerIdentifier</span></a><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.switch.SNMPObject.secondary_network_manager" title="Link to this definition">#</a></dt>
+<dd><p>Secondary Network Manager address that TrapPdus are sent to (attribute
+4).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.SNMPObject.notifications">
+<span class="sig-name descname"><span class="pre">notifications</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.switch.SNMPObject.notifications" title="Link to this definition">#</a></dt>
+<dd><p>1 = sending of SNMP TrapPdus enabled (default), 0 = disabled (attribute
+5).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.SNMPObject.trap_type">
+<span class="sig-name descname"><span class="pre">trap_type</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.switch.SNMPObject.trap_type" title="Link to this definition">#</a></dt>
+<dd><p>1 = TrapV1Pdu, 2 = TrapV2Pdu (requires snmp_agent_version 3 or 31)
+(attribute 6, optional).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.switch.SNMPObject.get_class_attribute">
+<span class="sig-name descname"><span class="pre">get_class_attribute</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">attribute</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bytes</span></span></span><a class="reference internal" href="../../../_modules/icspacket/proto/cip/objects/switch.html#SNMPObject.get_class_attribute"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.cip.objects.switch.SNMPObject.get_class_attribute" title="Link to this definition">#</a></dt>
+<dd><p>Read an SNMP class attribute from instance 0 (See §5-9.3.1, Table
+5-9.2).</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+        </article><button class="back-to-top" type="button">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+  </svg>
+  <span>Back to top</span>
+</button><div class="navigation flex print:hidden"><div class="navigation-prev">
+    <a href="objects_motion.html">
+      <i class="i-lucide chevron-left"></i>
+      <div class="page-info">
+        <span>Previous</span><div class="title">Motion, Drive, and Semiconductor Objects</div></div>
+    </a>
+  </div><div class="navigation-next">
+    <a href="objects_diagnostics.html">
+      <div class="page-info">
+        <span>Next</span>
+        <div class="title">Diagnostics Objects</div>
+      </div>
+      <i class="i-lucide chevron-right"></i>
+    </a>
+  </div></div></div>
+    </div>
+  </main>
+</div>
+<footer class="sy-foot">
+  <div class="sy-foot-inner sy-container mx-auto">
+    <div class="sy-foot-reserved md:flex justify-between items-center">
+      <div class="sy-foot-copyright"><p>2025, MatrixEditor</p>
+  
+  <p>
+    Made with
+    
+    <a href="https://www.sphinx-doc.org/">Sphinx</a> and
+    
+    <a href="https://shibuya.lepture.com">Shibuya theme</a>.
+  </p>
+</div>
+      <div class="sy-foot-socials">
+  <a href="https://github.com/MatrixEditor/icspacket" aria-label="GitHub">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </a></div>
+    </div>
+  </div>
+</footer>
+      <script src="../../../_static/documentation_options.js?v=5dc6420e"></script>
+      <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+      <script src="../../../_static/shibuya.js?v=50760d75"></script></body>
+</html>

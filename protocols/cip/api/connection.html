@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="en" data-accent-color="lime" data-content_root="../../../">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Connection - icspacket 0.1.dev1+g198be51b5 documentation</title><link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" /><link rel="next" title="EtherNet/IP Encapsulation" href="encapsulation.html" /><link rel="prev" title="API Reference" href="../api.html" />
+      <link rel="canonical" href="https://matrixeditor.github.io/icspacket/protocols/cip/api/connection.html" /><script>
+    function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
+    setColorMode(localStorage._theme||"dark");
+  </script><link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=e1a1ceaf" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/shibuya.css?v=2ceb65ce" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link media="print" rel="stylesheet" type="text/css" href="../../../_static/print.css?v=20ff2c19" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --sy-f-text: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+  --sy-f-heading: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+}
+</style>
+    
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://matrixeditor.github.io/icspacket/protocols/cip/api/connection.html"/>
+  <meta property="og:title" content="Connection"/>
+    <meta name="twitter:card" content="summary"/>
+  </head>
+<body><div class="sy-head">
+  <div class="sy-head-blur"></div>
+  <div class="sy-head-inner sy-container mx-auto">
+    <a class="sy-head-brand" href="../../../index.html">
+      
+      
+      <strong>icspacket</strong>
+    </a>
+    <div class="sy-head-nav" id="head-nav">
+      <nav class="sy-head-links"><ul>
+      <li class="link"><a class="js-menu" href="../../../getting-started/protocols.html" id="nav-trigger-1" aria-controls="nav-children-1">
+            <span>Examples</span>
+            <i class="i-lucide chevron-down"></i>
+          </a>
+        <ul id="nav-children-1" aria-labelledby="nav-trigger-1"><li><a href="../../mms/examples.html">
+                <span>MMS Utilities</span>
+                <small>Manufacturing Message Specification tools</small>
+              </a></li><li><a href="../../dnp3/examples.html">
+                <span>DNP3 Tools</span>
+                <small>DNP3 utilities and tools</small>
+              </a></li><li><a href="../../iec61850/iedmap.html">
+                <span>IED Enumeration Tool</span>
+                <small>Logical Device enumeration and more</small>
+              </a></li><li><a href="../examples.html">
+                <span>CIP / EtherNet-IP Tools</span>
+                <small>EtherNet/IP discovery, explicit messaging and I/O tools</small>
+              </a></li><li><a href="../../iec104/examples.html">
+                <span>IEC 60870-5-104 Tools</span>
+                <small>IEC 60870-5-104 interrogation and read tools</small>
+              </a></li></ul>
+      </li><li class="link"><a href="../../../changelog.html">Changelog</a></li></ul></nav>
+      <div class="sy-head-extra flex items-center print:hidden"><form class="searchbox flex items-center" action="../../../search.html" method="get">
+  <input type="text" name="q" placeholder="Search" />
+  <kbd>/</kbd>
+</form><div class="sy-head-socials">
+  <a href="https://github.com/MatrixEditor/icspacket" aria-label="GitHub">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </a></div></div>
+    </div>
+    <div class="sy-head-actions flex items-center shrink-0 print:hidden"><button class="js-theme theme-switch flex items-center"
+data-aria-auto="Switch to light color mode"
+data-aria-light="Switch to dark color mode"
+data-aria-dark="Switch to auto color mode">
+<i class="i-lucide theme-icon"></i>
+</button><button class="md:hidden flex items-center js-menu" aria-label="Menu" type="button" aria-controls="head-nav" aria-expanded="false">
+        <div class="hamburger">
+          <span class="hamburger_1"></span>
+          <span class="hamburger_2"></span>
+          <span class="hamburger_3"></span>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>
+<div class="sy-page sy-container flex mx-auto">
+  <aside id="lside" class="sy-lside md:w-72 md:shrink-0 print:hidden">
+    <div class="sy-lside-inner md:sticky">
+      <div class="sy-scrollbar p-6"><div class="sidebar-links">
+  <ul>
+    <li><a class="icon-link" href="https://github.com/MatrixEditor/icspacket/discussions">
+  <span class="icon">
+    <svg viewBox="0 0 24 24" fill="none">
+      <path fill="var(--accent-9)" fill-rule="evenodd" clip-rule="evenodd" d="M11 5a6 6 0 0 0-4.687 9.746c.215.27.315.62.231.954l-.514 2.058a1 1 0 0 0 1.485 1.1l2.848-1.71c.174-.104.374-.15.576-.148H13a6 6 0 0 0 0-12h-2Z"/>
+      <circle fill="white" cx="12" cy="11" r="1"/>
+      <circle fill="white" cx="9" cy="11" r="1"/>
+      <circle fill="white" cx="15" cy="11" r="1"/>
+    </svg>
+  </span>
+  <span class="text">Discussion</span>
+</a></li>
+  </ul>
+</div>
+        <div class="globaltoc" data-expand-depth="1"><p class="caption" role="heading" aria-level="3"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../getting-started/installation.html">Installation</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../getting-started/protocols.html">Protocols Overview</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../getting-started/coreapi.html">Core API Reference</a></li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">DNP3 / IEEE 1815</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../dnp3/dnp3read.html">Reading Objects</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../dnp3/dnp3dump.html">Dumping Objects</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../dnp3/dnp3resolve.html">Resolve Link Addresses</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../dnp3/api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../dnp3/api/link.html">Link Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dnp3/api/transport.html">Transport Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dnp3/api/application.html">Application Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dnp3/api/master.html">Master</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dnp3/api/object_library.html">Object Library</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../dnp3/api/primitives.html">Primitive Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../dnp3/api/coding.html">Encoding / Decoding</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../dnp3/api/variations.html">Variations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../dnp3/api/coding_utils.html">Object Utilities</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">IEC 61850</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../iec61850/iedmap.html">Enumerating IEDs</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../iec61850/iedctrl.html">Operating on IEDs</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../iec61850/api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../iec61850/api_data_classes.html">Data Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../iec61850/api_path.html">Object / Data References</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../iec61850/api_control.html">Control / Operation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../iec61850/api_client.html">IED Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../iec61850/api_goose.html">GOOSE Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../iec61850/api_sv.html">SampledValues Client</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">MMS / ISO 9506</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../mms/demo_vars.html">Variable Target Format</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../mms/demo_vars.html#variableaccess-service-rwq">VariableAccess Service (rwq)</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../mms/demo_files.html">FileManagement Service</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../mms/api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../mms/api_conn.html">MMS Connection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../mms/api_data.html">Data Conversion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../mms/api_utils.html">Protocol Utilities</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">IEC 60870-5-104</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../iec104/iec104read.html">Reading Data via Interrogation</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../iec104/api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../iec104/api/apci.html">APCI - Framing Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../iec104/api/asdu.html">ASDU - Application Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../iec104/api/master.html">Master (Client)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../iec104/api/objects.html">Information Object Library</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">CIP / EtherNet-IP</span></p>
+<ul class="current">
+<li class="toctree-l1 _expand"><a class="reference internal" href="../cipclient.html">Operating via CIP / EtherNet-IP</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../api.html">API Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Connection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="encapsulation.html">EtherNet/IP Encapsulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="messaging.html">Messaging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="objects.html">Object Library</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="objects_core.html">Core Objects</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects_network.html">Network Objects</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects_io.html">I/O and Parameter Objects</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects_motion.html">Motion, Drive, and Semiconductor Objects</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects_switch.html">Switch Management Objects</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects_diagnostics.html">Diagnostics Objects</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">ACSE / X.227</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../acse/api.html">API Reference</a></li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">COPP / X.226 / ISO 8823</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../copp/api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../copp/presentation.html">ISO Presentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../copp/utils.html">Protocol Utilities</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">COSP / X.225 / ISO 8237-1</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../cosp/api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../cosp/tsdu.html">TSDU</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cosp/spdu.html">SPDU Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cosp/values.html">Parameter Values (PV)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cosp/session.html">ISO Session</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cosp/utils.html">Protocol Utilities</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">COTP / X.224</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../cotp/api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../cotp/structs.html">TPDU Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cotp/connection.html">Connection</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">TPKT Protocol (RFC1006)</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../tpkt/usage.html">Using a TPKT Wrapper</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../tpkt/api.html">API Reference</a></li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../changelog.html">Changelog</a></li>
+</ul>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="lside-overlay js-menu" role="button" aria-label="Close left sidebar" aria-controls="lside" aria-expanded="false"></div>
+  <aside id="rside" class="sy-rside pb-3 w-64 shrink-0 order-last">
+    <button class="rside-close js-menu xl:hidden" aria-label="Close Table of Contents" type="button" aria-controls="rside" aria-expanded="false">
+      <i class="i-lucide close"></i>
+    </button>
+    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div class="localtoc"><h3>On this page</h3><ul>
+<li><a class="reference internal" href="#icspacket.proto.cip.connection.CIPProtocolError"><code class="docutils literal notranslate"><span class="pre">CIPProtocolError</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.connection.CIP_Connection"><code class="docutils literal notranslate"><span class="pre">CIP_Connection</span></code></a><ul>
+<li><a class="reference internal" href="#icspacket.proto.cip.connection.CIP_Connection.sock"><code class="docutils literal notranslate"><span class="pre">CIP_Connection.sock</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.connection.CIP_Connection.session"><code class="docutils literal notranslate"><span class="pre">CIP_Connection.session</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.connection.CIP_Connection.connect"><code class="docutils literal notranslate"><span class="pre">CIP_Connection.connect()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.connection.CIP_Connection.close"><code class="docutils literal notranslate"><span class="pre">CIP_Connection.close()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.connection.CIP_Connection.register_session"><code class="docutils literal notranslate"><span class="pre">CIP_Connection.register_session()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.connection.CIP_Connection.unregister_session"><code class="docutils literal notranslate"><span class="pre">CIP_Connection.unregister_session()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.connection.CIP_Connection.send_data"><code class="docutils literal notranslate"><span class="pre">CIP_Connection.send_data()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.connection.CIP_Connection.recv_data"><code class="docutils literal notranslate"><span class="pre">CIP_Connection.recv_data()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.connection.CIP_Connection.send_rr_data"><code class="docutils literal notranslate"><span class="pre">CIP_Connection.send_rr_data()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.connection.CIP_Connection.send_unit_data"><code class="docutils literal notranslate"><span class="pre">CIP_Connection.send_unit_data()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.connection.CIP_Connection.send_connected_unit_data"><code class="docutils literal notranslate"><span class="pre">CIP_Connection.send_connected_unit_data()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.connection.CIP_Connection.list_identity"><code class="docutils literal notranslate"><span class="pre">CIP_Connection.list_identity()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.connection.CIP_Connection.list_services"><code class="docutils literal notranslate"><span class="pre">CIP_Connection.list_services()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.connection.CIP_Connection.list_interfaces"><code class="docutils literal notranslate"><span class="pre">CIP_Connection.list_interfaces()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.connection.CIP_Connection.generic_message"><code class="docutils literal notranslate"><span class="pre">CIP_Connection.generic_message()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.connection.CIP_Connection.forward_open"><code class="docutils literal notranslate"><span class="pre">CIP_Connection.forward_open()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.connection.CIP_Connection.large_forward_open"><code class="docutils literal notranslate"><span class="pre">CIP_Connection.large_forward_open()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.connection.CIP_Connection.forward_close"><code class="docutils literal notranslate"><span class="pre">CIP_Connection.forward_close()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.connection.CIP_Connection.open_io_connection"><code class="docutils literal notranslate"><span class="pre">CIP_Connection.open_io_connection()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.connection.CIP_Connection.send_io_data"><code class="docutils literal notranslate"><span class="pre">CIP_Connection.send_io_data()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.connection.CIP_Connection.recv_io_data"><code class="docutils literal notranslate"><span class="pre">CIP_Connection.recv_io_data()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.connection.CIP_Connection.close_io_connection"><code class="docutils literal notranslate"><span class="pre">CIP_Connection.close_io_connection()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.connection.CIP_Connection.unconnected_send"><code class="docutils literal notranslate"><span class="pre">CIP_Connection.unconnected_send()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.connection.CIP_Connection.object_path"><code class="docutils literal notranslate"><span class="pre">CIP_Connection.object_path()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.connection.CIP_Connection.get_attribute_single"><code class="docutils literal notranslate"><span class="pre">CIP_Connection.get_attribute_single()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.connection.CIP_Connection.set_attribute_single"><code class="docutils literal notranslate"><span class="pre">CIP_Connection.set_attribute_single()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.connection.CIP_Connection.get_attributes_all"><code class="docutils literal notranslate"><span class="pre">CIP_Connection.get_attributes_all()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#icspacket.proto.cip.const.CIPStatusError"><code class="docutils literal notranslate"><span class="pre">CIPStatusError</span></code></a><ul>
+<li><a class="reference internal" href="#icspacket.proto.cip.const.CIPStatusError.status_name"><code class="docutils literal notranslate"><span class="pre">CIPStatusError.status_name</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#icspacket.proto.cip.const.ClassCode"><code class="docutils literal notranslate"><span class="pre">ClassCode</span></code></a><ul>
+<li><a class="reference internal" href="#icspacket.proto.cip.const.ClassCode.DEVICE_NET"><code class="docutils literal notranslate"><span class="pre">ClassCode.DEVICE_NET</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.const.ClassCode.DLR"><code class="docutils literal notranslate"><span class="pre">ClassCode.DLR</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.const.ClassCode.QOS"><code class="docutils literal notranslate"><span class="pre">ClassCode.QOS</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.const.ClassCode.BASE_SWITCH"><code class="docutils literal notranslate"><span class="pre">ClassCode.BASE_SWITCH</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.const.ClassCode.SNMP"><code class="docutils literal notranslate"><span class="pre">ClassCode.SNMP</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.const.ClassCode.POWER_MANAGEMENT"><code class="docutils literal notranslate"><span class="pre">ClassCode.POWER_MANAGEMENT</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.const.ClassCode.RSTP_BRIDGE"><code class="docutils literal notranslate"><span class="pre">ClassCode.RSTP_BRIDGE</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.const.ClassCode.RSTP_PORT"><code class="docutils literal notranslate"><span class="pre">ClassCode.RSTP_PORT</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.const.ClassCode.PRP"><code class="docutils literal notranslate"><span class="pre">ClassCode.PRP</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.const.ClassCode.PRP_NODES_TABLE"><code class="docutils literal notranslate"><span class="pre">ClassCode.PRP_NODES_TABLE</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.const.ClassCode.CONNECTION_CONFIGURATION"><code class="docutils literal notranslate"><span class="pre">ClassCode.CONNECTION_CONFIGURATION</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.const.ClassCode.PORT"><code class="docutils literal notranslate"><span class="pre">ClassCode.PORT</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#icspacket.proto.cip.const.CommonService"><code class="docutils literal notranslate"><span class="pre">CommonService</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.const.GeneralStatus"><code class="docutils literal notranslate"><span class="pre">GeneralStatus</span></code></a></li>
+</ul>
+</div><a class="js-repo-stats repo-stats flex items-center" href="https://github.com/MatrixEditor/icspacket"
+  data-type="github" data-user="MatrixEditor" data-repo="icspacket">
+  <span class="w-8 flex items-center justify-around shrink-0 text-3xl">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </span>
+  <span class="flex-grow px-2 break-all">
+    <span style="font-size: small;">MatrixEditor/icspacket</span>
+    <span class="flex text-sm repo-stats-count">
+      <span class="flex items-center pr-3">
+        <iconify-icon icon="lucide:star"></iconify-icon>
+        <strong class="js-repo-stars ml-1">0</strong>
+      </span>
+      <span class="flex items-center">
+        <iconify-icon icon="lucide:git-fork"></iconify-icon>
+        <strong class="js-repo-forks ml-1">0</strong>
+      </span>
+    </span>
+  </span>
+</a><div class="edit-this-page">
+  <a href="https://github.com/MatrixEditor/icspacket/blob/main/docs/protocols/cip/api/connection.rst">Edit this page</a>
+</div></div>
+  </aside>
+  <div class="rside-overlay js-menu" role="button" aria-label="Close Table of Contents" aria-controls="rside" aria-expanded="false"></div>
+  <main class="sy-main w-full max-sm:max-w-full print:pt-6">
+<div class="sy-breadcrumbs" role="navigation">
+  <div class="sy-breadcrumbs-inner flex items-center">
+    <div class="md:hidden mr-3">
+      <button class="js-menu" aria-label="Menu" type="button" aria-controls="lside" aria-expanded="false">
+        <i class="i-lucide menu"></i>
+      </button>
+    </div>
+    <ol class="flex-1" itemscope itemtype="https://schema.org/BreadcrumbList"><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="../../../index.html"><span itemprop="name">icspacket</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="1" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="../api.html"><span itemprop="name">API Reference</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="2" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <strong itemprop="name">Connection</strong>
+        <meta itemprop="position" content="3" />
+      </li></ol>
+    <div class="xl:hidden ml-1">
+      <button class="js-menu" aria-label="Show table of contents" type="button" aria-controls="rside"
+        aria-expanded="false">
+        <i class="i-lucide outdent"></i>
+      </button>
+    </div>
+  </div>
+</div><div class="flex flex-col break-words justify-between">
+      <div class="relative min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
+  <div class="copy-page-wrapper relative pb-4 lg:absolute lg:top-8 lg:right-6 xl:right-12">
+  <div id="copy-page-trigger">
+    <button
+      type="button"
+      class="js-copy px-3 py-1 inline-flex items-center gap-1"
+      data-url="https://raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/protocols/cip/api/connection.rst"
+    >
+      <i class="i-lucide" data-icon="copy"></i>
+      <span>Copy page</span>
+    </button>
+    <button class="js-menu px-2 py-1" type="button" aria-label="More actions"
+      aria-haspopup="menu" aria-expanded="false" aria-controls="copy-page-content">
+      <i class="i-lucide chevron-down"></i>
+    </button>
+  </div>
+  <div id="copy-page-content" role="menu" aria-orientation="vertical" aria-hidden="true">
+    <div role="presentation">
+      <div class="flex flex-col" role="group">
+        <button class="js-copy" type="button" role="menuitem"
+          data-url="https://raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/protocols/cip/api/connection.rst">
+          <span class="iconify-icon">
+            <i class="i-lucide" data-icon="copy"></i>
+          </span>
+          <span>Copy page</span>
+        </button>
+        <a role="menuitem" href="https://raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/protocols/cip/api/connection.rst" target="_blank" rel="nofollow"><iconify-icon icon="bi:code-slash"></iconify-icon>
+            <span>View Source</span></a><a role="menuitem" href="https://chatgpt.com/?hints=search&q=Read%20https%3A//raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/protocols/cip/api/connection.rst%20so%20I%20can%20ask%20questions%20about%20it." target="_blank" rel="nofollow">
+          <iconify-icon icon="bi:openai"></iconify-icon>
+          <span>Open in ChatGPT</span>
+        </a><a role="menuitem" href="https://claude.ai/new?q=Read%20https%3A//raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/protocols/cip/api/connection.rst%20so%20I%20can%20ask%20questions%20about%20it." target="_blank" rel="nofollow">
+          <iconify-icon icon="bi:claude"></iconify-icon>
+          <span>Open in Claude</span>
+        </a></div>
+    </div>
+  </div>
+</div><article class="yue" role="main">
+          <section id="module-icspacket.proto.cip.connection">
+<span id="connection"></span><span id="api-cip-connection"></span><h1>Connection<a class="headerlink" href="#module-icspacket.proto.cip.connection" title="Link to this heading">#</a></h1>
+<p>EtherNet/IP explicit-message connection support.</p>
+<dl class="py exception">
+<dt class="sig sig-object py" id="icspacket.proto.cip.connection.CIPProtocolError">
+<span class="property"><span class="k"><span class="pre">exception</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">icspacket.proto.cip.connection.</span></span><span class="sig-name descname"><span class="pre">CIPProtocolError</span></span><a class="reference internal" href="../../../_modules/icspacket/proto/cip/connection.html#CIPProtocolError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.cip.connection.CIPProtocolError" title="Link to this definition">#</a></dt>
+<dd><p>Raised for malformed or failed EtherNet/IP/CIP exchanges.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="icspacket.proto.cip.connection.CIP_Connection">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">icspacket.proto.cip.connection.</span></span><span class="sig-name descname"><span class="pre">CIP_Connection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">10.0</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">sock</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">socket</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sock_cls</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">socket</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">auto_register</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/icspacket/proto/cip/connection.html#CIP_Connection"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.cip.connection.CIP_Connection" title="Link to this definition">#</a></dt>
+<dd><p>Synchronous EtherNet/IP TCP connection for explicit CIP messaging.</p>
+<dl class="py property">
+<dt class="sig sig-object py" id="icspacket.proto.cip.connection.CIP_Connection.sock">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">sock</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">socket</span></span><a class="headerlink" href="#icspacket.proto.cip.connection.CIP_Connection.sock" title="Link to this definition">#</a></dt>
+<dd><p>Underlying TCP socket, or <code class="docutils literal notranslate"><span class="pre">ConnectionNotEstablished</span></code> if closed.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="icspacket.proto.cip.connection.CIP_Connection.session">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">session</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><a class="headerlink" href="#icspacket.proto.cip.connection.CIP_Connection.session" title="Link to this definition">#</a></dt>
+<dd><p>Current EtherNet/IP session handle.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.cip.connection.CIP_Connection.connect">
+<span class="sig-name descname"><span class="pre">connect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">address</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../../../_modules/icspacket/proto/cip/connection.html#CIP_Connection.connect"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.cip.connection.CIP_Connection.connect" title="Link to this definition">#</a></dt>
+<dd><p>Connect to an EtherNet/IP target and register a session, unless
+<code class="xref py py-attr docutils literal notranslate"><span class="pre">auto_register</span></code> is disabled.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>address</strong> (<em>tuple</em><em>[</em><em>str</em><em>, </em><em>int</em><em>]</em>) – <code class="docutils literal notranslate"><span class="pre">(host,</span> <span class="pre">port)</span></code> of the EtherNet/IP target.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><a class="reference internal" href="../../../getting-started/coreapi.html#icspacket.core.connection.ConnectionError" title="icspacket.core.connection.ConnectionError"><strong>ConnectionError</strong></a> – If the raw TCP connection fails.</p></li>
+<li><p><a class="reference internal" href="#icspacket.proto.cip.connection.CIPProtocolError" title="icspacket.proto.cip.connection.CIPProtocolError"><strong>CIPProtocolError</strong></a> – If session registration (See CIP Vol 2,
+clause 2-4.4) fails.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.cip.connection.CIP_Connection.close">
+<span class="sig-name descname"><span class="pre">close</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../../../_modules/icspacket/proto/cip/connection.html#CIP_Connection.close"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.cip.connection.CIP_Connection.close" title="Link to this definition">#</a></dt>
+<dd><p>Close the EtherNet/IP session and underlying TCP socket,
+best-effort.</p>
+<p>Sends UnRegisterSession (See CIP Vol 2, clause 2-4.5) if a session is
+registered; failures are ignored since the socket is closed
+regardless.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.cip.connection.CIP_Connection.register_session">
+<span class="sig-name descname"><span class="pre">register_session</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="../../../_modules/icspacket/proto/cip/connection.html#CIP_Connection.register_session"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.cip.connection.CIP_Connection.register_session" title="Link to this definition">#</a></dt>
+<dd><p>Register an EtherNet/IP TCP session and return the target handle
+(See CIP Vol 2, clause 2-4.4).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.cip.connection.CIP_Connection.unregister_session">
+<span class="sig-name descname"><span class="pre">unregister_session</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../../../_modules/icspacket/proto/cip/connection.html#CIP_Connection.unregister_session"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.cip.connection.CIP_Connection.unregister_session" title="Link to this definition">#</a></dt>
+<dd><p>Send UnRegisterSession (See CIP Vol 2, clause 2-4.5 -
+UnRegisterSession).</p>
+<p>The target treats receipt of this command as its cue to close the
+TCP connection and never answers it, so this method just fires the
+request and returns without waiting for (or expecting) a reply.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.cip.connection.CIP_Connection.send_data">
+<span class="sig-name descname"><span class="pre">send_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">octets</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bytes</span></span></em>, <em class="sig-param"><span class="positional-only-separator o"><abbr title="Positional-only parameter separator (PEP 570)"><span class="pre">/</span></abbr></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../../../_modules/icspacket/proto/cip/connection.html#CIP_Connection.send_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.cip.connection.CIP_Connection.send_data" title="Link to this definition">#</a></dt>
+<dd><p>Send raw bytes directly on the underlying TCP socket.</p>
+<p>Prefer <a class="reference internal" href="#icspacket.proto.cip.connection.CIP_Connection.send_rr_data" title="icspacket.proto.cip.connection.CIP_Connection.send_rr_data"><code class="xref py py-meth docutils literal notranslate"><span class="pre">send_rr_data()</span></code></a>/<a class="reference internal" href="#icspacket.proto.cip.connection.CIP_Connection.send_unit_data" title="icspacket.proto.cip.connection.CIP_Connection.send_unit_data"><code class="xref py py-meth docutils literal notranslate"><span class="pre">send_unit_data()</span></code></a> for framed CIP
+requests; this is the low-level primitive the base <code class="xref py py-class docutils literal notranslate"><span class="pre">connection</span></code>
+contract requires.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>octets</strong> (<em>bytes</em>) – Raw bytes to send.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><a class="reference internal" href="../../../getting-started/coreapi.html#icspacket.core.connection.ConnectionNotEstablished" title="icspacket.core.connection.ConnectionNotEstablished"><strong>ConnectionNotEstablished</strong></a> – If no connection is established.</p></li>
+<li><p><a class="reference internal" href="../../../getting-started/coreapi.html#icspacket.core.connection.ConnectionClosedError" title="icspacket.core.connection.ConnectionClosedError"><strong>ConnectionClosedError</strong></a> – If the socket send fails.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.cip.connection.CIP_Connection.recv_data">
+<span class="sig-name descname"><span class="pre">recv_data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bytes</span></span></span><a class="reference internal" href="../../../_modules/icspacket/proto/cip/connection.html#CIP_Connection.recv_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.cip.connection.CIP_Connection.recv_data" title="Link to this definition">#</a></dt>
+<dd><p>Receive one raw EtherNet/IP encapsulation packet.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The header and payload bytes of one encapsulation packet.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bytes</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><a class="reference internal" href="../../../getting-started/coreapi.html#icspacket.core.connection.ConnectionNotEstablished" title="icspacket.core.connection.ConnectionNotEstablished"><strong>ConnectionNotEstablished</strong></a> – If no connection is established.</p></li>
+<li><p><a class="reference internal" href="../../../getting-started/coreapi.html#icspacket.core.connection.ConnectionClosedError" title="icspacket.core.connection.ConnectionClosedError"><strong>ConnectionClosedError</strong></a> – If the peer closes the socket first.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.cip.connection.CIP_Connection.send_rr_data">
+<span class="sig-name descname"><span class="pre">send_rr_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bytes</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="messaging.html#icspacket.proto.cip.msgrouter.MessageRouterRequest" title="icspacket.proto.cip.msgrouter.MessageRouterRequest"><span class="pre">MessageRouterRequest</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bytes</span></span></span><a class="reference internal" href="../../../_modules/icspacket/proto/cip/connection.html#CIP_Connection.send_rr_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.cip.connection.CIP_Connection.send_rr_data" title="Link to this definition">#</a></dt>
+<dd><p>Send a UCMM request/reply packet via SendRRData.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.cip.connection.CIP_Connection.send_unit_data">
+<span class="sig-name descname"><span class="pre">send_unit_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bytes</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="messaging.html#icspacket.proto.cip.msgrouter.MessageRouterRequest" title="icspacket.proto.cip.msgrouter.MessageRouterRequest"><span class="pre">MessageRouterRequest</span></a></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">connected</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">connection_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sequence</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bytes</span></span></span><a class="reference internal" href="../../../_modules/icspacket/proto/cip/connection.html#CIP_Connection.send_unit_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.cip.connection.CIP_Connection.send_unit_data" title="Link to this definition">#</a></dt>
+<dd><p>Send connected data via SendUnitData and read the next peer packet.</p>
+<p>SendUnitData is not a UCMM request/reply command; use
+<a class="reference internal" href="#icspacket.proto.cip.connection.CIP_Connection.send_rr_data" title="icspacket.proto.cip.connection.CIP_Connection.send_rr_data"><code class="xref py py-meth docutils literal notranslate"><span class="pre">send_rr_data()</span></code></a> for unconnected Message Router traffic.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.cip.connection.CIP_Connection.send_connected_unit_data">
+<span class="sig-name descname"><span class="pre">send_connected_unit_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bytes</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="messaging.html#icspacket.proto.cip.msgrouter.MessageRouterRequest" title="icspacket.proto.cip.msgrouter.MessageRouterRequest"><span class="pre">MessageRouterRequest</span></a></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">connection_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sequence</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bytes</span></span></span><a class="reference internal" href="../../../_modules/icspacket/proto/cip/connection.html#CIP_Connection.send_connected_unit_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.cip.connection.CIP_Connection.send_connected_unit_data" title="Link to this definition">#</a></dt>
+<dd><p>Send Class-3 connected explicit data over SendUnitData.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.cip.connection.CIP_Connection.list_identity">
+<span class="sig-name descname"><span class="pre">list_identity</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="encapsulation.html#icspacket.proto.cip.cpf.ListIdentityResponseItem" title="icspacket.proto.cip.cpf.ListIdentityResponseItem"><span class="pre">ListIdentityResponseItem</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../../../_modules/icspacket/proto/cip/connection.html#CIP_Connection.list_identity"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.cip.connection.CIP_Connection.list_identity" title="Link to this definition">#</a></dt>
+<dd><p>Return decoded ListIdentity response items (See CIP Vol 2, clause
+2-4.2).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.cip.connection.CIP_Connection.list_services">
+<span class="sig-name descname"><span class="pre">list_services</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="encapsulation.html#icspacket.proto.cip.cpf.ListServicesResponseItem" title="icspacket.proto.cip.cpf.ListServicesResponseItem"><span class="pre">ListServicesResponseItem</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../../../_modules/icspacket/proto/cip/connection.html#CIP_Connection.list_services"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.cip.connection.CIP_Connection.list_services" title="Link to this definition">#</a></dt>
+<dd><p>Return decoded ListServices response items (See CIP Vol 2, clause
+2-4.6).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.cip.connection.CIP_Connection.list_interfaces">
+<span class="sig-name descname"><span class="pre">list_interfaces</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="encapsulation.html#icspacket.proto.cip.cpf.ListInterfacesResponseItem" title="icspacket.proto.cip.cpf.ListInterfacesResponseItem"><span class="pre">ListInterfacesResponseItem</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../../../_modules/icspacket/proto/cip/connection.html#CIP_Connection.list_interfaces"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.cip.connection.CIP_Connection.list_interfaces" title="Link to this definition">#</a></dt>
+<dd><p>Return known ListInterfaces response items (See CIP Vol 2, clause
+2-4.3); Vol 2 defines none publicly.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.cip.connection.CIP_Connection.generic_message">
+<span class="sig-name descname"><span class="pre">generic_message</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">service</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#icspacket.proto.cip.const.CommonService" title="icspacket.proto.cip.const.CommonService"><span class="pre">CommonService</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="messaging.html#icspacket.proto.cip.epath.EPATH" title="icspacket.proto.cip.epath.EPATH"><span class="pre">EPATH</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">bytes</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">bytearray</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="messaging.html#icspacket.proto.cip.epath.PortSegment" title="icspacket.proto.cip.epath.PortSegment"><span class="pre">PortSegment</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="messaging.html#icspacket.proto.cip.epath.LogicalSegment" title="icspacket.proto.cip.epath.LogicalSegment"><span class="pre">LogicalSegment</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="messaging.html#icspacket.proto.cip.epath.NetworkSegment" title="icspacket.proto.cip.epath.NetworkSegment"><span class="pre">NetworkSegment</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="messaging.html#icspacket.proto.cip.epath.SymbolicSegment" title="icspacket.proto.cip.epath.SymbolicSegment"><span class="pre">SymbolicSegment</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="messaging.html#icspacket.proto.cip.epath.DataSegment" title="icspacket.proto.cip.epath.DataSegment"><span class="pre">DataSegment</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="messaging.html#icspacket.proto.cip.epath.ElectronicKeySegment" title="icspacket.proto.cip.epath.ElectronicKeySegment"><span class="pre">ElectronicKeySegment</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">request_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bytes</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">b''</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">connected</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_response</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bytes</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="messaging.html#icspacket.proto.cip.msgrouter.MessageRouterResponse" title="icspacket.proto.cip.msgrouter.MessageRouterResponse"><span class="pre">MessageRouterResponse</span></a></span></span><a class="reference internal" href="../../../_modules/icspacket/proto/cip/connection.html#CIP_Connection.generic_message"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.cip.connection.CIP_Connection.generic_message" title="Link to this definition">#</a></dt>
+<dd><p>Send one Message Router request (See CIP Vol 1, clause A-3) and
+return its response data.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.cip.connection.CIP_Connection.forward_open">
+<span class="sig-name descname"><span class="pre">forward_open</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="messaging.html#icspacket.proto.cip.connmgr.ForwardOpenRequest" title="icspacket.proto.cip.connmgr.ForwardOpenRequest"><span class="pre">ForwardOpenRequest</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="messaging.html#icspacket.proto.cip.connmgr.LargeForwardOpenRequest" title="icspacket.proto.cip.connmgr.LargeForwardOpenRequest"><span class="pre">LargeForwardOpenRequest</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="messaging.html#icspacket.proto.cip.connmgr.ForwardOpenResponse" title="icspacket.proto.cip.connmgr.ForwardOpenResponse"><span class="pre">ForwardOpenResponse</span></a></span></span><a class="reference internal" href="../../../_modules/icspacket/proto/cip/connection.html#CIP_Connection.forward_open"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.cip.connection.CIP_Connection.forward_open" title="Link to this definition">#</a></dt>
+<dd><p>Open a Class-3 or I/O connection through Connection Manager (See
+CIP Vol 1, clause 3-5.5.2).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.cip.connection.CIP_Connection.large_forward_open">
+<span class="sig-name descname"><span class="pre">large_forward_open</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="messaging.html#icspacket.proto.cip.connmgr.LargeForwardOpenRequest" title="icspacket.proto.cip.connmgr.LargeForwardOpenRequest"><span class="pre">LargeForwardOpenRequest</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="messaging.html#icspacket.proto.cip.connmgr.ForwardOpenResponse" title="icspacket.proto.cip.connmgr.ForwardOpenResponse"><span class="pre">ForwardOpenResponse</span></a></span></span><a class="reference internal" href="../../../_modules/icspacket/proto/cip/connection.html#CIP_Connection.large_forward_open"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.cip.connection.CIP_Connection.large_forward_open" title="Link to this definition">#</a></dt>
+<dd><p>Open a connection using the Large_Forward_Open service.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.cip.connection.CIP_Connection.forward_close">
+<span class="sig-name descname"><span class="pre">forward_close</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="messaging.html#icspacket.proto.cip.connmgr.ForwardCloseRequest" title="icspacket.proto.cip.connmgr.ForwardCloseRequest"><span class="pre">ForwardCloseRequest</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="messaging.html#icspacket.proto.cip.connmgr.ForwardCloseResponse" title="icspacket.proto.cip.connmgr.ForwardCloseResponse"><span class="pre">ForwardCloseResponse</span></a></span></span><a class="reference internal" href="../../../_modules/icspacket/proto/cip/connection.html#CIP_Connection.forward_close"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.cip.connection.CIP_Connection.forward_close" title="Link to this definition">#</a></dt>
+<dd><p>Close the current connection through Connection Manager (See CIP
+Vol 1, clause 3-5.5.3).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.cip.connection.CIP_Connection.open_io_connection">
+<span class="sig-name descname"><span class="pre">open_io_connection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">response</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="messaging.html#icspacket.proto.cip.connmgr.ForwardOpenResponse" title="icspacket.proto.cip.connmgr.ForwardOpenResponse"><span class="pre">ForwardOpenResponse</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">address</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">header_format</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sequence_format</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="messaging.html#icspacket.proto.cip.io.CIPIO_Connection" title="icspacket.proto.cip.io.CIPIO_Connection"><span class="pre">CIPIO_Connection</span></a></span></span><a class="reference internal" href="../../../_modules/icspacket/proto/cip/connection.html#CIP_Connection.open_io_connection"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.cip.connection.CIP_Connection.open_io_connection" title="Link to this definition">#</a></dt>
+<dd><p>Open a Class 0/1 cyclic I/O (UDP) connection from a prior
+Forward_Open response.</p>
+<p><code class="docutils literal notranslate"><span class="pre">response</span></code> defaults to the result of the most recent
+<a class="reference internal" href="#icspacket.proto.cip.connection.CIP_Connection.forward_open" title="icspacket.proto.cip.connection.CIP_Connection.forward_open"><code class="xref py py-meth docutils literal notranslate"><span class="pre">forward_open()</span></code></a>/<a class="reference internal" href="#icspacket.proto.cip.connection.CIP_Connection.large_forward_open" title="icspacket.proto.cip.connection.CIP_Connection.large_forward_open"><code class="xref py py-meth docutils literal notranslate"><span class="pre">large_forward_open()</span></code></a> call on this
+connection. <code class="docutils literal notranslate"><span class="pre">address</span></code> defaults to the host this connection is
+registered against, using <code class="xref py py-attr docutils literal notranslate"><span class="pre">CIPIOConnection.DEFAULT_PORT</span></code>
+(UDP/2222) unless overridden. <code class="docutils literal notranslate"><span class="pre">header_format</span></code> controls whether
+O-&gt;T datagrams carry the 4-byte Run/Idle header (required by
+exclusive-owner style connections; see <a class="reference internal" href="messaging.html#module-icspacket.proto.cip.io" title="icspacket.proto.cip.io"><code class="xref py py-mod docutils literal notranslate"><span class="pre">icspacket.proto.cip.io</span></code></a>).
+<code class="docutils literal notranslate"><span class="pre">sequence_format</span></code> controls whether O-&gt;T datagrams carry a 16-bit
+connected sequence count prefix; disable for targets that rely
+solely on the CPF-level sequence number instead.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.cip.connection.CIP_Connection.send_io_data">
+<span class="sig-name descname"><span class="pre">send_io_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bytes</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../../../_modules/icspacket/proto/cip/connection.html#CIP_Connection.send_io_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.cip.connection.CIP_Connection.send_io_data" title="Link to this definition">#</a></dt>
+<dd><p>Send one cyclic O-&gt;T datagram over the open Class 0/1 connection.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.cip.connection.CIP_Connection.recv_io_data">
+<span class="sig-name descname"><span class="pre">recv_io_data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bytes</span></span></span><a class="reference internal" href="../../../_modules/icspacket/proto/cip/connection.html#CIP_Connection.recv_io_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.cip.connection.CIP_Connection.recv_io_data" title="Link to this definition">#</a></dt>
+<dd><p>Receive one cyclic T-&gt;O datagram over the open Class 0/1
+connection.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.cip.connection.CIP_Connection.close_io_connection">
+<span class="sig-name descname"><span class="pre">close_io_connection</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../../../_modules/icspacket/proto/cip/connection.html#CIP_Connection.close_io_connection"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.cip.connection.CIP_Connection.close_io_connection" title="Link to this definition">#</a></dt>
+<dd><p>Close the Class 0/1 I/O connection opened by
+<a class="reference internal" href="#icspacket.proto.cip.connection.CIP_Connection.open_io_connection" title="icspacket.proto.cip.connection.CIP_Connection.open_io_connection"><code class="xref py py-meth docutils literal notranslate"><span class="pre">open_io_connection()</span></code></a>, if any.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.cip.connection.CIP_Connection.unconnected_send">
+<span class="sig-name descname"><span class="pre">unconnected_send</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="messaging.html#icspacket.proto.cip.msgrouter.MessageRouterRequest" title="icspacket.proto.cip.msgrouter.MessageRouterRequest"><span class="pre">MessageRouterRequest</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">bytes</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">route_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="messaging.html#icspacket.proto.cip.epath.EPATH" title="icspacket.proto.cip.epath.EPATH"><span class="pre">EPATH</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">bytes</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">&lt;EPATH</span> <span class="pre">[]&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">priority</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout_ticks</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">request</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="messaging.html#icspacket.proto.cip.connmgr.UnconnectedSendRequest" title="icspacket.proto.cip.connmgr.UnconnectedSendRequest"><span class="pre">UnconnectedSendRequest</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="messaging.html#icspacket.proto.cip.msgrouter.MessageRouterResponse" title="icspacket.proto.cip.msgrouter.MessageRouterResponse"><span class="pre">MessageRouterResponse</span></a></span></span><a class="reference internal" href="../../../_modules/icspacket/proto/cip/connection.html#CIP_Connection.unconnected_send"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.cip.connection.CIP_Connection.unconnected_send" title="Link to this definition">#</a></dt>
+<dd><p>Route a Message Router request through Connection Manager (See
+CIP Vol 1, clause 3-5.5.4).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.cip.connection.CIP_Connection.object_path">
+<span class="sig-name descname"><span class="pre">object_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">class_code</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#icspacket.proto.cip.const.ClassCode" title="icspacket.proto.cip.const.ClassCode"><span class="pre">ClassCode</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">instance</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">attribute</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="messaging.html#icspacket.proto.cip.epath.EPATH" title="icspacket.proto.cip.epath.EPATH"><span class="pre">EPATH</span></a></span></span><a class="reference internal" href="../../../_modules/icspacket/proto/cip/connection.html#CIP_Connection.object_path"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.cip.connection.CIP_Connection.object_path" title="Link to this definition">#</a></dt>
+<dd><p>Build the EPATH addressing a class/instance, optionally down to
+one attribute.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>class_code</strong> – The CIP object class code.</p></li>
+<li><p><strong>instance</strong> – The target object instance.</p></li>
+<li><p><strong>attribute</strong> – Narrows the path to one specific attribute, if given.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.cip.connection.CIP_Connection.get_attribute_single">
+<span class="sig-name descname"><span class="pre">get_attribute_single</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">class_code</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#icspacket.proto.cip.const.ClassCode" title="icspacket.proto.cip.const.ClassCode"><span class="pre">ClassCode</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">instance</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">attribute</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bytes</span></span></span><a class="reference internal" href="../../../_modules/icspacket/proto/cip/connection.html#CIP_Connection.get_attribute_single"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.cip.connection.CIP_Connection.get_attribute_single" title="Link to this definition">#</a></dt>
+<dd><p>Read one attribute using Get_Attribute_Single (See CIP Vol 1,
+clause A-3).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.cip.connection.CIP_Connection.set_attribute_single">
+<span class="sig-name descname"><span class="pre">set_attribute_single</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">class_code</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#icspacket.proto.cip.const.ClassCode" title="icspacket.proto.cip.const.ClassCode"><span class="pre">ClassCode</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">instance</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">attribute</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bytes</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bytes</span></span></span><a class="reference internal" href="../../../_modules/icspacket/proto/cip/connection.html#CIP_Connection.set_attribute_single"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.cip.connection.CIP_Connection.set_attribute_single" title="Link to this definition">#</a></dt>
+<dd><p>Write one attribute using Set_Attribute_Single (See CIP Vol 1,
+clause A-3).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.cip.connection.CIP_Connection.get_attributes_all">
+<span class="sig-name descname"><span class="pre">get_attributes_all</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">class_code</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#icspacket.proto.cip.const.ClassCode" title="icspacket.proto.cip.const.ClassCode"><span class="pre">ClassCode</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">instance</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bytes</span></span></span><a class="reference internal" href="../../../_modules/icspacket/proto/cip/connection.html#CIP_Connection.get_attributes_all"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.cip.connection.CIP_Connection.get_attributes_all" title="Link to this definition">#</a></dt>
+<dd><p>Read all attributes from a class instance using
+Get_Attributes_All (See CIP Vol 1, clause A-3).</p>
+</dd></dl>
+
+</dd></dl>
+
+<p id="module-icspacket.proto.cip.const">CIP status, service, and object-class constants.</p>
+<p>Collects the general status codes (See CIP Volume 1, Appendix B, clause
+B-1, Table B-1.1 - CIP General Status Codes), the common service codes
+(See CIP Volume 1, Appendix A, clause A-3 - CIP Common Services), and the
+object-class codes (See CIP Volume 1, clause 4-3 - Class Code) that
+protocol implementations need.</p>
+<dl class="py exception">
+<dt class="sig sig-object py" id="icspacket.proto.cip.const.CIPStatusError">
+<span class="property"><span class="k"><span class="pre">exception</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">icspacket.proto.cip.const.</span></span><span class="sig-name descname"><span class="pre">CIPStatusError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">general_status</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#icspacket.proto.cip.const.GeneralStatus" title="icspacket.proto.cip.const.GeneralStatus"><span class="pre">GeneralStatus</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">additional_status</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">()</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">service</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">IntEnum</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">class_code</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">IntEnum</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">instance</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/icspacket/proto/cip/const.html#CIPStatusError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.cip.const.CIPStatusError" title="Link to this definition">#</a></dt>
+<dd><p>Exception raised when a CIP service response reports failure.</p>
+<p><code class="docutils literal notranslate"><span class="pre">additional_status</span></code> contains the UINT16 words following the general
+status byte in a reply.  Context fields are optional because a decoder
+often sees the status before it has resolved the request path.</p>
+<dl class="py property">
+<dt class="sig sig-object py" id="icspacket.proto.cip.const.CIPStatusError.status_name">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">status_name</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><a class="headerlink" href="#icspacket.proto.cip.const.CIPStatusError.status_name" title="Link to this definition">#</a></dt>
+<dd><p>Human-readable name for the general status value.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="icspacket.proto.cip.const.ClassCode">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">icspacket.proto.cip.const.</span></span><span class="sig-name descname"><span class="pre">ClassCode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">values</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/icspacket/proto/cip/const.html#ClassCode"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.cip.const.ClassCode" title="Link to this definition">#</a></dt>
+<dd><p>Object class codes (See CIP Volume 1, clause 4-3 - Class Code, and
+Volume 1, Table 5-1.1 - Object Specifications in the CIP Object Library).</p>
+<p><code class="docutils literal notranslate"><span class="pre">DLR</span></code> through <code class="docutils literal notranslate"><span class="pre">PRP_NODES_TABLE</span></code> are EtherNet/IP-specific object
+classes (See CIP Volume 2, clauses 5-6 through 5-14); <code class="docutils literal notranslate"><span class="pre">TCP_IP_INTERFACE</span></code>
+and <code class="docutils literal notranslate"><span class="pre">ETHERNET_LINK</span></code> likewise (See CIP Volume 2, clauses 5-4 and 5-5).
+Every other member is defined in CIP Volume 1.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.const.ClassCode.DEVICE_NET">
+<span class="sig-name descname"><span class="pre">DEVICE_NET</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">3</span></span><a class="headerlink" href="#icspacket.proto.cip.const.ClassCode.DEVICE_NET" title="Link to this definition">#</a></dt>
+<dd><p>DeviceNet Object (See CIP Volume 1, clause 5-4; fully specified in
+CIP Volume 3, DeviceNet Adaptation of CIP).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.const.ClassCode.DLR">
+<span class="sig-name descname"><span class="pre">DLR</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">71</span></span><a class="headerlink" href="#icspacket.proto.cip.const.ClassCode.DLR" title="Link to this definition">#</a></dt>
+<dd><p>Device Level Ring Object (See CIP Volume 2, clause 5-6).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.const.ClassCode.QOS">
+<span class="sig-name descname"><span class="pre">QOS</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">72</span></span><a class="headerlink" href="#icspacket.proto.cip.const.ClassCode.QOS" title="Link to this definition">#</a></dt>
+<dd><p>QoS Object (See CIP Volume 2, clause 5-7).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.const.ClassCode.BASE_SWITCH">
+<span class="sig-name descname"><span class="pre">BASE_SWITCH</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">81</span></span><a class="headerlink" href="#icspacket.proto.cip.const.ClassCode.BASE_SWITCH" title="Link to this definition">#</a></dt>
+<dd><p>Base Switch Object (See CIP Volume 2, clause 5-8).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.const.ClassCode.SNMP">
+<span class="sig-name descname"><span class="pre">SNMP</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">82</span></span><a class="headerlink" href="#icspacket.proto.cip.const.ClassCode.SNMP" title="Link to this definition">#</a></dt>
+<dd><p>Simple Network Management (SNMP) Object (See CIP Volume 2, clause 5-9).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.const.ClassCode.POWER_MANAGEMENT">
+<span class="sig-name descname"><span class="pre">POWER_MANAGEMENT</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">83</span></span><a class="headerlink" href="#icspacket.proto.cip.const.ClassCode.POWER_MANAGEMENT" title="Link to this definition">#</a></dt>
+<dd><p>Power Management Object (See CIP Volume 2, clause 5-10).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.const.ClassCode.RSTP_BRIDGE">
+<span class="sig-name descname"><span class="pre">RSTP_BRIDGE</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">84</span></span><a class="headerlink" href="#icspacket.proto.cip.const.ClassCode.RSTP_BRIDGE" title="Link to this definition">#</a></dt>
+<dd><p>RSTP Bridge Object (See CIP Volume 2, clause 5-11).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.const.ClassCode.RSTP_PORT">
+<span class="sig-name descname"><span class="pre">RSTP_PORT</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">85</span></span><a class="headerlink" href="#icspacket.proto.cip.const.ClassCode.RSTP_PORT" title="Link to this definition">#</a></dt>
+<dd><p>RSTP Port Object (See CIP Volume 2, clause 5-12).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.const.ClassCode.PRP">
+<span class="sig-name descname"><span class="pre">PRP</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">86</span></span><a class="headerlink" href="#icspacket.proto.cip.const.ClassCode.PRP" title="Link to this definition">#</a></dt>
+<dd><p>Parallel Redundancy Protocol (PRP) Object (See CIP Volume 2, clause 5-13).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.const.ClassCode.PRP_NODES_TABLE">
+<span class="sig-name descname"><span class="pre">PRP_NODES_TABLE</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">87</span></span><a class="headerlink" href="#icspacket.proto.cip.const.ClassCode.PRP_NODES_TABLE" title="Link to this definition">#</a></dt>
+<dd><p>PRP Nodes Table Object (See CIP Volume 2, clause 5-14).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.const.ClassCode.CONNECTION_CONFIGURATION">
+<span class="sig-name descname"><span class="pre">CONNECTION_CONFIGURATION</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">243</span></span><a class="headerlink" href="#icspacket.proto.cip.const.ClassCode.CONNECTION_CONFIGURATION" title="Link to this definition">#</a></dt>
+<dd><p>Connection Configuration Object (See CIP Volume 1, clause 5-48).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.const.ClassCode.PORT">
+<span class="sig-name descname"><span class="pre">PORT</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">244</span></span><a class="headerlink" href="#icspacket.proto.cip.const.ClassCode.PORT" title="Link to this definition">#</a></dt>
+<dd><p>Port object (See CIP Volume 1, clause 3-7).</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="icspacket.proto.cip.const.CommonService">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">icspacket.proto.cip.const.</span></span><span class="sig-name descname"><span class="pre">CommonService</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">values</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/icspacket/proto/cip/const.html#CommonService"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.cip.const.CommonService" title="Link to this definition">#</a></dt>
+<dd><p>Common service codes (See CIP Volume 1, clause A-3 - CIP Common
+Services), plus the Connection Manager object’s own service codes (See
+CIP Volume 1, clause 3-5.5).</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="icspacket.proto.cip.const.GeneralStatus">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">icspacket.proto.cip.const.</span></span><span class="sig-name descname"><span class="pre">GeneralStatus</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">values</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/icspacket/proto/cip/const.html#GeneralStatus"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.cip.const.GeneralStatus" title="Link to this definition">#</a></dt>
+<dd><p>General status codes (See CIP Volume 1, clause B-1, Table B-1.1).</p>
+</dd></dl>
+
+</section>
+
+        </article><button class="back-to-top" type="button">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+  </svg>
+  <span>Back to top</span>
+</button><div class="navigation flex print:hidden"><div class="navigation-prev">
+    <a href="../api.html">
+      <i class="i-lucide chevron-left"></i>
+      <div class="page-info">
+        <span>Previous</span><div class="title">API Reference</div></div>
+    </a>
+  </div><div class="navigation-next">
+    <a href="encapsulation.html">
+      <div class="page-info">
+        <span>Next</span>
+        <div class="title">EtherNet/IP Encapsulation</div>
+      </div>
+      <i class="i-lucide chevron-right"></i>
+    </a>
+  </div></div></div>
+    </div>
+  </main>
+</div>
+<footer class="sy-foot">
+  <div class="sy-foot-inner sy-container mx-auto">
+    <div class="sy-foot-reserved md:flex justify-between items-center">
+      <div class="sy-foot-copyright"><p>2025, MatrixEditor</p>
+  
+  <p>
+    Made with
+    
+    <a href="https://www.sphinx-doc.org/">Sphinx</a> and
+    
+    <a href="https://shibuya.lepture.com">Shibuya theme</a>.
+  </p>
+</div>
+      <div class="sy-foot-socials">
+  <a href="https://github.com/MatrixEditor/icspacket" aria-label="GitHub">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </a></div>
+    </div>
+  </div>
+</footer>
+      <script src="../../../_static/documentation_options.js?v=5dc6420e"></script>
+      <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+      <script src="../../../_static/shibuya.js?v=50760d75"></script></body>
+</html>

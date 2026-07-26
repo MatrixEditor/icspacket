@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="en" data-accent-color="lime" data-content_root="../../../">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Network Objects - icspacket 0.1.dev1+g198be51b5 documentation</title><link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" /><link rel="next" title="I/O and Parameter Objects" href="objects_io.html" /><link rel="prev" title="Core Objects" href="objects_core.html" />
+      <link rel="canonical" href="https://matrixeditor.github.io/icspacket/protocols/cip/api/objects_network.html" /><script>
+    function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
+    setColorMode(localStorage._theme||"dark");
+  </script><link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=e1a1ceaf" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/shibuya.css?v=2ceb65ce" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link media="print" rel="stylesheet" type="text/css" href="../../../_static/print.css?v=20ff2c19" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --sy-f-text: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+  --sy-f-heading: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+}
+</style>
+    
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://matrixeditor.github.io/icspacket/protocols/cip/api/objects_network.html"/>
+  <meta property="og:title" content="Network Objects"/>
+    <meta name="twitter:card" content="summary"/>
+  </head>
+<body><div class="sy-head">
+  <div class="sy-head-blur"></div>
+  <div class="sy-head-inner sy-container mx-auto">
+    <a class="sy-head-brand" href="../../../index.html">
+      
+      
+      <strong>icspacket</strong>
+    </a>
+    <div class="sy-head-nav" id="head-nav">
+      <nav class="sy-head-links"><ul>
+      <li class="link"><a class="js-menu" href="../../../getting-started/protocols.html" id="nav-trigger-1" aria-controls="nav-children-1">
+            <span>Examples</span>
+            <i class="i-lucide chevron-down"></i>
+          </a>
+        <ul id="nav-children-1" aria-labelledby="nav-trigger-1"><li><a href="../../mms/examples.html">
+                <span>MMS Utilities</span>
+                <small>Manufacturing Message Specification tools</small>
+              </a></li><li><a href="../../dnp3/examples.html">
+                <span>DNP3 Tools</span>
+                <small>DNP3 utilities and tools</small>
+              </a></li><li><a href="../../iec61850/iedmap.html">
+                <span>IED Enumeration Tool</span>
+                <small>Logical Device enumeration and more</small>
+              </a></li><li><a href="../examples.html">
+                <span>CIP / EtherNet-IP Tools</span>
+                <small>EtherNet/IP discovery, explicit messaging and I/O tools</small>
+              </a></li><li><a href="../../iec104/examples.html">
+                <span>IEC 60870-5-104 Tools</span>
+                <small>IEC 60870-5-104 interrogation and read tools</small>
+              </a></li></ul>
+      </li><li class="link"><a href="../../../changelog.html">Changelog</a></li></ul></nav>
+      <div class="sy-head-extra flex items-center print:hidden"><form class="searchbox flex items-center" action="../../../search.html" method="get">
+  <input type="text" name="q" placeholder="Search" />
+  <kbd>/</kbd>
+</form><div class="sy-head-socials">
+  <a href="https://github.com/MatrixEditor/icspacket" aria-label="GitHub">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </a></div></div>
+    </div>
+    <div class="sy-head-actions flex items-center shrink-0 print:hidden"><button class="js-theme theme-switch flex items-center"
+data-aria-auto="Switch to light color mode"
+data-aria-light="Switch to dark color mode"
+data-aria-dark="Switch to auto color mode">
+<i class="i-lucide theme-icon"></i>
+</button><button class="md:hidden flex items-center js-menu" aria-label="Menu" type="button" aria-controls="head-nav" aria-expanded="false">
+        <div class="hamburger">
+          <span class="hamburger_1"></span>
+          <span class="hamburger_2"></span>
+          <span class="hamburger_3"></span>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>
+<div class="sy-page sy-container flex mx-auto">
+  <aside id="lside" class="sy-lside md:w-72 md:shrink-0 print:hidden">
+    <div class="sy-lside-inner md:sticky">
+      <div class="sy-scrollbar p-6"><div class="sidebar-links">
+  <ul>
+    <li><a class="icon-link" href="https://github.com/MatrixEditor/icspacket/discussions">
+  <span class="icon">
+    <svg viewBox="0 0 24 24" fill="none">
+      <path fill="var(--accent-9)" fill-rule="evenodd" clip-rule="evenodd" d="M11 5a6 6 0 0 0-4.687 9.746c.215.27.315.62.231.954l-.514 2.058a1 1 0 0 0 1.485 1.1l2.848-1.71c.174-.104.374-.15.576-.148H13a6 6 0 0 0 0-12h-2Z"/>
+      <circle fill="white" cx="12" cy="11" r="1"/>
+      <circle fill="white" cx="9" cy="11" r="1"/>
+      <circle fill="white" cx="15" cy="11" r="1"/>
+    </svg>
+  </span>
+  <span class="text">Discussion</span>
+</a></li>
+  </ul>
+</div>
+        <div class="globaltoc" data-expand-depth="1"><p class="caption" role="heading" aria-level="3"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../getting-started/installation.html">Installation</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../getting-started/protocols.html">Protocols Overview</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../getting-started/coreapi.html">Core API Reference</a></li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">DNP3 / IEEE 1815</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../dnp3/dnp3read.html">Reading Objects</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../dnp3/dnp3dump.html">Dumping Objects</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../dnp3/dnp3resolve.html">Resolve Link Addresses</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../dnp3/api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../dnp3/api/link.html">Link Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dnp3/api/transport.html">Transport Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dnp3/api/application.html">Application Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dnp3/api/master.html">Master</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dnp3/api/object_library.html">Object Library</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../dnp3/api/primitives.html">Primitive Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../dnp3/api/coding.html">Encoding / Decoding</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../dnp3/api/variations.html">Variations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../dnp3/api/coding_utils.html">Object Utilities</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">IEC 61850</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../iec61850/iedmap.html">Enumerating IEDs</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../iec61850/iedctrl.html">Operating on IEDs</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../iec61850/api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../iec61850/api_data_classes.html">Data Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../iec61850/api_path.html">Object / Data References</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../iec61850/api_control.html">Control / Operation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../iec61850/api_client.html">IED Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../iec61850/api_goose.html">GOOSE Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../iec61850/api_sv.html">SampledValues Client</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">MMS / ISO 9506</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../mms/demo_vars.html">Variable Target Format</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../mms/demo_vars.html#variableaccess-service-rwq">VariableAccess Service (rwq)</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../mms/demo_files.html">FileManagement Service</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../mms/api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../mms/api_conn.html">MMS Connection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../mms/api_data.html">Data Conversion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../mms/api_utils.html">Protocol Utilities</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">IEC 60870-5-104</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../iec104/iec104read.html">Reading Data via Interrogation</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../iec104/api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../iec104/api/apci.html">APCI - Framing Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../iec104/api/asdu.html">ASDU - Application Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../iec104/api/master.html">Master (Client)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../iec104/api/objects.html">Information Object Library</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">CIP / EtherNet-IP</span></p>
+<ul class="current">
+<li class="toctree-l1 _expand"><a class="reference internal" href="../cipclient.html">Operating via CIP / EtherNet-IP</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../api.html">API Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="connection.html">Connection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="encapsulation.html">EtherNet/IP Encapsulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="messaging.html">Messaging</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="objects.html">Object Library</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="objects_core.html">Core Objects</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Network Objects</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects_io.html">I/O and Parameter Objects</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects_motion.html">Motion, Drive, and Semiconductor Objects</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects_switch.html">Switch Management Objects</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects_diagnostics.html">Diagnostics Objects</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">ACSE / X.227</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../acse/api.html">API Reference</a></li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">COPP / X.226 / ISO 8823</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../copp/api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../copp/presentation.html">ISO Presentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../copp/utils.html">Protocol Utilities</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">COSP / X.225 / ISO 8237-1</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../cosp/api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../cosp/tsdu.html">TSDU</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cosp/spdu.html">SPDU Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cosp/values.html">Parameter Values (PV)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cosp/session.html">ISO Session</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cosp/utils.html">Protocol Utilities</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">COTP / X.224</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../cotp/api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../cotp/structs.html">TPDU Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cotp/connection.html">Connection</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">TPKT Protocol (RFC1006)</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../tpkt/usage.html">Using a TPKT Wrapper</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../tpkt/api.html">API Reference</a></li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../changelog.html">Changelog</a></li>
+</ul>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="lside-overlay js-menu" role="button" aria-label="Close left sidebar" aria-controls="lside" aria-expanded="false"></div>
+  <aside id="rside" class="sy-rside pb-3 w-64 shrink-0 order-last">
+    <button class="rside-close js-menu xl:hidden" aria-label="Close Table of Contents" type="button" aria-controls="rside" aria-expanded="false">
+      <i class="i-lucide close"></i>
+    </button>
+    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div class="localtoc"><h3>On this page</h3><ul>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.tcpip.InterfaceConfiguration"><code class="docutils literal notranslate"><span class="pre">InterfaceConfiguration</span></code></a><ul>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.tcpip.InterfaceConfiguration.ip_address"><code class="docutils literal notranslate"><span class="pre">InterfaceConfiguration.ip_address</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.tcpip.InterfaceConfiguration.network_mask"><code class="docutils literal notranslate"><span class="pre">InterfaceConfiguration.network_mask</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.tcpip.InterfaceConfiguration.gateway"><code class="docutils literal notranslate"><span class="pre">InterfaceConfiguration.gateway</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.tcpip.InterfaceConfiguration.name_server"><code class="docutils literal notranslate"><span class="pre">InterfaceConfiguration.name_server</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.tcpip.InterfaceConfiguration.name_server_2"><code class="docutils literal notranslate"><span class="pre">InterfaceConfiguration.name_server_2</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.tcpip.InterfaceConfiguration.domain_name"><code class="docutils literal notranslate"><span class="pre">InterfaceConfiguration.domain_name</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.tcpip.TCPIPAttributes"><code class="docutils literal notranslate"><span class="pre">TCPIPAttributes</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.tcpip.TCPIPInterfaceObject"><code class="docutils literal notranslate"><span class="pre">TCPIPInterfaceObject</span></code></a><ul>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.tcpip.TCPIPInterfaceObject.status"><code class="docutils literal notranslate"><span class="pre">TCPIPInterfaceObject.status</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.tcpip.TCPIPInterfaceObject.configuration_capability"><code class="docutils literal notranslate"><span class="pre">TCPIPInterfaceObject.configuration_capability</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.tcpip.TCPIPInterfaceObject.configuration_control"><code class="docutils literal notranslate"><span class="pre">TCPIPInterfaceObject.configuration_control</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.tcpip.TCPIPInterfaceObject.physical_link_object"><code class="docutils literal notranslate"><span class="pre">TCPIPInterfaceObject.physical_link_object</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.tcpip.TCPIPInterfaceObject.interface_configuration"><code class="docutils literal notranslate"><span class="pre">TCPIPInterfaceObject.interface_configuration</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.tcpip.TCPIPInterfaceObject.host_name"><code class="docutils literal notranslate"><span class="pre">TCPIPInterfaceObject.host_name</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.tcpip.TCPIPInterfaceObject.get_attributes"><code class="docutils literal notranslate"><span class="pre">TCPIPInterfaceObject.get_attributes()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.ethlink.EthernetLinkAttributes"><code class="docutils literal notranslate"><span class="pre">EthernetLinkAttributes</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.ethlink.EthernetLinkObject"><code class="docutils literal notranslate"><span class="pre">EthernetLinkObject</span></code></a><ul>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.ethlink.EthernetLinkObject.interface_speed"><code class="docutils literal notranslate"><span class="pre">EthernetLinkObject.interface_speed</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.ethlink.EthernetLinkObject.interface_flags"><code class="docutils literal notranslate"><span class="pre">EthernetLinkObject.interface_flags</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.ethlink.EthernetLinkObject.physical_address"><code class="docutils literal notranslate"><span class="pre">EthernetLinkObject.physical_address</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.ethlink.EthernetLinkObject.interface_counters"><code class="docutils literal notranslate"><span class="pre">EthernetLinkObject.interface_counters</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.ethlink.EthernetLinkObject.media_counters"><code class="docutils literal notranslate"><span class="pre">EthernetLinkObject.media_counters</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.ethlink.EthernetLinkObject.interface_control"><code class="docutils literal notranslate"><span class="pre">EthernetLinkObject.interface_control</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.ethlink.EthernetLinkObject.interface_type"><code class="docutils literal notranslate"><span class="pre">EthernetLinkObject.interface_type</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.ethlink.EthernetLinkObject.interface_state"><code class="docutils literal notranslate"><span class="pre">EthernetLinkObject.interface_state</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.ethlink.EthernetLinkObject.administrative_state"><code class="docutils literal notranslate"><span class="pre">EthernetLinkObject.administrative_state</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.ethlink.EthernetLinkObject.interface_label"><code class="docutils literal notranslate"><span class="pre">EthernetLinkObject.interface_label</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.ethlink.EthernetLinkObject.get_attributes"><code class="docutils literal notranslate"><span class="pre">EthernetLinkObject.get_attributes()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.timesync.ClockInfo"><code class="docutils literal notranslate"><span class="pre">ClockInfo</span></code></a><ul>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.timesync.ClockInfo.identifier"><code class="docutils literal notranslate"><span class="pre">ClockInfo.identifier</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.timesync.ClockInfo.communication_technology"><code class="docutils literal notranslate"><span class="pre">ClockInfo.communication_technology</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.timesync.ClockInfo.uuid"><code class="docutils literal notranslate"><span class="pre">ClockInfo.uuid</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.timesync.ParentClockInfo"><code class="docutils literal notranslate"><span class="pre">ParentClockInfo</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.timesync.TimeSyncObject"><code class="docutils literal notranslate"><span class="pre">TimeSyncObject</span></code></a><ul>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.timesync.TimeSyncObject.enable_ptp"><code class="docutils literal notranslate"><span class="pre">TimeSyncObject.enable_ptp</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.timesync.TimeSyncObject.is_synchronized"><code class="docutils literal notranslate"><span class="pre">TimeSyncObject.is_synchronized</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.timesync.TimeSyncObject.current_time_microseconds"><code class="docutils literal notranslate"><span class="pre">TimeSyncObject.current_time_microseconds</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.timesync.TimeSyncObject.current_time_nanoseconds"><code class="docutils literal notranslate"><span class="pre">TimeSyncObject.current_time_nanoseconds</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.timesync.TimeSyncObject.offset_to_master"><code class="docutils literal notranslate"><span class="pre">TimeSyncObject.offset_to_master</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.timesync.TimeSyncObject.max_offset_to_master"><code class="docutils literal notranslate"><span class="pre">TimeSyncObject.max_offset_to_master</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.timesync.TimeSyncObject.delay_to_master"><code class="docutils literal notranslate"><span class="pre">TimeSyncObject.delay_to_master</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.timesync.TimeSyncObject.grandmaster_clock_info"><code class="docutils literal notranslate"><span class="pre">TimeSyncObject.grandmaster_clock_info</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.timesync.TimeSyncObject.parent_clock_info"><code class="docutils literal notranslate"><span class="pre">TimeSyncObject.parent_clock_info</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.timesync.TimeSyncObject.local_clock_info"><code class="docutils literal notranslate"><span class="pre">TimeSyncObject.local_clock_info</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.timesync.TimeSyncObject.number_of_ports"><code class="docutils literal notranslate"><span class="pre">TimeSyncObject.number_of_ports</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.timesync.TimeSyncObject.port_state"><code class="docutils literal notranslate"><span class="pre">TimeSyncObject.port_state</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.timesync.TimeSyncObject.port_enable"><code class="docutils literal notranslate"><span class="pre">TimeSyncObject.port_enable</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.timesync.TimeSyncObject.port_burst_enable"><code class="docutils literal notranslate"><span class="pre">TimeSyncObject.port_burst_enable</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.timesync.TimeSyncObject.sync_interval"><code class="docutils literal notranslate"><span class="pre">TimeSyncObject.sync_interval</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.timesync.TimeSyncObject.preferred_master"><code class="docutils literal notranslate"><span class="pre">TimeSyncObject.preferred_master</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.timesync.TimeSyncObject.subdomain"><code class="docutils literal notranslate"><span class="pre">TimeSyncObject.subdomain</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.timesync.TimeSyncObject.clock_mode"><code class="docutils literal notranslate"><span class="pre">TimeSyncObject.clock_mode</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.timesync.TimeSyncObject.steps_removed"><code class="docutils literal notranslate"><span class="pre">TimeSyncObject.steps_removed</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.timesync.TimeSyncObject.system_time_offset"><code class="docutils literal notranslate"><span class="pre">TimeSyncObject.system_time_offset</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.timesync.TimeSyncObject.initialize"><code class="docutils literal notranslate"><span class="pre">TimeSyncObject.initialize()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.timesync.TimeSyncObject.management_message"><code class="docutils literal notranslate"><span class="pre">TimeSyncObject.management_message()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</div><a class="js-repo-stats repo-stats flex items-center" href="https://github.com/MatrixEditor/icspacket"
+  data-type="github" data-user="MatrixEditor" data-repo="icspacket">
+  <span class="w-8 flex items-center justify-around shrink-0 text-3xl">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </span>
+  <span class="flex-grow px-2 break-all">
+    <span style="font-size: small;">MatrixEditor/icspacket</span>
+    <span class="flex text-sm repo-stats-count">
+      <span class="flex items-center pr-3">
+        <iconify-icon icon="lucide:star"></iconify-icon>
+        <strong class="js-repo-stars ml-1">0</strong>
+      </span>
+      <span class="flex items-center">
+        <iconify-icon icon="lucide:git-fork"></iconify-icon>
+        <strong class="js-repo-forks ml-1">0</strong>
+      </span>
+    </span>
+  </span>
+</a><div class="edit-this-page">
+  <a href="https://github.com/MatrixEditor/icspacket/blob/main/docs/protocols/cip/api/objects_network.rst">Edit this page</a>
+</div></div>
+  </aside>
+  <div class="rside-overlay js-menu" role="button" aria-label="Close Table of Contents" aria-controls="rside" aria-expanded="false"></div>
+  <main class="sy-main w-full max-sm:max-w-full print:pt-6">
+<div class="sy-breadcrumbs" role="navigation">
+  <div class="sy-breadcrumbs-inner flex items-center">
+    <div class="md:hidden mr-3">
+      <button class="js-menu" aria-label="Menu" type="button" aria-controls="lside" aria-expanded="false">
+        <i class="i-lucide menu"></i>
+      </button>
+    </div>
+    <ol class="flex-1" itemscope itemtype="https://schema.org/BreadcrumbList"><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="../../../index.html"><span itemprop="name">icspacket</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="1" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="../api.html"><span itemprop="name">API Reference</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="2" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="objects.html"><span itemprop="name">Object Library</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="3" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <strong itemprop="name">Network Objects</strong>
+        <meta itemprop="position" content="4" />
+      </li></ol>
+    <div class="xl:hidden ml-1">
+      <button class="js-menu" aria-label="Show table of contents" type="button" aria-controls="rside"
+        aria-expanded="false">
+        <i class="i-lucide outdent"></i>
+      </button>
+    </div>
+  </div>
+</div><div class="flex flex-col break-words justify-between">
+      <div class="relative min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
+  <div class="copy-page-wrapper relative pb-4 lg:absolute lg:top-8 lg:right-6 xl:right-12">
+  <div id="copy-page-trigger">
+    <button
+      type="button"
+      class="js-copy px-3 py-1 inline-flex items-center gap-1"
+      data-url="https://raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/protocols/cip/api/objects_network.rst"
+    >
+      <i class="i-lucide" data-icon="copy"></i>
+      <span>Copy page</span>
+    </button>
+    <button class="js-menu px-2 py-1" type="button" aria-label="More actions"
+      aria-haspopup="menu" aria-expanded="false" aria-controls="copy-page-content">
+      <i class="i-lucide chevron-down"></i>
+    </button>
+  </div>
+  <div id="copy-page-content" role="menu" aria-orientation="vertical" aria-hidden="true">
+    <div role="presentation">
+      <div class="flex flex-col" role="group">
+        <button class="js-copy" type="button" role="menuitem"
+          data-url="https://raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/protocols/cip/api/objects_network.rst">
+          <span class="iconify-icon">
+            <i class="i-lucide" data-icon="copy"></i>
+          </span>
+          <span>Copy page</span>
+        </button>
+        <a role="menuitem" href="https://raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/protocols/cip/api/objects_network.rst" target="_blank" rel="nofollow"><iconify-icon icon="bi:code-slash"></iconify-icon>
+            <span>View Source</span></a><a role="menuitem" href="https://chatgpt.com/?hints=search&q=Read%20https%3A//raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/protocols/cip/api/objects_network.rst%20so%20I%20can%20ask%20questions%20about%20it." target="_blank" rel="nofollow">
+          <iconify-icon icon="bi:openai"></iconify-icon>
+          <span>Open in ChatGPT</span>
+        </a><a role="menuitem" href="https://claude.ai/new?q=Read%20https%3A//raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/protocols/cip/api/objects_network.rst%20so%20I%20can%20ask%20questions%20about%20it." target="_blank" rel="nofollow">
+          <iconify-icon icon="bi:claude"></iconify-icon>
+          <span>Open in Claude</span>
+        </a></div>
+    </div>
+  </div>
+</div><article class="yue" role="main">
+          <section id="network-objects">
+<span id="api-cip-objects-network"></span><h1>Network Objects<a class="headerlink" href="#network-objects" title="Link to this heading">#</a></h1>
+<p>TCP/IP Interface, Ethernet Link, and Time Sync objects.</p>
+<p id="module-icspacket.proto.cip.objects.tcpip">[ODVA CIP Vol 2] Wrapper for the CIP TCP/IP Interface Object (class 0xF5).</p>
+<p>Instance attributes and the Get_Attributes_All reply layout are defined
+according to §5-4.3.2 and §5-4.4.2 (Tables 5-4.8 and 5-4.13).</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.tcpip.InterfaceConfiguration">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">icspacket.proto.cip.objects.tcpip.</span></span><span class="sig-name descname"><span class="pre">InterfaceConfiguration</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ip_address</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">network_mask</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gateway</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name_server</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name_server_2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">domain_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/icspacket/proto/cip/objects/tcpip.html#InterfaceConfiguration"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.cip.objects.tcpip.InterfaceConfiguration" title="Link to this definition">#</a></dt>
+<dd><p>TCP/IP Interface Object Attribute 5, Interface Configuration.</p>
+<p>(See CIP Vol 2, §5-4.3.2.5, Table 5-4.8)</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.tcpip.InterfaceConfiguration.ip_address">
+<span class="sig-name descname"><span class="pre">ip_address</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><a class="headerlink" href="#icspacket.proto.cip.objects.tcpip.InterfaceConfiguration.ip_address" title="Link to this definition">#</a></dt>
+<dd><p>This device’s own IPv4 address.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.tcpip.InterfaceConfiguration.network_mask">
+<span class="sig-name descname"><span class="pre">network_mask</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><a class="headerlink" href="#icspacket.proto.cip.objects.tcpip.InterfaceConfiguration.network_mask" title="Link to this definition">#</a></dt>
+<dd><p>This device’s IPv4 network mask.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.tcpip.InterfaceConfiguration.gateway">
+<span class="sig-name descname"><span class="pre">gateway</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><a class="headerlink" href="#icspacket.proto.cip.objects.tcpip.InterfaceConfiguration.gateway" title="Link to this definition">#</a></dt>
+<dd><p>Address of this device’s default gateway – the router it hands off
+traffic to for destinations outside the local subnet.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.tcpip.InterfaceConfiguration.name_server">
+<span class="sig-name descname"><span class="pre">name_server</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><a class="headerlink" href="#icspacket.proto.cip.objects.tcpip.InterfaceConfiguration.name_server" title="Link to this definition">#</a></dt>
+<dd><p>Address of the primary name server this device is configured to
+query.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.tcpip.InterfaceConfiguration.name_server_2">
+<span class="sig-name descname"><span class="pre">name_server_2</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><a class="headerlink" href="#icspacket.proto.cip.objects.tcpip.InterfaceConfiguration.name_server_2" title="Link to this definition">#</a></dt>
+<dd><p>Address of the secondary name server this device is configured to
+query.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.tcpip.InterfaceConfiguration.domain_name">
+<span class="sig-name descname"><span class="pre">domain_name</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><a class="headerlink" href="#icspacket.proto.cip.objects.tcpip.InterfaceConfiguration.domain_name" title="Link to this definition">#</a></dt>
+<dd><p>Default domain name configured on this device.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.tcpip.TCPIPAttributes">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">icspacket.proto.cip.objects.tcpip.</span></span><span class="sig-name descname"><span class="pre">TCPIPAttributes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">status</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">configuration_capability</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">configuration_control</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">physical_link_object</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="messaging.html#icspacket.proto.cip.epath.EPATH" title="icspacket.proto.cip.epath.EPATH"><span class="pre">EPATH</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">interface_configuration</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#icspacket.proto.cip.objects.tcpip.InterfaceConfiguration" title="icspacket.proto.cip.objects.tcpip.InterfaceConfiguration"><span class="pre">InterfaceConfiguration</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">host_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extra</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bytes</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">b''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/icspacket/proto/cip/objects/tcpip.html#TCPIPAttributes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.cip.objects.tcpip.TCPIPAttributes" title="Link to this definition">#</a></dt>
+<dd><p>Instance-level Get_Attributes_All reply (See CIP Vol 2, §5-4.4.2, Table
+5-4.13).</p>
+<p>Trailing attributes beyond <code class="docutils literal notranslate"><span class="pre">host_name</span></code> (Safety Network Number,
+TTL, Mcast Config, ACD status, QuickConnect, Encapsulation
+Inactivity Timeout) are vendor/implementation dependent and are
+exposed verbatim via <code class="docutils literal notranslate"><span class="pre">extra</span></code> rather than individually decoded.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.tcpip.TCPIPInterfaceObject">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">icspacket.proto.cip.objects.tcpip.</span></span><span class="sig-name descname"><span class="pre">TCPIPInterfaceObject</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">connection</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="connection.html#icspacket.proto.cip.connection.CIP_Connection" title="icspacket.proto.cip.connection.CIP_Connection"><span class="pre">CIP_Connection</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">instance</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/icspacket/proto/cip/objects/tcpip.html#TCPIPInterfaceObject"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.cip.objects.tcpip.TCPIPInterfaceObject" title="Link to this definition">#</a></dt>
+<dd><p>Typed access to TCP/IP Interface attributes (See CIP Vol 2, §5-4.3.2,
+Table 5-4.3).</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.tcpip.TCPIPInterfaceObject.status">
+<span class="sig-name descname"><span class="pre">status</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.tcpip.TCPIPInterfaceObject.status" title="Link to this definition">#</a></dt>
+<dd><p>Interface status (attribute 1).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.tcpip.TCPIPInterfaceObject.configuration_capability">
+<span class="sig-name descname"><span class="pre">configuration_capability</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.tcpip.TCPIPInterfaceObject.configuration_capability" title="Link to this definition">#</a></dt>
+<dd><p>Configuration capability flags (attribute 2).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.tcpip.TCPIPInterfaceObject.configuration_control">
+<span class="sig-name descname"><span class="pre">configuration_control</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.tcpip.TCPIPInterfaceObject.configuration_control" title="Link to this definition">#</a></dt>
+<dd><p>Configuration control flags (attribute 3).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.tcpip.TCPIPInterfaceObject.physical_link_object">
+<span class="sig-name descname"><span class="pre">physical_link_object</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="messaging.html#icspacket.proto.cip.epath.EPATH" title="icspacket.proto.cip.epath.EPATH"><span class="pre">EPATH</span></a><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.tcpip.TCPIPInterfaceObject.physical_link_object" title="Link to this definition">#</a></dt>
+<dd><p>Physical Link Object path (attribute 4).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.tcpip.TCPIPInterfaceObject.interface_configuration">
+<span class="sig-name descname"><span class="pre">interface_configuration</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#icspacket.proto.cip.objects.tcpip.InterfaceConfiguration" title="icspacket.proto.cip.objects.tcpip.InterfaceConfiguration"><span class="pre">InterfaceConfiguration</span></a><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.tcpip.TCPIPInterfaceObject.interface_configuration" title="Link to this definition">#</a></dt>
+<dd><p>Interface Configuration structure (attribute 5).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.tcpip.TCPIPInterfaceObject.host_name">
+<span class="sig-name descname"><span class="pre">host_name</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.tcpip.TCPIPInterfaceObject.host_name" title="Link to this definition">#</a></dt>
+<dd><p>Host Name string (attribute 6).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.tcpip.TCPIPInterfaceObject.get_attributes">
+<span class="sig-name descname"><span class="pre">get_attributes</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#icspacket.proto.cip.objects.tcpip.TCPIPAttributes" title="icspacket.proto.cip.objects.tcpip.TCPIPAttributes"><span class="pre">TCPIPAttributes</span></a></span></span><a class="reference internal" href="../../../_modules/icspacket/proto/cip/objects/tcpip.html#TCPIPInterfaceObject.get_attributes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.cip.objects.tcpip.TCPIPInterfaceObject.get_attributes" title="Link to this definition">#</a></dt>
+<dd><p>Read and decode Get_Attributes_All for TCP/IP Interface.</p>
+</dd></dl>
+
+</dd></dl>
+
+<p id="module-icspacket.proto.cip.objects.ethlink">[ODVA CIP Vol 2] Wrapper for the CIP Ethernet Link Object (class 0xF6).</p>
+<p>Instance attributes and counter block layouts are defined according to
+§5-5.3.2 (Table 5-5.3) and §5-5.3.2.4/.5.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.ethlink.EthernetLinkAttributes">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">icspacket.proto.cip.objects.ethlink.</span></span><span class="sig-name descname"><span class="pre">EthernetLinkAttributes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">interface_speed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interface_flags</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">physical_address</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bytes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interface_counters</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">media_counters</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extra</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bytes</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">b''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/icspacket/proto/cip/objects/ethlink.html#EthernetLinkAttributes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.cip.objects.ethlink.EthernetLinkAttributes" title="Link to this definition">#</a></dt>
+<dd><p>Instance-level Get_Attributes_All reply (See CIP Vol 2, §5-5.3.2, Table
+5-5.3).</p>
+<p>Attributes 6-11 (Interface Control, Interface Type, Interface State,
+Admin State, Interface Label, Interface Capability) are optional/
+conditional and variably sized; they are exposed verbatim via
+<code class="docutils literal notranslate"><span class="pre">extra</span></code> rather than individually decoded.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.ethlink.EthernetLinkObject">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">icspacket.proto.cip.objects.ethlink.</span></span><span class="sig-name descname"><span class="pre">EthernetLinkObject</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">connection</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="connection.html#icspacket.proto.cip.connection.CIP_Connection" title="icspacket.proto.cip.connection.CIP_Connection"><span class="pre">CIP_Connection</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">instance</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/icspacket/proto/cip/objects/ethlink.html#EthernetLinkObject"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.cip.objects.ethlink.EthernetLinkObject" title="Link to this definition">#</a></dt>
+<dd><p>Typed access to Ethernet Link attributes (See CIP Vol 2, §5-5.3.2, Table
+5-5.3).</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.ethlink.EthernetLinkObject.interface_speed">
+<span class="sig-name descname"><span class="pre">interface_speed</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.ethlink.EthernetLinkObject.interface_speed" title="Link to this definition">#</a></dt>
+<dd><p>Interface speed in Mbps (attribute 1).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.ethlink.EthernetLinkObject.interface_flags">
+<span class="sig-name descname"><span class="pre">interface_flags</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.ethlink.EthernetLinkObject.interface_flags" title="Link to this definition">#</a></dt>
+<dd><p>Interface flags (attribute 2).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.ethlink.EthernetLinkObject.physical_address">
+<span class="sig-name descname"><span class="pre">physical_address</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">bytes</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.ethlink.EthernetLinkObject.physical_address" title="Link to this definition">#</a></dt>
+<dd><p>Physical MAC address (attribute 3).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.ethlink.EthernetLinkObject.interface_counters">
+<span class="sig-name descname"><span class="pre">interface_counters</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">Collection</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.ethlink.EthernetLinkObject.interface_counters" title="Link to this definition">#</a></dt>
+<dd><p>Interface counters block (attribute 4).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.ethlink.EthernetLinkObject.media_counters">
+<span class="sig-name descname"><span class="pre">media_counters</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">Collection</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.ethlink.EthernetLinkObject.media_counters" title="Link to this definition">#</a></dt>
+<dd><p>Media counters block (attribute 5).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.ethlink.EthernetLinkObject.interface_control">
+<span class="sig-name descname"><span class="pre">interface_control</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">bytes</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.ethlink.EthernetLinkObject.interface_control" title="Link to this definition">#</a></dt>
+<dd><p>Interface control bytes (attribute 6).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.ethlink.EthernetLinkObject.interface_type">
+<span class="sig-name descname"><span class="pre">interface_type</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.ethlink.EthernetLinkObject.interface_type" title="Link to this definition">#</a></dt>
+<dd><p>Interface type (attribute 7).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.ethlink.EthernetLinkObject.interface_state">
+<span class="sig-name descname"><span class="pre">interface_state</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.ethlink.EthernetLinkObject.interface_state" title="Link to this definition">#</a></dt>
+<dd><p>Interface state (attribute 8).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.ethlink.EthernetLinkObject.administrative_state">
+<span class="sig-name descname"><span class="pre">administrative_state</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.ethlink.EthernetLinkObject.administrative_state" title="Link to this definition">#</a></dt>
+<dd><p>Administrative state (attribute 9).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.ethlink.EthernetLinkObject.interface_label">
+<span class="sig-name descname"><span class="pre">interface_label</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.ethlink.EthernetLinkObject.interface_label" title="Link to this definition">#</a></dt>
+<dd><p>Human-readable interface label (attribute 10).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.ethlink.EthernetLinkObject.get_attributes">
+<span class="sig-name descname"><span class="pre">get_attributes</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#icspacket.proto.cip.objects.ethlink.EthernetLinkAttributes" title="icspacket.proto.cip.objects.ethlink.EthernetLinkAttributes"><span class="pre">EthernetLinkAttributes</span></a></span></span><a class="reference internal" href="../../../_modules/icspacket/proto/cip/objects/ethlink.html#EthernetLinkObject.get_attributes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.cip.objects.ethlink.EthernetLinkObject.get_attributes" title="Link to this definition">#</a></dt>
+<dd><p>Read and decode Get_Attributes_All for Ethernet Link.</p>
+</dd></dl>
+
+</dd></dl>
+
+<p id="module-icspacket.proto.cip.objects.timesync">[ODVA CIP Vol 1] Wrapper for the Time Sync Object (class 0x43, §5-47).</p>
+<p>Provides a CIP interface to the IEEE 1588 (PTP) clock of a CIP Sync
+capable device: clock synchronization status, offsets, and
+Grandmaster/Parent/Local clock property structs.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.timesync.ClockInfo">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">icspacket.proto.cip.objects.timesync.</span></span><span class="sig-name descname"><span class="pre">ClockInfo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">identifier</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bytes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stratum</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">variance</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">communication_technology</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">port_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">uuid</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bytes</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/icspacket/proto/cip/objects/timesync.html#ClockInfo"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.cip.objects.timesync.ClockInfo" title="Link to this definition">#</a></dt>
+<dd><p>Grandmaster/Local Clock Info payload shape (attributes 8 and 10, See
+§5-47.13.1.8/.10).</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.timesync.ClockInfo.identifier">
+<span class="sig-name descname"><span class="pre">identifier</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bytes</span></span><a class="headerlink" href="#icspacket.proto.cip.objects.timesync.ClockInfo.identifier" title="Link to this definition">#</a></dt>
+<dd><p>4-character clock identifier (e.g. <code class="docutils literal notranslate"><span class="pre">b&quot;DFLT&quot;</span></code>).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.timesync.ClockInfo.communication_technology">
+<span class="sig-name descname"><span class="pre">communication_technology</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><a class="headerlink" href="#icspacket.proto.cip.objects.timesync.ClockInfo.communication_technology" title="Link to this definition">#</a></dt>
+<dd><p>Clock communication technology specifier (See Table 5-47.5).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.timesync.ClockInfo.uuid">
+<span class="sig-name descname"><span class="pre">uuid</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bytes</span></span><a class="headerlink" href="#icspacket.proto.cip.objects.timesync.ClockInfo.uuid" title="Link to this definition">#</a></dt>
+<dd><p>CommunicationTechnology + UUID + PortID make up the clock’s UUID (See
+Table 5-47.6).</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.timesync.ParentClockInfo">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">icspacket.proto.cip.objects.timesync.</span></span><span class="sig-name descname"><span class="pre">ParentClockInfo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">reserved</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">observed_drift</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">observed_variance</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">variance</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">communication_technology</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">port_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">uuid</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bytes</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/icspacket/proto/cip/objects/timesync.html#ParentClockInfo"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.cip.objects.timesync.ParentClockInfo" title="Link to this definition">#</a></dt>
+<dd><p>Parent Clock Info payload shape (attribute 9, See §5-47.13.1.9).</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.timesync.TimeSyncObject">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">icspacket.proto.cip.objects.timesync.</span></span><span class="sig-name descname"><span class="pre">TimeSyncObject</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">connection</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="connection.html#icspacket.proto.cip.connection.CIP_Connection" title="icspacket.proto.cip.connection.CIP_Connection"><span class="pre">CIP_Connection</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">instance</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/icspacket/proto/cip/objects/timesync.html#TimeSyncObject"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.cip.objects.timesync.TimeSyncObject" title="Link to this definition">#</a></dt>
+<dd><p>Provides a CIP interface to an IEEE 1588 (PTP) clock (See CIP Vol 1,
+§5-47).</p>
+<p>Any CIP Sync capable device provides a single instance (instance 1) of
+this object. <code class="docutils literal notranslate"><span class="pre">port_state</span></code>/<code class="docutils literal notranslate"><span class="pre">port_enable</span></code>/<code class="docutils literal notranslate"><span class="pre">port_burst_enable</span></code> are
+INT-count-prefixed SINT arrays sized by <a class="reference internal" href="#icspacket.proto.cip.objects.timesync.TimeSyncObject.number_of_ports" title="icspacket.proto.cip.objects.timesync.TimeSyncObject.number_of_ports"><code class="xref py py-attr docutils literal notranslate"><span class="pre">number_of_ports</span></code></a>, which
+caterpillar decodes directly (the count prefix lives inside the same
+attribute payload, unlike the cross-attribute-dependent fields seen in
+other objects).</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.timesync.TimeSyncObject.enable_ptp">
+<span class="sig-name descname"><span class="pre">enable_ptp</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.timesync.TimeSyncObject.enable_ptp" title="Link to this definition">#</a></dt>
+<dd><p>Enables (1) or disables (0) the Precision Time Protocol on this device
+(attribute 1).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.timesync.TimeSyncObject.is_synchronized">
+<span class="sig-name descname"><span class="pre">is_synchronized</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.timesync.TimeSyncObject.is_synchronized" title="Link to this definition">#</a></dt>
+<dd><p>1 if the local clock is synchronized with the reference clock (attribute
+2).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.timesync.TimeSyncObject.current_time_microseconds">
+<span class="sig-name descname"><span class="pre">current_time_microseconds</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.timesync.TimeSyncObject.current_time_microseconds" title="Link to this definition">#</a></dt>
+<dd><p>Current local_time in microseconds since 1970-01-01 00:00 UTC (attribute
+3).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.timesync.TimeSyncObject.current_time_nanoseconds">
+<span class="sig-name descname"><span class="pre">current_time_nanoseconds</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.timesync.TimeSyncObject.current_time_nanoseconds" title="Link to this definition">#</a></dt>
+<dd><p>Current local_time in nanoseconds since 1970-01-01 00:00 UTC (attribute
+4).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.timesync.TimeSyncObject.offset_to_master">
+<span class="sig-name descname"><span class="pre">offset_to_master</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.timesync.TimeSyncObject.offset_to_master" title="Link to this definition">#</a></dt>
+<dd><p>Deviation between the local clock and the reference clock, in
+nanoseconds (attribute 5).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.timesync.TimeSyncObject.max_offset_to_master">
+<span class="sig-name descname"><span class="pre">max_offset_to_master</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.timesync.TimeSyncObject.max_offset_to_master" title="Link to this definition">#</a></dt>
+<dd><p>Maximum offset_to_master seen since last reinitialized; settable to
+reset it (attribute 6).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.timesync.TimeSyncObject.delay_to_master">
+<span class="sig-name descname"><span class="pre">delay_to_master</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.timesync.TimeSyncObject.delay_to_master" title="Link to this definition">#</a></dt>
+<dd><p>Path delay between the local clock and master clock, in nanoseconds
+(attribute 7).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.timesync.TimeSyncObject.grandmaster_clock_info">
+<span class="sig-name descname"><span class="pre">grandmaster_clock_info</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#icspacket.proto.cip.objects.timesync.ClockInfo" title="icspacket.proto.cip.objects.timesync.ClockInfo"><span class="pre">ClockInfo</span></a><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.timesync.TimeSyncObject.grandmaster_clock_info" title="Link to this definition">#</a></dt>
+<dd><p>Property info of the Grandmaster PTP clock (attribute 8).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.timesync.TimeSyncObject.parent_clock_info">
+<span class="sig-name descname"><span class="pre">parent_clock_info</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#icspacket.proto.cip.objects.timesync.ParentClockInfo" title="icspacket.proto.cip.objects.timesync.ParentClockInfo"><span class="pre">ParentClockInfo</span></a><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.timesync.TimeSyncObject.parent_clock_info" title="Link to this definition">#</a></dt>
+<dd><p>Property info of the Parent PTP clock (attribute 9).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.timesync.TimeSyncObject.local_clock_info">
+<span class="sig-name descname"><span class="pre">local_clock_info</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#icspacket.proto.cip.objects.timesync.ClockInfo" title="icspacket.proto.cip.objects.timesync.ClockInfo"><span class="pre">ClockInfo</span></a><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.timesync.TimeSyncObject.local_clock_info" title="Link to this definition">#</a></dt>
+<dd><p>Property info of the Local PTP clock (attribute 10).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.timesync.TimeSyncObject.number_of_ports">
+<span class="sig-name descname"><span class="pre">number_of_ports</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.timesync.TimeSyncObject.number_of_ports" title="Link to this definition">#</a></dt>
+<dd><p>Number of PTP ports implemented by this clock (attribute 11).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.timesync.TimeSyncObject.port_state">
+<span class="sig-name descname"><span class="pre">port_state</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">Collection</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.timesync.TimeSyncObject.port_state" title="Link to this definition">#</a></dt>
+<dd><p>Per-port PTP state, one entry per <a class="reference internal" href="#icspacket.proto.cip.objects.timesync.TimeSyncObject.number_of_ports" title="icspacket.proto.cip.objects.timesync.TimeSyncObject.number_of_ports"><code class="xref py py-attr docutils literal notranslate"><span class="pre">number_of_ports</span></code></a> (attribute
+12).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.timesync.TimeSyncObject.port_enable">
+<span class="sig-name descname"><span class="pre">port_enable</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">Collection</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.timesync.TimeSyncObject.port_enable" title="Link to this definition">#</a></dt>
+<dd><p>Per-port enable status, one entry per <a class="reference internal" href="#icspacket.proto.cip.objects.timesync.TimeSyncObject.number_of_ports" title="icspacket.proto.cip.objects.timesync.TimeSyncObject.number_of_ports"><code class="xref py py-attr docutils literal notranslate"><span class="pre">number_of_ports</span></code></a> (attribute
+13).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.timesync.TimeSyncObject.port_burst_enable">
+<span class="sig-name descname"><span class="pre">port_burst_enable</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">Collection</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.timesync.TimeSyncObject.port_burst_enable" title="Link to this definition">#</a></dt>
+<dd><p>Per-port burst-enable status, one entry per <a class="reference internal" href="#icspacket.proto.cip.objects.timesync.TimeSyncObject.number_of_ports" title="icspacket.proto.cip.objects.timesync.TimeSyncObject.number_of_ports"><code class="xref py py-attr docutils literal notranslate"><span class="pre">number_of_ports</span></code></a>
+(attribute 14).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.timesync.TimeSyncObject.sync_interval">
+<span class="sig-name descname"><span class="pre">sync_interval</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.timesync.TimeSyncObject.sync_interval" title="Link to this definition">#</a></dt>
+<dd><p>PTP Sync message interval (attribute 15).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.timesync.TimeSyncObject.preferred_master">
+<span class="sig-name descname"><span class="pre">preferred_master</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.timesync.TimeSyncObject.preferred_master" title="Link to this definition">#</a></dt>
+<dd><p>Designates this clock as a preferred PTP master when non-zero (attribute
+16).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.timesync.TimeSyncObject.subdomain">
+<span class="sig-name descname"><span class="pre">subdomain</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">bytes</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.timesync.TimeSyncObject.subdomain" title="Link to this definition">#</a></dt>
+<dd><p>Fixed 16-byte PTP clock subdomain name (attribute 17).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.timesync.TimeSyncObject.clock_mode">
+<span class="sig-name descname"><span class="pre">clock_mode</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.timesync.TimeSyncObject.clock_mode" title="Link to this definition">#</a></dt>
+<dd><p>0=Slave Only/Ordinary, 1=Master Capable/Ordinary, 2=Master
+Capable/Boundary (attribute 18).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.timesync.TimeSyncObject.steps_removed">
+<span class="sig-name descname"><span class="pre">steps_removed</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.timesync.TimeSyncObject.steps_removed" title="Link to this definition">#</a></dt>
+<dd><p>Number of communication paths between the local clock and the
+grandmaster clock (attribute 19, optional).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.timesync.TimeSyncObject.system_time_offset">
+<span class="sig-name descname"><span class="pre">system_time_offset</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.timesync.TimeSyncObject.system_time_offset" title="Link to this definition">#</a></dt>
+<dd><p>Offset applied to the local clock under the CIP Sync offset clock model
+(attribute 20, optional).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.timesync.TimeSyncObject.initialize">
+<span class="sig-name descname"><span class="pre">initialize</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bytes</span></span></span><a class="reference internal" href="../../../_modules/icspacket/proto/cip/objects/timesync.html#TimeSyncObject.initialize"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.cip.objects.timesync.TimeSyncObject.initialize" title="Link to this definition">#</a></dt>
+<dd><p>Invoke Initialize (service 0x4B), resetting the PTP clock to its
+power-up state and re-synchronizing.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.timesync.TimeSyncObject.management_message">
+<span class="sig-name descname"><span class="pre">management_message</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bytes</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bytes</span></span></span><a class="reference internal" href="../../../_modules/icspacket/proto/cip/objects/timesync.html#TimeSyncObject.management_message"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.cip.objects.timesync.TimeSyncObject.management_message" title="Link to this definition">#</a></dt>
+<dd><p>Invoke ManagementMessage (service 0x4A) with a caller-built native
+PTP management message payload.</p>
+<p>The full set of PTP management commands (See Table 5-47.11, e.g.
+<code class="docutils literal notranslate"><span class="pre">ObtainIdentity</span></code>, <code class="docutils literal notranslate"><span class="pre">SetSyncInterval</span></code>, <code class="docutils literal notranslate"><span class="pre">EnablePort</span></code>) is
+defined by the IEEE 1588 standard rather than this library, so
+the request/response payload is passed through unmodified.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+        </article><button class="back-to-top" type="button">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+  </svg>
+  <span>Back to top</span>
+</button><div class="navigation flex print:hidden"><div class="navigation-prev">
+    <a href="objects_core.html">
+      <i class="i-lucide chevron-left"></i>
+      <div class="page-info">
+        <span>Previous</span><div class="title">Core Objects</div></div>
+    </a>
+  </div><div class="navigation-next">
+    <a href="objects_io.html">
+      <div class="page-info">
+        <span>Next</span>
+        <div class="title">I/O and Parameter Objects</div>
+      </div>
+      <i class="i-lucide chevron-right"></i>
+    </a>
+  </div></div></div>
+    </div>
+  </main>
+</div>
+<footer class="sy-foot">
+  <div class="sy-foot-inner sy-container mx-auto">
+    <div class="sy-foot-reserved md:flex justify-between items-center">
+      <div class="sy-foot-copyright"><p>2025, MatrixEditor</p>
+  
+  <p>
+    Made with
+    
+    <a href="https://www.sphinx-doc.org/">Sphinx</a> and
+    
+    <a href="https://shibuya.lepture.com">Shibuya theme</a>.
+  </p>
+</div>
+      <div class="sy-foot-socials">
+  <a href="https://github.com/MatrixEditor/icspacket" aria-label="GitHub">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </a></div>
+    </div>
+  </div>
+</footer>
+      <script src="../../../_static/documentation_options.js?v=5dc6420e"></script>
+      <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+      <script src="../../../_static/shibuya.js?v=50760d75"></script></body>
+</html>

@@ -1,0 +1,1110 @@
+<!DOCTYPE html>
+<html lang="en" data-accent-color="lime" data-content_root="../../../../../">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>icspacket.proto.cip.objects.switch - icspacket 0.1.dev1+g198be51b5 documentation</title><link rel="index" title="Index" href="../../../../../genindex.html" /><link rel="search" title="Search" href="../../../../../search.html" />
+      <link rel="canonical" href="https://matrixeditor.github.io/icspacket/_modules/icspacket/proto/cip/objects/switch.html" /><script>
+    function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
+    setColorMode(localStorage._theme||"dark");
+  </script><link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=e1a1ceaf" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/shibuya.css?v=2ceb65ce" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link media="print" rel="stylesheet" type="text/css" href="../../../../../_static/print.css?v=20ff2c19" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --sy-f-text: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+  --sy-f-heading: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+}
+</style>
+    
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://matrixeditor.github.io/icspacket/_modules/icspacket/proto/cip/objects/switch.html"/>
+  <meta property="og:title" content="icspacket.proto.cip.objects.switch"/>
+    <meta name="twitter:card" content="summary"/>
+  </head>
+<body><div class="sy-head">
+  <div class="sy-head-blur"></div>
+  <div class="sy-head-inner sy-container mx-auto">
+    <a class="sy-head-brand" href="../../../../../index.html">
+      
+      
+      <strong>icspacket</strong>
+    </a>
+    <div class="sy-head-nav" id="head-nav">
+      <nav class="sy-head-links"><ul>
+      <li class="link"><a class="js-menu" href="../../../../../getting-started/protocols.html" id="nav-trigger-1" aria-controls="nav-children-1">
+            <span>Examples</span>
+            <i class="i-lucide chevron-down"></i>
+          </a>
+        <ul id="nav-children-1" aria-labelledby="nav-trigger-1"><li><a href="../../../../../protocols/mms/examples.html">
+                <span>MMS Utilities</span>
+                <small>Manufacturing Message Specification tools</small>
+              </a></li><li><a href="../../../../../protocols/dnp3/examples.html">
+                <span>DNP3 Tools</span>
+                <small>DNP3 utilities and tools</small>
+              </a></li><li><a href="../../../../../protocols/iec61850/iedmap.html">
+                <span>IED Enumeration Tool</span>
+                <small>Logical Device enumeration and more</small>
+              </a></li><li><a href="../../../../../protocols/cip/examples.html">
+                <span>CIP / EtherNet-IP Tools</span>
+                <small>EtherNet/IP discovery, explicit messaging and I/O tools</small>
+              </a></li><li><a href="../../../../../protocols/iec104/examples.html">
+                <span>IEC 60870-5-104 Tools</span>
+                <small>IEC 60870-5-104 interrogation and read tools</small>
+              </a></li></ul>
+      </li><li class="link"><a href="../../../../../changelog.html">Changelog</a></li></ul></nav>
+      <div class="sy-head-extra flex items-center print:hidden"><form class="searchbox flex items-center" action="../../../../../search.html" method="get">
+  <input type="text" name="q" placeholder="Search" />
+  <kbd>/</kbd>
+</form><div class="sy-head-socials">
+  <a href="https://github.com/MatrixEditor/icspacket" aria-label="GitHub">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </a></div></div>
+    </div>
+    <div class="sy-head-actions flex items-center shrink-0 print:hidden"><button class="js-theme theme-switch flex items-center"
+data-aria-auto="Switch to light color mode"
+data-aria-light="Switch to dark color mode"
+data-aria-dark="Switch to auto color mode">
+<i class="i-lucide theme-icon"></i>
+</button><button class="md:hidden flex items-center js-menu" aria-label="Menu" type="button" aria-controls="head-nav" aria-expanded="false">
+        <div class="hamburger">
+          <span class="hamburger_1"></span>
+          <span class="hamburger_2"></span>
+          <span class="hamburger_3"></span>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>
+<div class="sy-page sy-container flex mx-auto">
+  <aside id="lside" class="sy-lside md:w-72 md:shrink-0 print:hidden">
+    <div class="sy-lside-inner md:sticky">
+      <div class="sy-scrollbar p-6"><div class="sidebar-links">
+  <ul>
+    <li><a class="icon-link" href="https://github.com/MatrixEditor/icspacket/discussions">
+  <span class="icon">
+    <svg viewBox="0 0 24 24" fill="none">
+      <path fill="var(--accent-9)" fill-rule="evenodd" clip-rule="evenodd" d="M11 5a6 6 0 0 0-4.687 9.746c.215.27.315.62.231.954l-.514 2.058a1 1 0 0 0 1.485 1.1l2.848-1.71c.174-.104.374-.15.576-.148H13a6 6 0 0 0 0-12h-2Z"/>
+      <circle fill="white" cx="12" cy="11" r="1"/>
+      <circle fill="white" cx="9" cy="11" r="1"/>
+      <circle fill="white" cx="15" cy="11" r="1"/>
+    </svg>
+  </span>
+  <span class="text">Discussion</span>
+</a></li>
+  </ul>
+</div>
+        <div class="globaltoc" data-expand-depth="1"><p class="caption" role="heading" aria-level="3"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../getting-started/installation.html">Installation</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../getting-started/protocols.html">Protocols Overview</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../getting-started/coreapi.html">Core API Reference</a></li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">DNP3 / IEEE 1815</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../protocols/dnp3/dnp3read.html">Reading Objects</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../protocols/dnp3/dnp3dump.html">Dumping Objects</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../protocols/dnp3/dnp3resolve.html">Resolve Link Addresses</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../protocols/dnp3/api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/dnp3/api/link.html">Link Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/dnp3/api/transport.html">Transport Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/dnp3/api/application.html">Application Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/dnp3/api/master.html">Master</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/dnp3/api/object_library.html">Object Library</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../protocols/dnp3/api/primitives.html">Primitive Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../protocols/dnp3/api/coding.html">Encoding / Decoding</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../protocols/dnp3/api/variations.html">Variations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../protocols/dnp3/api/coding_utils.html">Object Utilities</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">IEC 61850</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../protocols/iec61850/iedmap.html">Enumerating IEDs</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../protocols/iec61850/iedctrl.html">Operating on IEDs</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../protocols/iec61850/api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/iec61850/api_data_classes.html">Data Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/iec61850/api_path.html">Object / Data References</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/iec61850/api_control.html">Control / Operation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/iec61850/api_client.html">IED Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/iec61850/api_goose.html">GOOSE Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/iec61850/api_sv.html">SampledValues Client</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">MMS / ISO 9506</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../protocols/mms/demo_vars.html">Variable Target Format</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../protocols/mms/demo_vars.html#variableaccess-service-rwq">VariableAccess Service (rwq)</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../protocols/mms/demo_files.html">FileManagement Service</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../protocols/mms/api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/mms/api_conn.html">MMS Connection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/mms/api_data.html">Data Conversion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/mms/api_utils.html">Protocol Utilities</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">IEC 60870-5-104</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../protocols/iec104/iec104read.html">Reading Data via Interrogation</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../protocols/iec104/api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/iec104/api/apci.html">APCI - Framing Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/iec104/api/asdu.html">ASDU - Application Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/iec104/api/master.html">Master (Client)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/iec104/api/objects.html">Information Object Library</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">CIP / EtherNet-IP</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../protocols/cip/cipclient.html">Operating via CIP / EtherNet-IP</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../protocols/cip/api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/cip/api/connection.html">Connection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/cip/api/encapsulation.html">EtherNet/IP Encapsulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/cip/api/messaging.html">Messaging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/cip/api/objects.html">Object Library</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../protocols/cip/api/objects_core.html">Core Objects</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../protocols/cip/api/objects_network.html">Network Objects</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../protocols/cip/api/objects_io.html">I/O and Parameter Objects</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../protocols/cip/api/objects_motion.html">Motion, Drive, and Semiconductor Objects</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../protocols/cip/api/objects_switch.html">Switch Management Objects</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../protocols/cip/api/objects_diagnostics.html">Diagnostics Objects</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">ACSE / X.227</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../protocols/acse/api.html">API Reference</a></li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">COPP / X.226 / ISO 8823</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../protocols/copp/api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/copp/presentation.html">ISO Presentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/copp/utils.html">Protocol Utilities</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">COSP / X.225 / ISO 8237-1</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../protocols/cosp/api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/cosp/tsdu.html">TSDU</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/cosp/spdu.html">SPDU Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/cosp/values.html">Parameter Values (PV)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/cosp/session.html">ISO Session</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/cosp/utils.html">Protocol Utilities</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">COTP / X.224</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../protocols/cotp/api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/cotp/structs.html">TPDU Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/cotp/connection.html">Connection</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">TPKT Protocol (RFC1006)</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../protocols/tpkt/usage.html">Using a TPKT Wrapper</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../protocols/tpkt/api.html">API Reference</a></li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../changelog.html">Changelog</a></li>
+</ul>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="lside-overlay js-menu" role="button" aria-label="Close left sidebar" aria-controls="lside" aria-expanded="false"></div>
+  <aside id="rside" class="sy-rside pb-3 w-64 shrink-0 order-last">
+    <button class="rside-close js-menu xl:hidden" aria-label="Close Table of Contents" type="button" aria-controls="rside" aria-expanded="false">
+      <i class="i-lucide close"></i>
+    </button>
+    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><a class="js-repo-stats repo-stats flex items-center" href="https://github.com/MatrixEditor/icspacket"
+  data-type="github" data-user="MatrixEditor" data-repo="icspacket">
+  <span class="w-8 flex items-center justify-around shrink-0 text-3xl">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </span>
+  <span class="flex-grow px-2 break-all">
+    <span style="font-size: small;">MatrixEditor/icspacket</span>
+    <span class="flex text-sm repo-stats-count">
+      <span class="flex items-center pr-3">
+        <iconify-icon icon="lucide:star"></iconify-icon>
+        <strong class="js-repo-stars ml-1">0</strong>
+      </span>
+      <span class="flex items-center">
+        <iconify-icon icon="lucide:git-fork"></iconify-icon>
+        <strong class="js-repo-forks ml-1">0</strong>
+      </span>
+    </span>
+  </span>
+</a></div>
+  </aside>
+  <div class="rside-overlay js-menu" role="button" aria-label="Close Table of Contents" aria-controls="rside" aria-expanded="false"></div>
+  <main class="sy-main w-full max-sm:max-w-full print:pt-6">
+<div class="sy-breadcrumbs" role="navigation">
+  <div class="sy-breadcrumbs-inner flex items-center">
+    <div class="md:hidden mr-3">
+      <button class="js-menu" aria-label="Menu" type="button" aria-controls="lside" aria-expanded="false">
+        <i class="i-lucide menu"></i>
+      </button>
+    </div>
+    <ol class="flex-1" itemscope itemtype="https://schema.org/BreadcrumbList"><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="../../../../../index.html"><span itemprop="name">icspacket</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="1" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="../../../../index.html"><span itemprop="name">Module code</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="2" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <strong itemprop="name">icspacket.proto.cip.objects.switch</strong>
+        <meta itemprop="position" content="3" />
+      </li></ol>
+    <div class="xl:hidden ml-1">
+      <button class="js-menu" aria-label="Show table of contents" type="button" aria-controls="rside"
+        aria-expanded="false">
+        <i class="i-lucide outdent"></i>
+      </button>
+    </div>
+  </div>
+</div><div class="flex flex-col break-words justify-between">
+      <div class="relative min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
+  <article class="yue" role="main">
+          <h1>Source code for icspacket.proto.cip.objects.switch</h1><div class="highlight"><pre>
+<span></span><span data-line="1"><span class="c1"># This file is part of icspacket.</span>
+</span><span data-line="2"><span class="c1"># Copyright (C) 2025-present  MatrixEditor @ github</span>
+</span><span data-line="3"><span class="c1">#</span>
+</span><span data-line="4"><span class="c1"># This program is free software: you can redistribute it and/or modify</span>
+</span><span data-line="5"><span class="c1"># it under the terms of the GNU General Public License as published by</span>
+</span><span data-line="6"><span class="c1"># the Free Software Foundation, either version 3 of the License, or</span>
+</span><span data-line="7"><span class="c1"># (at your option) any later version.</span>
+</span><span data-line="8"><span class="c1">#</span>
+</span><span data-line="9"><span class="c1"># This program is distributed in the hope that it will be useful,</span>
+</span><span data-line="10"><span class="c1"># but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+</span><span data-line="11"><span class="c1"># MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+</span><span data-line="12"><span class="c1"># GNU General Public License for more details.</span>
+</span><span data-line="13"><span class="c1">#</span>
+</span><span data-line="14"><span class="c1"># You should have received a copy of the GNU General Public License</span>
+</span><span data-line="15"><span class="c1"># along with this program.  If not, see &lt;https://www.gnu.org/licenses/&gt;.</span>
+</span><span data-line="16">
+</span><span data-line="17"><span class="sd">&quot;&quot;&quot;[ODVA CIP Vol 2] Wrappers for EtherNet/IP switch management objects:</span>
+</span><span data-line="18"><span class="sd">Device Level Ring (class 0x47, §5-6), QoS (class 0x48, §5-7), Base Switch</span>
+</span><span data-line="19"><span class="sd">(class 0x51, §5-8), Simple Network Management (SNMP) (class 0x52, §5-9),</span>
+</span><span data-line="20"><span class="sd">Power Management (class 0x53, §5-10), RSTP Bridge (class 0x54, §5-11), RSTP</span>
+</span><span data-line="21"><span class="sd">Port (class 0x55, §5-12), Parallel Redundancy Protocol (PRP) (class 0x56,</span>
+</span><span data-line="22"><span class="sd">§5-13), and PRP Nodes Table (class 0x57, §5-14).</span>
+</span><span data-line="23"><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="24">
+</span><span data-line="25"><span class="kn">import</span><span class="w"> </span><span class="nn">ipaddress</span>
+</span><span data-line="26"><span class="kn">from</span><span class="w"> </span><span class="nn">collections.abc</span><span class="w"> </span><span class="kn">import</span> <span class="n">Collection</span>
+</span><span data-line="27"><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">ClassVar</span>
+</span><span data-line="28">
+</span><span data-line="29"><span class="kn">from</span><span class="w"> </span><span class="nn">caterpillar.fields</span><span class="w"> </span><span class="kn">import</span> <span class="n">int32</span><span class="p">,</span> <span class="n">net</span><span class="p">,</span> <span class="n">uint8</span><span class="p">,</span> <span class="n">uint16</span><span class="p">,</span> <span class="n">uint32</span>
+</span><span data-line="30"><span class="kn">from</span><span class="w"> </span><span class="nn">caterpillar.model</span><span class="w"> </span><span class="kn">import</span> <span class="n">StructDefMixin</span>
+</span><span data-line="31"><span class="kn">from</span><span class="w"> </span><span class="nn">caterpillar.shortcuts</span><span class="w"> </span><span class="kn">import</span> <span class="n">LittleEndian</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">struct</span>
+</span><span data-line="32"><span class="kn">from</span><span class="w"> </span><span class="nn">caterpillar.types</span><span class="w"> </span><span class="kn">import</span> <span class="n">uint8_t</span><span class="p">,</span> <span class="n">uint16_t</span><span class="p">,</span> <span class="n">uint32_t</span>
+</span><span data-line="33">
+</span><span data-line="34"><span class="kn">from</span><span class="w"> </span><span class="nn">..const</span><span class="w"> </span><span class="kn">import</span> <span class="n">ClassCode</span>
+</span><span data-line="35"><span class="kn">from</span><span class="w"> </span><span class="nn">..epath</span><span class="w"> </span><span class="kn">import</span> <span class="n">EPATH</span>
+</span><span data-line="36"><span class="kn">from</span><span class="w"> </span><span class="nn">._base</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+</span><span data-line="37">    <span class="n">CIP_PREFIXED_EPATH</span><span class="p">,</span>
+</span><span data-line="38">    <span class="n">CIP_SHORT_STRING</span><span class="p">,</span>
+</span><span data-line="39">    <span class="n">CIP_STRING</span><span class="p">,</span>
+</span><span data-line="40">    <span class="n">CIPAttribute</span><span class="p">,</span>
+</span><span data-line="41">    <span class="n">CIPObject</span><span class="p">,</span>
+</span><span data-line="42"><span class="p">)</span>
+</span><span data-line="43">
+</span><span data-line="44"><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span data-line="45">    <span class="s2">&quot;BaseSwitchObject&quot;</span><span class="p">,</span>
+</span><span data-line="46">    <span class="s2">&quot;BridgeIdentifier&quot;</span><span class="p">,</span>
+</span><span data-line="47">    <span class="s2">&quot;DLRObject&quot;</span><span class="p">,</span>
+</span><span data-line="48">    <span class="s2">&quot;NetworkManagerIdentifier&quot;</span><span class="p">,</span>
+</span><span data-line="49">    <span class="s2">&quot;NodeAddress&quot;</span><span class="p">,</span>
+</span><span data-line="50">    <span class="s2">&quot;PRPNodesTableObject&quot;</span><span class="p">,</span>
+</span><span data-line="51">    <span class="s2">&quot;PRPObject&quot;</span><span class="p">,</span>
+</span><span data-line="52">    <span class="s2">&quot;PowerManagementObject&quot;</span><span class="p">,</span>
+</span><span data-line="53">    <span class="s2">&quot;PrpDuplicateDetectionCounters&quot;</span><span class="p">,</span>
+</span><span data-line="54">    <span class="s2">&quot;PrpInterfaceCounters&quot;</span><span class="p">,</span>
+</span><span data-line="55">    <span class="s2">&quot;PrpNodeEntry&quot;</span><span class="p">,</span>
+</span><span data-line="56">    <span class="s2">&quot;QoSObject&quot;</span><span class="p">,</span>
+</span><span data-line="57">    <span class="s2">&quot;RSTPBridgeObject&quot;</span><span class="p">,</span>
+</span><span data-line="58">    <span class="s2">&quot;RSTPPortObject&quot;</span><span class="p">,</span>
+</span><span data-line="59">    <span class="s2">&quot;RedundantGatewayConfig&quot;</span><span class="p">,</span>
+</span><span data-line="60">    <span class="s2">&quot;RingSupervisorConfig&quot;</span><span class="p">,</span>
+</span><span data-line="61">    <span class="s2">&quot;SNMPObject&quot;</span><span class="p">,</span>
+</span><span data-line="62"><span class="p">]</span>
+</span><span data-line="63">
+</span><span data-line="64">
+<div class="viewcode-block" id="NodeAddress">
+<a class="viewcode-back" href="../../../../../protocols/cip/api/objects_switch.html#icspacket.proto.cip.objects.switch.NodeAddress">[docs]</a>
+</span><span data-line="65"><span class="nd">@struct</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="n">LittleEndian</span><span class="p">)</span>
+</span><span data-line="66"><span class="k">class</span><span class="w"> </span><span class="nc">NodeAddress</span><span class="p">(</span><span class="n">StructDefMixin</span><span class="p">):</span>
+</span><span data-line="67"><span class="w">    </span><span class="sd">&quot;&quot;&quot;IP/MAC address pair identifying a node on the ring (DLR Object</span>
+</span><span data-line="68"><span class="sd">    attributes 6, 7, 10, and 15, See §5-6.3.2.1).&quot;&quot;&quot;</span>
+</span><span data-line="69">
+</span><span data-line="70">    <span class="n">ip</span><span class="p">:</span> <span class="n">f</span><span class="p">[</span><span class="n">ipaddress</span><span class="o">.</span><span class="n">IPv4Address</span><span class="p">,</span> <span class="n">net</span><span class="o">.</span><span class="n">IPv4Address</span><span class="p">]</span>
+</span><span data-line="71">    <span class="n">mac</span><span class="p">:</span> <span class="n">f</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">net</span><span class="o">.</span><span class="n">MAC</span><span class="p">]</span></div>
+
+</span><span data-line="72">
+</span><span data-line="73">
+<div class="viewcode-block" id="RingSupervisorConfig">
+<a class="viewcode-back" href="../../../../../protocols/cip/api/objects_switch.html#icspacket.proto.cip.objects.switch.RingSupervisorConfig">[docs]</a>
+</span><span data-line="74"><span class="nd">@struct</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="n">LittleEndian</span><span class="p">)</span>
+</span><span data-line="75"><span class="k">class</span><span class="w"> </span><span class="nc">RingSupervisorConfig</span><span class="p">(</span><span class="n">StructDefMixin</span><span class="p">):</span>
+</span><span data-line="76"><span class="w">    </span><span class="sd">&quot;&quot;&quot;DLR Object attribute 4 payload (See §5-6.3.2.1, Table 5-6.4).&quot;&quot;&quot;</span>
+</span><span data-line="77">
+</span><span data-line="78">    <span class="n">enable</span><span class="p">:</span> <span class="n">uint8_t</span>
+</span><span data-line="79"><span class="w">    </span><span class="sd">&quot;&quot;&quot;1 = Ring Supervisor capability enabled for this device.&quot;&quot;&quot;</span>
+</span><span data-line="80">
+</span><span data-line="81">    <span class="n">precedence</span><span class="p">:</span> <span class="n">uint8_t</span>
+</span><span data-line="82"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Priority used to select the active Ring Supervisor; 0 = highest.&quot;&quot;&quot;</span>
+</span><span data-line="83">
+</span><span data-line="84">    <span class="n">beacon_interval</span><span class="p">:</span> <span class="n">uint32_t</span>
+</span><span data-line="85"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Beacon frame transmission interval, in microseconds.&quot;&quot;&quot;</span>
+</span><span data-line="86">
+</span><span data-line="87">    <span class="n">beacon_timeout</span><span class="p">:</span> <span class="n">uint32_t</span>
+</span><span data-line="88"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Time without receiving a Beacon frame before declaring a ring fault, in</span>
+</span><span data-line="89"><span class="sd">    microseconds.&quot;&quot;&quot;</span>
+</span><span data-line="90">
+</span><span data-line="91">    <span class="n">vlan_id</span><span class="p">:</span> <span class="n">uint16_t</span>
+</span><span data-line="92"><span class="w">    </span><span class="sd">&quot;&quot;&quot;VLAN ID used for DLR protocol frames.&quot;&quot;&quot;</span></div>
+
+</span><span data-line="93">
+</span><span data-line="94">
+<div class="viewcode-block" id="RedundantGatewayConfig">
+<a class="viewcode-back" href="../../../../../protocols/cip/api/objects_switch.html#icspacket.proto.cip.objects.switch.RedundantGatewayConfig">[docs]</a>
+</span><span data-line="95"><span class="nd">@struct</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="n">LittleEndian</span><span class="p">)</span>
+</span><span data-line="96"><span class="k">class</span><span class="w"> </span><span class="nc">RedundantGatewayConfig</span><span class="p">(</span><span class="n">StructDefMixin</span><span class="p">):</span>
+</span><span data-line="97"><span class="w">    </span><span class="sd">&quot;&quot;&quot;DLR Object attribute 13 payload (See §5-6.3.2.1, Table 5-6.9).&quot;&quot;&quot;</span>
+</span><span data-line="98">
+</span><span data-line="99">    <span class="n">enable</span><span class="p">:</span> <span class="n">uint8_t</span>
+</span><span data-line="100"><span class="w">    </span><span class="sd">&quot;&quot;&quot;1 = Redundant Gateway capability enabled for this device.&quot;&quot;&quot;</span>
+</span><span data-line="101">
+</span><span data-line="102">    <span class="n">gateway_precedence</span><span class="p">:</span> <span class="n">uint8_t</span>
+</span><span data-line="103"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Priority used to select the active gateway; 0 = highest.&quot;&quot;&quot;</span>
+</span><span data-line="104">
+</span><span data-line="105">    <span class="n">advertise_interval</span><span class="p">:</span> <span class="n">uint32_t</span>
+</span><span data-line="106"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Advertise frame transmission interval, in microseconds.&quot;&quot;&quot;</span>
+</span><span data-line="107">
+</span><span data-line="108">    <span class="n">advertise_timeout</span><span class="p">:</span> <span class="n">uint32_t</span>
+</span><span data-line="109"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Time without receiving an Advertise frame before declaring a fault, in</span>
+</span><span data-line="110"><span class="sd">    microseconds.&quot;&quot;&quot;</span>
+</span><span data-line="111">
+</span><span data-line="112">    <span class="n">learning_update_enable</span><span class="p">:</span> <span class="n">uint8_t</span>
+</span><span data-line="113"><span class="w">    </span><span class="sd">&quot;&quot;&quot;1 = send a Link_Status/Neighbor_Check frame to speed up address-table</span>
+</span><span data-line="114"><span class="sd">    updates on failover.&quot;&quot;&quot;</span></div>
+
+</span><span data-line="115">
+</span><span data-line="116">
+<div class="viewcode-block" id="DLRObject">
+<a class="viewcode-back" href="../../../../../protocols/cip/api/objects_switch.html#icspacket.proto.cip.objects.switch.DLRObject">[docs]</a>
+</span><span data-line="117"><span class="k">class</span><span class="w"> </span><span class="nc">DLRObject</span><span class="p">(</span><span class="n">CIPObject</span><span class="p">):</span>
+</span><span data-line="118"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Configures and monitors a Device Level Ring (DLR) network node (See CIP</span>
+</span><span data-line="119"><span class="sd">    Vol 2, §5-6).&quot;&quot;&quot;</span>
+</span><span data-line="120">
+</span><span data-line="121">    <span class="n">CLASS_CODE</span><span class="p">:</span> <span class="n">ClassVar</span><span class="p">[</span><span class="n">ClassCode</span><span class="p">]</span> <span class="o">=</span> <span class="n">ClassCode</span><span class="o">.</span><span class="n">DLR</span>
+</span><span data-line="122">
+</span><span data-line="123">    <span class="n">network_topology</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">uint8</span><span class="p">)</span>
+</span><span data-line="124"><span class="w">    </span><span class="sd">&quot;&quot;&quot;0 = Linear, 1 = Ring (attribute 1).&quot;&quot;&quot;</span>
+</span><span data-line="125">
+</span><span data-line="126">    <span class="n">network_status</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">uint8</span><span class="p">)</span>
+</span><span data-line="127"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Current DLR network status (attribute 2, See Table 5-6.3).&quot;&quot;&quot;</span>
+</span><span data-line="128">
+</span><span data-line="129">    <span class="n">ring_supervisor_status</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">uint8</span><span class="p">)</span>
+</span><span data-line="130"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Current Ring Supervisor status; valid only while</span>
+</span><span data-line="131"><span class="sd">    ring_supervisor_config.enable is set (attribute 3).&quot;&quot;&quot;</span>
+</span><span data-line="132">
+</span><span data-line="133">    <span class="n">ring_supervisor_config</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="n">RingSupervisorConfig</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span>
+</span><span data-line="134">        <span class="mi">4</span><span class="p">,</span> <span class="n">RingSupervisorConfig</span>
+</span><span data-line="135">    <span class="p">)</span>
+</span><span data-line="136"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Ring Supervisor configuration (attribute 4).&quot;&quot;&quot;</span>
+</span><span data-line="137">
+</span><span data-line="138">    <span class="n">ring_faults_count</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="n">uint16</span><span class="p">)</span>
+</span><span data-line="139"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Number of times the ring has transitioned from Normal to Ring Fault</span>
+</span><span data-line="140"><span class="sd">    state (attribute 5).&quot;&quot;&quot;</span>
+</span><span data-line="141">
+</span><span data-line="142">    <span class="n">last_active_node_on_port_1</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="n">NodeAddress</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="n">NodeAddress</span><span class="p">)</span>
+</span><span data-line="143"><span class="w">    </span><span class="sd">&quot;&quot;&quot;IP/MAC address of the last node this device detected on Port 1</span>
+</span><span data-line="144"><span class="sd">    (attribute 6).&quot;&quot;&quot;</span>
+</span><span data-line="145">
+</span><span data-line="146">    <span class="n">last_active_node_on_port_2</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="n">NodeAddress</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="n">NodeAddress</span><span class="p">)</span>
+</span><span data-line="147"><span class="w">    </span><span class="sd">&quot;&quot;&quot;IP/MAC address of the last node this device detected on Port 2</span>
+</span><span data-line="148"><span class="sd">    (attribute 7).&quot;&quot;&quot;</span>
+</span><span data-line="149">
+</span><span data-line="150">    <span class="n">ring_protocol_participants_count</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="n">uint16</span><span class="p">)</span>
+</span><span data-line="151"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Number of nodes that responded to the last Discover_Topology sequence</span>
+</span><span data-line="152"><span class="sd">    (attribute 8).&quot;&quot;&quot;</span>
+</span><span data-line="153">
+</span><span data-line="154">    <span class="n">active_supervisor_address</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="n">NodeAddress</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">NodeAddress</span><span class="p">)</span>
+</span><span data-line="155"><span class="w">    </span><span class="sd">&quot;&quot;&quot;IP/MAC address of the active Ring Supervisor (attribute 10).&quot;&quot;&quot;</span>
+</span><span data-line="156">
+</span><span data-line="157">    <span class="n">active_supervisor_precedence</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="n">uint8</span><span class="p">)</span>
+</span><span data-line="158"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Precedence value of the active Ring Supervisor (attribute 11).&quot;&quot;&quot;</span>
+</span><span data-line="159">
+</span><span data-line="160">    <span class="n">capability_flags</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="n">uint32</span><span class="p">)</span>
+</span><span data-line="161"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Bitmap of DLR capabilities supported by this device (attribute 12, See</span>
+</span><span data-line="162"><span class="sd">    Table 5-6.10).&quot;&quot;&quot;</span>
+</span><span data-line="163">
+</span><span data-line="164">    <span class="n">redundant_gateway_config</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="n">RedundantGatewayConfig</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span>
+</span><span data-line="165">        <span class="mi">13</span><span class="p">,</span> <span class="n">RedundantGatewayConfig</span>
+</span><span data-line="166">    <span class="p">)</span>
+</span><span data-line="167"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Redundant Gateway configuration (attribute 13).&quot;&quot;&quot;</span>
+</span><span data-line="168">
+</span><span data-line="169">    <span class="n">redundant_gateway_status</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="n">uint8</span><span class="p">)</span>
+</span><span data-line="170"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Current Redundant Gateway status (attribute 14, See Table 5-6.11).&quot;&quot;&quot;</span>
+</span><span data-line="171">
+</span><span data-line="172">    <span class="n">active_gateway_address</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="n">NodeAddress</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="n">NodeAddress</span><span class="p">)</span>
+</span><span data-line="173"><span class="w">    </span><span class="sd">&quot;&quot;&quot;IP/MAC address of the active gateway (attribute 15).&quot;&quot;&quot;</span>
+</span><span data-line="174">
+</span><span data-line="175">    <span class="n">active_gateway_precedence</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="n">uint8</span><span class="p">)</span>
+</span><span data-line="176"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Precedence value of the active gateway (attribute 16).&quot;&quot;&quot;</span>
+</span><span data-line="177">
+<div class="viewcode-block" id="DLRObject.get_class_attribute">
+<a class="viewcode-back" href="../../../../../protocols/cip/api/objects_switch.html#icspacket.proto.cip.objects.switch.DLRObject.get_class_attribute">[docs]</a>
+</span><span data-line="178">    <span class="k">def</span><span class="w"> </span><span class="nf">get_class_attribute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attribute</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bytes</span><span class="p">:</span>
+</span><span data-line="179"><span class="w">        </span><span class="sd">&quot;&quot;&quot;Read a DLR class attribute from instance 0 (See §5-6.2, Table</span>
+</span><span data-line="180"><span class="sd">        5-6.1).&quot;&quot;&quot;</span>
+</span><span data-line="181">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_attr</span><span class="p">(</span><span class="n">attribute</span><span class="p">,</span> <span class="n">instance</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span></div>
+
+</span><span data-line="182">
+<div class="viewcode-block" id="DLRObject.verify_fault_location">
+<a class="viewcode-back" href="../../../../../protocols/cip/api/objects_switch.html#icspacket.proto.cip.objects.switch.DLRObject.verify_fault_location">[docs]</a>
+</span><span data-line="183">    <span class="k">def</span><span class="w"> </span><span class="nf">verify_fault_location</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bytes</span><span class="p">:</span>
+</span><span data-line="184"><span class="w">        </span><span class="sd">&quot;&quot;&quot;Invoke Verify_Fault_Location (service 0x4B), requesting a beacon-</span>
+</span><span data-line="185"><span class="sd">        based ring fault check.&quot;&quot;&quot;</span>
+</span><span data-line="186">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_expect_empty</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">message</span><span class="p">(</span><span class="mh">0x4B</span><span class="p">))</span></div>
+
+</span><span data-line="187">
+<div class="viewcode-block" id="DLRObject.clear_rapid_faults">
+<a class="viewcode-back" href="../../../../../protocols/cip/api/objects_switch.html#icspacket.proto.cip.objects.switch.DLRObject.clear_rapid_faults">[docs]</a>
+</span><span data-line="188">    <span class="k">def</span><span class="w"> </span><span class="nf">clear_rapid_faults</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bytes</span><span class="p">:</span>
+</span><span data-line="189"><span class="w">        </span><span class="sd">&quot;&quot;&quot;Invoke Clear_Rapid_Faults (service 0x4C), re-arming rapid fault/</span>
+</span><span data-line="190"><span class="sd">        restart counters.&quot;&quot;&quot;</span>
+</span><span data-line="191">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_expect_empty</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">message</span><span class="p">(</span><span class="mh">0x4C</span><span class="p">))</span></div>
+
+</span><span data-line="192">
+<div class="viewcode-block" id="DLRObject.restart_sign_on">
+<a class="viewcode-back" href="../../../../../protocols/cip/api/objects_switch.html#icspacket.proto.cip.objects.switch.DLRObject.restart_sign_on">[docs]</a>
+</span><span data-line="193">    <span class="k">def</span><span class="w"> </span><span class="nf">restart_sign_on</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bytes</span><span class="p">:</span>
+</span><span data-line="194"><span class="w">        </span><span class="sd">&quot;&quot;&quot;Invoke Restart_Sign_On (service 0x4D), restarting the Sign_On</span>
+</span><span data-line="195"><span class="sd">        sequence used to build the ring node list.&quot;&quot;&quot;</span>
+</span><span data-line="196">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_expect_empty</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">message</span><span class="p">(</span><span class="mh">0x4D</span><span class="p">))</span></div>
+
+</span><span data-line="197">
+<div class="viewcode-block" id="DLRObject.clear_gateway_partial_fault">
+<a class="viewcode-back" href="../../../../../protocols/cip/api/objects_switch.html#icspacket.proto.cip.objects.switch.DLRObject.clear_gateway_partial_fault">[docs]</a>
+</span><span data-line="198">    <span class="k">def</span><span class="w"> </span><span class="nf">clear_gateway_partial_fault</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bytes</span><span class="p">:</span>
+</span><span data-line="199"><span class="w">        </span><span class="sd">&quot;&quot;&quot;Invoke Clear_Gateway_Partial_Fault (service 0x4E), clearing a</span>
+</span><span data-line="200"><span class="sd">        Redundant Gateway partial fault condition.&quot;&quot;&quot;</span>
+</span><span data-line="201">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_expect_empty</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">message</span><span class="p">(</span><span class="mh">0x4E</span><span class="p">))</span></div>
+</div>
+
+</span><span data-line="202">
+</span><span data-line="203">
+<div class="viewcode-block" id="QoSObject">
+<a class="viewcode-back" href="../../../../../protocols/cip/api/objects_switch.html#icspacket.proto.cip.objects.switch.QoSObject">[docs]</a>
+</span><span data-line="204"><span class="k">class</span><span class="w"> </span><span class="nc">QoSObject</span><span class="p">(</span><span class="n">CIPObject</span><span class="p">):</span>
+</span><span data-line="205"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Configures 802.1Q tagging and DSCP values for EtherNet/IP traffic (See</span>
+</span><span data-line="206"><span class="sd">    CIP Vol 2, §5-7).&quot;&quot;&quot;</span>
+</span><span data-line="207">
+</span><span data-line="208">    <span class="n">CLASS_CODE</span><span class="p">:</span> <span class="n">ClassVar</span><span class="p">[</span><span class="n">ClassCode</span><span class="p">]</span> <span class="o">=</span> <span class="n">ClassCode</span><span class="o">.</span><span class="n">QOS</span>
+</span><span data-line="209">
+</span><span data-line="210">    <span class="n">dot1q_tag_enable</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">uint8</span><span class="p">)</span>
+</span><span data-line="211"><span class="w">    </span><span class="sd">&quot;&quot;&quot;1 = send 802.1Q tagged frames for CIP and IEEE 1588 messages, default 0</span>
+</span><span data-line="212"><span class="sd">    (attribute 1, conditional).&quot;&quot;&quot;</span>
+</span><span data-line="213">
+</span><span data-line="214">    <span class="n">dscp_ptp_event</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">uint8</span><span class="p">)</span>
+</span><span data-line="215"><span class="w">    </span><span class="sd">&quot;&quot;&quot;DSCP value for PTP (IEEE 1588) event messages, default 59 (attribute 2,</span>
+</span><span data-line="216"><span class="sd">    conditional).&quot;&quot;&quot;</span>
+</span><span data-line="217">
+</span><span data-line="218">    <span class="n">dscp_ptp_general</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">uint8</span><span class="p">)</span>
+</span><span data-line="219"><span class="w">    </span><span class="sd">&quot;&quot;&quot;DSCP value for PTP (IEEE 1588) general messages, default 47 (attribute</span>
+</span><span data-line="220"><span class="sd">    3, conditional).&quot;&quot;&quot;</span>
+</span><span data-line="221">
+</span><span data-line="222">    <span class="n">dscp_urgent</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">uint8</span><span class="p">)</span>
+</span><span data-line="223"><span class="w">    </span><span class="sd">&quot;&quot;&quot;DSCP value for CIP transport class 0/1 Urgent priority messages,</span>
+</span><span data-line="224"><span class="sd">    default 55 (attribute 4).&quot;&quot;&quot;</span>
+</span><span data-line="225">
+</span><span data-line="226">    <span class="n">dscp_scheduled</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="n">uint8</span><span class="p">)</span>
+</span><span data-line="227"><span class="w">    </span><span class="sd">&quot;&quot;&quot;DSCP value for CIP transport class 0/1 Scheduled priority messages,</span>
+</span><span data-line="228"><span class="sd">    default 47 (attribute 5).&quot;&quot;&quot;</span>
+</span><span data-line="229">
+</span><span data-line="230">    <span class="n">dscp_high</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="n">uint8</span><span class="p">)</span>
+</span><span data-line="231"><span class="w">    </span><span class="sd">&quot;&quot;&quot;DSCP value for CIP transport class 0/1 High priority messages, default</span>
+</span><span data-line="232"><span class="sd">    43 (attribute 6).&quot;&quot;&quot;</span>
+</span><span data-line="233">
+</span><span data-line="234">    <span class="n">dscp_low</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="n">uint8</span><span class="p">)</span>
+</span><span data-line="235"><span class="w">    </span><span class="sd">&quot;&quot;&quot;DSCP value for CIP transport class 0/1 Low priority messages, default</span>
+</span><span data-line="236"><span class="sd">    31 (attribute 7).&quot;&quot;&quot;</span>
+</span><span data-line="237">
+</span><span data-line="238">    <span class="n">dscp_explicit</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="n">uint8</span><span class="p">)</span>
+</span><span data-line="239"><span class="w">    </span><span class="sd">&quot;&quot;&quot;DSCP value for CIP UCMM, transport class 2/3, and all other</span>
+</span><span data-line="240"><span class="sd">    EtherNet/IP encapsulation messages, default 27 (attribute 8).&quot;&quot;&quot;</span>
+</span><span data-line="241">
+<div class="viewcode-block" id="QoSObject.get_class_attribute">
+<a class="viewcode-back" href="../../../../../protocols/cip/api/objects_switch.html#icspacket.proto.cip.objects.switch.QoSObject.get_class_attribute">[docs]</a>
+</span><span data-line="242">    <span class="k">def</span><span class="w"> </span><span class="nf">get_class_attribute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attribute</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bytes</span><span class="p">:</span>
+</span><span data-line="243"><span class="w">        </span><span class="sd">&quot;&quot;&quot;Read a QoS class attribute from instance 0 (See §5-7.3, Table</span>
+</span><span data-line="244"><span class="sd">        5-7.2).&quot;&quot;&quot;</span>
+</span><span data-line="245">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_attr</span><span class="p">(</span><span class="n">attribute</span><span class="p">,</span> <span class="n">instance</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span></div>
+</div>
+
+</span><span data-line="246">
+</span><span data-line="247">
+<div class="viewcode-block" id="BaseSwitchObject">
+<a class="viewcode-back" href="../../../../../protocols/cip/api/objects_switch.html#icspacket.proto.cip.objects.switch.BaseSwitchObject">[docs]</a>
+</span><span data-line="248"><span class="k">class</span><span class="w"> </span><span class="nc">BaseSwitchObject</span><span class="p">(</span><span class="n">CIPObject</span><span class="p">):</span>
+</span><span data-line="249"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Basic status information for a managed Ethernet switch device (See CIP</span>
+</span><span data-line="250"><span class="sd">    Vol 2, §5-8).</span>
+</span><span data-line="251">
+</span><span data-line="252"><span class="sd">    Devices implement no more than one instance. Attributes 6-8 are bitmaps</span>
+</span><span data-line="253"><span class="sd">    packed across ``port_mask_size`` DWORDs (one bit per port) and attribute</span>
+</span><span data-line="254"><span class="sd">    14 is a nested, variably-sized structure whose inner port-mask array is</span>
+</span><span data-line="255"><span class="sd">    itself sized by ``port_mask_size``; all four are exposed as raw bytes</span>
+</span><span data-line="256"><span class="sd">    rather than a fixed schema.</span>
+</span><span data-line="257"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span data-line="258">
+</span><span data-line="259">    <span class="n">CLASS_CODE</span><span class="p">:</span> <span class="n">ClassVar</span><span class="p">[</span><span class="n">ClassCode</span><span class="p">]</span> <span class="o">=</span> <span class="n">ClassCode</span><span class="o">.</span><span class="n">BASE_SWITCH</span>
+</span><span data-line="260">
+</span><span data-line="261">    <span class="n">device_up_time</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">uint32</span><span class="p">)</span>
+</span><span data-line="262"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Seconds since the device was powered up (attribute 1).&quot;&quot;&quot;</span>
+</span><span data-line="263">
+</span><span data-line="264">    <span class="n">total_port_count</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">uint32</span><span class="p">)</span>
+</span><span data-line="265"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Number of physical ports available (attribute 2).&quot;&quot;&quot;</span>
+</span><span data-line="266">
+</span><span data-line="267">    <span class="n">system_firmware_version</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">CIP_SHORT_STRING</span><span class="p">)</span>
+</span><span data-line="268"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Human-readable System Firmware Version, empty if not configured</span>
+</span><span data-line="269"><span class="sd">    (attribute 3).&quot;&quot;&quot;</span>
+</span><span data-line="270">
+</span><span data-line="271">    <span class="n">power_source</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">uint16</span><span class="p">)</span>
+</span><span data-line="272"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Bitmap of power source/supply status, 2 bits per source (attribute 4,</span>
+</span><span data-line="273"><span class="sd">    See Table 5-8.4).&quot;&quot;&quot;</span>
+</span><span data-line="274">
+</span><span data-line="275">    <span class="n">port_mask_size</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="n">uint16</span><span class="p">)</span>
+</span><span data-line="276"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Number of DWORDs in each port-mask bitmap attribute, minimum 4</span>
+</span><span data-line="277"><span class="sd">    (attribute 5).&quot;&quot;&quot;</span>
+</span><span data-line="278">
+</span><span data-line="279">    <span class="n">existing_ports</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">bytes</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
+</span><span data-line="280"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Bitmap (one bit per port) of ports physically present in the switch</span>
+</span><span data-line="281"><span class="sd">    housing; size in DWORDs given by port_mask_size (attribute 6, optional).&quot;&quot;&quot;</span>
+</span><span data-line="282">
+</span><span data-line="283">    <span class="n">global_port_admin_state</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">bytes</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>
+</span><span data-line="284"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Bitmap of each port&#39;s Admin state; size in DWORDs given by</span>
+</span><span data-line="285"><span class="sd">    port_mask_size (attribute 7, optional).&quot;&quot;&quot;</span>
+</span><span data-line="286">
+</span><span data-line="287">    <span class="n">global_port_link_status</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">bytes</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
+</span><span data-line="288"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Bitmap of each port&#39;s link status; size in DWORDs given by</span>
+</span><span data-line="289"><span class="sd">    port_mask_size (attribute 8).&quot;&quot;&quot;</span>
+</span><span data-line="290">
+</span><span data-line="291">    <span class="n">system_boot_loader_version</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="n">CIP_SHORT_STRING</span><span class="p">)</span>
+</span><span data-line="292"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Human-readable System Boot Loader Version, empty if not configured</span>
+</span><span data-line="293"><span class="sd">    (attribute 9, optional).&quot;&quot;&quot;</span>
+</span><span data-line="294">
+</span><span data-line="295">    <span class="n">contact_status</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">uint16</span><span class="p">)</span>
+</span><span data-line="296"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Bitmap of switch contact closure status, 2 bits per contact (attribute</span>
+</span><span data-line="297"><span class="sd">    10, optional, See Table 5-8.8).&quot;&quot;&quot;</span>
+</span><span data-line="298">
+</span><span data-line="299">    <span class="n">aging_time</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="n">uint32</span><span class="p">)</span>
+</span><span data-line="300"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Timeout in seconds for aging out dynamically-learned forwarding</span>
+</span><span data-line="301"><span class="sd">    information, 0 = learning off, default 300 (attribute 11, optional).&quot;&quot;&quot;</span>
+</span><span data-line="302">
+</span><span data-line="303">    <span class="n">temperature_c</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="n">int32</span><span class="p">)</span>
+</span><span data-line="304"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Switch temperature in degrees Celsius (attribute 12, optional).&quot;&quot;&quot;</span>
+</span><span data-line="305">
+</span><span data-line="306">    <span class="n">temperature_f</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">13</span><span class="p">,</span> <span class="n">int32</span><span class="p">)</span>
+</span><span data-line="307"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Switch temperature in degrees Fahrenheit (attribute 13, optional).&quot;&quot;&quot;</span>
+</span><span data-line="308">
+</span><span data-line="309">    <span class="n">resiliency_protocol_list</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">bytes</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">14</span><span class="p">)</span>
+</span><span data-line="310"><span class="w">    </span><span class="sd">&quot;&quot;&quot;List of resiliency protocol entities used by the switch: a UINT count</span>
+</span><span data-line="311"><span class="sd">    followed by, for each entry, a Resiliency Protocol Select value, a</span>
+</span><span data-line="312"><span class="sd">    port-mask bitmap sized by port_mask_size, and a path to the protocol&#39;s</span>
+</span><span data-line="313"><span class="sd">    own object (attribute 14, optional, See §5-8.3.3.7).&quot;&quot;&quot;</span>
+</span><span data-line="314">
+<div class="viewcode-block" id="BaseSwitchObject.get_class_attribute">
+<a class="viewcode-back" href="../../../../../protocols/cip/api/objects_switch.html#icspacket.proto.cip.objects.switch.BaseSwitchObject.get_class_attribute">[docs]</a>
+</span><span data-line="315">    <span class="k">def</span><span class="w"> </span><span class="nf">get_class_attribute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attribute</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bytes</span><span class="p">:</span>
+</span><span data-line="316"><span class="w">        </span><span class="sd">&quot;&quot;&quot;Read a Base Switch class attribute from instance 0 (See §5-8.3.1,</span>
+</span><span data-line="317"><span class="sd">        Table 5-8.2).&quot;&quot;&quot;</span>
+</span><span data-line="318">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_attr</span><span class="p">(</span><span class="n">attribute</span><span class="p">,</span> <span class="n">instance</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span></div>
+</div>
+
+</span><span data-line="319">
+</span><span data-line="320">
+<div class="viewcode-block" id="NetworkManagerIdentifier">
+<a class="viewcode-back" href="../../../../../protocols/cip/api/objects_switch.html#icspacket.proto.cip.objects.switch.NetworkManagerIdentifier">[docs]</a>
+</span><span data-line="321"><span class="nd">@struct</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="n">LittleEndian</span><span class="p">)</span>
+</span><span data-line="322"><span class="k">class</span><span class="w"> </span><span class="nc">NetworkManagerIdentifier</span><span class="p">(</span><span class="n">StructDefMixin</span><span class="p">):</span>
+</span><span data-line="323"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Network manager address (SNMP Object attributes 3 and 4, See</span>
+</span><span data-line="324"><span class="sd">    §5-9.3.2.3).&quot;&quot;&quot;</span>
+</span><span data-line="325">
+</span><span data-line="326">    <span class="n">identifier_format</span><span class="p">:</span> <span class="n">uint8_t</span>
+</span><span data-line="327"><span class="w">    </span><span class="sd">&quot;&quot;&quot;0 = unconfigured, 1 = IPv4 dotted-decimal, 2 = domain name.&quot;&quot;&quot;</span>
+</span><span data-line="328">
+</span><span data-line="329">    <span class="n">identifier</span><span class="p">:</span> <span class="n">f</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">CIP_STRING</span><span class="p">]</span>
+</span><span data-line="330"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Address value; empty when identifier_format is 0.&quot;&quot;&quot;</span></div>
+
+</span><span data-line="331">
+</span><span data-line="332">
+<div class="viewcode-block" id="SNMPObject">
+<a class="viewcode-back" href="../../../../../protocols/cip/api/objects_switch.html#icspacket.proto.cip.objects.switch.SNMPObject">[docs]</a>
+</span><span data-line="333"><span class="k">class</span><span class="w"> </span><span class="nc">SNMPObject</span><span class="p">(</span><span class="n">CIPObject</span><span class="p">):</span>
+</span><span data-line="334"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Configures the SNMP Agent embedded in a device (See CIP Vol 2, §5-9).</span>
+</span><span data-line="335">
+</span><span data-line="336"><span class="sd">    A device implementing this object provides exactly one instance.</span>
+</span><span data-line="337"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span data-line="338">
+</span><span data-line="339">    <span class="n">CLASS_CODE</span><span class="p">:</span> <span class="n">ClassVar</span><span class="p">[</span><span class="n">ClassCode</span><span class="p">]</span> <span class="o">=</span> <span class="n">ClassCode</span><span class="o">.</span><span class="n">SNMP</span>
+</span><span data-line="340">
+</span><span data-line="341">    <span class="n">snmp_agent</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">uint8</span><span class="p">)</span>
+</span><span data-line="342"><span class="w">    </span><span class="sd">&quot;&quot;&quot;1 = SNMP Agent enabled (default), 0 = disabled (attribute 1).&quot;&quot;&quot;</span>
+</span><span data-line="343">
+</span><span data-line="344">    <span class="n">snmp_agent_version</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">uint8</span><span class="p">)</span>
+</span><span data-line="345"><span class="w">    </span><span class="sd">&quot;&quot;&quot;1 = SNMPv1, 3 = SNMPv3, 31 = bilingual SNMPv1+v3 (attribute 2).&quot;&quot;&quot;</span>
+</span><span data-line="346">
+</span><span data-line="347">    <span class="n">primary_network_manager</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="n">NetworkManagerIdentifier</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span>
+</span><span data-line="348">        <span class="mi">3</span><span class="p">,</span> <span class="n">NetworkManagerIdentifier</span>
+</span><span data-line="349">    <span class="p">)</span>
+</span><span data-line="350"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Primary Network Manager address that TrapPdus are sent to (attribute</span>
+</span><span data-line="351"><span class="sd">    3).&quot;&quot;&quot;</span>
+</span><span data-line="352">
+</span><span data-line="353">    <span class="n">secondary_network_manager</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="n">NetworkManagerIdentifier</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span>
+</span><span data-line="354">        <span class="mi">4</span><span class="p">,</span> <span class="n">NetworkManagerIdentifier</span>
+</span><span data-line="355">    <span class="p">)</span>
+</span><span data-line="356"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Secondary Network Manager address that TrapPdus are sent to (attribute</span>
+</span><span data-line="357"><span class="sd">    4).&quot;&quot;&quot;</span>
+</span><span data-line="358">
+</span><span data-line="359">    <span class="n">notifications</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="n">uint8</span><span class="p">)</span>
+</span><span data-line="360"><span class="w">    </span><span class="sd">&quot;&quot;&quot;1 = sending of SNMP TrapPdus enabled (default), 0 = disabled (attribute</span>
+</span><span data-line="361"><span class="sd">    5).&quot;&quot;&quot;</span>
+</span><span data-line="362">
+</span><span data-line="363">    <span class="n">trap_type</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="n">uint8</span><span class="p">)</span>
+</span><span data-line="364"><span class="w">    </span><span class="sd">&quot;&quot;&quot;1 = TrapV1Pdu, 2 = TrapV2Pdu (requires snmp_agent_version 3 or 31)</span>
+</span><span data-line="365"><span class="sd">    (attribute 6, optional).&quot;&quot;&quot;</span>
+</span><span data-line="366">
+<div class="viewcode-block" id="SNMPObject.get_class_attribute">
+<a class="viewcode-back" href="../../../../../protocols/cip/api/objects_switch.html#icspacket.proto.cip.objects.switch.SNMPObject.get_class_attribute">[docs]</a>
+</span><span data-line="367">    <span class="k">def</span><span class="w"> </span><span class="nf">get_class_attribute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attribute</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bytes</span><span class="p">:</span>
+</span><span data-line="368"><span class="w">        </span><span class="sd">&quot;&quot;&quot;Read an SNMP class attribute from instance 0 (See §5-9.3.1, Table</span>
+</span><span data-line="369"><span class="sd">        5-9.2).&quot;&quot;&quot;</span>
+</span><span data-line="370">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_attr</span><span class="p">(</span><span class="n">attribute</span><span class="p">,</span> <span class="n">instance</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span></div>
+</div>
+
+</span><span data-line="371">
+</span><span data-line="372">
+<div class="viewcode-block" id="PowerManagementObject">
+<a class="viewcode-back" href="../../../../../protocols/cip/api/objects_switch.html#icspacket.proto.cip.objects.switch.PowerManagementObject">[docs]</a>
+</span><span data-line="373"><span class="k">class</span><span class="w"> </span><span class="nc">PowerManagementObject</span><span class="p">(</span><span class="n">CIPObject</span><span class="p">):</span>
+</span><span data-line="374"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Marker wrapper for the Power Management Object (See CIP Vol 2, §5-10).</span>
+</span><span data-line="375">
+</span><span data-line="376"><span class="sd">    Volume 2 defines no attributes or services of its own beyond the base</span>
+</span><span data-line="377"><span class="sd">    object described in Volume 1: only the behavioral requirement that a</span>
+</span><span data-line="378"><span class="sd">    device whose Sleeping state support is enabled (base object attribute 6)</span>
+</span><span data-line="379"><span class="sd">    must accept Wake-on-LAN &quot;Magic Packets&quot; to exit that state. This class</span>
+</span><span data-line="380"><span class="sd">    exists so :func:`~icspacket.proto.cip.objects.registry.object_for` can</span>
+</span><span data-line="381"><span class="sd">    resolve class 0x53; the base Volume 1 attributes/services are out of</span>
+</span><span data-line="382"><span class="sd">    scope here.</span>
+</span><span data-line="383"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span data-line="384">
+</span><span data-line="385">    <span class="n">CLASS_CODE</span><span class="p">:</span> <span class="n">ClassVar</span><span class="p">[</span><span class="n">ClassCode</span><span class="p">]</span> <span class="o">=</span> <span class="n">ClassCode</span><span class="o">.</span><span class="n">POWER_MANAGEMENT</span></div>
+
+</span><span data-line="386">
+</span><span data-line="387">
+<div class="viewcode-block" id="BridgeIdentifier">
+<a class="viewcode-back" href="../../../../../protocols/cip/api/objects_switch.html#icspacket.proto.cip.objects.switch.BridgeIdentifier">[docs]</a>
+</span><span data-line="388"><span class="nd">@struct</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="n">LittleEndian</span><span class="p">)</span>
+</span><span data-line="389"><span class="k">class</span><span class="w"> </span><span class="nc">BridgeIdentifier</span><span class="p">(</span><span class="n">StructDefMixin</span><span class="p">):</span>
+</span><span data-line="390"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Combined 2-byte priority + 6-byte MAC bridge identifier (RSTP Bridge</span>
+</span><span data-line="391"><span class="sd">    Object attribute 12; RSTP Port Object attributes 3, 15, and 17, See IEEE</span>
+</span><span data-line="392"><span class="sd">    802.1D-2004 §17.18.6).&quot;&quot;&quot;</span>
+</span><span data-line="393">
+</span><span data-line="394">    <span class="n">priority</span><span class="p">:</span> <span class="n">uint16_t</span>
+</span><span data-line="395">    <span class="n">mac</span><span class="p">:</span> <span class="n">f</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">net</span><span class="o">.</span><span class="n">MAC</span><span class="p">]</span></div>
+
+</span><span data-line="396">
+</span><span data-line="397">
+<div class="viewcode-block" id="RSTPBridgeObject">
+<a class="viewcode-back" href="../../../../../protocols/cip/api/objects_switch.html#icspacket.proto.cip.objects.switch.RSTPBridgeObject">[docs]</a>
+</span><span data-line="398"><span class="k">class</span><span class="w"> </span><span class="nc">RSTPBridgeObject</span><span class="p">(</span><span class="n">CIPObject</span><span class="p">):</span>
+</span><span data-line="399"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Configuration and diagnostic interface for RSTP at the bridge level</span>
+</span><span data-line="400"><span class="sd">    (See CIP Vol 2, §5-11, IEEE 802.1D-2004 clause 17).</span>
+</span><span data-line="401">
+</span><span data-line="402"><span class="sd">    Devices may implement multiple instances (e.g. one per VLAN).</span>
+</span><span data-line="403"><span class="sd">    ``list_of_rstp_ports`` decodes greedily from its own Get_Attribute_Single</span>
+</span><span data-line="404"><span class="sd">    response; its true length equals ``number_of_rstp_ports``.</span>
+</span><span data-line="405"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span data-line="406">
+</span><span data-line="407">    <span class="n">CLASS_CODE</span><span class="p">:</span> <span class="n">ClassVar</span><span class="p">[</span><span class="n">ClassCode</span><span class="p">]</span> <span class="o">=</span> <span class="n">ClassCode</span><span class="o">.</span><span class="n">RSTP_BRIDGE</span>
+</span><span data-line="408">
+</span><span data-line="409">    <span class="n">bridge_object_identification</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">CIP_SHORT_STRING</span><span class="p">)</span>
+</span><span data-line="410"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Vendor-defined identification for this Bridge Object instance, empty</span>
+</span><span data-line="411"><span class="sd">    if unused (attribute 1).&quot;&quot;&quot;</span>
+</span><span data-line="412">
+</span><span data-line="413">    <span class="n">bridge_identifier_priority</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">uint16</span><span class="p">)</span>
+</span><span data-line="414"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Manageable component of the Bridge Identifier, range 0-61440 in steps</span>
+</span><span data-line="415"><span class="sd">    of 4096, default 32768 (attribute 2).&quot;&quot;&quot;</span>
+</span><span data-line="416">
+</span><span data-line="417">    <span class="n">transmit_hold_count</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">uint16</span><span class="p">)</span>
+</span><span data-line="418"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Limits the Port Transmit state machine&#39;s transmission rate, range</span>
+</span><span data-line="419"><span class="sd">    1-10, default 6 (attribute 3).&quot;&quot;&quot;</span>
+</span><span data-line="420">
+</span><span data-line="421">    <span class="n">number_of_rstp_ports</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">uint16</span><span class="p">)</span>
+</span><span data-line="422"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Number of RSTP ports associated with this bridge, default 2 (attribute</span>
+</span><span data-line="423"><span class="sd">    4).&quot;&quot;&quot;</span>
+</span><span data-line="424">
+</span><span data-line="425">    <span class="n">list_of_rstp_ports</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="n">Collection</span><span class="p">[</span><span class="nb">int</span><span class="p">]]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="n">uint16</span><span class="p">[</span><span class="o">...</span><span class="p">])</span>
+</span><span data-line="426"><span class="w">    </span><span class="sd">&quot;&quot;&quot;RSTP Port Object instance numbers associated with this bridge, one per</span>
+</span><span data-line="427"><span class="sd">    number_of_rstp_ports (attribute 5).&quot;&quot;&quot;</span>
+</span><span data-line="428">
+</span><span data-line="429">    <span class="n">force_protocol_version</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="n">uint16</span><span class="p">)</span>
+</span><span data-line="430"><span class="w">    </span><span class="sd">&quot;&quot;&quot;0 = STP compatibility mode, 2 = normal operation (default) (attribute</span>
+</span><span data-line="431"><span class="sd">    6, optional).&quot;&quot;&quot;</span>
+</span><span data-line="432">
+</span><span data-line="433">    <span class="n">bridge_max_age</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="n">uint16</span><span class="p">)</span>
+</span><span data-line="434"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Maximum age (in 1/256s units) of information transmitted by this</span>
+</span><span data-line="435"><span class="sd">    bridge while Root, range 6.0-40.0s, default 20.0s (attribute 7,</span>
+</span><span data-line="436"><span class="sd">    optional).&quot;&quot;&quot;</span>
+</span><span data-line="437">
+</span><span data-line="438">    <span class="n">bridge_hello_time</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="n">uint16</span><span class="p">)</span>
+</span><span data-line="439"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Interval (in 1/256s units) between Configuration Message transmissions</span>
+</span><span data-line="440"><span class="sd">    by Designated Ports, range 1.0-2.0s, default 2.0s (attribute 8,</span>
+</span><span data-line="441"><span class="sd">    optional).&quot;&quot;&quot;</span>
+</span><span data-line="442">
+</span><span data-line="443">    <span class="n">bridge_forward_delay</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="n">uint16</span><span class="p">)</span>
+</span><span data-line="444"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Delay (in 1/256s units) used to transition Root/Designated Ports to</span>
+</span><span data-line="445"><span class="sd">    Forwarding, range 4.0-30.0s, default 15.0s (attribute 9, optional).&quot;&quot;&quot;</span>
+</span><span data-line="446">
+</span><span data-line="447">    <span class="n">time_since_topology_change</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">uint32</span><span class="p">)</span>
+</span><span data-line="448"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Time (in 1/256s units) since the last topology change (attribute 10,</span>
+</span><span data-line="449"><span class="sd">    optional).&quot;&quot;&quot;</span>
+</span><span data-line="450">
+</span><span data-line="451">    <span class="n">topology_change_count</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="n">uint32</span><span class="p">)</span>
+</span><span data-line="452"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Total number of topology changes detected since last reset (attribute</span>
+</span><span data-line="453"><span class="sd">    11, optional).&quot;&quot;&quot;</span>
+</span><span data-line="454">
+</span><span data-line="455">    <span class="n">designated_root</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="n">BridgeIdentifier</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="n">BridgeIdentifier</span><span class="p">)</span>
+</span><span data-line="456"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Bridge Identifier of the root of the spanning tree (attribute 12,</span>
+</span><span data-line="457"><span class="sd">    optional).&quot;&quot;&quot;</span>
+</span><span data-line="458">
+</span><span data-line="459">    <span class="n">root_cost</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">13</span><span class="p">,</span> <span class="n">uint32</span><span class="p">)</span>
+</span><span data-line="460"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Cost of the path to the root as seen from this bridge, default 200,000</span>
+</span><span data-line="461"><span class="sd">    for 100Mbps (attribute 13, optional).&quot;&quot;&quot;</span>
+</span><span data-line="462">
+</span><span data-line="463">    <span class="n">root_port</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="n">uint16</span><span class="p">)</span>
+</span><span data-line="464"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Port identifier of the port offering the lowest-cost path to the root,</span>
+</span><span data-line="465"><span class="sd">    0 = undefined (attribute 14, optional).&quot;&quot;&quot;</span>
+</span><span data-line="466">
+</span><span data-line="467">    <span class="n">max_age</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="n">uint16</span><span class="p">)</span>
+</span><span data-line="468"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Actual Max Age value currently in use by this bridge (in 1/256s</span>
+</span><span data-line="469"><span class="sd">    units), range 6.0-40.0s, default 20.0s (attribute 15, optional).&quot;&quot;&quot;</span>
+</span><span data-line="470">
+</span><span data-line="471">    <span class="n">hello_time</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="n">uint16</span><span class="p">)</span>
+</span><span data-line="472"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Actual Hello Time value currently in use by this bridge (in 1/256s</span>
+</span><span data-line="473"><span class="sd">    units), range 1.0-2.0s, default 2.0s (attribute 16, optional).&quot;&quot;&quot;</span>
+</span><span data-line="474">
+</span><span data-line="475">    <span class="n">forward_delay</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">17</span><span class="p">,</span> <span class="n">uint16</span><span class="p">)</span>
+</span><span data-line="476"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Actual Forward Delay value currently in use by this bridge (in 1/256s</span>
+</span><span data-line="477"><span class="sd">    units), range 4.0-30.0s, default 15.0s (attribute 17, optional).&quot;&quot;&quot;</span>
+</span><span data-line="478">
+<div class="viewcode-block" id="RSTPBridgeObject.get_class_attribute">
+<a class="viewcode-back" href="../../../../../protocols/cip/api/objects_switch.html#icspacket.proto.cip.objects.switch.RSTPBridgeObject.get_class_attribute">[docs]</a>
+</span><span data-line="479">    <span class="k">def</span><span class="w"> </span><span class="nf">get_class_attribute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attribute</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bytes</span><span class="p">:</span>
+</span><span data-line="480"><span class="w">        </span><span class="sd">&quot;&quot;&quot;Read an RSTP Bridge class attribute from instance 0 (See</span>
+</span><span data-line="481"><span class="sd">        §5-11.3.1, Table 5-11.2).&quot;&quot;&quot;</span>
+</span><span data-line="482">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_attr</span><span class="p">(</span><span class="n">attribute</span><span class="p">,</span> <span class="n">instance</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span></div>
+</div>
+
+</span><span data-line="483">
+</span><span data-line="484">
+<div class="viewcode-block" id="RSTPPortObject">
+<a class="viewcode-back" href="../../../../../protocols/cip/api/objects_switch.html#icspacket.proto.cip.objects.switch.RSTPPortObject">[docs]</a>
+</span><span data-line="485"><span class="k">class</span><span class="w"> </span><span class="nc">RSTPPortObject</span><span class="p">(</span><span class="n">CIPObject</span><span class="p">):</span>
+</span><span data-line="486"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Configuration and diagnostic interface for RSTP at the port level (See</span>
+</span><span data-line="487"><span class="sd">    CIP Vol 2, §5-12, IEEE 802.1D-2004 clause 17).</span>
+</span><span data-line="488">
+</span><span data-line="489"><span class="sd">    At least 2 instances are required wherever :class:`RSTPBridgeObject` is</span>
+</span><span data-line="490"><span class="sd">    implemented.</span>
+</span><span data-line="491"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span data-line="492">
+</span><span data-line="493">    <span class="n">CLASS_CODE</span><span class="p">:</span> <span class="n">ClassVar</span><span class="p">[</span><span class="n">ClassCode</span><span class="p">]</span> <span class="o">=</span> <span class="n">ClassCode</span><span class="o">.</span><span class="n">RSTP_PORT</span>
+</span><span data-line="494">
+</span><span data-line="495">    <span class="n">bridge_object_instance</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">uint16</span><span class="p">)</span>
+</span><span data-line="496"><span class="w">    </span><span class="sd">&quot;&quot;&quot;RSTP Bridge Object instance associated with this port, default 1</span>
+</span><span data-line="497"><span class="sd">    (attribute 1).&quot;&quot;&quot;</span>
+</span><span data-line="498">
+</span><span data-line="499">    <span class="n">ethernet_link_instance</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">uint16</span><span class="p">)</span>
+</span><span data-line="500"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Ethernet Link Object instance associated with this port, default 0</span>
+</span><span data-line="501"><span class="sd">    (attribute 2).&quot;&quot;&quot;</span>
+</span><span data-line="502">
+</span><span data-line="503">    <span class="n">reference_bridge_identifier</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="n">BridgeIdentifier</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span>
+</span><span data-line="504">        <span class="mi">3</span><span class="p">,</span> <span class="n">BridgeIdentifier</span>
+</span><span data-line="505">    <span class="p">)</span>
+</span><span data-line="506"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Bridge Identifier of the bridge this port is associated with</span>
+</span><span data-line="507"><span class="sd">    (attribute 3).&quot;&quot;&quot;</span>
+</span><span data-line="508">
+</span><span data-line="509">    <span class="n">port_mac_address</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">net</span><span class="o">.</span><span class="n">MAC</span><span class="p">)</span>
+</span><span data-line="510"><span class="w">    </span><span class="sd">&quot;&quot;&quot;MAC address unique to this port instance (attribute 4).&quot;&quot;&quot;</span>
+</span><span data-line="511">
+</span><span data-line="512">    <span class="n">rstp_port_enable</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="n">uint8</span><span class="p">)</span>
+</span><span data-line="513"><span class="w">    </span><span class="sd">&quot;&quot;&quot;0 = RSTP disabled (default), 1 = RSTP enabled (attribute 5).&quot;&quot;&quot;</span>
+</span><span data-line="514">
+</span><span data-line="515">    <span class="n">port_identifier_priority</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="n">uint32</span><span class="p">)</span>
+</span><span data-line="516"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Manageable component of the Port Identifier, range 0-240 in steps of</span>
+</span><span data-line="517"><span class="sd">    16, default 128 (attribute 6).&quot;&quot;&quot;</span>
+</span><span data-line="518">
+</span><span data-line="519">    <span class="n">oper_edge_port</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="n">uint8</span><span class="p">)</span>
+</span><span data-line="520"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Current operEdgePort value as determined by the Bridge Detection state</span>
+</span><span data-line="521"><span class="sd">    machine, default 1/True (attribute 7).&quot;&quot;&quot;</span>
+</span><span data-line="522">
+</span><span data-line="523">    <span class="n">port_state</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="n">uint16</span><span class="p">)</span>
+</span><span data-line="524"><span class="w">    </span><span class="sd">&quot;&quot;&quot;1=Disabled (default), 2=Blocking, 3=Listening, 4=Learning,</span>
+</span><span data-line="525"><span class="sd">    5=Forwarding, 6=Broken (attribute 8).&quot;&quot;&quot;</span>
+</span><span data-line="526">
+</span><span data-line="527">    <span class="n">mcheck</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="n">uint8</span><span class="p">)</span>
+</span><span data-line="528"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Set by management to force the Port Protocol Migration state machine</span>
+</span><span data-line="529"><span class="sd">    to transmit RST BPDUs, default 0/False (attribute 9, optional).&quot;&quot;&quot;</span>
+</span><span data-line="530">
+</span><span data-line="531">    <span class="n">port_path_cost</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">uint32</span><span class="p">)</span>
+</span><span data-line="532"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Contribution of this port to the path cost of paths toward the</span>
+</span><span data-line="533"><span class="sd">    spanning tree root, 0 = use automatically calculated default (attribute</span>
+</span><span data-line="534"><span class="sd">    10, optional).&quot;&quot;&quot;</span>
+</span><span data-line="535">
+</span><span data-line="536">    <span class="n">port_admin_edge_port</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="n">uint8</span><span class="p">)</span>
+</span><span data-line="537"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Administrative value of the Edge Port parameter, default 0/False</span>
+</span><span data-line="538"><span class="sd">    (attribute 11, optional).&quot;&quot;&quot;</span>
+</span><span data-line="539">
+</span><span data-line="540">    <span class="n">admin_point_to_point_mac</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="n">uint16</span><span class="p">)</span>
+</span><span data-line="541"><span class="w">    </span><span class="sd">&quot;&quot;&quot;0=forceTrue, 1=forceFalse, 2=auto (default) (attribute 12, optional).&quot;&quot;&quot;</span>
+</span><span data-line="542">
+</span><span data-line="543">    <span class="n">oper_point_to_point_mac</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">13</span><span class="p">,</span> <span class="n">uint16</span><span class="p">)</span>
+</span><span data-line="544"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Operational point-to-point status of the attached LAN segment, default</span>
+</span><span data-line="545"><span class="sd">    0/False (attribute 13, optional).&quot;&quot;&quot;</span>
+</span><span data-line="546">
+</span><span data-line="547">    <span class="n">port_role</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="n">uint16</span><span class="p">)</span>
+</span><span data-line="548"><span class="w">    </span><span class="sd">&quot;&quot;&quot;0=Unknown (default), 1=Alternate/Backup, 2=Root, 3=Designated</span>
+</span><span data-line="549"><span class="sd">    (attribute 14, optional).&quot;&quot;&quot;</span>
+</span><span data-line="550">
+</span><span data-line="551">    <span class="n">designated_root</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="n">BridgeIdentifier</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="n">BridgeIdentifier</span><span class="p">)</span>
+</span><span data-line="552"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Bridge Identifier recorded as Root in Configuration BPDUs for this</span>
+</span><span data-line="553"><span class="sd">    port&#39;s segment (attribute 15, optional).&quot;&quot;&quot;</span>
+</span><span data-line="554">
+</span><span data-line="555">    <span class="n">designated_root_path_cost</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="n">uint32</span><span class="p">)</span>
+</span><span data-line="556"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Path cost of the Designated Port of this port&#39;s segment, default</span>
+</span><span data-line="557"><span class="sd">    200,000 (attribute 16, optional).&quot;&quot;&quot;</span>
+</span><span data-line="558">
+</span><span data-line="559">    <span class="n">designated_bridge_identifier</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="n">BridgeIdentifier</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span>
+</span><span data-line="560">        <span class="mi">17</span><span class="p">,</span> <span class="n">BridgeIdentifier</span>
+</span><span data-line="561">    <span class="p">)</span>
+</span><span data-line="562"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Bridge Identifier this port considers the Designated Bridge for its</span>
+</span><span data-line="563"><span class="sd">    segment (attribute 17, optional).&quot;&quot;&quot;</span>
+</span><span data-line="564">
+</span><span data-line="565">    <span class="n">designated_port</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="n">uint16</span><span class="p">)</span>
+</span><span data-line="566"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Port Identifier of the port on the Designated Bridge for this port&#39;s</span>
+</span><span data-line="567"><span class="sd">    segment, default 0 (attribute 18, optional).&quot;&quot;&quot;</span>
+</span><span data-line="568">
+</span><span data-line="569">    <span class="n">forward_transitions_count</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">19</span><span class="p">,</span> <span class="n">uint32</span><span class="p">)</span>
+</span><span data-line="570"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Number of times this port transitioned from Learning to Forwarding</span>
+</span><span data-line="571"><span class="sd">    (attribute 19, optional).&quot;&quot;&quot;</span>
+</span><span data-line="572">
+<div class="viewcode-block" id="RSTPPortObject.get_class_attribute">
+<a class="viewcode-back" href="../../../../../protocols/cip/api/objects_switch.html#icspacket.proto.cip.objects.switch.RSTPPortObject.get_class_attribute">[docs]</a>
+</span><span data-line="573">    <span class="k">def</span><span class="w"> </span><span class="nf">get_class_attribute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attribute</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bytes</span><span class="p">:</span>
+</span><span data-line="574"><span class="w">        </span><span class="sd">&quot;&quot;&quot;Read an RSTP Port class attribute from instance 0 (See §5-12.3.1,</span>
+</span><span data-line="575"><span class="sd">        Table 5-12.2).&quot;&quot;&quot;</span>
+</span><span data-line="576">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_attr</span><span class="p">(</span><span class="n">attribute</span><span class="p">,</span> <span class="n">instance</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span></div>
+</div>
+
+</span><span data-line="577">
+</span><span data-line="578">
+<div class="viewcode-block" id="PrpInterfaceCounters">
+<a class="viewcode-back" href="../../../../../protocols/cip/api/objects_switch.html#icspacket.proto.cip.objects.switch.PrpInterfaceCounters">[docs]</a>
+</span><span data-line="579"><span class="nd">@struct</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="n">LittleEndian</span><span class="p">)</span>
+</span><span data-line="580"><span class="k">class</span><span class="w"> </span><span class="nc">PrpInterfaceCounters</span><span class="p">(</span><span class="n">StructDefMixin</span><span class="p">):</span>
+</span><span data-line="581"><span class="w">    </span><span class="sd">&quot;&quot;&quot;PRP Object attribute 8 payload (See §5-13.3.3.2, IEC 62439-3).&quot;&quot;&quot;</span>
+</span><span data-line="582">
+</span><span data-line="583">    <span class="n">transmit_count_a</span><span class="p">:</span> <span class="n">uint32_t</span>
+</span><span data-line="584">    <span class="n">transmit_count_b</span><span class="p">:</span> <span class="n">uint32_t</span>
+</span><span data-line="585">    <span class="n">transmit_count_c</span><span class="p">:</span> <span class="n">uint32_t</span>
+</span><span data-line="586">    <span class="n">receive_count_a</span><span class="p">:</span> <span class="n">uint32_t</span>
+</span><span data-line="587">    <span class="n">receive_count_b</span><span class="p">:</span> <span class="n">uint32_t</span>
+</span><span data-line="588">    <span class="n">receive_count_c</span><span class="p">:</span> <span class="n">uint32_t</span>
+</span><span data-line="589">    <span class="n">wrong_lan_a_count</span><span class="p">:</span> <span class="n">uint32_t</span>
+</span><span data-line="590">    <span class="n">wrong_lan_b_count</span><span class="p">:</span> <span class="n">uint32_t</span></div>
+
+</span><span data-line="591">
+</span><span data-line="592">
+<div class="viewcode-block" id="PrpDuplicateDetectionCounters">
+<a class="viewcode-back" href="../../../../../protocols/cip/api/objects_switch.html#icspacket.proto.cip.objects.switch.PrpDuplicateDetectionCounters">[docs]</a>
+</span><span data-line="593"><span class="nd">@struct</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="n">LittleEndian</span><span class="p">)</span>
+</span><span data-line="594"><span class="k">class</span><span class="w"> </span><span class="nc">PrpDuplicateDetectionCounters</span><span class="p">(</span><span class="n">StructDefMixin</span><span class="p">):</span>
+</span><span data-line="595"><span class="w">    </span><span class="sd">&quot;&quot;&quot;PRP Object attribute 9 payload (See §5-13.3.3.3, IEC 62439-3).&quot;&quot;&quot;</span>
+</span><span data-line="596">
+</span><span data-line="597">    <span class="n">entries_unique_count_a</span><span class="p">:</span> <span class="n">uint32_t</span>
+</span><span data-line="598">    <span class="n">entries_unique_count_b</span><span class="p">:</span> <span class="n">uint32_t</span>
+</span><span data-line="599">    <span class="n">entries_duplicate_count_a</span><span class="p">:</span> <span class="n">uint32_t</span>
+</span><span data-line="600">    <span class="n">entries_duplicate_count_b</span><span class="p">:</span> <span class="n">uint32_t</span>
+</span><span data-line="601">    <span class="n">entries_multiple_count_a</span><span class="p">:</span> <span class="n">uint32_t</span>
+</span><span data-line="602">    <span class="n">entries_multiple_count_b</span><span class="p">:</span> <span class="n">uint32_t</span></div>
+
+</span><span data-line="603">
+</span><span data-line="604">
+<div class="viewcode-block" id="PRPObject">
+<a class="viewcode-back" href="../../../../../protocols/cip/api/objects_switch.html#icspacket.proto.cip.objects.switch.PRPObject">[docs]</a>
+</span><span data-line="605"><span class="k">class</span><span class="w"> </span><span class="nc">PRPObject</span><span class="p">(</span><span class="n">CIPObject</span><span class="p">):</span>
+</span><span data-line="606"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Configuration and diagnostic interface for Parallel Redundancy</span>
+</span><span data-line="607"><span class="sd">    Protocol (PRP) dual-LAN operation (See CIP Vol 2, §5-13, IEC 62439-3</span>
+</span><span data-line="608"><span class="sd">    clause 4).&quot;&quot;&quot;</span>
+</span><span data-line="609">
+</span><span data-line="610">    <span class="n">CLASS_CODE</span><span class="p">:</span> <span class="n">ClassVar</span><span class="p">[</span><span class="n">ClassCode</span><span class="p">]</span> <span class="o">=</span> <span class="n">ClassCode</span><span class="o">.</span><span class="n">PRP</span>
+</span><span data-line="611">
+</span><span data-line="612">    <span class="n">prp_enable</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">uint8</span><span class="p">)</span>
+</span><span data-line="613"><span class="w">    </span><span class="sd">&quot;&quot;&quot;1 = PRP enabled, 0 = disabled (default) (attribute 1).&quot;&quot;&quot;</span>
+</span><span data-line="614">
+</span><span data-line="615">    <span class="n">node_type</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">uint16</span><span class="p">)</span>
+</span><span data-line="616"><span class="w">    </span><span class="sd">&quot;&quot;&quot;0 = deprecated PRP Mode 0, 1 = PRP Mode 1 (default) (attribute 2).&quot;&quot;&quot;</span>
+</span><span data-line="617">
+</span><span data-line="618">    <span class="n">node_name</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">CIP_SHORT_STRING</span><span class="p">)</span>
+</span><span data-line="619"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Human-readable name of the PRP Link Redundancy Entity, empty if</span>
+</span><span data-line="620"><span class="sd">    unconfigured (attribute 3).&quot;&quot;&quot;</span>
+</span><span data-line="621">
+</span><span data-line="622">    <span class="n">version_name</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">CIP_SHORT_STRING</span><span class="p">)</span>
+</span><span data-line="623"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Human-readable version name of the PRP Link Redundancy Entity</span>
+</span><span data-line="624"><span class="sd">    (attribute 4).&quot;&quot;&quot;</span>
+</span><span data-line="625">
+</span><span data-line="626">    <span class="n">prp_mac_address</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="n">net</span><span class="o">.</span><span class="n">MAC</span><span class="p">)</span>
+</span><span data-line="627"><span class="w">    </span><span class="sd">&quot;&quot;&quot;MAC address used by PRP (attribute 5).&quot;&quot;&quot;</span>
+</span><span data-line="628">
+</span><span data-line="629">    <span class="n">duplicate_discard</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="n">uint16</span><span class="p">)</span>
+</span><span data-line="630"><span class="w">    </span><span class="sd">&quot;&quot;&quot;0 = doNotDiscard, 1 = discard (default) (attribute 6).&quot;&quot;&quot;</span>
+</span><span data-line="631">
+</span><span data-line="632">    <span class="n">transparent_reception</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="n">uint16</span><span class="p">)</span>
+</span><span data-line="633"><span class="w">    </span><span class="sd">&quot;&quot;&quot;0 = removeRCT (default), 1 = passRCT (attribute 7).&quot;&quot;&quot;</span>
+</span><span data-line="634">
+</span><span data-line="635">    <span class="n">prp_interface_counters</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="n">PrpInterfaceCounters</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span>
+</span><span data-line="636">        <span class="mi">8</span><span class="p">,</span> <span class="n">PrpInterfaceCounters</span>
+</span><span data-line="637">    <span class="p">)</span>
+</span><span data-line="638"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Frame counters for Ports A/B and the interlink/DANP interface</span>
+</span><span data-line="639"><span class="sd">    (attribute 8).&quot;&quot;&quot;</span>
+</span><span data-line="640">
+</span><span data-line="641">    <span class="n">prp_duplicate_detection_counters</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="n">PrpDuplicateDetectionCounters</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+</span><span data-line="642">        <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="n">PrpDuplicateDetectionCounters</span><span class="p">)</span>
+</span><span data-line="643">    <span class="p">)</span>
+</span><span data-line="644"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Duplicate-detection entry counters for Ports A/B (attribute 9).&quot;&quot;&quot;</span>
+</span><span data-line="645">
+</span><span data-line="646">    <span class="n">prp_proxy_nodes_count</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">uint32</span><span class="p">)</span>
+</span><span data-line="647"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Number of nodes in the Proxy Nodes Table (attribute 10).&quot;&quot;&quot;</span>
+</span><span data-line="648">
+</span><span data-line="649">    <span class="n">proxy_nodes_table</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="n">Collection</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="n">net</span><span class="o">.</span><span class="n">MAC</span><span class="p">[</span><span class="o">...</span><span class="p">])</span>
+</span><span data-line="650"><span class="w">    </span><span class="sd">&quot;&quot;&quot;MAC addresses of nodes this device proxies for, one per</span>
+</span><span data-line="651"><span class="sd">    prp_proxy_nodes_count (attribute 11); the Get_Member service (0x18) is</span>
+</span><span data-line="652"><span class="sd">    required by the spec for indexed access but is not implemented here.&quot;&quot;&quot;</span>
+</span><span data-line="653">
+</span><span data-line="654">    <span class="n">prp_nodes_table_path</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="n">EPATH</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="n">CIP_PREFIXED_EPATH</span><span class="p">)</span>
+</span><span data-line="655"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Path to this device&#39;s PRP Nodes Table object instance (attribute 12,</span>
+</span><span data-line="656"><span class="sd">    optional).&quot;&quot;&quot;</span>
+</span><span data-line="657">
+<div class="viewcode-block" id="PRPObject.get_class_attribute">
+<a class="viewcode-back" href="../../../../../protocols/cip/api/objects_switch.html#icspacket.proto.cip.objects.switch.PRPObject.get_class_attribute">[docs]</a>
+</span><span data-line="658">    <span class="k">def</span><span class="w"> </span><span class="nf">get_class_attribute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attribute</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bytes</span><span class="p">:</span>
+</span><span data-line="659"><span class="w">        </span><span class="sd">&quot;&quot;&quot;Read a PRP class attribute from instance 0 (See §5-13.3.1, Table</span>
+</span><span data-line="660"><span class="sd">        5-13.2).&quot;&quot;&quot;</span>
+</span><span data-line="661">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_attr</span><span class="p">(</span><span class="n">attribute</span><span class="p">,</span> <span class="n">instance</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span></div>
+</div>
+
+</span><span data-line="662">
+</span><span data-line="663">
+<div class="viewcode-block" id="PrpNodeEntry">
+<a class="viewcode-back" href="../../../../../protocols/cip/api/objects_switch.html#icspacket.proto.cip.objects.switch.PrpNodeEntry">[docs]</a>
+</span><span data-line="664"><span class="nd">@struct</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="n">LittleEndian</span><span class="p">)</span>
+</span><span data-line="665"><span class="k">class</span><span class="w"> </span><span class="nc">PrpNodeEntry</span><span class="p">(</span><span class="n">StructDefMixin</span><span class="p">):</span>
+</span><span data-line="666"><span class="w">    </span><span class="sd">&quot;&quot;&quot;One entry in the PRP Nodes Table (PRP Nodes Table Object attribute 2,</span>
+</span><span data-line="667"><span class="sd">    See §5-14.3.2, Table 5-14.2).&quot;&quot;&quot;</span>
+</span><span data-line="668">
+</span><span data-line="669">    <span class="n">mac</span><span class="p">:</span> <span class="n">f</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">net</span><span class="o">.</span><span class="n">MAC</span><span class="p">]</span>
+</span><span data-line="670"><span class="w">    </span><span class="sd">&quot;&quot;&quot;MAC address of the source node, as advertised by its PRP Supervision</span>
+</span><span data-line="671"><span class="sd">    frames.&quot;&quot;&quot;</span>
+</span><span data-line="672">
+</span><span data-line="673">    <span class="n">time_last_seen_a</span><span class="p">:</span> <span class="n">uint32_t</span>
+</span><span data-line="674"><span class="w">    </span><span class="sd">&quot;&quot;&quot;TimeTicks (1/100s) since the last frame from this node was received</span>
+</span><span data-line="675"><span class="sd">    over LAN A, 0 upon registration.&quot;&quot;&quot;</span>
+</span><span data-line="676">
+</span><span data-line="677">    <span class="n">time_last_seen_b</span><span class="p">:</span> <span class="n">uint32_t</span>
+</span><span data-line="678"><span class="w">    </span><span class="sd">&quot;&quot;&quot;TimeTicks (1/100s) since the last frame from this node was received</span>
+</span><span data-line="679"><span class="sd">    over LAN B, 0 upon registration.&quot;&quot;&quot;</span></div>
+
+</span><span data-line="680">
+</span><span data-line="681">
+<div class="viewcode-block" id="PRPNodesTableObject">
+<a class="viewcode-back" href="../../../../../protocols/cip/api/objects_switch.html#icspacket.proto.cip.objects.switch.PRPNodesTableObject">[docs]</a>
+</span><span data-line="682"><span class="k">class</span><span class="w"> </span><span class="nc">PRPNodesTableObject</span><span class="p">(</span><span class="n">CIPObject</span><span class="p">):</span>
+</span><span data-line="683"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Records PRP-capable nodes detected on the network (See CIP Vol 2,</span>
+</span><span data-line="684"><span class="sd">    §5-14).</span>
+</span><span data-line="685">
+</span><span data-line="686"><span class="sd">    Devices may implement one or more instances.</span>
+</span><span data-line="687"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span data-line="688">
+</span><span data-line="689">    <span class="n">CLASS_CODE</span><span class="p">:</span> <span class="n">ClassVar</span><span class="p">[</span><span class="n">ClassCode</span><span class="p">]</span> <span class="o">=</span> <span class="n">ClassCode</span><span class="o">.</span><span class="n">PRP_NODES_TABLE</span>
+</span><span data-line="690">
+</span><span data-line="691">    <span class="n">prp_nodes_table_count</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">uint32</span><span class="p">)</span>
+</span><span data-line="692"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Number of nodes in the PRP Nodes Table (attribute 1).&quot;&quot;&quot;</span>
+</span><span data-line="693">
+</span><span data-line="694">    <span class="n">prp_nodes_table</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="n">Collection</span><span class="p">[</span><span class="n">PrpNodeEntry</span><span class="p">]]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span>
+</span><span data-line="695">        <span class="mi">2</span><span class="p">,</span> <span class="n">PrpNodeEntry</span><span class="p">[</span><span class="o">...</span><span class="p">]</span>
+</span><span data-line="696">    <span class="p">)</span>
+</span><span data-line="697"><span class="w">    </span><span class="sd">&quot;&quot;&quot;PRP node entries, one per prp_nodes_table_count (attribute 2).&quot;&quot;&quot;</span>
+</span><span data-line="698">
+<div class="viewcode-block" id="PRPNodesTableObject.get_class_attribute">
+<a class="viewcode-back" href="../../../../../protocols/cip/api/objects_switch.html#icspacket.proto.cip.objects.switch.PRPNodesTableObject.get_class_attribute">[docs]</a>
+</span><span data-line="699">    <span class="k">def</span><span class="w"> </span><span class="nf">get_class_attribute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attribute</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bytes</span><span class="p">:</span>
+</span><span data-line="700"><span class="w">        </span><span class="sd">&quot;&quot;&quot;Read a PRP Nodes Table class attribute from instance 0 (See</span>
+</span><span data-line="701"><span class="sd">        §5-14.3.1, Table 5-14.1).&quot;&quot;&quot;</span>
+</span><span data-line="702">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_attr</span><span class="p">(</span><span class="n">attribute</span><span class="p">,</span> <span class="n">instance</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span></div>
+</div>
+
+</span></pre></div>
+        </article><button class="back-to-top" type="button">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+  </svg>
+  <span>Back to top</span>
+</button><div class="navigation flex print:hidden"></div></div>
+    </div>
+  </main>
+</div>
+<footer class="sy-foot">
+  <div class="sy-foot-inner sy-container mx-auto">
+    <div class="sy-foot-reserved md:flex justify-between items-center">
+      <div class="sy-foot-copyright"><p>2025, MatrixEditor</p>
+  
+  <p>
+    Made with
+    
+    <a href="https://www.sphinx-doc.org/">Sphinx</a> and
+    
+    <a href="https://shibuya.lepture.com">Shibuya theme</a>.
+  </p>
+</div>
+      <div class="sy-foot-socials">
+  <a href="https://github.com/MatrixEditor/icspacket" aria-label="GitHub">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </a></div>
+    </div>
+  </div>
+</footer>
+      <script src="../../../../../_static/documentation_options.js?v=5dc6420e"></script>
+      <script src="../../../../../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../../../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="../../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../../../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../../../../_static/design-tabs.js?v=f930bc37"></script>
+      <script src="../../../../../_static/shibuya.js?v=50760d75"></script></body>
+</html>

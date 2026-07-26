@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en" data-accent-color="lime" data-content_root="../../">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Operating via CIP / EtherNet-IP - icspacket 0.1.dev1+g198be51b5 documentation</title><link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="API Reference" href="api.html" /><link rel="prev" title="Information Object Library" href="../iec104/api/objects.html" />
+      <link rel="canonical" href="https://matrixeditor.github.io/icspacket/protocols/cip/cipclient.html" /><script>
+    function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
+    setColorMode(localStorage._theme||"dark");
+  </script><link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=e1a1ceaf" />
+    <link rel="stylesheet" type="text/css" href="../../_static/shibuya.css?v=2ceb65ce" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link media="print" rel="stylesheet" type="text/css" href="../../_static/print.css?v=20ff2c19" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --sy-f-text: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+  --sy-f-heading: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+}
+</style>
+    
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://matrixeditor.github.io/icspacket/protocols/cip/cipclient.html"/>
+  <meta property="og:title" content="Operating via CIP / EtherNet-IP"/>
+    <meta name="twitter:card" content="summary"/>
+  </head>
+<body><div class="sy-head">
+  <div class="sy-head-blur"></div>
+  <div class="sy-head-inner sy-container mx-auto">
+    <a class="sy-head-brand" href="../../index.html">
+      
+      
+      <strong>icspacket</strong>
+    </a>
+    <div class="sy-head-nav" id="head-nav">
+      <nav class="sy-head-links"><ul>
+      <li class="link"><a class="js-menu" href="../../getting-started/protocols.html" id="nav-trigger-1" aria-controls="nav-children-1">
+            <span>Examples</span>
+            <i class="i-lucide chevron-down"></i>
+          </a>
+        <ul id="nav-children-1" aria-labelledby="nav-trigger-1"><li><a href="../mms/examples.html">
+                <span>MMS Utilities</span>
+                <small>Manufacturing Message Specification tools</small>
+              </a></li><li><a href="../dnp3/examples.html">
+                <span>DNP3 Tools</span>
+                <small>DNP3 utilities and tools</small>
+              </a></li><li><a href="../iec61850/iedmap.html">
+                <span>IED Enumeration Tool</span>
+                <small>Logical Device enumeration and more</small>
+              </a></li><li><a href="examples.html">
+                <span>CIP / EtherNet-IP Tools</span>
+                <small>EtherNet/IP discovery, explicit messaging and I/O tools</small>
+              </a></li><li><a href="../iec104/examples.html">
+                <span>IEC 60870-5-104 Tools</span>
+                <small>IEC 60870-5-104 interrogation and read tools</small>
+              </a></li></ul>
+      </li><li class="link"><a href="../../changelog.html">Changelog</a></li></ul></nav>
+      <div class="sy-head-extra flex items-center print:hidden"><form class="searchbox flex items-center" action="../../search.html" method="get">
+  <input type="text" name="q" placeholder="Search" />
+  <kbd>/</kbd>
+</form><div class="sy-head-socials">
+  <a href="https://github.com/MatrixEditor/icspacket" aria-label="GitHub">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </a></div></div>
+    </div>
+    <div class="sy-head-actions flex items-center shrink-0 print:hidden"><button class="js-theme theme-switch flex items-center"
+data-aria-auto="Switch to light color mode"
+data-aria-light="Switch to dark color mode"
+data-aria-dark="Switch to auto color mode">
+<i class="i-lucide theme-icon"></i>
+</button><button class="md:hidden flex items-center js-menu" aria-label="Menu" type="button" aria-controls="head-nav" aria-expanded="false">
+        <div class="hamburger">
+          <span class="hamburger_1"></span>
+          <span class="hamburger_2"></span>
+          <span class="hamburger_3"></span>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>
+<div class="sy-page sy-container flex mx-auto">
+  <aside id="lside" class="sy-lside md:w-72 md:shrink-0 print:hidden">
+    <div class="sy-lside-inner md:sticky">
+      <div class="sy-scrollbar p-6"><div class="sidebar-links">
+  <ul>
+    <li><a class="icon-link" href="https://github.com/MatrixEditor/icspacket/discussions">
+  <span class="icon">
+    <svg viewBox="0 0 24 24" fill="none">
+      <path fill="var(--accent-9)" fill-rule="evenodd" clip-rule="evenodd" d="M11 5a6 6 0 0 0-4.687 9.746c.215.27.315.62.231.954l-.514 2.058a1 1 0 0 0 1.485 1.1l2.848-1.71c.174-.104.374-.15.576-.148H13a6 6 0 0 0 0-12h-2Z"/>
+      <circle fill="white" cx="12" cy="11" r="1"/>
+      <circle fill="white" cx="9" cy="11" r="1"/>
+      <circle fill="white" cx="15" cy="11" r="1"/>
+    </svg>
+  </span>
+  <span class="text">Discussion</span>
+</a></li>
+  </ul>
+</div>
+        <div class="globaltoc" data-expand-depth="1"><p class="caption" role="heading" aria-level="3"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../getting-started/installation.html">Installation</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../getting-started/protocols.html">Protocols Overview</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../getting-started/coreapi.html">Core API Reference</a></li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">DNP3 / IEEE 1815</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../dnp3/dnp3read.html">Reading Objects</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../dnp3/dnp3dump.html">Dumping Objects</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../dnp3/dnp3resolve.html">Resolve Link Addresses</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../dnp3/api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../dnp3/api/link.html">Link Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dnp3/api/transport.html">Transport Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dnp3/api/application.html">Application Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dnp3/api/master.html">Master</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dnp3/api/object_library.html">Object Library</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../dnp3/api/primitives.html">Primitive Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dnp3/api/coding.html">Encoding / Decoding</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dnp3/api/variations.html">Variations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dnp3/api/coding_utils.html">Object Utilities</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">IEC 61850</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../iec61850/iedmap.html">Enumerating IEDs</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../iec61850/iedctrl.html">Operating on IEDs</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../iec61850/api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../iec61850/api_data_classes.html">Data Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iec61850/api_path.html">Object / Data References</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iec61850/api_control.html">Control / Operation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iec61850/api_client.html">IED Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iec61850/api_goose.html">GOOSE Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iec61850/api_sv.html">SampledValues Client</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">MMS / ISO 9506</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../mms/demo_vars.html">Variable Target Format</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../mms/demo_vars.html#variableaccess-service-rwq">VariableAccess Service (rwq)</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../mms/demo_files.html">FileManagement Service</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../mms/api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../mms/api_conn.html">MMS Connection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mms/api_data.html">Data Conversion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mms/api_utils.html">Protocol Utilities</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">IEC 60870-5-104</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../iec104/iec104read.html">Reading Data via Interrogation</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../iec104/api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../iec104/api/apci.html">APCI - Framing Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iec104/api/asdu.html">ASDU - Application Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iec104/api/master.html">Master (Client)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iec104/api/objects.html">Information Object Library</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">CIP / EtherNet-IP</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Operating via CIP / EtherNet-IP</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api/connection.html">Connection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/encapsulation.html">EtherNet/IP Encapsulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/messaging.html">Messaging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/objects.html">Object Library</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/objects_core.html">Core Objects</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/objects_network.html">Network Objects</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/objects_io.html">I/O and Parameter Objects</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/objects_motion.html">Motion, Drive, and Semiconductor Objects</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/objects_switch.html">Switch Management Objects</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/objects_diagnostics.html">Diagnostics Objects</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">ACSE / X.227</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../acse/api.html">API Reference</a></li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">COPP / X.226 / ISO 8823</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../copp/api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../copp/presentation.html">ISO Presentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../copp/utils.html">Protocol Utilities</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">COSP / X.225 / ISO 8237-1</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../cosp/api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../cosp/tsdu.html">TSDU</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cosp/spdu.html">SPDU Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cosp/values.html">Parameter Values (PV)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cosp/session.html">ISO Session</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cosp/utils.html">Protocol Utilities</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">COTP / X.224</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../cotp/api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../cotp/structs.html">TPDU Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cotp/connection.html">Connection</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">TPKT Protocol (RFC1006)</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../tpkt/usage.html">Using a TPKT Wrapper</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../tpkt/api.html">API Reference</a></li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../changelog.html">Changelog</a></li>
+</ul>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="lside-overlay js-menu" role="button" aria-label="Close left sidebar" aria-controls="lside" aria-expanded="false"></div>
+  <aside id="rside" class="sy-rside pb-3 w-64 shrink-0 order-last">
+    <button class="rside-close js-menu xl:hidden" aria-label="Close Table of Contents" type="button" aria-controls="rside" aria-expanded="false">
+      <i class="i-lucide close"></i>
+    </button>
+    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div class="localtoc"><h3>On this page</h3><ul>
+<li><a class="reference internal" href="#usage">Usage</a></li>
+<li><a class="reference internal" href="#discovering-targets">Discovering Targets</a></li>
+<li><a class="reference internal" href="#inspecting-the-identity-object">Inspecting the Identity Object</a></li>
+<li><a class="reference internal" href="#reading-and-writing-single-attributes">Reading and Writing Single Attributes</a></li>
+<li><a class="reference internal" href="#reading-all-attributes-of-an-object">Reading All Attributes of an Object</a></li>
+<li><a class="reference internal" href="#reading-and-writing-assembly-data">Reading and Writing Assembly Data</a></li>
+<li><a class="reference internal" href="#routing-a-request-through-unconnected-send">Routing a Request Through Unconnected_Send</a></li>
+<li><a class="reference internal" href="#sending-several-services-at-once">Sending Several Services at Once</a></li>
+<li><a class="reference internal" href="#opening-and-closing-class-3-connections">Opening and Closing Class 3 Connections</a></li>
+<li><a class="reference internal" href="#opening-a-class-0-1-cyclic-i-o-connection">Opening a Class 0/1 Cyclic I/O Connection</a></li>
+</ul>
+</div><a class="js-repo-stats repo-stats flex items-center" href="https://github.com/MatrixEditor/icspacket"
+  data-type="github" data-user="MatrixEditor" data-repo="icspacket">
+  <span class="w-8 flex items-center justify-around shrink-0 text-3xl">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </span>
+  <span class="flex-grow px-2 break-all">
+    <span style="font-size: small;">MatrixEditor/icspacket</span>
+    <span class="flex text-sm repo-stats-count">
+      <span class="flex items-center pr-3">
+        <iconify-icon icon="lucide:star"></iconify-icon>
+        <strong class="js-repo-stars ml-1">0</strong>
+      </span>
+      <span class="flex items-center">
+        <iconify-icon icon="lucide:git-fork"></iconify-icon>
+        <strong class="js-repo-forks ml-1">0</strong>
+      </span>
+    </span>
+  </span>
+</a><div class="edit-this-page">
+  <a href="https://github.com/MatrixEditor/icspacket/blob/main/docs/protocols/cip/cipclient.rst">Edit this page</a>
+</div></div>
+  </aside>
+  <div class="rside-overlay js-menu" role="button" aria-label="Close Table of Contents" aria-controls="rside" aria-expanded="false"></div>
+  <main class="sy-main w-full max-sm:max-w-full print:pt-6">
+<div class="sy-breadcrumbs" role="navigation">
+  <div class="sy-breadcrumbs-inner flex items-center">
+    <div class="md:hidden mr-3">
+      <button class="js-menu" aria-label="Menu" type="button" aria-controls="lside" aria-expanded="false">
+        <i class="i-lucide menu"></i>
+      </button>
+    </div>
+    <ol class="flex-1" itemscope itemtype="https://schema.org/BreadcrumbList"><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="../../index.html"><span itemprop="name">icspacket</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="1" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <strong itemprop="name">Operating via CIP / EtherNet-IP</strong>
+        <meta itemprop="position" content="2" />
+      </li></ol>
+    <div class="xl:hidden ml-1">
+      <button class="js-menu" aria-label="Show table of contents" type="button" aria-controls="rside"
+        aria-expanded="false">
+        <i class="i-lucide outdent"></i>
+      </button>
+    </div>
+  </div>
+</div><div class="flex flex-col break-words justify-between">
+      <div class="relative min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
+  <div class="copy-page-wrapper relative pb-4 lg:absolute lg:top-8 lg:right-6 xl:right-12">
+  <div id="copy-page-trigger">
+    <button
+      type="button"
+      class="js-copy px-3 py-1 inline-flex items-center gap-1"
+      data-url="https://raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/protocols/cip/cipclient.rst"
+    >
+      <i class="i-lucide" data-icon="copy"></i>
+      <span>Copy page</span>
+    </button>
+    <button class="js-menu px-2 py-1" type="button" aria-label="More actions"
+      aria-haspopup="menu" aria-expanded="false" aria-controls="copy-page-content">
+      <i class="i-lucide chevron-down"></i>
+    </button>
+  </div>
+  <div id="copy-page-content" role="menu" aria-orientation="vertical" aria-hidden="true">
+    <div role="presentation">
+      <div class="flex flex-col" role="group">
+        <button class="js-copy" type="button" role="menuitem"
+          data-url="https://raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/protocols/cip/cipclient.rst">
+          <span class="iconify-icon">
+            <i class="i-lucide" data-icon="copy"></i>
+          </span>
+          <span>Copy page</span>
+        </button>
+        <a role="menuitem" href="https://raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/protocols/cip/cipclient.rst" target="_blank" rel="nofollow"><iconify-icon icon="bi:code-slash"></iconify-icon>
+            <span>View Source</span></a><a role="menuitem" href="https://chatgpt.com/?hints=search&q=Read%20https%3A//raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/protocols/cip/cipclient.rst%20so%20I%20can%20ask%20questions%20about%20it." target="_blank" rel="nofollow">
+          <iconify-icon icon="bi:openai"></iconify-icon>
+          <span>Open in ChatGPT</span>
+        </a><a role="menuitem" href="https://claude.ai/new?q=Read%20https%3A//raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/protocols/cip/cipclient.rst%20so%20I%20can%20ask%20questions%20about%20it." target="_blank" rel="nofollow">
+          <iconify-icon icon="bi:claude"></iconify-icon>
+          <span>Open in Claude</span>
+        </a></div>
+    </div>
+  </div>
+</div><article class="yue" role="main">
+          <section id="operating-via-cip-ethernet-ip">
+<span id="cip-example-cipclient"></span><h1>Operating via CIP / EtherNet-IP<a class="headerlink" href="#operating-via-cip-ethernet-ip" title="Link to this heading">#</a></h1>
+<p>The <code class="docutils literal notranslate"><span class="pre">cipclient</span></code> utility supports nearly every EtherNet/IP/CIP service
+supported by <a class="reference internal" href="api.html#module-icspacket.proto.cip" title="icspacket.proto.cip"><code class="xref py py-mod docutils literal notranslate"><span class="pre">icspacket.proto.cip</span></code></a>: UDP discovery, unconnected and
+connected (Class 3) explicit messaging, Assembly Object I/O, Multiple
+Service Packet, and Class 0/1 cyclic I/O connections opened through the
+Connection Manager.</p>
+<section id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Link to this heading">#</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span data-line="1">cipclient.py<span class="w"> </span><span class="o">[</span>OPTIONS<span class="o">]</span><span class="w"> </span>&lt;service&gt;<span class="w"> </span><span class="o">[</span>args...<span class="o">]</span><span class="w"> </span>&lt;host&gt;
+</span></pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">&lt;host&gt;</span></code> (IP address or hostname) is always the <strong>last</strong> positional
+argument, following the service’s own arguments. <code class="docutils literal notranslate"><span class="pre">-p/--port</span></code> selects the
+target TCP port (default <code class="docutils literal notranslate"><span class="pre">44818</span></code>), and <code class="docutils literal notranslate"><span class="pre">--timeout</span></code> bounds
+transport-level operations in seconds (default <code class="docutils literal notranslate"><span class="pre">10</span></code>).</p>
+</section>
+<section id="discovering-targets">
+<h2>Discovering Targets<a class="headerlink" href="#discovering-targets" title="Link to this heading">#</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span data-line="1">cipclient.py<span class="w"> </span>list-identity<span class="w"> </span>&lt;host&gt;
+</span><span data-line="2">cipclient.py<span class="w"> </span>list-services<span class="w"> </span>&lt;host&gt;
+</span><span data-line="3">cipclient.py<span class="w"> </span>list-interfaces<span class="w"> </span>&lt;host&gt;
+</span></pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">list-identity</span></code> (alias <code class="docutils literal notranslate"><span class="pre">li</span></code>), <code class="docutils literal notranslate"><span class="pre">list-services</span></code> (alias <code class="docutils literal notranslate"><span class="pre">ls</span></code>), and
+<code class="docutils literal notranslate"><span class="pre">list-interfaces</span></code> (alias <code class="docutils literal notranslate"><span class="pre">lif</span></code>) each send one of the three EtherNet/IP
+encapsulation-layer discovery commands (<code class="docutils literal notranslate"><span class="pre">ListIdentity</span></code>, <code class="docutils literal notranslate"><span class="pre">ListServices</span></code>,
+<code class="docutils literal notranslate"><span class="pre">ListInterfaces</span></code>) and print every item the target returns as a table.
+<code class="docutils literal notranslate"><span class="pre">list-identity</span></code> is the most broadly useful of the three – most targets
+respond to it, and it doubles as an unauthenticated way to fingerprint a
+device (vendor, product name/code, serial number) before addressing it
+further:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span><span data-line="1">$ cipclient.py list-identity &lt;host&gt;
+</span><span data-line="2">                                            ListIdentity
+</span><span data-line="3">+---------+-------+--------+------+---------+----------+------------+----------------------+-------+
+</span><span data-line="4">| Address | Port  | Vendor | Type | Product | Revision | Serial     | Name                 | State |
+</span><span data-line="5">+=========+=======+========+======+=========+==========+============+======================+=======+
+</span><span data-line="6">| 0.0.0.0 | 44818 | 1      | 14   | 54      | 20.11    | 0x006c061a | 1756-L61/B LOGIX5561 | 255   |
+</span><span data-line="7">+---------+-------+--------+------+---------+----------+------------+----------------------+-------+
+</span></pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Many targets (including <code class="docutils literal notranslate"><span class="pre">cip</span></code>/cpppo) report no
+<code class="docutils literal notranslate"><span class="pre">ListServices</span></code>/<code class="docutils literal notranslate"><span class="pre">ListInterfaces</span></code> items at all, or only a generic
+“Communications” service entry – this is normal; not every stack
+populates these optional discovery responses.</p>
+</div>
+</section>
+<section id="inspecting-the-identity-object">
+<h2>Inspecting the Identity Object<a class="headerlink" href="#inspecting-the-identity-object" title="Link to this heading">#</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span data-line="1">cipclient.py<span class="w"> </span>identity<span class="w"> </span>&lt;host&gt;
+</span><span data-line="2">cipclient.py<span class="w"> </span>identity<span class="w"> </span>-i<span class="w"> </span><span class="m">1</span><span class="w"> </span>&lt;host&gt;
+</span></pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">identity</span></code> (alias <code class="docutils literal notranslate"><span class="pre">id</span></code>) reads and decodes the standard Identity Object
+attributes (Vendor ID, Device Type, Product Code, Revision, Status, Serial
+Number, Product Name, State) for the given instance (<code class="docutils literal notranslate"><span class="pre">-i/--instance</span></code>,
+default <code class="docutils literal notranslate"><span class="pre">1</span></code>) via <a class="reference internal" href="api/objects_core.html#icspacket.proto.cip.objects.identity.IdentityObject" title="icspacket.proto.cip.objects.identity.IdentityObject"><code class="xref py py-class docutils literal notranslate"><span class="pre">IdentityObject</span></code></a>.
+This is the connected/typed equivalent of reading the same attributes
+individually with <code class="docutils literal notranslate"><span class="pre">get</span></code> below.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span><span data-line="1">$ cipclient.py -q --timeout 10 -p 44818 identity 127.0.0.1
+</span><span data-line="2">            Identity Object
+</span><span data-line="3">+---------------+----------------------+
+</span><span data-line="4">| Attribute     | Value                |
+</span><span data-line="5">+===============+======================+
+</span><span data-line="6">| Vendor ID     | 1                    |
+</span><span data-line="7">| Device Type   | 14                   |
+</span><span data-line="8">| Product Code  | 54                   |
+</span><span data-line="9">| Revision      | 20.11                |
+</span><span data-line="10">| Status        | 0x3160               |
+</span><span data-line="11">| Serial Number | 0x006c061a           |
+</span><span data-line="12">| Product Name  | 1756-L61/B LOGIX5561 |
+</span><span data-line="13">| State         | 255                  |
+</span><span data-line="14">+---------------+----------------------+
+</span></pre></div>
+</div>
+</section>
+<section id="reading-and-writing-single-attributes">
+<h2>Reading and Writing Single Attributes<a class="headerlink" href="#reading-and-writing-single-attributes" title="Link to this heading">#</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span data-line="1">cipclient.py<span class="w"> </span>get<span class="w"> </span>0x01<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span>&lt;host&gt;
+</span><span data-line="2">cipclient.py<span class="w"> </span>get<span class="w"> </span>0x04<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">3</span><span class="w"> </span>--connected<span class="w"> </span>&lt;host&gt;
+</span><span data-line="3">cipclient.py<span class="w"> </span><span class="nb">set</span><span class="w"> </span>0x04<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">3</span><span class="w"> </span>deadbeef<span class="w"> </span>&lt;host&gt;
+</span></pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">get</span></code> (aliases <code class="docutils literal notranslate"><span class="pre">read</span></code>, <code class="docutils literal notranslate"><span class="pre">get-attribute-single</span></code>) and <code class="docutils literal notranslate"><span class="pre">set</span></code> (aliases
+<code class="docutils literal notranslate"><span class="pre">write</span></code>, <code class="docutils literal notranslate"><span class="pre">set-attribute-single</span></code>) send a Get/Set_Attribute_Single request
+addressed by <code class="docutils literal notranslate"><span class="pre">class_code</span></code>, <code class="docutils literal notranslate"><span class="pre">instance</span></code>, and <code class="docutils literal notranslate"><span class="pre">attribute</span></code> (all accept
+decimal or <code class="docutils literal notranslate"><span class="pre">0x</span></code>-prefixed hex). <code class="docutils literal notranslate"><span class="pre">set</span></code>’s <code class="docutils literal notranslate"><span class="pre">value</span></code> is a hexadecimal byte
+string (e.g. <code class="docutils literal notranslate"><span class="pre">deadbeef</span></code>); use the target object’s own attribute layout to
+determine field order and width. Both accept <code class="docutils literal notranslate"><span class="pre">--connected</span></code> to open a
+throwaway Class 3 connection to <code class="docutils literal notranslate"><span class="pre">(class_code,</span> <span class="pre">instance)</span></code> first and send
+the request over it instead of unconnected, then close the connection
+afterwards.</p>
+<p><code class="docutils literal notranslate"><span class="pre">get</span></code> additionally decodes the raw response through the same declarative
+attribute schema used by <code class="docutils literal notranslate"><span class="pre">get-all</span></code>/<code class="docutils literal notranslate"><span class="pre">identity</span></code>, when the class is a
+registered object and the attribute has a known schema (shown in the
+<code class="docutils literal notranslate"><span class="pre">Decoded</span></code> column; otherwise <code class="docutils literal notranslate"><span class="pre">-</span></code>):</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span><span data-line="1">$ cipclient.py get 0x01 1 1 &lt;host&gt;
+</span><span data-line="2">                     Get_Attribute_Single
+</span><span data-line="3">+-------+----------+-----------+-----------+--------+---------+
+</span><span data-line="4">| Class | Instance | Attribute | Connected | Value  | Decoded |
+</span><span data-line="5">+=======+==========+===========+===========+========+=========+
+</span><span data-line="6">| 0x1   | 1        | 1         | False     | 0x0100 | 1       |
+</span><span data-line="7">+-------+----------+-----------+-----------+--------+---------+
+</span></pre></div>
+</div>
+</section>
+<section id="reading-all-attributes-of-an-object">
+<h2>Reading All Attributes of an Object<a class="headerlink" href="#reading-all-attributes-of-an-object" title="Link to this heading">#</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span data-line="1">cipclient.py<span class="w"> </span>get-all<span class="w"> </span>0x01<span class="w"> </span><span class="m">1</span><span class="w"> </span>&lt;host&gt;
+</span></pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">get-all</span></code> (aliases <code class="docutils literal notranslate"><span class="pre">gall</span></code>, <code class="docutils literal notranslate"><span class="pre">get-attributes-all</span></code>) sends a
+Get_Attributes_All request for <code class="docutils literal notranslate"><span class="pre">class_code</span></code>/<code class="docutils literal notranslate"><span class="pre">instance</span></code>. For objects
+with a registered wrapper that models a standard Get_Attributes_All layout
+(e.g. Identity, TCP/IP Interface, Ethernet Link), every field is decoded and
+labeled; for any other object, as many leading declared attributes as can
+be safely decoded are shown, falling back to the raw response bytes:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span><span data-line="1">$ cipclient.py get-all 0x01 1 &lt;host&gt;
+</span><span data-line="2"> Get_Attributes_All (class 0x1, instance
+</span><span data-line="3">                   1)
+</span><span data-line="4">+----------------+----------------------+
+</span><span data-line="5">| Attribute      | Value                |
+</span><span data-line="6">+================+======================+
+</span><span data-line="7">| vendor_id      | 1                    |
+</span><span data-line="8">| device_type    | 14                   |
+</span><span data-line="9">| product_code   | 54                   |
+</span><span data-line="10">| revision_major | 20                   |
+</span><span data-line="11">| revision_minor | 11                   |
+</span><span data-line="12">| status         | 12640                |
+</span><span data-line="13">| serial_number  | 7079450              |
+</span><span data-line="14">| product_name   | 1756-L61/B LOGIX5561 |
+</span><span data-line="15">| state          | 255                  |
+</span><span data-line="16">+----------------+----------------------+
+</span></pre></div>
+</div>
+</section>
+<section id="reading-and-writing-assembly-data">
+<h2>Reading and Writing Assembly Data<a class="headerlink" href="#reading-and-writing-assembly-data" title="Link to this heading">#</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span data-line="1">cipclient.py<span class="w"> </span>assembly-get<span class="w"> </span><span class="m">100</span><span class="w"> </span>&lt;host&gt;
+</span><span data-line="2">cipclient.py<span class="w"> </span>assembly-set<span class="w"> </span><span class="m">150</span><span class="w"> </span>aabbccdd<span class="w"> </span>&lt;host&gt;
+</span></pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">assembly-get</span></code>/<code class="docutils literal notranslate"><span class="pre">assembly-set</span></code> (aliases <code class="docutils literal notranslate"><span class="pre">asm-get</span></code>/<code class="docutils literal notranslate"><span class="pre">asm-set</span></code>) read or
+write an Assembly Object instance’s Data attribute (attribute 3) directly,
+without needing a Class 0/1 connection:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span><span data-line="1">$ cipclient.py assembly-set 150 0102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f20 &lt;host&gt;
+</span><span data-line="2">                                  Assembly Data
+</span><span data-line="3">+----------+--------------------------------------------------------------------+
+</span><span data-line="4">| Instance | Written                                                            |
+</span><span data-line="5">+==========+====================================================================+
+</span><span data-line="6">| 150      | 0x0102030405060708090a0b0c0d0e0f10111213141516171...               |
+</span><span data-line="7">+----------+--------------------------------------------------------------------+
+</span></pre></div>
+</div>
+</section>
+<section id="routing-a-request-through-unconnected-send">
+<h2>Routing a Request Through Unconnected_Send<a class="headerlink" href="#routing-a-request-through-unconnected-send" title="Link to this heading">#</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span data-line="1">cipclient.py<span class="w"> </span>unconnected-send<span class="w"> </span>0xe<span class="w"> </span>0x01<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span>&lt;host&gt;
+</span><span data-line="2">cipclient.py<span class="w"> </span>unconnected-send<span class="w"> </span>0xe<span class="w"> </span>0x01<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span>--route-path<span class="w"> </span>01000c00<span class="w"> </span>&lt;host&gt;
+</span></pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">unconnected-send</span></code> (alias <code class="docutils literal notranslate"><span class="pre">uc-send</span></code>) embeds a Message Router request
+(<code class="docutils literal notranslate"><span class="pre">service</span></code>, <code class="docutils literal notranslate"><span class="pre">class_code</span></code>, <code class="docutils literal notranslate"><span class="pre">instance</span></code>, optional <code class="docutils literal notranslate"><span class="pre">attribute</span></code>/<code class="docutils literal notranslate"><span class="pre">data</span></code>)
+inside a Connection Manager Unconnected_Send and routes it via
+<code class="docutils literal notranslate"><span class="pre">--route-path</span></code>. This is normally used
+to reach a device behind a CIP router (e.g. across a backplane or a
+ControlLogix chassis) without opening a dedicated connection to it first.</p>
+</section>
+<section id="sending-several-services-at-once">
+<h2>Sending Several Services at Once<a class="headerlink" href="#sending-several-services-at-once" title="Link to this heading">#</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span data-line="1">cipclient.py<span class="w"> </span>multi<span class="w"> </span>0xe:0x1:1:1<span class="w"> </span>0xe:0x1:1:7<span class="w"> </span>&lt;host&gt;
+</span><span data-line="2">cipclient.py<span class="w"> </span>multi<span class="w"> </span>0xe:0x4:1:3<span class="w"> </span>--connected<span class="w"> </span>&lt;host&gt;
+</span></pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">multi</span></code> (aliases <code class="docutils literal notranslate"><span class="pre">multi-service</span></code>, <code class="docutils literal notranslate"><span class="pre">msp</span></code>) bundles multiple embedded
+service requests into a single Multiple_Service_Packet, one
+<code class="docutils literal notranslate"><span class="pre">SERVICE:CLASS:INSTANCE[:ATTRIBUTE[:DATA]]</span></code> argument per embedded
+request, and prints each embedded reply’s status and data:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span><span data-line="1">$ cipclient.py multi 0xe:0x1:1:1 0xe:0x1:1:7 &lt;host&gt;
+</span><span data-line="2">                        Multiple_Service_Packet
+</span><span data-line="3">+---+---------+--------+----------------------------------------------+
+</span><span data-line="4">| # | Service | Status | Response                                     |
+</span><span data-line="5">+===+=========+========+==============================================+
+</span><span data-line="6">| 0 | 0xe     | 0      | 0x0100                                       |
+</span><span data-line="7">| 1 | 0xe     | 0      | 0x14313735362d4c36312f42204c4f47495835353631 |
+</span><span data-line="8">+---+---------+--------+----------------------------------------------+
+</span></pre></div>
+</div>
+<p>Pass <code class="docutils literal notranslate"><span class="pre">--connected</span></code> to send the whole packet over a throwaway Class 3
+connection to the Message Router instead of unconnected.</p>
+</section>
+<section id="opening-and-closing-class-3-connections">
+<h2>Opening and Closing Class 3 Connections<a class="headerlink" href="#opening-and-closing-class-3-connections" title="Link to this heading">#</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span data-line="1">cipclient.py<span class="w"> </span>forward-open<span class="w"> </span>--path-class<span class="w"> </span>0x04<span class="w"> </span>--path-instance<span class="w"> </span><span class="m">151</span><span class="w"> </span><span class="se">\</span>
+</span><span data-line="2"><span class="w">    </span>--o2t-conn-point<span class="w"> </span><span class="m">150</span><span class="w"> </span>--t2o-conn-point<span class="w"> </span><span class="m">100</span><span class="w"> </span><span class="se">\</span>
+</span><span data-line="3"><span class="w">    </span>--conn-serial<span class="w"> </span>0x5242<span class="w"> </span>--orig-vendor-id<span class="w"> </span>0x1234<span class="w"> </span>--orig-serial-number<span class="w"> </span>0xdeadbeef<span class="w"> </span><span class="se">\</span>
+</span><span data-line="4"><span class="w">    </span>--o2t-rpi<span class="w"> </span><span class="m">100000</span><span class="w"> </span>--o2t-size<span class="w"> </span><span class="m">36</span><span class="w"> </span>--o2t-type<span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="se">\</span>
+</span><span data-line="5"><span class="w">    </span>--t2o-rpi<span class="w"> </span><span class="m">100000</span><span class="w"> </span>--t2o-size<span class="w"> </span><span class="m">32</span><span class="w"> </span>--t2o-type<span class="w"> </span><span class="m">2</span><span class="w"> </span>&lt;host&gt;
+</span><span data-line="6">cipclient.py<span class="w"> </span>forward-close<span class="w"> </span>--path-class<span class="w"> </span>0x04<span class="w"> </span>--path-instance<span class="w"> </span><span class="m">151</span><span class="w"> </span><span class="se">\</span>
+</span><span data-line="7"><span class="w">    </span>--conn-serial<span class="w"> </span>0x5242<span class="w"> </span>--orig-vendor-id<span class="w"> </span>0x1234<span class="w"> </span>--orig-serial-number<span class="w"> </span>0xdeadbeef<span class="w"> </span>&lt;host&gt;
+</span></pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">forward-open</span></code> (alias <code class="docutils literal notranslate"><span class="pre">fo</span></code>) and <code class="docutils literal notranslate"><span class="pre">forward-close</span></code> (alias <code class="docutils literal notranslate"><span class="pre">fc</span></code>) send a
+raw Forward_Open/Forward_Close request through the Connection Manager and
+print every field of the response. Unlike <code class="docutils literal notranslate"><span class="pre">get</span> <span class="pre">--connected</span></code>/<code class="docutils literal notranslate"><span class="pre">set</span>
+<span class="pre">--connected</span></code> (which open and close a <em>throwaway</em> connection internally),
+these expose the full request so a connection can be held open explicitly
+and torn down independently, later, with a separate <code class="docutils literal notranslate"><span class="pre">forward-close</span></code>
+invocation.</p>
+<p>Every option maps directly onto a Forward_Open request field:</p>
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-large">
+<span class="sig-name descname"><span class="pre">--large</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-large" title="Link to this definition">#</a></dt>
+<dd><p>Use Large_Forward_Open (32-bit connection parameters) instead of the
+standard 16-bit Forward_Open.</p>
+</dd></dl>
+
+<p>Connection Identification (<code class="docutils literal notranslate"><span class="pre">--conn-serial</span></code>, <code class="docutils literal notranslate"><span class="pre">--orig-vendor-id</span></code>,
+<code class="docutils literal notranslate"><span class="pre">--orig-serial-number</span></code>, plus <code class="docutils literal notranslate"><span class="pre">--o2t-conn-id</span></code>/<code class="docutils literal notranslate"><span class="pre">--t2o-conn-id</span></code> on
+<code class="docutils literal notranslate"><span class="pre">forward-open</span></code>) uniquely identifies the connection to the target – a
+subsequent <code class="docutils literal notranslate"><span class="pre">forward-close</span></code> <strong>must</strong> repeat the same
+serial/vendor-id/originator-serial values used to open it, or the target
+rejects the close and keeps the connection open (seen as a
+<code class="docutils literal notranslate"><span class="pre">CONNECTION_FAILURE</span></code> ownership conflict on the <em>next</em> open attempt).</p>
+<p>The Connection Path (<code class="docutils literal notranslate"><span class="pre">--path-class</span></code>, <code class="docutils literal notranslate"><span class="pre">--path-instance</span></code>, plus
+<code class="docutils literal notranslate"><span class="pre">--o2t-conn-point</span></code>/<code class="docutils literal notranslate"><span class="pre">--t2o-conn-point</span></code> when connecting to an Assembly
+Object) identifies the object instance the connection is opened to –
+<code class="docutils literal notranslate"><span class="pre">--o2t-conn-point</span></code>/<code class="docutils literal notranslate"><span class="pre">--t2o-conn-point</span></code> append a Connection Point segment
+for each direction’s assembly instance, as used by <code class="docutils literal notranslate"><span class="pre">io-connect</span></code> below.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span><span data-line="1">$ cipclient.py forward-open --path-class 0x04 --path-instance 151 \
+</span><span data-line="2">    --o2t-conn-point 150 --t2o-conn-point 100 \
+</span><span data-line="3">    --conn-serial 0x5242 --orig-vendor-id 0x1234 --orig-serial-number 0xdeadbeef \
+</span><span data-line="4">    --o2t-rpi 100000 --o2t-size 36 --o2t-priority 2 --o2t-type 2 \
+</span><span data-line="5">    --t2o-rpi 100000 --t2o-size 32 --t2o-priority 2 --t2o-type 2 &lt;host&gt;
+</span><span data-line="6">                                                    Forward_Open
+</span><span data-line="7">+--------------------+--------------------+--------+--------+-------------------+----------+----------+------------+
+</span><span data-line="8">| O-&gt;T Connection ID | T-&gt;O Connection ID | Serial | Vendor | Originator Serial | O-&gt;T API | T-&gt;O API | Reply Data |
+</span><span data-line="9">+====================+====================+========+========+===================+==========+==========+============+
+</span><span data-line="10">| 0x4d170013         | 0x00000000         | 0x5242 | 4660   | 0xdeadbeef        | 100000   | 100000   | (empty)    |
+</span><span data-line="11">+--------------------+--------------------+--------+--------+-------------------+----------+----------+------------+
+</span></pre></div>
+</div>
+</section>
+<section id="opening-a-class-0-1-cyclic-i-o-connection">
+<h2>Opening a Class 0/1 Cyclic I/O Connection<a class="headerlink" href="#opening-a-class-0-1-cyclic-i-o-connection" title="Link to this heading">#</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span data-line="1">cipclient.py<span class="w"> </span>io-connect<span class="w"> </span><span class="m">00000000000000000000000000000000</span><span class="w"> </span><span class="se">\</span>
+</span><span data-line="2"><span class="w">    </span>--path-class<span class="w"> </span>0x04<span class="w"> </span>--path-instance<span class="w"> </span><span class="m">151</span><span class="w"> </span><span class="se">\</span>
+</span><span data-line="3"><span class="w">    </span>--o2t-conn-point<span class="w"> </span><span class="m">150</span><span class="w"> </span>--t2o-conn-point<span class="w"> </span><span class="m">100</span><span class="w"> </span><span class="se">\</span>
+</span><span data-line="4"><span class="w">    </span>--conn-serial<span class="w"> </span><span class="m">1</span><span class="w"> </span>--orig-vendor-id<span class="w"> </span><span class="m">1</span><span class="w"> </span>--orig-serial-number<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="se">\</span>
+</span><span data-line="5"><span class="w">    </span>--o2t-size<span class="w"> </span><span class="m">36</span><span class="w"> </span>--t2o-size<span class="w"> </span><span class="m">32</span><span class="w"> </span>--o2t-type<span class="w"> </span><span class="m">2</span><span class="w"> </span>--t2o-type<span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="se">\</span>
+</span><span data-line="6"><span class="w">    </span>--cycles<span class="w"> </span><span class="m">5</span><span class="w"> </span>&lt;host&gt;
+</span></pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">io-connect</span></code> (alias <code class="docutils literal notranslate"><span class="pre">io</span></code>) opens a Forward_Open connection exactly like
+<code class="docutils literal notranslate"><span class="pre">forward-open</span></code> above (accepting every option described there, including
+<code class="docutils literal notranslate"><span class="pre">--large</span></code>), then additionally opens the UDP Class 0/1 I/O connection it
+describes and exchanges cyclic data over it for a fixed number of
+send/receive cycles, closing both the I/O connection and the underlying
+Forward_Open connection automatically when done.</p>
+<p><code class="docutils literal notranslate"><span class="pre">data</span></code> (the O-&gt;T assembly payload to send each cycle, as hexadecimal
+bytes) is the only new positional argument; its length must match
+<code class="docutils literal notranslate"><span class="pre">--o2t-size</span></code>. The I/O Exchange group adds:</p>
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-cycles">
+<span class="sig-name descname"><span class="pre">--cycles</span></span><span class="sig-prename descclassname"> <span class="pre">N</span></span><a class="headerlink" href="#cmdoption-cycles" title="Link to this definition">#</a></dt>
+<dd><p>Number of send/receive cycles to perform (default: <code class="docutils literal notranslate"><span class="pre">1</span></code>).</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-interval">
+<span class="sig-name descname"><span class="pre">--interval</span></span><span class="sig-prename descclassname"> <span class="pre">SEC</span></span><a class="headerlink" href="#cmdoption-interval" title="Link to this definition">#</a></dt>
+<dd><p>Seconds to sleep between cycles (default: <code class="docutils literal notranslate"><span class="pre">1.0</span></code>). Keep this short
+together with a small <code class="docutils literal notranslate"><span class="pre">--cycles</span></code> count if the connection shares a TCP
+explicit-messaging session that could otherwise idle out before
+<code class="docutils literal notranslate"><span class="pre">forward-close</span></code> runs.</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-io-port">
+<span class="sig-name descname"><span class="pre">--io-port</span></span><span class="sig-prename descclassname"> <span class="pre">PORT</span></span><a class="headerlink" href="#cmdoption-io-port" title="Link to this definition">#</a></dt>
+<dd><p>UDP port to exchange Class 0/1 data on, if different from the standard
+port. Needed when the target’s I/O port is remapped, e.g. behind
+NAT/port-forwarding (the lab’s <code class="docutils literal notranslate"><span class="pre">cip-io</span></code> container maps it to
+<code class="docutils literal notranslate"><span class="pre">2223</span></code>).</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-no-header-format">
+<span class="sig-name descname"><span class="pre">--no-header-format</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-no-header-format" title="Link to this definition">#</a></dt>
+<dd><p>Omit the 4-byte Run/Idle header from O-&gt;T datagrams, for listen-only/
+input-only connections.</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-no-sequence-format">
+<span class="sig-name descname"><span class="pre">--no-sequence-format</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-no-sequence-format" title="Link to this definition">#</a></dt>
+<dd><p>Omit the 16-bit connected sequence count prefix from O-&gt;T datagrams.
+Some targets rely solely on the CPF-level sequence number and expect
+this header to be absent (e.g. OpENer’s sample assemblies, as used by
+the lab’s <code class="docutils literal notranslate"><span class="pre">cip-io</span></code> container).</p>
+</dd></dl>
+
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span><span data-line="1">$ cipclient.py io-connect 0102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f20 \
+</span><span data-line="2">    --path-class 0x04 --path-instance 151 \
+</span><span data-line="3">    --o2t-conn-point 150 --t2o-conn-point 100 \
+</span><span data-line="4">    --conn-serial 0x5346 --orig-vendor-id 0x1234 --orig-serial-number 0xc0ffee03 \
+</span><span data-line="5">    --o2t-rpi 100000 --o2t-size 36 --o2t-priority 2 --o2t-type 2 \
+</span><span data-line="6">    --t2o-rpi 100000 --t2o-size 32 --t2o-priority 2 --t2o-type 2 \
+</span><span data-line="7">    --no-sequence-format --io-port 2223 --cycles 2 --interval 0.2 &lt;host&gt;
+</span><span data-line="8">                                       Class 0/1 I/O Exchange
+</span><span data-line="9">+-------+--------------------------------------------+---------------------------------------------+
+</span><span data-line="10">| Cycle | Sent (O-&gt;T)                                | Received (T-&gt;O)                             |
+</span><span data-line="11">+=======+============================================+=============================================+
+</span><span data-line="12">| 0     | 0x0102030405060708090a0b0c0d0e0f101112131… | 0x0102030405060708090a0b0c0d0e0f1011121314… |
+</span><span data-line="13">| 1     | 0x0102030405060708090a0b0c0d0e0f101112131… | 0x0102030405060708090a0b0c0d0e0f1011121314… |
+</span><span data-line="14">+-------+--------------------------------------------+---------------------------------------------+
+</span></pre></div>
+</div>
+</section>
+</section>
+
+        </article><button class="back-to-top" type="button">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+  </svg>
+  <span>Back to top</span>
+</button><div class="navigation flex print:hidden"><div class="navigation-prev">
+    <a href="../iec104/api/objects.html">
+      <i class="i-lucide chevron-left"></i>
+      <div class="page-info">
+        <span>Previous</span><div class="title">Information Object Library</div></div>
+    </a>
+  </div><div class="navigation-next">
+    <a href="api.html">
+      <div class="page-info">
+        <span>Next</span>
+        <div class="title">API Reference</div>
+      </div>
+      <i class="i-lucide chevron-right"></i>
+    </a>
+  </div></div></div>
+    </div>
+  </main>
+</div>
+<footer class="sy-foot">
+  <div class="sy-foot-inner sy-container mx-auto">
+    <div class="sy-foot-reserved md:flex justify-between items-center">
+      <div class="sy-foot-copyright"><p>2025, MatrixEditor</p>
+  
+  <p>
+    Made with
+    
+    <a href="https://www.sphinx-doc.org/">Sphinx</a> and
+    
+    <a href="https://shibuya.lepture.com">Shibuya theme</a>.
+  </p>
+</div>
+      <div class="sy-foot-socials">
+  <a href="https://github.com/MatrixEditor/icspacket" aria-label="GitHub">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </a></div>
+    </div>
+  </div>
+</footer>
+      <script src="../../_static/documentation_options.js?v=5dc6420e"></script>
+      <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+      <script src="../../_static/shibuya.js?v=50760d75"></script></body>
+</html>

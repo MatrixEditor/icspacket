@@ -1,0 +1,1063 @@
+<!DOCTYPE html>
+<html lang="en" data-accent-color="lime" data-content_root="../../../../../">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>icspacket.proto.cip.objects.drive - icspacket 0.1.dev1+g198be51b5 documentation</title><link rel="index" title="Index" href="../../../../../genindex.html" /><link rel="search" title="Search" href="../../../../../search.html" />
+      <link rel="canonical" href="https://matrixeditor.github.io/icspacket/_modules/icspacket/proto/cip/objects/drive.html" /><script>
+    function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
+    setColorMode(localStorage._theme||"dark");
+  </script><link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=e1a1ceaf" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/shibuya.css?v=2ceb65ce" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link media="print" rel="stylesheet" type="text/css" href="../../../../../_static/print.css?v=20ff2c19" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --sy-f-text: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+  --sy-f-heading: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+}
+</style>
+    
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://matrixeditor.github.io/icspacket/_modules/icspacket/proto/cip/objects/drive.html"/>
+  <meta property="og:title" content="icspacket.proto.cip.objects.drive"/>
+    <meta name="twitter:card" content="summary"/>
+  </head>
+<body><div class="sy-head">
+  <div class="sy-head-blur"></div>
+  <div class="sy-head-inner sy-container mx-auto">
+    <a class="sy-head-brand" href="../../../../../index.html">
+      
+      
+      <strong>icspacket</strong>
+    </a>
+    <div class="sy-head-nav" id="head-nav">
+      <nav class="sy-head-links"><ul>
+      <li class="link"><a class="js-menu" href="../../../../../getting-started/protocols.html" id="nav-trigger-1" aria-controls="nav-children-1">
+            <span>Examples</span>
+            <i class="i-lucide chevron-down"></i>
+          </a>
+        <ul id="nav-children-1" aria-labelledby="nav-trigger-1"><li><a href="../../../../../protocols/mms/examples.html">
+                <span>MMS Utilities</span>
+                <small>Manufacturing Message Specification tools</small>
+              </a></li><li><a href="../../../../../protocols/dnp3/examples.html">
+                <span>DNP3 Tools</span>
+                <small>DNP3 utilities and tools</small>
+              </a></li><li><a href="../../../../../protocols/iec61850/iedmap.html">
+                <span>IED Enumeration Tool</span>
+                <small>Logical Device enumeration and more</small>
+              </a></li><li><a href="../../../../../protocols/cip/examples.html">
+                <span>CIP / EtherNet-IP Tools</span>
+                <small>EtherNet/IP discovery, explicit messaging and I/O tools</small>
+              </a></li><li><a href="../../../../../protocols/iec104/examples.html">
+                <span>IEC 60870-5-104 Tools</span>
+                <small>IEC 60870-5-104 interrogation and read tools</small>
+              </a></li></ul>
+      </li><li class="link"><a href="../../../../../changelog.html">Changelog</a></li></ul></nav>
+      <div class="sy-head-extra flex items-center print:hidden"><form class="searchbox flex items-center" action="../../../../../search.html" method="get">
+  <input type="text" name="q" placeholder="Search" />
+  <kbd>/</kbd>
+</form><div class="sy-head-socials">
+  <a href="https://github.com/MatrixEditor/icspacket" aria-label="GitHub">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </a></div></div>
+    </div>
+    <div class="sy-head-actions flex items-center shrink-0 print:hidden"><button class="js-theme theme-switch flex items-center"
+data-aria-auto="Switch to light color mode"
+data-aria-light="Switch to dark color mode"
+data-aria-dark="Switch to auto color mode">
+<i class="i-lucide theme-icon"></i>
+</button><button class="md:hidden flex items-center js-menu" aria-label="Menu" type="button" aria-controls="head-nav" aria-expanded="false">
+        <div class="hamburger">
+          <span class="hamburger_1"></span>
+          <span class="hamburger_2"></span>
+          <span class="hamburger_3"></span>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>
+<div class="sy-page sy-container flex mx-auto">
+  <aside id="lside" class="sy-lside md:w-72 md:shrink-0 print:hidden">
+    <div class="sy-lside-inner md:sticky">
+      <div class="sy-scrollbar p-6"><div class="sidebar-links">
+  <ul>
+    <li><a class="icon-link" href="https://github.com/MatrixEditor/icspacket/discussions">
+  <span class="icon">
+    <svg viewBox="0 0 24 24" fill="none">
+      <path fill="var(--accent-9)" fill-rule="evenodd" clip-rule="evenodd" d="M11 5a6 6 0 0 0-4.687 9.746c.215.27.315.62.231.954l-.514 2.058a1 1 0 0 0 1.485 1.1l2.848-1.71c.174-.104.374-.15.576-.148H13a6 6 0 0 0 0-12h-2Z"/>
+      <circle fill="white" cx="12" cy="11" r="1"/>
+      <circle fill="white" cx="9" cy="11" r="1"/>
+      <circle fill="white" cx="15" cy="11" r="1"/>
+    </svg>
+  </span>
+  <span class="text">Discussion</span>
+</a></li>
+  </ul>
+</div>
+        <div class="globaltoc" data-expand-depth="1"><p class="caption" role="heading" aria-level="3"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../getting-started/installation.html">Installation</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../getting-started/protocols.html">Protocols Overview</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../getting-started/coreapi.html">Core API Reference</a></li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">DNP3 / IEEE 1815</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../protocols/dnp3/dnp3read.html">Reading Objects</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../protocols/dnp3/dnp3dump.html">Dumping Objects</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../protocols/dnp3/dnp3resolve.html">Resolve Link Addresses</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../protocols/dnp3/api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/dnp3/api/link.html">Link Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/dnp3/api/transport.html">Transport Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/dnp3/api/application.html">Application Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/dnp3/api/master.html">Master</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/dnp3/api/object_library.html">Object Library</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../protocols/dnp3/api/primitives.html">Primitive Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../protocols/dnp3/api/coding.html">Encoding / Decoding</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../protocols/dnp3/api/variations.html">Variations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../protocols/dnp3/api/coding_utils.html">Object Utilities</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">IEC 61850</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../protocols/iec61850/iedmap.html">Enumerating IEDs</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../protocols/iec61850/iedctrl.html">Operating on IEDs</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../protocols/iec61850/api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/iec61850/api_data_classes.html">Data Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/iec61850/api_path.html">Object / Data References</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/iec61850/api_control.html">Control / Operation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/iec61850/api_client.html">IED Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/iec61850/api_goose.html">GOOSE Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/iec61850/api_sv.html">SampledValues Client</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">MMS / ISO 9506</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../protocols/mms/demo_vars.html">Variable Target Format</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../protocols/mms/demo_vars.html#variableaccess-service-rwq">VariableAccess Service (rwq)</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../protocols/mms/demo_files.html">FileManagement Service</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../protocols/mms/api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/mms/api_conn.html">MMS Connection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/mms/api_data.html">Data Conversion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/mms/api_utils.html">Protocol Utilities</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">IEC 60870-5-104</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../protocols/iec104/iec104read.html">Reading Data via Interrogation</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../protocols/iec104/api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/iec104/api/apci.html">APCI - Framing Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/iec104/api/asdu.html">ASDU - Application Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/iec104/api/master.html">Master (Client)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/iec104/api/objects.html">Information Object Library</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">CIP / EtherNet-IP</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../protocols/cip/cipclient.html">Operating via CIP / EtherNet-IP</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../protocols/cip/api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/cip/api/connection.html">Connection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/cip/api/encapsulation.html">EtherNet/IP Encapsulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/cip/api/messaging.html">Messaging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/cip/api/objects.html">Object Library</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../protocols/cip/api/objects_core.html">Core Objects</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../protocols/cip/api/objects_network.html">Network Objects</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../protocols/cip/api/objects_io.html">I/O and Parameter Objects</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../protocols/cip/api/objects_motion.html">Motion, Drive, and Semiconductor Objects</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../protocols/cip/api/objects_switch.html">Switch Management Objects</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../protocols/cip/api/objects_diagnostics.html">Diagnostics Objects</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">ACSE / X.227</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../protocols/acse/api.html">API Reference</a></li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">COPP / X.226 / ISO 8823</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../protocols/copp/api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/copp/presentation.html">ISO Presentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/copp/utils.html">Protocol Utilities</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">COSP / X.225 / ISO 8237-1</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../protocols/cosp/api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/cosp/tsdu.html">TSDU</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/cosp/spdu.html">SPDU Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/cosp/values.html">Parameter Values (PV)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/cosp/session.html">ISO Session</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/cosp/utils.html">Protocol Utilities</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">COTP / X.224</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../protocols/cotp/api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/cotp/structs.html">TPDU Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/cotp/connection.html">Connection</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">TPKT Protocol (RFC1006)</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../protocols/tpkt/usage.html">Using a TPKT Wrapper</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../protocols/tpkt/api.html">API Reference</a></li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../changelog.html">Changelog</a></li>
+</ul>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="lside-overlay js-menu" role="button" aria-label="Close left sidebar" aria-controls="lside" aria-expanded="false"></div>
+  <aside id="rside" class="sy-rside pb-3 w-64 shrink-0 order-last">
+    <button class="rside-close js-menu xl:hidden" aria-label="Close Table of Contents" type="button" aria-controls="rside" aria-expanded="false">
+      <i class="i-lucide close"></i>
+    </button>
+    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><a class="js-repo-stats repo-stats flex items-center" href="https://github.com/MatrixEditor/icspacket"
+  data-type="github" data-user="MatrixEditor" data-repo="icspacket">
+  <span class="w-8 flex items-center justify-around shrink-0 text-3xl">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </span>
+  <span class="flex-grow px-2 break-all">
+    <span style="font-size: small;">MatrixEditor/icspacket</span>
+    <span class="flex text-sm repo-stats-count">
+      <span class="flex items-center pr-3">
+        <iconify-icon icon="lucide:star"></iconify-icon>
+        <strong class="js-repo-stars ml-1">0</strong>
+      </span>
+      <span class="flex items-center">
+        <iconify-icon icon="lucide:git-fork"></iconify-icon>
+        <strong class="js-repo-forks ml-1">0</strong>
+      </span>
+    </span>
+  </span>
+</a></div>
+  </aside>
+  <div class="rside-overlay js-menu" role="button" aria-label="Close Table of Contents" aria-controls="rside" aria-expanded="false"></div>
+  <main class="sy-main w-full max-sm:max-w-full print:pt-6">
+<div class="sy-breadcrumbs" role="navigation">
+  <div class="sy-breadcrumbs-inner flex items-center">
+    <div class="md:hidden mr-3">
+      <button class="js-menu" aria-label="Menu" type="button" aria-controls="lside" aria-expanded="false">
+        <i class="i-lucide menu"></i>
+      </button>
+    </div>
+    <ol class="flex-1" itemscope itemtype="https://schema.org/BreadcrumbList"><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="../../../../../index.html"><span itemprop="name">icspacket</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="1" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="../../../../index.html"><span itemprop="name">Module code</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="2" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <strong itemprop="name">icspacket.proto.cip.objects.drive</strong>
+        <meta itemprop="position" content="3" />
+      </li></ol>
+    <div class="xl:hidden ml-1">
+      <button class="js-menu" aria-label="Show table of contents" type="button" aria-controls="rside"
+        aria-expanded="false">
+        <i class="i-lucide outdent"></i>
+      </button>
+    </div>
+  </div>
+</div><div class="flex flex-col break-words justify-between">
+      <div class="relative min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
+  <article class="yue" role="main">
+          <h1>Source code for icspacket.proto.cip.objects.drive</h1><div class="highlight"><pre>
+<span></span><span data-line="1"><span class="c1"># This file is part of icspacket.</span>
+</span><span data-line="2"><span class="c1"># Copyright (C) 2025-present  MatrixEditor @ github</span>
+</span><span data-line="3"><span class="c1">#</span>
+</span><span data-line="4"><span class="c1"># This program is free software: you can redistribute it and/or modify</span>
+</span><span data-line="5"><span class="c1"># it under the terms of the GNU General Public License as published by</span>
+</span><span data-line="6"><span class="c1"># the Free Software Foundation, either version 3 of the License, or</span>
+</span><span data-line="7"><span class="c1"># (at your option) any later version.</span>
+</span><span data-line="8"><span class="c1">#</span>
+</span><span data-line="9"><span class="c1"># This program is distributed in the hope that it will be useful,</span>
+</span><span data-line="10"><span class="c1"># but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+</span><span data-line="11"><span class="c1"># MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+</span><span data-line="12"><span class="c1"># GNU General Public License for more details.</span>
+</span><span data-line="13"><span class="c1">#</span>
+</span><span data-line="14"><span class="c1"># You should have received a copy of the GNU General Public License</span>
+</span><span data-line="15"><span class="c1"># along with this program.  If not, see &lt;https://www.gnu.org/licenses/&gt;.</span>
+</span><span data-line="16"><span class="sd">&quot;&quot;&quot;[ODVA CIP Vol 1] Wrappers for the &quot;Hierarchy of Motor Control Devices&quot; object</span>
+</span><span data-line="17"><span class="sd">group:</span>
+</span><span data-line="18">
+</span><span data-line="19"><span class="sd">- Motor Data (class 0x28, §5-28),</span>
+</span><span data-line="20"><span class="sd">- Control Supervisor (class 0x29, §5-29),</span>
+</span><span data-line="21"><span class="sd">- AC/DC Drive (class 0x2A, §5-30),</span>
+</span><span data-line="22"><span class="sd">- Acknowledge Handler (class 0x2B, §5-31),</span>
+</span><span data-line="23"><span class="sd">- Overload (class 0x2C, §5-32), and</span>
+</span><span data-line="24"><span class="sd">- Softstart (class 0x2D, §5-33).</span>
+</span><span data-line="25"><span class="sd">&quot;&quot;&quot;</span>
+</span><span data-line="26">
+</span><span data-line="27"><span class="kn">from</span><span class="w"> </span><span class="nn">collections.abc</span><span class="w"> </span><span class="kn">import</span> <span class="n">Collection</span>
+</span><span data-line="28"><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">ClassVar</span>
+</span><span data-line="29">
+</span><span data-line="30"><span class="kn">from</span><span class="w"> </span><span class="nn">caterpillar.fields</span><span class="w"> </span><span class="kn">import</span> <span class="n">int8</span><span class="p">,</span> <span class="n">int16</span><span class="p">,</span> <span class="n">int32</span><span class="p">,</span> <span class="n">uint8</span><span class="p">,</span> <span class="n">uint16</span><span class="p">,</span> <span class="n">uint32</span>
+</span><span data-line="31">
+</span><span data-line="32"><span class="kn">from</span><span class="w"> </span><span class="nn">..const</span><span class="w"> </span><span class="kn">import</span> <span class="n">ClassCode</span><span class="p">,</span> <span class="n">CommonService</span>
+</span><span data-line="33"><span class="kn">from</span><span class="w"> </span><span class="nn">._base</span><span class="w"> </span><span class="kn">import</span> <span class="n">CIP_SHORT_STRING</span><span class="p">,</span> <span class="n">CIPAttribute</span><span class="p">,</span> <span class="n">CIPObject</span>
+</span><span data-line="34">
+</span><span data-line="35"><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span data-line="36">    <span class="s2">&quot;ACDCDriveObject&quot;</span><span class="p">,</span>
+</span><span data-line="37">    <span class="s2">&quot;AcknowledgeHandlerObject&quot;</span><span class="p">,</span>
+</span><span data-line="38">    <span class="s2">&quot;ControlSupervisorObject&quot;</span><span class="p">,</span>
+</span><span data-line="39">    <span class="s2">&quot;MotorDataObject&quot;</span><span class="p">,</span>
+</span><span data-line="40">    <span class="s2">&quot;OverloadObject&quot;</span><span class="p">,</span>
+</span><span data-line="41">    <span class="s2">&quot;SoftstartObject&quot;</span><span class="p">,</span>
+</span><span data-line="42"><span class="p">]</span>
+</span><span data-line="43">
+</span><span data-line="44">
+<div class="viewcode-block" id="MotorDataObject">
+<a class="viewcode-back" href="../../../../../protocols/cip/api/objects_motion.html#icspacket.proto.cip.objects.drive.MotorDataObject">[docs]</a>
+</span><span data-line="45"><span class="k">class</span><span class="w"> </span><span class="nc">MotorDataObject</span><span class="p">(</span><span class="n">CIPObject</span><span class="p">):</span>
+</span><span data-line="46"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Database of motor nameplate/rating parameters (See CIP Vol 1, §5-28).</span>
+</span><span data-line="47">
+</span><span data-line="48"><span class="sd">    Attributes 6 and above are motor-type specific (AC vs. DC, See</span>
+</span><span data-line="49"><span class="sd">    §5-28.2.1); both classes of motor share the same wire types for their</span>
+</span><span data-line="50"><span class="sd">    common attribute IDs, so both are exposed unconditionally here.</span>
+</span><span data-line="51"><span class="sd">    ``international_cat_number``/``international_manufacturer`` are STRINGI</span>
+</span><span data-line="52"><span class="sd">    encoded and kept as raw bytes.</span>
+</span><span data-line="53"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span data-line="54">
+</span><span data-line="55">    <span class="n">CLASS_CODE</span><span class="p">:</span> <span class="n">ClassVar</span><span class="p">[</span><span class="n">ClassCode</span><span class="p">]</span> <span class="o">=</span> <span class="n">ClassCode</span><span class="o">.</span><span class="n">MOTOR_DATA</span>
+</span><span data-line="56">
+</span><span data-line="57">    <span class="n">num_attr</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">uint8</span><span class="p">)</span>
+</span><span data-line="58"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Number of attributes supported (attribute 1).&quot;&quot;&quot;</span>
+</span><span data-line="59">
+</span><span data-line="60">    <span class="n">attributes</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="n">Collection</span><span class="p">[</span><span class="nb">int</span><span class="p">]]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">uint8</span><span class="p">[</span><span class="o">...</span><span class="p">])</span>
+</span><span data-line="61"><span class="w">    </span><span class="sd">&quot;&quot;&quot;List of attribute IDs supported by this instance (attribute 2).&quot;&quot;&quot;</span>
+</span><span data-line="62">
+</span><span data-line="63">    <span class="n">motor_type</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">uint8</span><span class="p">)</span>
+</span><span data-line="64"><span class="w">    </span><span class="sd">&quot;&quot;&quot;0=Non-standard, 1=PM DC, 2=FC DC, 3=PM Synchronous, 6=Wound Rotor</span>
+</span><span data-line="65"><span class="sd">    Induction, 7=Squirrel Cage Induction, 8=Stepper, ...</span>
+</span><span data-line="66">
+</span><span data-line="67"><span class="sd">    (attribute 3, required).</span>
+</span><span data-line="68"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span data-line="69">
+</span><span data-line="70">    <span class="n">cat_number</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">CIP_SHORT_STRING</span><span class="p">)</span>
+</span><span data-line="71"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Manufacturer&#39;s motor catalog (nameplate) number (attribute 4).&quot;&quot;&quot;</span>
+</span><span data-line="72">
+</span><span data-line="73">    <span class="n">manufacturer</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="n">CIP_SHORT_STRING</span><span class="p">)</span>
+</span><span data-line="74"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Manufacturer&#39;s name (attribute 5).&quot;&quot;&quot;</span>
+</span><span data-line="75">
+</span><span data-line="76">    <span class="n">rated_current</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="n">uint16</span><span class="p">)</span>
+</span><span data-line="77"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Rated stator (AC) or armature (DC) current, Units: 100mA (attribute</span>
+</span><span data-line="78"><span class="sd">    6).&quot;&quot;&quot;</span>
+</span><span data-line="79">
+</span><span data-line="80">    <span class="n">rated_voltage</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="n">uint16</span><span class="p">)</span>
+</span><span data-line="81"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Rated base (AC) or armature (DC) voltage, Units: V (attribute 7).&quot;&quot;&quot;</span>
+</span><span data-line="82">
+</span><span data-line="83">    <span class="n">rated_power</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="n">uint32</span><span class="p">)</span>
+</span><span data-line="84"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Rated power at rated frequency/max speed, Units: W (attribute 8).&quot;&quot;&quot;</span>
+</span><span data-line="85">
+</span><span data-line="86">    <span class="n">rated_freq</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="n">uint16</span><span class="p">)</span>
+</span><span data-line="87"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Rated electrical frequency, Units: Hz; AC motors only (attribute 9).&quot;&quot;&quot;</span>
+</span><span data-line="88">
+</span><span data-line="89">    <span class="n">rated_temp</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">uint16</span><span class="p">)</span>
+</span><span data-line="90"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Rated winding temperature, Units: degrees C (attribute 10).&quot;&quot;&quot;</span>
+</span><span data-line="91">
+</span><span data-line="92">    <span class="n">max_speed</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="n">uint16</span><span class="p">)</span>
+</span><span data-line="93"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Maximum allowed motor speed, Units: RPM (attribute 11).&quot;&quot;&quot;</span>
+</span><span data-line="94">
+</span><span data-line="95">    <span class="n">pole_count</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="n">uint16</span><span class="p">)</span>
+</span><span data-line="96"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Number of poles in the motor; AC motors only (attribute 12).&quot;&quot;&quot;</span>
+</span><span data-line="97">
+</span><span data-line="98">    <span class="n">torque_constant</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">13</span><span class="p">,</span> <span class="n">uint32</span><span class="p">)</span>
+</span><span data-line="99"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Motor torque constant, Units: 0.001 x Nm/A (attribute 13).&quot;&quot;&quot;</span>
+</span><span data-line="100">
+</span><span data-line="101">    <span class="n">inertia</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="n">uint32</span><span class="p">)</span>
+</span><span data-line="102"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Rotor inertia, Units: 1e-6 x kg.m^2 (attribute 14).&quot;&quot;&quot;</span>
+</span><span data-line="103">
+</span><span data-line="104">    <span class="n">base_speed</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="n">uint16</span><span class="p">)</span>
+</span><span data-line="105"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Nominal speed at rated frequency/voltage, Units: RPM (attribute 15).&quot;&quot;&quot;</span>
+</span><span data-line="106">
+</span><span data-line="107">    <span class="n">rated_field_current</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="n">uint32</span><span class="p">)</span>
+</span><span data-line="108"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Rated field current, Units: mA; DC motors only (attribute 16).&quot;&quot;&quot;</span>
+</span><span data-line="109">
+</span><span data-line="110">    <span class="n">min_field_current</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">17</span><span class="p">,</span> <span class="n">uint32</span><span class="p">)</span>
+</span><span data-line="111"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Minimum field current, Units: mA; DC motors only (attribute 17).&quot;&quot;&quot;</span>
+</span><span data-line="112">
+</span><span data-line="113">    <span class="n">rated_field_voltage</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="n">uint16</span><span class="p">)</span>
+</span><span data-line="114"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Rated field voltage, Units: V; DC motors only (attribute 18).&quot;&quot;&quot;</span>
+</span><span data-line="115">
+</span><span data-line="116">    <span class="n">service_factor</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">19</span><span class="p">,</span> <span class="n">uint8</span><span class="p">)</span>
+</span><span data-line="117"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Service factor, Units: %; AC motors only (attribute 19).&quot;&quot;&quot;</span>
+</span><span data-line="118">
+</span><span data-line="119">    <span class="n">international_cat_number</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">bytes</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+</span><span data-line="120"><span class="w">    </span><span class="sd">&quot;&quot;&quot;STRINGI catalog name/number (attribute 20).&quot;&quot;&quot;</span>
+</span><span data-line="121">
+</span><span data-line="122">    <span class="n">international_manufacturer</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">bytes</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">21</span><span class="p">)</span>
+</span><span data-line="123"><span class="w">    </span><span class="sd">&quot;&quot;&quot;STRINGI name of the motor manufacturer (attribute 21).&quot;&quot;&quot;</span>
+</span><span data-line="124">
+</span><span data-line="125">    <span class="n">serial_number</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">22</span><span class="p">,</span> <span class="n">CIP_SHORT_STRING</span><span class="p">)</span>
+</span><span data-line="126"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Nameplate serial number of the motor (attribute 22).&quot;&quot;&quot;</span>
+</span><span data-line="127">
+</span><span data-line="128">    <span class="n">tag_name</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">23</span><span class="p">,</span> <span class="n">CIP_SHORT_STRING</span><span class="p">)</span>
+</span><span data-line="129"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Plant&#39;s tag name for the motor (attribute 23).&quot;&quot;&quot;</span>
+</span><span data-line="130">
+</span><span data-line="131">    <span class="n">supply_style</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">24</span><span class="p">,</span> <span class="n">uint8</span><span class="p">)</span>
+</span><span data-line="132"><span class="w">    </span><span class="sd">&quot;&quot;&quot;0 = three phase, 1 = single phase (attribute 24).&quot;&quot;&quot;</span>
+</span><span data-line="133">
+</span><span data-line="134">    <span class="n">time_rating</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">25</span><span class="p">,</span> <span class="n">uint16</span><span class="p">)</span>
+</span><span data-line="135"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Maximum continuous operation time, Units: minutes (attribute 25).&quot;&quot;&quot;</span>
+</span><span data-line="136">
+</span><span data-line="137">    <span class="n">inrush_current</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">26</span><span class="p">,</span> <span class="n">uint16</span><span class="p">)</span>
+</span><span data-line="138"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Maximum inrush current, Units: 100mA (attribute 26).&quot;&quot;&quot;</span>
+</span><span data-line="139">
+</span><span data-line="140">    <span class="n">locked_rotor_code_letter</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">27</span><span class="p">,</span> <span class="n">CIP_SHORT_STRING</span><span class="p">)</span>
+</span><span data-line="141"><span class="w">    </span><span class="sd">&quot;&quot;&quot;NEMA MG-1 Code Letter for Locked Rotor kVA (attribute 27).&quot;&quot;&quot;</span>
+</span><span data-line="142">
+</span><span data-line="143">    <span class="n">design_letter</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">28</span><span class="p">,</span> <span class="n">CIP_SHORT_STRING</span><span class="p">)</span>
+</span><span data-line="144"><span class="w">    </span><span class="sd">&quot;&quot;&quot;IEC or NEMA Design Letter (attribute 28).&quot;&quot;&quot;</span>
+</span><span data-line="145">
+</span><span data-line="146">    <span class="n">thermal_protection</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">29</span><span class="p">,</span> <span class="n">uint8</span><span class="p">)</span>
+</span><span data-line="147"><span class="w">    </span><span class="sd">&quot;&quot;&quot;TRUE (nonzero) if the motor is marked &quot;Thermally Protected&quot; (attribute</span>
+</span><span data-line="148"><span class="sd">    29).&quot;&quot;&quot;</span>
+</span><span data-line="149">
+<div class="viewcode-block" id="MotorDataObject.get_class_attribute">
+<a class="viewcode-back" href="../../../../../protocols/cip/api/objects_motion.html#icspacket.proto.cip.objects.drive.MotorDataObject.get_class_attribute">[docs]</a>
+</span><span data-line="150">    <span class="k">def</span><span class="w"> </span><span class="nf">get_class_attribute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attribute</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bytes</span><span class="p">:</span>
+</span><span data-line="151"><span class="w">        </span><span class="sd">&quot;&quot;&quot;Read a Motor Data class attribute from instance 0 (See §5-28.1).&quot;&quot;&quot;</span>
+</span><span data-line="152">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_attr</span><span class="p">(</span><span class="n">attribute</span><span class="p">,</span> <span class="n">instance</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span></div>
+
+</span><span data-line="153">
+<div class="viewcode-block" id="MotorDataObject.restore">
+<a class="viewcode-back" href="../../../../../protocols/cip/api/objects_motion.html#icspacket.proto.cip.objects.drive.MotorDataObject.restore">[docs]</a>
+</span><span data-line="154">    <span class="k">def</span><span class="w"> </span><span class="nf">restore</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bytes</span><span class="p">:</span>
+</span><span data-line="155"><span class="w">        </span><span class="sd">&quot;&quot;&quot;Invoke Restore, reloading attribute values saved via</span>
+</span><span data-line="156"><span class="sd">        :meth:`save`.&quot;&quot;&quot;</span>
+</span><span data-line="157">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_expect_empty</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">message</span><span class="p">(</span><span class="n">CommonService</span><span class="o">.</span><span class="n">RESTORE</span><span class="p">))</span></div>
+
+</span><span data-line="158">
+<div class="viewcode-block" id="MotorDataObject.save">
+<a class="viewcode-back" href="../../../../../protocols/cip/api/objects_motion.html#icspacket.proto.cip.objects.drive.MotorDataObject.save">[docs]</a>
+</span><span data-line="159">    <span class="k">def</span><span class="w"> </span><span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bytes</span><span class="p">:</span>
+</span><span data-line="160"><span class="w">        </span><span class="sd">&quot;&quot;&quot;Invoke Save, persisting all attribute values to non-volatile</span>
+</span><span data-line="161"><span class="sd">        storage.&quot;&quot;&quot;</span>
+</span><span data-line="162">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_expect_empty</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">message</span><span class="p">(</span><span class="n">CommonService</span><span class="o">.</span><span class="n">SAVE</span><span class="p">))</span></div>
+</div>
+
+</span><span data-line="163">
+</span><span data-line="164">
+<div class="viewcode-block" id="ControlSupervisorObject">
+<a class="viewcode-back" href="../../../../../protocols/cip/api/objects_motion.html#icspacket.proto.cip.objects.drive.ControlSupervisorObject">[docs]</a>
+</span><span data-line="165"><span class="k">class</span><span class="w"> </span><span class="nc">ControlSupervisorObject</span><span class="p">(</span><span class="n">CIPObject</span><span class="p">):</span>
+</span><span data-line="166"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Models the run/stop/fault management state machine shared by motor</span>
+</span><span data-line="167"><span class="sd">    control devices (See CIP Vol 1, §5-29): the State Transition Diagram and</span>
+</span><span data-line="168"><span class="sd">    State Event Matrix (§5-29.5) govern how</span>
+</span><span data-line="169"><span class="sd">    ``run1``/``run2``/``net_ctrl``/``fault_reset`` drive ``state``.&quot;&quot;&quot;</span>
+</span><span data-line="170">
+</span><span data-line="171">    <span class="n">CLASS_CODE</span><span class="p">:</span> <span class="n">ClassVar</span><span class="p">[</span><span class="n">ClassCode</span><span class="p">]</span> <span class="o">=</span> <span class="n">ClassCode</span><span class="o">.</span><span class="n">CONTROL_SUPERVISOR</span>
+</span><span data-line="172">
+</span><span data-line="173">    <span class="n">num_attr</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">uint8</span><span class="p">)</span>
+</span><span data-line="174"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Number of attributes supported (attribute 1).&quot;&quot;&quot;</span>
+</span><span data-line="175">
+</span><span data-line="176">    <span class="n">attributes</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="n">Collection</span><span class="p">[</span><span class="nb">int</span><span class="p">]]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">uint8</span><span class="p">[</span><span class="o">...</span><span class="p">])</span>
+</span><span data-line="177"><span class="w">    </span><span class="sd">&quot;&quot;&quot;List of attribute IDs supported by this instance (attribute 2).&quot;&quot;&quot;</span>
+</span><span data-line="178">
+</span><span data-line="179">    <span class="n">run1</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">uint8</span><span class="p">)</span>
+</span><span data-line="180"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Run/Stop command 1 (attribute 3, required, See Run/Stop Event</span>
+</span><span data-line="181"><span class="sd">    Matrix).&quot;&quot;&quot;</span>
+</span><span data-line="182">
+</span><span data-line="183">    <span class="n">run2</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">uint8</span><span class="p">)</span>
+</span><span data-line="184"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Run/Stop command 2 (attribute 4, See Run/Stop Event Matrix).&quot;&quot;&quot;</span>
+</span><span data-line="185">
+</span><span data-line="186">    <span class="n">net_ctrl</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="n">uint8</span><span class="p">)</span>
+</span><span data-line="187"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Requests Run/Stop control to be local (0) or from the network (1)</span>
+</span><span data-line="188"><span class="sd">    (attribute 5).&quot;&quot;&quot;</span>
+</span><span data-line="189">
+</span><span data-line="190">    <span class="n">state</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="n">uint8</span><span class="p">)</span>
+</span><span data-line="191"><span class="w">    </span><span class="sd">&quot;&quot;&quot;0=Vendor Specific, 1=Startup, 2=Not_Ready, 3=Ready, 4=Enabled,</span>
+</span><span data-line="192"><span class="sd">    5=Stopping, 6=Fault_Stop, 7=Faulted (attribute 6).&quot;&quot;&quot;</span>
+</span><span data-line="193">
+</span><span data-line="194">    <span class="n">running1</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="n">uint8</span><span class="p">)</span>
+</span><span data-line="195"><span class="w">    </span><span class="sd">&quot;&quot;&quot;1 if (Enabled|Stopping|Fault_Stop) and Running1, else 0 (attribute</span>
+</span><span data-line="196"><span class="sd">    7).&quot;&quot;&quot;</span>
+</span><span data-line="197">
+</span><span data-line="198">    <span class="n">running2</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="n">uint8</span><span class="p">)</span>
+</span><span data-line="199"><span class="w">    </span><span class="sd">&quot;&quot;&quot;1 if (Enabled|Stopping|Fault_Stop) and Running2, else 0 (attribute</span>
+</span><span data-line="200"><span class="sd">    8).&quot;&quot;&quot;</span>
+</span><span data-line="201">
+</span><span data-line="202">    <span class="n">ready</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="n">uint8</span><span class="p">)</span>
+</span><span data-line="203"><span class="w">    </span><span class="sd">&quot;&quot;&quot;1 if Ready, Enabled, or Stopping, else 0 (attribute 9).&quot;&quot;&quot;</span>
+</span><span data-line="204">
+</span><span data-line="205">    <span class="n">faulted</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">uint8</span><span class="p">)</span>
+</span><span data-line="206"><span class="w">    </span><span class="sd">&quot;&quot;&quot;1 if a fault has occurred (latched), else 0 (attribute 10).&quot;&quot;&quot;</span>
+</span><span data-line="207">
+</span><span data-line="208">    <span class="n">warning</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="n">uint8</span><span class="p">)</span>
+</span><span data-line="209"><span class="w">    </span><span class="sd">&quot;&quot;&quot;1 if a warning is present (not latched), else 0 (attribute 11).&quot;&quot;&quot;</span>
+</span><span data-line="210">
+</span><span data-line="211">    <span class="n">fault_reset</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="n">uint8</span><span class="p">)</span>
+</span><span data-line="212"><span class="w">    </span><span class="sd">&quot;&quot;&quot;0-&gt;1 transition requests a Fault Reset (attribute 12).&quot;&quot;&quot;</span>
+</span><span data-line="213">
+</span><span data-line="214">    <span class="n">fault_code</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">13</span><span class="p">,</span> <span class="n">uint16</span><span class="p">)</span>
+</span><span data-line="215"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Code identifying the fault that caused/last caused a transition to</span>
+</span><span data-line="216"><span class="sd">    Faulted (attribute 13).&quot;&quot;&quot;</span>
+</span><span data-line="217">    <span class="n">warn_code</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="n">uint16</span><span class="p">)</span>
+</span><span data-line="218"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Code identifying the lowest-numbered warning currently present</span>
+</span><span data-line="219"><span class="sd">    (attribute 14).&quot;&quot;&quot;</span>
+</span><span data-line="220">    <span class="n">ctrl_from_net</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="n">uint8</span><span class="p">)</span>
+</span><span data-line="221"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Status of Run/Stop control source: 0=local, 1=network (attribute 15).&quot;&quot;&quot;</span>
+</span><span data-line="222">
+</span><span data-line="223">    <span class="n">net_fault_mode</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="n">uint8</span><span class="p">)</span>
+</span><span data-line="224"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Action on loss of CIP Network: 0=Fault+Stop, 1=Ignore, 2=Vendor specific</span>
+</span><span data-line="225"><span class="sd">    (attribute 16).&quot;&quot;&quot;</span>
+</span><span data-line="226">
+</span><span data-line="227">    <span class="n">force_fault</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">17</span><span class="p">,</span> <span class="n">uint8</span><span class="p">)</span>
+</span><span data-line="228"><span class="w">    </span><span class="sd">&quot;&quot;&quot;0-&gt;1 transition forces a fault/trip (attribute 17).&quot;&quot;&quot;</span>
+</span><span data-line="229">
+</span><span data-line="230">    <span class="n">force_status</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="n">uint8</span><span class="p">)</span>
+</span><span data-line="231"><span class="w">    </span><span class="sd">&quot;&quot;&quot;0 = not forced, nonzero = forced (attribute 18).&quot;&quot;&quot;</span>
+</span><span data-line="232">
+</span><span data-line="233">    <span class="n">delay</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">19</span><span class="p">,</span> <span class="n">int16</span><span class="p">)</span>
+</span><span data-line="234"><span class="w">    </span><span class="sd">&quot;&quot;&quot;ITIME delay (ms) before a fault/idle mode action takes effect (attribute</span>
+</span><span data-line="235"><span class="sd">    19).&quot;&quot;&quot;</span>
+</span><span data-line="236">
+</span><span data-line="237">    <span class="n">net_idle_mode</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="n">uint8</span><span class="p">)</span>
+</span><span data-line="238"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Mode on reception of a CIP communication IDLE event (attribute 20, See</span>
+</span><span data-line="239"><span class="sd">    Table 5-29.3).&quot;&quot;&quot;</span>
+</span><span data-line="240">
+</span><span data-line="241">    <span class="n">protect_mode</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">21</span><span class="p">,</span> <span class="n">uint8</span><span class="p">)</span>
+</span><span data-line="242"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Mode on detection of a motor protection event (attribute 21, See Table</span>
+</span><span data-line="243"><span class="sd">    5-29.3).&quot;&quot;&quot;</span>
+</span><span data-line="244">
+</span><span data-line="245">    <span class="n">cycle_count</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">22</span><span class="p">,</span> <span class="n">uint32</span><span class="p">)</span>
+</span><span data-line="246"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Number of motor start operations recorded on the equipment (attribute</span>
+</span><span data-line="247"><span class="sd">    22).&quot;&quot;&quot;</span>
+</span><span data-line="248">
+</span><span data-line="249">    <span class="n">fault_warning_code_style</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">23</span><span class="p">,</span> <span class="n">uint8</span><span class="p">)</span>
+</span><span data-line="250"><span class="w">    </span><span class="sd">&quot;&quot;&quot;0=device profile default, 1=DRIVECOM (16-bit), 2=Abbreviated (8-bit)</span>
+</span><span data-line="251"><span class="sd">    (attribute 23).&quot;&quot;&quot;</span>
+</span><span data-line="252">
+<div class="viewcode-block" id="ControlSupervisorObject.get_class_attribute">
+<a class="viewcode-back" href="../../../../../protocols/cip/api/objects_motion.html#icspacket.proto.cip.objects.drive.ControlSupervisorObject.get_class_attribute">[docs]</a>
+</span><span data-line="253">    <span class="k">def</span><span class="w"> </span><span class="nf">get_class_attribute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attribute</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bytes</span><span class="p">:</span>
+</span><span data-line="254"><span class="w">        </span><span class="sd">&quot;&quot;&quot;Read a Control Supervisor class attribute from instance 0 (See</span>
+</span><span data-line="255"><span class="sd">        §5-29.1).&quot;&quot;&quot;</span>
+</span><span data-line="256">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_attr</span><span class="p">(</span><span class="n">attribute</span><span class="p">,</span> <span class="n">instance</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span></div>
+
+</span><span data-line="257">
+<div class="viewcode-block" id="ControlSupervisorObject.reset">
+<a class="viewcode-back" href="../../../../../protocols/cip/api/objects_motion.html#icspacket.proto.cip.objects.drive.ControlSupervisorObject.reset">[docs]</a>
+</span><span data-line="258">    <span class="k">def</span><span class="w"> </span><span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bytes</span><span class="p">:</span>
+</span><span data-line="259"><span class="w">        </span><span class="sd">&quot;&quot;&quot;Invoke Reset, resetting the drive to its start-up state.&quot;&quot;&quot;</span>
+</span><span data-line="260">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_expect_empty</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">message</span><span class="p">(</span><span class="n">CommonService</span><span class="o">.</span><span class="n">RESET</span><span class="p">))</span></div>
+</div>
+
+</span><span data-line="261">
+</span><span data-line="262">
+<div class="viewcode-block" id="ACDCDriveObject">
+<a class="viewcode-back" href="../../../../../protocols/cip/api/objects_motion.html#icspacket.proto.cip.objects.drive.ACDCDriveObject">[docs]</a>
+</span><span data-line="263"><span class="k">class</span><span class="w"> </span><span class="nc">ACDCDriveObject</span><span class="p">(</span><span class="n">CIPObject</span><span class="p">):</span>
+</span><span data-line="264"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Models functions specific to an AC or DC drive: speed/torque/process</span>
+</span><span data-line="265"><span class="sd">    control, ramping, and scaling (See CIP Vol 1, §5-30).</span>
+</span><span data-line="266">
+</span><span data-line="267"><span class="sd">    Most measurement/reference attributes are scaled integers; the divisor</span>
+</span><span data-line="268"><span class="sd">    is ``2 ** &lt;attribute&gt;_scale`` as documented on each attribute.</span>
+</span><span data-line="269"><span class="sd">    ``process_data_units``/``speed_actual_data_units``/``speed_ref_data_units``</span>
+</span><span data-line="270"><span class="sd">    select an ENGUNITS code from CIP Vol 1 Appendix D (not decoded elsewhere</span>
+</span><span data-line="271"><span class="sd">    in this library), so they are kept as raw bytes.</span>
+</span><span data-line="272"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span data-line="273">
+</span><span data-line="274">    <span class="n">CLASS_CODE</span><span class="p">:</span> <span class="n">ClassVar</span><span class="p">[</span><span class="n">ClassCode</span><span class="p">]</span> <span class="o">=</span> <span class="n">ClassCode</span><span class="o">.</span><span class="n">AC_DC_DRIVE</span>
+</span><span data-line="275">
+</span><span data-line="276">    <span class="n">num_attr</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">uint8</span><span class="p">)</span>
+</span><span data-line="277"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Number of attributes supported (attribute 1).&quot;&quot;&quot;</span>
+</span><span data-line="278">
+</span><span data-line="279">    <span class="n">attributes</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="n">Collection</span><span class="p">[</span><span class="nb">int</span><span class="p">]]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">uint8</span><span class="p">[</span><span class="o">...</span><span class="p">])</span>
+</span><span data-line="280"><span class="w">    </span><span class="sd">&quot;&quot;&quot;List of attribute IDs supported by this instance (attribute 2).&quot;&quot;&quot;</span>
+</span><span data-line="281">
+</span><span data-line="282">    <span class="n">at_reference</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">uint8</span><span class="p">)</span>
+</span><span data-line="283"><span class="w">    </span><span class="sd">&quot;&quot;&quot;1 = drive actual is at its speed/torque reference (attribute 3).&quot;&quot;&quot;</span>
+</span><span data-line="284">
+</span><span data-line="285">    <span class="n">net_ref</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">uint8</span><span class="p">)</span>
+</span><span data-line="286"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Requests torque/speed reference to be local (0) or from the network (1)</span>
+</span><span data-line="287"><span class="sd">    (attribute 4, required).&quot;&quot;&quot;</span>
+</span><span data-line="288">
+</span><span data-line="289">    <span class="n">net_proc</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="n">uint8</span><span class="p">)</span>
+</span><span data-line="290"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Requests process control reference to be local (0) or from the network</span>
+</span><span data-line="291"><span class="sd">    (1) (attribute 5).&quot;&quot;&quot;</span>
+</span><span data-line="292">
+</span><span data-line="293">    <span class="n">drive_mode</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="n">uint8</span><span class="p">)</span>
+</span><span data-line="294"><span class="w">    </span><span class="sd">&quot;&quot;&quot;0=Vendor specific, 1=Open loop speed, 2=Closed loop speed, 3=Torque,</span>
+</span><span data-line="295"><span class="sd">    4=Process control, 5=Position control (attribute 6, required).&quot;&quot;&quot;</span>
+</span><span data-line="296">
+</span><span data-line="297">    <span class="n">speed_actual</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="n">int16</span><span class="p">)</span>
+</span><span data-line="298"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Actual drive speed, Units: RPM / 2**speed_scale (attribute 7,</span>
+</span><span data-line="299"><span class="sd">    required).&quot;&quot;&quot;</span>
+</span><span data-line="300">
+</span><span data-line="301">    <span class="n">speed_ref</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="n">int16</span><span class="p">)</span>
+</span><span data-line="302"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Speed reference, Units: RPM / 2**speed_scale (attribute 8, required).&quot;&quot;&quot;</span>
+</span><span data-line="303">
+</span><span data-line="304">    <span class="n">current_actual</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="n">int16</span><span class="p">)</span>
+</span><span data-line="305"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Actual motor phase current, Units: 100mA / 2**current_scale (attribute</span>
+</span><span data-line="306"><span class="sd">    9).&quot;&quot;&quot;</span>
+</span><span data-line="307">
+</span><span data-line="308">    <span class="n">current_limit</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">int16</span><span class="p">)</span>
+</span><span data-line="309"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Motor phase current limit, Units: 100mA / 2**current_scale (attribute</span>
+</span><span data-line="310"><span class="sd">    10).&quot;&quot;&quot;</span>
+</span><span data-line="311">
+</span><span data-line="312">    <span class="n">torque_actual</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="n">int16</span><span class="p">)</span>
+</span><span data-line="313"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Actual torque, Units: Nm / 2**torque_scale (attribute 11).&quot;&quot;&quot;</span>
+</span><span data-line="314">
+</span><span data-line="315">    <span class="n">torque_ref</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="n">int16</span><span class="p">)</span>
+</span><span data-line="316"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Torque reference, Units: Nm / 2**torque_scale (attribute 12).&quot;&quot;&quot;</span>
+</span><span data-line="317">
+</span><span data-line="318">    <span class="n">process_actual</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">13</span><span class="p">,</span> <span class="n">int16</span><span class="p">)</span>
+</span><span data-line="319"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Actual process control value, Units: % / 2**process_scale (attribute</span>
+</span><span data-line="320"><span class="sd">    13).&quot;&quot;&quot;</span>
+</span><span data-line="321">
+</span><span data-line="322">    <span class="n">process_ref</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="n">int16</span><span class="p">)</span>
+</span><span data-line="323"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Process control reference set point, Units: % / 2**process_scale</span>
+</span><span data-line="324"><span class="sd">    (attribute 14).&quot;&quot;&quot;</span>
+</span><span data-line="325">
+</span><span data-line="326">    <span class="n">power_actual</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="n">int16</span><span class="p">)</span>
+</span><span data-line="327"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Actual output power, Units: W / 2**power_scale (attribute 15).&quot;&quot;&quot;</span>
+</span><span data-line="328">
+</span><span data-line="329">    <span class="n">input_voltage</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="n">int16</span><span class="p">)</span>
+</span><span data-line="330"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Input voltage, Units: V / 2**voltage_scale (attribute 16).&quot;&quot;&quot;</span>
+</span><span data-line="331">
+</span><span data-line="332">    <span class="n">output_voltage</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">17</span><span class="p">,</span> <span class="n">int16</span><span class="p">)</span>
+</span><span data-line="333"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Output voltage, Units: V / 2**voltage_scale (attribute 17).&quot;&quot;&quot;</span>
+</span><span data-line="334">
+</span><span data-line="335">    <span class="n">accel_time</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="n">uint16</span><span class="p">)</span>
+</span><span data-line="336"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Acceleration time from 0 to high_speed_limit, Units: ms / 2**time_scale</span>
+</span><span data-line="337"><span class="sd">    (attribute 18).&quot;&quot;&quot;</span>
+</span><span data-line="338">
+</span><span data-line="339">    <span class="n">decel_time</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">19</span><span class="p">,</span> <span class="n">uint16</span><span class="p">)</span>
+</span><span data-line="340"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Deceleration time from high_speed_limit to 0, Units: ms / 2**time_scale</span>
+</span><span data-line="341"><span class="sd">    (attribute 19).&quot;&quot;&quot;</span>
+</span><span data-line="342">
+</span><span data-line="343">    <span class="n">low_speed_limit</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="n">uint16</span><span class="p">)</span>
+</span><span data-line="344"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Minimum speed limit, Units: RPM / 2**speed_scale (attribute 20).&quot;&quot;&quot;</span>
+</span><span data-line="345">
+</span><span data-line="346">    <span class="n">high_speed_limit</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">21</span><span class="p">,</span> <span class="n">uint16</span><span class="p">)</span>
+</span><span data-line="347"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Maximum speed limit, Units: RPM / 2**speed_scale (attribute 21).&quot;&quot;&quot;</span>
+</span><span data-line="348">
+</span><span data-line="349">    <span class="n">speed_scale</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">22</span><span class="p">,</span> <span class="n">int8</span><span class="p">)</span>
+</span><span data-line="350"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Speed scaling factor, range -128..127 (attribute 22).&quot;&quot;&quot;</span>
+</span><span data-line="351">
+</span><span data-line="352">    <span class="n">current_scale</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">23</span><span class="p">,</span> <span class="n">int8</span><span class="p">)</span>
+</span><span data-line="353"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Current scaling factor, range -128..127 (attribute 23).&quot;&quot;&quot;</span>
+</span><span data-line="354">
+</span><span data-line="355">    <span class="n">torque_scale</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">24</span><span class="p">,</span> <span class="n">int8</span><span class="p">)</span>
+</span><span data-line="356"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Torque scaling factor, range -128..127 (attribute 24).&quot;&quot;&quot;</span>
+</span><span data-line="357">
+</span><span data-line="358">    <span class="n">process_scale</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">25</span><span class="p">,</span> <span class="n">int8</span><span class="p">)</span>
+</span><span data-line="359"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Process scaling factor, range -128..127 (attribute 25).&quot;&quot;&quot;</span>
+</span><span data-line="360">
+</span><span data-line="361">    <span class="n">power_scale</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">26</span><span class="p">,</span> <span class="n">int8</span><span class="p">)</span>
+</span><span data-line="362"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Power scaling factor, range -128..127 (attribute 26).&quot;&quot;&quot;</span>
+</span><span data-line="363">
+</span><span data-line="364">    <span class="n">voltage_scale</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">27</span><span class="p">,</span> <span class="n">int8</span><span class="p">)</span>
+</span><span data-line="365"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Voltage scaling factor, range -128..127 (attribute 27).&quot;&quot;&quot;</span>
+</span><span data-line="366">
+</span><span data-line="367">    <span class="n">time_scale</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">28</span><span class="p">,</span> <span class="n">int8</span><span class="p">)</span>
+</span><span data-line="368"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Time scaling factor, range -128..127 (attribute 28).&quot;&quot;&quot;</span>
+</span><span data-line="369">
+</span><span data-line="370">    <span class="n">ref_from_net</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">29</span><span class="p">,</span> <span class="n">uint8</span><span class="p">)</span>
+</span><span data-line="371"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Status of torque/speed reference: 0=local, 1=network (attribute 29).&quot;&quot;&quot;</span>
+</span><span data-line="372">
+</span><span data-line="373">    <span class="n">proc_from_net</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="n">uint8</span><span class="p">)</span>
+</span><span data-line="374"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Status of process control reference: 0=local, 1=network (attribute</span>
+</span><span data-line="375"><span class="sd">    30).&quot;&quot;&quot;</span>
+</span><span data-line="376">
+</span><span data-line="377">    <span class="n">field_i_or_v</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">31</span><span class="p">,</span> <span class="n">uint8</span><span class="p">)</span>
+</span><span data-line="378"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Selects Field Voltage (0) or Field Current (1) control for a DC drive</span>
+</span><span data-line="379"><span class="sd">    (attribute 31).&quot;&quot;&quot;</span>
+</span><span data-line="380">
+</span><span data-line="381">    <span class="n">field_volt_ratio</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="n">uint16</span><span class="p">)</span>
+</span><span data-line="382"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Field voltage ratio, for voltage control of a DC drive (attribute</span>
+</span><span data-line="383"><span class="sd">    32).&quot;&quot;&quot;</span>
+</span><span data-line="384">
+</span><span data-line="385">    <span class="n">field_current_setpoint</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">33</span><span class="p">,</span> <span class="n">uint16</span><span class="p">)</span>
+</span><span data-line="386"><span class="w">    </span><span class="sd">&quot;&quot;&quot;DC drive field current set point, Units: A / 2**current_scale (attribute</span>
+</span><span data-line="387"><span class="sd">    33).&quot;&quot;&quot;</span>
+</span><span data-line="388">
+</span><span data-line="389">    <span class="n">field_weakening_enable</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">34</span><span class="p">,</span> <span class="n">uint8</span><span class="p">)</span>
+</span><span data-line="390"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Enables (1) or disables (0) field weakening for a DC drive (attribute</span>
+</span><span data-line="391"><span class="sd">    34).&quot;&quot;&quot;</span>
+</span><span data-line="392">
+</span><span data-line="393">    <span class="n">field_current_actual</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">35</span><span class="p">,</span> <span class="n">int16</span><span class="p">)</span>
+</span><span data-line="394"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Actual field current for a DC drive, Units: A / 2**current_scale</span>
+</span><span data-line="395"><span class="sd">    (attribute 35).&quot;&quot;&quot;</span>
+</span><span data-line="396">
+</span><span data-line="397">    <span class="n">field_min_current</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">36</span><span class="p">,</span> <span class="n">int16</span><span class="p">)</span>
+</span><span data-line="398"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Minimum field current for a DC drive, Units: A / 2**current_scale</span>
+</span><span data-line="399"><span class="sd">    (attribute 36).&quot;&quot;&quot;</span>
+</span><span data-line="400">
+</span><span data-line="401">    <span class="n">process_data_units</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">bytes</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">37</span><span class="p">)</span>
+</span><span data-line="402"><span class="w">    </span><span class="sd">&quot;&quot;&quot;ENGUNITS code applied to process_actual/process_ref (attribute 37).&quot;&quot;&quot;</span>
+</span><span data-line="403">
+</span><span data-line="404">    <span class="n">speed_control</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">38</span><span class="p">,</span> <span class="n">uint8</span><span class="p">)</span>
+</span><span data-line="405"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Bit flags requesting speed commands: bit0=Run, bit1=Idle, bit2=Standby,</span>
+</span><span data-line="406"><span class="sd">    bit3=Coast (attribute 38, See Table 5-30.4).&quot;&quot;&quot;</span>
+</span><span data-line="407">
+</span><span data-line="408">    <span class="n">speed_status</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">39</span><span class="p">,</span> <span class="n">uint8</span><span class="p">)</span>
+</span><span data-line="409"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Bit flags indicating current speed status (attribute 39, See Table</span>
+</span><span data-line="410"><span class="sd">    5-30.4).&quot;&quot;&quot;</span>
+</span><span data-line="411">
+</span><span data-line="412">    <span class="n">speed_trip_time</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="n">uint16</span><span class="p">)</span>
+</span><span data-line="413"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Time speed_actual may exceed a vendor-specific hysteresis band, Units:</span>
+</span><span data-line="414">
+</span><span data-line="415"><span class="sd">    ms / 2**time_scale (attribute 40).</span>
+</span><span data-line="416"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span data-line="417">
+</span><span data-line="418">    <span class="n">max_rated_speed</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">41</span><span class="p">,</span> <span class="n">int16</span><span class="p">)</span>
+</span><span data-line="419"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Vendor specific maximum rating, Units: RPM / 2**max_rated_speed_scale</span>
+</span><span data-line="420"><span class="sd">    (attribute 41).&quot;&quot;&quot;</span>
+</span><span data-line="421">
+</span><span data-line="422">    <span class="n">max_rated_speed_scale</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">42</span><span class="p">,</span> <span class="n">int8</span><span class="p">)</span>
+</span><span data-line="423"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Speed scaling for max_rated_speed, range -128..127 (attribute 42).&quot;&quot;&quot;</span>
+</span><span data-line="424">
+</span><span data-line="425">    <span class="n">speed_standby</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">43</span><span class="p">,</span> <span class="n">int16</span><span class="p">)</span>
+</span><span data-line="426"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Speed setting used in Standby, Units: RPM / 2**speed_scale (attribute</span>
+</span><span data-line="427"><span class="sd">    43).&quot;&quot;&quot;</span>
+</span><span data-line="428">
+</span><span data-line="429">    <span class="n">speed_actual_data_units</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">bytes</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">44</span><span class="p">)</span>
+</span><span data-line="430"><span class="w">    </span><span class="sd">&quot;&quot;&quot;ENGUNITS code applied to speed_actual/speed_standby, default RPM</span>
+</span><span data-line="431"><span class="sd">    (attribute 44).&quot;&quot;&quot;</span>
+</span><span data-line="432">
+</span><span data-line="433">    <span class="n">speed_ref_data_units</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">bytes</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">45</span><span class="p">)</span>
+</span><span data-line="434"><span class="w">    </span><span class="sd">&quot;&quot;&quot;ENGUNITS code applied to</span>
+</span><span data-line="435"><span class="sd">    speed_ref/max_rated_speed/low_speed_limit/high_speed_limit, default RPM</span>
+</span><span data-line="436"><span class="sd">    (attribute 45).&quot;&quot;&quot;</span>
+</span><span data-line="437">
+</span><span data-line="438">    <span class="n">drive_on_hours</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">46</span><span class="p">,</span> <span class="n">int32</span><span class="p">)</span>
+</span><span data-line="439"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Number of hours speed_actual has been &gt; 0; does not roll over (attribute</span>
+</span><span data-line="440"><span class="sd">    46).&quot;&quot;&quot;</span>
+</span><span data-line="441">
+<div class="viewcode-block" id="ACDCDriveObject.get_class_attribute">
+<a class="viewcode-back" href="../../../../../protocols/cip/api/objects_motion.html#icspacket.proto.cip.objects.drive.ACDCDriveObject.get_class_attribute">[docs]</a>
+</span><span data-line="442">    <span class="k">def</span><span class="w"> </span><span class="nf">get_class_attribute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attribute</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bytes</span><span class="p">:</span>
+</span><span data-line="443"><span class="w">        </span><span class="sd">&quot;&quot;&quot;Read an AC/DC Drive class attribute from instance 0 (See</span>
+</span><span data-line="444"><span class="sd">        §5-30.1).&quot;&quot;&quot;</span>
+</span><span data-line="445">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_attr</span><span class="p">(</span><span class="n">attribute</span><span class="p">,</span> <span class="n">instance</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span></div>
+
+</span><span data-line="446">
+<div class="viewcode-block" id="ACDCDriveObject.restore">
+<a class="viewcode-back" href="../../../../../protocols/cip/api/objects_motion.html#icspacket.proto.cip.objects.drive.ACDCDriveObject.restore">[docs]</a>
+</span><span data-line="447">    <span class="k">def</span><span class="w"> </span><span class="nf">restore</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bytes</span><span class="p">:</span>
+</span><span data-line="448"><span class="w">        </span><span class="sd">&quot;&quot;&quot;Invoke Restore, reloading attribute values saved via</span>
+</span><span data-line="449"><span class="sd">        :meth:`save`.&quot;&quot;&quot;</span>
+</span><span data-line="450">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_expect_empty</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">message</span><span class="p">(</span><span class="n">CommonService</span><span class="o">.</span><span class="n">RESTORE</span><span class="p">))</span></div>
+
+</span><span data-line="451">
+<div class="viewcode-block" id="ACDCDriveObject.save">
+<a class="viewcode-back" href="../../../../../protocols/cip/api/objects_motion.html#icspacket.proto.cip.objects.drive.ACDCDriveObject.save">[docs]</a>
+</span><span data-line="452">    <span class="k">def</span><span class="w"> </span><span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bytes</span><span class="p">:</span>
+</span><span data-line="453"><span class="w">        </span><span class="sd">&quot;&quot;&quot;Invoke Save, persisting all attribute values to non-volatile</span>
+</span><span data-line="454"><span class="sd">        storage.&quot;&quot;&quot;</span>
+</span><span data-line="455">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_expect_empty</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">message</span><span class="p">(</span><span class="n">CommonService</span><span class="o">.</span><span class="n">SAVE</span><span class="p">))</span></div>
+</div>
+
+</span><span data-line="456">
+</span><span data-line="457">
+<div class="viewcode-block" id="AcknowledgeHandlerObject">
+<a class="viewcode-back" href="../../../../../protocols/cip/api/objects_motion.html#icspacket.proto.cip.objects.drive.AcknowledgeHandlerObject">[docs]</a>
+</span><span data-line="458"><span class="k">class</span><span class="w"> </span><span class="nc">AcknowledgeHandlerObject</span><span class="p">(</span><span class="n">CIPObject</span><span class="p">):</span>
+</span><span data-line="459"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Manages reception of message acknowledgments for a producing I/O</span>
+</span><span data-line="460"><span class="sd">    application (See CIP Vol 1, §5-31).</span>
+</span><span data-line="461">
+</span><span data-line="462"><span class="sd">    ``data_with_ack_path_list`` (attribute 7) is a list of heterogeneous</span>
+</span><span data-line="463"><span class="sd">    (Connection Instance, CIP Path Length, CIP Path) tuples and is kept</span>
+</span><span data-line="464"><span class="sd">    as raw bytes; ``ack_list`` (attribute 5) is a homogeneous UINT array</span>
+</span><span data-line="465"><span class="sd">    with its own leading count, decoded directly.</span>
+</span><span data-line="466"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span data-line="467">
+</span><span data-line="468">    <span class="n">CLASS_CODE</span><span class="p">:</span> <span class="n">ClassVar</span><span class="p">[</span><span class="n">ClassCode</span><span class="p">]</span> <span class="o">=</span> <span class="n">ClassCode</span><span class="o">.</span><span class="n">ACKNOWLEDGE_HANDLER</span>
+</span><span data-line="469">
+</span><span data-line="470">    <span class="n">acknowledge_timer</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">uint16</span><span class="p">)</span>
+</span><span data-line="471"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Time to wait for an acknowledge before resending, Units: ms, range</span>
+</span><span data-line="472"><span class="sd">    1-65535, default 16 (attribute 1, required).&quot;&quot;&quot;</span>
+</span><span data-line="473">
+</span><span data-line="474">    <span class="n">retry_limit</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">uint8</span><span class="p">)</span>
+</span><span data-line="475"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Number of ack timeouts to wait before a RetryLimit_Reached event,</span>
+</span><span data-line="476"><span class="sd">    default 1 (attribute 2).&quot;&quot;&quot;</span>
+</span><span data-line="477">
+</span><span data-line="478">    <span class="n">cos_producing_connection_instance</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">uint16</span><span class="p">)</span>
+</span><span data-line="479"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Connection instance whose producing I/O object is notified of ack</span>
+</span><span data-line="480"><span class="sd">    events; Set while inactive, Get-only once active (attribute 3,</span>
+</span><span data-line="481"><span class="sd">    required).&quot;&quot;&quot;</span>
+</span><span data-line="482">
+</span><span data-line="483">    <span class="n">ack_list_size</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">uint8</span><span class="p">)</span>
+</span><span data-line="484"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Maximum number of members in ack_list; 0 = dynamic (attribute 4).&quot;&quot;&quot;</span>
+</span><span data-line="485">    <span class="n">ack_list</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="n">Collection</span><span class="p">[</span><span class="nb">int</span><span class="p">]]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="n">uint16</span><span class="p">[</span><span class="n">uint8</span><span class="p">::])</span>
+</span><span data-line="486"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Active connection instances currently receiving acks (attribute 5).&quot;&quot;&quot;</span>
+</span><span data-line="487">
+</span><span data-line="488">    <span class="n">data_with_ack_path_list_size</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="n">uint8</span><span class="p">)</span>
+</span><span data-line="489"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Maximum number of members in data_with_ack_path_list; 0 = dynamic (attribute 6).&quot;&quot;&quot;</span>
+</span><span data-line="490">
+</span><span data-line="491">    <span class="n">data_with_ack_path_list</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">bytes</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>
+</span><span data-line="492"><span class="w">    </span><span class="sd">&quot;&quot;&quot;List of (Connection Instance, CIP Path Length, CIP Path) used to forward</span>
+</span><span data-line="493"><span class="sd">    data received with an acknowledgment (attribute 7).&quot;&quot;&quot;</span>
+</span><span data-line="494">
+<div class="viewcode-block" id="AcknowledgeHandlerObject.get_class_attribute">
+<a class="viewcode-back" href="../../../../../protocols/cip/api/objects_motion.html#icspacket.proto.cip.objects.drive.AcknowledgeHandlerObject.get_class_attribute">[docs]</a>
+</span><span data-line="495">    <span class="k">def</span><span class="w"> </span><span class="nf">get_class_attribute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attribute</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bytes</span><span class="p">:</span>
+</span><span data-line="496"><span class="w">        </span><span class="sd">&quot;&quot;&quot;Read an Acknowledge Handler class attribute from instance 0 (See</span>
+</span><span data-line="497"><span class="sd">        §5-31.1).&quot;&quot;&quot;</span>
+</span><span data-line="498">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_attr</span><span class="p">(</span><span class="n">attribute</span><span class="p">,</span> <span class="n">instance</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span></div>
+
+</span><span data-line="499">
+<div class="viewcode-block" id="AcknowledgeHandlerObject.create">
+<a class="viewcode-back" href="../../../../../protocols/cip/api/objects_motion.html#icspacket.proto.cip.objects.drive.AcknowledgeHandlerObject.create">[docs]</a>
+</span><span data-line="500">    <span class="k">def</span><span class="w"> </span><span class="nf">create</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bytes</span><span class="p">:</span>
+</span><span data-line="501"><span class="w">        </span><span class="sd">&quot;&quot;&quot;Invoke Create at the class level, allocating a new Acknowledge</span>
+</span><span data-line="502"><span class="sd">        Handler instance.&quot;&quot;&quot;</span>
+</span><span data-line="503">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">message</span><span class="p">(</span><span class="n">CommonService</span><span class="o">.</span><span class="n">CREATE</span><span class="p">,</span> <span class="n">instance</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span></div>
+
+</span><span data-line="504">
+<div class="viewcode-block" id="AcknowledgeHandlerObject.delete_all">
+<a class="viewcode-back" href="../../../../../protocols/cip/api/objects_motion.html#icspacket.proto.cip.objects.drive.AcknowledgeHandlerObject.delete_all">[docs]</a>
+</span><span data-line="505">    <span class="k">def</span><span class="w"> </span><span class="nf">delete_all</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bytes</span><span class="p">:</span>
+</span><span data-line="506"><span class="w">        </span><span class="sd">&quot;&quot;&quot;Invoke Delete at the class level, removing all dynamically created</span>
+</span><span data-line="507"><span class="sd">        instances.&quot;&quot;&quot;</span>
+</span><span data-line="508">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_expect_empty</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">message</span><span class="p">(</span><span class="n">CommonService</span><span class="o">.</span><span class="n">DELETE</span><span class="p">,</span> <span class="n">instance</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span></div>
+
+</span><span data-line="509">
+<div class="viewcode-block" id="AcknowledgeHandlerObject.delete">
+<a class="viewcode-back" href="../../../../../protocols/cip/api/objects_motion.html#icspacket.proto.cip.objects.drive.AcknowledgeHandlerObject.delete">[docs]</a>
+</span><span data-line="510">    <span class="k">def</span><span class="w"> </span><span class="nf">delete</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bytes</span><span class="p">:</span>
+</span><span data-line="511"><span class="w">        </span><span class="sd">&quot;&quot;&quot;Invoke Delete on this instance.&quot;&quot;&quot;</span>
+</span><span data-line="512">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_expect_empty</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">message</span><span class="p">(</span><span class="n">CommonService</span><span class="o">.</span><span class="n">DELETE</span><span class="p">))</span></div>
+
+</span><span data-line="513">
+<div class="viewcode-block" id="AcknowledgeHandlerObject.add_ack_data_path">
+<a class="viewcode-back" href="../../../../../protocols/cip/api/objects_motion.html#icspacket.proto.cip.objects.drive.AcknowledgeHandlerObject.add_ack_data_path">[docs]</a>
+</span><span data-line="514">    <span class="k">def</span><span class="w"> </span><span class="nf">add_ack_data_path</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request_data</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bytes</span><span class="p">:</span>
+</span><span data-line="515"><span class="w">        </span><span class="sd">&quot;&quot;&quot;Invoke Add_AckData_Path (service 0x4B) with a caller-built</span>
+</span><span data-line="516"><span class="sd">        (Connection Instance, CIP Path Length, CIP Path) request payload.&quot;&quot;&quot;</span>
+</span><span data-line="517">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">message</span><span class="p">(</span><span class="mh">0x4B</span><span class="p">,</span> <span class="n">request_data</span><span class="p">)</span></div>
+
+</span><span data-line="518">
+<div class="viewcode-block" id="AcknowledgeHandlerObject.remove_ack_data_path">
+<a class="viewcode-back" href="../../../../../protocols/cip/api/objects_motion.html#icspacket.proto.cip.objects.drive.AcknowledgeHandlerObject.remove_ack_data_path">[docs]</a>
+</span><span data-line="519">    <span class="k">def</span><span class="w"> </span><span class="nf">remove_ack_data_path</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request_data</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bytes</span><span class="p">:</span>
+</span><span data-line="520"><span class="w">        </span><span class="sd">&quot;&quot;&quot;Invoke Remove_AckData_Path (service 0x4C) with a caller-built</span>
+</span><span data-line="521"><span class="sd">        Connection Instance request payload.&quot;&quot;&quot;</span>
+</span><span data-line="522">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">message</span><span class="p">(</span><span class="mh">0x4C</span><span class="p">,</span> <span class="n">request_data</span><span class="p">)</span></div>
+</div>
+
+</span><span data-line="523">
+</span><span data-line="524">
+<div class="viewcode-block" id="OverloadObject">
+<a class="viewcode-back" href="../../../../../protocols/cip/api/objects_motion.html#icspacket.proto.cip.objects.drive.OverloadObject">[docs]</a>
+</span><span data-line="525"><span class="k">class</span><span class="w"> </span><span class="nc">OverloadObject</span><span class="p">(</span><span class="n">CIPObject</span><span class="p">):</span>
+</span><span data-line="526"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Models an AC motor overload protection device (See CIP Vol 1, §5-32).&quot;&quot;&quot;</span>
+</span><span data-line="527">
+</span><span data-line="528">    <span class="n">CLASS_CODE</span><span class="p">:</span> <span class="n">ClassVar</span><span class="p">[</span><span class="n">ClassCode</span><span class="p">]</span> <span class="o">=</span> <span class="n">ClassCode</span><span class="o">.</span><span class="n">OVERLOAD</span>
+</span><span data-line="529">
+</span><span data-line="530">    <span class="n">num_attr</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">uint8</span><span class="p">)</span>
+</span><span data-line="531"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Number of attributes supported (attribute 1).&quot;&quot;&quot;</span>
+</span><span data-line="532">
+</span><span data-line="533">    <span class="n">attributes</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="n">Collection</span><span class="p">[</span><span class="nb">int</span><span class="p">]]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">uint8</span><span class="p">[</span><span class="o">...</span><span class="p">])</span>
+</span><span data-line="534"><span class="w">    </span><span class="sd">&quot;&quot;&quot;List of attribute IDs supported by this instance (attribute 2).&quot;&quot;&quot;</span>
+</span><span data-line="535">
+</span><span data-line="536">    <span class="n">trip_flc_set</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">int16</span><span class="p">)</span>
+</span><span data-line="537"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Overload full load current setting, Units: 100mA / 2**current_scale</span>
+</span><span data-line="538"><span class="sd">    (attribute 3).&quot;&quot;&quot;</span>
+</span><span data-line="539">
+</span><span data-line="540">    <span class="n">trip_class</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">uint8</span><span class="p">)</span>
+</span><span data-line="541"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Trip class setting, range 0-200 (attribute 4).&quot;&quot;&quot;</span>
+</span><span data-line="542">
+</span><span data-line="543">    <span class="n">avg_current</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="n">int16</span><span class="p">)</span>
+</span><span data-line="544"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Average of the three phase currents, Units: 100mA / 2**current_scale</span>
+</span><span data-line="545"><span class="sd">    (attribute 5).&quot;&quot;&quot;</span>
+</span><span data-line="546">
+</span><span data-line="547">    <span class="n">percent_phase_imbalance</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="n">uint8</span><span class="p">)</span>
+</span><span data-line="548"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Percent phase imbalance (attribute 6).&quot;&quot;&quot;</span>
+</span><span data-line="549">
+</span><span data-line="550">    <span class="n">percent_thermal_capacity</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="n">uint8</span><span class="p">)</span>
+</span><span data-line="551"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Percent thermal capacity used (attribute 7).&quot;&quot;&quot;</span>
+</span><span data-line="552">
+</span><span data-line="553">    <span class="n">current_l1</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="n">int16</span><span class="p">)</span>
+</span><span data-line="554"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Actual motor phase current L1, Units: 100mA / 2**current_scale</span>
+</span><span data-line="555"><span class="sd">    (attribute 8).&quot;&quot;&quot;</span>
+</span><span data-line="556">
+</span><span data-line="557">    <span class="n">current_l2</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="n">int16</span><span class="p">)</span>
+</span><span data-line="558"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Actual motor phase current L2, Units: 100mA / 2**current_scale</span>
+</span><span data-line="559"><span class="sd">    (attribute 9).&quot;&quot;&quot;</span>
+</span><span data-line="560">
+</span><span data-line="561">    <span class="n">current_l3</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">int16</span><span class="p">)</span>
+</span><span data-line="562"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Actual motor phase current L3, Units: 100mA / 2**current_scale</span>
+</span><span data-line="563"><span class="sd">    (attribute 10).&quot;&quot;&quot;</span>
+</span><span data-line="564">
+</span><span data-line="565">    <span class="n">ground_current</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="n">int16</span><span class="p">)</span>
+</span><span data-line="566"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Ground current, Units: 100mA / 2**current_scale (attribute 11).&quot;&quot;&quot;</span>
+</span><span data-line="567">
+</span><span data-line="568">    <span class="n">current_scale</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="n">int8</span><span class="p">)</span>
+</span><span data-line="569"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Current scaling factor, range -128..127, default 0 (attribute 12).&quot;&quot;&quot;</span>
+</span><span data-line="570">
+<div class="viewcode-block" id="OverloadObject.get_class_attribute">
+<a class="viewcode-back" href="../../../../../protocols/cip/api/objects_motion.html#icspacket.proto.cip.objects.drive.OverloadObject.get_class_attribute">[docs]</a>
+</span><span data-line="571">    <span class="k">def</span><span class="w"> </span><span class="nf">get_class_attribute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attribute</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bytes</span><span class="p">:</span>
+</span><span data-line="572"><span class="w">        </span><span class="sd">&quot;&quot;&quot;Read an Overload class attribute from instance 0 (See §5-32.1).&quot;&quot;&quot;</span>
+</span><span data-line="573">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_attr</span><span class="p">(</span><span class="n">attribute</span><span class="p">,</span> <span class="n">instance</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span></div>
+
+</span><span data-line="574">
+<div class="viewcode-block" id="OverloadObject.restore">
+<a class="viewcode-back" href="../../../../../protocols/cip/api/objects_motion.html#icspacket.proto.cip.objects.drive.OverloadObject.restore">[docs]</a>
+</span><span data-line="575">    <span class="k">def</span><span class="w"> </span><span class="nf">restore</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bytes</span><span class="p">:</span>
+</span><span data-line="576"><span class="w">        </span><span class="sd">&quot;&quot;&quot;Invoke Restore, reloading attribute values saved via</span>
+</span><span data-line="577"><span class="sd">        :meth:`save`.&quot;&quot;&quot;</span>
+</span><span data-line="578">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_expect_empty</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">message</span><span class="p">(</span><span class="n">CommonService</span><span class="o">.</span><span class="n">RESTORE</span><span class="p">))</span></div>
+
+</span><span data-line="579">
+<div class="viewcode-block" id="OverloadObject.save">
+<a class="viewcode-back" href="../../../../../protocols/cip/api/objects_motion.html#icspacket.proto.cip.objects.drive.OverloadObject.save">[docs]</a>
+</span><span data-line="580">    <span class="k">def</span><span class="w"> </span><span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bytes</span><span class="p">:</span>
+</span><span data-line="581"><span class="w">        </span><span class="sd">&quot;&quot;&quot;Invoke Save, persisting all attribute values to non-volatile</span>
+</span><span data-line="582"><span class="sd">        storage.&quot;&quot;&quot;</span>
+</span><span data-line="583">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_expect_empty</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">message</span><span class="p">(</span><span class="n">CommonService</span><span class="o">.</span><span class="n">SAVE</span><span class="p">))</span></div>
+</div>
+
+</span><span data-line="584">
+</span><span data-line="585">
+<div class="viewcode-block" id="SoftstartObject">
+<a class="viewcode-back" href="../../../../../protocols/cip/api/objects_motion.html#icspacket.proto.cip.objects.drive.SoftstartObject">[docs]</a>
+</span><span data-line="586"><span class="k">class</span><span class="w"> </span><span class="nc">SoftstartObject</span><span class="p">(</span><span class="n">CIPObject</span><span class="p">):</span>
+</span><span data-line="587"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Models a soft-start motor starter (See CIP Vol 1, §5-33).&quot;&quot;&quot;</span>
+</span><span data-line="588">
+</span><span data-line="589">    <span class="n">CLASS_CODE</span><span class="p">:</span> <span class="n">ClassVar</span><span class="p">[</span><span class="n">ClassCode</span><span class="p">]</span> <span class="o">=</span> <span class="n">ClassCode</span><span class="o">.</span><span class="n">SOFTSTART</span>
+</span><span data-line="590">    <span class="n">num_attr</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">uint8</span><span class="p">)</span>
+</span><span data-line="591"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Number of attributes supported (attribute 1).&quot;&quot;&quot;</span>
+</span><span data-line="592">
+</span><span data-line="593">    <span class="n">attributes</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="n">Collection</span><span class="p">[</span><span class="nb">int</span><span class="p">]]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">uint8</span><span class="p">[</span><span class="o">...</span><span class="p">])</span>
+</span><span data-line="594"><span class="w">    </span><span class="sd">&quot;&quot;&quot;List of attribute IDs supported by this instance (attribute 2).&quot;&quot;&quot;</span>
+</span><span data-line="595">
+</span><span data-line="596">    <span class="n">at_reference</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">uint8</span><span class="p">)</span>
+</span><span data-line="597"><span class="w">    </span><span class="sd">&quot;&quot;&quot;0 = not at reference, 1 = output at starting/stopping voltage reference (attribute 3, required).&quot;&quot;&quot;</span>
+</span><span data-line="598">
+</span><span data-line="599">    <span class="n">start_mode</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">uint8</span><span class="p">)</span>
+</span><span data-line="600"><span class="w">    </span><span class="sd">&quot;&quot;&quot;0=No Ramp/No Limit, 1=Voltage Ramp, 2=Current Limit, 3=Ramp+Limit,</span>
+</span><span data-line="601"><span class="sd">    10-255=Vendor specific (attribute 4, required).&quot;&quot;&quot;</span>
+</span><span data-line="602">
+</span><span data-line="603">    <span class="n">stop_mode</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="n">uint8</span><span class="p">)</span>
+</span><span data-line="604"><span class="w">    </span><span class="sd">&quot;&quot;&quot;0=Coast, 1=Ramp Down, 2=Brake, 10-255=Vendor specific (attribute 5).&quot;&quot;&quot;</span>
+</span><span data-line="605">
+</span><span data-line="606">    <span class="n">ramp_mode</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="n">uint8</span><span class="p">)</span>
+</span><span data-line="607"><span class="w">    </span><span class="sd">&quot;&quot;&quot;0=Single Ramp, 1=Dual Contiguous Ramp, 2=Dual Independent Ramp</span>
+</span><span data-line="608"><span class="sd">    (attribute 6).&quot;&quot;&quot;</span>
+</span><span data-line="609">
+</span><span data-line="610">    <span class="n">ramp_time1</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="n">uint16</span><span class="p">)</span>
+</span><span data-line="611"><span class="w">    </span><span class="sd">&quot;&quot;&quot;First ramp duration, Units: tenths of seconds (attribute 7).&quot;&quot;&quot;</span>
+</span><span data-line="612">
+</span><span data-line="613">    <span class="n">initial_voltage1</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="n">uint8</span><span class="p">)</span>
+</span><span data-line="614"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Starting voltage for the first ramp, Units: % of full line voltage</span>
+</span><span data-line="615"><span class="sd">    (attribute 8).&quot;&quot;&quot;</span>
+</span><span data-line="616">
+</span><span data-line="617">    <span class="n">ramp_time2</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="n">uint16</span><span class="p">)</span>
+</span><span data-line="618"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Second ramp duration (Dual Ramp modes), Units: tenths of seconds</span>
+</span><span data-line="619"><span class="sd">    (attribute 9).&quot;&quot;&quot;</span>
+</span><span data-line="620">
+</span><span data-line="621">    <span class="n">initial_voltage2</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">uint8</span><span class="p">)</span>
+</span><span data-line="622"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Starting voltage for the second ramp, Units: % of full line voltage</span>
+</span><span data-line="623"><span class="sd">    (attribute 10).&quot;&quot;&quot;</span>
+</span><span data-line="624">
+</span><span data-line="625">    <span class="n">rotation</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="n">uint8</span><span class="p">)</span>
+</span><span data-line="626"><span class="w">    </span><span class="sd">&quot;&quot;&quot;0 = ABC phase rotation, 1 = CBA phase rotation (attribute 11).&quot;&quot;&quot;</span>
+</span><span data-line="627">
+</span><span data-line="628">    <span class="n">kick_start</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="n">uint8</span><span class="p">)</span>
+</span><span data-line="629"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Enables (1) or disables (0) fixed-time kick start (attribute 12).&quot;&quot;&quot;</span>
+</span><span data-line="630">
+</span><span data-line="631">    <span class="n">kick_start_time</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">13</span><span class="p">,</span> <span class="n">uint8</span><span class="p">)</span>
+</span><span data-line="632"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Kick start duration, Units: tenths of seconds (attribute 13).&quot;&quot;&quot;</span>
+</span><span data-line="633">
+</span><span data-line="634">    <span class="n">kick_start_voltage</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="n">uint16</span><span class="p">)</span>
+</span><span data-line="635"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Kick start voltage, Units: % of full line voltage (attribute 14).&quot;&quot;&quot;</span>
+</span><span data-line="636">
+</span><span data-line="637">    <span class="n">energy_saver</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="n">uint8</span><span class="p">)</span>
+</span><span data-line="638"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Enables (1) or disables (0) energy saver mode (attribute 15).&quot;&quot;&quot;</span>
+</span><span data-line="639">
+</span><span data-line="640">    <span class="n">decel_time</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="n">uint16</span><span class="p">)</span>
+</span><span data-line="641"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Ramp-to-stop/DC-brake duration, Units: tenths of seconds (attribute</span>
+</span><span data-line="642"><span class="sd">    16).&quot;&quot;&quot;</span>
+</span><span data-line="643">
+</span><span data-line="644">    <span class="n">current_limit_set</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">17</span><span class="p">,</span> <span class="n">uint16</span><span class="p">)</span>
+</span><span data-line="645"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Current limit for starting, Units: % of Motor Data rated_current</span>
+</span><span data-line="646"><span class="sd">    (attribute 17).&quot;&quot;&quot;</span>
+</span><span data-line="647">
+</span><span data-line="648">    <span class="n">braking_current_set</span><span class="p">:</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIPAttribute</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="n">uint16</span><span class="p">)</span>
+</span><span data-line="649"><span class="w">    </span><span class="sd">&quot;&quot;&quot;DC braking current for stopping, Units: % of Motor Data rated_current</span>
+</span><span data-line="650"><span class="sd">    (attribute 18).&quot;&quot;&quot;</span>
+</span><span data-line="651">
+<div class="viewcode-block" id="SoftstartObject.get_class_attribute">
+<a class="viewcode-back" href="../../../../../protocols/cip/api/objects_motion.html#icspacket.proto.cip.objects.drive.SoftstartObject.get_class_attribute">[docs]</a>
+</span><span data-line="652">    <span class="k">def</span><span class="w"> </span><span class="nf">get_class_attribute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attribute</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bytes</span><span class="p">:</span>
+</span><span data-line="653"><span class="w">        </span><span class="sd">&quot;&quot;&quot;Read a Softstart class attribute from instance 0 (See §5-33.1).&quot;&quot;&quot;</span>
+</span><span data-line="654">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_attr</span><span class="p">(</span><span class="n">attribute</span><span class="p">,</span> <span class="n">instance</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span></div>
+
+</span><span data-line="655">
+<div class="viewcode-block" id="SoftstartObject.restore">
+<a class="viewcode-back" href="../../../../../protocols/cip/api/objects_motion.html#icspacket.proto.cip.objects.drive.SoftstartObject.restore">[docs]</a>
+</span><span data-line="656">    <span class="k">def</span><span class="w"> </span><span class="nf">restore</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bytes</span><span class="p">:</span>
+</span><span data-line="657"><span class="w">        </span><span class="sd">&quot;&quot;&quot;Invoke Restore, reloading attribute values saved via</span>
+</span><span data-line="658"><span class="sd">        :meth:`save`.&quot;&quot;&quot;</span>
+</span><span data-line="659">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_expect_empty</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">message</span><span class="p">(</span><span class="n">CommonService</span><span class="o">.</span><span class="n">RESTORE</span><span class="p">))</span></div>
+
+</span><span data-line="660">
+<div class="viewcode-block" id="SoftstartObject.save">
+<a class="viewcode-back" href="../../../../../protocols/cip/api/objects_motion.html#icspacket.proto.cip.objects.drive.SoftstartObject.save">[docs]</a>
+</span><span data-line="661">    <span class="k">def</span><span class="w"> </span><span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bytes</span><span class="p">:</span>
+</span><span data-line="662"><span class="w">        </span><span class="sd">&quot;&quot;&quot;Invoke Save, persisting all attribute values to non-volatile</span>
+</span><span data-line="663"><span class="sd">        storage.&quot;&quot;&quot;</span>
+</span><span data-line="664">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_expect_empty</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">message</span><span class="p">(</span><span class="n">CommonService</span><span class="o">.</span><span class="n">SAVE</span><span class="p">))</span></div>
+</div>
+
+</span></pre></div>
+        </article><button class="back-to-top" type="button">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+  </svg>
+  <span>Back to top</span>
+</button><div class="navigation flex print:hidden"></div></div>
+    </div>
+  </main>
+</div>
+<footer class="sy-foot">
+  <div class="sy-foot-inner sy-container mx-auto">
+    <div class="sy-foot-reserved md:flex justify-between items-center">
+      <div class="sy-foot-copyright"><p>2025, MatrixEditor</p>
+  
+  <p>
+    Made with
+    
+    <a href="https://www.sphinx-doc.org/">Sphinx</a> and
+    
+    <a href="https://shibuya.lepture.com">Shibuya theme</a>.
+  </p>
+</div>
+      <div class="sy-foot-socials">
+  <a href="https://github.com/MatrixEditor/icspacket" aria-label="GitHub">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </a></div>
+    </div>
+  </div>
+</footer>
+      <script src="../../../../../_static/documentation_options.js?v=5dc6420e"></script>
+      <script src="../../../../../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../../../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="../../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../../../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../../../../_static/design-tabs.js?v=f930bc37"></script>
+      <script src="../../../../../_static/shibuya.js?v=50760d75"></script></body>
+</html>

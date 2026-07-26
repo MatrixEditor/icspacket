@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="en" data-accent-color="lime" data-content_root="../../../">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Diagnostics Objects - icspacket 0.1.dev1+g198be51b5 documentation</title><link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" /><link rel="next" title="API Reference" href="../../acse/api.html" /><link rel="prev" title="Switch Management Objects" href="objects_switch.html" />
+      <link rel="canonical" href="https://matrixeditor.github.io/icspacket/protocols/cip/api/objects_diagnostics.html" /><script>
+    function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
+    setColorMode(localStorage._theme||"dark");
+  </script><link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=e1a1ceaf" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/shibuya.css?v=2ceb65ce" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link media="print" rel="stylesheet" type="text/css" href="../../../_static/print.css?v=20ff2c19" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --sy-f-text: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+  --sy-f-heading: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+}
+</style>
+    
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://matrixeditor.github.io/icspacket/protocols/cip/api/objects_diagnostics.html"/>
+  <meta property="og:title" content="Diagnostics Objects"/>
+    <meta name="twitter:card" content="summary"/>
+  </head>
+<body><div class="sy-head">
+  <div class="sy-head-blur"></div>
+  <div class="sy-head-inner sy-container mx-auto">
+    <a class="sy-head-brand" href="../../../index.html">
+      
+      
+      <strong>icspacket</strong>
+    </a>
+    <div class="sy-head-nav" id="head-nav">
+      <nav class="sy-head-links"><ul>
+      <li class="link"><a class="js-menu" href="../../../getting-started/protocols.html" id="nav-trigger-1" aria-controls="nav-children-1">
+            <span>Examples</span>
+            <i class="i-lucide chevron-down"></i>
+          </a>
+        <ul id="nav-children-1" aria-labelledby="nav-trigger-1"><li><a href="../../mms/examples.html">
+                <span>MMS Utilities</span>
+                <small>Manufacturing Message Specification tools</small>
+              </a></li><li><a href="../../dnp3/examples.html">
+                <span>DNP3 Tools</span>
+                <small>DNP3 utilities and tools</small>
+              </a></li><li><a href="../../iec61850/iedmap.html">
+                <span>IED Enumeration Tool</span>
+                <small>Logical Device enumeration and more</small>
+              </a></li><li><a href="../examples.html">
+                <span>CIP / EtherNet-IP Tools</span>
+                <small>EtherNet/IP discovery, explicit messaging and I/O tools</small>
+              </a></li><li><a href="../../iec104/examples.html">
+                <span>IEC 60870-5-104 Tools</span>
+                <small>IEC 60870-5-104 interrogation and read tools</small>
+              </a></li></ul>
+      </li><li class="link"><a href="../../../changelog.html">Changelog</a></li></ul></nav>
+      <div class="sy-head-extra flex items-center print:hidden"><form class="searchbox flex items-center" action="../../../search.html" method="get">
+  <input type="text" name="q" placeholder="Search" />
+  <kbd>/</kbd>
+</form><div class="sy-head-socials">
+  <a href="https://github.com/MatrixEditor/icspacket" aria-label="GitHub">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </a></div></div>
+    </div>
+    <div class="sy-head-actions flex items-center shrink-0 print:hidden"><button class="js-theme theme-switch flex items-center"
+data-aria-auto="Switch to light color mode"
+data-aria-light="Switch to dark color mode"
+data-aria-dark="Switch to auto color mode">
+<i class="i-lucide theme-icon"></i>
+</button><button class="md:hidden flex items-center js-menu" aria-label="Menu" type="button" aria-controls="head-nav" aria-expanded="false">
+        <div class="hamburger">
+          <span class="hamburger_1"></span>
+          <span class="hamburger_2"></span>
+          <span class="hamburger_3"></span>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>
+<div class="sy-page sy-container flex mx-auto">
+  <aside id="lside" class="sy-lside md:w-72 md:shrink-0 print:hidden">
+    <div class="sy-lside-inner md:sticky">
+      <div class="sy-scrollbar p-6"><div class="sidebar-links">
+  <ul>
+    <li><a class="icon-link" href="https://github.com/MatrixEditor/icspacket/discussions">
+  <span class="icon">
+    <svg viewBox="0 0 24 24" fill="none">
+      <path fill="var(--accent-9)" fill-rule="evenodd" clip-rule="evenodd" d="M11 5a6 6 0 0 0-4.687 9.746c.215.27.315.62.231.954l-.514 2.058a1 1 0 0 0 1.485 1.1l2.848-1.71c.174-.104.374-.15.576-.148H13a6 6 0 0 0 0-12h-2Z"/>
+      <circle fill="white" cx="12" cy="11" r="1"/>
+      <circle fill="white" cx="9" cy="11" r="1"/>
+      <circle fill="white" cx="15" cy="11" r="1"/>
+    </svg>
+  </span>
+  <span class="text">Discussion</span>
+</a></li>
+  </ul>
+</div>
+        <div class="globaltoc" data-expand-depth="1"><p class="caption" role="heading" aria-level="3"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../getting-started/installation.html">Installation</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../getting-started/protocols.html">Protocols Overview</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../getting-started/coreapi.html">Core API Reference</a></li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">DNP3 / IEEE 1815</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../dnp3/dnp3read.html">Reading Objects</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../dnp3/dnp3dump.html">Dumping Objects</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../dnp3/dnp3resolve.html">Resolve Link Addresses</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../dnp3/api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../dnp3/api/link.html">Link Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dnp3/api/transport.html">Transport Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dnp3/api/application.html">Application Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dnp3/api/master.html">Master</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dnp3/api/object_library.html">Object Library</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../dnp3/api/primitives.html">Primitive Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../dnp3/api/coding.html">Encoding / Decoding</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../dnp3/api/variations.html">Variations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../dnp3/api/coding_utils.html">Object Utilities</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">IEC 61850</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../iec61850/iedmap.html">Enumerating IEDs</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../iec61850/iedctrl.html">Operating on IEDs</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../iec61850/api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../iec61850/api_data_classes.html">Data Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../iec61850/api_path.html">Object / Data References</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../iec61850/api_control.html">Control / Operation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../iec61850/api_client.html">IED Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../iec61850/api_goose.html">GOOSE Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../iec61850/api_sv.html">SampledValues Client</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">MMS / ISO 9506</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../mms/demo_vars.html">Variable Target Format</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../mms/demo_vars.html#variableaccess-service-rwq">VariableAccess Service (rwq)</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../mms/demo_files.html">FileManagement Service</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../mms/api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../mms/api_conn.html">MMS Connection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../mms/api_data.html">Data Conversion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../mms/api_utils.html">Protocol Utilities</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">IEC 60870-5-104</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../iec104/iec104read.html">Reading Data via Interrogation</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../iec104/api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../iec104/api/apci.html">APCI - Framing Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../iec104/api/asdu.html">ASDU - Application Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../iec104/api/master.html">Master (Client)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../iec104/api/objects.html">Information Object Library</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">CIP / EtherNet-IP</span></p>
+<ul class="current">
+<li class="toctree-l1 _expand"><a class="reference internal" href="../cipclient.html">Operating via CIP / EtherNet-IP</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../api.html">API Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="connection.html">Connection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="encapsulation.html">EtherNet/IP Encapsulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="messaging.html">Messaging</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="objects.html">Object Library</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="objects_core.html">Core Objects</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects_network.html">Network Objects</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects_io.html">I/O and Parameter Objects</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects_motion.html">Motion, Drive, and Semiconductor Objects</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objects_switch.html">Switch Management Objects</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Diagnostics Objects</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">ACSE / X.227</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../acse/api.html">API Reference</a></li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">COPP / X.226 / ISO 8823</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../copp/api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../copp/presentation.html">ISO Presentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../copp/utils.html">Protocol Utilities</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">COSP / X.225 / ISO 8237-1</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../cosp/api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../cosp/tsdu.html">TSDU</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cosp/spdu.html">SPDU Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cosp/values.html">Parameter Values (PV)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cosp/session.html">ISO Session</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cosp/utils.html">Protocol Utilities</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">COTP / X.224</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../cotp/api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../cotp/structs.html">TPDU Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cotp/connection.html">Connection</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">TPKT Protocol (RFC1006)</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../tpkt/usage.html">Using a TPKT Wrapper</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../tpkt/api.html">API Reference</a></li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../changelog.html">Changelog</a></li>
+</ul>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="lside-overlay js-menu" role="button" aria-label="Close left sidebar" aria-controls="lside" aria-expanded="false"></div>
+  <aside id="rside" class="sy-rside pb-3 w-64 shrink-0 order-last">
+    <button class="rside-close js-menu xl:hidden" aria-label="Close Table of Contents" type="button" aria-controls="rside" aria-expanded="false">
+      <i class="i-lucide close"></i>
+    </button>
+    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div class="localtoc"><h3>On this page</h3><ul>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.diagnostics.EventLogObject"><code class="docutils literal notranslate"><span class="pre">EventLogObject</span></code></a><ul>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.diagnostics.EventLogObject.instance_name"><code class="docutils literal notranslate"><span class="pre">EventLogObject.instance_name</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.diagnostics.EventLogObject.state"><code class="docutils literal notranslate"><span class="pre">EventLogObject.state</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.diagnostics.EventLogObject.event_list_size"><code class="docutils literal notranslate"><span class="pre">EventLogObject.event_list_size</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.diagnostics.EventLogObject.event_list"><code class="docutils literal notranslate"><span class="pre">EventLogObject.event_list</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.diagnostics.EventLogObject.event_enable"><code class="docutils literal notranslate"><span class="pre">EventLogObject.event_enable</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.diagnostics.EventLogObject.event_silenced"><code class="docutils literal notranslate"><span class="pre">EventLogObject.event_silenced</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.diagnostics.EventLogObject.event_state"><code class="docutils literal notranslate"><span class="pre">EventLogObject.event_state</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.diagnostics.EventLogObject.logged_states_configuration"><code class="docutils literal notranslate"><span class="pre">EventLogObject.logged_states_configuration</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.diagnostics.EventLogObject.logged_data_configuration"><code class="docutils literal notranslate"><span class="pre">EventLogObject.logged_data_configuration</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.diagnostics.EventLogObject.log_full_action"><code class="docutils literal notranslate"><span class="pre">EventLogObject.log_full_action</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.diagnostics.EventLogObject.duplicate_event_action"><code class="docutils literal notranslate"><span class="pre">EventLogObject.duplicate_event_action</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.diagnostics.EventLogObject.event_data_log_maximum_size"><code class="docutils literal notranslate"><span class="pre">EventLogObject.event_data_log_maximum_size</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.diagnostics.EventLogObject.event_data_log_size"><code class="docutils literal notranslate"><span class="pre">EventLogObject.event_data_log_size</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.diagnostics.EventLogObject.event_data_log"><code class="docutils literal notranslate"><span class="pre">EventLogObject.event_data_log</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.diagnostics.EventLogObject.active_event_data_list_size"><code class="docutils literal notranslate"><span class="pre">EventLogObject.active_event_data_list_size</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.diagnostics.EventLogObject.active_event_data_list"><code class="docutils literal notranslate"><span class="pre">EventLogObject.active_event_data_list</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.diagnostics.EventLogObject.logged_event_data_list_size"><code class="docutils literal notranslate"><span class="pre">EventLogObject.logged_event_data_list_size</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.diagnostics.EventLogObject.logged_event_data_list"><code class="docutils literal notranslate"><span class="pre">EventLogObject.logged_event_data_list</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.diagnostics.EventLogObject.log_full"><code class="docutils literal notranslate"><span class="pre">EventLogObject.log_full</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.diagnostics.EventLogObject.log_contains_entries"><code class="docutils literal notranslate"><span class="pre">EventLogObject.log_contains_entries</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.diagnostics.EventLogObject.log_overrun"><code class="docutils literal notranslate"><span class="pre">EventLogObject.log_overrun</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.diagnostics.EventLogObject.sequential_event_data_access"><code class="docutils literal notranslate"><span class="pre">EventLogObject.sequential_event_data_access</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.diagnostics.EventLogObject.startup_behavior"><code class="docutils literal notranslate"><span class="pre">EventLogObject.startup_behavior</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.diagnostics.EventLogObject.event_identifier_format"><code class="docutils literal notranslate"><span class="pre">EventLogObject.event_identifier_format</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.diagnostics.EventLogObject.get_class_attribute"><code class="docutils literal notranslate"><span class="pre">EventLogObject.get_class_attribute()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.diagnostics.EventLogObject.reset"><code class="docutils literal notranslate"><span class="pre">EventLogObject.reset()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.diagnostics.EventLogObject.start"><code class="docutils literal notranslate"><span class="pre">EventLogObject.start()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.diagnostics.EventLogObject.stop"><code class="docutils literal notranslate"><span class="pre">EventLogObject.stop()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.diagnostics.FileObject"><code class="docutils literal notranslate"><span class="pre">FileObject</span></code></a><ul>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.diagnostics.FileObject.state"><code class="docutils literal notranslate"><span class="pre">FileObject.state</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.diagnostics.FileObject.instance_name"><code class="docutils literal notranslate"><span class="pre">FileObject.instance_name</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.diagnostics.FileObject.instance_format_version"><code class="docutils literal notranslate"><span class="pre">FileObject.instance_format_version</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.diagnostics.FileObject.file_name"><code class="docutils literal notranslate"><span class="pre">FileObject.file_name</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.diagnostics.FileObject.file_revision"><code class="docutils literal notranslate"><span class="pre">FileObject.file_revision</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.diagnostics.FileObject.file_size"><code class="docutils literal notranslate"><span class="pre">FileObject.file_size</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.diagnostics.FileObject.file_checksum"><code class="docutils literal notranslate"><span class="pre">FileObject.file_checksum</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.diagnostics.FileObject.invocation_method"><code class="docutils literal notranslate"><span class="pre">FileObject.invocation_method</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.diagnostics.FileObject.file_save_parameters"><code class="docutils literal notranslate"><span class="pre">FileObject.file_save_parameters</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.diagnostics.FileObject.file_type"><code class="docutils literal notranslate"><span class="pre">FileObject.file_type</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.diagnostics.FileObject.file_encoding_format"><code class="docutils literal notranslate"><span class="pre">FileObject.file_encoding_format</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.diagnostics.FileObject.get_class_attribute"><code class="docutils literal notranslate"><span class="pre">FileObject.get_class_attribute()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.diagnostics.FileObject.create"><code class="docutils literal notranslate"><span class="pre">FileObject.create()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.diagnostics.FileObject.delete"><code class="docutils literal notranslate"><span class="pre">FileObject.delete()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.diagnostics.FileObject.save"><code class="docutils literal notranslate"><span class="pre">FileObject.save()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.diagnostics.FileObject.restore"><code class="docutils literal notranslate"><span class="pre">FileObject.restore()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.diagnostics.FileObject.initiate_upload"><code class="docutils literal notranslate"><span class="pre">FileObject.initiate_upload()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.diagnostics.FileObject.initiate_download"><code class="docutils literal notranslate"><span class="pre">FileObject.initiate_download()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.diagnostics.FileObject.initiate_partial_read"><code class="docutils literal notranslate"><span class="pre">FileObject.initiate_partial_read()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.diagnostics.FileObject.initiate_partial_write"><code class="docutils literal notranslate"><span class="pre">FileObject.initiate_partial_write()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.diagnostics.FileObject.upload_transfer"><code class="docutils literal notranslate"><span class="pre">FileObject.upload_transfer()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.diagnostics.FileObject.download_transfer"><code class="docutils literal notranslate"><span class="pre">FileObject.download_transfer()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.diagnostics.FileObject.clear_file"><code class="docutils literal notranslate"><span class="pre">FileObject.clear_file()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#icspacket.proto.cip.objects.diagnostics.FileRevision"><code class="docutils literal notranslate"><span class="pre">FileRevision</span></code></a></li>
+</ul>
+</div><a class="js-repo-stats repo-stats flex items-center" href="https://github.com/MatrixEditor/icspacket"
+  data-type="github" data-user="MatrixEditor" data-repo="icspacket">
+  <span class="w-8 flex items-center justify-around shrink-0 text-3xl">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </span>
+  <span class="flex-grow px-2 break-all">
+    <span style="font-size: small;">MatrixEditor/icspacket</span>
+    <span class="flex text-sm repo-stats-count">
+      <span class="flex items-center pr-3">
+        <iconify-icon icon="lucide:star"></iconify-icon>
+        <strong class="js-repo-stars ml-1">0</strong>
+      </span>
+      <span class="flex items-center">
+        <iconify-icon icon="lucide:git-fork"></iconify-icon>
+        <strong class="js-repo-forks ml-1">0</strong>
+      </span>
+    </span>
+  </span>
+</a><div class="edit-this-page">
+  <a href="https://github.com/MatrixEditor/icspacket/blob/main/docs/protocols/cip/api/objects_diagnostics.rst">Edit this page</a>
+</div></div>
+  </aside>
+  <div class="rside-overlay js-menu" role="button" aria-label="Close Table of Contents" aria-controls="rside" aria-expanded="false"></div>
+  <main class="sy-main w-full max-sm:max-w-full print:pt-6">
+<div class="sy-breadcrumbs" role="navigation">
+  <div class="sy-breadcrumbs-inner flex items-center">
+    <div class="md:hidden mr-3">
+      <button class="js-menu" aria-label="Menu" type="button" aria-controls="lside" aria-expanded="false">
+        <i class="i-lucide menu"></i>
+      </button>
+    </div>
+    <ol class="flex-1" itemscope itemtype="https://schema.org/BreadcrumbList"><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="../../../index.html"><span itemprop="name">icspacket</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="1" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="../api.html"><span itemprop="name">API Reference</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="2" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="objects.html"><span itemprop="name">Object Library</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="3" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <strong itemprop="name">Diagnostics Objects</strong>
+        <meta itemprop="position" content="4" />
+      </li></ol>
+    <div class="xl:hidden ml-1">
+      <button class="js-menu" aria-label="Show table of contents" type="button" aria-controls="rside"
+        aria-expanded="false">
+        <i class="i-lucide outdent"></i>
+      </button>
+    </div>
+  </div>
+</div><div class="flex flex-col break-words justify-between">
+      <div class="relative min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
+  <div class="copy-page-wrapper relative pb-4 lg:absolute lg:top-8 lg:right-6 xl:right-12">
+  <div id="copy-page-trigger">
+    <button
+      type="button"
+      class="js-copy px-3 py-1 inline-flex items-center gap-1"
+      data-url="https://raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/protocols/cip/api/objects_diagnostics.rst"
+    >
+      <i class="i-lucide" data-icon="copy"></i>
+      <span>Copy page</span>
+    </button>
+    <button class="js-menu px-2 py-1" type="button" aria-label="More actions"
+      aria-haspopup="menu" aria-expanded="false" aria-controls="copy-page-content">
+      <i class="i-lucide chevron-down"></i>
+    </button>
+  </div>
+  <div id="copy-page-content" role="menu" aria-orientation="vertical" aria-hidden="true">
+    <div role="presentation">
+      <div class="flex flex-col" role="group">
+        <button class="js-copy" type="button" role="menuitem"
+          data-url="https://raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/protocols/cip/api/objects_diagnostics.rst">
+          <span class="iconify-icon">
+            <i class="i-lucide" data-icon="copy"></i>
+          </span>
+          <span>Copy page</span>
+        </button>
+        <a role="menuitem" href="https://raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/protocols/cip/api/objects_diagnostics.rst" target="_blank" rel="nofollow"><iconify-icon icon="bi:code-slash"></iconify-icon>
+            <span>View Source</span></a><a role="menuitem" href="https://chatgpt.com/?hints=search&q=Read%20https%3A//raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/protocols/cip/api/objects_diagnostics.rst%20so%20I%20can%20ask%20questions%20about%20it." target="_blank" rel="nofollow">
+          <iconify-icon icon="bi:openai"></iconify-icon>
+          <span>Open in ChatGPT</span>
+        </a><a role="menuitem" href="https://claude.ai/new?q=Read%20https%3A//raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/protocols/cip/api/objects_diagnostics.rst%20so%20I%20can%20ask%20questions%20about%20it." target="_blank" rel="nofollow">
+          <iconify-icon icon="bi:claude"></iconify-icon>
+          <span>Open in Claude</span>
+        </a></div>
+    </div>
+  </div>
+</div><article class="yue" role="main">
+          <section id="diagnostics-objects">
+<span id="api-cip-objects-diagnostics"></span><h1>Diagnostics Objects<a class="headerlink" href="#diagnostics-objects" title="Link to this heading">#</a></h1>
+<p>The File Object and Event Log Object.</p>
+<p id="module-icspacket.proto.cip.objects.diagnostics">[ODVA CIP Vol 1] Wrappers for the File Object (class 0x37, §5-42) and Event
+Log Object (class 0x41, §5-45).</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.diagnostics.EventLogObject">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">icspacket.proto.cip.objects.diagnostics.</span></span><span class="sig-name descname"><span class="pre">EventLogObject</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">connection</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="connection.html#icspacket.proto.cip.connection.CIP_Connection" title="icspacket.proto.cip.connection.CIP_Connection"><span class="pre">CIP_Connection</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">instance</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/icspacket/proto/cip/objects/diagnostics.html#EventLogObject"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.cip.objects.diagnostics.EventLogObject" title="Link to this definition">#</a></dt>
+<dd><p>Provides event indication and/or a time-stamped event log on a CIP node
+(See CIP Vol 1, §5-45).</p>
+<p><code class="docutils literal notranslate"><span class="pre">instance_name</span></code> is STRINGI-encoded, and the event/log list attributes
+(4, 14, 16, 18) are arrays of structures whose per-entry layout is
+selected by <code class="docutils literal notranslate"><span class="pre">event_identifier_format</span></code>/the class-level Time Format
+attribute, so all of these are exposed as raw bytes rather than a fixed
+schema. <code class="docutils literal notranslate"><span class="pre">event_enable</span></code>/<code class="docutils literal notranslate"><span class="pre">event_silenced</span></code>/<code class="docutils literal notranslate"><span class="pre">event_state</span></code> are
+homogeneous byte arrays without that dependency, so they use a greedy
+array schema instead.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.diagnostics.EventLogObject.instance_name">
+<span class="sig-name descname"><span class="pre">instance_name</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">bytes</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.diagnostics.EventLogObject.instance_name" title="Link to this definition">#</a></dt>
+<dd><p>STRINGI name of this event instance (attribute 1).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.diagnostics.EventLogObject.state">
+<span class="sig-name descname"><span class="pre">state</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.diagnostics.EventLogObject.state" title="Link to this definition">#</a></dt>
+<dd><p>0=Nonexistent, 1=Stopped, 2=Empty, 3=Available, 4=Full/Overwrite,
+5=Full/Halted (attribute 2).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.diagnostics.EventLogObject.event_list_size">
+<span class="sig-name descname"><span class="pre">event_list_size</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.diagnostics.EventLogObject.event_list_size" title="Link to this definition">#</a></dt>
+<dd><p>Number of elements in event_list/event_enable/event_silenced/event_state
+(attribute 3).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.diagnostics.EventLogObject.event_list">
+<span class="sig-name descname"><span class="pre">event_list</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">bytes</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.diagnostics.EventLogObject.event_list" title="Link to this definition">#</a></dt>
+<dd><p>All event identifiers monitored by this instance; format set by
+event_identifier_format (attribute 4).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.diagnostics.EventLogObject.event_enable">
+<span class="sig-name descname"><span class="pre">event_enable</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">Collection</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.diagnostics.EventLogObject.event_enable" title="Link to this definition">#</a></dt>
+<dd><p>Per-event enable flags: 0 = disabled, 1 = enabled (default), one BOOL each (attribute 5).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.diagnostics.EventLogObject.event_silenced">
+<span class="sig-name descname"><span class="pre">event_silenced</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">Collection</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.diagnostics.EventLogObject.event_silenced" title="Link to this definition">#</a></dt>
+<dd><p>Per-event silence flags: 0 = not silenced (default), 1 = silenced, one BOOL each (attribute 6).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.diagnostics.EventLogObject.event_state">
+<span class="sig-name descname"><span class="pre">event_state</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">Collection</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.diagnostics.EventLogObject.event_state" title="Link to this definition">#</a></dt>
+<dd><p>Per-event state bit flags: bit0=enabled, bit1=active, bit2=acked,
+bit3=logged, bit4=silenced (attribute 7).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.diagnostics.EventLogObject.logged_states_configuration">
+<span class="sig-name descname"><span class="pre">logged_states_configuration</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.diagnostics.EventLogObject.logged_states_configuration" title="Link to this definition">#</a></dt>
+<dd><p>Bit flags selecting which event state transitions are logged, default
+0x01 (attribute 8, See Table 5-45.4).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.diagnostics.EventLogObject.logged_data_configuration">
+<span class="sig-name descname"><span class="pre">logged_data_configuration</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.diagnostics.EventLogObject.logged_data_configuration" title="Link to this definition">#</a></dt>
+<dd><p>Bit flags selecting what data is stored in the event log, default 0
+(attribute 9, See Table 5-45.5).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.diagnostics.EventLogObject.log_full_action">
+<span class="sig-name descname"><span class="pre">log_full_action</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.diagnostics.EventLogObject.log_full_action" title="Link to this definition">#</a></dt>
+<dd><p>0 = Halt (default), 1 = Scroll, action to take when the log is full (attribute 10).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.diagnostics.EventLogObject.duplicate_event_action">
+<span class="sig-name descname"><span class="pre">duplicate_event_action</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.diagnostics.EventLogObject.duplicate_event_action" title="Link to this definition">#</a></dt>
+<dd><p>0 = Ignore (default), 1 = Add, 2 = Overwrite, action to take on a duplicate event (attribute 11).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.diagnostics.EventLogObject.event_data_log_maximum_size">
+<span class="sig-name descname"><span class="pre">event_data_log_maximum_size</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.diagnostics.EventLogObject.event_data_log_maximum_size" title="Link to this definition">#</a></dt>
+<dd><p>Maximum number of allowable entries in the Event/Data Log (attribute
+12).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.diagnostics.EventLogObject.event_data_log_size">
+<span class="sig-name descname"><span class="pre">event_data_log_size</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.diagnostics.EventLogObject.event_data_log_size" title="Link to this definition">#</a></dt>
+<dd><p>Present number of entries in the Event/Data Log (attribute 13).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.diagnostics.EventLogObject.event_data_log">
+<span class="sig-name descname"><span class="pre">event_data_log</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">bytes</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.diagnostics.EventLogObject.event_data_log" title="Link to this definition">#</a></dt>
+<dd><p>List of all logged events (attribute 14).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.diagnostics.EventLogObject.active_event_data_list_size">
+<span class="sig-name descname"><span class="pre">active_event_data_list_size</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.diagnostics.EventLogObject.active_event_data_list_size" title="Link to this definition">#</a></dt>
+<dd><p>Number of entries in active_event_data_list (attribute 15).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.diagnostics.EventLogObject.active_event_data_list">
+<span class="sig-name descname"><span class="pre">active_event_data_list</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">bytes</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.diagnostics.EventLogObject.active_event_data_list" title="Link to this definition">#</a></dt>
+<dd><p>List of event identifiers presently active (attribute 16).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.diagnostics.EventLogObject.logged_event_data_list_size">
+<span class="sig-name descname"><span class="pre">logged_event_data_list_size</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.diagnostics.EventLogObject.logged_event_data_list_size" title="Link to this definition">#</a></dt>
+<dd><p>Number of entries in logged_event_data_list (attribute 17).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.diagnostics.EventLogObject.logged_event_data_list">
+<span class="sig-name descname"><span class="pre">logged_event_data_list</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">bytes</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.diagnostics.EventLogObject.logged_event_data_list" title="Link to this definition">#</a></dt>
+<dd><p>List of event identifiers currently logged (attribute 18).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.diagnostics.EventLogObject.log_full">
+<span class="sig-name descname"><span class="pre">log_full</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.diagnostics.EventLogObject.log_full" title="Link to this definition">#</a></dt>
+<dd><p>0 = log not full, 1 = event_data_log_size == event_data_log_maximum_size (attribute 19).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.diagnostics.EventLogObject.log_contains_entries">
+<span class="sig-name descname"><span class="pre">log_contains_entries</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.diagnostics.EventLogObject.log_contains_entries" title="Link to this definition">#</a></dt>
+<dd><p>0 = log empty, 1 = log contains entries (attribute 20).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.diagnostics.EventLogObject.log_overrun">
+<span class="sig-name descname"><span class="pre">log_overrun</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.diagnostics.EventLogObject.log_overrun" title="Link to this definition">#</a></dt>
+<dd><p>0 = no overrun, 1 = the log has overrun (attribute 21).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.diagnostics.EventLogObject.sequential_event_data_access">
+<span class="sig-name descname"><span class="pre">sequential_event_data_access</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">bytes</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.diagnostics.EventLogObject.sequential_event_data_access" title="Link to this definition">#</a></dt>
+<dd><p>Simple mechanism to sequentially access Event/Data Log entries
+(attribute 22, See §5-45.4.22).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.diagnostics.EventLogObject.startup_behavior">
+<span class="sig-name descname"><span class="pre">startup_behavior</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.diagnostics.EventLogObject.startup_behavior" title="Link to this definition">#</a></dt>
+<dd><p>0 = Auto Active (default), 1 = Start Required, behavior after power-up/reset (attribute 23).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.diagnostics.EventLogObject.event_identifier_format">
+<span class="sig-name descname"><span class="pre">event_identifier_format</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.diagnostics.EventLogObject.event_identifier_format" title="Link to this definition">#</a></dt>
+<dd><p>Format of the Event Identifier used in log entries, default 0 (attribute
+24).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.diagnostics.EventLogObject.get_class_attribute">
+<span class="sig-name descname"><span class="pre">get_class_attribute</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">attribute</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bytes</span></span></span><a class="reference internal" href="../../../_modules/icspacket/proto/cip/objects/diagnostics.html#EventLogObject.get_class_attribute"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.cip.objects.diagnostics.EventLogObject.get_class_attribute" title="Link to this definition">#</a></dt>
+<dd><p>Read an Event Log class attribute from instance 0 (See §5-45.2,
+Table 5-45.2).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.diagnostics.EventLogObject.reset">
+<span class="sig-name descname"><span class="pre">reset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">reset_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bytes</span></span></span><a class="reference internal" href="../../../_modules/icspacket/proto/cip/objects/diagnostics.html#EventLogObject.reset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.cip.objects.diagnostics.EventLogObject.reset" title="Link to this definition">#</a></dt>
+<dd><p>Invoke Reset, restoring this instance to its power-up (0) or out-of-
+box (1) state.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.diagnostics.EventLogObject.start">
+<span class="sig-name descname"><span class="pre">start</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bytes</span></span></span><a class="reference internal" href="../../../_modules/icspacket/proto/cip/objects/diagnostics.html#EventLogObject.start"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.cip.objects.diagnostics.EventLogObject.start" title="Link to this definition">#</a></dt>
+<dd><p>Invoke Start, transitioning this instance from Configuring to Active
+so logging can commence.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.diagnostics.EventLogObject.stop">
+<span class="sig-name descname"><span class="pre">stop</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bytes</span></span></span><a class="reference internal" href="../../../_modules/icspacket/proto/cip/objects/diagnostics.html#EventLogObject.stop"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.cip.objects.diagnostics.EventLogObject.stop" title="Link to this definition">#</a></dt>
+<dd><p>Invoke Stop, transitioning this instance back to Configuring and
+clearing its event list/status.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.diagnostics.FileObject">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">icspacket.proto.cip.objects.diagnostics.</span></span><span class="sig-name descname"><span class="pre">FileObject</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">connection</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="connection.html#icspacket.proto.cip.connection.CIP_Connection" title="icspacket.proto.cip.connection.CIP_Connection"><span class="pre">CIP_Connection</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">instance</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/icspacket/proto/cip/objects/diagnostics.html#FileObject"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.cip.objects.diagnostics.FileObject" title="Link to this definition">#</a></dt>
+<dd><p>Manages an uploadable/downloadable file, e.g. firmware or configuration
+data (See CIP Vol 1, §5-42).</p>
+<p><code class="docutils literal notranslate"><span class="pre">instance_name</span></code>/<code class="docutils literal notranslate"><span class="pre">file_name</span></code> are STRINGI (international string)
+encoded (See Appendix I) and <code class="docutils literal notranslate"><span class="pre">directory</span></code>/the file transfer
+services’ request/response payloads have their own internal framing,
+so they are all exposed as raw bytes rather than a fixed schema.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.diagnostics.FileObject.state">
+<span class="sig-name descname"><span class="pre">state</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.diagnostics.FileObject.state" title="Link to this definition">#</a></dt>
+<dd><p>0=Nonexistent, 1=File Empty, 2=File Loaded, 3-6=Transfer in progress,
+7=Storing (attribute 1).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.diagnostics.FileObject.instance_name">
+<span class="sig-name descname"><span class="pre">instance_name</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">bytes</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.diagnostics.FileObject.instance_name" title="Link to this definition">#</a></dt>
+<dd><p>STRINGI name assigned to this instance (attribute 2).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.diagnostics.FileObject.instance_format_version">
+<span class="sig-name descname"><span class="pre">instance_format_version</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.diagnostics.FileObject.instance_format_version" title="Link to this definition">#</a></dt>
+<dd><p>Format version of this instance (attribute 3).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.diagnostics.FileObject.file_name">
+<span class="sig-name descname"><span class="pre">file_name</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">bytes</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.diagnostics.FileObject.file_name" title="Link to this definition">#</a></dt>
+<dd><p>STRINGI name assigned to the file loaded in this instance (attribute
+4).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.diagnostics.FileObject.file_revision">
+<span class="sig-name descname"><span class="pre">file_revision</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#icspacket.proto.cip.objects.diagnostics.FileRevision" title="icspacket.proto.cip.objects.diagnostics.FileRevision"><span class="pre">FileRevision</span></a><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.diagnostics.FileObject.file_revision" title="Link to this definition">#</a></dt>
+<dd><p>Major/minor revision of the loaded file (attribute 5).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.diagnostics.FileObject.file_size">
+<span class="sig-name descname"><span class="pre">file_size</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.diagnostics.FileObject.file_size" title="Link to this definition">#</a></dt>
+<dd><p>Size of the loaded file in bytes (attribute 6).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.diagnostics.FileObject.file_checksum">
+<span class="sig-name descname"><span class="pre">file_checksum</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.diagnostics.FileObject.file_checksum" title="Link to this definition">#</a></dt>
+<dd><p>Checksum of the loaded file (attribute 7).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.diagnostics.FileObject.invocation_method">
+<span class="sig-name descname"><span class="pre">invocation_method</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.diagnostics.FileObject.invocation_method" title="Link to this definition">#</a></dt>
+<dd><p>0=none, 1=Reset Identity, 2=power cycle, 3=Start service required, …</p>
+<p>(attribute 8).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.diagnostics.FileObject.file_save_parameters">
+<span class="sig-name descname"><span class="pre">file_save_parameters</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.diagnostics.FileObject.file_save_parameters" title="Link to this definition">#</a></dt>
+<dd><p>Bit flags describing the file’s non-volatile storage (attribute 9).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.diagnostics.FileObject.file_type">
+<span class="sig-name descname"><span class="pre">file_type</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.diagnostics.FileObject.file_type" title="Link to this definition">#</a></dt>
+<dd><p>0 = Read/Write (default), 1 = Read Only (attribute 10).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.diagnostics.FileObject.file_encoding_format">
+<span class="sig-name descname"><span class="pre">file_encoding_format</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute" title="icspacket.proto.cip.objects._base.CIPAttribute"><span class="pre">CIPAttribute</span></a><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#icspacket.proto.cip.objects.diagnostics.FileObject.file_encoding_format" title="Link to this definition">#</a></dt>
+<dd><p>Encoding format of the file’s data, if any (attribute 11, optional, See
+§5-42.8).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.diagnostics.FileObject.get_class_attribute">
+<span class="sig-name descname"><span class="pre">get_class_attribute</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">attribute</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bytes</span></span></span><a class="reference internal" href="../../../_modules/icspacket/proto/cip/objects/diagnostics.html#FileObject.get_class_attribute"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.cip.objects.diagnostics.FileObject.get_class_attribute" title="Link to this definition">#</a></dt>
+<dd><p>Read a File class attribute from instance 0 (See §5-42.1, Table
+5-42.2).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.diagnostics.FileObject.create">
+<span class="sig-name descname"><span class="pre">create</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">instance_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bytes</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">b''</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bytes</span></span></span><a class="reference internal" href="../../../_modules/icspacket/proto/cip/objects/diagnostics.html#FileObject.create"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.cip.objects.diagnostics.FileObject.create" title="Link to this definition">#</a></dt>
+<dd><p>Invoke Create, allocating a new file transfer instance
+(<code class="docutils literal notranslate"><span class="pre">instance_name</span></code> is a STRINGI payload).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.diagnostics.FileObject.delete">
+<span class="sig-name descname"><span class="pre">delete</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bytes</span></span></span><a class="reference internal" href="../../../_modules/icspacket/proto/cip/objects/diagnostics.html#FileObject.delete"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.cip.objects.diagnostics.FileObject.delete" title="Link to this definition">#</a></dt>
+<dd><p>Invoke Delete, removing a file transfer instance previously
+allocated via <a class="reference internal" href="#icspacket.proto.cip.objects.diagnostics.FileObject.create" title="icspacket.proto.cip.objects.diagnostics.FileObject.create"><code class="xref py py-meth docutils literal notranslate"><span class="pre">create()</span></code></a>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.diagnostics.FileObject.save">
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bytes</span></span></span><a class="reference internal" href="../../../_modules/icspacket/proto/cip/objects/diagnostics.html#FileObject.save"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.cip.objects.diagnostics.FileObject.save" title="Link to this definition">#</a></dt>
+<dd><p>Invoke Save, persisting the loaded file to non-volatile storage.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.diagnostics.FileObject.restore">
+<span class="sig-name descname"><span class="pre">restore</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bytes</span></span></span><a class="reference internal" href="../../../_modules/icspacket/proto/cip/objects/diagnostics.html#FileObject.restore"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.cip.objects.diagnostics.FileObject.restore" title="Link to this definition">#</a></dt>
+<dd><p>Invoke Restore, reloading the file from non-volatile storage.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.diagnostics.FileObject.initiate_upload">
+<span class="sig-name descname"><span class="pre">initiate_upload</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">maximum_transfer_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bytes</span></span></span><a class="reference internal" href="../../../_modules/icspacket/proto/cip/objects/diagnostics.html#FileObject.initiate_upload"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.cip.objects.diagnostics.FileObject.initiate_upload" title="Link to this definition">#</a></dt>
+<dd><p>Invoke Initiate_Upload (service 0x4B), starting a file upload.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>maximum_transfer_size</strong> – Maximum number of bytes this
+client can accept in each Upload_Transfer response (USINT).</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.diagnostics.FileObject.initiate_download">
+<span class="sig-name descname"><span class="pre">initiate_download</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bytes</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bytes</span></span></span><a class="reference internal" href="../../../_modules/icspacket/proto/cip/objects/diagnostics.html#FileObject.initiate_download"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.cip.objects.diagnostics.FileObject.initiate_download" title="Link to this definition">#</a></dt>
+<dd><p>Invoke Initiate_Download (service 0x4C) with a caller-built request
+payload, starting a file download.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.diagnostics.FileObject.initiate_partial_read">
+<span class="sig-name descname"><span class="pre">initiate_partial_read</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bytes</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bytes</span></span></span><a class="reference internal" href="../../../_modules/icspacket/proto/cip/objects/diagnostics.html#FileObject.initiate_partial_read"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.cip.objects.diagnostics.FileObject.initiate_partial_read" title="Link to this definition">#</a></dt>
+<dd><p>Invoke Initiate_Partial_Read (service 0x4D) with a caller-built
+request payload.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.diagnostics.FileObject.initiate_partial_write">
+<span class="sig-name descname"><span class="pre">initiate_partial_write</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bytes</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bytes</span></span></span><a class="reference internal" href="../../../_modules/icspacket/proto/cip/objects/diagnostics.html#FileObject.initiate_partial_write"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.cip.objects.diagnostics.FileObject.initiate_partial_write" title="Link to this definition">#</a></dt>
+<dd><p>Invoke Initiate_Partial_Write (service 0x4E) with a caller-built
+request payload.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.diagnostics.FileObject.upload_transfer">
+<span class="sig-name descname"><span class="pre">upload_transfer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bytes</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bytes</span></span></span><a class="reference internal" href="../../../_modules/icspacket/proto/cip/objects/diagnostics.html#FileObject.upload_transfer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.cip.objects.diagnostics.FileObject.upload_transfer" title="Link to this definition">#</a></dt>
+<dd><p>Invoke Upload_Transfer (service 0x4F) with a caller-built request
+payload.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.diagnostics.FileObject.download_transfer">
+<span class="sig-name descname"><span class="pre">download_transfer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bytes</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bytes</span></span></span><a class="reference internal" href="../../../_modules/icspacket/proto/cip/objects/diagnostics.html#FileObject.download_transfer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.cip.objects.diagnostics.FileObject.download_transfer" title="Link to this definition">#</a></dt>
+<dd><p>Invoke Download_Transfer (service 0x50) with a caller-built request
+payload.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.diagnostics.FileObject.clear_file">
+<span class="sig-name descname"><span class="pre">clear_file</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bytes</span></span></span><a class="reference internal" href="../../../_modules/icspacket/proto/cip/objects/diagnostics.html#FileObject.clear_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.cip.objects.diagnostics.FileObject.clear_file" title="Link to this definition">#</a></dt>
+<dd><p>Invoke Clear_File (service 0x51), clearing the loaded file’s
+contents and resetting its attributes.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="icspacket.proto.cip.objects.diagnostics.FileRevision">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">icspacket.proto.cip.objects.diagnostics.</span></span><span class="sig-name descname"><span class="pre">FileRevision</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">major_rev</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">minor_rev</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/icspacket/proto/cip/objects/diagnostics.html#FileRevision"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.cip.objects.diagnostics.FileRevision" title="Link to this definition">#</a></dt>
+<dd><p>File Object attribute 5 payload (See CIP Vol 1, §5-42.2, Table
+5-42.3).</p>
+</dd></dl>
+
+</section>
+
+        </article><button class="back-to-top" type="button">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+  </svg>
+  <span>Back to top</span>
+</button><div class="navigation flex print:hidden"><div class="navigation-prev">
+    <a href="objects_switch.html">
+      <i class="i-lucide chevron-left"></i>
+      <div class="page-info">
+        <span>Previous</span><div class="title">Switch Management Objects</div></div>
+    </a>
+  </div><div class="navigation-next">
+    <a href="../../acse/api.html">
+      <div class="page-info">
+        <span>Next</span>
+        <div class="title">API Reference</div>
+      </div>
+      <i class="i-lucide chevron-right"></i>
+    </a>
+  </div></div></div>
+    </div>
+  </main>
+</div>
+<footer class="sy-foot">
+  <div class="sy-foot-inner sy-container mx-auto">
+    <div class="sy-foot-reserved md:flex justify-between items-center">
+      <div class="sy-foot-copyright"><p>2025, MatrixEditor</p>
+  
+  <p>
+    Made with
+    
+    <a href="https://www.sphinx-doc.org/">Sphinx</a> and
+    
+    <a href="https://shibuya.lepture.com">Shibuya theme</a>.
+  </p>
+</div>
+      <div class="sy-foot-socials">
+  <a href="https://github.com/MatrixEditor/icspacket" aria-label="GitHub">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </a></div>
+    </div>
+  </div>
+</footer>
+      <script src="../../../_static/documentation_options.js?v=5dc6420e"></script>
+      <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+      <script src="../../../_static/shibuya.js?v=50760d75"></script></body>
+</html>

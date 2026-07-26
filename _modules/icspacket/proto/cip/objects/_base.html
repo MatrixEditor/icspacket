@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="en" data-accent-color="lime" data-content_root="../../../../../">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>icspacket.proto.cip.objects._base - icspacket 0.1.dev1+g198be51b5 documentation</title><link rel="index" title="Index" href="../../../../../genindex.html" /><link rel="search" title="Search" href="../../../../../search.html" />
+      <link rel="canonical" href="https://matrixeditor.github.io/icspacket/_modules/icspacket/proto/cip/objects/_base.html" /><script>
+    function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
+    setColorMode(localStorage._theme||"dark");
+  </script><link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=e1a1ceaf" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/shibuya.css?v=2ceb65ce" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link media="print" rel="stylesheet" type="text/css" href="../../../../../_static/print.css?v=20ff2c19" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --sy-f-text: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+  --sy-f-heading: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+}
+</style>
+    
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://matrixeditor.github.io/icspacket/_modules/icspacket/proto/cip/objects/_base.html"/>
+  <meta property="og:title" content="icspacket.proto.cip.objects._base"/>
+    <meta name="twitter:card" content="summary"/>
+  </head>
+<body><div class="sy-head">
+  <div class="sy-head-blur"></div>
+  <div class="sy-head-inner sy-container mx-auto">
+    <a class="sy-head-brand" href="../../../../../index.html">
+      
+      
+      <strong>icspacket</strong>
+    </a>
+    <div class="sy-head-nav" id="head-nav">
+      <nav class="sy-head-links"><ul>
+      <li class="link"><a class="js-menu" href="../../../../../getting-started/protocols.html" id="nav-trigger-1" aria-controls="nav-children-1">
+            <span>Examples</span>
+            <i class="i-lucide chevron-down"></i>
+          </a>
+        <ul id="nav-children-1" aria-labelledby="nav-trigger-1"><li><a href="../../../../../protocols/mms/examples.html">
+                <span>MMS Utilities</span>
+                <small>Manufacturing Message Specification tools</small>
+              </a></li><li><a href="../../../../../protocols/dnp3/examples.html">
+                <span>DNP3 Tools</span>
+                <small>DNP3 utilities and tools</small>
+              </a></li><li><a href="../../../../../protocols/iec61850/iedmap.html">
+                <span>IED Enumeration Tool</span>
+                <small>Logical Device enumeration and more</small>
+              </a></li><li><a href="../../../../../protocols/cip/examples.html">
+                <span>CIP / EtherNet-IP Tools</span>
+                <small>EtherNet/IP discovery, explicit messaging and I/O tools</small>
+              </a></li><li><a href="../../../../../protocols/iec104/examples.html">
+                <span>IEC 60870-5-104 Tools</span>
+                <small>IEC 60870-5-104 interrogation and read tools</small>
+              </a></li></ul>
+      </li><li class="link"><a href="../../../../../changelog.html">Changelog</a></li></ul></nav>
+      <div class="sy-head-extra flex items-center print:hidden"><form class="searchbox flex items-center" action="../../../../../search.html" method="get">
+  <input type="text" name="q" placeholder="Search" />
+  <kbd>/</kbd>
+</form><div class="sy-head-socials">
+  <a href="https://github.com/MatrixEditor/icspacket" aria-label="GitHub">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </a></div></div>
+    </div>
+    <div class="sy-head-actions flex items-center shrink-0 print:hidden"><button class="js-theme theme-switch flex items-center"
+data-aria-auto="Switch to light color mode"
+data-aria-light="Switch to dark color mode"
+data-aria-dark="Switch to auto color mode">
+<i class="i-lucide theme-icon"></i>
+</button><button class="md:hidden flex items-center js-menu" aria-label="Menu" type="button" aria-controls="head-nav" aria-expanded="false">
+        <div class="hamburger">
+          <span class="hamburger_1"></span>
+          <span class="hamburger_2"></span>
+          <span class="hamburger_3"></span>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>
+<div class="sy-page sy-container flex mx-auto">
+  <aside id="lside" class="sy-lside md:w-72 md:shrink-0 print:hidden">
+    <div class="sy-lside-inner md:sticky">
+      <div class="sy-scrollbar p-6"><div class="sidebar-links">
+  <ul>
+    <li><a class="icon-link" href="https://github.com/MatrixEditor/icspacket/discussions">
+  <span class="icon">
+    <svg viewBox="0 0 24 24" fill="none">
+      <path fill="var(--accent-9)" fill-rule="evenodd" clip-rule="evenodd" d="M11 5a6 6 0 0 0-4.687 9.746c.215.27.315.62.231.954l-.514 2.058a1 1 0 0 0 1.485 1.1l2.848-1.71c.174-.104.374-.15.576-.148H13a6 6 0 0 0 0-12h-2Z"/>
+      <circle fill="white" cx="12" cy="11" r="1"/>
+      <circle fill="white" cx="9" cy="11" r="1"/>
+      <circle fill="white" cx="15" cy="11" r="1"/>
+    </svg>
+  </span>
+  <span class="text">Discussion</span>
+</a></li>
+  </ul>
+</div>
+        <div class="globaltoc" data-expand-depth="1"><p class="caption" role="heading" aria-level="3"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../getting-started/installation.html">Installation</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../getting-started/protocols.html">Protocols Overview</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../getting-started/coreapi.html">Core API Reference</a></li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">DNP3 / IEEE 1815</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../protocols/dnp3/dnp3read.html">Reading Objects</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../protocols/dnp3/dnp3dump.html">Dumping Objects</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../protocols/dnp3/dnp3resolve.html">Resolve Link Addresses</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../protocols/dnp3/api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/dnp3/api/link.html">Link Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/dnp3/api/transport.html">Transport Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/dnp3/api/application.html">Application Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/dnp3/api/master.html">Master</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/dnp3/api/object_library.html">Object Library</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../protocols/dnp3/api/primitives.html">Primitive Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../protocols/dnp3/api/coding.html">Encoding / Decoding</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../protocols/dnp3/api/variations.html">Variations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../protocols/dnp3/api/coding_utils.html">Object Utilities</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">IEC 61850</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../protocols/iec61850/iedmap.html">Enumerating IEDs</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../protocols/iec61850/iedctrl.html">Operating on IEDs</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../protocols/iec61850/api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/iec61850/api_data_classes.html">Data Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/iec61850/api_path.html">Object / Data References</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/iec61850/api_control.html">Control / Operation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/iec61850/api_client.html">IED Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/iec61850/api_goose.html">GOOSE Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/iec61850/api_sv.html">SampledValues Client</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">MMS / ISO 9506</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../protocols/mms/demo_vars.html">Variable Target Format</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../protocols/mms/demo_vars.html#variableaccess-service-rwq">VariableAccess Service (rwq)</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../protocols/mms/demo_files.html">FileManagement Service</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../protocols/mms/api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/mms/api_conn.html">MMS Connection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/mms/api_data.html">Data Conversion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/mms/api_utils.html">Protocol Utilities</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">IEC 60870-5-104</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../protocols/iec104/iec104read.html">Reading Data via Interrogation</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../protocols/iec104/api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/iec104/api/apci.html">APCI - Framing Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/iec104/api/asdu.html">ASDU - Application Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/iec104/api/master.html">Master (Client)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/iec104/api/objects.html">Information Object Library</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">CIP / EtherNet-IP</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../protocols/cip/cipclient.html">Operating via CIP / EtherNet-IP</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../protocols/cip/api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/cip/api/connection.html">Connection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/cip/api/encapsulation.html">EtherNet/IP Encapsulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/cip/api/messaging.html">Messaging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/cip/api/objects.html">Object Library</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../protocols/cip/api/objects_core.html">Core Objects</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../protocols/cip/api/objects_network.html">Network Objects</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../protocols/cip/api/objects_io.html">I/O and Parameter Objects</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../protocols/cip/api/objects_motion.html">Motion, Drive, and Semiconductor Objects</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../protocols/cip/api/objects_switch.html">Switch Management Objects</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../protocols/cip/api/objects_diagnostics.html">Diagnostics Objects</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">ACSE / X.227</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../protocols/acse/api.html">API Reference</a></li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">COPP / X.226 / ISO 8823</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../protocols/copp/api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/copp/presentation.html">ISO Presentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/copp/utils.html">Protocol Utilities</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">COSP / X.225 / ISO 8237-1</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../protocols/cosp/api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/cosp/tsdu.html">TSDU</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/cosp/spdu.html">SPDU Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/cosp/values.html">Parameter Values (PV)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/cosp/session.html">ISO Session</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/cosp/utils.html">Protocol Utilities</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">COTP / X.224</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../protocols/cotp/api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/cotp/structs.html">TPDU Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../protocols/cotp/connection.html">Connection</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">TPKT Protocol (RFC1006)</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../protocols/tpkt/usage.html">Using a TPKT Wrapper</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../protocols/tpkt/api.html">API Reference</a></li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../../../../changelog.html">Changelog</a></li>
+</ul>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="lside-overlay js-menu" role="button" aria-label="Close left sidebar" aria-controls="lside" aria-expanded="false"></div>
+  <aside id="rside" class="sy-rside pb-3 w-64 shrink-0 order-last">
+    <button class="rside-close js-menu xl:hidden" aria-label="Close Table of Contents" type="button" aria-controls="rside" aria-expanded="false">
+      <i class="i-lucide close"></i>
+    </button>
+    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><a class="js-repo-stats repo-stats flex items-center" href="https://github.com/MatrixEditor/icspacket"
+  data-type="github" data-user="MatrixEditor" data-repo="icspacket">
+  <span class="w-8 flex items-center justify-around shrink-0 text-3xl">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </span>
+  <span class="flex-grow px-2 break-all">
+    <span style="font-size: small;">MatrixEditor/icspacket</span>
+    <span class="flex text-sm repo-stats-count">
+      <span class="flex items-center pr-3">
+        <iconify-icon icon="lucide:star"></iconify-icon>
+        <strong class="js-repo-stars ml-1">0</strong>
+      </span>
+      <span class="flex items-center">
+        <iconify-icon icon="lucide:git-fork"></iconify-icon>
+        <strong class="js-repo-forks ml-1">0</strong>
+      </span>
+    </span>
+  </span>
+</a></div>
+  </aside>
+  <div class="rside-overlay js-menu" role="button" aria-label="Close Table of Contents" aria-controls="rside" aria-expanded="false"></div>
+  <main class="sy-main w-full max-sm:max-w-full print:pt-6">
+<div class="sy-breadcrumbs" role="navigation">
+  <div class="sy-breadcrumbs-inner flex items-center">
+    <div class="md:hidden mr-3">
+      <button class="js-menu" aria-label="Menu" type="button" aria-controls="lside" aria-expanded="false">
+        <i class="i-lucide menu"></i>
+      </button>
+    </div>
+    <ol class="flex-1" itemscope itemtype="https://schema.org/BreadcrumbList"><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="../../../../../index.html"><span itemprop="name">icspacket</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="1" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="../../../../index.html"><span itemprop="name">Module code</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="2" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <strong itemprop="name">icspacket.proto.cip.objects._base</strong>
+        <meta itemprop="position" content="3" />
+      </li></ol>
+    <div class="xl:hidden ml-1">
+      <button class="js-menu" aria-label="Show table of contents" type="button" aria-controls="rside"
+        aria-expanded="false">
+        <i class="i-lucide outdent"></i>
+      </button>
+    </div>
+  </div>
+</div><div class="flex flex-col break-words justify-between">
+      <div class="relative min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
+  <article class="yue" role="main">
+          <h1>Source code for icspacket.proto.cip.objects._base</h1><div class="highlight"><pre>
+<span></span><span data-line="1"><span class="c1"># This file is part of icspacket.</span>
+</span><span data-line="2"><span class="c1"># Copyright (C) 2025-present  MatrixEditor @ github</span>
+</span><span data-line="3"><span class="c1">#</span>
+</span><span data-line="4"><span class="c1"># This program is free software: you can redistribute it and/or modify</span>
+</span><span data-line="5"><span class="c1"># it under the terms of the GNU General Public License as published by</span>
+</span><span data-line="6"><span class="c1"># the Free Software Foundation, either version 3 of the License, or</span>
+</span><span data-line="7"><span class="c1"># (at your option) any later version.</span>
+</span><span data-line="8"><span class="c1">#</span>
+</span><span data-line="9"><span class="c1"># This program is distributed in the hope that it will be useful,</span>
+</span><span data-line="10"><span class="c1"># but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+</span><span data-line="11"><span class="c1"># MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+</span><span data-line="12"><span class="c1"># GNU General Public License for more details.</span>
+</span><span data-line="13"><span class="c1">#</span>
+</span><span data-line="14"><span class="c1"># You should have received a copy of the GNU General Public License</span>
+</span><span data-line="15"><span class="c1"># along with this program.  If not, see &lt;https://www.gnu.org/licenses/&gt;.</span>
+</span><span data-line="16"><span class="kn">from</span><span class="w"> </span><span class="nn">io</span><span class="w"> </span><span class="kn">import</span> <span class="n">BytesIO</span>
+</span><span data-line="17"><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">ClassVar</span><span class="p">,</span> <span class="n">Generic</span>
+</span><span data-line="18">
+</span><span data-line="19"><span class="kn">from</span><span class="w"> </span><span class="nn">caterpillar.abc</span><span class="w"> </span><span class="kn">import</span> <span class="n">_ContextLike</span><span class="p">,</span> <span class="n">_EndianLike</span><span class="p">,</span> <span class="n">_StructLike</span>
+</span><span data-line="20"><span class="kn">from</span><span class="w"> </span><span class="nn">caterpillar.exception</span><span class="w"> </span><span class="kn">import</span> <span class="n">DynamicSizeError</span>
+</span><span data-line="21"><span class="kn">from</span><span class="w"> </span><span class="nn">caterpillar.fields</span><span class="w"> </span><span class="kn">import</span> <span class="n">Prefixed</span><span class="p">,</span> <span class="n">Transformer</span><span class="p">,</span> <span class="n">uint8</span><span class="p">,</span> <span class="n">uint16</span>
+</span><span data-line="22"><span class="kn">from</span><span class="w"> </span><span class="nn">caterpillar.py</span><span class="w"> </span><span class="kn">import</span> <span class="n">FieldStruct</span><span class="p">,</span> <span class="n">pack</span><span class="p">,</span> <span class="n">unpack</span>
+</span><span data-line="23"><span class="kn">from</span><span class="w"> </span><span class="nn">caterpillar.shortcuts</span><span class="w"> </span><span class="kn">import</span> <span class="n">LittleEndian</span><span class="p">,</span> <span class="n">sizeof</span>
+</span><span data-line="24"><span class="kn">from</span><span class="w"> </span><span class="nn">typing_extensions</span><span class="w"> </span><span class="kn">import</span> <span class="n">TypeVar</span><span class="p">,</span> <span class="n">override</span>
+</span><span data-line="25">
+</span><span data-line="26"><span class="kn">from</span><span class="w"> </span><span class="nn">..connection</span><span class="w"> </span><span class="kn">import</span> <span class="n">CIP_Connection</span>
+</span><span data-line="27"><span class="kn">from</span><span class="w"> </span><span class="nn">..const</span><span class="w"> </span><span class="kn">import</span> <span class="n">ClassCode</span><span class="p">,</span> <span class="n">CommonService</span>
+</span><span data-line="28"><span class="kn">from</span><span class="w"> </span><span class="nn">..epath</span><span class="w"> </span><span class="kn">import</span> <span class="n">EPATH</span>
+</span><span data-line="29">
+</span><span data-line="30"><span class="n">_IT</span> <span class="o">=</span> <span class="n">TypeVar</span><span class="p">(</span><span class="s2">&quot;_IT&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="nb">bytes</span><span class="p">)</span>
+</span><span data-line="31">
+</span><span data-line="32">
+<div class="viewcode-block" id="CIPString">
+<a class="viewcode-back" href="../../../../../protocols/cip/api/objects_core.html#icspacket.proto.cip.objects._base.CIPString">[docs]</a>
+</span><span data-line="33"><span class="k">class</span><span class="w"> </span><span class="nc">CIPString</span><span class="p">(</span><span class="n">Transformer</span><span class="p">[</span><span class="nb">str</span> <span class="o">|</span> <span class="nb">bytes</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">]):</span>
+</span><span data-line="34"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Length-prefixed CIP string (SHORT_STRING or STRING).</span>
+</span><span data-line="35">
+</span><span data-line="36"><span class="sd">    ``padded`` follows the CIP STRING type&#39;s word-alignment rule: a</span>
+</span><span data-line="37"><span class="sd">    payload with an odd byte length is followed by one pad byte so the</span>
+</span><span data-line="38"><span class="sd">    field always ends on a 16-bit boundary. SHORT_STRING</span>
+</span><span data-line="39"><span class="sd">    (:data:`CIP_SHORT_STRING`) never pads; STRING (:data:`CIP_STRING`)</span>
+</span><span data-line="40"><span class="sd">    does.</span>
+</span><span data-line="41"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span data-line="42">
+</span><span data-line="43">    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">prefix</span><span class="p">:</span> <span class="n">_StructLike</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">],</span> <span class="n">padded</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="44">        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">Prefixed</span><span class="p">(</span><span class="n">prefix</span><span class="p">))</span>
+</span><span data-line="45">        <span class="bp">self</span><span class="o">.</span><span class="n">padded</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="n">padded</span>
+</span><span data-line="46">
+<div class="viewcode-block" id="CIPString.encode">
+<a class="viewcode-back" href="../../../../../protocols/cip/api/objects_core.html#icspacket.proto.cip.objects._base.CIPString.encode">[docs]</a>
+</span><span data-line="47">    <span class="nd">@override</span>
+</span><span data-line="48">    <span class="k">def</span><span class="w"> </span><span class="nf">encode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="nb">bytes</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">_ContextLike</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bytes</span><span class="p">:</span>
+</span><span data-line="49">        <span class="k">return</span> <span class="n">obj</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="k">else</span> <span class="nb">bytes</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span></div>
+
+</span><span data-line="50">
+<div class="viewcode-block" id="CIPString.decode">
+<a class="viewcode-back" href="../../../../../protocols/cip/api/objects_core.html#icspacket.proto.cip.objects._base.CIPString.decode">[docs]</a>
+</span><span data-line="51">    <span class="nd">@override</span>
+</span><span data-line="52">    <span class="k">def</span><span class="w"> </span><span class="nf">decode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parsed</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">_ContextLike</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+</span><span data-line="53">        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">padded</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">parsed</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mi">1</span><span class="p">:</span>
+</span><span data-line="54">            <span class="n">context</span><span class="o">.</span><span class="n">_io</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</span><span data-line="55">        <span class="k">return</span> <span class="nb">bytes</span><span class="p">(</span><span class="n">parsed</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span></div>
+
+</span><span data-line="56">
+<div class="viewcode-block" id="CIPString.pack_single">
+<a class="viewcode-back" href="../../../../../protocols/cip/api/objects_core.html#icspacket.proto.cip.objects._base.CIPString.pack_single">[docs]</a>
+</span><span data-line="57">    <span class="nd">@override</span>
+</span><span data-line="58">    <span class="k">def</span><span class="w"> </span><span class="nf">pack_single</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="nb">bytes</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">_ContextLike</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="59">        <span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
+</span><span data-line="60">        <span class="bp">self</span><span class="o">.</span><span class="n">struct</span><span class="o">.</span><span class="n">__pack__</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
+</span><span data-line="61">        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">padded</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mi">1</span><span class="p">:</span>
+</span><span data-line="62">            <span class="n">context</span><span class="o">.</span><span class="n">_io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;</span><span class="se">\x00</span><span class="s2">&quot;</span><span class="p">)</span></div>
+
+</span><span data-line="63">
+</span><span data-line="64">    <span class="nd">@property</span>
+</span><span data-line="65">    <span class="k">def</span><span class="w"> </span><span class="nf">minimum_size</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+</span><span data-line="66"><span class="w">        </span><span class="sd">&quot;&quot;&quot;Bytes needed before the length prefix itself can be read.&quot;&quot;&quot;</span>
+</span><span data-line="67">        <span class="k">return</span> <span class="n">sizeof</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">struct</span><span class="o">.</span><span class="n">prefix</span><span class="p">)</span></div>
+
+</span><span data-line="68">
+</span><span data-line="69">
+</span><span data-line="70"><span class="c1">#: SHORT_STRING: ``USINT`` length prefix, unpadded.</span>
+</span><span data-line="71"><span class="n">CIP_SHORT_STRING</span> <span class="o">=</span> <span class="n">CIPString</span><span class="p">(</span><span class="n">uint8</span><span class="p">)</span>
+</span><span data-line="72"><span class="c1">#: STRING: ``UINT`` length prefix, word-padded.</span>
+</span><span data-line="73"><span class="n">CIP_STRING</span> <span class="o">=</span> <span class="n">CIPString</span><span class="p">(</span><span class="n">uint16</span><span class="p">,</span> <span class="n">padded</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span data-line="74">
+</span><span data-line="75">
+<div class="viewcode-block" id="CIPPrefixedEPATH">
+<a class="viewcode-back" href="../../../../../protocols/cip/api/objects_core.html#icspacket.proto.cip.objects._base.CIPPrefixedEPATH">[docs]</a>
+</span><span data-line="76"><span class="k">class</span><span class="w"> </span><span class="nc">CIPPrefixedEPATH</span><span class="p">(</span><span class="n">FieldStruct</span><span class="p">[</span><span class="n">EPATH</span><span class="p">,</span> <span class="n">EPATH</span><span class="p">]):</span>
+</span><span data-line="77"><span class="w">    </span><span class="sd">&quot;&quot;&quot;CIP attribute shaped as ``UINT path_size`` (16-bit words) + EPATH bytes.</span>
+</span><span data-line="78">
+</span><span data-line="79"><span class="sd">    Unlike :class:`CIPString`, the prefix here counts *words*, not</span>
+</span><span data-line="80"><span class="sd">    bytes, so it cannot be expressed as a plain ``Prefixed`` wrapper;</span>
+</span><span data-line="81"><span class="sd">    the word/byte conversion is done directly against the shared stream</span>
+</span><span data-line="82"><span class="sd">    instead.</span>
+</span><span data-line="83"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span data-line="84">
+</span><span data-line="85">    <span class="k">def</span><span class="w"> </span><span class="nf">__type__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">type</span><span class="p">[</span><span class="n">EPATH</span><span class="p">]:</span>
+</span><span data-line="86">        <span class="k">return</span> <span class="n">EPATH</span>
+</span><span data-line="87">
+</span><span data-line="88">    <span class="k">def</span><span class="w"> </span><span class="nf">__size__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">_ContextLike</span><span class="p">):</span>
+</span><span data-line="89">        <span class="k">raise</span> <span class="n">DynamicSizeError</span><span class="p">(</span><span class="s2">&quot;Prefixed EPATH&#39;s size is dynamic&quot;</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
+</span><span data-line="90">
+<div class="viewcode-block" id="CIPPrefixedEPATH.unpack_single">
+<a class="viewcode-back" href="../../../../../protocols/cip/api/objects_core.html#icspacket.proto.cip.objects._base.CIPPrefixedEPATH.unpack_single">[docs]</a>
+</span><span data-line="91">    <span class="nd">@override</span>
+</span><span data-line="92">    <span class="k">def</span><span class="w"> </span><span class="nf">unpack_single</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">_ContextLike</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EPATH</span><span class="p">:</span>
+</span><span data-line="93">        <span class="n">words</span> <span class="o">=</span> <span class="n">uint16</span><span class="o">.</span><span class="n">__unpack__</span><span class="p">(</span><span class="n">context</span><span class="p">)</span>
+</span><span data-line="94">        <span class="n">payload</span><span class="p">:</span> <span class="nb">bytes</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">_io</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">words</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span>
+</span><span data-line="95">        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">payload</span><span class="p">)</span> <span class="o">!=</span> <span class="n">words</span> <span class="o">*</span> <span class="mi">2</span><span class="p">:</span>
+</span><span data-line="96">            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;truncated CIP EPATH&quot;</span><span class="p">)</span>
+</span><span data-line="97">
+</span><span data-line="98">        <span class="k">return</span> <span class="n">EPATH</span><span class="o">.</span><span class="n">from_bytes</span><span class="p">(</span><span class="n">payload</span><span class="p">)</span> <span class="k">if</span> <span class="n">payload</span> <span class="k">else</span> <span class="n">EPATH</span><span class="p">()</span></div>
+
+</span><span data-line="99">
+<div class="viewcode-block" id="CIPPrefixedEPATH.pack_single">
+<a class="viewcode-back" href="../../../../../protocols/cip/api/objects_core.html#icspacket.proto.cip.objects._base.CIPPrefixedEPATH.pack_single">[docs]</a>
+</span><span data-line="100">    <span class="nd">@override</span>
+</span><span data-line="101">    <span class="k">def</span><span class="w"> </span><span class="nf">pack_single</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">:</span> <span class="n">EPATH</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">_ContextLike</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="102">        <span class="n">payload</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">to_bytes</span><span class="p">()</span>
+</span><span data-line="103">        <span class="n">uint16</span><span class="o">.</span><span class="n">__pack__</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">payload</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
+</span><span data-line="104">        <span class="n">context</span><span class="o">.</span><span class="n">_io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">payload</span><span class="p">)</span></div>
+</div>
+
+</span><span data-line="105">
+</span><span data-line="106">
+</span><span data-line="107"><span class="c1">#: TCP/IP Interface Object attribute 4 (Physical Link Object): the one core</span>
+</span><span data-line="108"><span class="c1">#: CIP attribute shaped as a word-counted EPATH rather than a raw one.</span>
+</span><span data-line="109"><span class="n">CIP_PREFIXED_EPATH</span> <span class="o">=</span> <span class="n">CIPPrefixedEPATH</span><span class="p">()</span>
+</span><span data-line="110">
+</span><span data-line="111">
+<div class="viewcode-block" id="CIPEPATH">
+<a class="viewcode-back" href="../../../../../protocols/cip/api/objects_core.html#icspacket.proto.cip.objects._base.CIPEPATH">[docs]</a>
+</span><span data-line="112"><span class="k">class</span><span class="w"> </span><span class="nc">CIPEPATH</span><span class="p">(</span><span class="n">FieldStruct</span><span class="p">[</span><span class="n">EPATH</span><span class="p">,</span> <span class="n">EPATH</span><span class="p">]):</span>
+</span><span data-line="113"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Bare CIP EPATH occupying an entire attribute payload.</span>
+</span><span data-line="114">
+</span><span data-line="115"><span class="sd">    Unlike :class:`CIPPrefixedEPATH`, this has no length prefix of its own - it reads to</span>
+</span><span data-line="116"><span class="sd">    the end of the current stream, so it is only valid as a whole-payload attribute</span>
+</span><span data-line="117"><span class="sd">    schema and cannot be sequenced before other fields in a :class:`CIPAttributeReader`</span>
+</span><span data-line="118"><span class="sd">    multi-attribute decode.</span>
+</span><span data-line="119"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span data-line="120">
+</span><span data-line="121">    <span class="k">def</span><span class="w"> </span><span class="nf">__type__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">type</span><span class="p">[</span><span class="n">EPATH</span><span class="p">]:</span>
+</span><span data-line="122">        <span class="k">return</span> <span class="n">EPATH</span>
+</span><span data-line="123">
+</span><span data-line="124">    <span class="k">def</span><span class="w"> </span><span class="nf">__size__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">_ContextLike</span><span class="p">):</span>
+</span><span data-line="125">        <span class="k">raise</span> <span class="n">DynamicSizeError</span><span class="p">(</span><span class="s2">&quot;EPATH size is dynamic&quot;</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
+</span><span data-line="126">
+<div class="viewcode-block" id="CIPEPATH.unpack_single">
+<a class="viewcode-back" href="../../../../../protocols/cip/api/objects_core.html#icspacket.proto.cip.objects._base.CIPEPATH.unpack_single">[docs]</a>
+</span><span data-line="127">    <span class="nd">@override</span>
+</span><span data-line="128">    <span class="k">def</span><span class="w"> </span><span class="nf">unpack_single</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">_ContextLike</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EPATH</span><span class="p">:</span>
+</span><span data-line="129">        <span class="n">payload</span><span class="p">:</span> <span class="nb">bytes</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">_io</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+</span><span data-line="130">        <span class="k">return</span> <span class="n">EPATH</span><span class="o">.</span><span class="n">from_bytes</span><span class="p">(</span><span class="n">payload</span><span class="p">)</span> <span class="k">if</span> <span class="n">payload</span> <span class="k">else</span> <span class="n">EPATH</span><span class="p">()</span></div>
+
+</span><span data-line="131">
+<div class="viewcode-block" id="CIPEPATH.pack_single">
+<a class="viewcode-back" href="../../../../../protocols/cip/api/objects_core.html#icspacket.proto.cip.objects._base.CIPEPATH.pack_single">[docs]</a>
+</span><span data-line="132">    <span class="nd">@override</span>
+</span><span data-line="133">    <span class="k">def</span><span class="w"> </span><span class="nf">pack_single</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">:</span> <span class="n">EPATH</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">_ContextLike</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="134">        <span class="n">context</span><span class="o">.</span><span class="n">_io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">to_bytes</span><span class="p">())</span></div>
+</div>
+
+</span><span data-line="135">
+</span><span data-line="136">
+</span><span data-line="137"><span class="c1">#: Connection Object attributes 14/16 (Produced/Consumed Connection Path).</span>
+</span><span data-line="138"><span class="n">CIP_EPATH</span> <span class="o">=</span> <span class="n">CIPEPATH</span><span class="p">()</span>
+</span><span data-line="139">
+</span><span data-line="140">
+<div class="viewcode-block" id="CIPAttribute">
+<a class="viewcode-back" href="../../../../../protocols/cip/api/objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute">[docs]</a>
+</span><span data-line="141"><span class="k">class</span><span class="w"> </span><span class="nc">CIPAttribute</span><span class="p">(</span><span class="n">Generic</span><span class="p">[</span><span class="n">_IT</span><span class="p">]):</span>
+</span><span data-line="142"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Descriptor for one CIP object attribute&#39;s wire schema.</span>
+</span><span data-line="143">
+</span><span data-line="144"><span class="sd">    Assign as a class attribute on a :class:`CIPObject` subclass;</span>
+</span><span data-line="145"><span class="sd">    reading it issues Get_Attribute_Single and decodes the reply via</span>
+</span><span data-line="146"><span class="sd">    ``schema``, writing it encodes the value and issues</span>
+</span><span data-line="147"><span class="sd">    Set_Attribute_Single requiring an empty response. ``schema`` is any</span>
+</span><span data-line="148"><span class="sd">    caterpillar field/struct or ``None`` for raw, undecoded bytes.</span>
+</span><span data-line="149"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span data-line="150">
+</span><span data-line="151">    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+</span><span data-line="152">        <span class="bp">self</span><span class="p">,</span>
+</span><span data-line="153">        <span class="nb">id</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+</span><span data-line="154">        <span class="n">schema</span><span class="p">:</span> <span class="n">_StructLike</span><span class="p">[</span><span class="n">_IT</span><span class="p">,</span> <span class="n">_IT</span><span class="p">]</span> <span class="o">|</span> <span class="nb">type</span><span class="p">[</span><span class="n">_IT</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span data-line="155">        <span class="o">*</span><span class="p">,</span>
+</span><span data-line="156">        <span class="n">size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span data-line="157">        <span class="n">order</span><span class="p">:</span> <span class="n">_EndianLike</span> <span class="o">=</span> <span class="n">LittleEndian</span><span class="p">,</span>
+</span><span data-line="158">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="159">        <span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="nb">id</span>
+</span><span data-line="160">        <span class="bp">self</span><span class="o">.</span><span class="n">schema</span><span class="p">:</span> <span class="n">_StructLike</span><span class="p">[</span><span class="n">_IT</span><span class="p">,</span> <span class="n">_IT</span><span class="p">]</span> <span class="o">|</span> <span class="nb">type</span><span class="p">[</span><span class="n">_IT</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="n">schema</span>
+</span><span data-line="161">        <span class="bp">self</span><span class="o">.</span><span class="n">size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="n">size</span>
+</span><span data-line="162">        <span class="bp">self</span><span class="o">.</span><span class="n">attr_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;attribute </span><span class="si">{</span><span class="nb">id</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span data-line="163">        <span class="bp">self</span><span class="o">.</span><span class="n">order</span><span class="p">:</span> <span class="n">_EndianLike</span> <span class="o">=</span> <span class="n">order</span>
+</span><span data-line="164">
+</span><span data-line="165">    <span class="k">def</span><span class="w"> </span><span class="nf">__set_name__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">owner</span><span class="p">:</span> <span class="nb">type</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="166">        <span class="bp">self</span><span class="o">.</span><span class="n">attr_name</span> <span class="o">=</span> <span class="n">name</span>
+</span><span data-line="167">        <span class="c1"># Each subclass gets its own dict - otherwise a subclass that never</span>
+</span><span data-line="168">        <span class="c1"># declares one of its own would silently share (and pollute)</span>
+</span><span data-line="169">        <span class="c1"># whichever base class&#39;s dict its MRO happens to resolve to.</span>
+</span><span data-line="170">        <span class="k">if</span> <span class="s2">&quot;attribute_definitions&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">owner</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">:</span>
+</span><span data-line="171">            <span class="n">owner</span><span class="o">.</span><span class="n">attribute_definitions</span> <span class="o">=</span> <span class="p">{}</span>
+</span><span data-line="172">        <span class="n">owner</span><span class="o">.</span><span class="n">attribute_definitions</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span>
+</span><span data-line="173">
+</span><span data-line="174">    <span class="k">def</span><span class="w"> </span><span class="fm">__get__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">:</span> <span class="s2">&quot;CIPObject | None&quot;</span><span class="p">,</span> <span class="n">objtype</span><span class="p">:</span> <span class="nb">type</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">_IT</span><span class="p">:</span>
+</span><span data-line="175">        <span class="k">if</span> <span class="n">obj</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="176">            <span class="k">return</span> <span class="bp">self</span>  <span class="c1"># pyright: ignore[reportReturnType]</span>
+</span><span data-line="177">
+</span><span data-line="178">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">from_bytes</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="p">))</span>
+</span><span data-line="179">
+</span><span data-line="180">    <span class="k">def</span><span class="w"> </span><span class="fm">__set__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">:</span> <span class="s2">&quot;CIPObject&quot;</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">_IT</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="181">        <span class="n">_</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">set_empty</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">to_bytes</span><span class="p">(</span><span class="n">value</span><span class="p">))</span>
+</span><span data-line="182">
+<div class="viewcode-block" id="CIPAttribute.from_bytes">
+<a class="viewcode-back" href="../../../../../protocols/cip/api/objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute.from_bytes">[docs]</a>
+</span><span data-line="183">    <span class="k">def</span><span class="w"> </span><span class="nf">from_bytes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">_IT</span><span class="p">:</span>
+</span><span data-line="184"><span class="w">        </span><span class="sd">&quot;&quot;&quot;Decode a Get_Attribute_Single reply for this attribute.&quot;&quot;&quot;</span>
+</span><span data-line="185">        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">size</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">size</span><span class="p">:</span>
+</span><span data-line="186">            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">attr_name</span><span class="si">}</span><span class="s2"> must contain exactly </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">size</span><span class="si">}</span><span class="s2"> bytes&quot;</span><span class="p">)</span>
+</span><span data-line="187">
+</span><span data-line="188">        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">schema</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="189">            <span class="k">return</span> <span class="n">data</span>  <span class="c1"># pyright: ignore[reportReturnType]</span>
+</span><span data-line="190">
+</span><span data-line="191">        <span class="k">return</span> <span class="n">unpack</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">schema</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">order</span><span class="p">)</span></div>
+
+</span><span data-line="192">
+<div class="viewcode-block" id="CIPAttribute.to_bytes">
+<a class="viewcode-back" href="../../../../../protocols/cip/api/objects_core.html#icspacket.proto.cip.objects._base.CIPAttribute.to_bytes">[docs]</a>
+</span><span data-line="193">    <span class="k">def</span><span class="w"> </span><span class="nf">to_bytes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">_IT</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bytes</span><span class="p">:</span>
+</span><span data-line="194"><span class="w">        </span><span class="sd">&quot;&quot;&quot;Encode a value for Set_Attribute_Single.&quot;&quot;&quot;</span>
+</span><span data-line="195">        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">schema</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="196">            <span class="k">return</span> <span class="nb">bytes</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>  <span class="c1"># pyright: ignore[reportArgumentType]</span>
+</span><span data-line="197">
+</span><span data-line="198">        <span class="k">return</span> <span class="n">pack</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">schema</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">order</span><span class="p">)</span></div>
+
+</span><span data-line="199">
+</span><span data-line="200">    <span class="nd">@property</span>
+</span><span data-line="201">    <span class="k">def</span><span class="w"> </span><span class="nf">minimum_size</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="202"><span class="w">        </span><span class="sd">&quot;&quot;&quot;Minimum bytes needed before this attribute might be stream-</span>
+</span><span data-line="203"><span class="sd">        decodable.</span>
+</span><span data-line="204">
+</span><span data-line="205"><span class="sd">        ``None`` means it cannot be decoded from a sequential stream at</span>
+</span><span data-line="206"><span class="sd">        all; ``0`` means any amount (including none) is acceptable.</span>
+</span><span data-line="207"><span class="sd">        &quot;&quot;&quot;</span>
+</span><span data-line="208">        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">size</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="209">            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">size</span>
+</span><span data-line="210">        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">schema</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="211">            <span class="k">return</span> <span class="mi">0</span>
+</span><span data-line="212">        <span class="n">own_minimum</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">schema</span><span class="p">,</span> <span class="s2">&quot;minimum_size&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+</span><span data-line="213">        <span class="k">if</span> <span class="n">own_minimum</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="214">            <span class="k">return</span> <span class="n">own_minimum</span>
+</span><span data-line="215">        <span class="k">try</span><span class="p">:</span>
+</span><span data-line="216">            <span class="k">return</span> <span class="n">sizeof</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">schema</span><span class="p">)</span>
+</span><span data-line="217">        <span class="k">except</span> <span class="n">DynamicSizeError</span><span class="p">:</span>
+</span><span data-line="218">            <span class="k">return</span> <span class="mi">0</span> <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">schema</span><span class="p">,</span> <span class="s2">&quot;from_bytes&quot;</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span>
+</span><span data-line="219">
+</span><span data-line="220">    <span class="nd">@property</span>
+</span><span data-line="221">    <span class="k">def</span><span class="w"> </span><span class="nf">stream_decodable</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+</span><span data-line="222"><span class="w">        </span><span class="sd">&quot;&quot;&quot;Whether this attribute can be decoded from the middle of a</span>
+</span><span data-line="223"><span class="sd">        shared, multi-attribute stream (e.g. a ``Get_Attributes_All``</span>
+</span><span data-line="224"><span class="sd">        reply) without over-consuming bytes that belong to a later</span>
+</span><span data-line="225"><span class="sd">        attribute.</span>
+</span><span data-line="226">
+</span><span data-line="227"><span class="sd">        True for any fixed-size schema (including an explicit :attr:`size`</span>
+</span><span data-line="228"><span class="sd">        override) and for the self-delimiting :class:`CIPString`/</span>
+</span><span data-line="229"><span class="sd">        :class:`CIPPrefixedEPATH` wrappers, each of which reads its own</span>
+</span><span data-line="230"><span class="sd">        explicit length prefix and then stops. False for a schema with no</span>
+</span><span data-line="231"><span class="sd">        fixed size that is *not* self-delimiting - e.g. a bare</span>
+</span><span data-line="232"><span class="sd">        :class:`CIPEPATH` or a greedy ``schema[...]`` array sized by</span>
+</span><span data-line="233"><span class="sd">        another attribute - since those read to the end of the stream</span>
+</span><span data-line="234"><span class="sd">        regardless of where the next attribute&#39;s bytes begin.</span>
+</span><span data-line="235"><span class="sd">        &quot;&quot;&quot;</span>
+</span><span data-line="236">        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">size</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="237">            <span class="k">return</span> <span class="kc">True</span>
+</span><span data-line="238">        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">schema</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="239">            <span class="k">return</span> <span class="kc">False</span>
+</span><span data-line="240">        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">schema</span><span class="p">,</span> <span class="p">(</span><span class="n">CIPString</span><span class="p">,</span> <span class="n">CIPPrefixedEPATH</span><span class="p">)):</span>
+</span><span data-line="241">            <span class="k">return</span> <span class="kc">True</span>
+</span><span data-line="242">        <span class="k">try</span><span class="p">:</span>
+</span><span data-line="243">            <span class="n">_</span> <span class="o">=</span> <span class="n">sizeof</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">schema</span><span class="p">)</span>
+</span><span data-line="244">            <span class="k">return</span> <span class="kc">True</span>
+</span><span data-line="245">        <span class="k">except</span> <span class="n">DynamicSizeError</span><span class="p">:</span>
+</span><span data-line="246">            <span class="k">return</span> <span class="kc">False</span></div>
+
+</span><span data-line="247">
+</span><span data-line="248">
+<div class="viewcode-block" id="CIPAttributeReader">
+<a class="viewcode-back" href="../../../../../protocols/cip/api/objects_core.html#icspacket.proto.cip.objects._base.CIPAttributeReader">[docs]</a>
+</span><span data-line="249"><span class="k">class</span><span class="w"> </span><span class="nc">CIPAttributeReader</span><span class="p">:</span>
+</span><span data-line="250"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Sequential reader for variable CIP attribute payloads.</span>
+</span><span data-line="251">
+</span><span data-line="252"><span class="sd">    Use this for ``Get_Attributes_All`` replies where fields are</span>
+</span><span data-line="253"><span class="sd">    optional or followed by vendor-specific trailing data.  Fixed</span>
+</span><span data-line="254"><span class="sd">    single-attribute getters should normally use a :class:`CIPAttribute`</span>
+</span><span data-line="255"><span class="sd">    descriptor instead.</span>
+</span><span data-line="256"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span data-line="257">
+</span><span data-line="258">    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="259">        <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">:</span> <span class="nb">bytes</span> <span class="o">=</span> <span class="nb">bytes</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</span><span data-line="260">        <span class="bp">self</span><span class="o">.</span><span class="n">_stream</span><span class="p">:</span> <span class="n">BytesIO</span> <span class="o">=</span> <span class="n">BytesIO</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">)</span>
+</span><span data-line="261">
+</span><span data-line="262">    <span class="nd">@property</span>
+</span><span data-line="263">    <span class="k">def</span><span class="w"> </span><span class="nf">remaining</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+</span><span data-line="264"><span class="w">        </span><span class="sd">&quot;&quot;&quot;Number of unread bytes.&quot;&quot;&quot;</span>
+</span><span data-line="265">        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">)</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_stream</span><span class="o">.</span><span class="n">tell</span><span class="p">()</span>
+</span><span data-line="266">
+<div class="viewcode-block" id="CIPAttributeReader.read_field">
+<a class="viewcode-back" href="../../../../../protocols/cip/api/objects_core.html#icspacket.proto.cip.objects._base.CIPAttributeReader.read_field">[docs]</a>
+</span><span data-line="267">    <span class="k">def</span><span class="w"> </span><span class="nf">read_field</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">schema</span><span class="p">:</span> <span class="n">_StructLike</span><span class="p">[</span><span class="n">_IT</span><span class="p">,</span> <span class="n">_IT</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">_IT</span><span class="p">:</span>
+</span><span data-line="268"><span class="w">        </span><span class="sd">&quot;&quot;&quot;Decode one field from the shared stream using ``schema``.&quot;&quot;&quot;</span>
+</span><span data-line="269">        <span class="k">return</span> <span class="n">unpack</span><span class="p">(</span><span class="n">schema</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_stream</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="n">LittleEndian</span><span class="p">)</span></div>
+
+</span><span data-line="270">
+<div class="viewcode-block" id="CIPAttributeReader.read_attributes">
+<a class="viewcode-back" href="../../../../../protocols/cip/api/objects_core.html#icspacket.proto.cip.objects._base.CIPAttributeReader.read_attributes">[docs]</a>
+</span><span data-line="271">    <span class="k">def</span><span class="w"> </span><span class="nf">read_attributes</span><span class="p">(</span>
+</span><span data-line="272">        <span class="bp">self</span><span class="p">,</span>
+</span><span data-line="273">        <span class="n">definitions</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="n">Any</span><span class="p">]],</span>
+</span><span data-line="274">        <span class="n">attributes</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span> <span class="o">|</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span data-line="275">        <span class="o">*</span><span class="p">,</span>
+</span><span data-line="276">        <span class="n">missing_ok</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+</span><span data-line="277">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">object</span><span class="p">]:</span>
+</span><span data-line="278"><span class="w">        </span><span class="sd">&quot;&quot;&quot;Decode sequential attributes using declarative definitions.</span>
+</span><span data-line="279">
+</span><span data-line="280"><span class="sd">        The method stops before the first missing optional attribute or</span>
+</span><span data-line="281"><span class="sd">        the first definition that cannot be safely decoded from a</span>
+</span><span data-line="282"><span class="sd">        stream.</span>
+</span><span data-line="283"><span class="sd">        &quot;&quot;&quot;</span>
+</span><span data-line="284">        <span class="n">values</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">object</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+</span><span data-line="285">        <span class="k">for</span> <span class="n">attribute</span> <span class="ow">in</span> <span class="n">attributes</span> <span class="ow">or</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">definitions</span><span class="p">):</span>
+</span><span data-line="286">            <span class="n">definition</span> <span class="o">=</span> <span class="n">definitions</span><span class="p">[</span><span class="n">attribute</span><span class="p">]</span>
+</span><span data-line="287">            <span class="k">if</span> <span class="ow">not</span> <span class="n">definition</span><span class="o">.</span><span class="n">stream_decodable</span><span class="p">:</span>
+</span><span data-line="288">                <span class="k">break</span>
+</span><span data-line="289">            <span class="n">minimum_size</span> <span class="o">=</span> <span class="n">definition</span><span class="o">.</span><span class="n">minimum_size</span>
+</span><span data-line="290">            <span class="k">if</span> <span class="p">(</span>
+</span><span data-line="291">                <span class="n">missing_ok</span>
+</span><span data-line="292">                <span class="ow">and</span> <span class="n">minimum_size</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+</span><span data-line="293">                <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">remaining</span> <span class="o">&lt;</span> <span class="n">minimum_size</span>
+</span><span data-line="294">            <span class="p">):</span>
+</span><span data-line="295">                <span class="k">break</span>
+</span><span data-line="296">            <span class="k">if</span> <span class="n">missing_ok</span> <span class="ow">and</span> <span class="n">minimum_size</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">remaining</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+</span><span data-line="297">                <span class="k">break</span>
+</span><span data-line="298">
+</span><span data-line="299">            <span class="n">value</span> <span class="o">=</span> <span class="kc">None</span>
+</span><span data-line="300">            <span class="k">if</span> <span class="n">definition</span><span class="o">.</span><span class="n">size</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="301">                <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_stream</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">definition</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
+</span><span data-line="302">                <span class="n">value</span> <span class="o">=</span> <span class="n">definition</span><span class="o">.</span><span class="n">from_bytes</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</span><span data-line="303">            <span class="k">elif</span> <span class="n">definition</span><span class="o">.</span><span class="n">schema</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="304">                <span class="n">value</span> <span class="o">=</span> <span class="n">unpack</span><span class="p">(</span><span class="n">definition</span><span class="o">.</span><span class="n">schema</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_stream</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="n">definition</span><span class="o">.</span><span class="n">order</span><span class="p">)</span>
+</span><span data-line="305">
+</span><span data-line="306">            <span class="n">values</span><span class="p">[</span><span class="n">attribute</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
+</span><span data-line="307">        <span class="k">return</span> <span class="n">values</span></div>
+
+</span><span data-line="308">
+<div class="viewcode-block" id="CIPAttributeReader.read_remaining">
+<a class="viewcode-back" href="../../../../../protocols/cip/api/objects_core.html#icspacket.proto.cip.objects._base.CIPAttributeReader.read_remaining">[docs]</a>
+</span><span data-line="309">    <span class="k">def</span><span class="w"> </span><span class="nf">read_remaining</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bytes</span><span class="p">:</span>
+</span><span data-line="310"><span class="w">        </span><span class="sd">&quot;&quot;&quot;Return all unread bytes.&quot;&quot;&quot;</span>
+</span><span data-line="311">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_stream</span><span class="o">.</span><span class="n">read</span><span class="p">()</span></div>
+</div>
+
+</span><span data-line="312">
+</span><span data-line="313">
+</span><span data-line="314"><span class="c1">#: Registry of CIP object wrapper classes by class code, populated</span>
+</span><span data-line="315"><span class="c1">#: automatically by :meth:`CIPObject.__init_subclass__`.</span>
+</span><span data-line="316"><span class="n">__cip_objects__</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">type</span><span class="p">[</span><span class="s2">&quot;CIPObject&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="p">{}</span>
+</span><span data-line="317">
+</span><span data-line="318">
+<div class="viewcode-block" id="CIPObject">
+<a class="viewcode-back" href="../../../../../protocols/cip/api/objects_core.html#icspacket.proto.cip.objects._base.CIPObject">[docs]</a>
+</span><span data-line="319"><span class="k">class</span><span class="w"> </span><span class="nc">CIPObject</span><span class="p">:</span>
+</span><span data-line="320"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Small typed facade over a :class:`~icspacket.proto.cip.CIP_Connection`.</span>
+</span><span data-line="321">
+</span><span data-line="322"><span class="sd">    Subclasses that assign :attr:`CLASS_CODE` directly in their own body are</span>
+</span><span data-line="323"><span class="sd">    registered automatically under that class code, for</span>
+</span><span data-line="324"><span class="sd">    :func:`~icspacket.proto.cip.objects.registry.object_for`.</span>
+</span><span data-line="325"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span data-line="326">
+</span><span data-line="327">    <span class="n">CLASS_CODE</span><span class="p">:</span> <span class="n">ClassVar</span><span class="p">[</span><span class="n">ClassCode</span><span class="p">]</span>
+</span><span data-line="328">    <span class="n">attribute_definitions</span><span class="p">:</span> <span class="n">ClassVar</span><span class="p">[</span><span class="nb">dict</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="n">CIPAttribute</span><span class="p">[</span><span class="n">Any</span><span class="p">]]]</span> <span class="o">=</span> <span class="p">{}</span>
+</span><span data-line="329">
+</span><span data-line="330">    <span class="k">def</span><span class="w"> </span><span class="nf">__init_subclass__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="331"><span class="w">        </span><span class="sd">&quot;&quot;&quot;Register ``cls`` under its own ``CLASS_CODE``, if it defines one.&quot;&quot;&quot;</span>
+</span><span data-line="332">        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">__init_subclass__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</span><span data-line="333">        <span class="n">class_code</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="vm">__dict__</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;CLASS_CODE&quot;</span><span class="p">)</span>
+</span><span data-line="334">        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">class_code</span><span class="p">,</span> <span class="n">ClassCode</span><span class="p">):</span>
+</span><span data-line="335">            <span class="n">__cip_objects__</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">class_code</span><span class="p">)]</span> <span class="o">=</span> <span class="bp">cls</span>
+</span><span data-line="336">
+</span><span data-line="337">    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">connection</span><span class="p">:</span> <span class="n">CIP_Connection</span><span class="p">,</span> <span class="n">instance</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span data-line="338">        <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="p">:</span> <span class="n">CIP_Connection</span> <span class="o">=</span> <span class="n">connection</span>
+</span><span data-line="339">        <span class="bp">self</span><span class="o">.</span><span class="n">instance</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">instance</span>
+</span><span data-line="340">
+</span><span data-line="341">    <span class="k">def</span><span class="w"> </span><span class="nf">_resolve_instance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">instance</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+</span><span data-line="342"><span class="w">        </span><span class="sd">&quot;&quot;&quot;Return ``instance`` if given, otherwise this object&#39;s own</span>
+</span><span data-line="343"><span class="sd">        instance.&quot;&quot;&quot;</span>
+</span><span data-line="344">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">instance</span> <span class="k">if</span> <span class="n">instance</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">instance</span>
+</span><span data-line="345">
+<div class="viewcode-block" id="CIPObject.path">
+<a class="viewcode-back" href="../../../../../protocols/cip/api/objects_core.html#icspacket.proto.cip.objects._base.CIPObject.path">[docs]</a>
+</span><span data-line="346">    <span class="k">def</span><span class="w"> </span><span class="nf">path</span><span class="p">(</span>
+</span><span data-line="347">        <span class="bp">self</span><span class="p">,</span> <span class="n">attribute</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">instance</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+</span><span data-line="348">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EPATH</span><span class="p">:</span>
+</span><span data-line="349"><span class="w">        </span><span class="sd">&quot;&quot;&quot;Build the EPATH addressing this object, optionally down to one</span>
+</span><span data-line="350"><span class="sd">        attribute.</span>
+</span><span data-line="351">
+</span><span data-line="352"><span class="sd">        :param attribute: Narrows the path to one specific attribute, if</span>
+</span><span data-line="353"><span class="sd">            given.</span>
+</span><span data-line="354"><span class="sd">        :param instance: Overrides this object&#39;s own instance, if given.</span>
+</span><span data-line="355"><span class="sd">        &quot;&quot;&quot;</span>
+</span><span data-line="356">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">object_path</span><span class="p">(</span>
+</span><span data-line="357">            <span class="bp">self</span><span class="o">.</span><span class="n">CLASS_CODE</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_resolve_instance</span><span class="p">(</span><span class="n">instance</span><span class="p">),</span> <span class="n">attribute</span>
+</span><span data-line="358">        <span class="p">)</span></div>
+
+</span><span data-line="359">
+<div class="viewcode-block" id="CIPObject.get">
+<a class="viewcode-back" href="../../../../../protocols/cip/api/objects_core.html#icspacket.proto.cip.objects._base.CIPObject.get">[docs]</a>
+</span><span data-line="360">    <span class="k">def</span><span class="w"> </span><span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attribute</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">instance</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bytes</span><span class="p">:</span>
+</span><span data-line="361"><span class="w">        </span><span class="sd">&quot;&quot;&quot;Read one attribute&#39;s raw bytes via Get_Attribute_Single.</span>
+</span><span data-line="362">
+</span><span data-line="363"><span class="sd">        :param attribute: The attribute ID to read.</span>
+</span><span data-line="364"><span class="sd">        :param instance: Overrides this object&#39;s own instance, if given.</span>
+</span><span data-line="365"><span class="sd">        &quot;&quot;&quot;</span>
+</span><span data-line="366">        <span class="k">return</span> <span class="nb">bytes</span><span class="p">(</span>
+</span><span data-line="367">            <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">get_attribute_single</span><span class="p">(</span>
+</span><span data-line="368">                <span class="bp">self</span><span class="o">.</span><span class="n">CLASS_CODE</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_resolve_instance</span><span class="p">(</span><span class="n">instance</span><span class="p">),</span> <span class="n">attribute</span>
+</span><span data-line="369">            <span class="p">)</span>
+</span><span data-line="370">        <span class="p">)</span></div>
+
+</span><span data-line="371">
+<div class="viewcode-block" id="CIPObject.set">
+<a class="viewcode-back" href="../../../../../protocols/cip/api/objects_core.html#icspacket.proto.cip.objects._base.CIPObject.set">[docs]</a>
+</span><span data-line="372">    <span class="k">def</span><span class="w"> </span><span class="nf">set</span><span class="p">(</span>
+</span><span data-line="373">        <span class="bp">self</span><span class="p">,</span> <span class="n">attribute</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">instance</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+</span><span data-line="374">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bytes</span><span class="p">:</span>
+</span><span data-line="375"><span class="w">        </span><span class="sd">&quot;&quot;&quot;Write one attribute&#39;s raw bytes via Set_Attribute_Single.</span>
+</span><span data-line="376">
+</span><span data-line="377"><span class="sd">        :param attribute: The attribute ID to write.</span>
+</span><span data-line="378"><span class="sd">        :param value: The encoded attribute value.</span>
+</span><span data-line="379"><span class="sd">        :param instance: Overrides this object&#39;s own instance, if given.</span>
+</span><span data-line="380"><span class="sd">        &quot;&quot;&quot;</span>
+</span><span data-line="381">        <span class="k">return</span> <span class="nb">bytes</span><span class="p">(</span>
+</span><span data-line="382">            <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">set_attribute_single</span><span class="p">(</span>
+</span><span data-line="383">                <span class="bp">self</span><span class="o">.</span><span class="n">CLASS_CODE</span><span class="p">,</span>
+</span><span data-line="384">                <span class="bp">self</span><span class="o">.</span><span class="n">_resolve_instance</span><span class="p">(</span><span class="n">instance</span><span class="p">),</span>
+</span><span data-line="385">                <span class="n">attribute</span><span class="p">,</span>
+</span><span data-line="386">                <span class="nb">bytes</span><span class="p">(</span><span class="n">value</span><span class="p">),</span>
+</span><span data-line="387">            <span class="p">)</span>
+</span><span data-line="388">        <span class="p">)</span></div>
+
+</span><span data-line="389">
+<div class="viewcode-block" id="CIPObject.all">
+<a class="viewcode-back" href="../../../../../protocols/cip/api/objects_core.html#icspacket.proto.cip.objects._base.CIPObject.all">[docs]</a>
+</span><span data-line="390">    <span class="k">def</span><span class="w"> </span><span class="nf">all</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">instance</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bytes</span><span class="p">:</span>
+</span><span data-line="391"><span class="w">        </span><span class="sd">&quot;&quot;&quot;Read every attribute&#39;s raw bytes via Get_Attributes_All.</span>
+</span><span data-line="392">
+</span><span data-line="393"><span class="sd">        :param instance: Overrides this object&#39;s own instance, if given.</span>
+</span><span data-line="394"><span class="sd">        &quot;&quot;&quot;</span>
+</span><span data-line="395">        <span class="k">return</span> <span class="nb">bytes</span><span class="p">(</span>
+</span><span data-line="396">            <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">get_attributes_all</span><span class="p">(</span>
+</span><span data-line="397">                <span class="bp">self</span><span class="o">.</span><span class="n">CLASS_CODE</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_resolve_instance</span><span class="p">(</span><span class="n">instance</span><span class="p">)</span>
+</span><span data-line="398">            <span class="p">)</span>
+</span><span data-line="399">        <span class="p">)</span></div>
+
+</span><span data-line="400">
+<div class="viewcode-block" id="CIPObject.message">
+<a class="viewcode-back" href="../../../../../protocols/cip/api/objects_core.html#icspacket.proto.cip.objects._base.CIPObject.message">[docs]</a>
+</span><span data-line="401">    <span class="k">def</span><span class="w"> </span><span class="nf">message</span><span class="p">(</span>
+</span><span data-line="402">        <span class="bp">self</span><span class="p">,</span>
+</span><span data-line="403">        <span class="n">service</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="n">CommonService</span><span class="p">,</span>
+</span><span data-line="404">        <span class="n">request_data</span><span class="p">:</span> <span class="nb">bytes</span> <span class="o">=</span> <span class="sa">b</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+</span><span data-line="405">        <span class="o">*</span><span class="p">,</span>
+</span><span data-line="406">        <span class="n">connected</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span data-line="407">        <span class="n">instance</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span data-line="408">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bytes</span><span class="p">:</span>
+</span><span data-line="409"><span class="w">        </span><span class="sd">&quot;&quot;&quot;Issue a generic (non-Get/Set_Attribute) service request to this</span>
+</span><span data-line="410"><span class="sd">        object.</span>
+</span><span data-line="411">
+</span><span data-line="412"><span class="sd">        :param service: The CIP service code to invoke.</span>
+</span><span data-line="413"><span class="sd">        :param request_data: The service-specific request payload.</span>
+</span><span data-line="414"><span class="sd">        :param connected: Send over the connected (Class 3) session if</span>
+</span><span data-line="415"><span class="sd">            ``True``.</span>
+</span><span data-line="416"><span class="sd">        :param instance: Overrides this object&#39;s own instance, if given.</span>
+</span><span data-line="417"><span class="sd">        &quot;&quot;&quot;</span>
+</span><span data-line="418">        <span class="k">return</span> <span class="nb">bytes</span><span class="p">(</span>
+</span><span data-line="419">            <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">generic_message</span><span class="p">(</span>
+</span><span data-line="420">                <span class="n">service</span><span class="p">,</span>
+</span><span data-line="421">                <span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="p">(</span><span class="n">instance</span><span class="o">=</span><span class="n">instance</span><span class="p">),</span>
+</span><span data-line="422">                <span class="nb">bytes</span><span class="p">(</span><span class="n">request_data</span><span class="p">),</span>
+</span><span data-line="423">                <span class="n">connected</span><span class="o">=</span><span class="n">connected</span><span class="p">,</span>
+</span><span data-line="424">            <span class="p">)</span>
+</span><span data-line="425">        <span class="p">)</span></div>
+
+</span><span data-line="426">
+</span><span data-line="427">    <span class="nd">@staticmethod</span>
+</span><span data-line="428">    <span class="k">def</span><span class="w"> </span><span class="nf">_expect_empty</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bytes</span><span class="p">:</span>
+</span><span data-line="429"><span class="w">        </span><span class="sd">&quot;&quot;&quot;Return ``data`` unchanged, or raise ``ValueError`` if it&#39;s non-</span>
+</span><span data-line="430"><span class="sd">        empty.&quot;&quot;&quot;</span>
+</span><span data-line="431">        <span class="k">if</span> <span class="n">data</span><span class="p">:</span>
+</span><span data-line="432">            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;expected an empty response, got </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="si">}</span><span class="s2"> bytes&quot;</span><span class="p">)</span>
+</span><span data-line="433">        <span class="k">return</span> <span class="n">data</span>
+</span><span data-line="434">
+<div class="viewcode-block" id="CIPObject.get_attr">
+<a class="viewcode-back" href="../../../../../protocols/cip/api/objects_core.html#icspacket.proto.cip.objects._base.CIPObject.get_attr">[docs]</a>
+</span><span data-line="435">    <span class="k">def</span><span class="w"> </span><span class="nf">get_attr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attribute</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">instance</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">_IT</span> <span class="o">|</span> <span class="nb">bytes</span><span class="p">:</span>
+</span><span data-line="436"><span class="w">        </span><span class="sd">&quot;&quot;&quot;Read and decode one attribute using :attr:`attribute_definitions`.</span>
+</span><span data-line="437">
+</span><span data-line="438"><span class="sd">        Falls back to raw bytes if ``attribute`` has no registered</span>
+</span><span data-line="439"><span class="sd">        :class:`CIPAttribute` definition.</span>
+</span><span data-line="440">
+</span><span data-line="441"><span class="sd">        :param attribute: The attribute ID to read.</span>
+</span><span data-line="442"><span class="sd">        :param instance: Overrides this object&#39;s own instance, if given.</span>
+</span><span data-line="443"><span class="sd">        &quot;&quot;&quot;</span>
+</span><span data-line="444">        <span class="n">definition</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">attribute_definitions</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">attribute</span><span class="p">)</span>
+</span><span data-line="445">        <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">attribute</span><span class="p">,</span> <span class="n">instance</span><span class="o">=</span><span class="n">instance</span><span class="p">)</span>
+</span><span data-line="446">        <span class="k">return</span> <span class="n">data</span> <span class="k">if</span> <span class="n">definition</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">definition</span><span class="o">.</span><span class="n">from_bytes</span><span class="p">(</span><span class="n">data</span><span class="p">)</span></div>
+
+</span><span data-line="447">
+<div class="viewcode-block" id="CIPObject.set_empty">
+<a class="viewcode-back" href="../../../../../protocols/cip/api/objects_core.html#icspacket.proto.cip.objects._base.CIPObject.set_empty">[docs]</a>
+</span><span data-line="448">    <span class="k">def</span><span class="w"> </span><span class="nf">set_empty</span><span class="p">(</span>
+</span><span data-line="449">        <span class="bp">self</span><span class="p">,</span>
+</span><span data-line="450">        <span class="n">attribute</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+</span><span data-line="451">        <span class="n">value</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">,</span>
+</span><span data-line="452">        <span class="o">*</span><span class="p">,</span>
+</span><span data-line="453">        <span class="n">instance</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span data-line="454">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bytes</span><span class="p">:</span>
+</span><span data-line="455"><span class="w">        </span><span class="sd">&quot;&quot;&quot;Write an attribute and require an empty service response.</span>
+</span><span data-line="456">
+</span><span data-line="457"><span class="sd">        :param attribute: The attribute ID to write.</span>
+</span><span data-line="458"><span class="sd">        :param value: The encoded attribute value.</span>
+</span><span data-line="459"><span class="sd">        :param instance: Overrides this object&#39;s own instance, if given.</span>
+</span><span data-line="460"><span class="sd">        &quot;&quot;&quot;</span>
+</span><span data-line="461">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_expect_empty</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">attribute</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">instance</span><span class="o">=</span><span class="n">instance</span><span class="p">))</span></div>
+</div>
+
+</span></pre></div>
+        </article><button class="back-to-top" type="button">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+  </svg>
+  <span>Back to top</span>
+</button><div class="navigation flex print:hidden"></div></div>
+    </div>
+  </main>
+</div>
+<footer class="sy-foot">
+  <div class="sy-foot-inner sy-container mx-auto">
+    <div class="sy-foot-reserved md:flex justify-between items-center">
+      <div class="sy-foot-copyright"><p>2025, MatrixEditor</p>
+  
+  <p>
+    Made with
+    
+    <a href="https://www.sphinx-doc.org/">Sphinx</a> and
+    
+    <a href="https://shibuya.lepture.com">Shibuya theme</a>.
+  </p>
+</div>
+      <div class="sy-foot-socials">
+  <a href="https://github.com/MatrixEditor/icspacket" aria-label="GitHub">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </a></div>
+    </div>
+  </div>
+</footer>
+      <script src="../../../../../_static/documentation_options.js?v=5dc6420e"></script>
+      <script src="../../../../../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../../../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="../../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../../../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../../../../_static/design-tabs.js?v=f930bc37"></script>
+      <script src="../../../../../_static/shibuya.js?v=50760d75"></script></body>
+</html>
