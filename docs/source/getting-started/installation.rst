@@ -3,7 +3,7 @@
 Installation
 ============
 
-There are pre-built wheels on PyPI for Python 3.10 to 3.13 for Linux, Windows
+There are pre-built wheels on PyPI for Python 3.10 to 3.14 for Linux, Windows
 and MacOS. Any other Python version is not officially supported::
 
     pip install icspacket

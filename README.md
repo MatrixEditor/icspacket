@@ -6,11 +6,17 @@ systems using their protocols. Currently supported protocols are:
 ```
 - DNP3.0 (IEEE 1815)
 - MMS (ISO 9506) and mappings for IEC 61850
+- IEC 60870-5-104
+- MMS (ISO 9506) and mappings for IEC 61850
 - ACSE (X.227)
 - COPP (X.226)
 - COSP (X.225)
 - COTP (X.224)
 - TPKT (RFC1006)
+- Modbus TCP/UDP (via pymodbus)
+- EtherNet/IP (CIP)
+- OPC-UA (via asyncua/opcua-asyncio)
+- BACnet/IP (ASHRAE 135, via BACpypes3)
 ```
 
 **Please review the documentation for more information and tools: [icspacket-docs](https://matrixeditor.github.io/icspacket/)**
@@ -26,7 +32,7 @@ systems using their protocols. Currently supported protocols are:
 
 ## Installation
 
-There are pre-built wheels on PyPI for Python 3.10 to 3.13 for Linux, Windows
+There are pre-built wheels on PyPI for Python 3.10 to 3.14 for Linux, Windows
 and MacOS. Any other Python version is not officially supported.
 
 ```bash
