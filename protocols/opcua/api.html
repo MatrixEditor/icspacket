@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en" data-accent-color="lime" data-content_root="../../">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>API Reference - icspacket 0.1.dev1+g8273f2c47 documentation</title><link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="API Reference" href="../acse/api.html" /><link rel="prev" title="Basic Client" href="opcuaclient.html" />
+      <link rel="canonical" href="https://matrixeditor.github.io/icspacket/protocols/opcua/api.html" /><script>
+    function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
+    setColorMode(localStorage._theme||"dark");
+  </script><link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=e1a1ceaf" />
+    <link rel="stylesheet" type="text/css" href="../../_static/shibuya.css?v=2ceb65ce" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link media="print" rel="stylesheet" type="text/css" href="../../_static/print.css?v=20ff2c19" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --sy-f-text: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+  --sy-f-heading: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+}
+</style>
+    
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://matrixeditor.github.io/icspacket/protocols/opcua/api.html"/>
+  <meta property="og:title" content="API Reference"/>
+    <meta name="twitter:card" content="summary"/>
+  </head>
+<body><div class="sy-head">
+  <div class="sy-head-blur"></div>
+  <div class="sy-head-inner sy-container mx-auto">
+    <a class="sy-head-brand" href="../../index.html">
+      
+      
+      <strong>icspacket</strong>
+    </a>
+    <div class="sy-head-nav" id="head-nav">
+      <nav class="sy-head-links"><ul>
+      <li class="link"><a class="js-menu" href="../../getting-started/protocols.html" id="nav-trigger-1" aria-controls="nav-children-1">
+            <span>Examples</span>
+            <i class="i-lucide chevron-down"></i>
+          </a>
+        <ul id="nav-children-1" aria-labelledby="nav-trigger-1"><li><a href="../mms/examples.html">
+                <span>MMS Utilities</span>
+                <small>Manufacturing Message Specification tools</small>
+              </a></li><li><a href="../dnp3/examples.html">
+                <span>DNP3 Tools</span>
+                <small>DNP3 utilities and tools</small>
+              </a></li><li><a href="../iec61850/iedmap.html">
+                <span>IED Enumeration Tool</span>
+                <small>Logical Device enumeration and more</small>
+              </a></li><li><a href="../cip/examples.html">
+                <span>CIP / EtherNet-IP Tools</span>
+                <small>EtherNet/IP discovery, explicit messaging and I/O tools</small>
+              </a></li><li><a href="../iec104/examples.html">
+                <span>IEC 60870-5-104 Tools</span>
+                <small>IEC 60870-5-104 interrogation and read tools</small>
+              </a></li></ul>
+      </li><li class="link"><a href="../../changelog.html">Changelog</a></li></ul></nav>
+      <div class="sy-head-extra flex items-center print:hidden"><form class="searchbox flex items-center" action="../../search.html" method="get">
+  <input type="text" name="q" placeholder="Search" />
+  <kbd>/</kbd>
+</form><div class="sy-head-socials">
+  <a href="https://github.com/MatrixEditor/icspacket" aria-label="GitHub">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </a></div></div>
+    </div>
+    <div class="sy-head-actions flex items-center shrink-0 print:hidden"><button class="js-theme theme-switch flex items-center"
+data-aria-auto="Switch to light color mode"
+data-aria-light="Switch to dark color mode"
+data-aria-dark="Switch to auto color mode">
+<i class="i-lucide theme-icon"></i>
+</button><button class="md:hidden flex items-center js-menu" aria-label="Menu" type="button" aria-controls="head-nav" aria-expanded="false">
+        <div class="hamburger">
+          <span class="hamburger_1"></span>
+          <span class="hamburger_2"></span>
+          <span class="hamburger_3"></span>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>
+<div class="sy-page sy-container flex mx-auto">
+  <aside id="lside" class="sy-lside md:w-72 md:shrink-0 print:hidden">
+    <div class="sy-lside-inner md:sticky">
+      <div class="sy-scrollbar p-6"><div class="sidebar-links">
+  <ul>
+    <li><a class="icon-link" href="https://github.com/MatrixEditor/icspacket/discussions">
+  <span class="icon">
+    <svg viewBox="0 0 24 24" fill="none">
+      <path fill="var(--accent-9)" fill-rule="evenodd" clip-rule="evenodd" d="M11 5a6 6 0 0 0-4.687 9.746c.215.27.315.62.231.954l-.514 2.058a1 1 0 0 0 1.485 1.1l2.848-1.71c.174-.104.374-.15.576-.148H13a6 6 0 0 0 0-12h-2Z"/>
+      <circle fill="white" cx="12" cy="11" r="1"/>
+      <circle fill="white" cx="9" cy="11" r="1"/>
+      <circle fill="white" cx="15" cy="11" r="1"/>
+    </svg>
+  </span>
+  <span class="text">Discussion</span>
+</a></li>
+  </ul>
+</div>
+        <div class="globaltoc" data-expand-depth="1"><p class="caption" role="heading" aria-level="3"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../getting-started/installation.html">Installation</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../getting-started/protocols.html">Protocols Overview</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../getting-started/coreapi.html">Core API Reference</a></li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">DNP3 / IEEE 1815</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../dnp3/dnp3read.html">Reading Objects</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../dnp3/dnp3dump.html">Dumping Objects</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../dnp3/dnp3resolve.html">Resolve Link Addresses</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../dnp3/api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../dnp3/api/link.html">Link Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dnp3/api/transport.html">Transport Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dnp3/api/application.html">Application Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dnp3/api/master.html">Master</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dnp3/api/object_library.html">Object Library</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../dnp3/api/primitives.html">Primitive Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dnp3/api/coding.html">Encoding / Decoding</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dnp3/api/variations.html">Variations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dnp3/api/coding_utils.html">Object Utilities</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">IEC 61850</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../iec61850/iedmap.html">Enumerating IEDs</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../iec61850/iedctrl.html">Operating on IEDs</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../iec61850/api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../iec61850/api_data_classes.html">Data Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iec61850/api_path.html">Object / Data References</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iec61850/api_control.html">Control / Operation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iec61850/api_client.html">IED Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iec61850/api_goose.html">GOOSE Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iec61850/api_sv.html">SampledValues Client</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">MMS / ISO 9506</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../mms/demo_vars.html">Variable Target Format</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../mms/demo_vars.html#variableaccess-service-rwq">VariableAccess Service (rwq)</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../mms/demo_files.html">FileManagement Service</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../mms/api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../mms/api_conn.html">MMS Connection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mms/api_data.html">Data Conversion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mms/api_utils.html">Protocol Utilities</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">IEC 60870-5-104</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../iec104/iec104read.html">Reading Data via Interrogation</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../iec104/api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../iec104/api/apci.html">APCI - Framing Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iec104/api/asdu.html">ASDU - Application Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iec104/api/master.html">Master (Client)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iec104/api/objects.html">Information Object Library</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">CIP / EtherNet-IP</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../cip/cipclient.html">Operating via CIP / EtherNet-IP</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../cip/api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../cip/api/connection.html">Connection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cip/api/encapsulation.html">EtherNet/IP Encapsulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cip/api/messaging.html">Messaging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cip/api/objects.html">Object Library</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../cip/api/objects_core.html">Core Objects</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cip/api/objects_network.html">Network Objects</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cip/api/objects_io.html">I/O and Parameter Objects</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cip/api/objects_motion.html">Motion, Drive, and Semiconductor Objects</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cip/api/objects_switch.html">Switch Management Objects</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cip/api/objects_diagnostics.html">Diagnostics Objects</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">Modbus</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../modbus/modbusclient.html">Modbus Interaction (rwq)</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../modbus/api.html">API Reference</a></li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">OPC-UA</span></p>
+<ul class="current">
+<li class="toctree-l1 _expand"><a class="reference internal" href="opcuaclient.html">Basic Client</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">API Reference</a></li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">ACSE / X.227</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../acse/api.html">API Reference</a></li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">COPP / X.226 / ISO 8823</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../copp/api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../copp/presentation.html">ISO Presentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../copp/utils.html">Protocol Utilities</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">COSP / X.225 / ISO 8237-1</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../cosp/api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../cosp/tsdu.html">TSDU</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cosp/spdu.html">SPDU Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cosp/values.html">Parameter Values (PV)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cosp/session.html">ISO Session</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cosp/utils.html">Protocol Utilities</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">COTP / X.224</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../cotp/api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../cotp/structs.html">TPDU Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cotp/connection.html">Connection</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">TPKT Protocol (RFC1006)</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../tpkt/usage.html">Using a TPKT Wrapper</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../tpkt/api.html">API Reference</a></li>
+</ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">Development</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../../changelog.html">Changelog</a></li>
+</ul>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="lside-overlay js-menu" role="button" aria-label="Close left sidebar" aria-controls="lside" aria-expanded="false"></div>
+  <aside id="rside" class="sy-rside pb-3 w-64 shrink-0 order-last">
+    <button class="rside-close js-menu xl:hidden" aria-label="Close Table of Contents" type="button" aria-controls="rside" aria-expanded="false">
+      <i class="i-lucide close"></i>
+    </button>
+    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div class="localtoc"><h3>On this page</h3><ul>
+<li><a class="reference internal" href="#icspacket.proto.opcua.connection.BrowseNode"><code class="docutils literal notranslate"><span class="pre">BrowseNode</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.opcua.connection.OPCUAProtocolError"><code class="docutils literal notranslate"><span class="pre">OPCUAProtocolError</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.opcua.connection.OPCUA_Connection"><code class="docutils literal notranslate"><span class="pre">OPCUA_Connection</span></code></a><ul>
+<li><a class="reference internal" href="#icspacket.proto.opcua.connection.OPCUA_Connection.client"><code class="docutils literal notranslate"><span class="pre">OPCUA_Connection.client</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.opcua.connection.OPCUA_Connection.connect"><code class="docutils literal notranslate"><span class="pre">OPCUA_Connection.connect()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.opcua.connection.OPCUA_Connection.close"><code class="docutils literal notranslate"><span class="pre">OPCUA_Connection.close()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.opcua.connection.OPCUA_Connection.get_node"><code class="docutils literal notranslate"><span class="pre">OPCUA_Connection.get_node()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.opcua.connection.OPCUA_Connection.read_value"><code class="docutils literal notranslate"><span class="pre">OPCUA_Connection.read_value()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.opcua.connection.OPCUA_Connection.write_value"><code class="docutils literal notranslate"><span class="pre">OPCUA_Connection.write_value()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.opcua.connection.OPCUA_Connection.browse"><code class="docutils literal notranslate"><span class="pre">OPCUA_Connection.browse()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.opcua.connection.OPCUA_Connection.browse_details"><code class="docutils literal notranslate"><span class="pre">OPCUA_Connection.browse_details()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.opcua.connection.OPCUA_Connection.create_subscription"><code class="docutils literal notranslate"><span class="pre">OPCUA_Connection.create_subscription()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#icspacket.proto.opcua.connection.OPCUA_Subscription"><code class="docutils literal notranslate"><span class="pre">OPCUA_Subscription</span></code></a><ul>
+<li><a class="reference internal" href="#icspacket.proto.opcua.connection.OPCUA_Subscription.next_event"><code class="docutils literal notranslate"><span class="pre">OPCUA_Subscription.next_event()</span></code></a></li>
+<li><a class="reference internal" href="#icspacket.proto.opcua.connection.OPCUA_Subscription.close"><code class="docutils literal notranslate"><span class="pre">OPCUA_Subscription.close()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#icspacket.proto.opcua.connection.discover_endpoints"><code class="docutils literal notranslate"><span class="pre">discover_endpoints()</span></code></a></li>
+</ul>
+</div><a class="js-repo-stats repo-stats flex items-center" href="https://github.com/MatrixEditor/icspacket"
+  data-type="github" data-user="MatrixEditor" data-repo="icspacket">
+  <span class="w-8 flex items-center justify-around shrink-0 text-3xl">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </span>
+  <span class="flex-grow px-2 break-all">
+    <span style="font-size: small;">MatrixEditor/icspacket</span>
+    <span class="flex text-sm repo-stats-count">
+      <span class="flex items-center pr-3">
+        <iconify-icon icon="lucide:star"></iconify-icon>
+        <strong class="js-repo-stars ml-1">0</strong>
+      </span>
+      <span class="flex items-center">
+        <iconify-icon icon="lucide:git-fork"></iconify-icon>
+        <strong class="js-repo-forks ml-1">0</strong>
+      </span>
+    </span>
+  </span>
+</a><div class="edit-this-page">
+  <a href="https://github.com/MatrixEditor/icspacket/blob/main/docs/protocols/opcua/api.rst">Edit this page</a>
+</div></div>
+  </aside>
+  <div class="rside-overlay js-menu" role="button" aria-label="Close Table of Contents" aria-controls="rside" aria-expanded="false"></div>
+  <main class="sy-main w-full max-sm:max-w-full print:pt-6">
+<div class="sy-breadcrumbs" role="navigation">
+  <div class="sy-breadcrumbs-inner flex items-center">
+    <div class="md:hidden mr-3">
+      <button class="js-menu" aria-label="Menu" type="button" aria-controls="lside" aria-expanded="false">
+        <i class="i-lucide menu"></i>
+      </button>
+    </div>
+    <ol class="flex-1" itemscope itemtype="https://schema.org/BreadcrumbList"><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="../../index.html"><span itemprop="name">icspacket</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="1" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <strong itemprop="name">API Reference</strong>
+        <meta itemprop="position" content="2" />
+      </li></ol>
+    <div class="xl:hidden ml-1">
+      <button class="js-menu" aria-label="Show table of contents" type="button" aria-controls="rside"
+        aria-expanded="false">
+        <i class="i-lucide outdent"></i>
+      </button>
+    </div>
+  </div>
+</div><div class="flex flex-col break-words justify-between">
+      <div class="relative min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
+  <div class="copy-page-wrapper relative pb-4 lg:absolute lg:top-8 lg:right-6 xl:right-12">
+  <div id="copy-page-trigger">
+    <button
+      type="button"
+      class="js-copy px-3 py-1 inline-flex items-center gap-1"
+      data-url="https://raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/protocols/opcua/api.rst"
+    >
+      <i class="i-lucide" data-icon="copy"></i>
+      <span>Copy page</span>
+    </button>
+    <button class="js-menu px-2 py-1" type="button" aria-label="More actions"
+      aria-haspopup="menu" aria-expanded="false" aria-controls="copy-page-content">
+      <i class="i-lucide chevron-down"></i>
+    </button>
+  </div>
+  <div id="copy-page-content" role="menu" aria-orientation="vertical" aria-hidden="true">
+    <div role="presentation">
+      <div class="flex flex-col" role="group">
+        <button class="js-copy" type="button" role="menuitem"
+          data-url="https://raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/protocols/opcua/api.rst">
+          <span class="iconify-icon">
+            <i class="i-lucide" data-icon="copy"></i>
+          </span>
+          <span>Copy page</span>
+        </button>
+        <a role="menuitem" href="https://raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/protocols/opcua/api.rst" target="_blank" rel="nofollow"><iconify-icon icon="bi:code-slash"></iconify-icon>
+            <span>View Source</span></a><a role="menuitem" href="https://chatgpt.com/?hints=search&q=Read%20https%3A//raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/protocols/opcua/api.rst%20so%20I%20can%20ask%20questions%20about%20it." target="_blank" rel="nofollow">
+          <iconify-icon icon="bi:openai"></iconify-icon>
+          <span>Open in ChatGPT</span>
+        </a><a role="menuitem" href="https://claude.ai/new?q=Read%20https%3A//raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/protocols/opcua/api.rst%20so%20I%20can%20ask%20questions%20about%20it." target="_blank" rel="nofollow">
+          <iconify-icon icon="bi:claude"></iconify-icon>
+          <span>Open in Claude</span>
+        </a></div>
+    </div>
+  </div>
+</div><article class="yue" role="main">
+          <section id="module-icspacket.proto.opcua">
+<span id="api-reference"></span><span id="opcua-index"></span><h1>API Reference<a class="headerlink" href="#module-icspacket.proto.opcua" title="Link to this heading">#</a></h1>
+<p><strong>OPC Unified Architecture (OPC-UA)</strong></p>
+<blockquote>
+<div><p>OPC-UA is a platform-independent, service-oriented
+architecture for industrial automation and process control,
+commonly used for supervisory/SCADA-level communication with PLCs
+and other field devices.</p>
+</div></blockquote>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.3.0.</span></p>
+</div>
+<p id="module-icspacket.proto.opcua.connection">High-level OPC-UA connection wrapper built on top of <code class="xref py py-mod docutils literal notranslate"><span class="pre">asyncua</span></code>.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="icspacket.proto.opcua.connection.BrowseNode">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">icspacket.proto.opcua.connection.</span></span><span class="sig-name descname"><span class="pre">BrowseNode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">NodeId</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">browse_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">display_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">node_class</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">NodeClass</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type_definition</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">NodeId</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">children</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#icspacket.proto.opcua.connection.BrowseNode" title="icspacket.proto.opcua.connection.BrowseNode"><span class="pre">BrowseNode</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">&lt;factory&gt;</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/icspacket/proto/opcua/connection.html#BrowseNode"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.opcua.connection.BrowseNode" title="Link to this definition">#</a></dt>
+<dd><p>A node discovered while browsing an OPC-UA server’s address space, as
+returned by <a class="reference internal" href="#icspacket.proto.opcua.connection.OPCUA_Connection.browse_details" title="icspacket.proto.opcua.connection.OPCUA_Connection.browse_details"><code class="xref py py-meth docutils literal notranslate"><span class="pre">OPCUA_Connection.browse_details()</span></code></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Variables<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>node_id</strong> (<em>ua.NodeId</em>) – The node’s NodeId.</p></li>
+<li><p><strong>browse_name</strong> (<em>str</em>) – The node’s (non-localized) browse name.</p></li>
+<li><p><strong>display_name</strong> (<em>str</em>) – The node’s human-readable display name.</p></li>
+<li><p><strong>node_class</strong> (<em>ua.NodeClass</em>) – The node’s class, e.g. <code class="docutils literal notranslate"><span class="pre">Object</span></code>, <code class="docutils literal notranslate"><span class="pre">Variable</span></code> or
+<code class="docutils literal notranslate"><span class="pre">Method</span></code>.</p></li>
+<li><p><strong>type_definition</strong> (<em>ua.NodeId</em><em> | </em><em>None</em>) – The node’s type definition NodeId (e.g. the
+<code class="docutils literal notranslate"><span class="pre">VariableType</span></code>/<code class="docutils literal notranslate"><span class="pre">ObjectType</span></code> it was instantiated from), or
+<code class="docutils literal notranslate"><span class="pre">None</span></code> if it has none.</p></li>
+<li><p><strong>value</strong> (<em>Any</em>) – The node’s current value, if requested via
+<code class="docutils literal notranslate"><span class="pre">values=True</span></code> and the node is a <code class="docutils literal notranslate"><span class="pre">Variable</span></code>. <code class="docutils literal notranslate"><span class="pre">None</span></code>
+otherwise, or if the value could not be read.</p></li>
+<li><p><strong>children</strong> (<em>list</em><em>[</em><a class="reference internal" href="#icspacket.proto.opcua.connection.BrowseNode" title="icspacket.proto.opcua.connection.BrowseNode"><em>BrowseNode</em></a><em>]</em>) – Child nodes, populated only when browsed with
+<code class="docutils literal notranslate"><span class="pre">recursive=True</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="icspacket.proto.opcua.connection.OPCUAProtocolError">
+<span class="property"><span class="k"><span class="pre">exception</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">icspacket.proto.opcua.connection.</span></span><span class="sig-name descname"><span class="pre">OPCUAProtocolError</span></span><a class="reference internal" href="../../_modules/icspacket/proto/opcua/connection.html#OPCUAProtocolError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.opcua.connection.OPCUAProtocolError" title="Link to this definition">#</a></dt>
+<dd><p>Raised when an OPC-UA service request fails at the application level.</p>
+<p>This wraps errors reported by <code class="xref py py-mod docutils literal notranslate"><span class="pre">asyncua</span></code> (e.g. <code class="docutils literal notranslate"><span class="pre">BadNodeIdUnknown</span></code>,
+<code class="docutils literal notranslate"><span class="pre">BadUserAccessDenied</span></code>) so callers can catch a single icspacket
+exception type regardless of the underlying library.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="icspacket.proto.opcua.connection.OPCUA_Connection">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">icspacket.proto.opcua.connection.</span></span><span class="sig-name descname"><span class="pre">OPCUA_Connection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">4.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">username</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">password</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">security_policy</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">security_mode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'SignAndEncrypt'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">certificate</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">private_key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">private_key_password</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">server_certificate</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_certificate</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_private_key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_private_key_password</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/icspacket/proto/opcua/connection.html#OPCUA_Connection"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.opcua.connection.OPCUA_Connection" title="Link to this definition">#</a></dt>
+<dd><p>Synchronous OPC-UA client connection built on <code class="xref py py-mod docutils literal notranslate"><span class="pre">asyncua</span></code>.</p>
+<p>This class provides a thin wrapper around
+<code class="xref py py-class docutils literal notranslate"><span class="pre">asyncua.sync.Client</span></code>, exposing node browsing/read/write as
+simple Python methods.</p>
+<p>Example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="n">conn</span> <span class="o">=</span> <span class="n">OPCUA_Connection</span><span class="p">()</span>
+</span><span data-line="2"><span class="n">conn</span><span class="o">.</span><span class="n">connect</span><span class="p">((</span><span class="s2">&quot;192.168.1.50&quot;</span><span class="p">,</span> <span class="mi">4840</span><span class="p">))</span>
+</span><span data-line="3"><span class="n">value</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">read_value</span><span class="p">(</span><span class="s2">&quot;ns=2;i=2&quot;</span><span class="p">)</span>
+</span><span data-line="4"><span class="n">conn</span><span class="o">.</span><span class="n">write_value</span><span class="p">(</span><span class="s2">&quot;ns=2;i=3&quot;</span><span class="p">,</span> <span class="s2">&quot;FAULT&quot;</span><span class="p">)</span>
+</span><span data-line="5"><span class="n">conn</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</span></pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>NodeId syntax is entirely server-defined: some servers assign
+numeric identifiers (<code class="docutils literal notranslate"><span class="pre">ns=2;i=2</span></code>), others string identifiers
+(<code class="docutils literal notranslate"><span class="pre">ns=2;s=Device1.Temperature</span></code>). Use <a class="reference internal" href="#icspacket.proto.opcua.connection.OPCUA_Connection.browse" title="icspacket.proto.opcua.connection.OPCUA_Connection.browse"><code class="xref py py-meth docutils literal notranslate"><span class="pre">browse()</span></code></a> (or
+<a class="reference internal" href="#icspacket.proto.opcua.connection.discover_endpoints" title="icspacket.proto.opcua.connection.discover_endpoints"><code class="xref py py-func docutils literal notranslate"><span class="pre">discover_endpoints()</span></code></a> for a server’s security settings) to
+find the actual identifiers exposed by a given server instead of
+assuming either form.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>timeout</strong> (<em>float</em>) – Timeout in seconds for OPC-UA service calls.</p></li>
+<li><p><strong>username</strong> (<em>str</em><em> | </em><em>None</em>) – Optional username for username/password authentication.</p></li>
+<li><p><strong>password</strong> (<em>str</em><em> | </em><em>None</em>) – Optional password for username/password authentication.</p></li>
+<li><p><strong>security_policy</strong> (<em>str</em><em> | </em><em>None</em>) – Secure channel security policy name, e.g.
+<code class="docutils literal notranslate"><span class="pre">&quot;Basic256Sha256&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;Aes128Sha256RsaOaep&quot;</span></code> or
+<code class="docutils literal notranslate"><span class="pre">&quot;Aes256Sha256RsaPss&quot;</span></code>. <code class="docutils literal notranslate"><span class="pre">None</span></code> (the default) disables
+secure channel security entirely (<code class="docutils literal notranslate"><span class="pre">SecurityPolicy#None</span></code>).</p></li>
+<li><p><strong>security_mode</strong> (<em>str</em>) – Message security mode to request, <code class="docutils literal notranslate"><span class="pre">&quot;Sign&quot;</span></code>
+or <code class="docutils literal notranslate"><span class="pre">&quot;SignAndEncrypt&quot;</span></code>. Only relevant when <code class="docutils literal notranslate"><span class="pre">security_policy</span></code>
+is set.</p></li>
+<li><p><strong>certificate</strong> (<em>str</em><em> | </em><em>None</em>) – Path to the client’s application instance
+certificate (PEM/DER), required when <code class="docutils literal notranslate"><span class="pre">security_policy</span></code> is set.</p></li>
+<li><p><strong>private_key</strong> (<em>str</em><em> | </em><em>None</em>) – Path to the private key matching
+<code class="docutils literal notranslate"><span class="pre">certificate</span></code>, required when <code class="docutils literal notranslate"><span class="pre">security_policy</span></code> is set.</p></li>
+<li><p><strong>private_key_password</strong> (<em>str</em><em> | </em><em>None</em>) – Password protecting <code class="docutils literal notranslate"><span class="pre">private_key</span></code>,
+if it is encrypted.</p></li>
+<li><p><strong>server_certificate</strong> (<em>str</em><em> | </em><em>None</em>) – Expected server certificate (PEM/DER).
+If omitted, it is auto-discovered via an unauthenticated
+<code class="docutils literal notranslate"><span class="pre">GetEndpoints</span></code> call, matching the requested policy/mode.</p></li>
+<li><p><strong>user_certificate</strong> (<em>str</em><em> | </em><em>None</em>) – Certificate used for X509 user identity
+token authentication (distinct from channel security). Defaults
+to <code class="docutils literal notranslate"><span class="pre">certificate</span></code> when unset and <code class="docutils literal notranslate"><span class="pre">user_private_key</span></code> is given.</p></li>
+<li><p><strong>user_private_key</strong> (<em>str</em><em> | </em><em>None</em>) – Private key matching <code class="docutils literal notranslate"><span class="pre">user_certificate</span></code>.
+Defaults to <code class="docutils literal notranslate"><span class="pre">private_key</span></code> when unset.</p></li>
+<li><p><strong>user_private_key_password</strong> (<em>str</em><em> | </em><em>None</em>) – Password protecting
+<code class="docutils literal notranslate"><span class="pre">user_private_key</span></code>, if it is encrypted.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="icspacket.proto.opcua.connection.OPCUA_Connection.client">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">client</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Client</span></span><a class="headerlink" href="#icspacket.proto.opcua.connection.OPCUA_Connection.client" title="Link to this definition">#</a></dt>
+<dd><p>The underlying <code class="xref py py-class docutils literal notranslate"><span class="pre">asyncua.sync.Client</span></code> instance.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.opcua.connection.OPCUA_Connection.connect">
+<span class="sig-name descname"><span class="pre">connect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">address</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../../_modules/icspacket/proto/opcua/connection.html#OPCUA_Connection.connect"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.opcua.connection.OPCUA_Connection.connect" title="Link to this definition">#</a></dt>
+<dd><p>Connect and create a session with an OPC-UA server.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>address</strong> (<em>tuple</em><em>[</em><em>str</em><em>, </em><em>int</em><em>] </em><em>| </em><em>str</em>) – Either a full <code class="docutils literal notranslate"><span class="pre">opc.tcp://host:port[/path]</span></code>
+endpoint URL, or a plain <code class="docutils literal notranslate"><span class="pre">(host,</span> <span class="pre">port)</span></code> tuple.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="../../getting-started/coreapi.html#icspacket.core.connection.ConnectionError" title="icspacket.core.connection.ConnectionError"><strong>ConnectionError</strong></a> – If the connection or session creation
+fails, or if the security configuration is incomplete/invalid.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.opcua.connection.OPCUA_Connection.close">
+<span class="sig-name descname"><span class="pre">close</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../../_modules/icspacket/proto/opcua/connection.html#OPCUA_Connection.close"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.opcua.connection.OPCUA_Connection.close" title="Link to this definition">#</a></dt>
+<dd><p>Disconnect the OPC-UA session and secure channel.</p>
+<p>Idempotent: calling this more than once, or before a connection
+was ever established, is a no-op.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="../../getting-started/coreapi.html#icspacket.core.connection.ConnectionClosedError" title="icspacket.core.connection.ConnectionClosedError"><strong>ConnectionClosedError</strong></a> – If the underlying client reports
+the connection as already/unexpectedly closed.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.opcua.connection.OPCUA_Connection.get_node">
+<span class="sig-name descname"><span class="pre">get_node</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">NodeId</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">SyncNode</span></span></span><a class="reference internal" href="../../_modules/icspacket/proto/opcua/connection.html#OPCUA_Connection.get_node"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.opcua.connection.OPCUA_Connection.get_node" title="Link to this definition">#</a></dt>
+<dd><p>Resolve a node by its NodeId string (e.g. <code class="docutils literal notranslate"><span class="pre">ns=2;s=MyVariable</span></code>).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>node_id</strong> (<em>str</em><em> | </em><em>ua.NodeId</em>) – NodeId string or <code class="xref py py-class docutils literal notranslate"><span class="pre">NodeId</span></code> instance.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The resolved node handle.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>SyncNode</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.opcua.connection.OPCUA_Connection.read_value">
+<span class="sig-name descname"><span class="pre">read_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">NodeId</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Any</span></span></span><a class="reference internal" href="../../_modules/icspacket/proto/opcua/connection.html#OPCUA_Connection.read_value"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.opcua.connection.OPCUA_Connection.read_value" title="Link to this definition">#</a></dt>
+<dd><p>Read the current value of a node’s Value attribute.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>node_id</strong> (<em>str</em><em> | </em><em>ua.NodeId</em>) – Target node’s NodeId.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The decoded Python value.</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#icspacket.proto.opcua.connection.OPCUAProtocolError" title="icspacket.proto.opcua.connection.OPCUAProtocolError"><strong>OPCUAProtocolError</strong></a> – If the read service call fails.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.opcua.connection.OPCUA_Connection.write_value">
+<span class="sig-name descname"><span class="pre">write_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">NodeId</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../../_modules/icspacket/proto/opcua/connection.html#OPCUA_Connection.write_value"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.opcua.connection.OPCUA_Connection.write_value" title="Link to this definition">#</a></dt>
+<dd><p>Write a value to a node’s Value attribute.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>node_id</strong> (<em>str</em><em> | </em><em>ua.NodeId</em>) – Target node’s NodeId.</p></li>
+<li><p><strong>value</strong> – New value to write (a plain Python value or a
+<code class="xref py py-class docutils literal notranslate"><span class="pre">Variant</span></code>).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#icspacket.proto.opcua.connection.OPCUAProtocolError" title="icspacket.proto.opcua.connection.OPCUAProtocolError"><strong>OPCUAProtocolError</strong></a> – If the write service call fails.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.opcua.connection.OPCUA_Connection.browse">
+<span class="sig-name descname"><span class="pre">browse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">NodeId</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">SyncNode</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../../_modules/icspacket/proto/opcua/connection.html#OPCUA_Connection.browse"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.opcua.connection.OPCUA_Connection.browse" title="Link to this definition">#</a></dt>
+<dd><p>List the children of a node (or the Objects folder by default).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>node_id</strong> (<em>str</em><em> | </em><em>ua.NodeId</em><em> | </em><em>None</em>) – NodeId to browse, or <code class="docutils literal notranslate"><span class="pre">None</span></code> for the root
+<code class="docutils literal notranslate"><span class="pre">Objects</span></code> folder.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Child node handles.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[SyncNode]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.opcua.connection.OPCUA_Connection.browse_details">
+<span class="sig-name descname"><span class="pre">browse_details</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">NodeId</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">recursive</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_depth</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">values</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#icspacket.proto.opcua.connection.BrowseNode" title="icspacket.proto.opcua.connection.BrowseNode"><span class="pre">BrowseNode</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../../_modules/icspacket/proto/opcua/connection.html#OPCUA_Connection.browse_details"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.opcua.connection.OPCUA_Connection.browse_details" title="Link to this definition">#</a></dt>
+<dd><p>List a node’s children with rich per-node metadata attached.</p>
+<p>Unlike <a class="reference internal" href="#icspacket.proto.opcua.connection.OPCUA_Connection.browse" title="icspacket.proto.opcua.connection.OPCUA_Connection.browse"><code class="xref py py-meth docutils literal notranslate"><span class="pre">browse()</span></code></a>, which only returns bare node handles (one
+extra round-trip per child is then needed just to resolve a
+name), this issues a single <code class="docutils literal notranslate"><span class="pre">Browse</span></code> service call per level to
+retrieve every child’s NodeId, BrowseName, DisplayName,
+NodeClass and TypeDefinition together.</p>
+<p>Example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="n">conn</span> <span class="o">=</span> <span class="n">OPCUA_Connection</span><span class="p">()</span>
+</span><span data-line="2"><span class="n">conn</span><span class="o">.</span><span class="n">connect</span><span class="p">((</span><span class="s2">&quot;192.168.1.50&quot;</span><span class="p">,</span> <span class="mi">4840</span><span class="p">))</span>
+</span><span data-line="3"><span class="k">for</span> <span class="n">child</span> <span class="ow">in</span> <span class="n">conn</span><span class="o">.</span><span class="n">browse_details</span><span class="p">(</span><span class="n">recursive</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+</span><span data-line="4">    <span class="nb">print</span><span class="p">(</span><span class="n">child</span><span class="p">)</span>
+</span></pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>node_id</strong> (<em>str</em><em> | </em><em>ua.NodeId</em><em> | </em><em>None</em>) – NodeId to browse, or <code class="docutils literal notranslate"><span class="pre">None</span></code> for the root
+<code class="docutils literal notranslate"><span class="pre">Objects</span></code> folder.</p></li>
+<li><p><strong>recursive</strong> (<em>bool</em>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, also recursively browse every
+discovered child, building a full tree instead of a single
+level. A node reachable via more than one reference path
+(or an outright reference cycle) is only ever expanded once;
+repeat occurrences are still listed, just without children.</p></li>
+<li><p><strong>max_depth</strong> (<em>int</em>) – Maximum number of levels to descend when
+<code class="docutils literal notranslate"><span class="pre">recursive</span></code> is set (ignored otherwise). A server’s address
+space can be very large (e.g. the standard <code class="docutils literal notranslate"><span class="pre">Server</span></code>
+diagnostics subtree), so this bounds a scan’s depth by
+default.</p></li>
+<li><p><strong>values</strong> (<em>bool</em>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, also read and attach the current
+value of every <code class="docutils literal notranslate"><span class="pre">Variable</span></code> node encountered (one extra
+round-trip per variable). A failed read (e.g. no read
+access) is ignored, leaving <code class="xref py py-attr docutils literal notranslate"><span class="pre">BrowseNode.value</span></code> as
+<code class="docutils literal notranslate"><span class="pre">None</span></code> rather than aborting the browse.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The requested node’s children, in server-defined
+order, with <code class="docutils literal notranslate"><span class="pre">.children</span></code> populated recursively when
+<code class="docutils literal notranslate"><span class="pre">recursive</span></code> is set.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[<a class="reference internal" href="#icspacket.proto.opcua.connection.BrowseNode" title="icspacket.proto.opcua.connection.BrowseNode">BrowseNode</a>]</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#icspacket.proto.opcua.connection.OPCUAProtocolError" title="icspacket.proto.opcua.connection.OPCUAProtocolError"><strong>OPCUAProtocolError</strong></a> – If browsing fails.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.opcua.connection.OPCUA_Connection.create_subscription">
+<span class="sig-name descname"><span class="pre">create_subscription</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node_ids</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">NodeId</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interval</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">500.0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#icspacket.proto.opcua.connection.OPCUA_Subscription" title="icspacket.proto.opcua.connection.OPCUA_Subscription"><span class="pre">OPCUA_Subscription</span></a></span></span><a class="reference internal" href="../../_modules/icspacket/proto/opcua/connection.html#OPCUA_Connection.create_subscription"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.opcua.connection.OPCUA_Connection.create_subscription" title="Link to this definition">#</a></dt>
+<dd><p>Create a data-change subscription for one or more nodes.</p>
+<p>The returned <a class="reference internal" href="#icspacket.proto.opcua.connection.OPCUA_Subscription" title="icspacket.proto.opcua.connection.OPCUA_Subscription"><code class="xref py py-class docutils literal notranslate"><span class="pre">OPCUA_Subscription</span></code></a> operates in
+“iterator mode”: notifications are buffered internally by
+<code class="xref py py-mod docutils literal notranslate"><span class="pre">asyncua</span></code> and retrieved on demand via
+<a class="reference internal" href="#icspacket.proto.opcua.connection.OPCUA_Subscription.next_event" title="icspacket.proto.opcua.connection.OPCUA_Subscription.next_event"><code class="xref py py-meth docutils literal notranslate"><span class="pre">OPCUA_Subscription.next_event()</span></code></a> or by iterating over it
+directly, rather than via a registered callback handler.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>node_ids</strong> (<em>Sequence</em><em>[</em><em>str</em><em> | </em><em>ua.NodeId</em><em>]</em>) – One or more NodeIds to monitor for value changes.</p></li>
+<li><p><strong>interval</strong> (<em>float</em>) – Requested publishing interval in milliseconds.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A handle yielding data-change events as they arrive.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#icspacket.proto.opcua.connection.OPCUA_Subscription" title="icspacket.proto.opcua.connection.OPCUA_Subscription">OPCUA_Subscription</a></p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#icspacket.proto.opcua.connection.OPCUAProtocolError" title="icspacket.proto.opcua.connection.OPCUAProtocolError"><strong>OPCUAProtocolError</strong></a> – If the subscription cannot be created.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="icspacket.proto.opcua.connection.OPCUA_Subscription">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">icspacket.proto.opcua.connection.</span></span><span class="sig-name descname"><span class="pre">OPCUA_Subscription</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">subscription</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Subscription</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/icspacket/proto/opcua/connection.html#OPCUA_Subscription"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.opcua.connection.OPCUA_Subscription" title="Link to this definition">#</a></dt>
+<dd><p>Handle for an active OPC-UA data-change subscription.</p>
+<p>Returned by <a class="reference internal" href="#icspacket.proto.opcua.connection.OPCUA_Connection.create_subscription" title="icspacket.proto.opcua.connection.OPCUA_Connection.create_subscription"><code class="xref py py-meth docutils literal notranslate"><span class="pre">OPCUA_Connection.create_subscription()</span></code></a>. Wraps
+<code class="xref py py-class docutils literal notranslate"><span class="pre">asyncua.sync.Subscription</span></code> in iterator mode: no callback
+handler is registered, notifications are buffered internally and
+retrieved on demand.</p>
+<p>Example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="n">sub</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">create_subscription</span><span class="p">([</span><span class="s2">&quot;ns=2;i=2&quot;</span><span class="p">,</span> <span class="s2">&quot;ns=2;i=3&quot;</span><span class="p">])</span>
+</span><span data-line="2"><span class="k">for</span> <span class="n">event</span> <span class="ow">in</span> <span class="n">sub</span><span class="p">:</span>
+</span><span data-line="3">    <span class="nb">print</span><span class="p">(</span><span class="n">event</span><span class="o">.</span><span class="n">node</span><span class="p">,</span> <span class="n">event</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+</span><span data-line="4"><span class="n">sub</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</span></pre></div>
+</div>
+<p>Also usable as a context manager, which calls <a class="reference internal" href="#icspacket.proto.opcua.connection.OPCUA_Subscription.close" title="icspacket.proto.opcua.connection.OPCUA_Subscription.close"><code class="xref py py-meth docutils literal notranslate"><span class="pre">close()</span></code></a> on exit:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="k">with</span> <span class="n">conn</span><span class="o">.</span><span class="n">create_subscription</span><span class="p">([</span><span class="s2">&quot;ns=2;i=2&quot;</span><span class="p">])</span> <span class="k">as</span> <span class="n">sub</span><span class="p">:</span>
+</span><span data-line="2">    <span class="n">event</span> <span class="o">=</span> <span class="n">sub</span><span class="o">.</span><span class="n">next_event</span><span class="p">(</span><span class="n">timeout</span><span class="o">=</span><span class="mf">5.0</span><span class="p">)</span>
+</span></pre></div>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.opcua.connection.OPCUA_Subscription.next_event">
+<span class="sig-name descname"><span class="pre">next_event</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataChangeEvent</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">OpcEvent</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">StatusChangeEvent</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="reference internal" href="../../_modules/icspacket/proto/opcua/connection.html#OPCUA_Subscription.next_event"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.opcua.connection.OPCUA_Subscription.next_event" title="Link to this definition">#</a></dt>
+<dd><p>Wait for and return the next data-change/event notification.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>timeout</strong> (<em>float</em><em> | </em><em>None</em>) – Maximum time in seconds to wait, or <code class="docutils literal notranslate"><span class="pre">None</span></code> to
+block indefinitely.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The next event, or <code class="docutils literal notranslate"><span class="pre">None</span></code> if <code class="docutils literal notranslate"><span class="pre">timeout</span></code> elapsed.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>SubEvent | None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="icspacket.proto.opcua.connection.OPCUA_Subscription.close">
+<span class="sig-name descname"><span class="pre">close</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../../_modules/icspacket/proto/opcua/connection.html#OPCUA_Subscription.close"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.opcua.connection.OPCUA_Subscription.close" title="Link to this definition">#</a></dt>
+<dd><p>Delete the subscription on the server and release resources.</p>
+<p>Idempotent: safe to call more than once.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="icspacket.proto.opcua.connection.discover_endpoints">
+<span class="sig-prename descclassname"><span class="pre">icspacket.proto.opcua.connection.</span></span><span class="sig-name descname"><span class="pre">discover_endpoints</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">address</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">4.0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">EndpointDescription</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../../_modules/icspacket/proto/opcua/connection.html#discover_endpoints"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#icspacket.proto.opcua.connection.discover_endpoints" title="Link to this definition">#</a></dt>
+<dd><p>Discover the endpoints advertised by an OPC-UA server.</p>
+<p>Performs a lightweight, sessionless <code class="docutils literal notranslate"><span class="pre">GetEndpoints</span></code> service call:
+no authentication, secure channel security, or application session
+is established. Useful for probing which security policies, modes,
+and user token types a server supports <em>before</em> configuring a full
+<a class="reference internal" href="#icspacket.proto.opcua.connection.OPCUA_Connection" title="icspacket.proto.opcua.connection.OPCUA_Connection"><code class="xref py py-class docutils literal notranslate"><span class="pre">OPCUA_Connection</span></code></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>address</strong> (<em>tuple</em><em>[</em><em>str</em><em>, </em><em>int</em><em>] </em><em>| </em><em>str</em>) – Either a full <code class="docutils literal notranslate"><span class="pre">opc.tcp://host:port[/path]</span></code>
+endpoint URL, or a plain <code class="docutils literal notranslate"><span class="pre">(host,</span> <span class="pre">port)</span></code> tuple.</p></li>
+<li><p><strong>timeout</strong> (<em>float</em>) – Timeout in seconds for the discovery call.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The list of endpoints advertised by the server.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[ua.EndpointDescription]</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="../../getting-started/coreapi.html#icspacket.core.connection.ConnectionError" title="icspacket.core.connection.ConnectionError"><strong>ConnectionError</strong></a> – If the discovery call fails.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+        </article><button class="back-to-top" type="button">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+  </svg>
+  <span>Back to top</span>
+</button><div class="navigation flex print:hidden"><div class="navigation-prev">
+    <a href="opcuaclient.html">
+      <i class="i-lucide chevron-left"></i>
+      <div class="page-info">
+        <span>Previous</span><div class="title">Basic Client</div></div>
+    </a>
+  </div><div class="navigation-next">
+    <a href="../acse/api.html">
+      <div class="page-info">
+        <span>Next</span>
+        <div class="title">API Reference</div>
+      </div>
+      <i class="i-lucide chevron-right"></i>
+    </a>
+  </div></div></div>
+    </div>
+  </main>
+</div>
+<footer class="sy-foot">
+  <div class="sy-foot-inner sy-container mx-auto">
+    <div class="sy-foot-reserved md:flex justify-between items-center">
+      <div class="sy-foot-copyright"><p>2025, MatrixEditor</p>
+  
+  <p>
+    Made with
+    
+    <a href="https://www.sphinx-doc.org/">Sphinx</a> and
+    
+    <a href="https://shibuya.lepture.com">Shibuya theme</a>.
+  </p>
+</div>
+      <div class="sy-foot-socials">
+  <a href="https://github.com/MatrixEditor/icspacket" aria-label="GitHub">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </a></div>
+    </div>
+  </div>
+</footer>
+      <script src="../../_static/documentation_options.js?v=7ce67779"></script>
+      <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+      <script src="../../_static/shibuya.js?v=50760d75"></script></body>
+</html>

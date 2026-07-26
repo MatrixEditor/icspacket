@@ -2,7 +2,7 @@
 <html lang="en" data-accent-color="lime" data-content_root="./">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Index - icspacket 0.1.dev1+gba545e582 documentation</title><link rel="index" title="Index" href="#" /><link rel="search" title="Search" href="search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Index - icspacket 0.1.dev1+g8273f2c47 documentation</title><link rel="index" title="Index" href="#" /><link rel="search" title="Search" href="search.html" />
       <link rel="canonical" href="https://matrixeditor.github.io/icspacket/genindex.html" /><script>
     function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
     setColorMode(localStorage._theme||"dark");
@@ -153,7 +153,7 @@ data-aria-dark="Switch to auto color mode">
     --maxdepth
 
       <ul>
-        <li><a href="protocols/iec61850/iedmap.html#cmdoption-maxdepth">command line option</a>
+        <li><a href="protocols/iec61850/iedmap.html#cmdoption-maxdepth">command line option</a>, <a href="protocols/opcua/opcuaclient.html#cmdoption-maxdepth">[1]</a>
 </li>
       </ul></li>
       <li>
@@ -177,13 +177,20 @@ data-aria-dark="Switch to auto color mode">
         <li><a href="protocols/cip/cipclient.html#cmdoption-no-sequence-format">command line option</a>
 </li>
       </ul></li>
+      <li>
+    --recursive
+
+      <ul>
+        <li><a href="protocols/opcua/opcuaclient.html#cmdoption-r">command line option</a>
+</li>
+      </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     --values
 
       <ul>
-        <li><a href="protocols/iec61850/iedmap.html#cmdoption-V">command line option</a>
+        <li><a href="protocols/iec61850/iedmap.html#cmdoption-V">command line option</a>, <a href="protocols/opcua/opcuaclient.html#cmdoption-V">[1]</a>
 </li>
       </ul></li>
       <li>
@@ -236,10 +243,17 @@ data-aria-dark="Switch to auto color mode">
 </li>
       </ul></li>
       <li>
+    -r
+
+      <ul>
+        <li><a href="protocols/opcua/opcuaclient.html#cmdoption-r">command line option</a>
+</li>
+      </ul></li>
+      <li>
     -V
 
       <ul>
-        <li><a href="protocols/iec61850/iedmap.html#cmdoption-V">command line option</a>
+        <li><a href="protocols/iec61850/iedmap.html#cmdoption-V">command line option</a>, <a href="protocols/opcua/opcuaclient.html#cmdoption-V">[1]</a>
 </li>
       </ul></li>
   </ul></td>
@@ -804,10 +818,10 @@ data-aria-dark="Switch to auto color mode">
 </li>
       <li><a href="protocols/cip/api/objects_motion.html#icspacket.proto.cip.objects.motion.BlockSequencerObject.block_fault">block_fault (icspacket.proto.cip.objects.motion.BlockSequencerObject attribute)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="protocols/cip/api/objects_motion.html#icspacket.proto.cip.objects.motion.BlockSequencerObject.block_fault_code">block_fault_code (icspacket.proto.cip.objects.motion.BlockSequencerObject attribute)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="protocols/cip/api/objects_motion.html#icspacket.proto.cip.objects.motion.CommandBlockObject.block_link">block_link (icspacket.proto.cip.objects.motion.CommandBlockObject attribute)</a>
 </li>
       <li><a href="protocols/dnp3/api/variations.html#icspacket.proto.dnp3.objects.variations.DNP3ObjectG70V5.block_number">block_number (icspacket.proto.dnp3.objects.variations.DNP3ObjectG70V5 attribute)</a>
@@ -843,6 +857,12 @@ data-aria-dark="Switch to auto color mode">
       <li><a href="protocols/cip/api/objects_switch.html#icspacket.proto.cip.objects.switch.BridgeIdentifier">BridgeIdentifier (class in icspacket.proto.cip.objects.switch)</a>
 </li>
       <li><a href="protocols/dnp3/api/application.html#icspacket.proto.dnp3.application.IIN.broadcast">broadcast (icspacket.proto.dnp3.application.IIN attribute)</a>
+</li>
+      <li><a href="protocols/opcua/api.html#icspacket.proto.opcua.connection.OPCUA_Connection.browse">browse() (icspacket.proto.opcua.connection.OPCUA_Connection method)</a>
+</li>
+      <li><a href="protocols/opcua/api.html#icspacket.proto.opcua.connection.OPCUA_Connection.browse_details">browse_details() (icspacket.proto.opcua.connection.OPCUA_Connection method)</a>
+</li>
+      <li><a href="protocols/opcua/api.html#icspacket.proto.opcua.connection.BrowseNode">BrowseNode (class in icspacket.proto.opcua.connection)</a>
 </li>
       <li><a href="protocols/iec61850/api_data_classes.html#icspacket.proto.iec61850.classes.DATA_Class.BSC">BSC (icspacket.proto.iec61850.classes.DATA_Class attribute)</a>
 </li>
@@ -1163,7 +1183,11 @@ data-aria-dark="Switch to auto color mode">
       <li><a href="protocols/cip/api/objects_switch.html#icspacket.proto.cip.objects.switch.DLRObject.clear_rapid_faults">clear_rapid_faults() (icspacket.proto.cip.objects.switch.DLRObject method)</a>
 </li>
       <li><a href="protocols/modbus/api.html#icspacket.proto.modbus.connection.Modbus_Connection.client">client (icspacket.proto.modbus.connection.Modbus_Connection property)</a>
+
+      <ul>
+        <li><a href="protocols/opcua/api.html#icspacket.proto.opcua.connection.OPCUA_Connection.client">(icspacket.proto.opcua.connection.OPCUA_Connection property)</a>
 </li>
+      </ul></li>
       <li><a href="protocols/mms/api_data.html#icspacket.proto.mms.data.Timestamp.clock_failure">clock_failure (icspacket.proto.mms.data.Timestamp attribute)</a>
 </li>
       <li><a href="protocols/cip/api/objects_network.html#icspacket.proto.cip.objects.timesync.TimeSyncObject.clock_mode">clock_mode (icspacket.proto.cip.objects.timesync.TimeSyncObject attribute)</a>
@@ -1204,6 +1228,10 @@ data-aria-dark="Switch to auto color mode">
         <li><a href="protocols/mms/api_conn.html#icspacket.proto.mms.connection.MMS_Connection.close">(icspacket.proto.mms.connection.MMS_Connection method)</a>
 </li>
         <li><a href="protocols/modbus/api.html#icspacket.proto.modbus.connection.Modbus_Connection.close">(icspacket.proto.modbus.connection.Modbus_Connection method)</a>
+</li>
+        <li><a href="protocols/opcua/api.html#icspacket.proto.opcua.connection.OPCUA_Connection.close">(icspacket.proto.opcua.connection.OPCUA_Connection method)</a>
+</li>
+        <li><a href="protocols/opcua/api.html#icspacket.proto.opcua.connection.OPCUA_Subscription.close">(icspacket.proto.opcua.connection.OPCUA_Subscription method)</a>
 </li>
       </ul></li>
       <li><a href="protocols/cip/api/objects_core.html#icspacket.proto.cip.objects.connection.ConnectionConfigurationObject.close_connection">close_connection() (icspacket.proto.cip.objects.connection.ConnectionConfigurationObject method)</a>
@@ -1450,7 +1478,7 @@ data-aria-dark="Switch to auto color mode">
 </li>
         <li><a href="protocols/iec61850/iedmap.html#cmdoption-L">--list</a>
 </li>
-        <li><a href="protocols/iec61850/iedmap.html#cmdoption-maxdepth">--maxdepth</a>
+        <li><a href="protocols/iec61850/iedmap.html#cmdoption-maxdepth">--maxdepth</a>, <a href="protocols/opcua/opcuaclient.html#cmdoption-maxdepth">[1]</a>
 </li>
         <li><a href="protocols/cip/cipclient.html#cmdoption-no-header-format">--no-header-format</a>
 </li>
@@ -1458,7 +1486,9 @@ data-aria-dark="Switch to auto color mode">
 </li>
         <li><a href="protocols/cip/cipclient.html#cmdoption-no-sequence-format">--no-sequence-format</a>
 </li>
-        <li><a href="protocols/iec61850/iedmap.html#cmdoption-V">--values</a>
+        <li><a href="protocols/opcua/opcuaclient.html#cmdoption-r">--recursive</a>
+</li>
+        <li><a href="protocols/iec61850/iedmap.html#cmdoption-V">--values</a>, <a href="protocols/opcua/opcuaclient.html#cmdoption-V">[1]</a>
 </li>
         <li><a href="protocols/dnp3/dnp3dump.html#cmdoption-apdu">-apdu</a>
 </li>
@@ -1474,7 +1504,9 @@ data-aria-dark="Switch to auto color mode">
 </li>
         <li><a href="protocols/dnp3/dnp3dump.html#cmdoption-objects">-objects</a>
 </li>
-        <li><a href="protocols/iec61850/iedmap.html#cmdoption-V">-V</a>
+        <li><a href="protocols/opcua/opcuaclient.html#cmdoption-r">-r</a>
+</li>
+        <li><a href="protocols/iec61850/iedmap.html#cmdoption-V">-V</a>, <a href="protocols/opcua/opcuaclient.html#cmdoption-V">[1]</a>
 </li>
       </ul></li>
       <li><a href="protocols/cip/api/objects_motion.html#icspacket.proto.cip.objects.motion.PositionControllerSupervisorObject.command_message_type">command_message_type (icspacket.proto.cip.objects.motion.PositionControllerSupervisorObject attribute)</a>
@@ -1563,6 +1595,8 @@ data-aria-dark="Switch to auto color mode">
         <li><a href="protocols/mms/api_conn.html#icspacket.proto.mms.connection.MMS_Connection.connect">(icspacket.proto.mms.connection.MMS_Connection method)</a>
 </li>
         <li><a href="protocols/modbus/api.html#icspacket.proto.modbus.connection.Modbus_Connection.connect">(icspacket.proto.modbus.connection.Modbus_Connection method)</a>
+</li>
+        <li><a href="protocols/opcua/api.html#icspacket.proto.opcua.connection.OPCUA_Connection.connect">(icspacket.proto.opcua.connection.OPCUA_Connection method)</a>
 </li>
       </ul></li>
       <li><a href="protocols/cotp/connection.html#icspacket.proto.cotp.connection.COTP_Connection.connect_raw">connect_raw() (icspacket.proto.cotp.connection.COTP_Connection method)</a>
@@ -1868,6 +1902,8 @@ data-aria-dark="Switch to auto color mode">
       <li><a href="protocols/mms/api_data.html#icspacket.proto.mms.data.create_floating_point_value">create_floating_point_value() (in module icspacket.proto.mms.data)</a>
 </li>
       <li><a href="protocols/cip/api/objects_motion.html#icspacket.proto.cip.objects.semiconductor.SPartialPressureObject.create_range">create_range() (icspacket.proto.cip.objects.semiconductor.SPartialPressureObject method)</a>
+</li>
+      <li><a href="protocols/opcua/api.html#icspacket.proto.opcua.connection.OPCUA_Connection.create_subscription">create_subscription() (icspacket.proto.opcua.connection.OPCUA_Connection method)</a>
 </li>
       <li><a href="protocols/acse/api.html#icspacket.proto.mms.acse.Association.create_x410">create_x410() (icspacket.proto.mms.acse.Association method)</a>
 </li>
@@ -2255,6 +2291,8 @@ data-aria-dark="Switch to auto color mode">
         <li><a href="protocols/dnp3/api/variations.html#icspacket.proto.dnp3.objects.variations.DNP3ObjectG23V6.discontinuity">(icspacket.proto.dnp3.objects.variations.DNP3ObjectG23V6 attribute)</a>
 </li>
       </ul></li>
+      <li><a href="protocols/opcua/api.html#icspacket.proto.opcua.connection.discover_endpoints">discover_endpoints() (in module icspacket.proto.opcua.connection)</a>
+</li>
       <li><a href="protocols/cip/api/objects_io.html#icspacket.proto.cip.objects.group.DiscreteGroupObject">DiscreteGroupObject (class in icspacket.proto.cip.objects.group)</a>
 </li>
       <li><a href="protocols/cip/api/objects_io.html#icspacket.proto.cip.objects.group.DiscreteInputGroupObject">DiscreteInputGroupObject (class in icspacket.proto.cip.objects.group)</a>
@@ -2321,10 +2359,10 @@ data-aria-dark="Switch to auto color mode">
 </li>
       <li><a href="protocols/dnp3/api/variations.html#icspacket.proto.dnp3.objects.variations.DNP3ObjectG120V7">DNP3ObjectG120V7 (class in icspacket.proto.dnp3.objects.variations)</a>
 </li>
-      <li><a href="protocols/dnp3/api/variations.html#icspacket.proto.dnp3.objects.variations.DNP3ObjectG120V8">DNP3ObjectG120V8 (class in icspacket.proto.dnp3.objects.variations)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="protocols/dnp3/api/variations.html#icspacket.proto.dnp3.objects.variations.DNP3ObjectG120V8">DNP3ObjectG120V8 (class in icspacket.proto.dnp3.objects.variations)</a>
+</li>
       <li><a href="protocols/dnp3/api/variations.html#icspacket.proto.dnp3.objects.variations.DNP3ObjectG120V9">DNP3ObjectG120V9 (class in icspacket.proto.dnp3.objects.variations)</a>
 </li>
       <li><a href="protocols/dnp3/api/variations.html#icspacket.proto.dnp3.objects.variations.DNP3ObjectG121V1">DNP3ObjectG121V1 (class in icspacket.proto.dnp3.objects.variations)</a>
@@ -3339,10 +3377,10 @@ data-aria-dark="Switch to auto color mode">
       </ul></li>
       <li><a href="protocols/cip/api/objects_core.html#icspacket.proto.cip.objects.connmgr.ConnectionManagerObject.get_connection_data">get_connection_data() (icspacket.proto.cip.objects.connmgr.ConnectionManagerObject method)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="protocols/iec61850/api_client.html#icspacket.proto.iec61850.client.IED_Client.get_data_definition">get_data_definition() (icspacket.proto.iec61850.client.IED_Client method)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="protocols/iec61850/api_client.html#icspacket.proto.iec61850.client.IED_Client.get_data_directory">get_data_directory() (icspacket.proto.iec61850.client.IED_Client method)</a>
 </li>
       <li><a href="protocols/iec61850/api_client.html#icspacket.proto.iec61850.client.IED_Client.get_data_values">get_data_values() (icspacket.proto.iec61850.client.IED_Client method)</a>
@@ -3368,6 +3406,8 @@ data-aria-dark="Switch to auto color mode">
       <li><a href="protocols/iec61850/api_client.html#icspacket.proto.iec61850.client.IED_Client.get_logical_node_directory">get_logical_node_directory() (icspacket.proto.iec61850.client.IED_Client method)</a>
 </li>
       <li><a href="protocols/mms/api_conn.html#icspacket.proto.mms.connection.MMS_Connection.get_name_list">get_name_list() (icspacket.proto.mms.connection.MMS_Connection method)</a>
+</li>
+      <li><a href="protocols/opcua/api.html#icspacket.proto.opcua.connection.OPCUA_Connection.get_node">get_node() (icspacket.proto.opcua.connection.OPCUA_Connection method)</a>
 </li>
       <li><a href="protocols/dnp3/api/coding_utils.html#icspacket.proto.dnp3.objects.util.get_octet_string">get_octet_string() (in module icspacket.proto.dnp3.objects.util)</a>
 </li>
@@ -4072,6 +4112,20 @@ data-aria-dark="Switch to auto color mode">
 </li>
       </ul></li>
       <li>
+    icspacket.proto.opcua
+
+      <ul>
+        <li><a href="protocols/opcua/api.html#module-icspacket.proto.opcua">module</a>
+</li>
+      </ul></li>
+      <li>
+    icspacket.proto.opcua.connection
+
+      <ul>
+        <li><a href="protocols/opcua/api.html#module-icspacket.proto.opcua.connection">module</a>
+</li>
+      </ul></li>
+      <li>
     icspacket.proto.tpkt
 
       <ul>
@@ -4090,12 +4144,12 @@ data-aria-dark="Switch to auto color mode">
 </li>
       <li><a href="protocols/cip/api/objects_core.html#icspacket.proto.cip.objects.identity.IdentityAttributes">IdentityAttributes (class in icspacket.proto.cip.objects.identity)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="protocols/cip/api/objects_core.html#icspacket.proto.cip.objects.identity.IdentityObject">IdentityObject (class in icspacket.proto.cip.objects.identity)</a>
 </li>
       <li><a href="protocols/cip/api/messaging.html#icspacket.proto.cip.io.CIPIO_Connection.IDLE">IDLE (icspacket.proto.cip.io.CIPIO_Connection attribute)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="protocols/cip/api/objects_io.html#icspacket.proto.cip.objects.group.AnalogOutputGroupObject.idle_action">idle_action (icspacket.proto.cip.objects.group.AnalogOutputGroupObject attribute)</a>
 
       <ul>
@@ -5058,14 +5112,14 @@ data-aria-dark="Switch to auto color mode">
 </li>
       <li><a href="protocols/cosp/values.html#icspacket.proto.iso_ses.values.PV_SessionRequirements.minor_sync">minor_sync (icspacket.proto.iso_ses.values.PV_SessionRequirements attribute)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="protocols/iec104/api/objects.html#icspacket.proto.iec104.objects.elements.CP24Time2a.minute">minute (icspacket.proto.iec104.objects.elements.CP24Time2a property)</a>
 
       <ul>
         <li><a href="protocols/iec104/api/objects.html#icspacket.proto.iec104.objects.elements.CP56Time2a.minute">(icspacket.proto.iec104.objects.elements.CP56Time2a property)</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="protocols/cotp/structs.html#icspacket.proto.cotp.structs.TPDU_DisconnectReason.MISMATCHED_REFERENCES">MISMATCHED_REFERENCES (icspacket.proto.cotp.structs.TPDU_DisconnectReason attribute)</a>
 </li>
       <li><a href="protocols/iec61850/api_client.html#icspacket.proto.iec61850.client.IED_Client.mms_conn">mms_conn (icspacket.proto.iec61850.client.IED_Client property)</a>
@@ -5248,6 +5302,10 @@ data-aria-dark="Switch to auto color mode">
 </li>
         <li><a href="protocols/modbus/api.html#module-icspacket.proto.modbus.connection">icspacket.proto.modbus.connection</a>
 </li>
+        <li><a href="protocols/opcua/api.html#module-icspacket.proto.opcua">icspacket.proto.opcua</a>
+</li>
+        <li><a href="protocols/opcua/api.html#module-icspacket.proto.opcua.connection">icspacket.proto.opcua.connection</a>
+</li>
         <li><a href="protocols/tpkt/api.html#module-icspacket.proto.tpkt">icspacket.proto.tpkt</a>
 </li>
       </ul></li>
@@ -5389,6 +5447,8 @@ data-aria-dark="Switch to auto color mode">
 </li>
       <li><a href="protocols/iec104/api/apci.html#icspacket.proto.iec104.apci.ControlField.new_u">new_u() (icspacket.proto.iec104.apci.ControlField static method)</a>
 </li>
+      <li><a href="protocols/opcua/api.html#icspacket.proto.opcua.connection.OPCUA_Subscription.next_event">next_event() (icspacket.proto.opcua.connection.OPCUA_Subscription method)</a>
+</li>
       <li><a href="protocols/mms/api_conn.html#icspacket.proto.mms.connection.MMS_Connection.next_invoke_id">next_invoke_id (icspacket.proto.mms.connection.MMS_Connection property)</a>
 </li>
       <li><a href="protocols/cotp/structs.html#icspacket.proto.cotp.structs.TPDU_DataAcknowledgement.next_nr">next_nr (icspacket.proto.cotp.structs.TPDU_DataAcknowledgement attribute)</a>
@@ -5405,10 +5465,10 @@ data-aria-dark="Switch to auto color mode">
 </li>
       <li><a href="protocols/cip/api/objects_switch.html#icspacket.proto.cip.objects.switch.PRPObject.node_name">node_name (icspacket.proto.cip.objects.switch.PRPObject attribute)</a>
 </li>
-      <li><a href="protocols/cip/api/objects_switch.html#icspacket.proto.cip.objects.switch.PRPObject.node_type">node_type (icspacket.proto.cip.objects.switch.PRPObject attribute)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="protocols/cip/api/objects_switch.html#icspacket.proto.cip.objects.switch.PRPObject.node_type">node_type (icspacket.proto.cip.objects.switch.PRPObject attribute)</a>
+</li>
       <li><a href="protocols/cip/api/objects_switch.html#icspacket.proto.cip.objects.switch.NodeAddress">NodeAddress (class in icspacket.proto.cip.objects.switch)</a>
 </li>
       <li><a href="protocols/cotp/structs.html#icspacket.proto.cotp.structs.TPDU_AdditionalOptions.non_blocking">non_blocking (icspacket.proto.cotp.structs.TPDU_AdditionalOptions attribute)</a>
@@ -5849,6 +5909,12 @@ data-aria-dark="Switch to auto color mode">
         <li><a href="protocols/dnp3/api/variations.html#icspacket.proto.dnp3.objects.variations.DNP3ObjectG12V2.op_type">(icspacket.proto.dnp3.objects.variations.DNP3ObjectG12V2 attribute)</a>
 </li>
       </ul></li>
+      <li><a href="protocols/opcua/api.html#icspacket.proto.opcua.connection.OPCUA_Connection">OPCUA_Connection (class in icspacket.proto.opcua.connection)</a>
+</li>
+      <li><a href="protocols/opcua/api.html#icspacket.proto.opcua.connection.OPCUA_Subscription">OPCUA_Subscription (class in icspacket.proto.opcua.connection)</a>
+</li>
+      <li><a href="protocols/opcua/api.html#icspacket.proto.opcua.connection.OPCUAProtocolError">OPCUAProtocolError</a>
+</li>
       <li><a href="protocols/cip/api/messaging.html#icspacket.proto.cip.io.CIPIO_Connection.open">open() (icspacket.proto.cip.io.CIPIO_Connection method)</a>
 </li>
       <li><a href="protocols/cip/api/objects_core.html#icspacket.proto.cip.objects.connection.ConnectionConfigurationObject.open_connection">open_connection() (icspacket.proto.cip.objects.connection.ConnectionConfigurationObject method)</a>
@@ -6831,6 +6897,8 @@ data-aria-dark="Switch to auto color mode">
         <li><a href="protocols/cip/api/objects_motion.html#icspacket.proto.cip.objects.semiconductor.SAnalogActuatorObject.read_value">(icspacket.proto.cip.objects.semiconductor.SAnalogActuatorObject method)</a>
 </li>
         <li><a href="protocols/cip/api/objects_motion.html#icspacket.proto.cip.objects.semiconductor.SAnalogSensorObject.read_value">(icspacket.proto.cip.objects.semiconductor.SAnalogSensorObject method)</a>
+</li>
+        <li><a href="protocols/opcua/api.html#icspacket.proto.opcua.connection.OPCUA_Connection.read_value">(icspacket.proto.opcua.connection.OPCUA_Connection method)</a>
 </li>
       </ul></li>
       <li><a href="protocols/mms/api_conn.html#icspacket.proto.mms.connection.MMS_Connection.read_variables">read_variables() (icspacket.proto.mms.connection.MMS_Connection method)</a>
@@ -9748,6 +9816,8 @@ data-aria-dark="Switch to auto color mode">
 </li>
         <li><a href="protocols/cip/api/objects_motion.html#icspacket.proto.cip.objects.semiconductor.SAnalogSensorObject.write_value">(icspacket.proto.cip.objects.semiconductor.SAnalogSensorObject method)</a>
 </li>
+        <li><a href="protocols/opcua/api.html#icspacket.proto.opcua.connection.OPCUA_Connection.write_value">(icspacket.proto.opcua.connection.OPCUA_Connection method)</a>
+</li>
       </ul></li>
       <li><a href="protocols/mms/api_conn.html#icspacket.proto.mms.connection.MMS_Connection.write_variable">write_variable() (icspacket.proto.mms.connection.MMS_Connection method)</a>
 </li>
@@ -9823,7 +9893,7 @@ data-aria-dark="Switch to auto color mode">
     </div>
   </div>
 </footer>
-      <script src="_static/documentation_options.js?v=f1e5c83a"></script>
+      <script src="_static/documentation_options.js?v=7ce67779"></script>
       <script src="_static/doctools.js?v=fd6eb6e6"></script>
       <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
       <script src="_static/clipboard.min.js?v=a7894cd8"></script>

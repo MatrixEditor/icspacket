@@ -2,8 +2,8 @@
 <html lang="en" data-accent-color="lime" data-content_root="../../">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>API Reference - icspacket 0.1.dev1+g8273f2c47 documentation</title><link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="Link Layer" href="api/link.html" /><link rel="prev" title="Resolve Link Addresses" href="dnp3resolve.html" />
-      <link rel="canonical" href="https://matrixeditor.github.io/icspacket/protocols/dnp3/api.html" /><script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Basic Client - icspacket 0.1.dev1+g8273f2c47 documentation</title><link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="API Reference" href="api.html" /><link rel="prev" title="API Reference" href="../modbus/api.html" />
+      <link rel="canonical" href="https://matrixeditor.github.io/icspacket/protocols/opcua/opcuaclient.html" /><script>
     function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
     setColorMode(localStorage._theme||"dark");
   </script><link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=e1a1ceaf" />
@@ -22,8 +22,8 @@
 </style>
     
   <meta property="og:type" content="website"/>
-  <meta property="og:url" content="https://matrixeditor.github.io/icspacket/protocols/dnp3/api.html"/>
-  <meta property="og:title" content="API Reference"/>
+  <meta property="og:url" content="https://matrixeditor.github.io/icspacket/protocols/opcua/opcuaclient.html"/>
+  <meta property="og:title" content="Basic Client"/>
     <meta name="twitter:card" content="summary"/>
   </head>
 <body><div class="sy-head">
@@ -43,7 +43,7 @@
         <ul id="nav-children-1" aria-labelledby="nav-trigger-1"><li><a href="../mms/examples.html">
                 <span>MMS Utilities</span>
                 <small>Manufacturing Message Specification tools</small>
-              </a></li><li><a href="examples.html">
+              </a></li><li><a href="../dnp3/examples.html">
                 <span>DNP3 Tools</span>
                 <small>DNP3 utilities and tools</small>
               </a></li><li><a href="../iec61850/iedmap.html">
@@ -105,20 +105,20 @@ data-aria-dark="Switch to auto color mode">
 <li class="toctree-l1 _expand"><a class="reference internal" href="../../getting-started/coreapi.html">Core API Reference</a></li>
 </ul>
 <p class="caption" role="heading" aria-level="3"><span class="caption-text">DNP3 / IEEE 1815</span></p>
-<ul class="current">
-<li class="toctree-l1 _expand"><a class="reference internal" href="dnp3read.html">Reading Objects</a></li>
-<li class="toctree-l1 _expand"><a class="reference internal" href="dnp3dump.html">Dumping Objects</a></li>
-<li class="toctree-l1 _expand"><a class="reference internal" href="dnp3resolve.html">Resolve Link Addresses</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">API Reference</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="api/link.html">Link Layer</a></li>
-<li class="toctree-l2"><a class="reference internal" href="api/transport.html">Transport Layer</a></li>
-<li class="toctree-l2"><a class="reference internal" href="api/application.html">Application Layer</a></li>
-<li class="toctree-l2"><a class="reference internal" href="api/master.html">Master</a></li>
-<li class="toctree-l2"><a class="reference internal" href="api/object_library.html">Object Library</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="api/primitives.html">Primitive Types</a></li>
-<li class="toctree-l3"><a class="reference internal" href="api/coding.html">Encoding / Decoding</a></li>
-<li class="toctree-l3"><a class="reference internal" href="api/variations.html">Variations</a></li>
-<li class="toctree-l3"><a class="reference internal" href="api/coding_utils.html">Object Utilities</a></li>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../dnp3/dnp3read.html">Reading Objects</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../dnp3/dnp3dump.html">Dumping Objects</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../dnp3/dnp3resolve.html">Resolve Link Addresses</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../dnp3/api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../dnp3/api/link.html">Link Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dnp3/api/transport.html">Transport Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dnp3/api/application.html">Application Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dnp3/api/master.html">Master</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dnp3/api/object_library.html">Object Library</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../dnp3/api/primitives.html">Primitive Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dnp3/api/coding.html">Encoding / Decoding</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dnp3/api/variations.html">Variations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dnp3/api/coding_utils.html">Object Utilities</a></li>
 </ul>
 </li>
 </ul>
@@ -186,9 +186,9 @@ data-aria-dark="Switch to auto color mode">
 <li class="toctree-l1 _expand"><a class="reference internal" href="../modbus/api.html">API Reference</a></li>
 </ul>
 <p class="caption" role="heading" aria-level="3"><span class="caption-text">OPC-UA</span></p>
-<ul>
-<li class="toctree-l1 _expand"><a class="reference internal" href="../opcua/opcuaclient.html">Basic Client</a></li>
-<li class="toctree-l1 _expand"><a class="reference internal" href="../opcua/api.html">API Reference</a></li>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Basic Client</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="api.html">API Reference</a></li>
 </ul>
 <p class="caption" role="heading" aria-level="3"><span class="caption-text">ACSE / X.227</span></p>
 <ul>
@@ -239,7 +239,14 @@ data-aria-dark="Switch to auto color mode">
     <button class="rside-close js-menu xl:hidden" aria-label="Close Table of Contents" type="button" aria-controls="rside" aria-expanded="false">
       <i class="i-lucide close"></i>
     </button>
-    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><a class="js-repo-stats repo-stats flex items-center" href="https://github.com/MatrixEditor/icspacket"
+    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div class="localtoc"><h3>On this page</h3><ul>
+<li><a class="reference internal" href="#usage">Usage</a></li>
+<li><a class="reference internal" href="#discovering-endpoints">Discovering Endpoints</a></li>
+<li><a class="reference internal" href="#browsing-the-address-space">Browsing the Address Space</a></li>
+<li><a class="reference internal" href="#reading-and-writing-values">Reading and Writing Values</a></li>
+<li><a class="reference internal" href="#subscribing-to-data-changes">Subscribing to Data Changes</a></li>
+</ul>
+</div><a class="js-repo-stats repo-stats flex items-center" href="https://github.com/MatrixEditor/icspacket"
   data-type="github" data-user="MatrixEditor" data-repo="icspacket">
   <span class="w-8 flex items-center justify-around shrink-0 text-3xl">
     <iconify-icon icon="simple-icons:github"></iconify-icon>
@@ -258,7 +265,7 @@ data-aria-dark="Switch to auto color mode">
     </span>
   </span>
 </a><div class="edit-this-page">
-  <a href="https://github.com/MatrixEditor/icspacket/blob/main/docs/protocols/dnp3/api.rst">Edit this page</a>
+  <a href="https://github.com/MatrixEditor/icspacket/blob/main/docs/protocols/opcua/opcuaclient.rst">Edit this page</a>
 </div></div>
   </aside>
   <div class="rside-overlay js-menu" role="button" aria-label="Close Table of Contents" aria-controls="rside" aria-expanded="false"></div>
@@ -275,7 +282,7 @@ data-aria-dark="Switch to auto color mode">
         <span>/</span>
         <meta itemprop="position" content="1" />
       </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-        <strong itemprop="name">API Reference</strong>
+        <strong itemprop="name">Basic Client</strong>
         <meta itemprop="position" content="2" />
       </li></ol>
     <div class="xl:hidden ml-1">
@@ -292,7 +299,7 @@ data-aria-dark="Switch to auto color mode">
     <button
       type="button"
       class="js-copy px-3 py-1 inline-flex items-center gap-1"
-      data-url="https://raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/protocols/dnp3/api.rst"
+      data-url="https://raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/protocols/opcua/opcuaclient.rst"
     >
       <i class="i-lucide" data-icon="copy"></i>
       <span>Copy page</span>
@@ -306,57 +313,116 @@ data-aria-dark="Switch to auto color mode">
     <div role="presentation">
       <div class="flex flex-col" role="group">
         <button class="js-copy" type="button" role="menuitem"
-          data-url="https://raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/protocols/dnp3/api.rst">
+          data-url="https://raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/protocols/opcua/opcuaclient.rst">
           <span class="iconify-icon">
             <i class="i-lucide" data-icon="copy"></i>
           </span>
           <span>Copy page</span>
         </button>
-        <a role="menuitem" href="https://raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/protocols/dnp3/api.rst" target="_blank" rel="nofollow"><iconify-icon icon="bi:code-slash"></iconify-icon>
-            <span>View Source</span></a><a role="menuitem" href="https://chatgpt.com/?hints=search&q=Read%20https%3A//raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/protocols/dnp3/api.rst%20so%20I%20can%20ask%20questions%20about%20it." target="_blank" rel="nofollow">
+        <a role="menuitem" href="https://raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/protocols/opcua/opcuaclient.rst" target="_blank" rel="nofollow"><iconify-icon icon="bi:code-slash"></iconify-icon>
+            <span>View Source</span></a><a role="menuitem" href="https://chatgpt.com/?hints=search&q=Read%20https%3A//raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/protocols/opcua/opcuaclient.rst%20so%20I%20can%20ask%20questions%20about%20it." target="_blank" rel="nofollow">
           <iconify-icon icon="bi:openai"></iconify-icon>
           <span>Open in ChatGPT</span>
-        </a><a role="menuitem" href="https://claude.ai/new?q=Read%20https%3A//raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/protocols/dnp3/api.rst%20so%20I%20can%20ask%20questions%20about%20it." target="_blank" rel="nofollow">
+        </a><a role="menuitem" href="https://claude.ai/new?q=Read%20https%3A//raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/protocols/opcua/opcuaclient.rst%20so%20I%20can%20ask%20questions%20about%20it." target="_blank" rel="nofollow">
           <iconify-icon icon="bi:claude"></iconify-icon>
           <span>Open in Claude</span>
         </a></div>
     </div>
   </div>
 </div><article class="yue" role="main">
-          <section id="module-icspacket.proto.dnp3">
-<span id="api-reference"></span><span id="dnp3-index"></span><h1>API Reference<a class="headerlink" href="#module-icspacket.proto.dnp3" title="Link to this heading">#</a></h1>
-<p><strong>IEEE 1815 - Distributed Network Protocol (DNP3)</strong></p>
-<p>This package provides a pure-Python implementation of DNP3 as defined by
-IEEE 1815, covering the protocol’s layered message structure together with
-the application-layer functions used to exchange data between masters and
-outstations. DNP3 defines a range of interoperable subset levels so that a
-device only needs to implement the functionality it requires: the smallest
-level targets inexpensive distribution feeder equipment, while the largest
-supports full-featured implementations.</p>
-<div class="versionadded">
-<p><span class="versionmodified added">Added in version 0.2.0.</span></p>
+          <section id="basic-client">
+<span id="opcua-example-opcuaclient"></span><h1>Basic Client<a class="headerlink" href="#basic-client" title="Link to this heading">#</a></h1>
+<p>The <code class="docutils literal notranslate"><span class="pre">opcuaclient</span></code> utility provides a way to discover server endpoints,
+browse the address space, and read/write/subscribe to node values on
+a remote OPC-UA server.</p>
+<section id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Link to this heading">#</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span data-line="1">opcuaclient.py<span class="w"> </span><span class="o">[</span>OPTIONS<span class="o">]</span><span class="w"> </span>&lt;service&gt;<span class="w"> </span>...<span class="w"> </span>&lt;host&gt;<span class="w"> </span><span class="o">[</span>-p<span class="w"> </span>&lt;port&gt;<span class="o">]</span>
+</span></pre></div>
 </div>
-<div class="toctree-wrapper compound">
-<p class="caption" role="heading"><span class="caption-text">Layers</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="api/link.html">Link Layer</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api/transport.html">Transport Layer</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api/application.html">Application Layer</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api/master.html">Master</a></li>
-</ul>
+<p>Where <code class="docutils literal notranslate"><span class="pre">&lt;host&gt;</span></code> specifies the target server (IP address or hostname, or a
+full <code class="docutils literal notranslate"><span class="pre">opc.tcp://</span></code> endpoint URL), and <code class="docutils literal notranslate"><span class="pre">port</span></code> (default <code class="docutils literal notranslate"><span class="pre">4840</span></code>) is the
+TCP port. See <code class="docutils literal notranslate"><span class="pre">opcuaclient.py</span> <span class="pre">--help</span></code> for the full set of authentication
+and secure-channel options (username/password, certificate-based user
+tokens, <code class="docutils literal notranslate"><span class="pre">--security-policy</span></code>/<code class="docutils literal notranslate"><span class="pre">--security-mode</span></code>).</p>
+</section>
+<section id="discovering-endpoints">
+<h2>Discovering Endpoints<a class="headerlink" href="#discovering-endpoints" title="Link to this heading">#</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span data-line="1">opcuaclient.py<span class="w"> </span>endpoints<span class="w"> </span>&lt;host&gt;
+</span></pre></div>
 </div>
-<div class="toctree-wrapper compound">
-<p class="caption" role="heading"><span class="caption-text">Object Standard Library</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="api/object_library.html">Object Library</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="api/primitives.html">Primitive Types</a></li>
-<li class="toctree-l2"><a class="reference internal" href="api/coding.html">Encoding / Decoding</a></li>
-<li class="toctree-l2"><a class="reference internal" href="api/variations.html">Variations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="api/coding_utils.html">Object Utilities</a></li>
-</ul>
-</li>
-</ul>
+<p>The <code class="docutils literal notranslate"><span class="pre">endpoints</span></code> (aliases <code class="docutils literal notranslate"><span class="pre">e</span></code>, <code class="docutils literal notranslate"><span class="pre">discover</span></code>) command performs an
+unauthenticated <code class="docutils literal notranslate"><span class="pre">GetEndpoints</span></code> call and lists every endpoint the server
+advertises, together with its security policy, security mode and supported
+user token types.</p>
+</section>
+<section id="browsing-the-address-space">
+<h2>Browsing the Address Space<a class="headerlink" href="#browsing-the-address-space" title="Link to this heading">#</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span data-line="1">opcuaclient.py<span class="w"> </span>browse<span class="w"> </span>&lt;host&gt;
+</span><span data-line="2">opcuaclient.py<span class="w"> </span>browse<span class="w"> </span><span class="s2">&quot;ns=2;i=1&quot;</span><span class="w"> </span>&lt;host&gt;
+</span><span data-line="3">opcuaclient.py<span class="w"> </span>browse<span class="w"> </span>--recursive<span class="w"> </span>--values<span class="w"> </span>&lt;host&gt;
+</span><span data-line="4">opcuaclient.py<span class="w"> </span>browse<span class="w"> </span>-r<span class="w"> </span>--maxdepth<span class="w"> </span><span class="m">3</span><span class="w"> </span>&lt;host&gt;
+</span></pre></div>
 </div>
+<p>The <code class="docutils literal notranslate"><span class="pre">browse</span></code> (alias <code class="docutils literal notranslate"><span class="pre">b</span></code>) command lists the children of a node (default:
+the <code class="docutils literal notranslate"><span class="pre">Objects</span></code> folder) as a tree, showing each child’s display name, node
+class (<code class="docutils literal notranslate"><span class="pre">Object</span></code>, <code class="docutils literal notranslate"><span class="pre">Variable</span></code>, <code class="docutils literal notranslate"><span class="pre">Method</span></code>, …) and NodeId.</p>
+<figure class="align-center" id="id1">
+<img alt="protocols/opcua/_images/opcuaclient-browse.png" src="protocols/opcua/_images/opcuaclient-browse.png" />
+<figcaption>
+<p><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">opcuaclient.py</span> <span class="pre">browse</span> <span class="pre">&lt;host&gt;</span></code> – a single-level listing of the
+<code class="docutils literal notranslate"><span class="pre">Objects</span></code> folder on the lab server.</span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-r">
+<span id="cmdoption-recursive"></span><span class="sig-name descname"><span class="pre">-r</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--recursive</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-r" title="Link to this definition">#</a></dt>
+<dd><p>Descend into every child node instead of listing only a single level,
+building a full tree of the address space rooted at the given node.</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-maxdepth">
+<span class="sig-name descname"><span class="pre">--maxdepth</span></span><span class="sig-prename descclassname"> <span class="pre">DEPTH</span></span><a class="headerlink" href="#cmdoption-maxdepth" title="Link to this definition">#</a></dt>
+<dd><p>Limit how many levels deep <code class="docutils literal notranslate"><span class="pre">--recursive</span></code> descends (default: <code class="docutils literal notranslate"><span class="pre">10</span></code>).
+Has no effect without <code class="docutils literal notranslate"><span class="pre">--recursive</span></code>.</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-V">
+<span id="cmdoption-values"></span><span class="sig-name descname"><span class="pre">-V</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--values</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-V" title="Link to this definition">#</a></dt>
+<dd><p>Additionally read and display the current value of every <code class="docutils literal notranslate"><span class="pre">Variable</span></code>
+node encountered.</p>
+</dd></dl>
+
+</section>
+<section id="reading-and-writing-values">
+<h2>Reading and Writing Values<a class="headerlink" href="#reading-and-writing-values" title="Link to this heading">#</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span data-line="1">opcuaclient.py<span class="w"> </span><span class="nb">read</span><span class="w"> </span><span class="s2">&quot;ns=2;i=2&quot;</span><span class="w"> </span>&lt;host&gt;
+</span><span data-line="2">opcuaclient.py<span class="w"> </span>write<span class="w"> </span><span class="s2">&quot;ns=2;i=3&quot;</span><span class="w"> </span><span class="s2">&quot;&#39;FAULT&#39;&quot;</span><span class="w"> </span>&lt;host&gt;
+</span></pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">read</span></code>/<code class="docutils literal notranslate"><span class="pre">write</span></code> operate on a single node’s value, addressed by its
+NodeId. Use <code class="docutils literal notranslate"><span class="pre">endpoints</span></code>/<code class="docutils literal notranslate"><span class="pre">browse</span></code> to discover the actual identifiers
+exposed by a given server rather than assuming a particular numbering
+scheme – NodeId syntax (numeric <code class="docutils literal notranslate"><span class="pre">ns=2;i=2</span></code> vs. string <code class="docutils literal notranslate"><span class="pre">ns=2;s=Name</span></code>)
+is server-defined.</p>
+</section>
+<section id="subscribing-to-data-changes">
+<h2>Subscribing to Data Changes<a class="headerlink" href="#subscribing-to-data-changes" title="Link to this heading">#</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span data-line="1">opcuaclient.py<span class="w"> </span>subscribe<span class="w"> </span><span class="s2">&quot;ns=2;i=2&quot;</span><span class="w"> </span><span class="s2">&quot;ns=2;i=4&quot;</span><span class="w"> </span>--duration<span class="w"> </span><span class="m">30</span><span class="w"> </span>&lt;host&gt;
+</span></pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">subscribe</span></code> (alias <code class="docutils literal notranslate"><span class="pre">sub</span></code>) creates a subscription for one or more nodes
+and prints each data-change notification as it arrives, for a configurable
+<code class="docutils literal notranslate"><span class="pre">--duration</span></code> and/or <code class="docutils literal notranslate"><span class="pre">--count</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class="docutils literal notranslate"><span class="pre">subscribe</span></code> options (<code class="docutils literal notranslate"><span class="pre">--interval</span></code>/<code class="docutils literal notranslate"><span class="pre">--duration</span></code>/<code class="docutils literal notranslate"><span class="pre">--count</span></code>) are
+consumed by argparse’s subparser and must appear <em>before</em> <code class="docutils literal notranslate"><span class="pre">&lt;host&gt;</span></code>,
+not after it.</p>
+</div>
+</section>
 </section>
 
         </article><button class="back-to-top" type="button">
@@ -365,16 +431,16 @@ supports full-featured implementations.</p>
   </svg>
   <span>Back to top</span>
 </button><div class="navigation flex print:hidden"><div class="navigation-prev">
-    <a href="dnp3resolve.html">
+    <a href="../modbus/api.html">
       <i class="i-lucide chevron-left"></i>
       <div class="page-info">
-        <span>Previous</span><div class="title">Resolve Link Addresses</div></div>
+        <span>Previous</span><div class="title">API Reference</div></div>
     </a>
   </div><div class="navigation-next">
-    <a href="api/link.html">
+    <a href="api.html">
       <div class="page-info">
         <span>Next</span>
-        <div class="title">Link Layer</div>
+        <div class="title">API Reference</div>
       </div>
       <i class="i-lucide chevron-right"></i>
     </a>

@@ -2,7 +2,7 @@
 <html lang="en" data-accent-color="lime" data-content_root="../">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Protocols Overview - icspacket 0.1.dev1+gba545e582 documentation</title><link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Core API Reference" href="coreapi.html" /><link rel="prev" title="Installation" href="installation.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Protocols Overview - icspacket 0.1.dev1+g8273f2c47 documentation</title><link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Core API Reference" href="coreapi.html" /><link rel="prev" title="Installation" href="installation.html" />
       <link rel="canonical" href="https://matrixeditor.github.io/icspacket/getting-started/protocols.html" /><script>
     function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
     setColorMode(localStorage._theme||"dark");
@@ -185,6 +185,11 @@ data-aria-dark="Switch to auto color mode">
 <li class="toctree-l1 _expand"><a class="reference internal" href="../protocols/modbus/modbusclient.html">Modbus Interaction (rwq)</a></li>
 <li class="toctree-l1 _expand"><a class="reference internal" href="../protocols/modbus/api.html">API Reference</a></li>
 </ul>
+<p class="caption" role="heading" aria-level="3"><span class="caption-text">OPC-UA</span></p>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../protocols/opcua/opcuaclient.html">Basic Client</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../protocols/opcua/api.html">API Reference</a></li>
+</ul>
 <p class="caption" role="heading" aria-level="3"><span class="caption-text">ACSE / X.227</span></p>
 <ul>
 <li class="toctree-l1 _expand"><a class="reference internal" href="../protocols/acse/api.html">API Reference</a></li>
@@ -330,6 +335,9 @@ data-aria-dark="Switch to auto color mode">
 </span><span data-line="7"><span class="n">dnp3</span>
 </span><span data-line="8"><span class="n">iec104</span>
 </span><span data-line="9"><span class="n">iec61850</span>
+</span><span data-line="10"><span class="n">modbus</span>
+</span><span data-line="11"><span class="n">opcua</span>
+</span><span data-line="12"><span class="n">cip</span>
 </span></pre></div>
 </div>
 <p><strong>Protocol references</strong></p>
@@ -426,6 +434,24 @@ Class 0/1 I/O over EtherNet/IP.</p>
 </div>
 <a class="sd-stretched-link sd-hide-link-text reference internal" href="../protocols/cip/api.html#cip-index"><span class="std std-ref">API Reference</span></a></div>
 </div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+<svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-cpu" viewBox="0 0 16 16" aria-hidden="true"><path d="M6.5.75V2h3V.75a.75.75 0 0 1 1.5 0V2h1.25c.966 0 1.75.784 1.75 1.75V5h1.25a.75.75 0 0 1 0 1.5H14v3h1.25a.75.75 0 0 1 0 1.5H14v1.25A1.75 1.75 0 0 1 12.25 14H11v1.25a.75.75 0 0 1-1.5 0V14h-3v1.25a.75.75 0 0 1-1.5 0V14H3.75A1.75 1.75 0 0 1 2 12.25V11H.75a.75.75 0 0 1 0-1.5H2v-3H.75a.75.75 0 0 1 0-1.5H2V3.75C2 2.784 2.784 2 3.75 2H5V.75a.75.75 0 0 1 1.5 0Zm5.75 11.75a.25.25 0 0 0 .25-.25v-8.5a.25.25 0 0 0-.25-.25h-8.5a.25.25 0 0 0-.25.25v8.5c0 .138.112.25.25.25ZM5.75 5h4.5a.75.75 0 0 1 .75.75v4.5a.75.75 0 0 1-.75.75h-4.5a.75.75 0 0 1-.75-.75v-4.5A.75.75 0 0 1 5.75 5Zm.75 4.5h3v-3h-3Z"></path></svg> Modbus</div>
+<p class="sd-card-text">Modbus TCP/UDP coils, discrete inputs and registers.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference internal" href="../protocols/modbus/api.html#modbus-index"><span class="std std-ref">API Reference</span></a></div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm sd-card-hover docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+<svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-globe" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0ZM5.78 8.75a9.64 9.64 0 0 0 1.363 4.177c.255.426.542.832.857 1.215.245-.296.551-.705.857-1.215A9.64 9.64 0 0 0 10.22 8.75Zm4.44-1.5a9.64 9.64 0 0 0-1.363-4.177c-.307-.51-.612-.919-.857-1.215a9.927 9.927 0 0 0-.857 1.215A9.64 9.64 0 0 0 5.78 7.25Zm-5.944 1.5H1.543a6.507 6.507 0 0 0 4.666 5.5c-.123-.181-.24-.365-.352-.552-.715-1.192-1.437-2.874-1.581-4.948Zm-2.733-1.5h2.733c.144-2.074.866-3.756 1.58-4.948.12-.197.237-.381.353-.552a6.507 6.507 0 0 0-4.666 5.5Zm10.181 1.5c-.144 2.074-.866 3.756-1.58 4.948-.12.197-.237.381-.353.552a6.507 6.507 0 0 0 4.666-5.5Zm2.733-1.5a6.507 6.507 0 0 0-4.666-5.5c.123.181.24.365.353.552.714 1.192 1.436 2.874 1.58 4.948Z"></path></svg> OPC-UA</div>
+<p class="sd-card-text">Platform-independent SCADA/industrial-automation communication.</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference internal" href="../protocols/opcua/api.html#opcua-index"><span class="std std-ref">API Reference</span></a></div>
+</div>
 </div>
 </div>
 </section>
@@ -473,7 +499,7 @@ Class 0/1 I/O over EtherNet/IP.</p>
     </div>
   </div>
 </footer>
-      <script src="../_static/documentation_options.js?v=f1e5c83a"></script>
+      <script src="../_static/documentation_options.js?v=7ce67779"></script>
       <script src="../_static/doctools.js?v=fd6eb6e6"></script>
       <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
       <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
