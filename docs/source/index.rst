@@ -73,6 +73,14 @@ and MacOS. Any other Python version is not officially supported::
     protocols/iec104/api
 
 .. toctree::
+    :caption: CIP / EtherNet-IP
+    :hidden:
+
+    protocols/cip/cipclient
+    protocols/cip/examples
+    protocols/cip/api
+
+.. toctree::
     :caption: ACSE / X.227
     :hidden:
 

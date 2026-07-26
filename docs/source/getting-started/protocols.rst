@@ -83,3 +83,10 @@ Protocols Overview
 
         Telecontrol/SCADA protocol for power system automation.
 
+    .. grid-item-card:: :octicon:`gear` CIP / EtherNet-IP
+        :link: cip_index
+        :link-type: ref
+
+        Common Industrial Protocol: discovery, explicit messaging, and
+        Class 0/1 I/O over EtherNet/IP.
+

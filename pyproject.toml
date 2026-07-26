@@ -83,3 +83,4 @@ dev = ["pytest>=9.1.1"]
 "dnp3read.py" = "icspacket.examples.dnp3read:cli_main"
 "dnp3linkaddr.py" = "icspacket.examples.dnp3linkaddr:cli_main"
 "iec104read.py" = "icspacket.examples.iec104read:cli_main"
+"cipclient.py" = "icspacket.examples.cipclient:cli_main"
