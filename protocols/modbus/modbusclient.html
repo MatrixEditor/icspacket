@@ -2,8 +2,8 @@
 <html lang="en" data-accent-color="lime" data-content_root="../../">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>API Reference - icspacket 0.1.dev1+gba545e582 documentation</title><link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="Connection" href="api/connection.html" /><link rel="prev" title="Operating via CIP / EtherNet-IP" href="cipclient.html" />
-      <link rel="canonical" href="https://matrixeditor.github.io/icspacket/protocols/cip/api.html" /><script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Modbus Interaction (rwq) - icspacket 0.1.dev1+gba545e582 documentation</title><link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="API Reference" href="api.html" /><link rel="prev" title="Diagnostics Objects" href="../cip/api/objects_diagnostics.html" />
+      <link rel="canonical" href="https://matrixeditor.github.io/icspacket/protocols/modbus/modbusclient.html" /><script>
     function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
     setColorMode(localStorage._theme||"dark");
   </script><link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=e1a1ceaf" />
@@ -22,8 +22,8 @@
 </style>
     
   <meta property="og:type" content="website"/>
-  <meta property="og:url" content="https://matrixeditor.github.io/icspacket/protocols/cip/api.html"/>
-  <meta property="og:title" content="API Reference"/>
+  <meta property="og:url" content="https://matrixeditor.github.io/icspacket/protocols/modbus/modbusclient.html"/>
+  <meta property="og:title" content="Modbus Interaction (rwq)"/>
     <meta name="twitter:card" content="summary"/>
   </head>
 <body><div class="sy-head">
@@ -49,7 +49,7 @@
               </a></li><li><a href="../iec61850/iedmap.html">
                 <span>IED Enumeration Tool</span>
                 <small>Logical Device enumeration and more</small>
-              </a></li><li><a href="examples.html">
+              </a></li><li><a href="../cip/examples.html">
                 <span>CIP / EtherNet-IP Tools</span>
                 <small>EtherNet/IP discovery, explicit messaging and I/O tools</small>
               </a></li><li><a href="../iec104/examples.html">
@@ -162,28 +162,28 @@ data-aria-dark="Switch to auto color mode">
 </li>
 </ul>
 <p class="caption" role="heading" aria-level="3"><span class="caption-text">CIP / EtherNet-IP</span></p>
-<ul class="current">
-<li class="toctree-l1 _expand"><a class="reference internal" href="cipclient.html">Operating via CIP / EtherNet-IP</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">API Reference</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="api/connection.html">Connection</a></li>
-<li class="toctree-l2"><a class="reference internal" href="api/encapsulation.html">EtherNet/IP Encapsulation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="api/messaging.html">Messaging</a></li>
-<li class="toctree-l2"><a class="reference internal" href="api/objects.html">Object Library</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="api/objects_core.html">Core Objects</a></li>
-<li class="toctree-l3"><a class="reference internal" href="api/objects_network.html">Network Objects</a></li>
-<li class="toctree-l3"><a class="reference internal" href="api/objects_io.html">I/O and Parameter Objects</a></li>
-<li class="toctree-l3"><a class="reference internal" href="api/objects_motion.html">Motion, Drive, and Semiconductor Objects</a></li>
-<li class="toctree-l3"><a class="reference internal" href="api/objects_switch.html">Switch Management Objects</a></li>
-<li class="toctree-l3"><a class="reference internal" href="api/objects_diagnostics.html">Diagnostics Objects</a></li>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../cip/cipclient.html">Operating via CIP / EtherNet-IP</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../cip/api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../cip/api/connection.html">Connection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cip/api/encapsulation.html">EtherNet/IP Encapsulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cip/api/messaging.html">Messaging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cip/api/objects.html">Object Library</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../cip/api/objects_core.html">Core Objects</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cip/api/objects_network.html">Network Objects</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cip/api/objects_io.html">I/O and Parameter Objects</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cip/api/objects_motion.html">Motion, Drive, and Semiconductor Objects</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cip/api/objects_switch.html">Switch Management Objects</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cip/api/objects_diagnostics.html">Diagnostics Objects</a></li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
 <p class="caption" role="heading" aria-level="3"><span class="caption-text">Modbus</span></p>
-<ul>
-<li class="toctree-l1 _expand"><a class="reference internal" href="../modbus/modbusclient.html">Modbus Interaction (rwq)</a></li>
-<li class="toctree-l1 _expand"><a class="reference internal" href="../modbus/api.html">API Reference</a></li>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Modbus Interaction (rwq)</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="api.html">API Reference</a></li>
 </ul>
 <p class="caption" role="heading" aria-level="3"><span class="caption-text">ACSE / X.227</span></p>
 <ul>
@@ -234,7 +234,13 @@ data-aria-dark="Switch to auto color mode">
     <button class="rside-close js-menu xl:hidden" aria-label="Close Table of Contents" type="button" aria-controls="rside" aria-expanded="false">
       <i class="i-lucide close"></i>
     </button>
-    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><a class="js-repo-stats repo-stats flex items-center" href="https://github.com/MatrixEditor/icspacket"
+    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div class="localtoc"><h3>On this page</h3><ul>
+<li><a class="reference internal" href="#usage">Usage</a></li>
+<li><a class="reference internal" href="#reading-and-writing-tables">Reading and Writing Tables</a></li>
+<li><a class="reference internal" href="#discovering-unit-identifiers">Discovering Unit Identifiers</a></li>
+<li><a class="reference internal" href="#discovering-coils-and-registers">Discovering Coils and Registers</a></li>
+</ul>
+</div><a class="js-repo-stats repo-stats flex items-center" href="https://github.com/MatrixEditor/icspacket"
   data-type="github" data-user="MatrixEditor" data-repo="icspacket">
   <span class="w-8 flex items-center justify-around shrink-0 text-3xl">
     <iconify-icon icon="simple-icons:github"></iconify-icon>
@@ -253,7 +259,7 @@ data-aria-dark="Switch to auto color mode">
     </span>
   </span>
 </a><div class="edit-this-page">
-  <a href="https://github.com/MatrixEditor/icspacket/blob/main/docs/protocols/cip/api.rst">Edit this page</a>
+  <a href="https://github.com/MatrixEditor/icspacket/blob/main/docs/protocols/modbus/modbusclient.rst">Edit this page</a>
 </div></div>
   </aside>
   <div class="rside-overlay js-menu" role="button" aria-label="Close Table of Contents" aria-controls="rside" aria-expanded="false"></div>
@@ -270,7 +276,7 @@ data-aria-dark="Switch to auto color mode">
         <span>/</span>
         <meta itemprop="position" content="1" />
       </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-        <strong itemprop="name">API Reference</strong>
+        <strong itemprop="name">Modbus Interaction (rwq)</strong>
         <meta itemprop="position" content="2" />
       </li></ol>
     <div class="xl:hidden ml-1">
@@ -287,7 +293,7 @@ data-aria-dark="Switch to auto color mode">
     <button
       type="button"
       class="js-copy px-3 py-1 inline-flex items-center gap-1"
-      data-url="https://raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/protocols/cip/api.rst"
+      data-url="https://raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/protocols/modbus/modbusclient.rst"
     >
       <i class="i-lucide" data-icon="copy"></i>
       <span>Copy page</span>
@@ -301,67 +307,103 @@ data-aria-dark="Switch to auto color mode">
     <div role="presentation">
       <div class="flex flex-col" role="group">
         <button class="js-copy" type="button" role="menuitem"
-          data-url="https://raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/protocols/cip/api.rst">
+          data-url="https://raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/protocols/modbus/modbusclient.rst">
           <span class="iconify-icon">
             <i class="i-lucide" data-icon="copy"></i>
           </span>
           <span>Copy page</span>
         </button>
-        <a role="menuitem" href="https://raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/protocols/cip/api.rst" target="_blank" rel="nofollow"><iconify-icon icon="bi:code-slash"></iconify-icon>
-            <span>View Source</span></a><a role="menuitem" href="https://chatgpt.com/?hints=search&q=Read%20https%3A//raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/protocols/cip/api.rst%20so%20I%20can%20ask%20questions%20about%20it." target="_blank" rel="nofollow">
+        <a role="menuitem" href="https://raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/protocols/modbus/modbusclient.rst" target="_blank" rel="nofollow"><iconify-icon icon="bi:code-slash"></iconify-icon>
+            <span>View Source</span></a><a role="menuitem" href="https://chatgpt.com/?hints=search&q=Read%20https%3A//raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/protocols/modbus/modbusclient.rst%20so%20I%20can%20ask%20questions%20about%20it." target="_blank" rel="nofollow">
           <iconify-icon icon="bi:openai"></iconify-icon>
           <span>Open in ChatGPT</span>
-        </a><a role="menuitem" href="https://claude.ai/new?q=Read%20https%3A//raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/protocols/cip/api.rst%20so%20I%20can%20ask%20questions%20about%20it." target="_blank" rel="nofollow">
+        </a><a role="menuitem" href="https://claude.ai/new?q=Read%20https%3A//raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/protocols/modbus/modbusclient.rst%20so%20I%20can%20ask%20questions%20about%20it." target="_blank" rel="nofollow">
           <iconify-icon icon="bi:claude"></iconify-icon>
           <span>Open in Claude</span>
         </a></div>
     </div>
   </div>
 </div><article class="yue" role="main">
-          <section id="module-icspacket.proto.cip">
-<span id="api-reference"></span><span id="cip-index"></span><h1>API Reference<a class="headerlink" href="#module-icspacket.proto.cip" title="Link to this heading">#</a></h1>
-<p><strong>ODVA CIP Networks Library Volume 1: Common Industrial Protocol, and
-Volume 2: EtherNet/IP Adaptation of CIP</strong></p>
-<p>This package provides a pure-Python implementation of the Common Industrial
-Protocol (CIP): a network-independent, object-oriented application layer in
-which every device exposes its data and behavior as class/instance/attribute
-addressed objects (<a class="reference internal" href="api/objects.html#module-icspacket.proto.cip.objects" title="icspacket.proto.cip.objects"><code class="xref py py-mod docutils literal notranslate"><span class="pre">icspacket.proto.cip.objects</span></code></a>), located through
-EPATHs (<a class="reference internal" href="api/messaging.html#module-icspacket.proto.cip.epath" title="icspacket.proto.cip.epath"><code class="xref py py-mod docutils literal notranslate"><span class="pre">icspacket.proto.cip.epath</span></code></a>) and manipulated through Message
-Router requests (<a class="reference internal" href="api/messaging.html#module-icspacket.proto.cip.msgrouter" title="icspacket.proto.cip.msgrouter"><code class="xref py py-mod docutils literal notranslate"><span class="pre">icspacket.proto.cip.msgrouter</span></code></a>).</p>
-<p>EtherNet/IP (CIP Volume 2) is the TCP/UDP adaptation covered here: session
-encapsulation (<a class="reference internal" href="api/encapsulation.html#module-icspacket.proto.cip.encap" title="icspacket.proto.cip.encap"><code class="xref py py-mod docutils literal notranslate"><span class="pre">icspacket.proto.cip.encap</span></code></a>) and the Common Packet
-Format that carries addressing and data items alongside it
-(<a class="reference internal" href="api/encapsulation.html#module-icspacket.proto.cip.cpf" title="icspacket.proto.cip.cpf"><code class="xref py py-mod docutils literal notranslate"><span class="pre">icspacket.proto.cip.cpf</span></code></a>). On top of that transport, the package
-implements both CIP messaging types - explicit (unconnected and
-Connection-Manager-brokered connected messaging,
-<a class="reference internal" href="api/messaging.html#module-icspacket.proto.cip.connmgr" title="icspacket.proto.cip.connmgr"><code class="xref py py-mod docutils literal notranslate"><span class="pre">icspacket.proto.cip.connmgr</span></code></a>) and implicit (cyclic Class 0/1 I/O,
-<a class="reference internal" href="api/messaging.html#module-icspacket.proto.cip.io" title="icspacket.proto.cip.io"><code class="xref py py-mod docutils literal notranslate"><span class="pre">icspacket.proto.cip.io</span></code></a>) - behind client connections
-(<a class="reference internal" href="api/connection.html#module-icspacket.proto.cip.connection" title="icspacket.proto.cip.connection"><code class="xref py py-mod docutils literal notranslate"><span class="pre">icspacket.proto.cip.connection</span></code></a>).</p>
-<div class="versionadded">
-<p><span class="versionmodified added">Added in version 0.3.0.</span></p>
+          <section id="modbus-interaction-rwq">
+<span id="modbus-example-modbusclient"></span><h1>Modbus Interaction (rwq)<a class="headerlink" href="#modbus-interaction-rwq" title="Link to this heading">#</a></h1>
+<p>The <code class="docutils literal notranslate"><span class="pre">modbusclient</span></code> utility provides a simple way to read and write Modbus
+data tables (coils, discrete inputs, holding/input registers) and to
+discover which unit identifiers and addresses are actually implemented by
+a target Modbus/TCP (or Modbus/UDP) server.</p>
+<section id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Link to this heading">#</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span data-line="1">modbusclient.py<span class="w"> </span><span class="o">[</span>OPTIONS<span class="o">]</span><span class="w"> </span>&lt;host&gt;<span class="w"> </span><span class="o">[</span><span class="nb">command</span><span class="w"> </span><span class="o">[</span>args...<span class="o">]]</span>
+</span></pre></div>
 </div>
-<div class="toctree-wrapper compound">
-<p class="caption" role="heading"><span class="caption-text">Protocol Layers</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="api/connection.html">Connection</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api/encapsulation.html">EtherNet/IP Encapsulation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api/messaging.html">Messaging</a></li>
-</ul>
+<p>Where <code class="docutils literal notranslate"><span class="pre">&lt;host&gt;</span></code> specifies the target device (IP address or hostname), and
+<code class="docutils literal notranslate"><span class="pre">port</span></code> (default <code class="docutils literal notranslate"><span class="pre">502</span></code>) is the Modbus TCP/UDP port. Use <code class="docutils literal notranslate"><span class="pre">--udp</span></code> to
+switch to Modbus/UDP and <code class="docutils literal notranslate"><span class="pre">-u/--unit</span></code> to set the default unit/slave
+identifier used by <code class="docutils literal notranslate"><span class="pre">read</span></code>/<code class="docutils literal notranslate"><span class="pre">write</span></code>/<code class="docutils literal notranslate"><span class="pre">identify</span></code>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span data-line="1">modbusclient.py<span class="w"> </span>&lt;host&gt;
+</span><span data-line="2">modbus&gt;<span class="w"> </span>write<span class="w"> </span>holding<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1234</span>
+</span><span data-line="3">modbus&gt;<span class="w"> </span><span class="nb">read</span><span class="w"> </span>holding<span class="w"> </span><span class="m">0</span><span class="w"> </span>-c<span class="w"> </span><span class="m">1</span>
+</span><span data-line="4">modbus&gt;<span class="w"> </span><span class="nb">exit</span>
+</span></pre></div>
 </div>
-<div class="toctree-wrapper compound">
-<p class="caption" role="heading"><span class="caption-text">Object Library</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="api/objects.html">Object Library</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="api/objects_core.html">Core Objects</a></li>
-<li class="toctree-l2"><a class="reference internal" href="api/objects_network.html">Network Objects</a></li>
-<li class="toctree-l2"><a class="reference internal" href="api/objects_io.html">I/O and Parameter Objects</a></li>
-<li class="toctree-l2"><a class="reference internal" href="api/objects_motion.html">Motion, Drive, and Semiconductor Objects</a></li>
-<li class="toctree-l2"><a class="reference internal" href="api/objects_switch.html">Switch Management Objects</a></li>
-<li class="toctree-l2"><a class="reference internal" href="api/objects_diagnostics.html">Diagnostics Objects</a></li>
-</ul>
-</li>
-</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>This is also scriptable by piping commands on stdin together with
+<code class="docutils literal notranslate"><span class="pre">-i/--interactive</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="nb">printf</span><span class="w"> </span><span class="s1">&#39;write holding 0 1234\nread holding 0 -c 1\nexit\n&#39;</span><span class="w"> </span><span class="se">\</span>
+</span><span data-line="2"><span class="w">    </span><span class="p">|</span><span class="w"> </span>modbusclient.py<span class="w"> </span>&lt;host&gt;<span class="w"> </span>-i
+</span></pre></div>
 </div>
+</div>
+</section>
+<section id="reading-and-writing-tables">
+<h2>Reading and Writing Tables<a class="headerlink" href="#reading-and-writing-tables" title="Link to this heading">#</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span data-line="1">modbusclient.py<span class="w"> </span>&lt;host&gt;<span class="w"> </span><span class="nb">read</span><span class="w"> </span>holding<span class="w"> </span><span class="m">0</span><span class="w"> </span>-c<span class="w"> </span><span class="m">4</span>
+</span><span data-line="2">modbusclient.py<span class="w"> </span>&lt;host&gt;<span class="w"> </span>write<span class="w"> </span>holding<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1234</span>
+</span><span data-line="3">modbusclient.py<span class="w"> </span>&lt;host&gt;<span class="w"> </span>write<span class="w"> </span>coils<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="nb">true</span><span class="w"> </span><span class="nb">false</span><span class="w"> </span><span class="nb">true</span>
+</span><span data-line="4">modbusclient.py<span class="w"> </span>&lt;host&gt;<span class="w"> </span>identify
+</span></pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">read</span></code>/<code class="docutils literal notranslate"><span class="pre">write</span></code> operate on one of the four standard Modbus tables:
+<code class="docutils literal notranslate"><span class="pre">coils</span></code>, <code class="docutils literal notranslate"><span class="pre">discrete</span></code> (discrete inputs, read-only), <code class="docutils literal notranslate"><span class="pre">holding</span></code> and
+<code class="docutils literal notranslate"><span class="pre">input</span></code> (input registers, read-only). <code class="docutils literal notranslate"><span class="pre">identify</span></code> retrieves the FC43
+device identification objects (vendor, product, revision, …), if
+supported by the target.</p>
+</section>
+<section id="discovering-unit-identifiers">
+<h2>Discovering Unit Identifiers<a class="headerlink" href="#discovering-unit-identifiers" title="Link to this heading">#</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span data-line="1">modbusclient.py<span class="w"> </span>&lt;host&gt;<span class="w"> </span>units
+</span><span data-line="2">modbusclient.py<span class="w"> </span>&lt;host&gt;<span class="w"> </span>units<span class="w"> </span>--identify
+</span></pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">units</span></code> (alias <code class="docutils literal notranslate"><span class="pre">u</span></code>) command probes a range of unit/slave identifiers
+(default <code class="docutils literal notranslate"><span class="pre">1</span></code>-<code class="docutils literal notranslate"><span class="pre">247</span></code>, adjustable via <code class="docutils literal notranslate"><span class="pre">-s/--start</span></code> and <code class="docutils literal notranslate"><span class="pre">-e/--end</span></code>) and
+reports every id that produces a response. Pass <code class="docutils literal notranslate"><span class="pre">-i/--identify</span></code> to additionally attempt an FC43 device
+identification read for each responsive unit id.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Many Modbus/TCP gateways and multi-device servers respond to <strong>every</strong>
+probed unit id (accepting requests for registered devices and returning
+an error for unregistered ones), rather than answering only for a single
+“own” id. A device that ignores the unit-id field entirely will behave
+the same way. Treat a large number of responsive ids as inconclusive
+rather than proof of multiple physical devices.</p>
+</div>
+</section>
+<section id="discovering-coils-and-registers">
+<h2>Discovering Coils and Registers<a class="headerlink" href="#discovering-coils-and-registers" title="Link to this heading">#</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span data-line="1">modbusclient.py<span class="w"> </span>&lt;host&gt;<span class="w"> </span>discover
+</span><span data-line="2">modbusclient.py<span class="w"> </span>&lt;host&gt;<span class="w"> </span>discover<span class="w"> </span>holding<span class="w"> </span>--end<span class="w"> </span><span class="m">65536</span>
+</span><span data-line="3">modbusclient.py<span class="w"> </span>&lt;host&gt;<span class="w"> </span>discover<span class="w"> </span>coils<span class="w"> </span>--block-size<span class="w"> </span><span class="m">64</span>
+</span></pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">discover</span></code> (aliases <code class="docutils literal notranslate"><span class="pre">d</span></code>, <code class="docutils literal notranslate"><span class="pre">scan</span></code>) command probes a table (or, by
+default, all four tables) over an address range (default <code class="docutils literal notranslate"><span class="pre">0</span></code>-<code class="docutils literal notranslate"><span class="pre">999</span></code>,
+adjustable via <code class="docutils literal notranslate"><span class="pre">-s/--start</span></code>/ <code class="docutils literal notranslate"><span class="pre">-e/--end</span></code>) and reports the contiguous
+address ranges that respond successfully.</p>
+<p>Use <code class="docutils literal notranslate"><span class="pre">-b/--block-size</span></code> to cap the number of addresses probed per request,
+e.g. to accommodate a server or gateway with stricter limits than the
+protocol maximum (125 registers / 2000 coils per request).</p>
+</section>
 </section>
 
         </article><button class="back-to-top" type="button">
@@ -370,16 +412,16 @@ Connection-Manager-brokered connected messaging,
   </svg>
   <span>Back to top</span>
 </button><div class="navigation flex print:hidden"><div class="navigation-prev">
-    <a href="cipclient.html">
+    <a href="../cip/api/objects_diagnostics.html">
       <i class="i-lucide chevron-left"></i>
       <div class="page-info">
-        <span>Previous</span><div class="title">Operating via CIP / EtherNet-IP</div></div>
+        <span>Previous</span><div class="title">Diagnostics Objects</div></div>
     </a>
   </div><div class="navigation-next">
-    <a href="api/connection.html">
+    <a href="api.html">
       <div class="page-info">
         <span>Next</span>
-        <div class="title">Connection</div>
+        <div class="title">API Reference</div>
       </div>
       <i class="i-lucide chevron-right"></i>
     </a>
