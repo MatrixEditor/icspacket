@@ -2,8 +2,8 @@
 <html lang="en" data-accent-color="lime" data-content_root="../../">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Reading Data via Interrogation - icspacket 0.1.dev1+gadf01610e documentation</title><link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="API Reference" href="api.html" /><link rel="prev" title="Protocol Utilities" href="../mms/api_utils.html" />
-      <link rel="canonical" href="https://matrixeditor.github.io/icspacket/protocols/iec104/iec104read.html" /><script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>API Reference - icspacket 0.1.dev1+gadf01610e documentation</title><link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="API Reference" href="../acse/api.html" /><link rel="prev" title="Discovering, Reading and Writing Properties" href="bacnetclient.html" />
+      <link rel="canonical" href="https://matrixeditor.github.io/icspacket/protocols/bacnet/api.html" /><script>
     function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
     setColorMode(localStorage._theme||"dark");
   </script><link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=e1a1ceaf" />
@@ -22,8 +22,8 @@
 </style>
     
   <meta property="og:type" content="website"/>
-  <meta property="og:url" content="https://matrixeditor.github.io/icspacket/protocols/iec104/iec104read.html"/>
-  <meta property="og:title" content="Reading Data via Interrogation"/>
+  <meta property="og:url" content="https://matrixeditor.github.io/icspacket/protocols/bacnet/api.html"/>
+  <meta property="og:title" content="API Reference"/>
     <meta name="twitter:card" content="summary"/>
   </head>
 <body><div class="sy-head">
@@ -52,10 +52,10 @@
               </a></li><li><a href="../cip/examples.html">
                 <span>CIP / EtherNet-IP Tools</span>
                 <small>EtherNet/IP discovery, explicit messaging and I/O tools</small>
-              </a></li><li><a href="examples.html">
+              </a></li><li><a href="../iec104/examples.html">
                 <span>IEC 60870-5-104 Tools</span>
                 <small>IEC 60870-5-104 interrogation and read tools</small>
-              </a></li><li><a href="../bacnet/examples.html">
+              </a></li><li><a href="examples.html">
                 <span>BACnet/IP Tools</span>
                 <small>BACnet/IP discovery, read/write and COV tools</small>
               </a></li></ul>
@@ -154,13 +154,13 @@ data-aria-dark="Switch to auto color mode">
 </li>
 </ul>
 <p class="caption" role="heading" aria-level="3"><span class="caption-text">IEC 60870-5-104</span></p>
-<ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Reading Data via Interrogation</a></li>
-<li class="toctree-l1 _expand"><a class="reference internal" href="api.html">API Reference</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="api/apci.html">APCI - Framing Layer</a></li>
-<li class="toctree-l2"><a class="reference internal" href="api/asdu.html">ASDU - Application Layer</a></li>
-<li class="toctree-l2"><a class="reference internal" href="api/master.html">Master (Client)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="api/objects.html">Information Object Library</a></li>
+<ul>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../iec104/iec104read.html">Reading Data via Interrogation</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../iec104/api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../iec104/api/apci.html">APCI - Framing Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iec104/api/asdu.html">ASDU - Application Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iec104/api/master.html">Master (Client)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iec104/api/objects.html">Information Object Library</a></li>
 </ul>
 </li>
 </ul>
@@ -194,9 +194,9 @@ data-aria-dark="Switch to auto color mode">
 <li class="toctree-l1 _expand"><a class="reference internal" href="../opcua/api.html">API Reference</a></li>
 </ul>
 <p class="caption" role="heading" aria-level="3"><span class="caption-text">BACnet</span></p>
-<ul>
-<li class="toctree-l1 _expand"><a class="reference internal" href="../bacnet/bacnetclient.html">Discovering, Reading and Writing Properties</a></li>
-<li class="toctree-l1 _expand"><a class="reference internal" href="../bacnet/api.html">API Reference</a></li>
+<ul class="current">
+<li class="toctree-l1 _expand"><a class="reference internal" href="bacnetclient.html">Discovering, Reading and Writing Properties</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">API Reference</a></li>
 </ul>
 <p class="caption" role="heading" aria-level="3"><span class="caption-text">ACSE / X.227</span></p>
 <ul>
@@ -247,13 +247,7 @@ data-aria-dark="Switch to auto color mode">
     <button class="rside-close js-menu xl:hidden" aria-label="Close Table of Contents" type="button" aria-controls="rside" aria-expanded="false">
       <i class="i-lucide close"></i>
     </button>
-    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div class="localtoc"><h3>On this page</h3><ul>
-<li><a class="reference internal" href="#target-format">Target Format</a></li>
-<li><a class="reference internal" href="#requesting-a-general-interrogation">Requesting a General Interrogation</a></li>
-<li><a class="reference internal" href="#requesting-a-counter-interrogation">Requesting a Counter Interrogation</a></li>
-<li><a class="reference internal" href="#reading-a-single-information-object">Reading a Single Information Object</a></li>
-</ul>
-</div><a class="js-repo-stats repo-stats flex items-center" href="https://github.com/MatrixEditor/icspacket"
+    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><a class="js-repo-stats repo-stats flex items-center" href="https://github.com/MatrixEditor/icspacket"
   data-type="github" data-user="MatrixEditor" data-repo="icspacket">
   <span class="w-8 flex items-center justify-around shrink-0 text-3xl">
     <iconify-icon icon="simple-icons:github"></iconify-icon>
@@ -272,7 +266,7 @@ data-aria-dark="Switch to auto color mode">
     </span>
   </span>
 </a><div class="edit-this-page">
-  <a href="https://github.com/MatrixEditor/icspacket/blob/main/docs/protocols/iec104/iec104read.rst">Edit this page</a>
+  <a href="https://github.com/MatrixEditor/icspacket/blob/main/docs/protocols/bacnet/api.rst">Edit this page</a>
 </div></div>
   </aside>
   <div class="rside-overlay js-menu" role="button" aria-label="Close Table of Contents" aria-controls="rside" aria-expanded="false"></div>
@@ -289,7 +283,7 @@ data-aria-dark="Switch to auto color mode">
         <span>/</span>
         <meta itemprop="position" content="1" />
       </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-        <strong itemprop="name">Reading Data via Interrogation</strong>
+        <strong itemprop="name">API Reference</strong>
         <meta itemprop="position" content="2" />
       </li></ol>
     <div class="xl:hidden ml-1">
@@ -306,7 +300,7 @@ data-aria-dark="Switch to auto color mode">
     <button
       type="button"
       class="js-copy px-3 py-1 inline-flex items-center gap-1"
-      data-url="https://raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/protocols/iec104/iec104read.rst"
+      data-url="https://raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/protocols/bacnet/api.rst"
     >
       <i class="i-lucide" data-icon="copy"></i>
       <span>Copy page</span>
@@ -320,125 +314,40 @@ data-aria-dark="Switch to auto color mode">
     <div role="presentation">
       <div class="flex flex-col" role="group">
         <button class="js-copy" type="button" role="menuitem"
-          data-url="https://raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/protocols/iec104/iec104read.rst">
+          data-url="https://raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/protocols/bacnet/api.rst">
           <span class="iconify-icon">
             <i class="i-lucide" data-icon="copy"></i>
           </span>
           <span>Copy page</span>
         </button>
-        <a role="menuitem" href="https://raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/protocols/iec104/iec104read.rst" target="_blank" rel="nofollow"><iconify-icon icon="bi:code-slash"></iconify-icon>
-            <span>View Source</span></a><a role="menuitem" href="https://chatgpt.com/?hints=search&q=Read%20https%3A//raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/protocols/iec104/iec104read.rst%20so%20I%20can%20ask%20questions%20about%20it." target="_blank" rel="nofollow">
+        <a role="menuitem" href="https://raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/protocols/bacnet/api.rst" target="_blank" rel="nofollow"><iconify-icon icon="bi:code-slash"></iconify-icon>
+            <span>View Source</span></a><a role="menuitem" href="https://chatgpt.com/?hints=search&q=Read%20https%3A//raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/protocols/bacnet/api.rst%20so%20I%20can%20ask%20questions%20about%20it." target="_blank" rel="nofollow">
           <iconify-icon icon="bi:openai"></iconify-icon>
           <span>Open in ChatGPT</span>
-        </a><a role="menuitem" href="https://claude.ai/new?q=Read%20https%3A//raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/protocols/iec104/iec104read.rst%20so%20I%20can%20ask%20questions%20about%20it." target="_blank" rel="nofollow">
+        </a><a role="menuitem" href="https://claude.ai/new?q=Read%20https%3A//raw.githubusercontent.com/MatrixEditor/icspacket/refs/heads/main/docs/protocols/bacnet/api.rst%20so%20I%20can%20ask%20questions%20about%20it." target="_blank" rel="nofollow">
           <iconify-icon icon="bi:claude"></iconify-icon>
           <span>Open in Claude</span>
         </a></div>
     </div>
   </div>
 </div><article class="yue" role="main">
-          <section id="reading-data-via-interrogation">
-<span id="iec104-example-read"></span><h1>Reading Data via Interrogation<a class="headerlink" href="#reading-data-via-interrogation" title="Link to this heading">#</a></h1>
-<p>The <code class="docutils literal notranslate"><span class="pre">iec104read.py</span></code> script connects to an IEC 60870-5-104 outstation and
-requests data either via a general/counter interrogation (a bulk “send me
-everything” request the outstation answers with a burst of ASDUs) or a
-single read of one Information Object Address, dumping every ASDU received
-as a tree of decoded information objects.</p>
-<section id="target-format">
-<h2>Target Format<a class="headerlink" href="#target-format" title="Link to this heading">#</a></h2>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span data-line="1">iec104read.py<span class="w"> </span>-t<span class="w"> </span>&lt;host&gt;<span class="o">[</span>:&lt;port&gt;<span class="o">]</span>
-</span></pre></div>
+          <section id="module-icspacket.proto.bacnet">
+<span id="api-reference"></span><span id="bacnet-index"></span><h1>API Reference<a class="headerlink" href="#module-icspacket.proto.bacnet" title="Link to this heading">#</a></h1>
+<p><strong>ASHRAE 135 - BACnet, A Data Communication Protocol for Building
+Automation and Control Networks</strong></p>
+<blockquote>
+<div><p>This standard defines a protocol for the communication of
+building automation and control system equipment (e.g. HVAC,
+lighting, access control, fire detection). It defines an object
+model, a set of application services and a family of network/data
+link layers (including BACnet/IP) used to expose and exchange that
+information between devices.</p>
+<p class="attribution">—ASHRAE 135</p>
+</div></blockquote>
+<p><em>Integration via</em> <code class="xref py py-mod docutils literal notranslate"><span class="pre">bacpypes3</span></code>.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 0.3.0.</span></p>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">-t/--target</span></code> is required and specifies the outstation to connect to; the
-default port is <code class="docutils literal notranslate"><span class="pre">2404</span></code> if omitted. <code class="docutils literal notranslate"><span class="pre">-a/--common-address</span></code> sets the
-Common Address (CA) of the target station (default: <code class="docutils literal notranslate"><span class="pre">1</span></code>), and
-<code class="docutils literal notranslate"><span class="pre">--timeout</span></code> bounds how long application-layer operations wait for a
-response (default: no timeout).</p>
-</section>
-<section id="requesting-a-general-interrogation">
-<h2>Requesting a General Interrogation<a class="headerlink" href="#requesting-a-general-interrogation" title="Link to this heading">#</a></h2>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span data-line="1">iec104read.py<span class="w"> </span>-t<span class="w"> </span>&lt;host&gt;
-</span><span data-line="2">iec104read.py<span class="w"> </span>-t<span class="w"> </span>&lt;host&gt;<span class="w"> </span>-qoi<span class="w"> </span><span class="m">21</span>
-</span></pre></div>
-</div>
-<p>With no <code class="docutils literal notranslate"><span class="pre">-r</span></code>/<code class="docutils literal notranslate"><span class="pre">-ci</span></code> option, <code class="docutils literal notranslate"><span class="pre">iec104read.py</span></code> issues a general
-interrogation (<code class="docutils literal notranslate"><span class="pre">C_IC_NA_1</span></code>) and prints every ASDU the outstation sends in
-response, ending with the <code class="docutils literal notranslate"><span class="pre">ACTIVATION_TERMINATION</span></code> confirmation that
-marks the end of the interrogation sequence.</p>
-<p><code class="docutils literal notranslate"><span class="pre">-qoi</span></code> selects the Qualifier Of Interrogation (default: <code class="docutils literal notranslate"><span class="pre">20</span></code>, the whole station; <code class="docutils literal notranslate"><span class="pre">21</span></code>-
-<code class="docutils literal notranslate"><span class="pre">36</span></code> select one of 16 interrogation groups instead, if the outstation
-supports grouped points).</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span><span data-line="1">$ iec104read.py -t &lt;host&gt;
-</span><span data-line="2">[I] Connecting to outstation at &lt;host&gt;:2404...
-</span><span data-line="3">General interrogation command (C_IC_NA_1=100), COT=ACTIVATION_CON, CA=1
-</span><span data-line="4">└── IOA=0
-</span><span data-line="5">    └── qualifier: 20
-</span><span data-line="6">Measured value, scaled value (M_ME_NB_1=11), COT=PERIODIC, CA=1
-</span><span data-line="7">└── IOA=110
-</span><span data-line="8">    ├── value: 449
-</span><span data-line="9">    └── quality: QDS(iv=False, nt=False, sb=False, bl=False, reserved=0, ov=False)
-</span><span data-line="10"> ...
-</span><span data-line="11">Single point information (M_SP_NA_1=1), COT=INTERROGATED_BY_STATION, CA=1
-</span><span data-line="12">├── IOA=300
-</span><span data-line="13">│   └── status: SIQ(iv=False, nt=False, sb=False, bl=False, reserved=0, spi=True)
-</span><span data-line="14"> ...
-</span><span data-line="15">Bitstring of 32 bit (M_BO_NA_1=7), COT=INTERROGATED_BY_STATION, CA=1
-</span><span data-line="16">└── IOA=500
-</span><span data-line="17">    ├── value: 43690
-</span><span data-line="18">    └── quality: QDS(iv=False, nt=False, sb=False, bl=False, reserved=0, ov=False)
-</span><span data-line="19">General interrogation command (C_IC_NA_1=100), COT=ACTIVATION_TERMINATION, CA=1
-</span><span data-line="20">└── IOA=0
-</span><span data-line="21">    └── qualifier: 20
-</span></pre></div>
-</div>
-<p>Each information object is decoded through the same registry the protocol
-layer uses to encode it (see
-<a class="reference internal" href="api/objects.html#module-icspacket.proto.iec104.objects.coding" title="icspacket.proto.iec104.objects.coding"><code class="xref py py-mod docutils literal notranslate"><span class="pre">coding</span></code></a>), so every field shown
-(<code class="docutils literal notranslate"><span class="pre">value</span></code>, <code class="docutils literal notranslate"><span class="pre">quality</span></code>, <code class="docutils literal notranslate"><span class="pre">status</span></code>, …) reflects that Type-ID’s actual
-element layout – <code class="docutils literal notranslate"><span class="pre">M_SP_NA_1</span></code> above, for example, carries only a single
-<a class="reference internal" href="api/objects.html#icspacket.proto.iec104.objects.elements.SIQ" title="icspacket.proto.iec104.objects.elements.SIQ"><code class="xref py py-class docutils literal notranslate"><span class="pre">SIQ</span></code></a> status/quality byte
-per point, while <code class="docutils literal notranslate"><span class="pre">M_ME_NB_1</span></code> carries a 16-bit scaled value plus a
-separate <a class="reference internal" href="api/objects.html#icspacket.proto.iec104.objects.elements.QDS" title="icspacket.proto.iec104.objects.elements.QDS"><code class="xref py py-class docutils literal notranslate"><span class="pre">QDS</span></code></a> quality
-byte.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Outstations commonly interleave unsolicited <code class="docutils literal notranslate"><span class="pre">COT=PERIODIC</span></code> reports
-(e.g. the <code class="docutils literal notranslate"><span class="pre">M_ME_NB_1</span></code> measurement above, incrementing on every
-report) with the interrogation’s own <code class="docutils literal notranslate"><span class="pre">COT=INTERROGATED_BY_STATION</span></code>
-response objects – both are shown as they arrive, in the order
-received.</p>
-</div>
-</section>
-<section id="requesting-a-counter-interrogation">
-<h2>Requesting a Counter Interrogation<a class="headerlink" href="#requesting-a-counter-interrogation" title="Link to this heading">#</a></h2>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span data-line="1">iec104read.py<span class="w"> </span>-t<span class="w"> </span>&lt;host&gt;<span class="w"> </span>-ci
-</span></pre></div>
-</div>
-<p><code class="docutils literal notranslate"><span class="pre">-ci/--counter-interrogation</span></code> issues a counter interrogation
-(<code class="docutils literal notranslate"><span class="pre">C_CI_NA_1</span></code>) instead of a general interrogation, requesting the current
-value of every integrated totals point (<code class="docutils literal notranslate"><span class="pre">M_IT_NA_1</span></code>) the outstation
-maintains.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Not every outstation implements Counter Interrogation – it is
-optional per IEC 60870-5-104, and demo/reference stacks in particular
-frequently omit it.</p>
-</div>
-</section>
-<section id="reading-a-single-information-object">
-<h2>Reading a Single Information Object<a class="headerlink" href="#reading-a-single-information-object" title="Link to this heading">#</a></h2>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span data-line="1">iec104read.py<span class="w"> </span>-t<span class="w"> </span>&lt;host&gt;<span class="w"> </span>-r<span class="w"> </span><span class="m">110</span>
-</span></pre></div>
-</div>
-<p><code class="docutils literal notranslate"><span class="pre">-r/--read</span> <span class="pre">IOA</span></code> sends a single Read command (<code class="docutils literal notranslate"><span class="pre">C_RD_NA_1</span></code>) for one
-Information Object Address instead of performing an interrogation, and
-prints the one ASDU returned.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>As with Counter Interrogation above, single Read support is optional
-and commonly absent from demo/reference outstations.</p>
-</div>
-</section>
 </section>
 
         </article><button class="back-to-top" type="button">
@@ -447,13 +356,13 @@ and commonly absent from demo/reference outstations.</p>
   </svg>
   <span>Back to top</span>
 </button><div class="navigation flex print:hidden"><div class="navigation-prev">
-    <a href="../mms/api_utils.html">
+    <a href="bacnetclient.html">
       <i class="i-lucide chevron-left"></i>
       <div class="page-info">
-        <span>Previous</span><div class="title">Protocol Utilities</div></div>
+        <span>Previous</span><div class="title">Discovering, Reading and Writing Properties</div></div>
     </a>
   </div><div class="navigation-next">
-    <a href="api.html">
+    <a href="../acse/api.html">
       <div class="page-info">
         <span>Next</span>
         <div class="title">API Reference</div>
