@@ -20,7 +20,10 @@ typedef enum asn_type_kind {
     ASN_KIND_SET_OF,
 } asn_type_kind_t;
 
-#include "asn_application.h"	/* Application-visible API */
+#include "asn_application.h" /* Application-visible API */
+
+#define PY_SSIZE_T_CLEAN
+#include <Python.h>
 
 #ifndef __NO_ASSERT_H__ /* Include assert.h only for internal use. */
 #include <assert.h>     /* for assert() macro */
@@ -43,10 +46,10 @@ extern "C" {
 #define ASN1C_ENVIRONMENT_VERSION 923    /* Compile-time version */
 int get_asn1c_environment_version(void); /* Run-time version */
 
-#define CALLOC(nmemb, size) calloc(nmemb, size)
-#define MALLOC(size) malloc(size)
-#define REALLOC(oldptr, size) realloc(oldptr, size)
-#define FREEMEM(ptr) free(ptr)
+#define CALLOC(nmemb, size) PyMem_RawCalloc(nmemb, size)
+#define MALLOC(size) PyMem_RawMalloc(size)
+#define REALLOC(oldptr, size) PyMem_RawRealloc(oldptr, size)
+#define FREEMEM(ptr) PyMem_RawFree(ptr)
 
 #define asn_debug_indent 0
 #define ASN_DEBUG_INDENT_ADD(i) \
@@ -139,7 +142,7 @@ ssize_t CC_PRINTFLIKE(3, 4)
 
 /*
  * Check if an ASN.1 type is a structured type that outputs newlines in XER.
- * Structured types (SEQUENCE, SET, CHOICE, SEQUENCE_OF, SET_OF) output 
+ * Structured types (SEQUENCE, SET, CHOICE, SEQUENCE_OF, SET_OF) output
  * multi-line XER content, so their closing tags need indentation.
  * Primitive types output inline content, so no indentation is needed.
  */
@@ -396,15 +399,15 @@ extern int jer_encoding_depth;   /* JER */
 /**
  * Check if the given name is an ASN.1 meta-syntax keyword that should
  * not be output as an XML wrapper tag (e.g., "SEQUENCE OF", "SET OF").
- * 
+ *
  * Returns 1 if the name is a meta-syntax keyword, 0 otherwise.
  */
 static inline int
 asn_is_meta_syntax_keyword(const char *name) {
     if(!name) return 0;
-    
+
     size_t len = strlen(name);
-    
+
     /* Check for "SEQUENCE OF", "SEQUENCE-OF", "SET OF", "SET-OF" */
     /* Match if keyword is at start, followed by anything except lowercase letter */
     if((len >= 11 && strncmp(name, "SEQUENCE OF", 11) == 0 &&
@@ -417,7 +420,7 @@ asn_is_meta_syntax_keyword(const char *name) {
         (len == 6 || !(name[6] >= 'a' && name[6] <= 'z')))) {
         return 1;
     }
-    
+
     return 0;
 }
 

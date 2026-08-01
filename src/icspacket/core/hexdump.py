@@ -13,8 +13,8 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
-from string import ascii_letters
 from io import StringIO
+from string import ascii_letters
 
 #: Precomputed set of valid ASCII letter byte values.
 #:
@@ -54,7 +54,8 @@ def hexdump(data: bytes, width: int = 16) -> str:
 
     :return:
         A string containing the formatted hexdump, with newline
-        terminators at the end of each row.
+        terminators at the end of each row. Empty input returns an
+        empty string.
     :rtype: str
 
     :raises ValueError:
@@ -64,8 +65,8 @@ def hexdump(data: bytes, width: int = 16) -> str:
 
         >>> data = b"Hello, MMS!"
         >>> print(hexdump(data, width=8))
-        00000000:   48 65 6c 6c 6f 2c 20 4d   Hello,.M
-        00000008:   4d 53 21                  MS!
+        00000000:   48 65 6c 6c 6f 2c 20 4d   Hello..M
+        00000008:   4d 53 21                  MS.
 
     .. note::
         Unlike the standard UNIX ``hexdump`` tool, this implementation
@@ -76,10 +77,13 @@ def hexdump(data: bytes, width: int = 16) -> str:
     if width < 1:
         raise ValueError("hexdump width must be >= 1")
 
+    if not data:
+        return ""
+
     windows_size = min(len(data), width)
     result = StringIO()
     for index in range(0, len(data), windows_size):
-        offset = index * windows_size
+        offset = index
         chunk = data[index : index + windows_size]
 
         chunk_hex = chunk.hex(sep=" ")
