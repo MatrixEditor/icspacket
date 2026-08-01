@@ -31,18 +31,32 @@ include(cmake/icspacket-defs.cmake)
 # -----------------------------------------------------------------------------
 #                     icspacket ASN.1 extensions
 # -----------------------------------------------------------------------------
+# All extensions are generated with RFILL (random value generation for
+# testing), CBOR and *PER (OER/UPER/APER) codec support disabled - icspacket
+# only needs BER/XER/JER on the wire.
+set(ICS_ASN1_DISABLED_CODEC_DEFINITIONS
+  ASN_DISABLE_OER_SUPPORT
+  ASN_DISABLE_UPER_SUPPORT
+  ASN_DISABLE_APER_SUPPORT
+  ASN_DISABLE_CBOR_SUPPORT
+  ASN_DISABLE_RFILL_SUPPORT
+)
+
 add_asn1_extension(
   NAME _iso8823
   DIR "${ICS_SOURCE_DIR}/proto/iso_pres/_iso8823"
   INSTALL "proto/iso_pres"
+  DEFINITIONS ${ICS_ASN1_DISABLED_CODEC_DEFINITIONS}
 )
 add_asn1_extension(
   NAME _mms
   DIR "${ICS_SOURCE_DIR}/proto/mms/_mms"
   INSTALL "proto/mms"
+  DEFINITIONS ${ICS_ASN1_DISABLED_CODEC_DEFINITIONS}
 )
 add_asn1_extension(
   NAME _iec61850
   DIR "${ICS_SOURCE_DIR}/proto/iec61850/_iec61850"
   INSTALL "proto/iec61850"
+  DEFINITIONS ${ICS_ASN1_DISABLED_CODEC_DEFINITIONS}
 )
