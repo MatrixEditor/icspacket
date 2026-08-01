@@ -55,5 +55,13 @@ function(add_asn1_extension)
         TARGETS ${ASN1_NAME}
         DESTINATION ${SKBUILD_PROJECT_NAME}/${ASN1_INSTALL}
     )
+
+    # Install the generated Python type stub (.pyi), if present.
+    if(EXISTS "${ASN1_DIR}.pyi")
+        install(
+            FILES "${ASN1_DIR}.pyi"
+            DESTINATION ${SKBUILD_PROJECT_NAME}/${ASN1_INSTALL}
+        )
+    endif()
 endfunction()
 

@@ -12,6 +12,8 @@ PyCompatTable_t *PyCompatTable = NULL;
 
 int PyCompat_GetFlagsFromArgs(PyObject *kwargs, PyAsnFlags_t *flags) {
     static char *kwlist[] = {"minified", "aligned", "canonical", NULL};
+    PyObject *empty_args;
+    int ok;
 
     flags->aligned = 0;
     flags->canonical = 0;
@@ -19,9 +21,16 @@ int PyCompat_GetFlagsFromArgs(PyObject *kwargs, PyAsnFlags_t *flags) {
     if (kwargs == NULL) {
         return 0;
     }
-    return PyArg_ParseTupleAndKeywords(NULL, kwargs, "|$ppp", kwlist,
-                                       &flags->minified, &flags->aligned,
-                                       &flags->canonical);
+
+    empty_args = PyTuple_New(0);
+    if (empty_args == NULL) {
+        return -1;
+    }
+    ok = PyArg_ParseTupleAndKeywords(empty_args, kwargs, "|$ppp", kwlist,
+                                     &flags->minified, &flags->aligned,
+                                     &flags->canonical);
+    Py_DECREF(empty_args);
+    return ok ? 0 : -1;
 }
 
 void PyCompat_Clear(void) {

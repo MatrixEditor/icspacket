@@ -6,7 +6,6 @@
 #ifndef _PyConvert_H_
 #define _PyConvert_H_
 
-#define PY_SSIZE_T_CLEAN
 #include <Python.h>
 #include <py_application.h>
 

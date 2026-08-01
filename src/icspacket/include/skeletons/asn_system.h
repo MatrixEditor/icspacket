@@ -105,6 +105,10 @@ typedef SSIZE_T ssize_t;
 #endif /* _WIN32 */
 
 /* ---------------------------- Attributes -------------------------------- */
+#if !defined(__GNUC__) && !defined(__clang__)
+#define __attribute__(attr)
+#endif
+
 #if defined(__GNUC__) || defined(__clang__)
 #define CC_UNUSED(name) name __attribute__((unused))
 #else

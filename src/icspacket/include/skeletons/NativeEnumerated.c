@@ -18,6 +18,7 @@
 static const ber_tlv_tag_t asn_DEF_NativeEnumerated_tags[] = {
     (ASN_TAG_CLASS_UNIVERSAL | (10 << 2))};
 asn_TYPE_operation_t asn_OP_NativeEnumerated = {
+    .kind = ASN_KIND_PRIMITIVE,
     NativeInteger_free,
 #if !defined(ASN_DISABLE_PRINT_SUPPORT)
     NativeInteger_print,
@@ -72,8 +73,15 @@ asn_TYPE_operation_t asn_OP_NativeEnumerated = {
     NativeEnumerated_random_fill,
 #else
     0,
-#endif /* !defined(ASN_DISABLE_RFILL_SUPPORT) */
-    0  /* Use generic outmost tag fetcher */
+#endif  /* !defined(ASN_DISABLE_RFILL_SUPPORT) */
+    0  /* Use generic outmost tag fetcher */,
+#if !defined(ASN_DISABLE_CBOR_SUPPORT)
+    NativeEnumerated_decode_cbor,
+    NativeEnumerated_encode_cbor,
+#else
+    0,
+    0,
+#endif  /* !defined(ASN_DISABLE_CBOR_SUPPORT) */
 };
 
 int NativeEnumerated_constraint(const asn_TYPE_descriptor_t *td,
@@ -88,7 +96,17 @@ int NativeEnumerated_constraint(const asn_TYPE_descriptor_t *td,
     if (el) {
         return 0;
     } else {
-        ASN_DEBUG("No element corresponds to the value %ld", *native);
+        /* Bug #14: this used to return -1 without ever invoking ctfailcb,
+         * violating the documented asn_check_constraints() contract that
+         * errbuf/errlen are only meaningful after the callback fires. The
+         * Python binding's PyCompat_CheckConstraints() (py_application.h)
+         * trusted that contract unconditionally and read `errbuf_size`
+         * bytes of never-initialized stack memory as a result, leaking
+         * stack contents as a bogus UnicodeDecodeError instead of raising
+         * a clean ValueError. */
+        ASN__CTFAIL(app_key, td, sptr,
+                    "%s: no element corresponds to the value %ld (%s:%d)",
+                    td->name, *native, __FILE__, __LINE__);
         return -1;
     }
 }

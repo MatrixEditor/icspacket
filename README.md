@@ -7,7 +7,6 @@ systems using their protocols. Currently supported protocols are:
 - DNP3.0 (IEEE 1815)
 - MMS (ISO 9506) and mappings for IEC 61850
 - IEC 60870-5-104
-- MMS (ISO 9506) and mappings for IEC 61850
 - ACSE (X.227)
 - COPP (X.226)
 - COSP (X.225)

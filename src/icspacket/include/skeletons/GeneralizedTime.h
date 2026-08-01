@@ -4,6 +4,11 @@
  */
 #ifndef _GeneralizedTime_H_
 #define _GeneralizedTime_H_
+#ifdef	__CYGWIN__
+#include "/usr/include/time.h"
+#else
+#include <time.h>
+#endif	/* __CYGWIN__ */
 
 #include <OCTET_STRING.h>
 
@@ -58,8 +63,6 @@ asn_random_fill_f GeneralizedTime_random_fill;
 /***********************
  * Some handy helpers. *
  ***********************/
-
-struct tm; /* <time.h> */
 
 /*
  * Convert a GeneralizedTime structure into time_t

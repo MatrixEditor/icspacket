@@ -295,10 +295,11 @@ asn_dec_rval_t BIT_STRING_decode_jer(const asn_codec_ctx_t *opt_codec_ctx,
         void *integer_ptr = (void *)&integer;
         memset(&integer, 0, sizeof(integer));
 
-        asn_dec_rval_t dec = INTEGER_decode_jer(NULL, &asn_DEF_INTEGER, NULL,
-                                                &integer_ptr, p0, p - p0);
-        if (dec.code == RC_OK) {
-            if (asn_INTEGER2ulong(&integer, (unsigned long *)&length)) {
+        asn_dec_rval_t dec =
+            INTEGER_decode_jer(NULL, &asn_DEF_INTEGER, NULL, &integer_ptr, p0, p-p0);
+        if(dec.code == RC_OK) {
+            if(asn_INTEGER2ulong(&integer, (unsigned long *)&length)) {
+                ASN_STRUCT_FREE_CONTENTS_ONLY(asn_DEF_INTEGER, &integer);
                 RETURN(RC_FAIL);
             }
         } else {
@@ -306,7 +307,10 @@ asn_dec_rval_t BIT_STRING_decode_jer(const asn_codec_ctx_t *opt_codec_ctx,
         }
         ASN_STRUCT_FREE_CONTENTS_ONLY(asn_DEF_INTEGER, &integer);
 
-        if (dec.code != RC_OK) RETURN(RC_FAIL);
+        if(dec.code != RC_OK) RETURN(RC_FAIL);
+        if(length > st->size * 8 || (st->size * 8) - length > 7) {
+            RETURN(RC_FAIL);
+        }
         st->bits_unused = (st->size * 8) - length;
 
         SKIPCHAR('}');

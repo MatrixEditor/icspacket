@@ -6,7 +6,23 @@
 #include <asn_internal.h>
 #include <constr_SET_OF.h>
 
+/*
+ * Generic placeholder descriptor for anonymous SET OF.
+ * NOTE: not a concrete "OF T" — used only to satisfy references.
+ */
+asn_TYPE_descriptor_t asn_DEF_SET_OF = {
+    "SET OF",
+    "SET OF",
+    &asn_OP_SET_OF,
+    0, 0,
+    0, 0,
+    {0},            /* No constraints */
+    0, 0,           /* No members */
+    0               /* No specifics */
+};
+
 asn_TYPE_operation_t asn_OP_SET_OF = {
+    .kind = ASN_KIND_SET_OF,
     SET_OF_free,
 #if !defined(ASN_DISABLE_PRINT_SUPPORT)
     SET_OF_print,
@@ -61,8 +77,15 @@ asn_TYPE_operation_t asn_OP_SET_OF = {
     SET_OF_random_fill,
 #else
     0,
-#endif /* !defined(ASN_DISABLE_RFILL_SUPPORT) */
-    0  /* Use generic outmost tag fetcher */
+#endif  /* !defined(ASN_DISABLE_RFILL_SUPPORT) */
+    0  /* Use generic outmost tag fetcher */,
+#if !defined(ASN_DISABLE_CBOR_SUPPORT)
+    SET_OF_decode_cbor,
+    SET_OF_encode_cbor,
+#else
+    0,
+    0,
+#endif  /* !defined(ASN_DISABLE_CBOR_SUPPORT) */
 };
 
 /* Append bytes to the above structure */
@@ -157,7 +180,8 @@ struct _el_buffer *SET_OF__encode_sorted(const asn_TYPE_member_t *elm,
         struct _el_buffer *encoding_el = &encoded_els[edx];
         asn_enc_rval_t erval = {0, 0, 0};
 
-        if (!memb_ptr) break;
+        if(!memb_ptr) break;
+        encoding_el->memb_ptr = memb_ptr;
 
         /*
          * Encode the member into the prepared space.
