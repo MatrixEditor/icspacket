@@ -7,15 +7,9 @@
 #include <GeneralizedTime.h>
 #include <errno.h>
 
-#ifdef __CYGWIN__
-#include "/usr/include/time.h"
-#else
-#include <time.h>
-#endif /* __CYGWIN__ */
-
-int GeneralizedTime_print(const asn_TYPE_descriptor_t *td, const void *sptr,
-                          int ilevel, asn_app_consume_bytes_f *cb,
-                          void *app_key) {
+int
+GeneralizedTime_print(const asn_TYPE_descriptor_t *td, const void *sptr,
+                      int ilevel, asn_app_consume_bytes_f *cb, void *app_key) {
     const GeneralizedTime_t *st = (const GeneralizedTime_t *)sptr;
 
     (void)td;     /* Unused argument */

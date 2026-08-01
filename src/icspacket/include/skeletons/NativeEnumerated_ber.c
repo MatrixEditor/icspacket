@@ -144,3 +144,4 @@ asn_enc_rval_t NativeEnumerated_encode_der(const asn_TYPE_descriptor_t *td,
     }
     return erval;
 }
+

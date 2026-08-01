@@ -15,6 +15,7 @@ static const ber_tlv_tag_t asn_DEF_OCTET_STRING_tags[] = {
 asn_OCTET_STRING_specifics_t asn_SPC_OCTET_STRING_specs = {
     sizeof(OCTET_STRING_t), offsetof(OCTET_STRING_t, _asn_ctx), ASN_OSUBV_STR};
 asn_TYPE_operation_t asn_OP_OCTET_STRING = {
+    .kind = ASN_KIND_PRIMITIVE,
     OCTET_STRING_free,
 #if !defined(ASN_DISABLE_PRINT_SUPPORT)
     OCTET_STRING_print, /* OCTET STRING generally means a non-ascii sequence */
@@ -31,8 +32,8 @@ asn_TYPE_operation_t asn_OP_OCTET_STRING = {
     0,
 #endif /* !defined(ASN_DISABLE_BER_SUPPORT) */
 #if !defined(ASN_DISABLE_XER_SUPPORT)
-    OCTET_STRING_decode_xer_hex,
-    OCTET_STRING_encode_xer,
+    OCTET_STRING_decode_xer_auto,  /* Liberal: accept hex (default) or Base64 */
+    OCTET_STRING_encode_xer,       /* Default: upper-case hex (xmlhstring) per X.680 §22.3 / X.693 */
 #else
     0,
     0,
@@ -69,8 +70,15 @@ asn_TYPE_operation_t asn_OP_OCTET_STRING = {
     OCTET_STRING_random_fill,
 #else
     0,
-#endif /* !defined(ASN_DISABLE_RFILL_SUPPORT) */
-    0  /* Use generic outmost tag fetcher */
+#endif  /* !defined(ASN_DISABLE_RFILL_SUPPORT) */
+    0  /* Use generic outmost tag fetcher */,
+#if !defined(ASN_DISABLE_CBOR_SUPPORT)
+    OCTET_STRING_decode_cbor,
+    OCTET_STRING_encode_cbor,
+#else
+    0,
+    0,
+#endif  /* !defined(ASN_DISABLE_CBOR_SUPPORT) */
 };
 asn_TYPE_descriptor_t asn_DEF_OCTET_STRING = {
     "OCTET STRING", /* Canonical name */
@@ -192,11 +200,21 @@ OCTET_STRING_t *OCTET_STRING_new_fromBuf(const asn_TYPE_descriptor_t *td,
                       : &asn_SPC_OCTET_STRING_specs;
     OCTET_STRING_t *st;
 
-    st = (OCTET_STRING_t *)CALLOC(1, specs->struct_size);
-    if (st && str && OCTET_STRING_fromBuf(st, str, len)) {
-        FREEMEM(st);
-        st = NULL;
+    /* 
+     * Sanity check: struct_size should be at least as large as OCTET_STRING_t.
+     * If it's smaller, accessing OCTET_STRING_t fields could cause memory corruption.
+     */
+    if(specs->struct_size < sizeof(OCTET_STRING_t)) {
+        ASN_DEBUG("Type descriptor %s has struct_size %u which is smaller than OCTET_STRING_t (%zu)",
+                  td->name ? td->name : "unknown", specs->struct_size, sizeof(OCTET_STRING_t));
+        return NULL;
     }
+
+	st = (OCTET_STRING_t *)CALLOC(1, specs->struct_size);
+	if(st && str && OCTET_STRING_fromBuf(st, str, len)) {
+		FREEMEM(st);
+		st = NULL;
+	}
 
     return st;
 }

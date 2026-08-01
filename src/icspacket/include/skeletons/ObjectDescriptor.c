@@ -13,6 +13,7 @@ static const ber_tlv_tag_t asn_DEF_ObjectDescriptor_tags[] = {
     (ASN_TAG_CLASS_UNIVERSAL | (4 << 2))  /* ... OCTET STRING */
 };
 asn_TYPE_operation_t asn_OP_ObjectDescriptor = {
+    .kind = ASN_KIND_PRIMITIVE,
     OCTET_STRING_free,
 #if !defined(ASN_DISABLE_PRINT_SUPPORT)
     OCTET_STRING_print_utf8, /* Treat as ASCII subset (it's not) */
@@ -67,8 +68,15 @@ asn_TYPE_operation_t asn_OP_ObjectDescriptor = {
     0, /* Not supported for ObjectDescriptor */
 #else
     0,
-#endif /* !defined(ASN_DISABLE_RFILL_SUPPORT) */
-    0  /* Use generic outmost tag fetcher */
+#endif  /* !defined(ASN_DISABLE_RFILL_SUPPORT) */
+    0,  /* Use generic outmost tag fetcher */
+#if !defined(ASN_DISABLE_CBOR_SUPPORT)
+    OCTET_STRING_decode_cbor_utf8,
+    OCTET_STRING_encode_cbor_utf8,
+#else
+    0,
+    0,
+#endif  /* !defined(ASN_DISABLE_CBOR_SUPPORT) */
 };
 asn_TYPE_descriptor_t asn_DEF_ObjectDescriptor = {
     "ObjectDescriptor",

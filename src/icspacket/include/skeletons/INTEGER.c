@@ -7,13 +7,13 @@
 #include <INTEGER.h>
 #include <errno.h>
 #include <inttypes.h>
-
 /*
  * INTEGER basic type description.
  */
 static const ber_tlv_tag_t asn_DEF_INTEGER_tags[] = {
     (ASN_TAG_CLASS_UNIVERSAL | (2 << 2))};
 asn_TYPE_operation_t asn_OP_INTEGER = {
+    .kind = ASN_KIND_PRIMITIVE,
     INTEGER_free,
 #if !defined(ASN_DISABLE_PRINT_SUPPORT)
     INTEGER_print,
@@ -68,8 +68,15 @@ asn_TYPE_operation_t asn_OP_INTEGER = {
     INTEGER_random_fill,
 #else
     0,
-#endif /* !defined(ASN_DISABLE_RFILL_SUPPORT) */
-    0  /* Use generic outmost tag fetcher */
+#endif  /* !defined(ASN_DISABLE_RFILL_SUPPORT) */
+0,  /* Use generic outmost tag fetcher */
+#if !defined(ASN_DISABLE_CBOR_SUPPORT)
+    INTEGER_decode_cbor,
+    INTEGER_encode_cbor,
+#else
+    0,
+    0,
+#endif  /* !defined(ASN_DISABLE_CBOR_SUPPORT) */
 };
 asn_TYPE_descriptor_t asn_DEF_INTEGER = {
     "INTEGER",
@@ -158,24 +165,41 @@ ssize_t INTEGER__dump(const asn_TYPE_descriptor_t *td, const INTEGER_t *st,
         return -1;
     }
 
-    /* Output in the long xx:yy:zz... format */
-    /* TODO: replace with generic algorithm (Knuth TAOCP Vol 2, 4.3.1) */
-    for (p = scratch; buf < buf_end; buf++) {
-        const char *const h2c = "0123456789ABCDEF";
-        if ((p - scratch) >= (ssize_t)(sizeof(scratch) - 4)) {
-            /* Flush buffer */
-            if (cb(scratch, p - scratch, app_key) < 0) return -1;
-            wrote += p - scratch;
-            p = scratch;
-        }
-        *p++ = h2c[*buf >> 4];
-        *p++ = h2c[*buf & 0x0F];
-        *p++ = 0x3a; /* ":" */
-    }
-    if (p != scratch) p--; /* Remove the last ":" */
+	/* Output in the long xx:yy:zz... format */
+	/* TODO: replace with generic algorithm (Knuth TAOCP Vol 2, 4.3.1) */
+	
+	/* For JER (JSON), large integers should be quoted as strings */
+	if(plainOrXEROrJER == 2) {
+		if(cb("\"", 1, app_key) < 0) return -1;
+		wrote += 1;
+	}
+	
+	for(p = scratch; buf < buf_end; buf++) {
+		const char * const h2c = "0123456789ABCDEF";
+		if((p - scratch) >= (ssize_t)(sizeof(scratch) - 4)) {
+			/* Flush buffer */
+			if(cb(scratch, p - scratch, app_key) < 0)
+				return -1;
+			wrote += p - scratch;
+			p = scratch;
+		}
+		*p++ = h2c[*buf >> 4];
+		*p++ = h2c[*buf & 0x0F];
+		*p++ = 0x3a;	/* ":" */
+	}
+	if(p != scratch)
+		p--;	/* Remove the last ":" */
 
-    wrote += p - scratch;
-    return (cb(scratch, p - scratch, app_key) < 0) ? -1 : wrote;
+	wrote += p - scratch;
+	if((cb(scratch, p - scratch, app_key) < 0)) return -1;
+	
+	/* Close quote for JER (JSON) */
+	if(plainOrXEROrJER == 2) {
+		if(cb("\"", 1, app_key) < 0) return -1;
+		wrote += 1;
+	}
+	
+	return wrote;
 }
 
 static int INTEGER__compar_value2enum(const void *kp, const void *am) {
@@ -414,8 +438,15 @@ int asn_long2INTEGER(INTEGER_t *st, long value) {
     return asn_imax2INTEGER(st, value);
 }
 
-int asn_ulong2INTEGER(INTEGER_t *st, unsigned long value) {
-    return asn_imax2INTEGER(st, value);
+int
+asn_ulong2INTEGER(INTEGER_t *st, unsigned long value) {
+    /*
+     * Route through the unsigned conversion helper so that values above
+     * the signed maximum stay positive (a leading zero content octet is
+     * prepended when the high bit would otherwise imply a negative value).
+     * Using the signed helper here would misencode e.g. ULONG_MAX as -1.
+     */
+    return asn_umax2INTEGER(st, (uintmax_t)value);
 }
 
 int asn_INTEGER2int64(const INTEGER_t *st, int64_t *value) {

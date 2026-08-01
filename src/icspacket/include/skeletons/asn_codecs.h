@@ -21,18 +21,33 @@ struct asn_TYPE_descriptor_s; /* Forward declaration */
  *   xer_decode() and uper_decode() functions instead.
  */
 typedef struct asn_codec_ctx_s {
-    /*
-     * Limit the decoder routines to use no (much) more stack than a given
-     * number of bytes. Most of decoders are stack-based, and this
-     * would protect against stack overflows if the number of nested
-     * encodings is high.
-     * The OCTET STRING, BIT STRING and ANY BER decoders are heap-based,
-     * and are safe from this kind of overflow.
-     * A value from getrlimit(RLIMIT_STACK) may be used to initialize
-     * this variable. Be careful in multithreaded environments, as the
-     * stack size is rather limited.
-     */
-    size_t max_stack_size; /* 0 disables stack bounds checking */
+	/*
+	 * Limit the decoder routines to use no (much) more stack than a given
+	 * number of bytes. Most of decoders are stack-based, and this
+	 * would protect against stack overflows if the number of nested
+	 * encodings is high.
+	 * The OCTET STRING, BIT STRING and ANY BER decoders are heap-based,
+	 * and are safe from this kind of overflow.
+	 * A value from getrlimit(RLIMIT_STACK) may be used to initialize
+	 * this variable. Be careful in multithreaded environments, as the
+	 * stack size is rather limited.
+	 */
+	size_t  max_stack_size; /* 0 disables stack bounds checking */
+	
+	/*
+	 * Decoder validation flags. Used by PER/UPER decoders to control
+	 * canonical vs basic decoding behavior.
+	 */
+	unsigned int uper_canonical:1;  /* Enable canonical UPER validation */
+	unsigned int uper_canonical_lenient:1;  /* Enable lenient canonical validation for interoperability */
+	
+	/*
+	 * Partial decoding support. When enabled, the decoder will preserve
+	 * partially decoded structures on failure instead of freeing them.
+	 * This allows inspection of what was successfully decoded before
+	 * the error occurred.
+	 */
+	unsigned int preserve_partial_decoding:1;
 } asn_codec_ctx_t;
 
 /*

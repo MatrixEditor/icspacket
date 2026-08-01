@@ -4,7 +4,11 @@
  */
 #define _POSIX_PTHREAD_SEMANTICS /* for Sun */
 #ifndef _REENTRANT
-#define _REENTRANT               /* for Sun */
+#define _REENTRANT /* for Sun */
+#endif
+#define __EXTENSIONS__ /* for Sun */
+#ifndef _BSD_SOURCE
+#define _BSD_SOURCE /* for timegm(3) */
 #endif
 #include <asn_internal.h>
 #include <GeneralizedTime.h>
@@ -17,9 +21,18 @@
 
 #include <errno.h>
 
-#if defined(WIN32)
+#if defined(_WIN32)
 
 #ifdef __GNUC__
+#pragma message("PLEASE STOP AND READ!")
+#pragma message( \
+    "  localtime_r is implemented via localtime(), which may be not thread-safe.")
+#pragma message( \
+    "  gmtime_r is implemented via gmtime(), which may be not thread-safe.")
+#pragma message("  ")
+#pragma message("  You must fix the code by inserting appropriate locking")
+#pragma message("  if you want to use asn_GT2time() or asn_UT2time().")
+#pragma message("PLEASE STOP AND READ!")
 
 static struct tm *localtime_r(const time_t *tloc, struct tm *result) {
     struct tm *tm;
@@ -33,8 +46,11 @@ static struct tm *gmtime_r(const time_t *tloc, struct tm *result) {
     return 0;
 }
 
-#else
+#else /* !__GNUC__ */
 
+/* MSVC provides real thread-safe localtime_s()/gmtime_s(); prefer them over
+ * the generic (non-reentrant) localtime()/gmtime()-based fallback above,
+ * which is only used for toolchains (e.g. MinGW) lacking these. */
 int localtime_s(struct tm *_tm, const time_t *time);
 
 int gmtime_s(struct tm *_tm, const time_t *time);
@@ -58,7 +74,7 @@ static struct tm *gmtime_r(const time_t *tloc, struct tm *result) {
 #define putenv(c) _putenv(c)
 #define _EMULATE_TIMEGM
 
-#endif /* WIN32 */
+#endif /* _WIN32 */
 
 #ifdef _WIN32
 #ifndef HAVE_SETENV
@@ -101,6 +117,26 @@ static inline int unsetenv(const char *name) { return _putenv_s(name, ""); }
 #else /* HAVE_TM_GMTOFF */
 #define GMTOFF(tm) (_timezone)
 #endif /* HAVE_TM_GMTOFF */
+
+#if defined(_WIN32)
+#pragma message("PLEASE STOP AND READ!")
+#pragma message( \
+    "  timegm() is implemented via getenv(\"TZ\")/setenv(\"TZ\"), which may be not thread-safe.")
+#pragma message("  ")
+#pragma message("  You must fix the code by inserting appropriate locking")
+#pragma message("  if you want to use asn_GT2time() or asn_UT2time().")
+#pragma message("PLEASE STOP AND READ!")
+#else
+#if (defined(_EMULATE_TIMEGM) || !defined(HAVE_TM_GMTOFF))
+#warning "PLEASE STOP AND READ!"
+#warning \
+    "  timegm() is implemented via getenv(\"TZ\")/setenv(\"TZ\"), which may be not thread-safe."
+#warning "  "
+#warning "  You must fix the code by inserting appropriate locking"
+#warning "  if you want to use asn_GT2time() or asn_UT2time()."
+#warning "PLEASE STOP AND READ!"
+#endif /* _EMULATE_TIMEGM */
+#endif
 
 /*
  * Override our GMTOFF decision for other known platforms.
@@ -191,6 +227,7 @@ static asn_per_constraints_t asn_DEF_GeneralizedTime_per_constraints = {
 #endif /* !defined(ASN_DISABLE_UPER_SUPPORT) || \
           !defined(ASN_DISABLE_APER_SUPPORT) */
 asn_TYPE_operation_t asn_OP_GeneralizedTime = {
+    .kind = ASN_KIND_PRIMITIVE,
     OCTET_STRING_free,
 #if !defined(ASN_DISABLE_PRINT_SUPPORT)
     GeneralizedTime_print,
@@ -245,8 +282,15 @@ asn_TYPE_operation_t asn_OP_GeneralizedTime = {
     GeneralizedTime_random_fill,
 #else
     0,
-#endif /* !defined(ASN_DISABLE_RFILL_SUPPORT) */
-    0  /* Use generic outmost tag fetcher */
+#endif  /* !defined(ASN_DISABLE_RFILL_SUPPORT) */
+    0,  /* Use generic outmost tag fetcher */
+#if !defined(ASN_DISABLE_CBOR_SUPPORT)
+    OCTET_STRING_decode_cbor_utf8,
+    OCTET_STRING_encode_cbor_utf8,
+#else
+    0,
+    0,
+#endif  /* !defined(ASN_DISABLE_CBOR_SUPPORT) */
 };
 asn_TYPE_descriptor_t asn_DEF_GeneralizedTime = {
     "GeneralizedTime",

@@ -5,7 +5,9 @@
 #include <asn_internal.h>
 #include <constr_CHOICE.h>
 
-asn_TYPE_operation_t asn_OP_CHOICE = {CHOICE_free,
+asn_TYPE_operation_t asn_OP_CHOICE = {
+    .kind = ASN_KIND_CHOICE,
+    CHOICE_free,
 #if !defined(ASN_DISABLE_PRINT_SUPPORT)
                                       CHOICE_print,
 #else
@@ -52,8 +54,16 @@ asn_TYPE_operation_t asn_OP_CHOICE = {CHOICE_free,
                                       CHOICE_random_fill,
 #else
     0,
-#endif /* !defined(ASN_DISABLE_RFILL_SUPPORT) */
-                                      CHOICE_outmost_tag};
+#endif  /* !defined(ASN_DISABLE_RFILL_SUPPORT) */
+    CHOICE_outmost_tag,
+#if !defined(ASN_DISABLE_CBOR_SUPPORT)
+    CHOICE_decode_cbor,
+    CHOICE_encode_cbor,
+#else
+    0,
+    0,
+#endif  /* !defined(ASN_DISABLE_CBOR_SUPPORT) */
+};
 
 ber_tlv_tag_t CHOICE_outmost_tag(const asn_TYPE_descriptor_t *td,
                                  const void *ptr, int tag_mode,

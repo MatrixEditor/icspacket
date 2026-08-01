@@ -106,7 +106,7 @@ static inline PyObject *PyCompatBITSTRING_GetFlag(BIT_STRING_t *src,
                      index, src->size);
         return NULL;
     }
-    if  ((src->buf[index + extra_off] & (1 << shift))) {
+    if ((src->buf[index + extra_off] & (1 << shift))) {
         Py_RETURN_TRUE;
     }
     Py_RETURN_FALSE;
